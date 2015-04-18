@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL-@127.0.0.1" uuid="5658225d-4b4f-43fb-914e-79b33c985300">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>db_bee.*</schema-pattern>
+      <default-schemas>db_bee.*</default-schemas>
+    </data-source>
+  </component>
+</project>

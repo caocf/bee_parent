@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="bee">
+    <output-path>$PROJECT_DIR$/out/artifacts/bee</output-path>
+    <root id="archive" name="bee_web.war" />
+  </artifact>
+</component>
