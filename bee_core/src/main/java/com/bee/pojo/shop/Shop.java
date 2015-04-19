@@ -3,6 +3,8 @@ package com.bee.pojo.shop;
 import com.bee.pojo.Area;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by suntongwei on 15/4/16.
@@ -28,6 +30,8 @@ public class Shop implements java.io.Serializable {
     private Integer status;
     // 联系人
     private String linkName;
+    // 最低价格
+    private Double price;
     // 商家联系电话
     private String phone;
     // 地址
@@ -42,6 +46,8 @@ public class Shop implements java.io.Serializable {
     private String remark;
     // 推荐
     private Integer recommend;
+    // 关注用户
+    private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -102,6 +108,13 @@ public class Shop implements java.io.Serializable {
     public void setAddr(String addr) {
         this.addr = addr;
     }
+    @Column(name = "PRICE")
+    public Double getPrice() {
+        return price;
+    }
+    public void setPrice(Double price) {
+        this.price = price;
+    }
     @Column(name = "CREATETIME")
     public Long getCreateTime() {
         return createTime;
@@ -143,5 +156,12 @@ public class Shop implements java.io.Serializable {
     }
     public void setStatus(Integer status) {
         this.status = status;
+    }
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "shop")
+    public Set<ShopFocus> getShopFocus() {
+        return shopFocus;
+    }
+    public void setShopFocus(Set<ShopFocus> shopFocus) {
+        this.shopFocus = shopFocus;
     }
 }

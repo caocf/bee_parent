@@ -18,9 +18,10 @@ public class ShopController {
     @Autowired
     private IShopService shopService;
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.GET)
     public PagingResult queryShopList(ShopListRequest req) {
         return shopService.queryShopList(req);
     }
+
 
 }

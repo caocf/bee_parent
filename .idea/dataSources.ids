@@ -56,6 +56,7 @@
       <column name="SORTTIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="REMARK" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
       <column name="RECOMMEND" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PRICE" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
       <primary-key name="PRIMARY" columns="SID"/>
     </table>
     <table name="TB_SHOP_ERROR" schema="" catalog="db_bee" type="TABLE">
@@ -66,6 +67,12 @@
       <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="SEID"/>
+    </table>
+    <table name="TB_SHOP_FOCUS" schema="" catalog="db_bee" type="TABLE">
+      <column name="SFID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="SFID"/>
     </table>
     <table name="TB_SHOP_PRICE" schema="" catalog="db_bee" type="TABLE">
       <column name="SPID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -80,6 +87,7 @@
       <column name="UID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="IDENTITY" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
       <column name="DEVICE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="NAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
       <column name="PHONE" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
       <column name="PASSWORD" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
@@ -87,7 +95,6 @@
       <column name="ALIPAY" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="LEVEL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="INTEGRAL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="UID"/>
     </table>
     <table name="TB_USER_FRIEND" schema="" catalog="db_bee" type="TABLE">

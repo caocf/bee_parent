@@ -1,9 +1,11 @@
 package com.bee.pojo.user;
 
+import com.bee.pojo.shop.ShopFocus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qsd.framework.security.entity.ISecurityUser;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -39,6 +41,8 @@ public class User implements java.io.Serializable, ISecurityUser {
     private Integer level;
     // 用户积分
     private Integer integral;
+    // 用户关注的商家
+    private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
 
     @Override
     @Transient
@@ -146,5 +150,12 @@ public class User implements java.io.Serializable, ISecurityUser {
     }
     public void setType(Integer type) {
         this.type = type;
+    }
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "user")
+    public Set<ShopFocus> getShopFocus() {
+        return shopFocus;
+    }
+    public void setShopFocus(Set<ShopFocus> shopFocus) {
+        this.shopFocus = shopFocus;
     }
 }

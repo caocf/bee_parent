@@ -25,11 +25,22 @@ public class AdminShopController {
      *
      * @return
      */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView shopListView(ShopListRequest req) {
         ModelAndView mav = new ModelAndView("shop/ShopList");
         mav.addObject("result", shopService.queryShopList(req));
         return mav;
     }
+
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public ModelAndView create() {
+        return null;
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView save() {
+        return null;
+    }
+
 
 }

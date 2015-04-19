@@ -21,6 +21,17 @@ public final class Consts {
 
     public static final class Shop {
 
+        public static final class Type {
+            // 会所
+            public static final int Club = 0;
+            // 足浴
+            public static final int Massage = 1;
+            // KTV
+            public static final int Ktv = 2;
+            // 酒吧
+            public static final int Bar = 3;
+        }
+
         public static final class ErrorStatus {
             // 普通状态
             public static final int New = 1;
