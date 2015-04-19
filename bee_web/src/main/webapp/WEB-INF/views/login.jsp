@@ -15,9 +15,37 @@
   <script src="${resPath}/assets/js/bootstrap/respond.min.js"></script>
   <![endif]-->
 </head>
-<body>
-	
-
+<body class="login">
+	<div class="container">
+		<div class="row text-center">
+			<h2 class="font-color-orange">小黄蜂&nbsp;<span class="font-color-white">管理后台系统</span></h2>
+		</div>
+		<div class="row text-center">
+			<h4 class="font-color-sky">&copy; Bee</h4>
+		</div>
+		<div class="row">
+			<div class="col-xs-11 col-xs-offset-1 col-md-4 col-md-offset-4">
+				<div class="box out-side">
+					<div>
+						<span class="font-color-sky2 text-center">
+							<i class="fa fa-coffee font-color-green"></i>
+							&nbsp;Please Enter Your Information
+						</span>
+						<form action="<%=basePath %>/admin/login.html" method="post">
+              <div class="input-group margin-bottom-sm">
+                  <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                  <input class="form-control" type="text" placeholder="用户名">
+              </div>
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                  <input class="form-control" type="password" placeholder="密码">
+              </div>
+						</form>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
 <script src="${resPath}/assets/js/jquery/jquery.min.js"></script>
 <script src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
 </body>

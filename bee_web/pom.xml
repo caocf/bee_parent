@@ -13,6 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tomcat.path>/Users/suntongwei/Documents/tomcat7/webapps/ROOT</tomcat.path>
     </properties>
 
     <dependencies>
@@ -113,7 +114,10 @@
                 <inherited>false</inherited>
                 <configuration>
                     <sourceDirectory>${project.basedir}/src/main/webapp/assets/less</sourceDirectory>
+                    <!--
                     <outputDirectory>${project.build.directory}/${project.build.finalName}/assets/css</outputDirectory>
+                    -->
+                    <outputDirectory>${project.basedir}/src/main/webapp/assets/css</outputDirectory>
                     <compress>false</compress>
                     <force>true</force>
                     <includes>

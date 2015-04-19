@@ -25,7 +25,7 @@ public class AdminAuthController {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
     public String login() {
         return "login";
     }

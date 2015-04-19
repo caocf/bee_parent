@@ -1,5 +1,22 @@
 @import "variable.less";
+@import "awesome/font-awesome.less";
 @import "bootstrap/bootstrap.less";
+
+.font-color-white {
+	color: @color-white;
+}
+.font-color-orange {
+	color: @color-orange;
+}
+.font-color-sky {
+	color: @color-sky;
+}
+.font-color-sky2 {
+	color: @color-sky2;
+}
+.font-color-green {
+	color: @color-green;
+}
 
 ul,ol,li {
 	list-style: none;
@@ -7,4 +24,18 @@ ul,ol,li {
 
 .navbar-brand {
 	font-size: @font-size-base !important;
+}
+
+
+// panel
+.box {
+	&.out-side {
+		background-color: #394557;
+		padding: 7px;
+	}	
+	width: 100%;
+	div {
+		background: #F7F7F7;
+		padding: 10px;
+	}
 }
