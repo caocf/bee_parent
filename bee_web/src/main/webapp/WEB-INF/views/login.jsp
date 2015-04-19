@@ -26,19 +26,24 @@
 		<div class="row">
 			<div class="col-xs-11 col-xs-offset-1 col-md-4 col-md-offset-4">
 				<div class="box out-side">
-					<div>
-						<span class="font-color-sky2 text-center">
+					<div class="context">
+						<div class="dialog-title">
 							<i class="fa fa-coffee font-color-green"></i>
 							&nbsp;Please Enter Your Information
-						</span>
+						</div>
 						<form action="<%=basePath %>/admin/login.html" method="post">
               <div class="input-group margin-bottom-sm">
                   <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                  <input class="form-control" type="text" placeholder="用户名">
+                  <input class="form-control" name="account" type="text" placeholder="用户名" />
               </div>
               <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                  <input class="form-control" type="password" placeholder="密码">
+                  <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                  <input class="form-control" name="password" type="password" placeholder="密码" />
+              </div>
+              <div class="input-group text-right">
+              	<button type="submit" class="btn btn-primary">
+              		<i class="fa fa-key fa-fw"></i>&nbsp;&nbsp;登录
+              	</button>
               </div>
 						</form>
 					</div>

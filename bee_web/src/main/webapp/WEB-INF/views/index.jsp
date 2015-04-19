@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap 101 Template</title>
+  <title>首页 - 大黄蜂后台管理系统</title>
 
   <link href="${resPath}/assets/css/main.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -17,8 +17,14 @@
   </head>
   <body>
     <%@ include file="includes/navtop.jsp" %> 
-    
-   <script src="${resPath}/assets/js/jquery/jquery.min.js"></script>
-   <script src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
+    <%@ include file="includes/navleft.jsp" %>
+    <div class="main">
+      <ol class="breadcrumb">
+        <li><a href="${basePath}/admin/index.html"><i class="fa fa-home fa-lg"></i>首页</a></li>
+      </ol>
+      
+    </div> 
+    <script src="${resPath}/assets/js/jquery/jquery.min.js"></script>
+    <script src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
  </body>
 </html>

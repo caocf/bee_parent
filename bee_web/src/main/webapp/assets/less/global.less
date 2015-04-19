@@ -20,12 +20,54 @@
 
 ul,ol,li {
 	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-.navbar-brand {
-	font-size: @font-size-base !important;
+.navbar-header {
+	padding-left: 20px;
 }
 
+.navbar-left {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	width: @navbar-left-width;
+	height: 100%;
+	border-right: 1px solid @color-gray-ccc;
+	background-color: @color-gray;
+	padding-top: @navbar-height;
+	li {
+		&.active, &:active, &:hover {
+			background-color: @color-white;
+			border-left: 4px solid @color-blue;
+			padding-left: 11px;
+		}
+		border-left: 0;
+		border-bottom: 1px solid #E5E5E5;
+		padding: 10px 15px 10px 15px;
+		cursor: pointer;
+		> i {
+			padding-right: 10px;
+		}
+	}
+}
+
+.main {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding-top: @navbar-height;
+	padding-left: @navbar-left-width;
+	.breadcrumb {
+		background: @color-gray; 
+		border-bottom: 1px solid @color-gray-ccc;
+		i {
+			padding-right: 5px;
+		}
+	}
+}
 
 // panel
 .box {
@@ -34,7 +76,7 @@ ul,ol,li {
 		padding: 7px;
 	}	
 	width: 100%;
-	div {
+	div.context {
 		background: #F7F7F7;
 		padding: 10px;
 	}
