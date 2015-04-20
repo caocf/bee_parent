@@ -23,6 +23,7 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
      */
     public PagingResult queryShopList(ShopListRequest params) {
         DataEntity entity = new HQLEntity();
+        entity.setParams(params.getType());
         StringBuffer sb = new StringBuffer(SQL.Shop.queryShopList);
 
 

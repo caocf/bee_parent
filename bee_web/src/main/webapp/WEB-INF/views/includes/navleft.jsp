@@ -1,14 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
-<script type="text/javascript">
-	$("#shopList").click(function(event) {
-		window.location.href = "${basePath}/admin/shop";
-	});
-</script>
-
 <div class="navbar-left">
-	<ul>
-		<li class="active"><i class="fa fa-home fa-lg"></i>首页</li>
-		<li id="shopList"><i class="fa fa-university"></i>商家管理</li>
-	</ul>
+	<a class="active" href="${basePath}/admin">
+		<i class="fa fa-tachometer fa-lg"></i>
+		<span>首页</span>
+	</a>
+	<a href="${basePath}/admin/shop">
+		<i class="fa fa-desktop fa-lg"></i>
+		<span>商家</span>
+	</a>
 </div>

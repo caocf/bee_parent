@@ -8350,21 +8350,6 @@ button.close {
     display: none !important;
   }
 }
-.font-color-white {
-  color: #ffffff;
-}
-.font-color-orange {
-  color: #dd5a43;
-}
-.font-color-sky {
-  color: #93cbf9;
-}
-.font-color-sky2 {
-  color: #478fca;
-}
-.font-color-green {
-  color: #69aa46;
-}
 ul,
 ol,
 li {
@@ -8372,49 +8357,93 @@ li {
   margin: 0;
   padding: 0;
 }
-.navbar-header {
+.navbar-default .navbar-header {
   padding-left: 20px;
 }
 .navbar-left {
   position: fixed;
-  top: 0;
+  top: 50px;
   left: 0;
+  z-index: 1000;
+  width: 80px;
+  height: 100%;
+  background-color: #f2f2f2;
+  border-right: 1px solid #deddd9;
+  text-align: center;
+}
+.navbar-left a {
+  display: block;
+  text-decoration: none;
+  border-left: 4px solid #f2f2f2;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #585858;
+  border-bottom: 1px solid #deddd9;
+}
+.navbar-left a.active,
+.navbar-left a:active,
+.navbar-left a:hover {
+  background-color: #ffffff;
+  color: #438eb9;
+  border-left: 4px solid #438eb9;
+}
+.navbar-left a span {
+  display: block;
+  font-size: 12px;
+}
+.navbar-inner {
+  position: fixed;
+  top: 50px;
+  left: 80px;
   z-index: 1000;
   width: 200px;
   height: 100%;
-  border-right: 1px solid #cccccc;
-  background-color: #f2f2f2;
-  padding-top: 50px;
-}
-.navbar-left li {
-  border-left: 0;
-  border-bottom: 1px solid #E5E5E5;
-  padding: 10px 15px 10px 15px;
-  cursor: pointer;
-}
-.navbar-left li.active,
-.navbar-left li:active,
-.navbar-left li:hover {
   background-color: #ffffff;
-  border-left: 4px solid #438eb9;
-  padding-left: 11px;
+  border-right: 1px solid #deddd9;
+  color: #585858;
+  padding-top: 20px;
 }
-.navbar-left li > i {
-  padding-right: 10px;
+.navbar-inner span {
+  display: block;
+  font-size: 12px;
+  padding: 0 15px;
+}
+.navbar-inner span.title {
+  font-size: 16px;
+}
+.navbar-inner a {
+  display: block;
+  text-decoration: none;
+  background-color: #ffffff;
+  margin-top: 5px;
+  padding: 5px 15px;
+  color: #585858;
+}
+.navbar-inner a.active,
+.navbar-inner a:active,
+.navbar-inner a:hover {
+  background: #f5f7fa;
+  color: #438eb9;
+}
+.navbar-inner a.first {
+  margin-top: 15px;
+}
+.navbar-inner a i {
+  margin-right: 5px;
 }
 .main {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
   width: 100%;
   height: 100%;
-  padding-top: 50px;
-  padding-left: 200px;
+  background-color: #ffffff;
+  overflow: auto;
+  padding: 60px 10px 10px 90px;
 }
-.main .breadcrumb {
-  background: #f2f2f2;
-  border-bottom: 1px solid #cccccc;
-}
-.main .breadcrumb i {
-  padding-right: 5px;
+.main.inner {
+  padding-left: 290px;
 }
 .box {
   width: 100%;
@@ -8427,6 +8456,30 @@ li {
   background: #F7F7F7;
   padding: 10px;
 }
+.table tr {
+  border-top: 1px solid #deddd9;
+  border-bottom: 1px solid #deddd9;
+}
+.table th {
+  background-color: #f2f2f2;
+}
+.table.table-hover.active,
+.table.table-hover:active,
+.table.table-hover:hover {
+  background-color: #f5f7fa;
+}
+.font-color-orange {
+  color: #dd5a43;
+}
+.font-color-white {
+  color: #ffffff;
+}
+.font-color-base {
+  color: #438eb9;
+}
+.font-color-green {
+  color: #69aa46;
+}
 .login {
   background: url(../images/login-bg.jpg) repeat scroll 0% 0% #394557;
 }
@@ -8434,7 +8487,7 @@ li {
   margin-top: 10px;
 }
 .login .dialog-title {
-  color: #478fca;
+  color: #438eb9;
   width: 100%;
   font-size: 16px;
   padding: 0 20px 0 20px;

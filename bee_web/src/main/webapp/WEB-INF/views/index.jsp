@@ -19,9 +19,6 @@
     <%@ include file="includes/navtop.jsp" %> 
     <%@ include file="includes/navleft.jsp" %>
     <div class="main">
-      <ol class="breadcrumb">
-        <li><a href="${basePath}/admin/index.html"><i class="fa fa-home fa-lg"></i>首页</a></li>
-      </ol>
       
     </div> 
     <script src="${resPath}/assets/js/jquery/jquery.min.js"></script>

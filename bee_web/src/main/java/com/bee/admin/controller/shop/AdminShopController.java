@@ -28,19 +28,33 @@ public class AdminShopController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView shopListView(ShopListRequest req) {
         ModelAndView mav = new ModelAndView("shop/ShopList");
+        System.out.println("Get");
         mav.addObject("result", shopService.queryShopList(req));
         return mav;
     }
 
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public ModelAndView create() {
-        return null;
-    }
-
+    /**
+     * 保存商家
+     *
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView save() {
-        return null;
+        ModelAndView mav = new ModelAndView("shop/ShopNew");
+        System.out.println("Post");
+        return mav;
     }
 
+    /**
+     * 进入创建商家页面
+     *
+     * @return
+     */
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public ModelAndView create() {
+        ModelAndView mav = new ModelAndView("shop/ShopNew");
+        System.out.println("Post");
+        return mav;
+    }
 
 }

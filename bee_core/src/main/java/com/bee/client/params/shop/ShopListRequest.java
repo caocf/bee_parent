@@ -10,6 +10,14 @@ public class ShopListRequest extends PagingRequest {
     // serialVersionUID
     private static final long serialVersionUID = 1529406140351306476L;
 
+    private Integer type = -1;
+
+    public Integer getType() {
+        return type;
+    }
+    public void setType(Integer type) {
+        this.type = type;
+    }
 
     @Override
     public Integer getMaxRows() {

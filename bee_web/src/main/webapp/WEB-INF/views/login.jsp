@@ -21,7 +21,7 @@
 			<h2 class="font-color-orange">小黄蜂&nbsp;<span class="font-color-white">管理后台系统</span></h2>
 		</div>
 		<div class="row text-center">
-			<h4 class="font-color-sky">&copy; Bee</h4>
+			<h4 class="font-color-base">&copy; Bee</h4>
 		</div>
 		<div class="row">
 			<div class="col-xs-11 col-xs-offset-1 col-md-4 col-md-offset-4">

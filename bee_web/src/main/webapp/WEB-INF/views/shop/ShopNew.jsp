@@ -15,38 +15,20 @@
     <script src="${resPath}/assets/js/bootstrap/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
-    <%@ include file="../includes/navtop.jsp" %>
-    <%@ include file="../includes/navleft.jsp" %>
-    <%@ include file="ShopMenu.jsp" %>
-    <div class="main inner">
-      <table class="table table-hover">
-        <tr>
-          <th>
-            <input type="checkbox" />
-          </th>
-          <th>商家名</th>
-          <th>最低价</th>
-          <th>地区</th>
-          <th>联系人</th>
-          <th>电话</th>
-          <th>地址</th>
-          <th>权重</th>
-          <th>操作</th>
-        </tr> 
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
-    </div>
+<body class="shop">
+<%@ include file="../includes/navtop.jsp" %>
+<%@ include file="../includes/navleft.jsp" %>
+<%@ include file="ShopMenu.jsp" %>
+<div class="main inner new">
+	 <div class="row">
+	 		<div class="col-xs-2 col-offset-xs-2">
+	 			商家名称:
+	 		</div>
+	 		<div class="col-xs-8">
+	 			<input type="text" />
+	 		</div>
+	 </div>
+</div>
 <script src="${resPath}/assets/js/jquery/jquery.min.js"></script>
 <script src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
 </body>
