@@ -2,18 +2,35 @@
 @import "awesome/font-awesome.less";
 @import "bootstrap/bootstrap.less";
 
+@import "plugin/paging.less";
+
 ul,ol,li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
+.margin-right-5 {
+	margin-right: 5px;
+}
+
+.icon {
+	margin-left: 2px;
+	margin-right: 2px;
+	text-decoration: none;
+}
+.fa-lg2 {
+	font-size: 1.7em;
+	line-height: 1em;
+	vertical-align: -15%;
+}
+
+
 .navbar-default {
 	.navbar-header {
 		padding-left: 20px;
 	}
 }
-
 
 .navbar-left {
 	position: fixed;
@@ -72,7 +89,7 @@ ul,ol,li {
 		text-decoration: none;
 		background-color: @color-white;
 		margin-top: 5px;
-		padding: 5px 15px;
+		padding: 7px 15px;
 		color: @navbar-font-color;
 		&.first {
 			margin-top: 15px;
@@ -80,6 +97,11 @@ ul,ol,li {
 		i {
 			margin-right: 5px;
 		}
+	}
+	.line {
+		height: 1px;
+		border-top: 1px solid @color-border;
+		margin: 10px 0;
 	}
 }
 
@@ -96,6 +118,26 @@ ul,ol,li {
 	background-color: @color-white;
 	overflow: auto;
 	padding: @navbar-height + 10px 10px 10px @navbar-left-width + 10px;
+	.title {
+		border-bottom: 1px dotted #E2E2E2;
+		margin-bottom: 10px;
+		padding: 10px 15px;
+		.before {
+			.h4;
+			color: @color-base;
+		}
+		.after {
+			color: @color-gray;
+			font-size: 12px;
+		}
+		i {
+			color: @color-gray;
+			margin: 0 10px;
+		}
+	}
+	.query-inner {
+		margin-bottom: 10px;
+	}
 }
 
 // panel
@@ -112,6 +154,7 @@ ul,ol,li {
 }
 
 .table {
+	margin-bottom: 10px !important;
 	tr {
 		border-top: 1px solid @color-border;
 		border-bottom: 1px solid @color-border;
@@ -120,10 +163,33 @@ ul,ol,li {
 		background-color: @color-gray-bg;
 	}
 	&.table-hover {
-		&.active, &:active, &:hover {
-			background-color: @color-active-bg;
+		tr {
+			&.active, &:active, &:hover {
+				background-color: @color-active-bg;
+			}
 		}
 	}	
+}
+
+.form-horizontal {
+	.control-label {
+		padding-right: 15px;
+	}
+	.assist-label {
+		padding-left: 10px;
+		height: @input-height-base;
+		line-height: @input-height-base;
+		label {
+			padding: 0 3px;
+		}
+	}
+	textarea {
+		width: 100%;
+	}	
+	select {
+		height: @input-height-base;
+		padding: 0 15px 0 10px;
+	}
 }
 
 // 颜色
@@ -131,3 +197,4 @@ ul,ol,li {
 .font-color-white { color: @color-white;}
 .font-color-base { color: @color-base;}
 .font-color-green { color: @color-green;}
+.font-color-red { color: @color-red-del;}

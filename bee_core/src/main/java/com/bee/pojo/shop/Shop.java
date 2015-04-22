@@ -23,7 +23,7 @@ public class Shop implements java.io.Serializable {
     // 名字
     private String name;
     // 所属地区
-    private Area area;
+    private Area area = new Area();
     // 类型
     private Integer type;
     // 状态
@@ -46,8 +46,15 @@ public class Shop implements java.io.Serializable {
     private String remark;
     // 推荐
     private Integer recommend;
+    // 关注数
+    private Integer focusNum;
     // 关注用户
     private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
+
+    public Shop() {}
+    public Shop(Long sid) {
+        this.sid = sid;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -163,5 +170,12 @@ public class Shop implements java.io.Serializable {
     }
     public void setShopFocus(Set<ShopFocus> shopFocus) {
         this.shopFocus = shopFocus;
+    }
+    @Column(name = "FOCUSNUM")
+    public Integer getFocusNum() {
+        return focusNum;
+    }
+    public void setFocusNum(Integer focusNum) {
+        this.focusNum = focusNum;
     }
 }

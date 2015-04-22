@@ -23,14 +23,18 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
      */
     public PagingResult queryShopList(ShopListRequest params) {
         DataEntity entity = new HQLEntity();
-        entity.setParams(params.getType());
         StringBuffer sb = new StringBuffer(SQL.Shop.queryShopList);
-
-
-
+        if(params.getType() != null && params.getType() >= 0) {
+            sb.append(" and A.type = ?");
+            entity.setParams(params.getType());
+        }
         sb.append(SQL.Shop.queryShopListSort);
         entity.setEntity(sb.toString());
         entity.setPaging(params);
         return queryWithPaging(entity);
+    }
+
+    public Shop getShopById(long sid) {
+        return findFirstByParams(SQL.Shop.queryShopById, sid);
     }
 }

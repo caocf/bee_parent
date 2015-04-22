@@ -37,12 +37,8 @@ public class ShopService implements IShopService {
             shop.setIdentity("S" + shop.getCreateTime());
             shop.setSort(0);
             shop.setRecommend(Consts.False);
+            shop.setPrice(0d);
             shopDao.save(shop);
-            // 添加价格
-            ShopPrice shopPrice = new ShopPrice();
-            shopPrice.setPrice(shop.getPrice());
-            shopPrice.setShop(shop);
-            shopPriceDao.save(shopPrice);
         } catch (DataRunException e) {
             throw e;
         }

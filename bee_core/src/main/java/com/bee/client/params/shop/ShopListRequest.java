@@ -10,7 +10,7 @@ public class ShopListRequest extends PagingRequest {
     // serialVersionUID
     private static final long serialVersionUID = 1529406140351306476L;
 
-    private Integer type = -1;
+    private Integer type;
 
     public Integer getType() {
         return type;

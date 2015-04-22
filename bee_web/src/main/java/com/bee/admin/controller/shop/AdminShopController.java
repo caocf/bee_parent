@@ -1,7 +1,9 @@
 package com.bee.admin.controller.shop;
 
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,6 @@ public class AdminShopController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView shopListView(ShopListRequest req) {
         ModelAndView mav = new ModelAndView("shop/ShopList");
-        System.out.println("Get");
         mav.addObject("result", shopService.queryShopList(req));
         return mav;
     }
@@ -39,9 +40,16 @@ public class AdminShopController {
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView save() {
-        ModelAndView mav = new ModelAndView("shop/ShopNew");
-        System.out.println("Post");
+    public ModelAndView save(Shop shop) {
+        ModelAndView mav = new ModelAndView("shop/ShopPriceNew");
+        try {
+            shopService.addShop(shop);
+            mav.addObject("sid", shop.getSid());
+            mav.addObject("name", shop.getName());
+        } catch(DataRunException e) {
+            mav = create();
+            mav.addObject("msg", "添加商家出错");
+        }
         return mav;
     }
 
@@ -53,7 +61,6 @@ public class AdminShopController {
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView create() {
         ModelAndView mav = new ModelAndView("shop/ShopNew");
-        System.out.println("Post");
         return mav;
     }
 
