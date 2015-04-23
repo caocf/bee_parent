@@ -5,6 +5,9 @@ package com.bee.commons;
  */
 public final class Consts {
 
+    public static final boolean isDebug = true;
+    public static final String BaseUrl = "http://localhost:8080";
+
     public static final int True = 0x1;
     public static final int False = 0x0;
 
@@ -39,6 +42,13 @@ public final class Consts {
             public static final int Doing = 2;
             // 结束状态
             public static final int End = 3;
+        }
+
+        public static final class ImageType {
+            // 主图
+            public static final int Big = 0;
+            // 缩略图
+            public static final int Thumbnail = 1;
         }
     }
 

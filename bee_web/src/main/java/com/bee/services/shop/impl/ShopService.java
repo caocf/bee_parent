@@ -43,4 +43,9 @@ public class ShopService implements IShopService {
             throw e;
         }
     }
+
+    @Override
+    public Shop getShopById(long sid) {
+        return shopDao.findById(sid);
+    }
 }

@@ -36,6 +36,9 @@ public class Shop implements java.io.Serializable {
     private String phone;
     // 地址
     private String addr;
+    // 经纬度
+    private Long lon;
+    private Long lat;
     // 创建时间
     private Long createTime;
     // 权重
@@ -54,6 +57,14 @@ public class Shop implements java.io.Serializable {
     public Shop() {}
     public Shop(Long sid) {
         this.sid = sid;
+    }
+
+    @Transient
+    public String getPriceStr() {
+        if(null == getPrice() || getPrice() <= 0) {
+            return "暂无价格";
+        }
+        return getPrice().toString();
     }
 
     @Id
@@ -177,5 +188,19 @@ public class Shop implements java.io.Serializable {
     }
     public void setFocusNum(Integer focusNum) {
         this.focusNum = focusNum;
+    }
+    @Column(name = "LON")
+    public Long getLon() {
+        return lon;
+    }
+    public void setLon(Long lon) {
+        this.lon = lon;
+    }
+    @Column(name = "LAT")
+    public Long getLat() {
+        return lat;
+    }
+    public void setLat(Long lat) {
+        this.lat = lat;
     }
 }

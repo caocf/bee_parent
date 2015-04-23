@@ -30,7 +30,13 @@ public final class SQL {
 
 
         public static final class Price {
-            public static final String queryShopPriceByShopId = "From ShopPrice A where A.shop.sid = ?";
+            public static final String queryShopPriceByShopId = "From ShopPrice A left join fetch A.shop B where B.sid = ?";
+            public static final String getShopPriceById = "From ShopPrice A left join fetch A.shop B where A.spid = ?";
+        }
+
+        public static final class Image {
+            public static final String queryShopImageByShopId = "From ShopImage A left join fetch A.shop B where B.sid = ?";
+            public static final String getShopImageById = "From ShopImage A left join fetch A.shop B where A.siid = ?";
         }
 
     }

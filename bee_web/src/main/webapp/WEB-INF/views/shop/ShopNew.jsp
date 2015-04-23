@@ -78,6 +78,20 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="col-xs-1 control-label">商家地图</label>
+					<div class="col-xs-4">
+						<input type="text" id="shopGps" placeholder="商家地图GPS位置" class="form-control" readonly />
+						<p class="help-block">请在地图选择</p>
+						<input type="hidden" id="shopLon" name="lon" />
+						<input type="hidden" id="shopLat" name="lat" />
+					</div>
+					<div class="col-xs-2 assist-label">
+						<button type="submit" class="btn btn-primary">
+							<i class="fa fa-map-marker margin-right-5"></i>地图
+						</button>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-xs-1 control-label">商家介绍</label>
 					<div class="col-xs-4">
 						<div class="textarea">
@@ -88,7 +102,7 @@
 				<div class="form-group">
 					<label class="col-xs-1 control-label"></label>
 					<div class="col-xs-4">
-						<button type="submit" class="btn btn-success btn-lg">下一步</button>
+						<button type="submit" class="btn btn-success">下一步</button>
 					</div>
 				</div>
   		</form>

@@ -22,4 +22,13 @@ public class ShopPriceDao extends JpaDaoSupport<ShopPrice, Long> {
     public List<ShopPrice> queryShopPriceByShopId(long sid) {
         return findByParams(SQL.Shop.Price.queryShopPriceByShopId, sid);
     }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public ShopPrice getShopPriceById(long id) {
+        return findFirstByParams(SQL.Shop.Price.getShopPriceById, id);
+    }
 }

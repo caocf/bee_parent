@@ -34,7 +34,7 @@
             <input type="text" name="phone" class="form-control input-sm" />
           </div>
           <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-search margin-right-5"></i>查询
+            <i class="fa fa-search"></i>查询
           </button>
         </form>
       </div>
@@ -55,12 +55,15 @@
             <td>${shop.sid}</td>
             <td>${shop.name}</td>
             <td>${shop.area.name}</td>
-            <td>${shop.price}</td>
+            <td><a href="${basePath}/admin/shop/${shop.sid}/price">${shop.priceStr}</a></td>
             <td>${shop.linkName}</td>
             <td>${shop.phone}</td>
             <td>${shop.addr}</td>
             <td>${shop.sort}</td>
             <td>
+              <a href="${basePath}/admin/shop/${shop.sid}/image" class="icon" alt="查看图片">
+                <i class="fa fa-picture-o fa-lg font-color-green"></i>
+              </a>
               <a href="#" class="icon" alt="修改">
                 <i class="fa fa-pencil font-color-base fa-lg"></i>
               </a>

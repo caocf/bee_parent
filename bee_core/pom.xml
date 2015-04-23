@@ -28,5 +28,9 @@
             <groupId>com.qsd</groupId>
             <artifactId>qsd_framework_security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
     </dependencies>
 </project>

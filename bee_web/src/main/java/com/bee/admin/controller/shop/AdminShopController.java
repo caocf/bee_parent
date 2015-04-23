@@ -1,6 +1,7 @@
 package com.bee.admin.controller.shop;
 
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -46,6 +47,7 @@ public class AdminShopController {
             shopService.addShop(shop);
             mav.addObject("sid", shop.getSid());
             mav.addObject("name", shop.getName());
+            mav.addObject("isRegShop", Consts.True);
         } catch(DataRunException e) {
             mav = create();
             mav.addObject("msg", "添加商家出错");

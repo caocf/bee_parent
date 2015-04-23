@@ -26,38 +26,42 @@
         <span class="after">添加一个商户价格</span>
       </div>
       <div class="row">
-        <div class="alert alert-danger <c:if test="${msg != ''}">hidden</c:if>" role="alert">${msg}</div>
+        <div class="alert alert-danger <c:if test="${msg == null}">hidden</c:if>" role="alert">${msg}</div>
       </div>
-      <form class="form-horizontal" action="${basePath}/admin/shop/${sid}/price" method="post">
+      <form id="submitForm" class="form-horizontal" action="${basePath}/admin/shop/${sid}/price" method="post">
+        <input type="hidden" name="_method" value="post" />
+        <input type="hidden" name="isRegShop" value="${isRegShop}" />
+        <input type="hidden" id="spid" name="spid" value="${result.spid}" />
+        <input type="hidden" name="shop.sid" value="${result.shop.sid}" />
         <div class="form-group">
           <label class="col-xs-1 control-label">商家名称</label>
           <div class="col-xs-4">
-            <span>${name}</span>
+            <p class="form-control-static">${shop.name}</p>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-1 control-label">价格</label>
           <div class="col-xs-4">
-            <input type="text" name="price" placeholder="价格" class="form-control" />
+            <input type="text" name="price" placeholder="价格" class="form-control" value="${result.price}" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-1 control-label">价格说明</label>
           <div class="col-xs-4">
-            <input type="text" name="mark" placeholder="价格说明" class="form-control" />
+            <input type="text" name="mark" placeholder="价格说明" class="form-control" value="${result.mark}" />
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-1 control-label">价格权重</label>
           <div class="col-xs-4">
-            <input type="text" name="sort" placeholder="价格权重" class="form-control" />
+            <input type="text" name="sort" placeholder="价格权重" class="form-control" value="${result.sort}" />
             <p class="help-block">数字越大越靠前</p>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-1 control-label"></label>
           <div class="col-xs-4">
-            <button type="submit" class="btn btn-success btn-lg">创建</button>
+            <button type="button" class="btn btn-success" onclick="doSubmit()">保存</button>
           </div>
         </div>
       </form>
@@ -67,8 +71,14 @@
     <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
     <script type="text/javascript">
-      Navbar.Left.init("ShopPrice");
-      Navbar.Inner.init("ShopPrice");
+      Navbar.init("ShopPrice");
+      function doSubmit() {
+        if($("#spid").val() != "") {
+          document.forms["submitForm"].action += "/${result.spid}";
+          document.getElementsByName("_method")[0].value = "put"; 
+        }
+        document.forms["submitForm"].submit();
+      } 
     </script>
   </body>
   </html>

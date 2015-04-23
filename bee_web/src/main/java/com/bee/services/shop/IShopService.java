@@ -24,4 +24,12 @@ public interface IShopService {
      * @throws DataRunException
      */
     public void addShop(Shop shop) throws DataRunException;
+
+    /**
+     * 查询一个商家信息
+     *
+     * @param sid
+     * @return
+     */
+    public Shop getShopById(long sid);
 }

@@ -103,6 +103,15 @@
     </listener>
     -->
 
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <servlet-name>SpringMVC</servlet-name>
+    </filter-mapping>
+
     <!-- spring mvc 配置 -->
     <servlet>
         <servlet-name>SpringMVC</servlet-name>

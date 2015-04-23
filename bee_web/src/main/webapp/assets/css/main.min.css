@@ -8387,13 +8387,15 @@ li {
   margin: 0;
   padding: 0;
 }
-.margin-right-5 {
-  margin-right: 5px;
-}
-.icon {
+a.icon,
+button.icon {
   margin-left: 2px;
   margin-right: 2px;
   text-decoration: none;
+}
+a.icon-text i,
+button.icon-text i {
+  margin-right: 5px;
 }
 .fa-lg2 {
   font-size: 1.7em;

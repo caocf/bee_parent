@@ -29,9 +29,56 @@ public class ShopPriceService implements IShopPriceService {
     public void addShopPrice(ShopPrice shopPrice) throws DataRunException {
         try {
             shopPriceDao.save(shopPrice);
+            updatePriceForShop(shopPrice.getPrice(), shopPrice.getShop().getSid());
+        } catch (DataRunException e) {
+            throw e;
+        }
+    }
 
+    @Override
+    public List<ShopPrice> queryShopPriceByShopId(long sid) {
+        return shopPriceDao.queryShopPriceByShopId(sid);
+    }
+
+    @Override
+    public ShopPrice getShopPriceById(long id) {
+        return shopPriceDao.getShopPriceById(id);
+    }
+
+    @Override
+    @Transactional
+    public void updateShopPrice(ShopPrice shopPrice) throws DataRunException {
+        try {
+            shopPriceDao.update(shopPrice);
+            updatePriceForShop(shopPrice.getPrice(), shopPrice.getShop().getSid());
+        } catch(DataRunException e) {
+            throw e;
+        }
+    }
+
+    @Override
+    @Transactional
+    public void deleteShopPrice(long id) throws DataRunException {
+        try {
+            ShopPrice shopPrice = shopPriceDao.getShopPriceById(id);
+            shopPriceDao.delete(shopPrice);
+            updatePriceForShop(shopPrice.getPrice(), shopPrice.getShop().getSid());
+        } catch(DataRunException e) {
+            throw e;
+        }
+    }
+
+    /**
+     * 更新价格
+     *
+     * @param p
+     * @param sid
+     */
+    private void updatePriceForShop(double p, long sid) {
+        Shop shop = shopDao.findById(sid);
+        if(null == shop.getPrice() || p <= shop.getPrice() || shop.getPrice() <= 0) {
             Double minPrice = null;
-            List<ShopPrice> shopPriceList = shopPriceDao.queryShopPriceByShopId(shopPrice.getShop().getSid());
+            List<ShopPrice> shopPriceList = shopPriceDao.queryShopPriceByShopId(sid);
             for(ShopPrice price : shopPriceList) {
                 if(null == minPrice) {
                     minPrice = price.getPrice();
@@ -41,12 +88,8 @@ public class ShopPriceService implements IShopPriceService {
                     }
                 }
             }
-
-            Shop shop = shopDao.getShopById(shopPrice.getShop().getSid());
             shop.setPrice(minPrice);
             shopDao.save(shop);
-        } catch (DataRunException e) {
-            throw e;
         }
     }
 }
