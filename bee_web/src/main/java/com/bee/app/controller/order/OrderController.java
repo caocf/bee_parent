@@ -2,6 +2,7 @@ package com.bee.app.controller.order;
 
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
+import com.bee.commons.Consts;
 import com.bee.pojo.order.Order;
 import com.bee.services.order.IOrderService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -67,7 +68,7 @@ public class OrderController {
     public BaseResponse cancel(@PathVariable Long id) {
         BaseResponse res = new BaseResponse();
         try {
-            orderService.cancelOrder(id);
+            orderService.cancelOrder(id, Consts.Order.Status.Cancel);
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Order.CancelError);

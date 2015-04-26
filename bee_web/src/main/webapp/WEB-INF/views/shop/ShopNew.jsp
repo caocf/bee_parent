@@ -42,11 +42,10 @@
 					<label class="col-xs-1 control-label">商家类型</label>
 					<div class="col-xs-4">
 						<select name="type">
-							<option value="0">会所</option>
-							<option value="1">足浴</option>
-							<option value="2">KTV</option>
-							<option value="3">酒吧</option>
-						</select>
+              <c:forEach items="<%= Consts.Shop.Type.Select() %>" var="type">
+                <option value="${type.key}">${type.value}</option>
+              </c:forEach>
+            </select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -63,12 +62,8 @@
 				</div>
 				<div class="form-group">
 					<label class="col-xs-1 control-label">所属地区</label>
-					<div class="col-xs-4">
-						<select name="area.aid">
-							<option value="1" selected="selected">黄浦区</option>
-							<option value="2">静安区</option>
-						</select>
-					</div>
+					<input type="hidden" id="areaId" name="area.aid" value="${shop.area.aid}" />
+					<div id="area" class="col-xs-4"></div>
 				</div>
 				<div class="form-group">
 					<label class="col-xs-1 control-label">商家地址</label>
@@ -86,7 +81,7 @@
 						<input type="hidden" id="shopLat" name="lat" />
 					</div>
 					<div class="col-xs-2 assist-label">
-						<button type="submit" class="btn btn-primary">
+						<button type="submit" class="btn btn-primary icon-text">
 							<i class="fa fa-map-marker margin-right-5"></i>地图
 						</button>
 					</div>
@@ -111,9 +106,16 @@
   	<script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
+  	<script type="text/javascript" src="${resPath}/assets/js/plugin/area.js"></script>
   	<script type="text/javascript">
-  		Navbar.Left.init("ShopNew");
-  		Navbar.Inner.init("ShopNew");
+  		Navbar.init("ShopNew");
+  		$("#area").area({
+  			areaId: $("#areaId").val(),
+  			initId: 1,
+  			fn: function(r) {
+  				$("#areaId").val(r);
+  			}
+  		});	
   	</script>
   </body>
   </html>

@@ -175,6 +175,12 @@ a, button {
 	}	
 }
 
+form {
+	select {
+		height: @input-height-base;
+		padding: 0 15px 0 10px;
+	}
+}
 .form-horizontal {
 	.control-label {
 		padding-right: 15px;
@@ -190,13 +196,15 @@ a, button {
 	textarea {
 		width: 100%;
 	}	
-	select {
-		height: @input-height-base;
-		padding: 0 15px 0 10px;
-	}
 }
 
 // 颜色
+.font-color-gray {
+	&:hover {
+		color: darken(@color-gray, 15%);
+	}
+	color: @color-gray;
+}
 .font-color-orange { 
 	&:hover {
 		color: darken(@color-orange, 15%);

@@ -29,7 +29,16 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
             entity.setParams(params.getType());
         }
         if(params.getName() != null && !"".equals(params.getName().trim())) {
-            sb.append(" and A.name like '%" + params.getName() + "%'");
+            sb.append(" and A.name like ?");
+            entity.setParams("%" + params.getName() + "%");
+        }
+        if(params.getPhone() != null && !"".equals(params.getPhone().trim())) {
+            sb.append(" and A.phone like ?");
+            entity.setParams("%" + params.getPhone() + "%");
+        }
+        if(params.getAreaId() != null) {
+            sb.append(" and B.aid = ?");
+            entity.setParams(params.getAreaId());
         }
         sb.append(SQL.Shop.queryShopListSort);
         entity.setEntity(sb.toString());

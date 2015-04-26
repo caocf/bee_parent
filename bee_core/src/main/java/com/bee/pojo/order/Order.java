@@ -1,7 +1,9 @@
 package com.bee.pojo.order;
 
+import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.user.User;
+import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
 
@@ -34,6 +36,36 @@ public class Order implements java.io.Serializable {
     private Shop shop;
     // 订单创建时间
     private Long createTime;
+
+    @Transient
+    public String getStatusStr() {
+        String status = "";
+        switch (getStatus()) {
+            case Consts.Order.Status.Execute:
+                status = "等待确认";
+                break;
+            case Consts.Order.Status.Progress:
+                status = "等待到店";
+                break;
+            case Consts.Order.Status.End:
+                status = "已完成";
+                break;
+            case Consts.Order.Status.Cancel:
+                status = "已取消";
+                break;
+            case Consts.Order.Status.ShopCancel:
+                status = "商家取消";
+                break;
+            default:
+                status = getStatus().toString();
+        }
+        return status;
+    }
+
+    @Transient
+    public String getCreateTimeStr() {
+        return DateUtil.formatDateTime(getCreateTime());
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

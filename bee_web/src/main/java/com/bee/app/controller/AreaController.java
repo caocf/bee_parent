@@ -20,7 +20,7 @@ public class AreaController {
     @Autowired
     private IAreaService areaService;
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public List<Area> getAreaById(@PathVariable Long id) {
         return areaService.getAreaListById(id);
     }

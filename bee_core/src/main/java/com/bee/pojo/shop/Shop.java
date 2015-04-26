@@ -1,5 +1,6 @@
 package com.bee.pojo.shop;
 
+import com.bee.commons.Consts;
 import com.bee.pojo.Area;
 
 import javax.persistence.*;
@@ -23,7 +24,7 @@ public class Shop implements java.io.Serializable {
     // 名字
     private String name;
     // 所属地区
-    private Area area = new Area();
+    private Area area;
     // 类型
     private Integer type;
     // 状态
@@ -65,6 +66,26 @@ public class Shop implements java.io.Serializable {
             return "暂无价格";
         }
         return getPrice().toString();
+    }
+
+    @Transient
+    public String getTypeStr() {
+        String type = "";
+        switch (getType()) {
+            case Consts.Shop.Type.Club:
+                type = "会所";
+                break;
+            case Consts.Shop.Type.Massage:
+                type = "足浴";
+                break;
+            case Consts.Shop.Type.Ktv:
+                type = "夜总会";
+                break;
+            case Consts.Shop.Type.Bar:
+                type = "酒吧";
+                break;
+        }
+        return type;
     }
 
     @Id

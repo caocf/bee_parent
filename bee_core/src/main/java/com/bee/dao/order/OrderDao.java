@@ -1,6 +1,7 @@
 package com.bee.dao.order;
 
 import com.bee.client.params.order.AdminOrderListRequest;
+import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.pojo.order.Order;
 import com.qsd.framework.hibernate.JpaDaoSupport;
@@ -25,9 +26,9 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         DataEntity entity = new HQLEntity();
         StringBuffer sb = new StringBuffer(SQL.Order.getOrderListByParam);
         if(request.getStatus() != null) {
-            sb.append("and A.status = ?");
-            entity.setParams(request.getStatus());
+            sb.append("and A.status " + Consts.Order.Status.Query.getQueryStatus(request.getStatus()));
         }
+        sb.append(SQL.Order.getOrderListByParamOrder);
         entity.setEntity(sb.toString());
         entity.setPaging(request);
         return queryWithPaging(entity);

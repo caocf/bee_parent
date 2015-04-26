@@ -35,9 +35,17 @@ public class OrderService implements IOrderService {
 
     @Override
     @Transactional
-    public void cancelOrder(long id) throws DataRunException {
+    public void acceptOrder(long id) throws DataRunException {
         Order order = orderDao.findById(id);
-        order.setStatus(Consts.Order.Status.Cancel);
+        order.setStatus(Consts.Order.Status.Progress);
+        orderDao.update(order);
+    }
+
+    @Override
+    @Transactional
+    public void cancelOrder(long id, int status) throws DataRunException {
+        Order order = orderDao.findById(id);
+        order.setStatus(status);
         orderDao.update(order);
     }
 }

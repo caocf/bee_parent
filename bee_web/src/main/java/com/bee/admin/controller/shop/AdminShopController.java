@@ -8,6 +8,7 @@ import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,6 +33,20 @@ public class AdminShopController {
     public ModelAndView shopListView(ShopListRequest req) {
         ModelAndView mav = new ModelAndView("shop/ShopList");
         mav.addObject("result", shopService.queryShopList(req));
+        mav.addObject("params", req);
+        return mav;
+    }
+
+    /**
+     * 查看商家详细
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ModelAndView show(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("shop/ShopView");
+        mav.addObject("shop", shopService.getShopById(id));
         return mav;
     }
 

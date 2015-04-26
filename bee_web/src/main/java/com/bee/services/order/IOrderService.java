@@ -29,10 +29,19 @@ public interface IOrderService {
     public void createOrder(Order order) throws DataRunException;
 
     /**
-     * 取消订单
+     * 接受订单
      *
      * @param id
      * @throws DataRunException
      */
-    public void cancelOrder(long id) throws DataRunException;
+    public void acceptOrder(long id) throws DataRunException;
+
+    /**
+     * 取消订单
+     *
+     * @param id
+     * @param status
+     * @throws DataRunException
+     */
+    public void cancelOrder(long id, int status) throws DataRunException;
 }

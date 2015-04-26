@@ -22,7 +22,7 @@ public final class SQL {
      */
     public static final class Shop {
 
-        public static final String queryShopById = "From Shop A where A.sid = ?";
+        public static final String queryShopById = "From Shop A left join fetch A.area B where A.sid = ?";
 
         // 查询商家列表
         public static final String queryShopList = "From Shop A left join fetch A.area B where 1=1";
@@ -45,7 +45,7 @@ public final class SQL {
     public static final class Order {
 
         public static final String getOrderListByParam = "From Order A left join fetch A.shop B left join fetch A.user C where 1=1 ";
-
+        public static final String getOrderListByParamOrder = " order by A.status desc";
     }
 
 }

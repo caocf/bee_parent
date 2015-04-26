@@ -66,7 +66,7 @@
 
 		for(var i = start; i <= end; i++) {
 			if(i < 1) {
-				end += 1;
+				end = (end + 1) <= settings.total ? end + 1 : settings.total;
 				continue;
 			}
 

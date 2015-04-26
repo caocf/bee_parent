@@ -8557,6 +8557,10 @@ button.icon-text i {
 .table.table-hover tr:hover {
   background-color: #f5f7fa;
 }
+form select {
+  height: 34px;
+  padding: 0 15px 0 10px;
+}
 .form-horizontal .control-label {
   padding-right: 15px;
 }
@@ -8571,9 +8575,11 @@ button.icon-text i {
 .form-horizontal textarea {
   width: 100%;
 }
-.form-horizontal select {
-  height: 34px;
-  padding: 0 15px 0 10px;
+.font-color-gray {
+  color: #585858;
+}
+.font-color-gray:hover {
+  color: #323232;
 }
 .font-color-orange {
   color: #dd5a43;

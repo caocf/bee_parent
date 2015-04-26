@@ -10,6 +10,9 @@ public class AdminOrderListRequest extends PagingRequest {
     // serialVersionUID
     private static final long serialVersionUID = -3658219948438120869L;
 
+    /**
+     * @see com.bee.commons.Consts.Order.Status.Query
+     */
     private Integer status;
 
     public Integer getStatus() {

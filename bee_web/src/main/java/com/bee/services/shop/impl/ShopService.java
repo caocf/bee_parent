@@ -38,6 +38,7 @@ public class ShopService implements IShopService {
             shop.setSort(0);
             shop.setRecommend(Consts.False);
             shop.setPrice(0d);
+            shop.setFocusNum(0);
             shopDao.save(shop);
         } catch (DataRunException e) {
             throw e;

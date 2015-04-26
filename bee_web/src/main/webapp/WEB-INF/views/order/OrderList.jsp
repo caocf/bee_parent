@@ -33,30 +33,53 @@
             <th>商家</th>
             <th>联系人</th>
             <th>联系电话</th>
+            <th>订单时间</th>
             <th>操作</th>
         </tr>
         <c:forEach items="${result.data}" var="order">
             <tr>
                 <td>${order.oid}</td>
-                <td>${order.type}</td>
-                <td>${order.status}</td>
+                <td>${order.shop.typeStr}</td>
+                <td>${order.statusStr}</td>
                 <td>${order.shop.name}</td>
                 <td>${order.shop.linkName}</td>
                 <td>${order.shop.phone}</td>
+                <td>${order.createTimeStr}</td>
                 <td>
-                    <a href="${basePath}/admin/area/new" class="icon" role="button">
-                        <i class="fa fa-plus fa-lg"></i>
+                  <c:if test="${order.status == 1}">
+                    <a href="#" class="icon" role="button" onclick="Order.doCheck(${order.oid});">
+                      <i class="fa fa-check-square-o fa-lg"></i>
                     </a>
-                    <a href="${basePath}/admin/shop/${sid}/image/${image.siid}/edit" class="icon" role="button">
-                        <i class="fa fa-pencil fa-lg"></i>
-                    </a>
-                    <a href="#" class="icon" role="button" onclick="deleteImage(${image.siid})">
-                        <i class="fa fa-trash font-color-red fa-lg"></i>
-                    </a>
+                  </c:if>
+                  <a href="#" class="icon" role="button" onclick="">
+                    <i class="fa fa-trash font-color-red fa-lg"></i>
+                  </a>
                 </td>
             </tr>
         </c:forEach>
     </table>
+</div>
+<div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="checkModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="checkModalLabel">处理订单</h4>
+      </div>
+      <div class="modal-body">
+        商家是否同意接受该订单？
+      </div>
+      <div class="modal-footer">
+        <form:form id="checkForm" method="put"></form:form>
+        <button type="button" class="btn btn-success icon-text" data-dismiss="modal" onclick="Order.doCheckSubmit(true);">
+          <i class="fa fa-check"></i>接受订单
+        </button>
+        <button type="button" class="btn btn-danger icon-text" data-dismiss="modal" onclick="Order.doCheckSubmit(false);">
+          <i class="fa fa-times"></i>取消订单
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
