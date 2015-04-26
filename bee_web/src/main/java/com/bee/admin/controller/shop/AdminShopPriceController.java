@@ -7,6 +7,8 @@ import com.bee.pojo.shop.ShopPrice;
 import com.bee.services.shop.IShopPriceService;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +24,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin/shop/{sid}/price")
 public class AdminShopPriceController {
+
+    // Log
+    private final Logger Log = LoggerFactory.getLogger(AdminShopPriceController.class);
 
     @Autowired
     private IShopService shopService;
@@ -53,12 +58,16 @@ public class AdminShopPriceController {
             shopPrice.setShop(new Shop(sid));
             shopPriceService.addShopPrice(shopPrice);
             if(isRegShop != null) {
-                return new ModelAndView("redirect:/shop/" + sid);
+                return new ModelAndView("redirect:/admin/shop");
             } else {
                 return index(sid);
             }
         } catch (DataRunException e) {
-            return create(sid, isRegShop).addObject("msg", "保存商家价格异常");
+            Log.error("error: ShopPrice save exception.", e);
+            ModelAndView mav = create(sid, isRegShop);
+            mav.addObject("result", shopPrice);
+            mav.addObject("msg", "保存商家价格异常");
+            return mav;
         }
     }
 

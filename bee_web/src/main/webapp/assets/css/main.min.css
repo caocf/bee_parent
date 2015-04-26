@@ -8578,17 +8578,29 @@ button.icon-text i {
 .font-color-orange {
   color: #dd5a43;
 }
+.font-color-orange:hover {
+  color: #b33620;
+}
 .font-color-white {
   color: #ffffff;
 }
 .font-color-base {
   color: #438eb9;
 }
+.font-color-base:hover {
+  color: #2f6381;
+}
 .font-color-green {
   color: #69aa46;
 }
+.font-color-green:hover {
+  color: #487430;
+}
 .font-color-red {
   color: #e37360;
+}
+.font-color-red:hover {
+  color: #d23e25;
 }
 .login {
   background: url(../images/login-bg.jpg) repeat scroll 0% 0% #394557;
@@ -8603,5 +8615,8 @@ button.icon-text i {
   padding: 0 20px 0 20px;
   border-bottom: 1px solid #D5E3EF;
   padding-bottom: 5px;
+}
+.login .dialog-title:hover {
+  color: #2f6381;
 }
 

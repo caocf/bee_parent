@@ -11,6 +11,5 @@
 	// 版本号
 	var version = "1.0";
 
-	
 
 } (jQuery, window, document, undefined);

@@ -64,7 +64,10 @@ public class AdminShopImageController {
             shopImageService.addShopImage(req, file, shopImage);
             return index(sid);
         } catch (DataRunException e) {
-            return create(sid).addObject("msg", "保存商家图片出错");
+            ModelAndView mav = create(sid);
+            mav.addObject("image", shopImage);
+            mav.addObject("msg", "保存商家图片出错");
+            return mav;
         }
     }
 

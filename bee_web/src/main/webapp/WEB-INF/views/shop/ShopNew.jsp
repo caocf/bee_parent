@@ -15,11 +15,11 @@
     <script src="${resPath}/assets/js/bootstrap/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="shop">
+  <body>
   	<%@ include file="../includes/navtop.jsp" %>
   	<%@ include file="../includes/navleft.jsp" %>
   	<%@ include file="ShopMenu.jsp" %>
-  	<div class="main inner new">
+  	<div class="main inner">
   		<div class="row title">
   			<span class="before">增加商户</span>
   			<i class="fa fa-angle-double-right"></i>	
@@ -30,7 +30,7 @@
   		</div>
   		<form class="form-horizontal" action="${basePath}/admin/shop" method="post">
 				<div class="form-group">
-					<label class="col-xs-1 control-label" for="input01">商家名称</label>
+					<label class="col-xs-1 control-label">商家名称</label>
 					<div class="col-xs-4">
 						<input type="text" name="name" placeholder="商家名称" class="form-control" />
 					</div>
@@ -50,13 +50,13 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-xs-1 control-label" for="input01">联系人</label>
+					<label class="col-xs-1 control-label">联系人</label>
 					<div class="col-xs-4">
 						<input type="text" name="linkName" placeholder="商家联系人" class="form-control" maxlength="11" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-xs-1 control-label" for="input01">联系电话</label>
+					<label class="col-xs-1 control-label">联系电话</label>
 					<div class="col-xs-4">
 						<input type="text" name="phone" placeholder="手机号码" class="form-control" />
 					</div>
@@ -71,7 +71,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-xs-1 control-label" for="input01">商家地址</label>
+					<label class="col-xs-1 control-label">商家地址</label>
 					<div class="col-xs-4">
 						<input type="text" name="addr" placeholder="商家地址" class="form-control" />
 						<p class="help-block">仅需填写路名</p>

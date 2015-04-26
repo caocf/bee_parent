@@ -31,7 +31,7 @@
 							<i class="fa fa-coffee font-color-green"></i>
 							&nbsp;Please Enter Your Information
 						</div>
-						<form action="<%=basePath %>/admin/login.html" method="post">
+						<form action="${basePath }/admin/login.html" method="post">
               <div class="input-group margin-bottom-sm">
                   <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
                   <input class="form-control" name="account" type="text" placeholder="用户名" />

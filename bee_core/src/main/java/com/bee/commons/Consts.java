@@ -5,8 +5,9 @@ package com.bee.commons;
  */
 public final class Consts {
 
-    public static final boolean isDebug = true;
+    public static final boolean isDebug = false;
     public static final String BaseUrl = "http://localhost:8080";
+//    public static final String BaseUrl = "http://120.26.103.71";
 
     public static final int True = 0x1;
     public static final int False = 0x0;
@@ -52,5 +53,18 @@ public final class Consts {
         }
     }
 
+    public static final class Order {
 
+        public static final class Status {
+            // 等待确认
+            public static final int Execute = 1;
+            // 等待到店
+            public static final int Progress = 10;
+            // 已取消
+            public static final int Cancel = 50;
+            // 结束
+            public static final int End = 99;
+
+        }
+    }
 }

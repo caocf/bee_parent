@@ -140,4 +140,141 @@
       <primary-key name="PRIMARY" columns="UFID"/>
     </table>
   </data-source>
+  <data-source name="MySQL - db_bee@120.26.103.71" uuid="c3058cfe-5df4-4c62-95cd-d4408ee7f3c9">
+    <database-info product="MySQL" version="5.5.37" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="db_bee"/>
+    <table name="TB_AD" schema="" catalog="db_bee" type="TABLE">
+      <column name="ADID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="SID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="AREA" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="STOPTIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="ADID"/>
+      <foreign-key name="FK_c5ong3fkxu0lajx0wl1ylganw" columns="AREA" ref-table="TB_AREA" ref-schema="" ref-catalog="db_bee" ref-columns="AID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_c5ong3fkxu0lajx0wl1ylganw" unique="false" columns="AREA"/>
+    </table>
+    <table name="TB_APP_VER" schema="" catalog="db_bee" type="TABLE">
+      <column name="AVID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="VER" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="VERSTR" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="AVID"/>
+    </table>
+    <table name="TB_AREA" schema="" catalog="db_bee" type="TABLE">
+      <column name="AID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PARENTID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="AID"/>
+      <exported-key name="FK_c5ong3fkxu0lajx0wl1ylganw" table="TB_AD" schema="" catalog="db_bee" columns="AREA"/>
+      <exported-key name="FK_k3cu981hvkkswoaq82al88vwd" table="TB_SHOP" schema="" catalog="db_bee" columns="AREA"/>
+    </table>
+    <table name="TB_ORDER" schema="" catalog="db_bee" type="TABLE">
+      <column name="OID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="NO" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="NUM" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="EXECTIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="OID"/>
+    </table>
+    <table name="TB_SHOP" schema="" catalog="db_bee" type="TABLE">
+      <column name="SID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="IDENTITY" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="AREA" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PRICE" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="LINKNAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PHONE" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ADDR" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LON" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="LAT" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="SORTTIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="REMARK" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="RECOMMEND" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="FOCUSNUM" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="SID"/>
+      <foreign-key name="FK_k3cu981hvkkswoaq82al88vwd" columns="AREA" ref-table="TB_AREA" ref-schema="" ref-catalog="db_bee" ref-columns="AID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_8rir64wpgrbs9bcysxwswybgb" table="TB_SHOP_ERROR" schema="" catalog="db_bee" columns="SHOP"/>
+      <exported-key name="FK_tm5w1672w73kfbxek0k4w6s7k" table="TB_SHOP_FOCUS" schema="" catalog="db_bee" columns="SHOP"/>
+      <exported-key name="FK_7mwbrpstkbyuxi8xx71e8yn58" table="TB_SHOP_IMAGE" schema="" catalog="db_bee" columns="SHOP"/>
+      <exported-key name="FK_m6vcy1sp0dui5rnrfco61236e" table="TB_SHOP_PRICE" schema="" catalog="db_bee" columns="SHOP"/>
+      <index name="FK_k3cu981hvkkswoaq82al88vwd" unique="false" columns="AREA"/>
+    </table>
+    <table name="TB_SHOP_ERROR" schema="" catalog="db_bee" type="TABLE">
+      <column name="SEID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="ERRORMSG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="SEID"/>
+      <foreign-key name="FK_8rir64wpgrbs9bcysxwswybgb" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_8rir64wpgrbs9bcysxwswybgb" unique="false" columns="SHOP"/>
+    </table>
+    <table name="TB_SHOP_FOCUS" schema="" catalog="db_bee" type="TABLE">
+      <column name="SFID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="SFID"/>
+      <foreign-key name="FK_hfnwplmri8wf8syg561a3nxjy" columns="USER" ref-table="TB_USER" ref-schema="" ref-catalog="db_bee" ref-columns="UID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_tm5w1672w73kfbxek0k4w6s7k" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_hfnwplmri8wf8syg561a3nxjy" unique="false" columns="USER"/>
+      <index name="FK_tm5w1672w73kfbxek0k4w6s7k" unique="false" columns="SHOP"/>
+    </table>
+    <table name="TB_SHOP_IMAGE" schema="" catalog="db_bee" type="TABLE">
+      <column name="SIID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="URL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="SIID"/>
+      <foreign-key name="FK_7mwbrpstkbyuxi8xx71e8yn58" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_7mwbrpstkbyuxi8xx71e8yn58" unique="false" columns="SHOP"/>
+    </table>
+    <table name="TB_SHOP_PRICE" schema="" catalog="db_bee" type="TABLE">
+      <column name="SPID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="PRICE" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="DISCOUNT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MARK" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="SPID"/>
+      <foreign-key name="FK_m6vcy1sp0dui5rnrfco61236e" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_m6vcy1sp0dui5rnrfco61236e" unique="false" columns="SHOP"/>
+    </table>
+    <table name="TB_USER" schema="" catalog="db_bee" type="TABLE">
+      <column name="UID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="IDENTITY" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DEVICE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="NAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PHONE" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="ALIPAY" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LEVEL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="INTEGRAL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="UID"/>
+      <exported-key name="FK_hfnwplmri8wf8syg561a3nxjy" table="TB_SHOP_FOCUS" schema="" catalog="db_bee" columns="USER"/>
+    </table>
+  </data-source>
 </component>

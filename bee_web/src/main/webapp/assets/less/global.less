@@ -197,8 +197,28 @@ a, button {
 }
 
 // 颜色
-.font-color-orange { color: @color-orange;}
+.font-color-orange { 
+	&:hover {
+		color: darken(@color-orange, 15%);
+	}
+	color: @color-orange;
+}
 .font-color-white { color: @color-white;}
-.font-color-base { color: @color-base;}
-.font-color-green { color: @color-green;}
-.font-color-red { color: @color-red-del;}
+.font-color-base { 
+	&:hover {
+		color: darken(@color-base, 15%);
+	}
+	color: @color-base;
+}
+.font-color-green { 
+	&:hover {
+		color: darken(@color-green, 15%);
+	}
+	color: @color-green;
+}
+.font-color-red { 
+	&:hover {
+		color: darken(@color-red-del, 15%);
+	}
+	color: @color-red-del;
+}

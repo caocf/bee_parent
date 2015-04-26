@@ -1,3 +1,4 @@
+<%@ page import="com.bee.commons.Consts" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -7,13 +8,8 @@
 <%@ page isELIgnored="false"%>
 
 <%
-    String basePath = request.getScheme() + "://"
-            + request.getServerName() + ":" + request.getServerPort()
-            + request.getContextPath();
-
     String resVer = "?t=20140701";
-    String resPath = basePath;
-
-    request.setAttribute("basePath", basePath);
+    String resPath = Consts.BaseUrl;
+    request.setAttribute("basePath", Consts.BaseUrl);
     request.setAttribute("resPath", resPath);
 %>

@@ -18,7 +18,11 @@
 		<span>活动</span>
 	</a>
 	<a id="navbar-left-user" href="${basePath}/admin/user">
-		<i class="fa fa-user fa-lg"></i>
+		<i class="fa fa-user fa-lg2"></i>
 		<span>用户</span>
+	</a>
+	<a id="navbar-left-system" href="${basePath}/admin/area">
+		<i class="fa fa-cog fa-lg2"></i>
+		<span>设置</span>
 	</a>
 </div>

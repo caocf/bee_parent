@@ -10,6 +10,7 @@ public class ShopListRequest extends PagingRequest {
     // serialVersionUID
     private static final long serialVersionUID = 1529406140351306476L;
 
+    private String name;
     private Integer type;
 
     public Integer getType() {
@@ -17,6 +18,13 @@ public class ShopListRequest extends PagingRequest {
     }
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

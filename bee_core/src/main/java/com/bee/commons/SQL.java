@@ -41,4 +41,11 @@ public final class SQL {
 
     }
 
+
+    public static final class Order {
+
+        public static final String getOrderListByParam = "From Order A left join fetch A.shop B left join fetch A.user C where 1=1 ";
+
+    }
+
 }

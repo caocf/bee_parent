@@ -28,6 +28,9 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
             sb.append(" and A.type = ?");
             entity.setParams(params.getType());
         }
+        if(params.getName() != null && !"".equals(params.getName().trim())) {
+            sb.append(" and A.name like '%" + params.getName() + "%'");
+        }
         sb.append(SQL.Shop.queryShopListSort);
         entity.setEntity(sb.toString());
         entity.setPaging(params);
