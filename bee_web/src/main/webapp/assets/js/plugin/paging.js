@@ -17,6 +17,10 @@
 		$(this).html("");
 		$(this).removeClass('paging').addClass('paging');
 
+		if(options.total < 1) {
+			return;
+		}
+
 	 	var settings = {
 			index : 0,
 			total : 0,

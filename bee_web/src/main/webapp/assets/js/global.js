@@ -27,7 +27,9 @@
 					$("#navbar-left-shop").addClass('active');
 				} else if(type == "SystemArea") {
 					$("#navbar-left-system").addClass('active');	
-				} 
+				} else if(type == "UserApp" || type == "UserVip" || type == "UserPink" || type == "UserBuss" || type == "UserAdmin") {
+					$("#navbar-left-user").addClass('active');
+				}
 			}
 		},
 		Inner: {
@@ -40,6 +42,16 @@
 					$("#navbar-inner-shop-new").addClass('active');
 				} else if(type == "SystemArea") {
 					$("#navbar-inner-system-area").addClass('active');
+				} else if(type == "UserApp") {
+					$("#navbar-inner-user-app").addClass('active');
+				} else if(type == "UserVip") {
+					$("#navbar-inner-user-vip").addClass('active');
+				} else if(type == "UserPink") {
+					$("#navbar-inner-user-pink").addClass('active');
+				} else if(type == "UserBuss") {
+					$("#navbar-inner-user-buss").addClass('active');
+				} else if(type == "UserAdmin") {
+					$("#navbar-inner-user-admin").addClass('active');
 				}
 			}	
 		}

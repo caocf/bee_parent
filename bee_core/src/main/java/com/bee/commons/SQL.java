@@ -14,7 +14,9 @@ public final class SQL {
     public static final class User {
         // 根据帐号查询用户
         public static final String queryUserByAccount = "From User A where A.phone = ?";
-
+        // 根据参数查询用户列表
+        public static final String queryUserListByParams = "From User A where 1=1";
+        public static final String queryUserListByParamsSort = " order by A.uid desc";
     }
 
     /**

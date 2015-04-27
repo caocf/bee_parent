@@ -22,7 +22,9 @@ public final class Consts {
         public static final class Type {
             public static final int AdminUser = 0x0;
             public static final int AppUser = 0x1;
-            public static final int BussUser = 0x2;
+            public static final int VipUser = 0x2;
+            public static final int PinkUser = 0x3;
+            public static final int BussUser = 0x10;
         }
 
 

@@ -8,8 +8,10 @@
 <%@ page isELIgnored="false"%>
 
 <%
-    String resVer = "?t=20140701";
-    String resPath = Consts.BaseUrl;
-    request.setAttribute("basePath", Consts.BaseUrl);
+		String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ request.getContextPath();	
+    String resPath = basePath;
+    request.setAttribute("basePath", basePath);
     request.setAttribute("resPath", resPath);
 %>

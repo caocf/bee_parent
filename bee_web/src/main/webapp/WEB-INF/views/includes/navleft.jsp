@@ -13,13 +13,25 @@
 		<i class="fa fa-desktop fa-lg"></i>
 		<span>商家</span>
 	</a>
-	<a id="navbar-left-party" href="${basePath}/admin/pary">
+	<a id="navbar-left-party" href="#">
 		<i class="fa fa-flag fa-lg"></i>
 		<span>活动</span>
 	</a>
-	<a id="navbar-left-user" href="${basePath}/admin/user">
+	<a id="navbar-left-user" href="${basePath}/admin/user?type=<%=Consts.User.Type.AppUser %>">
 		<i class="fa fa-user fa-lg2"></i>
 		<span>用户</span>
+	</a>
+	<a id="navbar-left-state" href="#">
+		<i class="fa fa-bar-chart fa-lg"></i>
+		<span>统计</span>
+	</a>
+	<a id="navbar-left-marketing" href="#">
+		<i class="fa fa-cloud fa-lg"></i>
+		<span>营销</span>
+	</a>
+	<a id="navbar-left-finance" href="#">
+		<i class="fa fa-credit-card fa-lg"></i>
+		<span>账务</span>
 	</a>
 	<a id="navbar-left-system" href="${basePath}/admin/area">
 		<i class="fa fa-cog fa-lg2"></i>

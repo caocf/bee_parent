@@ -126,8 +126,7 @@
     <script type="text/javascript" src="${resPath}/assets/js/plugin/paging.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/plugin/area.js"></script>
     <script type="text/javascript">
-      Navbar.Left.init("ShopList");
-      Navbar.Inner.init("ShopList");
+      Navbar.init("ShopList");
       $("#paging").paging({
         index: ${result.indexPage},
         total: ${result.totalPage},

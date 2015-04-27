@@ -11,9 +11,4 @@
 		<i class="fa fa-plus"></i>
 		增加商户
 	</a>
-	<span class="line"></span>
-	<a id="navbar-inner-shop-stat" href="#">
-		<i class="fa fa-bar-chart"></i>
-		商户统计
-	</a>
 </div>

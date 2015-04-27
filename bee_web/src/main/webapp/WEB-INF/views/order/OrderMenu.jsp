@@ -12,8 +12,4 @@
 	<a id="navbar-inner-order-list" href="${basePath}/admin/order?status=2">
 		<i class="fa fa-check-circle-o fa-lg"></i>已完成
 	</a>
-	<span class="line"></span>
-	<a id="navbar-inner-order-stat" href="#">
-		<i class="fa fa-bar-chart"></i>订单统计
-	</a>
 </div>

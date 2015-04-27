@@ -45,6 +45,7 @@ public class AuthController {
             // 登录成功
             if(user.getPassword().equals(Md5.encodePassword(password))) {
                 res.setFlag(Consts.True);
+                res.setCode(Codes.Success);
                 res.setUser(user);
                 addUserSession(user, req);
             } else {
@@ -90,6 +91,7 @@ public class AuthController {
             } else {
                 userService.createUser(user);
                 addUserSession(user, req);
+                res.setCode(Codes.Success);
                 res.setFlag(Consts.True);
                 res.setUser(user);
             }
