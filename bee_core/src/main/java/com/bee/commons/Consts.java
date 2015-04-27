@@ -11,8 +11,8 @@ import java.util.Map;
 public final class Consts {
 
     public static final boolean isDebug = false;
-//    public static final String BaseUrl = "http://localhost:8080";
-    public static final String BaseUrl = "http://120.26.103.71";
+    public static final String BaseUrl = "http://localhost:8080";
+//    public static final String BaseUrl = "http://120.26.103.71";
 
     public static final int True = 0x1;
     public static final int False = 0x0;

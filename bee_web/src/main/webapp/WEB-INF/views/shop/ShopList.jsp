@@ -7,7 +7,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>商家列表 - 大黄蜂后台管理系统</title>
+  <title>商家列表 - <spring:message code="application.name"/></title>
 
   <link href="${resPath}/assets/css/main.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -22,6 +22,8 @@
     <div class="main inner">
       <div class="row title">
         <span class="before">商户列表</span>
+        <i class="fa fa-angle-double-right"></i>  
+        <span class="after">对商户进行管理</span>
       </div>
       <div class="row query-inner">
         <form id="queryForm" class="form-inline" action="${basePath}/admin/shop" method="get">

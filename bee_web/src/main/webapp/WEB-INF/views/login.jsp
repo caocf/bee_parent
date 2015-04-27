@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>小黄蜂管理后台系统</title>
+  <title>登录 - <spring:message code="application.name"/></title>
 
   <link href="${resPath}/assets/css/main.min.css" rel="stylesheet">
   <!--[if lt IE 9]>
