@@ -35,10 +35,13 @@ public class ShopService implements IShopService {
         try {
             shop.setCreateTime(System.currentTimeMillis());
             shop.setIdentity("S" + shop.getCreateTime());
-            shop.setSort(0);
             shop.setRecommend(Consts.False);
             shop.setPrice(0d);
             shop.setFocusNum(0);
+            shop.setStatus(Consts.Shop.Status.Run);
+            if(null == shop.getSort()) {
+                shop.setSort(100);
+            }
             shopDao.save(shop);
         } catch (DataRunException e) {
             throw e;
@@ -47,6 +50,20 @@ public class ShopService implements IShopService {
 
     @Override
     public Shop getShopById(long sid) {
-        return shopDao.findById(sid);
+        return shopDao.getShopById(sid);
+    }
+
+    @Override
+    @Transactional
+    public void deleteShop(long sid) throws DataRunException {
+        Shop shop = shopDao.findById(sid);
+        shop.setStatus(Consts.Shop.Status.Close);
+        shopDao.update(shop);
+    }
+
+    @Override
+    @Transactional
+    public void updateShop(Shop shop) throws DataRunException {
+        shopDao.update(shop);
     }
 }

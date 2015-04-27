@@ -32,4 +32,20 @@ public interface IShopService {
      * @return
      */
     public Shop getShopById(long sid);
+
+    /**
+     * 删除商家
+     *
+     * @param sid
+     * @throws DataRunException
+     */
+    public void deleteShop(long sid) throws DataRunException;
+
+    /**
+     * 更新商家
+     *
+     * @param shop
+     * @throws DataRunException
+     */
+    public void updateShop(Shop shop) throws DataRunException;
 }

@@ -70,22 +70,18 @@ public class Shop implements java.io.Serializable {
 
     @Transient
     public String getTypeStr() {
-        String type = "";
-        switch (getType()) {
-            case Consts.Shop.Type.Club:
-                type = "会所";
-                break;
-            case Consts.Shop.Type.Massage:
-                type = "足浴";
-                break;
-            case Consts.Shop.Type.Ktv:
-                type = "夜总会";
-                break;
-            case Consts.Shop.Type.Bar:
-                type = "酒吧";
-                break;
+        return Consts.Shop.Type.Select().get(getType());
+    }
+
+    @Transient
+    public String getStatusStr() {
+        String status = "";
+        if(getStatus() == Consts.Shop.Status.Run) {
+            status = "运营中";
+        } else if(getStatus() == Consts.Shop.Status.Close) {
+            status = "关闭中";
         }
-        return type;
+        return status;
     }
 
     @Id

@@ -28,14 +28,23 @@
   		<div class="row">
   			<div class="alert alert-danger <c:if test="${msg != ''}">hidden</c:if>" role="alert">${msg}</div>
   		</div>
-  		<form class="form-horizontal" action="${basePath}/admin/shop" method="post">
+  		<form id="shopForm" class="form-horizontal" action="${basePath}/admin/shop" method="post">
+  			<input type="hidden" name="_method" value="post" />
+  			<input type="hidden" id="action" value="${action}" />
+  			<input type="hidden" id="sid" name="sid" value="${shop.sid}" />
+  			<input type="hidden" name="identity" value="${shop.identity}" />
+  			<input type="hidden" name="status" value="${shop.status}" />
+  			<input type="hidden" name="price" value="${shop.price}" />
+  			<input type="hidden" name="createTime" value="${shop.createTime}" />
+				<input type="hidden" name="focusNum" value="${shop.focusNum}" />
+
 				<div class="form-group">
 					<label class="col-xs-1 control-label">商家名称</label>
 					<div class="col-xs-4">
-						<input type="text" name="name" placeholder="商家名称" class="form-control" />
+						<input type="text" name="name" placeholder="商家名称" class="form-control" value="${shop.name}" />
 					</div>
 					<div class="col-xs-2 assist-label">
-						<input type="checkbox" id="recommend" name="recommend" value="1" /><label for="recommend">是否推荐</label>
+						<input type="checkbox" id="recommend" name="recommend" value="1" <c:if test="${shop.recommend == 1}">checked="checked"</c:if> /><label for="recommend">是否推荐</label>
 					</div>
 				</div>
 				<div class="form-group">
@@ -43,7 +52,7 @@
 					<div class="col-xs-4">
 						<select name="type">
               <c:forEach items="<%= Consts.Shop.Type.Select() %>" var="type">
-                <option value="${type.key}">${type.value}</option>
+              <option value="${type.key}" <c:if test="${shop.type == type.key}">selected="selected"</c:if>>${type.value}</option>
               </c:forEach>
             </select>
 					</div>
@@ -51,13 +60,13 @@
 				<div class="form-group">
 					<label class="col-xs-1 control-label">联系人</label>
 					<div class="col-xs-4">
-						<input type="text" name="linkName" placeholder="商家联系人" class="form-control" maxlength="11" />
+						<input type="text" name="linkName" placeholder="商家联系人" class="form-control" maxlength="11" value="${shop.linkName}" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-xs-1 control-label">联系电话</label>
 					<div class="col-xs-4">
-						<input type="text" name="phone" placeholder="手机号码" class="form-control" />
+						<input type="text" name="phone" placeholder="手机号码" class="form-control" value="${shop.phone}" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -68,17 +77,17 @@
 				<div class="form-group">
 					<label class="col-xs-1 control-label">商家地址</label>
 					<div class="col-xs-4">
-						<input type="text" name="addr" placeholder="商家地址" class="form-control" />
+						<input type="text" name="addr" placeholder="商家地址" class="form-control" value="${shop.addr}" />
 						<p class="help-block">仅需填写路名</p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-xs-1 control-label">商家地图</label>
 					<div class="col-xs-4">
-						<input type="text" id="shopGps" placeholder="商家地图GPS位置" class="form-control" readonly />
+						<input type="text" id="shopGps" placeholder="商家地图GPS位置" class="form-control" readonly value="${shop.lon},${shop.lat}" />
 						<p class="help-block">请在地图选择</p>
-						<input type="hidden" id="shopLon" name="lon" />
-						<input type="hidden" id="shopLat" name="lat" />
+						<input type="hidden" id="shopLon" name="lon" value="${shop.lon}" />
+						<input type="hidden" id="shopLat" name="lat" value="${shop.lat}" />
 					</div>
 					<div class="col-xs-2 assist-label">
 						<button type="submit" class="btn btn-primary icon-text">
@@ -87,17 +96,34 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="col-xs-1 control-label">排序</label>
+					<div class="col-xs-4">
+						<input type="text" name="sort" placeholder="100" class="form-control" value="${shop.sort}" />
+						<p class="help-block">数字越大排名越靠前，默认100</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-1 control-label">排序有效期</label>
+					<div class="col-xs-4">
+						<input type="text" name="sortTime" placeholder="商家排序有效期" class="form-control" value="${shop.sortTime}" />
+						<p class="help-block">设置有效期，到期后排序将恢复默认</p>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-xs-1 control-label">商家介绍</label>
 					<div class="col-xs-4">
 						<div class="textarea">
-							<textarea type="form-control" name="remark" rows="5"></textarea>
+							<textarea type="form-control" name="remark" rows="5">${shop.remark}</textarea>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-xs-1 control-label"></label>
 					<div class="col-xs-4">
-						<button type="submit" class="btn btn-success">下一步</button>
+						<button type="button" class="btn btn-success" onclick="doSubmit();">
+							<c:if test="${action == 'new'}">下一步</c:if>
+							<c:if test="${action == 'edit'}">保存</c:if>
+						</button>
 					</div>
 				</div>
   		</form>
@@ -115,7 +141,14 @@
   			fn: function(r) {
   				$("#areaId").val(r);
   			}
-  		});	
+  		});
+        function doSubmit() {
+            if($("#action").val() == "edit") {
+                document.forms["shopForm"].action = "${basePath}/admin/shop/" + $("#sid").val();
+                document.getElementsByName("_method")[0].value = "put";
+            }
+            document.forms["shopForm"].submit();
+        }
   	</script>
   </body>
   </html>

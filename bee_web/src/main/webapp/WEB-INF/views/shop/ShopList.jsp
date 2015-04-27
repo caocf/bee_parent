@@ -60,8 +60,8 @@
           <th>最低价</th>
           <th>联系人</th>
           <th>电话</th>
-          <th>地址</th>
           <th>关注数</th>
+          <th>状态</th>
           <th>权重</th>
           <th>操作</th>
         </tr>
@@ -73,20 +73,20 @@
             <td><a href="${basePath}/admin/shop/${shop.sid}/price">${shop.priceStr}</a></td>
             <td>${shop.linkName}</td>
             <td>${shop.phone}</td>
-            <td>${shop.addr}</td>
             <td>${shop.focusNum}</td>
+            <td>${shop.statusStr}</td>
             <td>${shop.sort}</td>
             <td>
-              <a href="#" class="icon">
+              <a href="${basePath}/admin/shop/${shop.sid}" class="icon">
                 <i class="fa fa-file-text-o fa-lg font-color-gray"></i>
               </a>
               <a href="${basePath}/admin/shop/${shop.sid}/image" class="icon">
                 <i class="fa fa-picture-o fa-lg font-color-green"></i>
               </a>
-              <a href="#" class="icon">
+              <a href="${basePath}/admin/shop/${shop.sid}/edit" class="icon">
                 <i class="fa fa-pencil font-color-base fa-lg"></i>
               </a>
-              <a href="#" class="icon">
+              <a href="#" class="icon" onclick="confirmDelete(${shop.sid})">
                 <i class="fa fa-trash font-color-red fa-lg"></i>
               </a>
             </td>
@@ -95,6 +95,28 @@
       </table>
       <div id="paging" class="row"></div>
     </div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="deleteModalLabel">提示确认</h4>
+      </div>
+      <div class="modal-body">
+        确定删除该商家？删除后商家状态会改变成关闭
+      </div>
+      <div class="modal-footer">
+        <form:form id="delForm" method="delete"></form:form>
+        <button type="button" class="btn btn-success icon-text" data-dismiss="modal" onclick="delShop();">
+          <i class="fa fa-check"></i>确定
+        </button>
+        <button type="button" class="btn btn-danger icon-text" data-dismiss="modal">
+          <i class="fa fa-times"></i>取消
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
     <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
@@ -120,6 +142,13 @@
           $("#areaId").val(r);
         }
       });
+      function confirmDelete(id) {
+        document.forms["delForm"].action = "${basePath}/admin/shop/" + id;
+        $("#deleteModal").modal('show');
+      }
+      function delShop() {
+        document.forms["delForm"].submit();
+      }
     </script>
   </body>
   </html>

@@ -23,7 +23,7 @@
 					$("#navbar-left-home").addClass('active');
 				} else if(type == "OrderList") {
 					$("#navbar-left-order").addClass('active');	
-				} else if(type == "ShopList" || type == "ShopNew" || type == "ShopPrice" || type == "ShopImage") {
+				} else if(type == "ShopList" || type == "ShopView" || type == "ShopNew" || type == "ShopPrice" || type == "ShopImage") {
 					$("#navbar-left-shop").addClass('active');
 				} else if(type == "SystemArea") {
 					$("#navbar-left-system").addClass('active');	
@@ -32,7 +32,7 @@
 		},
 		Inner: {
 			init: function(type) {
-				if(type == "ShopList" || type == "ShopPrice" || type == "ShopImage") {
+				if(type == "ShopList" || type == "ShopView" || type == "ShopPrice" || type == "ShopImage") {
 					$("#navbar-inner-shop-list").addClass('active');
 				} else if(type == "OrderList") {
 					$("#navbar-inner-order-list").addClass('active');

@@ -7,6 +7,8 @@ public final class Codes {
 
     // 200
     public static final int Success = 0xc8;
+    // 100
+    public static final int Error = 0x64;
 
     public static final class User {
         // 400 登录账户不存在

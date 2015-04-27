@@ -1,16 +1,19 @@
 package com.bee.admin.controller.shop;
 
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
+import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -77,8 +80,49 @@ public class AdminShopController {
      */
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView create() {
+        return new ModelAndView("shop/ShopNew").addObject("action","new");
+    }
+
+    /**
+     * 删除商家
+     *
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ModelAndView delete(@PathVariable Long id) {
+        try {
+            shopService.deleteShop(id);
+        } catch(DataRunException e) {
+        }
+        return shopListView(new ShopListRequest());
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView("shop/ShopNew");
+        mav.addObject("shop", shopService.getShopById(id));
+        mav.addObject("action", "edit");
         return mav;
+    }
+
+    /**
+     * 更新商家
+     *
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ModelAndView update(@PathVariable Long id, Shop shop) {
+        try {
+            shopService.updateShop(shop);
+            return shopListView(new ShopListRequest());
+        } catch (DataRunException e) {
+            return edit(id).addObject("msg", "更新失败");
+        }
     }
 
 }

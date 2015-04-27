@@ -50,6 +50,13 @@ public final class Consts {
             }
         }
 
+        public static final class Status {
+            // 运营中
+            public static final int Run = 1;
+            // 关闭中
+            public static final int Close = 0;
+        }
+
         public static final class ErrorStatus {
             // 普通状态
             public static final int New = 1;
