@@ -1,5 +1,6 @@
 package com.bee.client.params.order;
 
+import com.bee.commons.Consts;
 import com.qsd.framework.spring.PagingRequest;
 
 /**
@@ -20,6 +21,21 @@ public class AdminOrderListRequest extends PagingRequest {
     }
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getPageType() {
+        String pageType = null;
+        switch (getStatus()) {
+            case Consts.Order.Status.Query.Ing:
+                pageType = "OrderIng";
+                break;
+            case Consts.Order.Status.Query.End:
+                pageType = "OrderEnd";
+                break;
+            default:
+                pageType = "OrderIng";
+        }
+        return pageType;
     }
 
     @Override

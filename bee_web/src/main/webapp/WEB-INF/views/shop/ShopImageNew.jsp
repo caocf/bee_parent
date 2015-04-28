@@ -34,12 +34,14 @@
       <div class="form-group">
         <label class="col-xs-1 control-label">图片类型</label>
         <div class="col-xs-4">
-          <label class="radio-inline">
-            <input type="radio" name="type" value="0" <c:if test="${image.type == 0}">checked="checked"</c:if>> 主图
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="type" value="1" <c:if test="${image.type == 1}">checked="checked"</c:if>> 缩略图
-          </label>
+          <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-default <c:if test="${image.type == 0}">active</c:if>">
+              <input type="radio" name="type" value="0" autocomplete="off" <c:if test="${image.type == 0}">checked="checked"</c:if>> &nbsp;主图&nbsp;
+            </label>
+            <label class="btn btn-default <c:if test="${image.type == 1}">active</c:if>">
+              <input type="radio" name="type" value="1" autocomplete="off" <c:if test="${image.type == 1}">checked="checked"</c:if>> 缩略图
+            </label>
+          </div>
         </div>
       </div>
       <div class="form-group">

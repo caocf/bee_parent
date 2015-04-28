@@ -6,10 +6,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<title>首页 - <spring:message code="application.name"/></title>
 
 	<link href="${resPath}/assets/css/main.min.css" rel="stylesheet">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=2iLGIOjXebTSNG6hiDmtEU9V"></script>
     <!--[if lt IE 9]>
     <script src="${resPath}/assets/js/bootstrap/html5shiv.min.js"></script>
     <script src="${resPath}/assets/js/bootstrap/respond.min.js"></script>
@@ -90,7 +91,7 @@
 						<input type="hidden" id="shopLat" name="lat" value="${shop.lat}" />
 					</div>
 					<div class="col-xs-2 assist-label">
-						<button type="submit" class="btn btn-primary icon-text">
+						<button type="button" class="btn btn-primary icon-text" onclick="openMap()">
 							<i class="fa fa-map-marker margin-right-5"></i>地图
 						</button>
 					</div>
@@ -128,11 +129,23 @@
 				</div>
   		</form>
   	</div>
+  	<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="mapModalLabel">地图</h4>
+		      </div>
+		      <div id="map" class="modal-body"></div>
+		    </div>
+		  </div>
+		</div>
   	<script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/area.js"></script>
+  	<script type="text/javascript" src="${resPath}/assets/js/plugin/map.js"></script>
   	<script type="text/javascript">
   		Navbar.init("ShopNew");
   		$("#area").area({
@@ -142,6 +155,22 @@
   				$("#areaId").val(r);
   			}
   		});
+
+  		function openMap() {
+  			$("#mapModal > .modal-dialog").width("902px");
+  			$("#map").css({overflow: "hidden", margin: "0"});
+  			$("#mapModal").modal("show");
+  			$("#map").map({
+  				width: "900px",
+  				height: "500px",
+	  			gps: {
+	  				lon: $("#shopLon").val(),
+	  				lat: $("#shopLat").val()
+	  			},
+	  			scrollWheelZoom: true
+	  		});
+  		}
+  		
         function doSubmit() {
             if($("#action").val() == "edit") {
                 document.forms["shopForm"].action = "${basePath}/admin/shop/" + $("#sid").val();

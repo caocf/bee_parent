@@ -44,6 +44,11 @@ public class User implements java.io.Serializable, ISecurityUser {
     // 用户关注的商家
     private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
 
+    public User(){}
+    public User(Long uid) {
+        this.uid = uid;
+    }
+
     @Override
     @Transient
     public Set<String> getAuthName() {

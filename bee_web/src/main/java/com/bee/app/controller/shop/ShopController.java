@@ -36,8 +36,9 @@ public class ShopController {
      *
      * @return
      */
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Shop getShop(@PathVariable Long id) {
+
         return shopService.getShopById(id);
     }
 }

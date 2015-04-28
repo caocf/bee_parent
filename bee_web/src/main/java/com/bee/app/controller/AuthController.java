@@ -3,6 +3,7 @@ package com.bee.app.controller;
 import com.bee.client.params.user.AuthLoginResponse;
 import com.bee.commons.Consts;
 import com.bee.pojo.user.User;
+import com.bee.services.stat.IUserLoginStatService;
 import com.bee.services.user.IUserService;
 import com.bee.commons.Codes;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -29,6 +30,8 @@ public class AuthController {
 
     @Autowired
     private IUserService userService;
+    @Autowired
+    private IUserLoginStatService userLoginStatService;
 
     /**
      * 用户登录

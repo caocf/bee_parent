@@ -33,6 +33,7 @@ public class AdminOrderController {
     public ModelAndView index(AdminOrderListRequest request) {
         ModelAndView mav = new ModelAndView("order/OrderList");
         mav.addObject("result", orderService.getOrderListByParam(request));
+        mav.addObject("params", request);
         return mav;
     }
 

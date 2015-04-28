@@ -6,10 +6,10 @@
 	<a id="navbar-inner-order-monitor" class="first" href="${basePath}/admin/order">
 		<i class="fa fa-eye"></i>订单监控
 	</a>
-	<a id="navbar-inner-order-list" href="${basePath}/admin/order?status=1">
+	<a id="navbar-inner-order-ing" href="${basePath}/admin/order?status=<%=Consts.Order.Status.Query.Ing %>">
 		<i class="fa fa-clock-o fa-lg"></i>正在进行
 	</a>
-	<a id="navbar-inner-order-list" href="${basePath}/admin/order?status=2">
+	<a id="navbar-inner-order-end" href="${basePath}/admin/order?status=<%=Consts.Order.Status.Query.End %>">
 		<i class="fa fa-check-circle-o fa-lg"></i>已完成
 	</a>
 </div>

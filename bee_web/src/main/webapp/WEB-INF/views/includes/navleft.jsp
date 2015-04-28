@@ -5,7 +5,7 @@
 		<i class="fa fa-home fa-lg2"></i>
 		<span>首页</span>
 	</a>
-	<a id="navbar-left-order" href="${basePath}/admin/order">
+	<a id="navbar-left-order" href="${basePath}/admin/order?status=<%=Consts.Order.Status.Query.Ing %>">
 		<i class="fa fa-file-text-o fa-lg"></i>
 		<span>订单</span>
 	</a>
