@@ -85,7 +85,7 @@
 				<div class="form-group">
 					<label class="col-xs-1 control-label">商家地图</label>
 					<div class="col-xs-4">
-						<input type="text" id="shopGps" placeholder="商家地图GPS位置" class="form-control" readonly value="${shop.lon},${shop.lat}" />
+						<input type="text" id="shopGps" placeholder="商家地图GPS位置" class="form-control" readonly value="${shop.lon / 1E6},${shop.lat / 1E6}" />
 						<p class="help-block">请在地图选择</p>
 						<input type="hidden" id="shopLon" name="lon" value="${shop.lon}" />
 						<input type="hidden" id="shopLat" name="lat" value="${shop.lat}" />
@@ -164,11 +164,21 @@
   				width: "900px",
   				height: "500px",
 	  			gps: {
-	  				lon: $("#shopLon").val(),
-	  				lat: $("#shopLat").val()
+	  				show: true,
+	  				lon: $("#shopLon").val() != "" ? $("#shopLon").val() / 1E6 : "",
+	  				lat: $("#shopLat").val() != "" ? $("#shopLat").val() / 1E6 : ""
 	  			},
 	  			scrollWheelZoom: true
+	  		}).setEventListener("rightclick", function(e) {
+	  			Map.addPoint({
+	  				only: true,
+	  				point: new BMap.Point(e.point.lng, e.point.lat)
+	  			});
+	  			$("#shopLon").val(e.point.lng * 1E6);
+	  			$("#shopLat").val(e.point.lat * 1E6);
+	  			$("#shopGps").val(e.point.lng + "," + e.point.lat);
 	  		});
+
   		}
   		
         function doSubmit() {

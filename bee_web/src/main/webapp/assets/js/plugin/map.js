@@ -22,6 +22,9 @@
 
 			// 初始化GPS坐标, GPS坐标优先于城市
 			gps: {
+				// 是否在地图上标记
+				show: false,
+				// 经纬度
 				lon: undefined,
 				lat: undefined
 			},
@@ -120,6 +123,12 @@
 		  		settings.gps.lat,
 		  		settings.zoomLevel
 		  	);	
+		  	if(settings.gps.show) {
+			  	this.addPoint({
+			  		only: true,
+			  		point: new BMap.Point(settings.gps.lon, settings.gps.lat)
+			  	});
+			  }
 		  }
 
 		  return this;
@@ -142,9 +151,31 @@
  			}
  		},
 
+ 		/**
+ 		 * 设置事件监听
+ 		 */
+ 		setEventListener: function(type, fn) {
+ 			this._map.addEventListener(type, fn);
+ 		},
 
- 		
- 		
+ 		/**
+ 		 *
+ 		 */
+ 		addPoint: function(options) {
+ 			if(options.only) {
+ 				var overlays = this._map.getOverlays();
+ 				for (var i = 0; i < overlays.length; i++) {
+ 					if(overlays[i].getTitle() == "MarkerPoint") {
+ 						this._map.removeOverlay(overlays[i]);
+ 					}
+ 				}
+ 			}
+ 			var marker = new BMap.Marker(options.point);
+ 			marker.setTitle("MarkerPoint");
+	  	this._map.addOverlay(marker);
+ 		}
+
+
 	};
 
 
