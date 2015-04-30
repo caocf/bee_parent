@@ -1,6 +1,8 @@
 package com.bee.app.controller.shop;
 
+import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.spring.PagingResult;
@@ -27,8 +29,8 @@ public class ShopController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public PagingResult<Shop> queryShopList(ShopListRequest req) {
-        return shopService.queryShopList(req);
+    public PagingResult<ShopListItem> queryShopList(ShopListRequest req) {
+        return shopService.queryAppShopList(req);
     }
 
     /**
@@ -38,7 +40,6 @@ public class ShopController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Shop getShop(@PathVariable Long id) {
-
         return shopService.getShopById(id);
     }
 }

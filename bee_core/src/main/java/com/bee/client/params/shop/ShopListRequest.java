@@ -3,45 +3,24 @@ package com.bee.client.params.shop;
 import com.qsd.framework.spring.PagingRequest;
 
 /**
- * Created by suntongwei on 15/4/16.
+ * Created by suntongwei on 15/4/30.
  */
 public class ShopListRequest extends PagingRequest {
 
     // serialVersionUID
-    private static final long serialVersionUID = 1529406140351306476L;
+    private static final long serialVersionUID = -7814828946282931137L;
 
-    private String name;
-    private Integer type;
-    private String phone;
-    private Long areaId;
+    private Long uid;
 
-    public Integer getType() {
-        return type;
+    public Long getUid() {
+        return uid;
     }
-    public void setType(Integer type) {
-        this.type = type;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public Long getAreaId() {
-        return areaId;
-    }
-    public void setAreaId(Long areaId) {
-        this.areaId = areaId;
+    public void setUid(Long uid) {
+        this.uid = uid;
     }
 
     @Override
     public Integer getMaxRows() {
-        return 30;
+        return 20;
     }
 }

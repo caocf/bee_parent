@@ -1,19 +1,16 @@
 package com.bee.admin.controller.shop;
 
-import com.bee.client.params.shop.ShopListRequest;
-import com.bee.commons.Codes;
+import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
-import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -33,7 +30,7 @@ public class AdminShopController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView shopListView(ShopListRequest req) {
+    public ModelAndView shopListView(AdminShopListRequest req) {
         ModelAndView mav = new ModelAndView("shop/ShopList");
         mav.addObject("result", shopService.queryShopList(req));
         mav.addObject("params", req);
@@ -94,7 +91,7 @@ public class AdminShopController {
             shopService.deleteShop(id);
         } catch(DataRunException e) {
         }
-        return shopListView(new ShopListRequest());
+        return shopListView(new AdminShopListRequest());
     }
 
     /**
@@ -119,7 +116,7 @@ public class AdminShopController {
     public ModelAndView update(@PathVariable Long id, Shop shop) {
         try {
             shopService.updateShop(shop);
-            return shopListView(new ShopListRequest());
+            return shopListView(new AdminShopListRequest());
         } catch (DataRunException e) {
             return edit(id).addObject("msg", "更新失败");
         }

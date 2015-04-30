@@ -212,7 +212,6 @@
       <column name="SORTTIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="REMARK" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
       <column name="RECOMMEND" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="FOCUSNUM" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="SID"/>
       <foreign-key name="FK_k3cu981hvkkswoaq82al88vwd" columns="AREA" ref-table="TB_AREA" ref-schema="" ref-catalog="db_bee" ref-columns="AID" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_kjf30805e521nr8oi35jimg9g" table="TB_ORDER" schema="" catalog="db_bee" columns="SHOP"/>
@@ -281,6 +280,13 @@
       <primary-key name="PRIMARY" columns="UID"/>
       <exported-key name="FK_q09a68flx3nbjgdw6sf0p46dl" table="TB_ORDER" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_hfnwplmri8wf8syg561a3nxjy" table="TB_SHOP_FOCUS" schema="" catalog="db_bee" columns="USER"/>
+      <exported-key name="FK_82fe7qd5vvr4g7dbi0kuro9we" table="TB_USER_LOGIN_STAT" schema="" catalog="db_bee" columns="USER"/>
+    </table>
+    <table name="TB_USER_FRIEND" schema="" catalog="db_bee" type="TABLE">
+      <column name="UFID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="FRIEND" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="UFID"/>
     </table>
     <table name="TB_USER_LOGIN_STAT" schema="" catalog="db_bee" type="TABLE">
       <column name="ULSID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -288,6 +294,8 @@
       <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="DEVICE" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="ULSID"/>
+      <foreign-key name="FK_82fe7qd5vvr4g7dbi0kuro9we" columns="USER" ref-table="TB_USER" ref-schema="" ref-catalog="db_bee" ref-columns="UID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_82fe7qd5vvr4g7dbi0kuro9we" unique="false" columns="USER"/>
     </table>
   </data-source>
 </component>

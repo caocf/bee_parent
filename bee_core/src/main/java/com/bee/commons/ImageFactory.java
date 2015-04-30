@@ -12,8 +12,9 @@ import java.io.File;
  */
 public class ImageFactory {
 
+    // 列表图片尺寸
     public static final int MainPic[] = {
-        120,60
+        160,160
     };
 
     /**

@@ -71,7 +71,7 @@ public final class Consts {
         public static final class ImageType {
             // 主图
             public static final int Big = 0;
-            // 缩略图
+            // 副图
             public static final int Thumbnail = 1;
         }
     }

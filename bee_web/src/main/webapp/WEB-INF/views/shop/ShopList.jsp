@@ -62,7 +62,6 @@
           <th>最低价</th>
           <th>联系人</th>
           <th>电话</th>
-          <th>关注数</th>
           <th>状态</th>
           <th>权重</th>
           <th>操作</th>
@@ -75,7 +74,6 @@
             <td><a href="${basePath}/admin/shop/${shop.sid}/price">${shop.priceStr}</a></td>
             <td>${shop.linkName}</td>
             <td>${shop.phone}</td>
-            <td>${shop.focusNum}</td>
             <td>${shop.statusStr}</td>
             <td>${shop.sort}</td>
             <td>

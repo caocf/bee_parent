@@ -1,18 +1,27 @@
 package com.bee.services.shop.impl;
 
+import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.commons.Consts;
 import com.bee.dao.shop.ShopDao;
-import com.bee.dao.shop.ShopPriceDao;
+import com.bee.dao.shop.ShopFocusDao;
+import com.bee.dao.shop.ShopImageDao;
+import com.bee.dao.user.UserFriendDao;
+import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
-import com.bee.pojo.shop.ShopPrice;
+import com.bee.pojo.shop.ShopFocus;
+import com.bee.pojo.user.User;
+import com.bee.pojo.user.UserFriend;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
-import com.sun.tools.internal.jxc.apt.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by suntongwei on 15/4/16.
@@ -23,10 +32,16 @@ public class ShopService implements IShopService {
     @Autowired
     private ShopDao shopDao;
     @Autowired
-    private ShopPriceDao shopPriceDao;
+    private ShopFocusDao shopFocusDao;
+    @Autowired
+    private UserFriendDao userFriendDao;
 
-    public PagingResult queryShopList(ShopListRequest req) {
+    public PagingResult<Shop> queryShopList(AdminShopListRequest req) {
         return shopDao.queryShopList(req);
+    }
+
+    public PagingResult<ShopListItem> queryAppShopList(ShopListRequest req) {
+        return shopDao.queryAppShopList(req);
     }
 
     @Override
@@ -37,7 +52,6 @@ public class ShopService implements IShopService {
             shop.setIdentity("S" + shop.getCreateTime());
             shop.setRecommend(Consts.False);
             shop.setPrice(0d);
-            shop.setFocusNum(0);
             shop.setStatus(Consts.Shop.Status.Run);
             if(null == shop.getSort()) {
                 shop.setSort(100);

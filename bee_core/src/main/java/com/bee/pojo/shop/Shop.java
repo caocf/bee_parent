@@ -50,8 +50,6 @@ public class Shop implements java.io.Serializable {
     private String remark;
     // 推荐
     private Integer recommend;
-    // 关注数
-    private Integer focusNum;
     // 关注用户
     private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
 
@@ -198,13 +196,6 @@ public class Shop implements java.io.Serializable {
     }
     public void setShopFocus(Set<ShopFocus> shopFocus) {
         this.shopFocus = shopFocus;
-    }
-    @Column(name = "FOCUSNUM")
-    public Integer getFocusNum() {
-        return focusNum;
-    }
-    public void setFocusNum(Integer focusNum) {
-        this.focusNum = focusNum;
     }
     @Column(name = "LON")
     public Long getLon() {

@@ -1,11 +1,17 @@
 package com.bee.dao.shop;
 
+import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.commons.SQL;
+import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
+import com.qsd.framework.commons.utils.NumberUtil;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
+import com.qsd.framework.hibernate.QueryDataConver;
 import com.qsd.framework.hibernate.bean.DataEntity;
 import com.qsd.framework.hibernate.bean.HQLEntity;
+import com.qsd.framework.hibernate.bean.SQLEntity;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
 
@@ -21,7 +27,7 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
      * @param params
      * @return
      */
-    public PagingResult queryShopList(ShopListRequest params) {
+    public PagingResult queryShopList(AdminShopListRequest params) {
         DataEntity entity = new HQLEntity();
         StringBuffer sb = new StringBuffer(SQL.Shop.queryShopList);
         if(params.getType() != null && params.getType() >= 0) {
@@ -45,6 +51,34 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
         entity.setPaging(params);
         return queryWithPaging(entity);
     }
+
+
+    public PagingResult<ShopListItem> queryAppShopList(ShopListRequest request) {
+        SQLEntity entity = new SQLEntity();
+        entity.setParam(request.getUid());
+        StringBuffer sb = new StringBuffer(SQL.Shop.queryAppShopList);
+
+        sb.append(SQL.Shop.queryAppShopListSort);
+        entity.setEntity(sb.toString());
+        entity.setPaging(request);
+        entity.setQueryDataConver(new QueryDataConver<ShopListItem>() {
+            @Override
+            public ShopListItem converData(Object[] obj) {
+                ShopListItem item = new ShopListItem();
+                item.setShopId(NumberUtil.parseLong(obj[0], 0));
+                item.setName(StringUtil.parseString(obj[1], ""));
+                item.setAddr(StringUtil.parseString(obj[2], ""));
+                item.setPrice(NumberUtil.parseDouble(obj[3], 0));
+                item.setArea(StringUtil.parseString(obj[4], ""));
+                item.setImage(StringUtil.parseString(obj[5], ""));
+                item.setFocusNum(NumberUtil.parseInteger(obj[6], 0));
+                item.setFriendNum(NumberUtil.parseInteger(obj[7], 0));
+                return item;
+            }
+        });
+        return queryWithPagingConver(entity);
+    }
+
 
     public Shop getShopById(long sid) {
         return findFirstByParams(SQL.Shop.queryShopById, sid);

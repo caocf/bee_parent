@@ -1,6 +1,8 @@
 package com.bee.services.shop;
 
+import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
@@ -16,7 +18,15 @@ public interface IShopService {
      * @param req
      * @return
      */
-    public PagingResult queryShopList(ShopListRequest req);
+    public PagingResult<Shop> queryShopList(AdminShopListRequest req);
+
+    /**
+     * 查询APP商家列表
+     *
+     * @param req
+     * @return
+     */
+    public PagingResult<ShopListItem> queryAppShopList(ShopListRequest req);
 
     /**
      * 增加商家

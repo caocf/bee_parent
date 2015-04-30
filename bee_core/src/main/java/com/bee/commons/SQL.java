@@ -17,6 +17,11 @@ public final class SQL {
         // 根据参数查询用户列表
         public static final String queryUserListByParams = "From User A where 1=1";
         public static final String queryUserListByParamsSort = " order by A.uid desc";
+
+        public static final class Friend {
+            // 获取该用户的所有好友
+            public static final String getFriendByUser = "From UserFriend A where A.user.uid = ? or A.friend.uid = ?";
+        }
     }
 
     /**
@@ -30,6 +35,18 @@ public final class SQL {
         public static final String queryShopList = "From Shop A left join fetch A.area B where 1=1";
         public static final String queryShopListSort = " order by A.sort desc";
 
+        // 查询好友关注数
+        public static final String queryAppShopList =
+                "select " +
+                "A.sid,A.name,A.addr,A.price,B.name as area," +
+                "(select C.url from TB_SHOP_IMAGE C where C.shop = A.sid and C.type = " + Consts.Shop.ImageType.Big + " order by C.sort desc limit 1) as image, " +
+                "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
+                "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum " +
+                "from TB_SHOP A " +
+                "left outer join TB_AREA B " +
+                "on A.area = B.aid " +
+                "where A.status = " + Consts.Shop.Status.Run;
+        public static final String queryAppShopListSort = " order by A.sort desc";
 
         public static final class Price {
             public static final String queryShopPriceByShopId = "From ShopPrice A left join fetch A.shop B where B.sid = ?";
@@ -41,6 +58,9 @@ public final class SQL {
             public static final String getShopImageById = "From ShopImage A left join fetch A.shop B where A.siid = ?";
         }
 
+        public static final class Focus {
+            public static final String getFocusList = "From ShopFocus A where A.shop.sid = ?";
+        }
     }
 
 
