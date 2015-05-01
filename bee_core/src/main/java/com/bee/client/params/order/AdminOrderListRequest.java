@@ -29,7 +29,7 @@ public class AdminOrderListRequest extends PagingRequest {
             case Consts.Order.Status.Query.Ing:
                 pageType = "OrderIng";
                 break;
-            case Consts.Order.Status.Query.End:
+            case Consts.Order.Status.Query.Finish:
                 pageType = "OrderEnd";
                 break;
             default:

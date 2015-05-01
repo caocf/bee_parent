@@ -44,4 +44,12 @@ public interface IOrderService {
      * @throws DataRunException
      */
     public void cancelOrder(long id, int status) throws DataRunException;
+
+    /**
+     * 完成订单
+     *
+     * @param id
+     * @throws DataRunException
+     */
+    public void finishOrder(long id) throws DataRunException;
 }

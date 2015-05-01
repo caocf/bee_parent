@@ -9,7 +9,7 @@
 	<a id="navbar-inner-order-ing" href="${basePath}/admin/order?status=<%=Consts.Order.Status.Query.Ing %>">
 		<i class="fa fa-clock-o fa-lg"></i>正在进行
 	</a>
-	<a id="navbar-inner-order-end" href="${basePath}/admin/order?status=<%=Consts.Order.Status.Query.End %>">
+	<a id="navbar-inner-order-end" href="${basePath}/admin/order?status=<%=Consts.Order.Status.Query.Finish %>">
 		<i class="fa fa-check-circle-o fa-lg"></i>已完成
 	</a>
 </div>

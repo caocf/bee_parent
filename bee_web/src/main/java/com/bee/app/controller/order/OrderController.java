@@ -76,4 +76,20 @@ public class OrderController {
         }
         return res;
     }
+
+    /**
+     * 完成订单
+     *
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public BaseResponse finish(@PathVariable Long id) {
+        BaseResponse res = new BaseResponse();
+        try {
+
+        } catch(DataRunException e) {
+
+        }
+        return res;
+    }
 }

@@ -47,7 +47,7 @@ public class Order implements java.io.Serializable {
             case Consts.Order.Status.Progress:
                 status = "等待到店";
                 break;
-            case Consts.Order.Status.End:
+            case Consts.Order.Status.Finish:
                 status = "已完成";
                 break;
             case Consts.Order.Status.Cancel:

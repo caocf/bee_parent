@@ -48,4 +48,12 @@ public class OrderService implements IOrderService {
         order.setStatus(status);
         orderDao.update(order);
     }
+
+    @Override
+    @Transactional
+    public void finishOrder(long id) throws DataRunException {
+        Order order = orderDao.findById(id);
+        order.setStatus(Consts.Order.Status.Finish);
+        orderDao.update(order);
+    }
 }

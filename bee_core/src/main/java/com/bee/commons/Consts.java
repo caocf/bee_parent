@@ -87,14 +87,14 @@ public final class Consts {
             public static final int Cancel = 50;
             // 商家取消
             public static final int ShopCancel = 51;
-            // 结束
-            public static final int End = 99;
+            // 完成
+            public static final int Finish = 99;
 
             public static final class Query {
                 // 正在进行订单
                 public static final int Ing = 1;
                 // 已完成订单
-                public static final int End = 2;
+                public static final int Finish = 2;
                 /**
                  * 返回查询状态SQL语句
                  */
@@ -104,7 +104,7 @@ public final class Consts {
                         case Ing:
                             query = " < 50";
                             break;
-                        case End:
+                        case Finish:
                             query = " >= 50";
                             break;
                     }

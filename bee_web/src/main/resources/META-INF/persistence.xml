@@ -5,13 +5,14 @@
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.connection.autocommit" value="false"/>
             <property name="hibernate.dialect" value="com.qsd.framework.hibernate.util.MySqlDialect" />
+
             <property name="hibernate.connection.url"
                       value="jdbc:mysql://120.26.103.7:3306/db_bee?characterEncoding=utf8"/>
             <!--
             <property name="hibernate.connection.url"
                       value="jdbc:mysql://10.252.87.175:3306/db_bee?characterEncoding=utf8"/>
-            -->
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            -->
         </properties>
     </persistence-unit>
 </persistence>
