@@ -7,6 +7,7 @@ import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopFocusDao;
 import com.bee.dao.shop.ShopImageDao;
 import com.bee.dao.user.UserFriendDao;
+import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopFocus;
@@ -31,10 +32,6 @@ public class ShopService implements IShopService {
 
     @Autowired
     private ShopDao shopDao;
-    @Autowired
-    private ShopFocusDao shopFocusDao;
-    @Autowired
-    private UserFriendDao userFriendDao;
 
     public PagingResult<Shop> queryShopList(AdminShopListRequest req) {
         return shopDao.queryShopList(req);
@@ -65,6 +62,11 @@ public class ShopService implements IShopService {
     @Override
     public Shop getShopById(long sid) {
         return shopDao.getShopById(sid);
+    }
+
+    @Override
+    public ShopItem getShopItemById(long sid) {
+        return shopDao.getShopItemById(sid);
     }
 
     @Override

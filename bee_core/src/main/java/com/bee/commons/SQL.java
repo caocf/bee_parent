@@ -31,6 +31,11 @@ public final class SQL {
 
         public static final String queryShopById = "From Shop A left join fetch A.area B where A.sid = ?";
 
+        public static final String getShopItemById =
+                "select A.sid, A.name, A.price, A.linkname, A.phone, A.addr, A.remark, A.lon, A.lat, B.name as area," +
+                        "(select C.url from TB_SHOP_IMAGE C where C.shop = A.sid and C.type = " + Consts.Shop.ImageType.Big + " order by C.sort desc limit 1) as image " +
+                        "from TB_SHOP A left outer join TB_AREA B on A.area = B.aid where A.sid = ?";
+
         // 查询商家列表
         public static final String queryShopList = "From Shop A left join fetch A.area B where 1=1";
         public static final String queryShopListSort = " order by A.sort desc";

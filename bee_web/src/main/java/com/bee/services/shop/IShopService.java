@@ -2,6 +2,7 @@ package com.bee.services.shop;
 
 import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -42,6 +43,14 @@ public interface IShopService {
      * @return
      */
     public Shop getShopById(long sid);
+
+    /**
+     * 根据ID查询商家信息
+     *
+     * @param sid
+     * @return
+     */
+    public ShopItem getShopItemById(long sid);
 
     /**
      * 删除商家

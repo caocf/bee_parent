@@ -3,6 +3,7 @@ package com.bee.dao.shop;
 import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.commons.SQL;
+import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
 import com.qsd.framework.commons.utils.NumberUtil;
@@ -14,6 +15,8 @@ import com.qsd.framework.hibernate.bean.HQLEntity;
 import com.qsd.framework.hibernate.bean.SQLEntity;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/16.
@@ -79,6 +82,28 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
         return queryWithPagingConver(entity);
     }
 
+    public ShopItem getShopItemById(long sid) {
+        return findFirstConverByParams(SQL.Shop.getShopItemById, new QueryDataConver<ShopItem>() {
+            @Override
+            public ShopItem converData(Object[] obj) {
+                ShopItem item = new ShopItem();
+                item.setShopId(NumberUtil.parseLong(obj[0], 0));
+                item.setName(StringUtil.parseString(obj[1], ""));
+                item.setPrice(NumberUtil.parseDouble(obj[2], 0d));
+                item.setLinkMan(StringUtil.parseString(obj[3], ""));
+                item.setPhone(StringUtil.parseString(obj[4], ""));
+                item.setAddr(StringUtil.parseString(obj[5], ""));
+                item.setRemark(StringUtil.parseString(obj[6], ""));
+                long lon = NumberUtil.parseLong(obj[7], 0);
+                item.setLon(lon > 0 ? lon / 1E6 : 0d);
+                long lat = NumberUtil.parseLong(obj[8], 0);
+                item.setLat(lat > 0 ? lat / 1E6 : 0d);
+                item.setArea(StringUtil.parseString(obj[9], ""));
+                item.setImage(StringUtil.parseString(obj[10], ""));
+                return item;
+            }
+        }, sid);
+    }
 
     public Shop getShopById(long sid) {
         return findFirstByParams(SQL.Shop.queryShopById, sid);

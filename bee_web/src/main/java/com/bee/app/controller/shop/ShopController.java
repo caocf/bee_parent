@@ -2,6 +2,7 @@ package com.bee.app.controller.shop;
 
 import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
@@ -39,7 +40,7 @@ public class ShopController {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Shop getShop(@PathVariable Long id) {
-        return shopService.getShopById(id);
+    public ShopItem getShopItem(@PathVariable Long id) {
+        return shopService.getShopItemById(id);
     }
 }

@@ -13,9 +13,9 @@ import java.io.File;
 public class ImageFactory {
 
     // 列表图片尺寸
-    public static final int MainPic[] = {
-        160,160
-    };
+    public static final int MainPic[] = { 160, 160 };
+    // 商家首页尺寸
+    public static final int ShopPic[] = { 480, 180 };
 
     /**
      * <p>保存图片</p>
@@ -34,10 +34,17 @@ public class ImageFactory {
         String path = request.getSession().getServletContext().getRealPath(p);
         // 创建目录
         new File(path).mkdirs();
+
         // 创建图片路径
-        String filePath = path + File.separator + "p_" + MainPic[0] + "x" + MainPic[1] + ".jpg";
+        String mainPicFilePath = path + File.separator + "p_" + MainPic[0] + "x" + MainPic[1] + ".jpg";
         // 保存图片
-        ImageUtils.zoomImage(MainPic[0], MainPic[1], mFile, new File(filePath));
+        ImageUtils.zoomImage(MainPic[0], MainPic[1], mFile, new File(mainPicFilePath));
+
+        // 创建图片路径
+        String shopPicFilePath = path + File.separator + "p_" + ShopPic[0] + "x" + ShopPic[1] + ".jpg";
+        // 保存图片
+        ImageUtils.zoomImage(ShopPic[0], ShopPic[1], mFile, new File(shopPicFilePath));
+
         return new String[] {
                 Consts.BaseUrl + p, path
         };
@@ -73,6 +80,10 @@ public class ImageFactory {
         // 获取主图路径
         public String getMainPic() {
             return path + File.separator + "p_" + MainPic[0] + "x" + MainPic[1] + ".jpg";
+        }
+
+        public String getShopPic() {
+            return path + File.separator + "p_" + ShopPic[0] + "x" + ShopPic[1] + ".jpg";
         }
     }
 
