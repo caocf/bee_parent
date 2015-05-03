@@ -12,6 +12,7 @@ public class ShopItem implements java.io.Serializable {
 
     private Long shopId;
     private String image;
+    private Integer type;
     private String name;
     private String area;
     private Double price;
@@ -109,4 +110,13 @@ public class ShopItem implements java.io.Serializable {
     public void setArea(String area) {
         this.area = area;
     }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 }
+

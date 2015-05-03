@@ -188,9 +188,10 @@
       <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="DEVICE" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="OID"/>
-      <foreign-key name="FK_q09a68flx3nbjgdw6sf0p46dl" columns="USER" ref-table="TB_USER" ref-schema="" ref-catalog="db_bee" ref-columns="UID" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_kjf30805e521nr8oi35jimg9g" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_q09a68flx3nbjgdw6sf0p46dl" columns="USER" ref-table="TB_USER" ref-schema="" ref-catalog="db_bee" ref-columns="UID" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_kjf30805e521nr8oi35jimg9g" unique="false" columns="SHOP"/>
       <index name="FK_q09a68flx3nbjgdw6sf0p46dl" unique="false" columns="USER"/>
     </table>
@@ -280,6 +281,8 @@
       <primary-key name="PRIMARY" columns="UID"/>
       <exported-key name="FK_q09a68flx3nbjgdw6sf0p46dl" table="TB_ORDER" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_hfnwplmri8wf8syg561a3nxjy" table="TB_SHOP_FOCUS" schema="" catalog="db_bee" columns="USER"/>
+      <exported-key name="FK_d3pibi4obqeeixcfv3lwtu7o5" table="TB_USER_FRIEND" schema="" catalog="db_bee" columns="USER"/>
+      <exported-key name="FK_f3qp1kau0b5wjmyqaw5gfqtdk" table="TB_USER_FRIEND" schema="" catalog="db_bee" columns="FRIEND"/>
       <exported-key name="FK_82fe7qd5vvr4g7dbi0kuro9we" table="TB_USER_LOGIN_STAT" schema="" catalog="db_bee" columns="USER"/>
     </table>
     <table name="TB_USER_FRIEND" schema="" catalog="db_bee" type="TABLE">
@@ -287,6 +290,10 @@
       <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="FRIEND" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="UFID"/>
+      <foreign-key name="FK_d3pibi4obqeeixcfv3lwtu7o5" columns="USER" ref-table="TB_USER" ref-schema="" ref-catalog="db_bee" ref-columns="UID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_f3qp1kau0b5wjmyqaw5gfqtdk" columns="FRIEND" ref-table="TB_USER" ref-schema="" ref-catalog="db_bee" ref-columns="UID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_d3pibi4obqeeixcfv3lwtu7o5" unique="false" columns="USER"/>
+      <index name="FK_f3qp1kau0b5wjmyqaw5gfqtdk" unique="false" columns="FRIEND"/>
     </table>
     <table name="TB_USER_LOGIN_STAT" schema="" catalog="db_bee" type="TABLE">
       <column name="ULSID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>

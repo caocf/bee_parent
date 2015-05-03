@@ -2,6 +2,7 @@ package com.bee.dao.shop;
 
 import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
@@ -99,7 +100,8 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 long lat = NumberUtil.parseLong(obj[8], 0);
                 item.setLat(lat > 0 ? lat / 1E6 : 0d);
                 item.setArea(StringUtil.parseString(obj[9], ""));
-                item.setImage(StringUtil.parseString(obj[10], ""));
+                item.setType(NumberUtil.parseInteger(obj[10], Consts.Shop.Type.Club));
+                item.setImage(StringUtil.parseString(obj[11], ""));
                 return item;
             }
         }, sid);

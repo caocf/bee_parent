@@ -30,6 +30,8 @@ public class Order implements java.io.Serializable {
     private Long execTime;
     // 说明
     private String remark;
+    // 用户识别号
+    private String device;
     // 提交人
     private User user;
     // 所属店
@@ -143,5 +145,12 @@ public class Order implements java.io.Serializable {
     }
     public void setCreateTime(Long createTime) {
         this.createTime = createTime;
+    }
+    @Column(name = "DEVICE")
+    public String getDevice() {
+        return device;
+    }
+    public void setDevice(String device) {
+        this.device = device;
     }
 }
