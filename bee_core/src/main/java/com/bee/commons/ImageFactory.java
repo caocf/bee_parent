@@ -15,7 +15,7 @@ public class ImageFactory {
     // 列表图片尺寸
     public static final int MainPic[] = { 160, 160 };
     // 商家首页尺寸
-    public static final int ShopPic[] = { 480, 180 };
+    public static final int ShopPic[] = { 750, 360 };
 
     /**
      * <p>保存图片</p>
