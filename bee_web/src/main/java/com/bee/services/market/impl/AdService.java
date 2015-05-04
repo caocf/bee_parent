@@ -3,6 +3,7 @@ package com.bee.services.market.impl;
 import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
 import com.bee.dao.market.AdDao;
+import com.bee.modal.AdListItem;
 import com.bee.pojo.market.Ad;
 import com.bee.services.market.IAdService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -36,13 +37,18 @@ public class AdService implements IAdService {
             ad.setUrl(paths[0]);
             ad.setPath(paths[1]);
             ad.setCreateTime(System.currentTimeMillis());
-            if(null == ad.getStopTime()) {
+            if (null == ad.getStopTime()) {
                 ad.setStopTime(0l);
             }
             adDao.save(ad);
         } catch (DataRunException e) {
             throw e;
         }
+    }
+
+    @Override
+    public List<AdListItem> getAppAdListByType(int type) {
+        return adDao.getAppAdListByType(type);
     }
 
 

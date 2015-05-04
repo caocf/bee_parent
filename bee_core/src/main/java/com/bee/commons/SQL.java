@@ -82,7 +82,7 @@ public final class SQL {
 
 
     public static final class AppVer {
-
+        // 获取app版本列表
         public static final String getAppVerList = "From AppVer A order by A.createTime desc";
     }
 
@@ -90,8 +90,11 @@ public final class SQL {
     public static final class Market {
 
         public static final class Ad {
-
+            // 获取广告列表
             public static final String getAdList = "From Ad A left join fetch A.shop B order by A.stopTime asc";
+            // 查询app上滚动播放的广告
+            public static final String getAppAdList =
+                    "select A.adid, A.url, A.shop from TB_AD A where A.stopTime > ? and A.type = ? order by A.sort desc";
         }
     }
 }
