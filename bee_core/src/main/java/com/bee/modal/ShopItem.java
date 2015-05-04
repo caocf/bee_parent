@@ -11,7 +11,7 @@ public class ShopItem implements java.io.Serializable {
     private static final long serialVersionUID = 3942497770019366727L;
 
     private Long shopId;
-    private String image;
+    private ImageFactory.Image image;
     private Integer type;
     private String name;
     private String area;
@@ -23,20 +23,12 @@ public class ShopItem implements java.io.Serializable {
     private Double lat;
     private String remark;
 
-    public String getImage() {
-        return new ImageFactory.Image(image).getShopPic();
-    }
-
     public Long getShopId() {
         return shopId;
     }
 
     public void setShopId(Long shopId) {
         this.shopId = shopId;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getName() {
@@ -117,6 +109,14 @@ public class ShopItem implements java.io.Serializable {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public ImageFactory.Image getImage() {
+        return image;
+    }
+
+    public void setImage(ImageFactory.Image image) {
+        this.image = image;
     }
 }
 

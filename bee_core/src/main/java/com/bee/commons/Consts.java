@@ -27,7 +27,6 @@ public final class Consts {
             public static final int BussUser = 0x10;
         }
 
-
     }
 
     public static final class Shop {
@@ -115,10 +114,19 @@ public final class Consts {
 
             }
 
-
         }
     }
 
+
+    public static final class Ad {
+        public static final class Type {
+            public static final int Home = 0;
+            public static final int Party = 1;
+        }
+        public static final class Status {
+
+        }
+    }
 
     public static final class AppType {
         public static final int iOS = 0;

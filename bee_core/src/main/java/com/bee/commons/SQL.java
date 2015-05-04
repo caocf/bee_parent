@@ -86,4 +86,12 @@ public final class SQL {
         public static final String getAppVerList = "From AppVer A order by A.createTime desc";
     }
 
+
+    public static final class Market {
+
+        public static final class Ad {
+
+            public static final String getAdList = "From Ad A left join fetch A.shop B order by A.stopTime asc";
+        }
+    }
 }

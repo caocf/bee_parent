@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>发布版本 - <spring:message code="application.name"/></title>
+  <title>发布广告 - <spring:message code="application.name"/></title>
 
   <link href="${resPath}/assets/css/main.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -18,49 +18,56 @@
   <body>
     <%@ include file="../includes/navtop.jsp" %>
     <%@ include file="../includes/navleft.jsp" %>
-    <%@ include file="SystemMenu.jsp" %>
+    <%@ include file="MarketMenu.jsp" %>
     <div class="main inner">
       <div class="row title">
-        <span class="before">发布版本</span>
+        <span class="before">发布广告</span>
         <i class="fa fa-angle-double-right"></i>    
-        <span class="after">发布一个Android和iOs版本</span>
+        <span class="after">发布一个广告</span>
       </div>
       <div class="row">
         <div class="alert alert-danger <c:if test="${msg == null}">hidden</c:if>" role="alert">${msg}</div>
       </div>
-      <form id="submitForm" class="form-horizontal" action="${basePath}/admin/app" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="_method" value="post" />
-        <input type="hidden" id="avid" name="avid" value="${app.avid}" />
-        <input type="hidden" name="createTime" value="${app.createTime}" />
+      <form id="submitForm" class="form-horizontal" action="${basePath}/admin/ad" method="post" enctype="multipart/form-data">
+        <input type="hidden" id="adid" name="adid" value="${ad.adid}" />
+        <input type="hidden" name="createTime" value="${ad.createTime}" />
         <div class="form-group">
-          <label class="col-xs-1 control-label">APP类型</label>
+          <label class="col-xs-1 control-label">广告类型</label>
           <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-default <c:if test="${app.type == 1}">active</c:if>">
-              <input type="radio" name="type" value="<%=Consts.AppType.Android %>" autocomplete="off" <c:if test="${app.type == 1}">checked="checked"</c:if>> Android
+            <label class="btn btn-default <c:if test="${ad.type == 0}">active</c:if>">
+              <input type="radio" name="type" value="<%=Consts.Ad.Type.Home %>" autocomplete="off" <c:if test="${app.type == 0}">checked="checked"</c:if>>首页
             </label>
-            <label class="btn btn-default <c:if test="${app.type == 0}">active</c:if>">
-              <input type="radio" name="type" value="<%=Consts.AppType.iOS %>" autocomplete="off" <c:if test="${app.type == 0}">checked="checked"</c:if>> iOS
+            <label class="btn btn-default <c:if test="${ad.type == 1}">active</c:if>">
+              <input type="radio" name="type" value="<%=Consts.Ad.Type.Party %>" autocomplete="off" <c:if test="${ad.type == 1}">checked="checked"</c:if>>活动
             </label>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-xs-1 control-label">App文件</label>
+          <label class="col-xs-1 control-label">广告图片</label>
           <div class="col-xs-4">
             <input type="file" name="file" />
-            <input type="hidden" name="path" value="${app.path}" />
+            <input type="hidden" name="path" value="${ad.path}" />
           </div>
         </div>
         <div class="form-group">
-          <label class="col-xs-1 control-label">版本号</label>
+          <label class="col-xs-1 control-label">排序</label>
           <div class="col-xs-4">
-            <input type="text" name="verStr" placeholder="版本号" class="form-control" value="${app.verStr}" />
+            <input type="text" name="sort" placeholder="广告顺序" class="form-control" value="${ad.sort}" />
+            <p class="help-block">数字越大越靠前</p>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-xs-1 control-label">版本码</label>
+          <label class="col-xs-1 control-label">所属商家</label>
           <div class="col-xs-4">
-            <input type="text" name="ver" placeholder="整数版本号" class="form-control" value="${app.ver}" />
-            <p class="help-block">数字越大，版本越新</p>
+            <input type="text" id="shopId" name="shop.sid" placeholder="广告所属商户" class="form-control" value="${ad.shop.sid}" />
+            <p class="help-block">APP广告点击后会进入商家界面</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-1 control-label">下架时间</label>
+          <div class="col-xs-4">
+            <input type="text" name="stopTime" placeholder="广告下架时间" class="form-control" value="${ad.stopTime}" />
+            <p class="help-block">到期后APP上不再显示</p>
           </div>
         </div>
         <div class="form-group">
@@ -76,11 +83,10 @@
     <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
     <script type="text/javascript">
-      Navbar.init("AppNew");
+      Navbar.init("MarketAd");
       function doSubmit() {
-        if($("#avid").val() != "") {
-          document.forms["submitForm"].action += "/${app.avid}";
-          document.getElementsByName("_method")[0].value = "put"; 
+        if($("#adid").val() != "") {
+          document.forms["submitForm"].action += "/${ad.adid}";
         }
         document.forms["submitForm"].submit();
       } 

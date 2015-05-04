@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by suntongwei on 15/5/4.
  */
 @RestController
-@RequestMapping("/market/ad")
+@RequestMapping("/ad")
 public class AdController {
 }

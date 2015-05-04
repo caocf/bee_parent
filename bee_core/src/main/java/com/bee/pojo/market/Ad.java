@@ -1,6 +1,8 @@
 package com.bee.pojo.market;
 
+import com.bee.commons.Consts;
 import com.bee.pojo.Area;
+import com.bee.pojo.shop.Shop;
 import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
@@ -16,18 +18,19 @@ public class Ad implements java.io.Serializable {
 
 	private Long adid;
 	private String path;
+    private String url;
 	private Integer type;
 	private Integer sort;
-	private Long sid;
+    private Shop shop;
 	private Area area;
 	private Long createTime;
 	private Long stopTime;
 	
 	@Transient
 	public String getTypeStr() {
-		if(type == 1) {
+		if(type == Consts.Ad.Type.Home) {
 			return "首页界面";
-		} else if(type == 2) {
+		} else if(type == Consts.Ad.Type.Party) {
 			return "活动界面";
 		}
 		return "";
@@ -40,6 +43,12 @@ public class Ad implements java.io.Serializable {
 		}
 		return DateUtil.formatDateTime(stopTime);
 	}
+
+    @Transient
+    public String getStatus() {
+        return System.currentTimeMillis() - getStopTime() > 0 ?
+                "<span class='text-danger'>未显示</span>" : "<span class='text-success'>显示</span>";
+    }
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -93,11 +102,19 @@ public class Ad implements java.io.Serializable {
 	public void setSort(Integer sort) {
 		this.sort = sort;
 	}
-	@Column(name = "SID")
-	public Long getSid() {
-		return sid;
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "SHOP")
+	public Shop getShop() {
+		return shop;
 	}
-	public void setSid(Long sid) {
-		this.sid = sid;
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
+    @Column(name = "URL")
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

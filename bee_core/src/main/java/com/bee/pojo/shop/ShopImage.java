@@ -34,7 +34,13 @@ public class ShopImage implements java.io.Serializable {
 
     @Transient
     public ImageFactory.Image getImage() {
-        return new ImageFactory.Image(getUrl());
+        ImageFactory.ImageType imageType = null;
+        if(getType() == Consts.Shop.ImageType.Big) {
+            imageType = ImageFactory.ImageType.ShopMainSize;
+        } else if(getType() == Consts.Shop.ImageType.Thumbnail) {
+            imageType = ImageFactory.ImageType.ShopListSize;
+        }
+        return new ImageFactory.Image(getUrl(), imageType);
     }
 
     @Transient

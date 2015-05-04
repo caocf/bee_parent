@@ -29,6 +29,8 @@
 					$("#navbar-left-system").addClass('active');	
 				} else if(type == "UserApp" || type == "UserVip" || type == "UserPink" || type == "UserBuss" || type == "UserAdmin") {
 					$("#navbar-left-user").addClass('active');
+				} else if(type == "MarketAd") {
+					$("#navbar-left-marketing").addClass('active');
 				}
 			}
 		},
@@ -58,6 +60,8 @@
 					$("#navbar-inner-system-app").addClass('active');
 				} else if(type == "AppNew") {
 					$("#navbar-inner-system-app-new").addClass('active');
+				} else if(type == "MarketAd") {
+					$("#navbar-inner-market-ad").addClass('active')
 				}
 			}	
 		}

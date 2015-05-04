@@ -3,6 +3,7 @@ package com.bee.dao.shop;
 import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.commons.Consts;
+import com.bee.commons.ImageFactory;
 import com.bee.commons.SQL;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
@@ -34,19 +35,19 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
     public PagingResult queryShopList(AdminShopListRequest params) {
         DataEntity entity = new HQLEntity();
         StringBuffer sb = new StringBuffer(SQL.Shop.queryShopList);
-        if(params.getType() != null && params.getType() >= 0) {
+        if (params.getType() != null && params.getType() >= 0) {
             sb.append(" and A.type = ?");
             entity.setParams(params.getType());
         }
-        if(params.getName() != null && !"".equals(params.getName().trim())) {
+        if (params.getName() != null && !"".equals(params.getName().trim())) {
             sb.append(" and A.name like ?");
             entity.setParams("%" + params.getName() + "%");
         }
-        if(params.getPhone() != null && !"".equals(params.getPhone().trim())) {
+        if (params.getPhone() != null && !"".equals(params.getPhone().trim())) {
             sb.append(" and A.phone like ?");
             entity.setParams("%" + params.getPhone() + "%");
         }
-        if(params.getAreaId() != null) {
+        if (params.getAreaId() != null) {
             sb.append(" and B.aid = ?");
             entity.setParams(params.getAreaId());
         }
@@ -74,7 +75,8 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setAddr(StringUtil.parseString(obj[2], ""));
                 item.setPrice(NumberUtil.parseDouble(obj[3], 0));
                 item.setArea(StringUtil.parseString(obj[4], ""));
-                item.setImage(StringUtil.parseString(obj[5], ""));
+                item.setImage(new ImageFactory.Image(
+                        StringUtil.parseString(obj[5], ""), ImageFactory.ImageType.ShopListSize));
                 item.setFocusNum(NumberUtil.parseInteger(obj[6], 0));
                 item.setFriendNum(NumberUtil.parseInteger(obj[7], 0));
                 return item;
@@ -101,7 +103,8 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setLat(lat > 0 ? lat / 1E6 : 0d);
                 item.setArea(StringUtil.parseString(obj[9], ""));
                 item.setType(NumberUtil.parseInteger(obj[10], Consts.Shop.Type.Club));
-                item.setImage(StringUtil.parseString(obj[11], ""));
+                item.setImage(new ImageFactory.Image(
+                                StringUtil.parseString(obj[11], ""), ImageFactory.ImageType.ShopMainSize));
                 return item;
             }
         }, sid);

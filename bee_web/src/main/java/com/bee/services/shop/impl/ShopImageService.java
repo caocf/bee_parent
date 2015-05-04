@@ -1,5 +1,6 @@
 package com.bee.services.shop.impl;
 
+import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
 import com.bee.dao.shop.ShopImageDao;
 import com.bee.pojo.shop.ShopImage;
@@ -31,11 +32,11 @@ public class ShopImageService implements IShopImageService {
     @Transactional
     public void addShopImage(HttpServletRequest req, MultipartFile file, ShopImage shopImage) throws DataRunException {
         try {
-            String[] paths = ImageFactory.getInstance().saveImage(req, file);
+            String[] paths = ImageFactory.getInstance().saveImage(getImageType(shopImage.getType()), req, file);
             shopImage.setUrl(paths[0]);
             shopImage.setPath(paths[1]);
             shopImageDao.save(shopImage);
-        } catch(DataRunException e) {
+        } catch (DataRunException e) {
             throw e;
         }
     }
@@ -47,7 +48,7 @@ public class ShopImageService implements IShopImageService {
             ShopImage shopImage = shopImageDao.findById(shopImageId);
             ImageFactory.getInstance().deleteImage(shopImage.getPath());
             shopImageDao.delete(shopImage);
-        } catch(DataRunException e) {
+        } catch (DataRunException e) {
             throw e;
         }
     }
@@ -61,14 +62,24 @@ public class ShopImageService implements IShopImageService {
     @Transactional
     public void updateShopImage(HttpServletRequest req, MultipartFile file, ShopImage shopImage) throws DataRunException {
         try {
-            if(!file.isEmpty()) {
-                String[] paths = ImageFactory.getInstance().saveImage(req, file);
+            if (!file.isEmpty()) {
+                String[] paths = ImageFactory.getInstance().saveImage(getImageType(shopImage.getType()), req, file);
                 shopImage.setUrl(paths[0]);
                 shopImage.setPath(paths[1]);
             }
             shopImageDao.update(shopImage);
-        } catch(DataRunException e) {
+        } catch (DataRunException e) {
             throw e;
         }
+    }
+
+    private ImageFactory.ImageType getImageType(int type) {
+        ImageFactory.ImageType imageType = null;
+        if (type == Consts.Shop.ImageType.Big) {
+            imageType = ImageFactory.ImageType.ShopMainSize;
+        } else if (type == Consts.Shop.ImageType.Thumbnail) {
+            imageType = ImageFactory.ImageType.ShopListSize;
+        }
+        return imageType;
     }
 }

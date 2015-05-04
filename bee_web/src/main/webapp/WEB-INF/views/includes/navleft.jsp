@@ -25,7 +25,7 @@
 		<i class="fa fa-bar-chart fa-lg"></i>
 		<span>统计</span>
 	</a>
-	<a id="navbar-left-marketing" href="#">
+	<a id="navbar-left-marketing" href="${basePath}/admin/ad">
 		<i class="fa fa-cloud fa-lg"></i>
 		<span>营销</span>
 	</a>
