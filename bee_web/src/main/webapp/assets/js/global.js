@@ -25,7 +25,7 @@
 					$("#navbar-left-order").addClass('active');	
 				} else if(type == "ShopList" || type == "ShopView" || type == "ShopNew" || type == "ShopPrice" || type == "ShopImage") {
 					$("#navbar-left-shop").addClass('active');
-				} else if(type == "SystemArea") {
+				} else if(type == "AppList" || type == "AppNew" || type == "SystemArea") {
 					$("#navbar-left-system").addClass('active');	
 				} else if(type == "UserApp" || type == "UserVip" || type == "UserPink" || type == "UserBuss" || type == "UserAdmin") {
 					$("#navbar-left-user").addClass('active');
@@ -54,6 +54,10 @@
 					$("#navbar-inner-user-buss").addClass('active');
 				} else if(type == "UserAdmin") {
 					$("#navbar-inner-user-admin").addClass('active');
+				} else if(type == "AppList") {
+					$("#navbar-inner-system-app").addClass('active');
+				} else if(type == "AppNew") {
+					$("#navbar-inner-system-app-new").addClass('active');
 				}
 			}	
 		}

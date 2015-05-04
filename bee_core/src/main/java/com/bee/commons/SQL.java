@@ -80,4 +80,10 @@ public final class SQL {
         public static final String getOrderListByParamOrder = " order by A.status asc, A.createTime desc";
     }
 
+
+    public static final class AppVer {
+
+        public static final String getAppVerList = "From AppVer A order by A.createTime desc";
+    }
+
 }

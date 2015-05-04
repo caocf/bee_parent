@@ -162,10 +162,11 @@
     </table>
     <table name="TB_APP_VER" schema="" catalog="db_bee" type="TABLE">
       <column name="AVID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="VER" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="VERSTR" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="VER" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="VERSTR" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="AVID"/>
     </table>
     <table name="TB_AREA" schema="" catalog="db_bee" type="TABLE">

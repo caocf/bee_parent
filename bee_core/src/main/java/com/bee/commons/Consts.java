@@ -118,4 +118,10 @@ public final class Consts {
 
         }
     }
+
+
+    public static final class AppType {
+        public static final int iOS = 0;
+        public static final int Android = 1;
+    }
 }

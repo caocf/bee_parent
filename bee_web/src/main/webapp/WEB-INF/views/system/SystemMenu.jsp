@@ -4,7 +4,10 @@
 	<span class="title">系统设置</span>
 	<span>可发布APP，设置地区</span>
 	<a id="navbar-inner-system-app" class="first" href="${basePath}/admin/app">
-		<i class="fa fa-mobile-phone fa-lg"></i>发布App
+		 <i class="fa fa-mobile-phone fa-lg"></i> APP管理
+	</a>
+	<a id="navbar-inner-system-app-new" href="${basePath}/admin/app/new">
+		<i class="fa fa-paper-plane-o"></i>APP发布
 	</a>
 	<a id="navbar-inner-system-area" href="${basePath}/admin/area">
 		<i class="fa fa-globe"></i>地区管理
