@@ -65,6 +65,11 @@ public final class SQL {
 
         public static final class Focus {
             public static final String getFocusList = "From ShopFocus A where A.shop.sid = ?";
+
+            public static final String getShopFocusFriend = "select B.`NAME`, B.UID, B.IMAGE " +
+                    "from TB_USER_FRIEND A left outer join TB_USER B on A.friend = B.uid " +
+                    "left outer join TB_SHOP_FOCUS C on A.friend=C.`USER`" +
+                    "where A.`USER` = ? and C.shop = ?";
         }
     }
 

@@ -23,6 +23,8 @@ public class User implements java.io.Serializable, ISecurityUser {
     private Long uid;
     // 用户标识
     private String identity;
+    // 用户头像图片
+    private String image;
     // 手机标识(imei号或IOS编号)
     private String device;
     // 用户名
@@ -162,5 +164,12 @@ public class User implements java.io.Serializable, ISecurityUser {
     }
     public void setShopFocus(Set<ShopFocus> shopFocus) {
         this.shopFocus = shopFocus;
+    }
+    @Column(name = "IMAGE")
+    public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
     }
 }

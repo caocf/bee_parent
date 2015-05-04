@@ -280,6 +280,7 @@
       <column name="ALIPAY" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="LEVEL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="INTEGRAL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="IMAGE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="UID"/>
       <exported-key name="FK_q09a68flx3nbjgdw6sf0p46dl" table="TB_ORDER" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_hfnwplmri8wf8syg561a3nxjy" table="TB_SHOP_FOCUS" schema="" catalog="db_bee" columns="USER"/>
