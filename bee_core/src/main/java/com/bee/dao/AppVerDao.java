@@ -1,7 +1,7 @@
 package com.bee.dao;
 
 import com.bee.commons.SQL;
-import com.bee.pojo.app.AppVer;
+import com.bee.pojo.AppVer;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import org.springframework.stereotype.Repository;
 

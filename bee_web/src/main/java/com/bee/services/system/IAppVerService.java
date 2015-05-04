@@ -1,6 +1,6 @@
 package com.bee.services.system;
 
-import com.bee.pojo.app.AppVer;
+import com.bee.pojo.AppVer;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.web.multipart.MultipartFile;
 

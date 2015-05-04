@@ -2,7 +2,7 @@ package com.bee.services.system.impl;
 
 import com.bee.commons.Consts;
 import com.bee.dao.AppVerDao;
-import com.bee.pojo.app.AppVer;
+import com.bee.pojo.AppVer;
 import com.bee.services.system.IAppVerService;
 import com.qsd.framework.commons.utils.FileUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.net.FileNameMap;
 import java.util.List;
 
 /**

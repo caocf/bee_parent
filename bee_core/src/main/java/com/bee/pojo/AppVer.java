@@ -1,4 +1,4 @@
-package com.bee.pojo.app;
+package com.bee.pojo;
 
 import com.bee.commons.Consts;
 import com.qsd.framework.commons.utils.DateUtil;

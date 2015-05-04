@@ -1,4 +1,4 @@
-package com.bee.pojo.app;
+package com.bee.pojo.market;
 
 import com.bee.pojo.Area;
 import com.qsd.framework.commons.utils.DateUtil;

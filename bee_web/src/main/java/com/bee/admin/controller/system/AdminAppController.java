@@ -1,6 +1,6 @@
 package com.bee.admin.controller.system;
 
-import com.bee.pojo.app.AppVer;
+import com.bee.pojo.AppVer;
 import com.bee.services.system.IAppVerService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
