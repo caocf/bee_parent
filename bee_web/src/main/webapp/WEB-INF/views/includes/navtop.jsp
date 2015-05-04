@@ -13,13 +13,13 @@
 		      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">APP下载 <span class="caret"></span></a>
 		      <ul class="dropdown-menu" role="menu">
 		        <li>
-		        	<a href="${basePath }/app/android.apk">
-								<i class="fa fa-android"></i>Android
+		        	<a href="${basePath }/app/android.apk" class="icon-text">
+								<i class="fa fa-android fa-lg"></i>Android
 		        	</a>
 		        </li>
 		        <li>
-		        	<a href="#">
-		        		<i class="fa fa-apple"></i>IOS
+		        	<a href="#" class="icon-text">
+		        		<i class="fa fa-apple fa-lg"></i>IOS
 		        	</a>
 		        </li>
 		      </ul>

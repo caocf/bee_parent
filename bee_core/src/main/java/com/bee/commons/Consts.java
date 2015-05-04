@@ -78,6 +78,8 @@ public final class Consts {
 
     public static final class Order {
 
+        public static final String ExecTimeType = "yyyy-MM-dd HH:mm";
+
         public static final class Status {
             // 等待确认
             public static final int Execute = 1;

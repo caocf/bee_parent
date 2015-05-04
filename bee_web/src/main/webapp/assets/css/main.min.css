@@ -8405,6 +8405,9 @@ button.icon-text i {
 .navbar-default .navbar-header {
   padding-left: 20px;
 }
+.navbar-default .navbar-collapse {
+  padding-right: 20px;
+}
 .navbar-left {
   position: fixed;
   top: 50px;

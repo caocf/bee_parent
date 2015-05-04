@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>订单列表 - 大黄蜂后台管理系统</title>
+    <title>订单列表 - <spring:message code="application.name"/></title>
 
     <link href="${resPath}/assets/css/main.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -29,22 +29,24 @@
         <tr>
             <th>订单编号</th>
             <th>类型</th>
+            <th>预约人</th>
+            <th>预约商家</th>
+            <th>预约人数</th>
+            <th>用户电话</th>
+            <th>预约时间</th>
             <th>状态</th>
-            <th>商家</th>
-            <th>联系人</th>
-            <th>联系电话</th>
-            <th>订单时间</th>
             <th>操作</th>
         </tr>
         <c:forEach items="${result.data}" var="order">
             <tr>
-                <td>${order.oid}</td>
+                <td>${order.no}</td>
                 <td>${order.shop.typeStr}</td>
-                <td>${order.statusStr}</td>
+                <td>${order.orderName}</td>
                 <td>${order.shop.name}</td>
-                <td>${order.shop.linkName}</td>
-                <td>${order.shop.phone}</td>
-                <td>${order.createTimeStr}</td>
+                <td>${order.num}人</td>
+                <td>${order.orderPhone}</td>
+                <td>${order.execTimeStr}</td>
+                <td>${order.statusStr}</td>
                 <td>
                   <c:if test="${order.status == 1}">
                     <a href="#" class="icon" role="button" onclick="Order.doCheck(${order.oid});">

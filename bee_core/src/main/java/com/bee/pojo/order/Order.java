@@ -6,6 +6,7 @@ import com.bee.pojo.user.User;
 import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by suntongwei on 15/4/24.
@@ -30,6 +31,10 @@ public class Order implements java.io.Serializable {
     private Long execTime;
     // 说明
     private String remark;
+    // 联系人
+    private String orderName;
+    // 联系电话
+    private String orderPhone;
     // 用户识别号
     private String device;
     // 提交人
@@ -38,6 +43,11 @@ public class Order implements java.io.Serializable {
     private Shop shop;
     // 订单创建时间
     private Long createTime;
+
+    @Transient
+    public String getExecTimeStr() {
+        return DateUtil.formatDate(new Date(getExecTime()), Consts.Order.ExecTimeType);
+    }
 
     @Transient
     public String getStatusStr() {
@@ -152,5 +162,19 @@ public class Order implements java.io.Serializable {
     }
     public void setDevice(String device) {
         this.device = device;
+    }
+    @Column(name = "ORDERNAME")
+    public String getOrderName() {
+        return orderName;
+    }
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
+    }
+    @Column(name = "ORDERPHONE")
+    public String getOrderPhone() {
+        return orderPhone;
+    }
+    public void setOrderPhone(String orderPhone) {
+        this.orderPhone = orderPhone;
     }
 }
