@@ -28,4 +28,5 @@ public final class Codes {
         // 301 取消订单失败
         public static final int CancelError = 0x12d;
     }
+
 }
