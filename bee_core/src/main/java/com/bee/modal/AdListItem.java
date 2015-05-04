@@ -1,5 +1,7 @@
 package com.bee.modal;
 
+import com.bee.commons.ImageFactory;
+
 /**
  * Created by suntongwei on 15/5/5.
  */
@@ -9,7 +11,7 @@ public class AdListItem implements java.io.Serializable {
     private static final long serialVersionUID = -5543371046285196506L;
 
     private Long adid;
-    private String url;
+    private ImageFactory.Image image;
     private Long shopId;
 
     public Long getAdid() {
@@ -20,19 +22,19 @@ public class AdListItem implements java.io.Serializable {
         this.adid = adid;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public Long getShopId() {
         return shopId;
     }
 
     public void setShopId(Long shopId) {
         this.shopId = shopId;
+    }
+
+    public ImageFactory.Image getImage() {
+        return image;
+    }
+
+    public void setImage(ImageFactory.Image image) {
+        this.image = image;
     }
 }

@@ -1,5 +1,7 @@
 package com.bee.dao.market;
 
+import com.bee.commons.Consts;
+import com.bee.commons.ImageFactory;
 import com.bee.commons.SQL;
 import com.bee.modal.AdListItem;
 import com.bee.pojo.market.Ad;
@@ -32,13 +34,15 @@ public class AdDao extends JpaDaoSupport<Ad, Long> {
      * @param type
      * @return
      */
-    public List<AdListItem> getAppAdListByType(int type) {
+    public List<AdListItem> getAppAdListByType(final int type) {
         return findConverByParams(SQL.Market.Ad.getAppAdList, new QueryDataConver<AdListItem>() {
             @Override
             public AdListItem converData(Object[] obj) {
                 AdListItem item = new AdListItem();
                 item.setAdid(NumberUtil.parseLong(obj[0], 0));
-                item.setUrl(StringUtil.parseString(obj[1], ""));
+                item.setImage(new ImageFactory.Image(StringUtil.parseString(obj[1], ""),
+                        type == Consts.Ad.Type.Home ?
+                                ImageFactory.ImageType.ShopAdSize : ImageFactory.ImageType.PartyAdSize));
                 item.setShopId(NumberUtil.parseLong(obj[2], 0));
                 return item;
             }
