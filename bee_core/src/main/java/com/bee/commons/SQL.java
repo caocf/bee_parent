@@ -97,4 +97,14 @@ public final class SQL {
                     "select A.adid, A.url, A.shop from TB_AD A where A.stopTime > ? and A.type = ? order by A.sort desc";
         }
     }
+
+
+    public static final class Party {
+
+        public static final String getPartyList = "From Party A order By A.stopTime";
+
+        public static final String getAppPartyList =
+                "select A.PID, A.URL, A.lOOKNUM, A.EXPLAIN from TB_PARTY A where A.STOPTIME > ? and A.STARTTIME < ? order by A.sort desc";
+
+    }
 }

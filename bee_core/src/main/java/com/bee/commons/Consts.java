@@ -10,9 +10,9 @@ import java.util.Map;
  */
 public final class Consts {
 
-    public static final boolean isDebug = false;
-//    public static final String BaseUrl = "http://localhost:8080";
-    public static final String BaseUrl = "http://120.26.103.71";
+    public static final boolean isDebug = true;
+    public static final String BaseUrl = "http://localhost:8080";
+//    public static final String BaseUrl = "http://120.26.103.71";
 
     public static final int True = 0x1;
     public static final int False = 0x0;
@@ -123,13 +123,16 @@ public final class Consts {
             public static final int Home = 0;
             public static final int Party = 1;
         }
-        public static final class Status {
-
-        }
     }
 
     public static final class AppType {
         public static final int iOS = 0;
         public static final int Android = 1;
+    }
+
+    public static final class Party {
+        public static final class Type {
+            public static final int Offline = 1;
+        }
     }
 }

@@ -10,6 +10,10 @@ ul,ol,li {
 	padding: 0;
 }
 
+.margin-left-5 {
+	margin-left: 5px;
+}
+
 a, button {
 	&.icon {
 		margin-left: 2px;
@@ -183,6 +187,11 @@ form {
 		height: @input-height-base;
 		padding: 0 15px 0 10px;
 	}
+	.form-group.info-title {
+		background-color: lighten(@color-base, 15%);
+		color: @color-white;
+		padding: 5px 10px;
+	}
 }
 .form-horizontal {
 	.control-label {
@@ -196,9 +205,16 @@ form {
 			padding: 0 3px;
 		}
 	}
+	.help-block {
+		margin-bottom: 0;
+	}
 	textarea {
 		width: 100%;
 	}	
+	button.submit {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
 }
 
 // 颜色

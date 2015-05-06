@@ -14,7 +14,7 @@ import java.io.File;
 public class ImageFactory {
 
     public enum ImageType {
-        ShopListSize, ShopMainSize, ShopAdSize, PartyAdSize
+        ShopListSize, ShopMainSize, ShopAdSize, PartyAdSize, PartyMainSize
     }
 
     // 商家列表缩略图
@@ -36,6 +36,13 @@ public class ImageFactory {
     public static final int[][] PartyAdSize = new int[][]{
             new int[]{750, 293} // 720
     };
+
+    // 活动列表和标题尺寸
+    public static final int[][] PartyMainSize = new int[][]{
+            new int[]{750, 366} // 720
+    };
+
+
 
     /**
      * <p>保存图片</p>
@@ -65,6 +72,8 @@ public class ImageFactory {
             sizes = ShopAdSize;
         } else if (ImageType.PartyAdSize == imageType) {
             sizes = PartyAdSize;
+        } else if (ImageType.PartyMainSize == imageType) {
+            sizes = PartyMainSize;
         }
 
         String filePath = "";
@@ -101,18 +110,25 @@ public class ImageFactory {
 
         // 构造方法
         public Image(String path, ImageType type) {
-            if (ImageType.ShopListSize == type) {
-                this.path720 =
-                        path + File.separator + "p_" + ShopListSize[0][0] + "x" + ShopListSize[0][1] + ".jpg";
-            } else if (ImageType.PartyAdSize == type) {
-                this.path720 =
-                        path + File.separator + "p_" + PartyAdSize[0][0] + "x" + PartyAdSize[0][1] + ".jpg";
-            } else if (ImageType.ShopAdSize == type) {
-                this.path720 =
-                        path + File.separator + "p_" + ShopAdSize[0][0] + "x" + ShopAdSize[0][1] + ".jpg";
-            } else if (ImageType.ShopMainSize == type) {
-                this.path720 =
-                        path + File.separator + "p_" + ShopMainSize[0][0] + "x" + ShopMainSize[0][1] + ".jpg";
+            if(null == path || "".equals(path)) {
+                path720 = "";
+            } else {
+                if (ImageType.ShopListSize == type) {
+                    this.path720 =
+                            path + File.separator + "p_" + ShopListSize[0][0] + "x" + ShopListSize[0][1] + ".jpg";
+                } else if (ImageType.PartyAdSize == type) {
+                    this.path720 =
+                            path + File.separator + "p_" + PartyAdSize[0][0] + "x" + PartyAdSize[0][1] + ".jpg";
+                } else if (ImageType.ShopAdSize == type) {
+                    this.path720 =
+                            path + File.separator + "p_" + ShopAdSize[0][0] + "x" + ShopAdSize[0][1] + ".jpg";
+                } else if (ImageType.ShopMainSize == type) {
+                    this.path720 =
+                            path + File.separator + "p_" + ShopMainSize[0][0] + "x" + ShopMainSize[0][1] + ".jpg";
+                } else if (ImageType.PartyMainSize == type) {
+                    this.path720 =
+                            path + File.separator + "p_" + PartyMainSize[0][0] + "x" + PartyMainSize[0][1] + ".jpg";
+                }
             }
         }
 

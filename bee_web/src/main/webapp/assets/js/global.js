@@ -25,13 +25,15 @@
 					$("#navbar-left-order").addClass('active');	
 				} else if(type == "ShopList" || type == "ShopView" || type == "ShopNew" || type == "ShopPrice" || type == "ShopImage") {
 					$("#navbar-left-shop").addClass('active');
+				} else if(type == "PartyList" || type == "PartyNew") {
+					$("#navbar-left-party").addClass('active');
 				} else if(type == "AppList" || type == "AppNew" || type == "SystemArea") {
 					$("#navbar-left-system").addClass('active');	
 				} else if(type == "UserApp" || type == "UserVip" || type == "UserPink" || type == "UserBuss" || type == "UserAdmin") {
 					$("#navbar-left-user").addClass('active');
 				} else if(type == "MarketAd") {
 					$("#navbar-left-marketing").addClass('active');
-				}
+				} 
 			}
 		},
 		Inner: {
@@ -44,6 +46,8 @@
 					$("#navbar-inner-order-end").addClass('active');
 				} else if(type == "ShopNew") {
 					$("#navbar-inner-shop-new").addClass('active');
+				} else if(type == "PartyList") {
+					$("#navbar-inner-party-list").addClass('active');
 				} else if(type == "SystemArea") {
 					$("#navbar-inner-system-area").addClass('active');
 				} else if(type == "UserApp") {
@@ -58,6 +62,8 @@
 					$("#navbar-inner-user-admin").addClass('active');
 				} else if(type == "AppList") {
 					$("#navbar-inner-system-app").addClass('active');
+				} else if(type == "PartyNew") {
+					$("#navbar-inner-party-new").addClass('active');
 				} else if(type == "AppNew") {
 					$("#navbar-inner-system-app-new").addClass('active');
 				} else if(type == "MarketAd") {

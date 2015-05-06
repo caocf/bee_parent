@@ -13,7 +13,7 @@
 		<i class="fa fa-desktop fa-lg"></i>
 		<span>商家</span>
 	</a>
-	<a id="navbar-left-party" href="#">
+	<a id="navbar-left-party" href="${basePath}/admin/party">
 		<i class="fa fa-flag fa-lg"></i>
 		<span>活动</span>
 	</a>

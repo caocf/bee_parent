@@ -8387,6 +8387,9 @@ li {
   margin: 0;
   padding: 0;
 }
+.margin-left-5 {
+  margin-left: 5px;
+}
 a.icon,
 button.icon {
   margin-left: 2px;
@@ -8564,6 +8567,11 @@ form select {
   height: 34px;
   padding: 0 15px 0 10px;
 }
+form .form-group.info-title {
+  background-color: #7ab0cf;
+  color: #ffffff;
+  padding: 5px 10px;
+}
 .form-horizontal .control-label {
   padding-right: 15px;
 }
@@ -8575,8 +8583,15 @@ form select {
 .form-horizontal .assist-label label {
   padding: 0 3px;
 }
+.form-horizontal .help-block {
+  margin-bottom: 0;
+}
 .form-horizontal textarea {
   width: 100%;
+}
+.form-horizontal button.submit {
+  padding-left: 25px;
+  padding-right: 25px;
 }
 .font-color-gray {
   color: #585858;

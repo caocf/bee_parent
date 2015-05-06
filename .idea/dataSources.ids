@@ -201,6 +201,43 @@
       <index name="FK_kjf30805e521nr8oi35jimg9g" unique="false" columns="SHOP"/>
       <index name="FK_q09a68flx3nbjgdw6sf0p46dl" unique="false" columns="USER"/>
     </table>
+    <table name="TB_PARTY" schema="" catalog="db_bee" type="TABLE">
+      <column name="PID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="CHILDID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="URL" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="LOOKNUM" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="PARTYTIME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="STARTTIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="STOPTIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MTAw"/>
+      <column name="ISBEE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="TITLE" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="PID"/>
+      <exported-key name="FK_7cpdob7smdw9ah984jped0yym" table="TB_PARTY_USER" schema="" catalog="db_bee" columns="PARTY"/>
+    </table>
+    <table name="TB_PARTY_MEET" schema="" catalog="db_bee" type="TABLE">
+      <column name="PMID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="PRICE" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8" def="MA=="/>
+      <column name="REMARK" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="ADDR" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="LON" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="LAT" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="PMID"/>
+    </table>
+    <table name="TB_PARTY_USER" schema="" catalog="db_bee" type="TABLE">
+      <column name="PUID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="PARTY" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="PUID"/>
+      <foreign-key name="FK_42snp5hosxsmqgocio607e30b" columns="USER" ref-table="TB_USER" ref-schema="" ref-catalog="db_bee" ref-columns="UID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_7cpdob7smdw9ah984jped0yym" columns="PARTY" ref-table="TB_PARTY" ref-schema="" ref-catalog="db_bee" ref-columns="PID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_42snp5hosxsmqgocio607e30b" unique="false" columns="USER"/>
+      <index name="FK_7cpdob7smdw9ah984jped0yym" unique="false" columns="PARTY"/>
+    </table>
     <table name="TB_SHOP" schema="" catalog="db_bee" type="TABLE">
       <column name="SID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="IDENTITY" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
@@ -288,6 +325,7 @@
       <column name="IMAGE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="UID"/>
       <exported-key name="FK_q09a68flx3nbjgdw6sf0p46dl" table="TB_ORDER" schema="" catalog="db_bee" columns="USER"/>
+      <exported-key name="FK_42snp5hosxsmqgocio607e30b" table="TB_PARTY_USER" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_hfnwplmri8wf8syg561a3nxjy" table="TB_SHOP_FOCUS" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_d3pibi4obqeeixcfv3lwtu7o5" table="TB_USER_FRIEND" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_f3qp1kau0b5wjmyqaw5gfqtdk" table="TB_USER_FRIEND" schema="" catalog="db_bee" columns="FRIEND"/>

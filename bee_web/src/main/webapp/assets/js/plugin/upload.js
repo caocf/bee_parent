@@ -3,8 +3,25 @@
 	var Upload = window.Upload = {
 
 		init: function(fileId, imageId) {
+			this.init(undefined, fileId, imageId);
+		},
+
+		init: function(btnId, fileId, imageId) {
+			$file = $("#" + fileId);
+			if(btnId != undefined && btnId != null && btnId != "") {
+				$file.css("display", "none");
+				$("#" + btnId).click(function(event) {
+					if(Upload._getBrowser() == "MSIE") {
+						$file.click();
+					} else {
+						var a = document.createEvent("MouseEvents");
+						a.initEvent("click", true, true); 
+						document.getElementById(fileId).dispatchEvent(a);
+					}
+				});
+			}
 			// 绑定事件
-			$("#" + fileId).change(function(event) {
+			$file.change(function(event) {
 				var file = document.getElementById(fileId);
 				var image = document.getElementById(imageId);
 				if(file.value == "") {

@@ -50,7 +50,7 @@
 			panoramaControl: false,
 
 			// 是否开启鼠标滚轮缩放，默认为false
-			scrollWheelZoom: false
+			scrollWheelZoom: true
 		};
 
 		if(options) {
@@ -108,7 +108,8 @@
 		  }
 		  // 是否启用实景地图
 		  if(settings.panoramaControl) {
-		  	map.addControl(new BMap.PanoramaControl());
+				map.addControl(new BMap.PanoramaControl());
+		  	// map.addTileLayer(new BMap.PanoramaCoverageLayer());
 		  }
 		  // 是否初始化城市中心点
 		  if(settings.city && settings.city != "") {
