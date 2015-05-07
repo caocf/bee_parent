@@ -38,7 +38,7 @@
             <label class="btn btn-default <c:if test="${app.type == 1}">active</c:if>">
               <input type="radio" name="type" value="<%=Consts.AppType.Android %>" autocomplete="off" <c:if test="${app.type == 1}">checked="checked"</c:if>> Android
             </label>
-            <label class="btn btn-default <c:if test="${app.type == 0}">active</c:if>">
+            <label class="btn btn-default <c:if test="${app.type == 2}">active</c:if>">
               <input type="radio" name="type" value="<%=Consts.AppType.iOS %>" autocomplete="off" <c:if test="${app.type == 0}">checked="checked"</c:if>> iOS
             </label>
           </div>

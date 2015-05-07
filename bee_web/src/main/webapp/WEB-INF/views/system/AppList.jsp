@@ -19,6 +19,7 @@
   	<%@ include file="../includes/navtop.jsp" %>
   	<%@ include file="../includes/navleft.jsp" %>
   	<%@ include file="SystemMenu.jsp" %>
+    <s:form id="deleteForm" method="delete"></s:form>
   	<div class="main inner">
   		<div class="row title">
         <span class="before">App版本列表</span>
@@ -41,7 +42,14 @@
             <td>${app.ver}</td>
             <td>${app.verStr}</td>
             <td>${app.createTimeStr}</td>
-            <td><a href="${app.path}">下载</a></td>
+            <td>
+              <a href="${basePath}${app.url}" class="icon" role="button">
+                <i class="fa fa-download fa-lg"></i>
+              </a>
+              <a href="#" class="icon" role="button" onclick="deleteAppVer(${app.avid})">
+                <i class="fa fa-trash font-color-red fa-lg"></i>
+              </a>
+            </td>
           </tr>
       	</c:forEach>
       </table>
@@ -52,6 +60,10 @@
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
   	<script type="text/javascript">
   		Navbar.init("AppList");
+      function deleteAppVer(id) {
+        document.forms["deleteForm"].action = "${basePath}/admin/app/" + id;
+        document.forms["deleteForm"].submit();
+      }
   	</script>
   </body>
   </html>

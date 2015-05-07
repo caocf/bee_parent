@@ -15,6 +15,10 @@ public class AdminOrderListRequest extends PagingRequest {
      * @see com.bee.commons.Consts.Order.Status.Query
      */
     private Integer status;
+    /**
+     * 实时监控，刷新时间s
+     */
+    private Long queryTime;
 
     public Integer getStatus() {
         return status;
@@ -36,6 +40,13 @@ public class AdminOrderListRequest extends PagingRequest {
                 pageType = "OrderIng";
         }
         return pageType;
+    }
+
+    public Long getQueryTime() {
+        return queryTime;
+    }
+    public void setQueryTime(Long queryTime) {
+        this.queryTime = queryTime;
     }
 
     @Override

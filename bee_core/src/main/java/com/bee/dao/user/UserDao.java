@@ -37,4 +37,7 @@ public class UserDao extends JpaDaoSupport<User, Long> {
         entity.setPaging(req);
         return queryWithPaging(entity);
     }
+
+
+
 }

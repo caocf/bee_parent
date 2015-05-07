@@ -96,12 +96,17 @@ public final class Consts {
                 public static final int Ing = 1;
                 // 已完成订单
                 public static final int Finish = 2;
+                // 监控订单
+                public static final int Monitor = 10;
                 /**
                  * 返回查询状态SQL语句
                  */
                 public static String getQueryStatus(int queryStatus) {
                     String query = " > 0";
                     switch(queryStatus) {
+                        case Monitor:
+                            query = " = 1";
+                            break;
                         case Ing:
                             query = " < 50";
                             break;
@@ -126,8 +131,8 @@ public final class Consts {
     }
 
     public static final class AppType {
-        public static final int iOS = 0;
         public static final int Android = 1;
+        public static final int iOS = 2;
     }
 
     public static final class Party {

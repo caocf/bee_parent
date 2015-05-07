@@ -27,4 +27,12 @@ public interface IAppVerService {
      * @throws DataRunException
      */
     public void saveAppVer(AppVer appVer, MultipartFile file, HttpServletRequest req) throws DataRunException, IOException;
+
+    /**
+     * 删除APPVER版本
+     *
+     * @param id
+     * @throws DataRunException
+     */
+    public void deleteAppVer(long id, HttpServletRequest req) throws DataRunException;
 }

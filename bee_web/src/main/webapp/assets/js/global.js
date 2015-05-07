@@ -21,12 +21,14 @@
 			init: function(type) {
 				if(type == "Home") {
 					$("#navbar-left-home").addClass('active');
-				} else if(type == "OrderIng" || type == "OrderEnd") {
+				} else if(type == "OrderMonitor" || type == "OrderIng" || type == "OrderEnd") {
 					$("#navbar-left-order").addClass('active');	
 				} else if(type == "ShopList" || type == "ShopView" || type == "ShopNew" || type == "ShopPrice" || type == "ShopImage") {
 					$("#navbar-left-shop").addClass('active');
 				} else if(type == "PartyList" || type == "PartyNew") {
 					$("#navbar-left-party").addClass('active');
+				} else if(type == "StatUser") {
+					$("#navbar-left-stat").addClass('active');
 				} else if(type == "AppList" || type == "AppNew" || type == "SystemArea") {
 					$("#navbar-left-system").addClass('active');	
 				} else if(type == "UserApp" || type == "UserVip" || type == "UserPink" || type == "UserBuss" || type == "UserAdmin") {
@@ -40,6 +42,8 @@
 			init: function(type) {
 				if(type == "ShopList" || type == "ShopView" || type == "ShopPrice" || type == "ShopImage") {
 					$("#navbar-inner-shop-list").addClass('active');
+				} else if(type == "OrderMonitor") {
+					$("#navbar-inner-order-monitor").addClass('active');
 				} else if(type == "OrderIng") {
 					$("#navbar-inner-order-ing").addClass('active');
 				} else if(type == "OrderEnd") {
@@ -48,8 +52,8 @@
 					$("#navbar-inner-shop-new").addClass('active');
 				} else if(type == "PartyList") {
 					$("#navbar-inner-party-list").addClass('active');
-				} else if(type == "SystemArea") {
-					$("#navbar-inner-system-area").addClass('active');
+				} else if(type == "StatUser") {
+					$("#navbar-inner-stat-user").addClass('active');
 				} else if(type == "UserApp") {
 					$("#navbar-inner-user-app").addClass('active');
 				} else if(type == "UserVip") {
@@ -68,6 +72,8 @@
 					$("#navbar-inner-system-app-new").addClass('active');
 				} else if(type == "MarketAd") {
 					$("#navbar-inner-market-ad").addClass('active')
+				} else if(type == "SystemArea") {
+					$("#navbar-inner-system-area").addClass('active');
 				}
 			}	
 		}

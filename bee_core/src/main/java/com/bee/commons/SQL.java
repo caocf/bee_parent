@@ -107,4 +107,15 @@ public final class SQL {
                 "select A.PID, A.URL, A.lOOKNUM, A.EXPLAIN from TB_PARTY A where A.STOPTIME > ? and A.STARTTIME < ? order by A.sort desc";
 
     }
+
+
+    public static final class Stat {
+
+        public static final class User {
+            // 统计过去30天用户注册量
+            public static final String statUserRegStat =
+                    "select A.YEAR, A.MONTH, A.DAY, A.NUM from TB_USER_REG_STAT A order by A.URSID desc limit 30";
+        }
+
+    }
 }

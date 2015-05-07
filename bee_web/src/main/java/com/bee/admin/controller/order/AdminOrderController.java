@@ -3,6 +3,7 @@ package com.bee.admin.controller.order;
 import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
+import com.bee.pojo.order.Order;
 import com.bee.services.order.IOrderService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/24.
@@ -32,9 +35,25 @@ public class AdminOrderController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(AdminOrderListRequest request) {
         ModelAndView mav = new ModelAndView("order/OrderList");
+        if(request.getStatus() == Consts.Order.Status.Query.Monitor) {
+            mav.setViewName("order/OrderMonitor");
+        }
         mav.addObject("result", orderService.getOrderListByParam(request));
         mav.addObject("params", request);
         return mav;
+    }
+
+    /**
+     * 监控订单，查询订单
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/monitor", method = RequestMethod.GET)
+    public List<Order> monitor() {
+        AdminOrderListRequest request = new AdminOrderListRequest();
+        request.setStatus(Consts.Order.Status.Query.Monitor);
+        return orderService.getOrderListByParam(request).getData();
     }
 
     /**

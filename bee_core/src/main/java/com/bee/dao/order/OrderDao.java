@@ -28,9 +28,12 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         if(request.getStatus() != null) {
             sb.append("and A.status " + Consts.Order.Status.Query.getQueryStatus(request.getStatus()));
         }
+        
         sb.append(SQL.Order.getOrderListByParamOrder);
         entity.setEntity(sb.toString());
-        entity.setPaging(request);
+        if(request.getStatus() != Consts.Order.Status.Query.Monitor) {
+            entity.setPaging(request);
+        }
         return queryWithPaging(entity);
     }
 }

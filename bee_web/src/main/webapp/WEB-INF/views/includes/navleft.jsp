@@ -5,7 +5,7 @@
 		<i class="fa fa-home fa-lg2"></i>
 		<span>首页</span>
 	</a>
-	<a id="navbar-left-order" href="${basePath}/admin/order?status=<%=Consts.Order.Status.Query.Ing %>">
+	<a id="navbar-left-order" href="${basePath}/admin/order?status=<%=Consts.Order.Status.Query.Monitor %>">
 		<i class="fa fa-file-text-o fa-lg"></i>
 		<span>订单</span>
 	</a>
@@ -21,7 +21,7 @@
 		<i class="fa fa-user fa-lg2"></i>
 		<span>用户</span>
 	</a>
-	<a id="navbar-left-state" href="#">
+	<a id="navbar-left-stat" href="${basePath}/admin/stat/user">
 		<i class="fa fa-bar-chart fa-lg"></i>
 		<span>统计</span>
 	</a>

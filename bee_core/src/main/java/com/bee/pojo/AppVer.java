@@ -31,9 +31,13 @@ public class AppVer implements java.io.Serializable {
      */
     private String verStr;
     /**
-     * 下载地址
+     * 本地地址
      */
     private String path;
+    /**
+     * 下载地址
+     */
+    private String url;
     /**
      * 发布日期
      */
@@ -43,8 +47,10 @@ public class AppVer implements java.io.Serializable {
     public String getTypeStr() {
         if (getType() == Consts.AppType.Android) {
             return "Android";
+        } else if(getType() == Consts.AppType.iOS) {
+            return "iOS";
         }
-        return "iOS";
+        return "未知";
     }
 
     @Transient
@@ -95,5 +101,12 @@ public class AppVer implements java.io.Serializable {
     }
     public void setType(Integer type) {
         this.type = type;
+    }
+    @Column(name = "URL")
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

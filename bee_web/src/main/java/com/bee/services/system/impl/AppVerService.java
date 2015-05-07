@@ -43,14 +43,28 @@ public class AppVerService implements IAppVerService {
                     appVer.getVerStr() + "_" + appVer.getVer() +
                     uploadFileName.substring(uploadFileName.lastIndexOf("."), uploadFileName.length());
             FileUtil.copy(file.getInputStream(), new File(path + fileName));
+            appVer.setPath(fileName);
         } catch(IOException e) {
             throw e;
         }
         try {
-            appVer.setPath(Consts.BaseUrl + File.separator + "app" + fileName);
+            appVer.setUrl(File.separator + "app" + fileName);
             appVer.setCreateTime(System.currentTimeMillis());
             appVerDao.save(appVer);
         } catch (DataRunException e) {
+            throw e;
+        }
+    }
+
+    @Override
+    @Transactional
+    public void deleteAppVer(long id, HttpServletRequest req) throws DataRunException {
+        try {
+            String root = req.getSession().getServletContext().getRealPath(File.separator + "app");
+            AppVer app = appVerDao.findById(id);
+            FileUtil.deleteFile(new File(root + app.getPath()));
+            appVerDao.delete(app);
+        } catch(DataRunException e) {
             throw e;
         }
     }

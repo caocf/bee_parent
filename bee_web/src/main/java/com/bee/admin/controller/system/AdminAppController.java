@@ -46,4 +46,15 @@ public class AdminAppController {
             return create().addObject("msg", "文件保存异常");
         }
     }
+
+    @RequestMapping(value = "/{aid}", method = RequestMethod.DELETE)
+    public ModelAndView delete(Long aid, HttpServletRequest req) {
+        try {
+            appVerService.deleteAppVer(aid, req);
+            return index();
+        } catch(DataRunException e) {
+            return index().addObject("msg", "删除失败");
+        }
+
+    }
 }
