@@ -65,7 +65,6 @@ public final class SQL {
 
         public static final class Focus {
             public static final String getFocusList = "From ShopFocus A where A.shop.sid = ?";
-
             public static final String getShopFocusFriend = "select B.`NAME`, B.UID, B.IMAGE " +
                     "from TB_USER_FRIEND A left outer join TB_USER B on A.friend = B.uid " +
                     "left outer join TB_SHOP_FOCUS C on A.friend=C.`USER`" +
@@ -75,8 +74,8 @@ public final class SQL {
 
 
     public static final class Order {
-
-        public static final String getOrderListByParam = "From Order A left join fetch A.shop B left join fetch A.user C where 1=1 ";
+        public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
+                "left join fetch A.user C left join fetch B.area D where 1=1 ";
         public static final String getOrderListByParamOrder = " order by A.status asc, A.createTime desc";
     }
 
@@ -104,8 +103,10 @@ public final class SQL {
         public static final String getPartyList = "From Party A order By A.stopTime";
 
         public static final String getAppPartyList =
-                "select A.PID, A.URL, A.lOOKNUM, A.EXPLAIN from TB_PARTY A where A.STOPTIME > ? and A.STARTTIME < ? order by A.sort desc";
-
+                "select A.PID, A.URL, A.lOOKNUM, A.TITLE, " +
+                        "(select B.price from TB_PARTY_MEET B where A.TYPE = " + Consts.Party.Type.Offline + " and B.PMID = A.CHILDID limit 1) as PRICE " +
+                        "from TB_PARTY A where A.STOPTIME > ? and A.STARTTIME < ? " +
+                        "order by A.sort desc";
     }
 
 

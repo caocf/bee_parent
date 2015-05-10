@@ -53,9 +53,6 @@
                       <i class="fa fa-check-square-o fa-lg"></i>
                     </a>
                   </c:if>
-                  <a href="#" class="icon" role="button" onclick="">
-                    <i class="fa fa-trash font-color-red fa-lg"></i>
-                  </a>
                 </td>
             </tr>
         </c:forEach>

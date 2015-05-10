@@ -13,7 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "TB_USER")
-@JsonIgnoreProperties(value = {"password"})
+@JsonIgnoreProperties(value = {"password", "shopFocus"})
 public class User implements java.io.Serializable, ISecurityUser {
 
     // serialVersionUID

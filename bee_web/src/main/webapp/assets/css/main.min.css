@@ -8387,6 +8387,14 @@ li {
   margin: 0;
   padding: 0;
 }
+hr {
+  margin-top: 7px !important;
+  margin-bottom: 7px !important;
+}
+.clear-all {
+  margin: 0;
+  padding: 0;
+}
 .margin-left-5 {
   margin-left: 5px;
 }

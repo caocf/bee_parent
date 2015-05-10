@@ -2,6 +2,7 @@ package com.bee.pojo.shop;
 
 import com.bee.commons.Consts;
 import com.bee.pojo.Area;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -50,8 +51,6 @@ public class Shop implements java.io.Serializable {
     private String remark;
     // 推荐
     private Integer recommend;
-    // 关注用户
-    private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
 
     public Shop() {}
     public Shop(Long sid) {
@@ -189,13 +188,6 @@ public class Shop implements java.io.Serializable {
     }
     public void setStatus(Integer status) {
         this.status = status;
-    }
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "shop")
-    public Set<ShopFocus> getShopFocus() {
-        return shopFocus;
-    }
-    public void setShopFocus(Set<ShopFocus> shopFocus) {
-        this.shopFocus = shopFocus;
     }
     @Column(name = "LON")
     public Long getLon() {

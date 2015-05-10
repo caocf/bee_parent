@@ -39,9 +39,10 @@ public class PartyDao extends JpaDaoSupport<Party, Long> {
                 PartyListItem item = new PartyListItem();
                 item.setPid(NumberUtil.parseLong(obj[0], 0));
                 item.setImage(new ImageFactory.Image(
-                        StringUtil.parseString(obj[1], null), ImageFactory.ImageType.ShopMainSize));
+                        StringUtil.parseString(obj[1], null), ImageFactory.ImageType.PartyMainSize));
                 item.setLookNum(NumberUtil.parseInteger(obj[2], 0));
                 item.setExplain(StringUtil.parseString(obj[3], ""));
+                item.setPrice(NumberUtil.parseDouble(obj[4], 0));
                 return item;
             }
         }, System.currentTimeMillis(), System.currentTimeMillis());

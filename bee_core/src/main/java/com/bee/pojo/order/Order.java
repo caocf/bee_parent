@@ -78,6 +78,10 @@ public class Order implements java.io.Serializable {
     public String getCreateTimeStr() {
         return DateUtil.formatDateTime(getCreateTime());
     }
+    @Transient
+    public String getCreateTimeIng() {
+        return DateUtil.formatBbsTime(getCreateTime());
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

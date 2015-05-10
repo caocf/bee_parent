@@ -28,53 +28,52 @@
     </div>
     <table id="orderMonitorTable" class="table table-hover">
         <tr>
-            <th>订单编号</th>
+            <th>订单号</th>
             <th>类型</th>
-            <th>预约人</th>
             <th>预约商家</th>
+            <th>预约人</th>
             <th>预约人数</th>
             <th>用户电话</th>
             <th>预约时间</th>
-            <th>状态</th>
+            <th>订单时间</th>
             <th>操作</th>
         </tr>
-        <c:forEach items="${result.data}" var="order">
-            <tr>
-                <td>${order.no}</td>
-                <td>${order.shop.typeStr}</td>
-                <td>${order.orderName}</td>
-                <td>${order.shop.name}</td>
-                <td>${order.num}人</td>
-                <td>${order.orderPhone}</td>
-                <td>${order.execTimeStr}</td>
-                <td>${order.statusStr}</td>
-                <td>
-                  <c:if test="${order.status == 1}">
-                    <a href="#" class="icon" role="button" onclick="Order.doCheck(${order.oid});">
-                      <i class="fa fa-check-square-o fa-lg"></i>
-                    </a>
-                  </c:if>
-                </td>
-            </tr>
-        </c:forEach>
     </table>
 </div>
-<div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="checkModalLabel" aria-hidden="true">
+<div class="modal fade" id="execuModal" tabindex="-1" role="dialog" aria-labelledby="execuModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="checkModalLabel">处理订单</h4>
+        <h4 class="modal-title" id="execuModalLabel">处理订单</h4>
       </div>
       <div class="modal-body">
-        商家是否同意接受该订单？
+        <input type="hidden" id="dialogOrderId" />
+        <dl id="dialogShopInfo" class="clear-all">
+          <dt>商家信息</dt>
+          <dd class="pull-left">商家名称：</dd>
+          <dd class="clearfix"></dd>
+          <dd class="pull-left">联系人：</dd>
+          <dd class="clearfix"></dd>
+          <dd class="pull-left">联系电话：</dd>
+          <dd></dd>
+        </dl>
+        <hr />
+        <dl id="dialogUserInfo">
+          <dt>预订人信息</dt>
+          <dd class="pull-left">预订人：</dd>
+          <dd class="clearfix"></dd>
+          <dd class="pull-left">预约时间：</dd>
+          <dd class="clearfix"></dd>
+          <dd class="pull-left">联系电话：</dd>
+          <dd></dd>
+        </dl>
       </div>
       <div class="modal-footer">
-        <form:form id="checkForm" method="put"></form:form>
-        <button type="button" class="btn btn-success icon-text" data-dismiss="modal" onclick="Order.doCheckSubmit(true);">
+        <button id="orderEnter" type="button" class="btn btn-success icon-text" data-dismiss="modal">
           <i class="fa fa-check"></i>接受订单
         </button>
-        <button type="button" class="btn btn-danger icon-text" data-dismiss="modal" onclick="Order.doCheckSubmit(false);">
+        <button id="orderCancel" type="button" class="btn btn-danger icon-text" data-dismiss="modal">
           <i class="fa fa-times"></i>取消订单
         </button>
       </div>
@@ -83,6 +82,7 @@
 </div>
 <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="${resPath}/assets/js/jquery/json2.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
 <script type="text/javascript">

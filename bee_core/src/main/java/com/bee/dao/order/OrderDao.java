@@ -26,14 +26,18 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         DataEntity entity = new HQLEntity();
         StringBuffer sb = new StringBuffer(SQL.Order.getOrderListByParam);
         if(request.getStatus() != null) {
-            sb.append("and A.status " + Consts.Order.Status.Query.getQueryStatus(request.getStatus()));
+            sb.append(" and A.status " + Consts.Order.Status.Query.getQueryStatus(request.getStatus()));
         }
-        
-        sb.append(SQL.Order.getOrderListByParamOrder);
-        entity.setEntity(sb.toString());
+        if(request.getQueryTime() != null) {
+            sb.append(" and A.createTime > ?");
+            entity.setParam(request.getQueryTime());
+        }
+        // 判断是否是实时监控
         if(request.getStatus() != Consts.Order.Status.Query.Monitor) {
+            sb.append(SQL.Order.getOrderListByParamOrder);
             entity.setPaging(request);
         }
+        entity.setEntity(sb.toString());
         return queryWithPaging(entity);
     }
 }

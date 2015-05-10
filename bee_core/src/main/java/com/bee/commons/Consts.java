@@ -98,6 +98,8 @@ public final class Consts {
                 public static final int Finish = 2;
                 // 监控订单
                 public static final int Monitor = 10;
+                // 取消订单
+                public static final int QCancel = 3;
                 /**
                  * 返回查询状态SQL语句
                  */
@@ -112,6 +114,9 @@ public final class Consts {
                             break;
                         case Finish:
                             query = " >= 50";
+                            break;
+                        case QCancel:
+                            query = " = 51";
                             break;
                     }
                     return query;

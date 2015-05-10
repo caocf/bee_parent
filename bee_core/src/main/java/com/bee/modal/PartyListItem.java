@@ -55,4 +55,5 @@ public class PartyListItem implements java.io.Serializable {
     public void setPrice(Double price) {
         this.price = price;
     }
+
 }

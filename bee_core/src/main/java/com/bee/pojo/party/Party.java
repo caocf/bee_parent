@@ -1,6 +1,7 @@
 package com.bee.pojo.party;
 
 import com.bee.commons.Consts;
+import com.bee.commons.ImageFactory;
 import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
@@ -26,6 +27,11 @@ public class Party implements java.io.Serializable {
     private Integer sort;
     private Integer isBee;
     private Long createTime;
+
+    @Transient
+    public ImageFactory.Image getImage() {
+        return new ImageFactory.Image(getUrl(), ImageFactory.ImageType.PartyMainSize);
+    }
 
     @Transient
     public String getTypeStr() {

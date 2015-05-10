@@ -32,4 +32,11 @@ public interface IPartyService {
      * @throws DataRunException
      */
     public void save(AdminPartyRequest req, HttpServletRequest request, MultipartFile file) throws DataRunException;
+
+    /**
+     *
+     * @param pid
+     * @return
+     */
+    public Party getPartyById(long pid);
 }

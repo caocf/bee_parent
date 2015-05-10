@@ -35,12 +35,14 @@ public class AdminOrderController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(AdminOrderListRequest request) {
         ModelAndView mav = new ModelAndView("order/OrderList");
-        if(request.getStatus() == Consts.Order.Status.Query.Monitor) {
-            mav.setViewName("order/OrderMonitor");
-        }
         mav.addObject("result", orderService.getOrderListByParam(request));
         mav.addObject("params", request);
         return mav;
+    }
+
+    @RequestMapping(value = "/monitor", method = RequestMethod.GET)
+    public ModelAndView monitor() {
+        return new ModelAndView("order/OrderMonitor");
     }
 
     /**
@@ -49,9 +51,8 @@ public class AdminOrderController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/monitor", method = RequestMethod.GET)
-    public List<Order> monitor() {
-        AdminOrderListRequest request = new AdminOrderListRequest();
+    @RequestMapping(value = "/monitor", method = RequestMethod.POST)
+    public List<Order> monitor(AdminOrderListRequest request ) {
         request.setStatus(Consts.Order.Status.Query.Monitor);
         return orderService.getOrderListByParam(request).getData();
     }

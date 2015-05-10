@@ -65,4 +65,9 @@ public class PartyService implements IPartyService {
             throw e;
         }
     }
+
+    @Override
+    public Party getPartyById(long pid) {
+        return partyDao.findById(pid);
+    }
 }
