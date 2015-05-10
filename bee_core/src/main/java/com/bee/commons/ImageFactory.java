@@ -4,7 +4,6 @@ import com.qsd.framework.commons.utils.FileUtil;
 import com.qsd.framework.commons.utils.ImageUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Transient;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
