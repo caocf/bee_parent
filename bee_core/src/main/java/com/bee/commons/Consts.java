@@ -17,6 +17,9 @@ public final class Consts {
     public static final int True = 0x1;
     public static final int False = 0x0;
 
+    public static final int Android = 0x1;
+    public static final int IOS = 0x2;
+
     public static class User {
 
         public static final class Type {

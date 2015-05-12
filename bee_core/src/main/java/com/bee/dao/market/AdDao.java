@@ -40,12 +40,38 @@ public class AdDao extends JpaDaoSupport<Ad, Long> {
             public AdListItem converData(Object[] obj) {
                 AdListItem item = new AdListItem();
                 item.setAdid(NumberUtil.parseLong(obj[0], 0));
-                item.setImage(new ImageFactory.Image(StringUtil.parseString(obj[1], ""),
-                        type == Consts.Ad.Type.Home ?
-                                ImageFactory.ImageType.ShopAdSize : ImageFactory.ImageType.PartyAdSize));
+                item.setImage(new ImageFactory.Image(StringUtil.parseString(obj[1], ""), getImageType(type)));
                 item.setShopId(NumberUtil.parseLong(obj[2], 0));
+                item.setStopTime(NumberUtil.parseLong(obj[3], 0));
                 return item;
             }
         }, System.currentTimeMillis(), type);
+    }
+
+    public List<AdListItem> getAddadListByUpdateTime(long updateTime) {
+        return findConverByParams(SQL.Market.Ad.getAppAdListUpdateTime, new QueryDataConver<AdListItem>() {
+            @Override
+            public AdListItem converData(Object[] obj) {
+                AdListItem item = new AdListItem();
+                item.setAdid(NumberUtil.parseLong(obj[0], 0));
+                int type = NumberUtil.parseInteger(obj[1], 0);
+                item.setType(type);
+                item.setImage(new ImageFactory.Image(StringUtil.parseString(obj[2], ""), getImageType(type)));
+                item.setShopId(NumberUtil.parseLong(obj[3], 0));
+                item.setStartTime(NumberUtil.parseLong(obj[4], 0));
+                item.setStopTime(NumberUtil.parseLong(obj[5], 0));
+                item.setSort(NumberUtil.parseInteger(obj[6], 0));
+                return item;
+            }
+        }, updateTime);
+    }
+
+    private ImageFactory.ImageType getImageType(int type) {
+        if(type == Consts.Ad.Type.Home) {
+            return ImageFactory.ImageType.ShopAdSize;
+        } else if(type == Consts.Ad.Type.Party) {
+            return ImageFactory.ImageType.PartyAdSize;
+        }
+        return null;
     }
 }

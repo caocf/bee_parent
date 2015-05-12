@@ -24,6 +24,7 @@ public class Ad implements java.io.Serializable {
     private Shop shop;
 	private Area area;
 	private Long createTime;
+    private Long startTime;
 	private Long stopTime;
 	
 	@Transient
@@ -35,6 +36,11 @@ public class Ad implements java.io.Serializable {
 		}
 		return "";
 	}
+
+    @Transient
+    public String getStartTimeStr() {
+        return DateUtil.formatDateTime(startTime);
+    }
 	
 	@Transient
 	public String getStopTimeStr() {
@@ -88,7 +94,14 @@ public class Ad implements java.io.Serializable {
 	public void setCreateTime(Long createTime) {
 		this.createTime = createTime;
 	}
-	@Column(name = "STOPTIME")
+    @Column(name = "STARTTIME")
+    public Long getStartTime() {
+        return startTime;
+    }
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
+    }
+    @Column(name = "STOPTIME")
 	public Long getStopTime() {
 		return stopTime;
 	}

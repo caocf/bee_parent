@@ -37,6 +37,9 @@ public class AdService implements IAdService {
             ad.setUrl(paths[0]);
             ad.setPath(paths[1]);
             ad.setCreateTime(System.currentTimeMillis());
+            if (null == ad.getStartTime()) {
+                ad.setStartTime(0l);
+            }
             if (null == ad.getStopTime()) {
                 ad.setStopTime(0l);
             }
@@ -47,10 +50,15 @@ public class AdService implements IAdService {
     }
 
     @Override
+    @Deprecated
     public List<AdListItem> getAppAdListByType(int type) {
         return adDao.getAppAdListByType(type);
     }
 
+    @Override
+    public List<AdListItem> getAppAdListByUpdateTime(long updateTime) {
+        return adDao.getAddadListByUpdateTime(updateTime);
+    }
 
     private ImageFactory.ImageType getImageType(int type) {
         ImageFactory.ImageType imageType = null;

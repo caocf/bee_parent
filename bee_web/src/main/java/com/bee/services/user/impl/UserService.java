@@ -64,6 +64,8 @@ public class UserService implements IUserService {
         user.setIdentity("u" + user.getCreateTime());
         user.setIntegral(0);
         user.setLevel(0);
+        user.setPath("");
+        user.setUrl("");
         userDao.save(user);
     }
 

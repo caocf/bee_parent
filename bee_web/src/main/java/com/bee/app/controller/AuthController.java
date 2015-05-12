@@ -6,16 +6,9 @@ import com.bee.pojo.user.User;
 import com.bee.services.stat.IUserStatService;
 import com.bee.services.user.IUserService;
 import com.bee.commons.Codes;
-import com.easemob.server.comm.Constants;
-import com.easemob.server.comm.HTTPMethod;
-import com.easemob.server.httpclient.utils.HTTPClientUtils;
-import com.easemob.server.httpclient.vo.EndPoints;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.SecuritySessionFactory;
 import com.qsd.framework.security.consts.SecurityConsts;
-import com.qsd.framework.security.encrypt.Base64;
 import com.qsd.framework.security.encrypt.Md5;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,13 +51,6 @@ public class AuthController {
                 res.setCode(Codes.Success);
                 res.setUser(user);
                 addUserSession(user, req);
-                // 登录到环信
-//                ObjectNode datanode = JsonNodeFactory.instance.objectNode();
-//                datanode.put("grant_type", "password");
-//                datanode.put("username", user.getPhone());
-//                datanode.put("password", Constants.DEFAULT_PASSWORD);
-//                HTTPClientUtils.sendHTTPRequest(EndPoints.TOKEN_APP_URL, null, datanode,
-//                        HTTPMethod.METHOD_POST);
             } else {
                 res.setFlag(Consts.False);
                 res.setCode(Codes.User.LoginPass);

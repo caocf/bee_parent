@@ -35,4 +35,12 @@ public interface IAdService {
      * @return
      */
     public List<AdListItem> getAppAdListByType(int type);
+
+    /**
+     *
+     *
+     * @param updateTime
+     * @return
+     */
+    public List<AdListItem> getAppAdListByUpdateTime(long updateTime);
 }

@@ -21,7 +21,9 @@ public final class SQL {
         public static final class Friend {
             // 获取该用户的所有好友
             public static final String getFriendByUser = "From UserFriend A where A.user.uid = ? or A.friend.uid = ?";
-        }
+            // 根据ID，获取好友记录信息
+            public static final String getUserFriend = "From UserFriend A where A.user.uid = ? and A.friend.uid = ?";
+         }
     }
 
     /**
@@ -93,7 +95,12 @@ public final class SQL {
             public static final String getAdList = "From Ad A left join fetch A.shop B order by A.stopTime asc";
             // 查询app上滚动播放的广告
             public static final String getAppAdList =
-                    "select A.adid, A.url, A.shop from TB_AD A where A.stopTime > ? and A.type = ? order by A.sort desc";
+                    "select A.adid, A.url, A.shop, A.STOPTIME from TB_AD A " +
+                            "where A.stopTime > ? and A.type = ? order by A.sort desc";
+            // 初始化APP后下载广告
+            public static final String getAppAdListUpdateTime =
+                    "SELECT A.ADID, A.TYPE, A.URL, A.SHOP, A.STARTTIME, A.STOPTIME, A.SORT " +
+                            "FROM TB_AD WHERE A.CREATETIME > ?";
         }
     }
 

@@ -14,9 +14,10 @@
       <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="AREA" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="STOPTIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="URL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STARTTIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="ADID"/>
       <foreign-key name="FK_c5ong3fkxu0lajx0wl1ylganw" columns="AREA" ref-table="TB_AREA" ref-schema="" ref-catalog="db_bee" ref-columns="AID" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_hr58730vjl236felr49hqe28u" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -183,7 +184,8 @@
       <column name="ALIPAY" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="LEVEL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="INTEGRAL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="IMAGE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="URL" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <primary-key name="PRIMARY" columns="UID"/>
       <exported-key name="FK_q09a68flx3nbjgdw6sf0p46dl" table="TB_ORDER" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_42snp5hosxsmqgocio607e30b" table="TB_PARTY_USER" schema="" catalog="db_bee" columns="USER"/>

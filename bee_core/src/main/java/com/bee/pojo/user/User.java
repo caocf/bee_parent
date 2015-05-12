@@ -1,5 +1,6 @@
 package com.bee.pojo.user;
 
+import com.bee.commons.ImageFactory;
 import com.bee.pojo.shop.ShopFocus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qsd.framework.security.entity.ISecurityUser;
@@ -24,7 +25,8 @@ public class User implements java.io.Serializable, ISecurityUser {
     // 用户标识
     private String identity;
     // 用户头像图片
-    private String image;
+    private String url;
+    private String path;
     // 手机标识(imei号或IOS编号)
     private String device;
     // 用户名
@@ -49,6 +51,11 @@ public class User implements java.io.Serializable, ISecurityUser {
     public User(){}
     public User(Long uid) {
         this.uid = uid;
+    }
+
+    @Transient
+    public ImageFactory.Image getImage() {
+        return new ImageFactory.Image(getUrl(), ImageFactory.ImageType.UserImage);
     }
 
     @Override
@@ -165,11 +172,18 @@ public class User implements java.io.Serializable, ISecurityUser {
     public void setShopFocus(Set<ShopFocus> shopFocus) {
         this.shopFocus = shopFocus;
     }
-    @Column(name = "IMAGE")
-    public String getImage() {
-        return image;
+    @Column(name = "URL")
+    public String getUrl() {
+        return url;
     }
-    public void setImage(String image) {
-        this.image = image;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    @Column(name = "PATH")
+    public String getPath() {
+        return path;
+    }
+    public void setPath(String path) {
+        this.path = path;
     }
 }

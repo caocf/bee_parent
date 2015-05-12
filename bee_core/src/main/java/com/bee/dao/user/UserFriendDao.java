@@ -30,4 +30,9 @@ public class UserFriendDao extends JpaDaoSupport<UserFriend, Long> {
         }
         return users;
     }
+
+
+    public UserFriend getUserFriend(long uid1, long uid2) {
+        return findFirstByParams(SQL.User.Friend.getUserFriend, uid1, uid2);
+    }
 }

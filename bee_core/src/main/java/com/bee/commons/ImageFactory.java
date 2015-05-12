@@ -13,8 +13,13 @@ import java.io.File;
 public class ImageFactory {
 
     public enum ImageType {
-        ShopListSize, ShopMainSize, ShopAdSize, PartyAdSize, PartyMainSize
+        UserImage, ShopListSize, ShopMainSize, ShopAdSize, PartyAdSize, PartyMainSize
     }
+
+    // 用户头像
+    public static final int[][] UserImage = new int[][] {
+            new int[] {116, 116} // 720
+    };
 
     // 商家列表缩略图
     public static final int[][] ShopListSize = new int[][]{
@@ -63,7 +68,9 @@ public class ImageFactory {
         new File(path).mkdirs();
 
         int[][] sizes = new int[0][0];
-        if (ImageType.ShopListSize == imageType) {
+        if (ImageType.UserImage == imageType) {
+            sizes = UserImage;
+        } else if (ImageType.ShopListSize == imageType) {
             sizes = ShopListSize;
         } else if (ImageType.ShopMainSize == imageType) {
             sizes = ShopMainSize;
@@ -112,7 +119,10 @@ public class ImageFactory {
             if(null == path || "".equals(path)) {
                 path720 = "";
             } else {
-                if (ImageType.ShopListSize == type) {
+                if (ImageType.UserImage == type) {
+                    this.path720 =
+                            path + File.separator + "p_" + UserImage[0][0] + "x" + UserImage[0][1] + ".jpg";
+                } else if (ImageType.ShopListSize == type) {
                     this.path720 =
                             path + File.separator + "p_" + ShopListSize[0][0] + "x" + ShopListSize[0][1] + ".jpg";
                 } else if (ImageType.PartyAdSize == type) {
