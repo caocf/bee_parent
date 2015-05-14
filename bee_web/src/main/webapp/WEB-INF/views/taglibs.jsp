@@ -14,7 +14,7 @@
                 + request.getServerName() + ":" + request.getServerPort()
                 + request.getContextPath();
     } else {
-        basePath = Consts.BaseUrl;
+        basePath = Consts.getBaseUrl();
     }
 
     String resPath = basePath;

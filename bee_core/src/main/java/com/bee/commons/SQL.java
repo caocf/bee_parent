@@ -23,7 +23,10 @@ public final class SQL {
             public static final String getFriendByUser = "From UserFriend A where A.user.uid = ? or A.friend.uid = ?";
             // 根据ID，获取好友记录信息
             public static final String getUserFriend = "From UserFriend A where A.user.uid = ? and A.friend.uid = ?";
-         }
+            // 根据ID，删除好友关系
+            public static final String deleteFriend =
+                    "DELETE FROM TB_USER_FRIEND WHERE (USER = ? AND FRIEND = ?) or (USER = ? AND FRIEND = ?)";
+        }
     }
 
     /**

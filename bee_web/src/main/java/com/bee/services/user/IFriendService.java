@@ -24,4 +24,12 @@ public interface IFriendService {
      */
     public boolean isFriend(long uid, long uid2);
 
+    /**
+     * 删除好友
+     *
+     * @param uid1
+     * @param uid2
+     * @throws DataRunException
+     */
+    public void deleteFriend(long uid1, long uid2) throws DataRunException;
 }

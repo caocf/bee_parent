@@ -39,4 +39,10 @@ public class FriendService implements IFriendService {
     public boolean isFriend(long uid, long uid2) {
         return userFriendDao.getUserFriend(uid, uid2) != null;
     }
+
+    @Override
+    @Transactional
+    public void deleteFriend(long uid1, long uid2) throws DataRunException {
+        userFriendDao.deleteFriend(uid1, uid2);
+    }
 }

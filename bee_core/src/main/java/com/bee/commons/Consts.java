@@ -10,9 +10,13 @@ import java.util.Map;
  */
 public final class Consts {
 
-    public static final boolean isDebug = true;
-    public static final String BaseUrl = "http://localhost:8080";
-//    public static final String BaseUrl = "http://120.26.103.71";
+    public static final boolean isDebug = false;
+    private static final String LocalBaseUrl = "http://localhost:8080";
+    private static final String RemoteBaseUrl = "http://120.26.103.71";
+
+    public static String getBaseUrl() {
+        return isDebug ? LocalBaseUrl : RemoteBaseUrl;
+    }
 
     public static final int True = 0x1;
     public static final int False = 0x0;
@@ -102,23 +106,23 @@ public final class Consts {
                 // 监控订单
                 public static final int Monitor = 10;
                 // 取消订单
-                public static final int QCancel = 3;
+                public static final int Cancel = 3;
                 /**
                  * 返回查询状态SQL语句
                  */
                 public static String getQueryStatus(int queryStatus) {
                     String query = " > 0";
                     switch(queryStatus) {
-                        case Monitor:
+                        case Query.Monitor:
                             query = " = 1";
                             break;
-                        case Ing:
+                        case Query.Ing:
                             query = " < 50";
                             break;
-                        case Finish:
+                        case Query.Finish:
                             query = " >= 50";
                             break;
-                        case QCancel:
+                        case Query.Cancel:
                             query = " = 51";
                             break;
                     }

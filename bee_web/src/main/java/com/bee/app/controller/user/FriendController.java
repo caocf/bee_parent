@@ -68,4 +68,22 @@ public class FriendController {
         }
         return res;
     }
+
+    /**
+     * 删除好友
+     *
+     * @return
+     */
+    @RequestMapping(value = "/{uid2}", method = RequestMethod.DELETE)
+    public BaseResponse deleteFriend(@PathVariable Long uid, @PathVariable Long uid2) {
+        BaseResponse res = new BaseResponse();
+        try {
+            friendService.deleteFriend(uid, uid2);
+            res.setCode(Codes.Success);
+        } catch (DataRunException e) {
+            res.setCode(Codes.Error);
+            res.setMsg("好友删除失败");
+        }
+        return res;
+    }
 }

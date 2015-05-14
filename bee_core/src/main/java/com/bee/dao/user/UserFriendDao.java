@@ -4,6 +4,7 @@ import com.bee.commons.SQL;
 import com.bee.pojo.user.User;
 import com.bee.pojo.user.UserFriend;
 import com.qsd.framework.hibernate.JpaDaoSupport;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -35,4 +36,9 @@ public class UserFriendDao extends JpaDaoSupport<UserFriend, Long> {
     public UserFriend getUserFriend(long uid1, long uid2) {
         return findFirstByParams(SQL.User.Friend.getUserFriend, uid1, uid2);
     }
+
+    public void deleteFriend(long uid1, long uid2) throws DataRunException {
+        execute(SQL.User.Friend.deleteFriend, uid1, uid2, uid2, uid1);
+    }
+
 }

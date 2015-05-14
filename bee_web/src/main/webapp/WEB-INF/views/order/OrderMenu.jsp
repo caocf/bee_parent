@@ -13,6 +13,6 @@
 		<i class="fa fa-check-circle-o fa-lg"></i>已完成
 	</a>
 	<a id="navbar-inner-order-end" href="${basePath}/admin/order?status=<%=Consts.Order.Status.Query.Cancel %>">
-		<i class="fa fa-times-circle-o fa-lg"></i>已完成
+		<i class="fa fa-times-circle-o fa-lg"></i>已取消
 	</a>
 </div>
