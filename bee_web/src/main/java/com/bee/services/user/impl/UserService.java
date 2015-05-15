@@ -30,6 +30,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService implements IUserService {
 
+    // LOG
+    private final Logger Log = LoggerFactory.getLogger(UserService.class);
+
     @Autowired
     private UserDao userDao;
 
@@ -52,8 +55,9 @@ public class UserService implements IUserService {
         datanode.put("username", user.getPhone());
         datanode.put("password", Constants.DEFAULT_PASSWORD);
         // 返回结果
-        HTTPClientUtils.sendHTTPRequest(EndPoints.USERS_URL, credential, datanode,
+        ObjectNode res = HTTPClientUtils.sendHTTPRequest(EndPoints.USERS_URL, credential, datanode,
                 HTTPMethod.METHOD_POST);
+        Log.debug("[HX_Response]Register:" + res.toString());
 
         /**
          * 设置用户信息
