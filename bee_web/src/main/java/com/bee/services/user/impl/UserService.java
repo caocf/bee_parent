@@ -42,6 +42,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public User getUserByIdentity(String identity) {
+        return userDao.findById(0l + Integer.valueOf(identity) - Consts.User.IdentityBaseNum);
+    }
+
+    @Override
     @Transactional
     public void createUser(User user) throws DataRunException {
 
@@ -52,7 +57,7 @@ public class UserService implements IUserService {
         Credential credential = new ClientSecretCredential(Constants.APP_CLIENT_ID,
                 Constants.APP_CLIENT_SECRET, Roles.USER_ROLE_APPADMIN);
         ObjectNode datanode = JsonNodeFactory.instance.objectNode();
-        datanode.put("username", user.getPhone());
+        datanode.put("username", user.getIdentity());
         datanode.put("password", Constants.DEFAULT_PASSWORD);
         // 返回结果
         ObjectNode res = HTTPClientUtils.sendHTTPRequest(EndPoints.USERS_URL, credential, datanode,
@@ -65,7 +70,6 @@ public class UserService implements IUserService {
         user.setPassword(Md5.encodePassword(user.getPassword()));
         user.setType(Consts.User.Type.AppUser);
         user.setCreateTime(System.currentTimeMillis());
-        user.setIdentity("u" + user.getCreateTime());
         user.setIntegral(0);
         user.setLevel(0);
         user.setPath("");

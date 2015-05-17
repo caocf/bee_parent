@@ -26,6 +26,9 @@ public final class Consts {
 
     public static class User {
 
+        // 用户编号从1000开始
+        public static final int IdentityBaseNum = 1000;
+
         public static final class Type {
             public static final int AdminUser = 0x0;
             public static final int AppUser = 0x1;

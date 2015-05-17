@@ -1,5 +1,6 @@
 package com.bee.pojo.user;
 
+import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
 import com.bee.pojo.shop.ShopFocus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,8 +23,6 @@ public class User implements java.io.Serializable, ISecurityUser {
 
     // 用户ID
     private Long uid;
-    // 用户标识
-    private String identity;
     // 用户头像图片
     private String url;
     private String path;
@@ -47,6 +46,15 @@ public class User implements java.io.Serializable, ISecurityUser {
     private Integer integral;
     // 用户关注的商家
     private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
+
+    @Override
+    @Transient
+    public String getIdentity() {
+        if(null == getUid() || getUid() <= 0) {
+            return "";
+        }
+        return String.valueOf(Consts.User.IdentityBaseNum + getUid());
+    }
 
     public User(){}
     public User(Long uid) {
@@ -90,14 +98,6 @@ public class User implements java.io.Serializable, ISecurityUser {
     @Transient
     public Integer getEmailOrPhone() {
         return null;
-    }
-    public void setIdentity(String identity) {
-        this.identity = identity;
-    }
-    @Override
-    @Column(name = "IDENTITY")
-    public String getIdentity() {
-        return identity;
     }
     @Override
     @Transient

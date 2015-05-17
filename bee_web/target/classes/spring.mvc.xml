@@ -43,6 +43,7 @@
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
 		<property name="interceptors">
 			<list>
+                <bean class="com.bee.interceptors.WebSpeedInterceptor" />
 				<bean class="com.qsd.framework.security.mvc.SecurityInterceptor" />
 			</list>
 		</property>

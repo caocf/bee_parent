@@ -19,6 +19,14 @@ public interface IUserService {
     public User getUserByAccount(String account);
 
     /**
+     * 根据用户标识
+     *
+     * @param identity
+     * @return
+     */
+    public User getUserByIdentity(String identity);
+
+    /**
      * 创建注册用户
      *
      * @param user
