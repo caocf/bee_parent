@@ -23,5 +23,5 @@ public interface Constants {
     // ORG_ADMIN_PASSWORD
     public static String ORG_ADMIN_PASSWORD = "";
 	// DEFAULT_PASSWORD
-	public static String DEFAULT_PASSWORD = "bee.hx.pass.1234";
+	public static String DEFAULT_PASSWORD = "beehx1234";
 }

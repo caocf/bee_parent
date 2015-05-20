@@ -51,6 +51,18 @@ public class UserService implements IUserService {
     public void createUser(User user) throws DataRunException {
 
         /**
+         * 设置用户信息
+         */
+        user.setPassword(Md5.encodePassword(user.getPassword()));
+        user.setType(Consts.User.Type.AppUser);
+        user.setCreateTime(System.currentTimeMillis());
+        user.setIntegral(0);
+        user.setLevel(0);
+        user.setPath("");
+        user.setUrl("");
+        userDao.save(user);
+
+        /**
          * 注册IM用户[单个]
          * 给指定AppKey创建一个新的用户
          */
@@ -63,18 +75,6 @@ public class UserService implements IUserService {
         ObjectNode res = HTTPClientUtils.sendHTTPRequest(EndPoints.USERS_URL, credential, datanode,
                 HTTPMethod.METHOD_POST);
         Log.debug("[HX_Response]Register:" + res.toString());
-
-        /**
-         * 设置用户信息
-         */
-        user.setPassword(Md5.encodePassword(user.getPassword()));
-        user.setType(Consts.User.Type.AppUser);
-        user.setCreateTime(System.currentTimeMillis());
-        user.setIntegral(0);
-        user.setLevel(0);
-        user.setPath("");
-        user.setUrl("");
-        userDao.save(user);
     }
 
     @Override
