@@ -18,7 +18,7 @@ public class ImageFactory {
 
     // 用户头像
     public static final int[][] UserImage = new int[][] {
-            new int[] {116, 116} // 720
+            new int[] {90, 90} // 720
     };
 
     // 商家列表缩略图

@@ -2,6 +2,7 @@ package com.bee.services.user.impl;
 
 import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.commons.Consts;
+import com.bee.commons.ImageFactory;
 import com.bee.dao.user.UserDao;
 import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
@@ -23,6 +24,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by suntongwei on 15/4/15.
@@ -80,5 +84,25 @@ public class UserService implements IUserService {
     @Override
     public PagingResult<User> queryUserListByParams(AdminUserListRequest req) {
         return userDao.queryUserListByParams(req);
+    }
+
+    @Override
+    @Transactional
+    public void saveAvatar(Long uid, MultipartFile file, HttpServletRequest req) throws RuntimeException {
+        User user = userDao.findById(uid);
+        if (!file.isEmpty()) {
+            String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.UserImage, req, file);
+            user.setUrl(paths[0]);
+            user.setPath(paths[1]);
+            userDao.update(user);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void saveNickName(long uid, String nickName) throws DataRunException {
+        User user = userDao.findById(uid);
+        user.setName(nickName);
+        userDao.update(user);
     }
 }

@@ -1,6 +1,7 @@
 package com.bee.services.order;
 
 import com.bee.client.params.order.AdminOrderListRequest;
+import com.bee.client.params.order.OrderListRequest;
 import com.bee.pojo.order.Order;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
@@ -19,6 +20,14 @@ public interface IOrderService {
      * @return
      */
     public PagingResult<Order> getOrderListByParam(AdminOrderListRequest request);
+
+    /**
+     * 根据参数查询订单
+     *
+     * @param request
+     * @return
+     */
+    public PagingResult<Order> getAppOrderListByParam(OrderListRequest request);
 
     /**
      * 创建订单

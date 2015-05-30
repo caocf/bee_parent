@@ -1,6 +1,7 @@
 package com.bee.services.shop;
 
 import com.bee.modal.ShopFocusFriendList;
+import com.qsd.framework.hibernate.exception.DataRunException;
 
 import java.util.List;
 
@@ -18,4 +19,10 @@ public interface IShopFocusService {
      */
     public List<ShopFocusFriendList> getShopFocusFriend(long sid, long uid);
 
+    /**
+     * 添加用户关注
+     *
+     * @throws DataRunException
+     */
+    public void addShopFocus(long uid, long shopId) throws DataRunException;
 }

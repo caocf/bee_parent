@@ -1,6 +1,7 @@
 package com.bee.dao.order;
 
 import com.bee.client.params.order.AdminOrderListRequest;
+import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.pojo.order.Order;
@@ -39,5 +40,16 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         }
         entity.setEntity(sb.toString());
         return queryWithPaging(entity);
+    }
+
+    /**
+     *
+     *
+     * @param request
+     * @return
+     */
+    public PagingResult<Order> getAppOrderListByParam(OrderListRequest request) {
+
+        return null;
     }
 }

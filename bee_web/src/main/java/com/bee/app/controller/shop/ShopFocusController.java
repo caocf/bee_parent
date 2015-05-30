@@ -1,5 +1,6 @@
 package com.bee.app.controller.shop;
 
+import com.bee.commons.Codes;
 import com.bee.modal.ShopFocusFriendList;
 import com.bee.services.shop.IShopFocusService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -33,9 +34,11 @@ public class ShopFocusController {
     public BaseResponse addShopFocus(@PathVariable Long sid, Long uid) {
         BaseResponse res = new BaseResponse();
         try {
-
+            shopFocusService.addShopFocus(uid, sid);
+            res.setCode(Codes.Success);
         } catch (DataRunException e) {
-
+            e.printStackTrace();
+            res.setCode(Codes.Error);
         }
         return res;
     }

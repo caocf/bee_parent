@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by suntongwei on 15/4/24.
  */
@@ -35,7 +37,7 @@ public class OrderController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public PagingResult<Order> index(OrderListRequest request) {
+    public List<Order> index(OrderListRequest request) {
 
         return null;
     }

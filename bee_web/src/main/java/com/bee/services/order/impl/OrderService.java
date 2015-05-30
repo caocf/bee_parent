@@ -1,6 +1,7 @@
 package com.bee.services.order.impl;
 
 import com.bee.client.params.order.AdminOrderListRequest;
+import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Consts;
 import com.bee.dao.order.OrderDao;
 import com.bee.pojo.order.Order;
@@ -23,6 +24,11 @@ public class OrderService implements IOrderService {
     @Override
     public PagingResult<Order> getOrderListByParam(AdminOrderListRequest request) {
         return orderDao.getOrderListByParam(request);
+    }
+
+    @Override
+    public PagingResult<Order> getAppOrderListByParam(OrderListRequest request) {
+        return null;
     }
 
     @Override
