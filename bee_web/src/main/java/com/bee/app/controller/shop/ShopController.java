@@ -1,10 +1,9 @@
 package com.bee.app.controller.shop;
 
-import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
-import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/16.
@@ -32,6 +33,16 @@ public class ShopController {
     @RequestMapping(method = RequestMethod.GET)
     public PagingResult<ShopListItem> queryShopList(ShopListRequest req) {
         return shopService.queryAppShopList(req);
+    }
+
+    /**
+     * 查询推荐商家
+     *
+     * @return
+     */
+    @RequestMapping(value = "/recommend", method = RequestMethod.GET)
+    public List<RecommendItem> queryRecommendShop() {
+        return shopService.queryRecommendShop();
     }
 
     /**

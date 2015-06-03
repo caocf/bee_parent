@@ -4,6 +4,7 @@ import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Consts;
 import com.bee.dao.order.OrderDao;
+import com.bee.modal.OrderListItem;
 import com.bee.pojo.order.Order;
 import com.bee.services.order.IOrderService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -27,8 +28,8 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public PagingResult<Order> getAppOrderListByParam(OrderListRequest request) {
-        return null;
+    public PagingResult<OrderListItem> getAppOrderListByParam(OrderListRequest request) {
+        return orderDao.getAppOrderListByParam(request);
     }
 
     @Override

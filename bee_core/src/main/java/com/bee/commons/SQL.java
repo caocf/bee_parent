@@ -45,6 +45,12 @@ public final class SQL {
         public static final String queryShopList = "From Shop A left join fetch A.area B where 1=1";
         public static final String queryShopListSort = " order by A.sort desc";
 
+        // 查询推荐商家
+        public static final String queryRecommendShop =
+                "select A.sid, A.name, " +
+                        "(select C.url from TB_SHOP_IMAGE C where C.shop = A.sid and C.type = " + Consts.Shop.ImageType.Big + " order by C.sort desc limit 1) as image " +
+                        "From TB_SHOP A where A.recommend = " + Consts.True + " order by A.sort desc limit 6";
+
         // 查询好友关注数
         public static final String queryAppShopList =
                 "select " +
@@ -64,6 +70,8 @@ public final class SQL {
         }
 
         public static final class Image {
+            public static final String queryAppShopImage =
+                    "select A.URL,A.REMARK from TB_SHOP_IMAGE A where A.SHOP = ? and A.TYPE = ? order by A.SORT desc";
             public static final String queryShopImageByShopId = "From ShopImage A left join fetch A.shop B where B.sid = ?";
             public static final String getShopImageById = "From ShopImage A left join fetch A.shop B where A.siid = ?";
         }
@@ -79,6 +87,10 @@ public final class SQL {
 
 
     public static final class Order {
+
+        public static final String getAppOrderListByParam = "select B.name, A.execTime, A.num, A.status, A.oid from TB_ORDER A " +
+                "left outer join TB_SHOP B on A.shop = B.sid where 1=1 ";
+
         public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
                 "left join fetch A.user C left join fetch B.area D where 1=1 ";
         public static final String getOrderListByParamOrder = " order by A.status asc, A.createTime desc";

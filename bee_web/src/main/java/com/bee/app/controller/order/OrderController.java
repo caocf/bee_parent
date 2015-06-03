@@ -3,6 +3,7 @@ package com.bee.app.controller.order;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
+import com.bee.modal.OrderListItem;
 import com.bee.pojo.order.Order;
 import com.bee.services.order.IOrderService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -37,9 +38,10 @@ public class OrderController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public List<Order> index(OrderListRequest request) {
-
-        return null;
+    public PagingResult<OrderListItem> index(OrderListRequest request) {
+        PagingResult<OrderListItem> items = orderService.getAppOrderListByParam(request);
+        items.setMaxRows(request.getMaxRows());
+        return items;
     }
 
     /**

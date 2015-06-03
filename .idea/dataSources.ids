@@ -128,6 +128,14 @@
       <exported-key name="FK_m6vcy1sp0dui5rnrfco61236e" table="TB_SHOP_PRICE" schema="" catalog="db_bee" columns="SHOP"/>
       <index name="FK_k3cu981hvkkswoaq82al88vwd" unique="false" columns="AREA"/>
     </table>
+    <table name="TB_SHOP_COMMENT" schema="" catalog="db_bee" type="TABLE">
+      <column name="SCID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="CONTENT" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="SCID"/>
+    </table>
     <table name="TB_SHOP_ERROR" schema="" catalog="db_bee" type="TABLE">
       <column name="SEID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="ERRORMSG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -174,7 +182,6 @@
     </table>
     <table name="TB_USER" schema="" catalog="db_bee" type="TABLE">
       <column name="UID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="IDENTITY" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
       <column name="DEVICE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="NAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
@@ -186,6 +193,7 @@
       <column name="INTEGRAL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="URL" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="IDENTITY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="UID"/>
       <exported-key name="FK_q09a68flx3nbjgdw6sf0p46dl" table="TB_ORDER" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_42snp5hosxsmqgocio607e30b" table="TB_PARTY_USER" schema="" catalog="db_bee" columns="USER"/>
@@ -193,6 +201,7 @@
       <exported-key name="FK_d3pibi4obqeeixcfv3lwtu7o5" table="TB_USER_FRIEND" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_f3qp1kau0b5wjmyqaw5gfqtdk" table="TB_USER_FRIEND" schema="" catalog="db_bee" columns="FRIEND"/>
       <exported-key name="FK_82fe7qd5vvr4g7dbi0kuro9we" table="TB_USER_LOGIN_STAT" schema="" catalog="db_bee" columns="USER"/>
+      <index name="INDEX_PHONE" unique="false" columns="PHONE"/>
     </table>
     <table name="TB_USER_FRIEND" schema="" catalog="db_bee" type="TABLE">
       <column name="UFID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>

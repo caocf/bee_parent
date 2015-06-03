@@ -2,11 +2,14 @@ package com.bee.services.shop;
 
 import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
+
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/16.
@@ -28,6 +31,13 @@ public interface IShopService {
      * @return
      */
     public PagingResult<ShopListItem> queryAppShopList(ShopListRequest req);
+
+    /**
+     * 查询APP推荐商家
+     *
+     * @return
+     */
+    public List<RecommendItem> queryRecommendShop();
 
     /**
      * 增加商家

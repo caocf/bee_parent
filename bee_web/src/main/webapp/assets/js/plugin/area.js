@@ -21,9 +21,12 @@
 				}
 				var $select = $(document.createElement("select"));
 				if(settings.hasNull) {
-					$select.append($(document.createElement("option")));
-				}
+                    $select.append($(document.createElement("option")));
+                }
 				$.each(data, function(index, val) {
+                    if(index == 0 && !settings.hasNull) {
+                        $this.val(data[index].aid);
+                    }
 					var $option = $(document.createElement("option"));
 					$option.val(data[index].aid);
 					$option.html(data[index].name);

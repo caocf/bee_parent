@@ -3,6 +3,7 @@ package com.bee.services.shop.impl;
 import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
 import com.bee.dao.shop.ShopImageDao;
+import com.bee.modal.ShopImageListItem;
 import com.bee.pojo.shop.ShopImage;
 import com.bee.services.shop.IShopImageService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -22,6 +23,11 @@ public class ShopImageService implements IShopImageService {
 
     @Autowired
     private ShopImageDao shopImageDao;
+
+    @Override
+    public List<ShopImageListItem> queryAppShopImage(long sid) {
+        return shopImageDao.queryAppShopImage(sid);
+    }
 
     @Override
     public List<ShopImage> queryShopImageByShopId(long sid) {

@@ -82,6 +82,8 @@ public final class Consts {
             public static final int Big = 0;
             // 副图
             public static final int Thumbnail = 1;
+            // 相册图
+            public static final int Photo = 2;
         }
     }
 

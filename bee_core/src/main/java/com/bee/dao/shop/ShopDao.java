@@ -5,6 +5,7 @@ import com.bee.client.params.shop.ShopListRequest;
 import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
 import com.bee.commons.SQL;
+import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
@@ -56,6 +57,22 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
         entity.setPaging(params);
         return queryWithPaging(entity);
     }
+
+
+    public List<RecommendItem> queryRecommendShop() {
+        return findConverByParams(SQL.Shop.queryRecommendShop, new QueryDataConver<RecommendItem>() {
+            @Override
+            public RecommendItem converData(Object[] objects) {
+                RecommendItem item = new RecommendItem();
+                item.setShopId(NumberUtil.parseLong(objects[0], 0));
+                item.setName(StringUtil.parseString(objects[1], ""));
+                item.setImage(new ImageFactory.Image(
+                        StringUtil.parseString(objects[2], null), ImageFactory.ImageType.ShopListSize));
+                return item;
+            }
+        });
+    }
+
 
 
     public PagingResult<ShopListItem> queryAppShopList(ShopListRequest request) {

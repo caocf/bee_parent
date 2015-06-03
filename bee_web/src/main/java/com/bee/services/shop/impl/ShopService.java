@@ -7,6 +7,7 @@ import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopFocusDao;
 import com.bee.dao.shop.ShopImageDao;
 import com.bee.dao.user.UserFriendDao;
+import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
@@ -39,6 +40,10 @@ public class ShopService implements IShopService {
 
     public PagingResult<ShopListItem> queryAppShopList(ShopListRequest req) {
         return shopDao.queryAppShopList(req);
+    }
+
+    public List<RecommendItem> queryRecommendShop() {
+        return shopDao.queryRecommendShop();
     }
 
     @Override

@@ -6,14 +6,13 @@ package com.bee.pojo;
 public class Image {
 
     // 主键
-    private Long iid;
+    private Long imageId;
     // 网络地址
     private String url;
     // 本地路径
     private String path;
-    // 宽高
-    private Integer width;
-    private Integer height;
+    // 图片说明
+    private String remark;
     // 创建时间
     private Long createTime;
 }

@@ -12,8 +12,11 @@ import java.io.File;
  */
 public class ImageFactory {
 
+    private static final int Auto = 0;
+
     public enum ImageType {
-        UserImage, ShopListSize, ShopMainSize, ShopAdSize, PartyAdSize, PartyMainSize
+        UserImage, ShopListSize, ShopMainSize, ShopAdSize, PartyAdSize, PartyMainSize,
+        ShopImage
     }
 
     // 用户头像
@@ -29,6 +32,12 @@ public class ImageFactory {
     // 商家详细大图
     public static final int[][] ShopMainSize = new int[][]{
             new int[]{750, 360} // 720
+    };
+
+    // 商家图片
+    public static final int[][] ShopImageSize = new int[][] {
+            new int[] {340, 340}, // 720缩略图
+            new int[] {Auto, Auto} // 原尺寸图
     };
 
     // 首页广告尺寸
@@ -80,6 +89,8 @@ public class ImageFactory {
             sizes = PartyAdSize;
         } else if (ImageType.PartyMainSize == imageType) {
             sizes = PartyMainSize;
+        } else if (ImageType.ShopImage == imageType) {
+            sizes = ShopImageSize;
         }
 
         String filePath = "";
@@ -113,11 +124,13 @@ public class ImageFactory {
 
         // 750图片路径
         private String path720;
+        private String path;
 
         // 构造方法
         public Image(String path, ImageType type) {
             if(null == path || "".equals(path)) {
                 path720 = "";
+                path = "";
             } else {
                 if (ImageType.UserImage == type) {
                     this.path720 =
@@ -137,12 +150,20 @@ public class ImageFactory {
                 } else if (ImageType.PartyMainSize == type) {
                     this.path720 =
                             path + File.separator + "p_" + PartyMainSize[0][0] + "x" + PartyMainSize[0][1] + ".jpg";
+                } else if (ImageType.ShopImage == type) {
+                    this.path720 =
+                            path + File.separator + "p_" + ShopImageSize[0][0] + "x" + ShopImageSize[0][1] + ".jpg";
+                    this.path =
+                            path + File.separator + "p_" + ShopImageSize[1][0] + "x" + ShopImageSize[1][1] + ".jpg";
                 }
             }
         }
 
         public String getPath720() {
             return path720;
+        }
+        public String getPath() {
+            return path;
         }
     }
 
