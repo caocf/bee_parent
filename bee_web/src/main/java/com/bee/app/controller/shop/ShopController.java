@@ -41,8 +41,8 @@ public class ShopController {
      * @return
      */
     @RequestMapping(value = "/recommend", method = RequestMethod.GET)
-    public List<RecommendItem> queryRecommendShop() {
-        return shopService.queryRecommendShop();
+    public List<ShopListItem> queryRecommendShop(Long uid) {
+        return shopService.queryRecommendShop(uid);
     }
 
     /**

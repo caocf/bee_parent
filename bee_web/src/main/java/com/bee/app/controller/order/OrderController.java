@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 /**
  * Created by suntongwei on 15/4/24.
  */
@@ -90,9 +88,11 @@ public class OrderController {
     public BaseResponse finish(@PathVariable Long id) {
         BaseResponse res = new BaseResponse();
         try {
-
+            orderService.finishOrder(id);
+            res.setCode(Codes.Success);
         } catch(DataRunException e) {
-
+            e.printStackTrace();
+            res.setCode(Codes.Error);
         }
         return res;
     }

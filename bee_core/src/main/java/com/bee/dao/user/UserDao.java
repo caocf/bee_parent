@@ -9,6 +9,8 @@ import com.qsd.framework.hibernate.bean.HQLEntity;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by suntongwei on 15/4/16.
  */
@@ -38,6 +40,20 @@ public class UserDao extends JpaDaoSupport<User, Long> {
         return queryWithPaging(entity);
     }
 
-
+    /**
+     *
+     * @param ids
+     * @return
+     */
+    public List<User> getUsersByIdentity(long[] ids) {
+        HQLEntity entity = new HQLEntity();
+        StringBuffer sb = new StringBuffer(SQL.User.getUsersByIdentity);
+        for (int i = 0; i < ids.length; i++) {
+            sb.append(i == 0 ? " and ( A.sid = ?" : " or A.sid = ?");
+            entity.setParams(ids[i]);
+        }
+        sb.append(")");
+        return queryResult(entity);
+    }
 
 }

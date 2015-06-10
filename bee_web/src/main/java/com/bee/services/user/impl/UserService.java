@@ -27,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/15.
@@ -47,7 +48,19 @@ public class UserService implements IUserService {
 
     @Override
     public User getUserByIdentity(String identity) {
-        return userDao.findById(0l + Integer.valueOf(identity) - Consts.User.IdentityBaseNum);
+        return userDao.findById(Long.valueOf(identity) - Consts.User.IdentityBaseNum);
+    }
+
+    @Override
+    public List<User> getUsersByIdentity(String[] identity) {
+        if (null == identity || identity.length < 1) {
+            return null;
+        }
+        long[] ids = new long[identity.length];
+        for (int i = 0; i < ids.length; i++) {
+            ids[i] = Long.valueOf(identity[i]) - Consts.User.IdentityBaseNum;
+        }
+        return userDao.getUsersByIdentity(ids);
     }
 
     @Override
@@ -88,7 +101,7 @@ public class UserService implements IUserService {
 
     @Override
     @Transactional
-    public void saveAvatar(Long uid, MultipartFile file, HttpServletRequest req) throws RuntimeException {
+    public User saveAvatar(Long uid, MultipartFile file, HttpServletRequest req) throws RuntimeException {
         User user = userDao.findById(uid);
         if (!file.isEmpty()) {
             String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.UserImage, req, file);
@@ -96,6 +109,7 @@ public class UserService implements IUserService {
             user.setPath(paths[1]);
             userDao.update(user);
         }
+        return user;
     }
 
     @Override

@@ -33,7 +33,7 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
      * @param params
      * @return
      */
-    public PagingResult queryShopList(AdminShopListRequest params) {
+    public PagingResult<Shop> queryShopList(AdminShopListRequest params) {
         DataEntity entity = new HQLEntity();
         StringBuffer sb = new StringBuffer(SQL.Shop.queryShopList);
         if (params.getType() != null && params.getType() >= 0) {
@@ -59,27 +59,47 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
     }
 
 
-    public List<RecommendItem> queryRecommendShop() {
-        return findConverByParams(SQL.Shop.queryRecommendShop, new QueryDataConver<RecommendItem>() {
+    public List<ShopListItem> queryRecommendShop(long uid) {
+        return findConverByParams(SQL.Shop.queryRecommendShop, new QueryDataConver<ShopListItem>() {
             @Override
-            public RecommendItem converData(Object[] objects) {
-                RecommendItem item = new RecommendItem();
-                item.setShopId(NumberUtil.parseLong(objects[0], 0));
-                item.setName(StringUtil.parseString(objects[1], ""));
+            public ShopListItem converData(Object[] obj) {
+                ShopListItem item = new ShopListItem();
+                item.setShopId(NumberUtil.parseLong(obj[0], 0));
+                item.setName(StringUtil.parseString(obj[1], ""));
+                item.setAddr(StringUtil.parseString(obj[2], ""));
+                item.setPrice(NumberUtil.parseDouble(obj[3], 0));
+                item.setArea(StringUtil.parseString(obj[4], ""));
                 item.setImage(new ImageFactory.Image(
-                        StringUtil.parseString(objects[2], null), ImageFactory.ImageType.ShopListSize));
+                        StringUtil.parseString(obj[5], ""), ImageFactory.ImageType.ShopListSize));
+                item.setFocusNum(NumberUtil.parseInteger(obj[6], 0));
+                item.setFriendNum(NumberUtil.parseInteger(obj[7], 0));
+                item.setLon(NumberUtil.parseLong(obj[8], 0));
+                item.setLat(NumberUtil.parseLong(obj[9], 0));
+                item.setPhone(StringUtil.parseString(obj[10], ""));
+                item.setType(NumberUtil.parseInteger(obj[11], Consts.Shop.Type.Club));
+                item.setLinkName(StringUtil.parseString(obj[12], ""));
                 return item;
             }
-        });
+        }, uid);
     }
-
-
 
     public PagingResult<ShopListItem> queryAppShopList(ShopListRequest request) {
         SQLEntity entity = new SQLEntity();
         entity.setParam(request.getUid());
         StringBuffer sb = new StringBuffer(SQL.Shop.queryAppShopList);
-
+        if (request.getSearch() != null && !"".equals(request.getSearch())) {
+            sb.append(" and A.name like ?");
+            entity.setParams("%" + request.getSearch() + "%");
+        }
+        if (request.getTypes() != null && !"".equals(request.getTypes())) {
+            String[] types = request.getTypes().split(",");
+            sb.append(" and (");
+            for (int i = 0; i < types.length; i++) {
+                sb.append(i == 0 ? "A.type = ?" : " or A.type = ?");
+                entity.setParams(Integer.valueOf(types[i]));
+            }
+            sb.append(")");
+        }
         sb.append(SQL.Shop.queryAppShopListSort);
         entity.setEntity(sb.toString());
         entity.setPaging(request);
@@ -96,6 +116,11 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                         StringUtil.parseString(obj[5], ""), ImageFactory.ImageType.ShopListSize));
                 item.setFocusNum(NumberUtil.parseInteger(obj[6], 0));
                 item.setFriendNum(NumberUtil.parseInteger(obj[7], 0));
+                item.setLon(NumberUtil.parseLong(obj[8], 0));
+                item.setLat(NumberUtil.parseLong(obj[9], 0));
+                item.setPhone(StringUtil.parseString(obj[10], ""));
+                item.setType(NumberUtil.parseInteger(obj[11], Consts.Shop.Type.Club));
+                item.setLinkName(StringUtil.parseString(obj[12], ""));
                 return item;
             }
         });

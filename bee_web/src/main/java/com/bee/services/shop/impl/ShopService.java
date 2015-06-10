@@ -42,8 +42,8 @@ public class ShopService implements IShopService {
         return shopDao.queryAppShopList(req);
     }
 
-    public List<RecommendItem> queryRecommendShop() {
-        return shopDao.queryRecommendShop();
+    public List<ShopListItem> queryRecommendShop(long uid) {
+        return shopDao.queryRecommendShop(uid);
     }
 
     @Override

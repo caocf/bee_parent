@@ -125,38 +125,43 @@ public class ImageFactory {
         // 750图片路径
         private String path720;
         private String path;
+        private String remark;
 
         // 构造方法
-        public Image(String path, ImageType type) {
-            if(null == path || "".equals(path)) {
-                path720 = "";
-                path = "";
-            } else {
+        public Image(String toPath, ImageType type) {
+            path720 = "";
+            path = "";
+            remark = "";
+            if (toPath != null && !"".equals(toPath)) {
                 if (ImageType.UserImage == type) {
                     this.path720 =
-                            path + File.separator + "p_" + UserImage[0][0] + "x" + UserImage[0][1] + ".jpg";
+                            toPath + File.separator + "p_" + UserImage[0][0] + "x" + UserImage[0][1] + ".jpg";
                 } else if (ImageType.ShopListSize == type) {
                     this.path720 =
-                            path + File.separator + "p_" + ShopListSize[0][0] + "x" + ShopListSize[0][1] + ".jpg";
+                            toPath + File.separator + "p_" + ShopListSize[0][0] + "x" + ShopListSize[0][1] + ".jpg";
                 } else if (ImageType.PartyAdSize == type) {
                     this.path720 =
-                            path + File.separator + "p_" + PartyAdSize[0][0] + "x" + PartyAdSize[0][1] + ".jpg";
+                            toPath + File.separator + "p_" + PartyAdSize[0][0] + "x" + PartyAdSize[0][1] + ".jpg";
                 } else if (ImageType.ShopAdSize == type) {
                     this.path720 =
-                            path + File.separator + "p_" + ShopAdSize[0][0] + "x" + ShopAdSize[0][1] + ".jpg";
+                            toPath + File.separator + "p_" + ShopAdSize[0][0] + "x" + ShopAdSize[0][1] + ".jpg";
                 } else if (ImageType.ShopMainSize == type) {
                     this.path720 =
-                            path + File.separator + "p_" + ShopMainSize[0][0] + "x" + ShopMainSize[0][1] + ".jpg";
+                            toPath + File.separator + "p_" + ShopMainSize[0][0] + "x" + ShopMainSize[0][1] + ".jpg";
                 } else if (ImageType.PartyMainSize == type) {
                     this.path720 =
-                            path + File.separator + "p_" + PartyMainSize[0][0] + "x" + PartyMainSize[0][1] + ".jpg";
+                            toPath + File.separator + "p_" + PartyMainSize[0][0] + "x" + PartyMainSize[0][1] + ".jpg";
                 } else if (ImageType.ShopImage == type) {
                     this.path720 =
-                            path + File.separator + "p_" + ShopImageSize[0][0] + "x" + ShopImageSize[0][1] + ".jpg";
+                            toPath + File.separator + "p_" + ShopImageSize[0][0] + "x" + ShopImageSize[0][1] + ".jpg";
                     this.path =
-                            path + File.separator + "p_" + ShopImageSize[1][0] + "x" + ShopImageSize[1][1] + ".jpg";
+                            toPath + File.separator + "p_" + ShopImageSize[1][0] + "x" + ShopImageSize[1][1] + ".jpg";
                 }
             }
+        }
+        public Image(String toPath, ImageType type, String remark) {
+            this(toPath, type);
+            this.remark = remark;
         }
 
         public String getPath720() {

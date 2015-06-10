@@ -37,7 +37,7 @@ public interface IShopService {
      *
      * @return
      */
-    public List<RecommendItem> queryRecommendShop();
+    public List<ShopListItem> queryRecommendShop(long uid);
 
     /**
      * 增加商家

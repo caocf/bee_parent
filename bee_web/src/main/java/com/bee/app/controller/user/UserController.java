@@ -1,6 +1,7 @@
 package com.bee.app.controller.user;
 
 import com.bee.client.params.user.UserResponse;
+import com.bee.client.params.user.UsersResponse;
 import com.bee.commons.Codes;
 import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
@@ -45,11 +46,32 @@ public class UserController {
         return res;
     }
 
+    /**
+     *
+     *
+     * @param identitys
+     * @return
+     */
+    @RequestMapping(value = "/infos", method = RequestMethod.GET)
+    public UsersResponse getUsersByParams(String identitys) {
+        UsersResponse res = new UsersResponse();
+        String[] identity = identitys.split(",");
+        if (identity.length > 1) {
+            res.setCode(Codes.Success);
+            res.setUsers(userService.getUsersByIdentity(identity));
+        } else {
+            res.setCode(Codes.Error);
+            res.setMsg("参数错误");
+        }
+        return res;
+    }
+
+
     @RequestMapping(value = "/{uid}/save/avatar", method = RequestMethod.POST)
-    public BaseResponse saveAvatar(@PathVariable Long uid, MultipartFile file, HttpServletRequest req) {
-        BaseResponse res = new BaseResponse();
+    public UserResponse saveAvatar(@PathVariable Long uid, MultipartFile file, HttpServletRequest req) {
+        UserResponse res = new UserResponse();
         try {
-            userService.saveAvatar(uid, file, req);
+            res.setUser(userService.saveAvatar(uid, file, req));
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Error);

@@ -25,6 +25,11 @@ public class ShopComment implements java.io.Serializable {
     // 创建时间
     private Long createTime;
 
+    @Transient
+    public String getCreateTimeStr() {
+        return "";
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SCID", unique = true, nullable = false)

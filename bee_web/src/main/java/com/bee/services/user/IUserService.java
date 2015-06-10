@@ -7,6 +7,7 @@ import com.qsd.framework.spring.PagingResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/15.
@@ -30,6 +31,13 @@ public interface IUserService {
     public User getUserByIdentity(String identity);
 
     /**
+     *
+     * @param identity
+     * @return
+     */
+    public List<User> getUsersByIdentity(String[] identity);
+
+    /**
      * 创建注册用户
      *
      * @param user
@@ -47,7 +55,7 @@ public interface IUserService {
     /**
      * 保存用户头像
      */
-    public void saveAvatar(Long uid, MultipartFile file, HttpServletRequest request) throws DataRunException;
+    public User saveAvatar(Long uid, MultipartFile file, HttpServletRequest request) throws DataRunException;
 
     /**
      * 保存用户昵称

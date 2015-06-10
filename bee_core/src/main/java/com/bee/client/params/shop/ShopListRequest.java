@@ -11,7 +11,23 @@ public class ShopListRequest extends PagingRequest {
     private static final long serialVersionUID = -7814828946282931137L;
 
     private Long uid;
+    private String search;
+    private String types;
 
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+    public void setSearch(String search) {
+        this.search = search;
+    }
     public Long getUid() {
         return uid;
     }
