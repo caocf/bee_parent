@@ -10,6 +10,7 @@ public class ShopCommentListItem implements java.io.Serializable {
     private static final long serialVersionUID = 9055067474898693248L;
 
     private Long scid;
+    private Long shopId;
     private String name;
     private Long createTime;
     private String content;
@@ -23,6 +24,14 @@ public class ShopCommentListItem implements java.io.Serializable {
 
     public void setScid(Long scid) {
         this.scid = scid;
+    }
+
+    public Long getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Long shopId) {
+        this.shopId = shopId;
     }
 
     public String getName() {

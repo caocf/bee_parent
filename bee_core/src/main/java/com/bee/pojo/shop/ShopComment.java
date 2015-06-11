@@ -30,6 +30,11 @@ public class ShopComment implements java.io.Serializable {
         return "";
     }
 
+    public ShopComment(){}
+    public ShopComment(Long scid) {
+        this.scid = scid;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SCID", unique = true, nullable = false)

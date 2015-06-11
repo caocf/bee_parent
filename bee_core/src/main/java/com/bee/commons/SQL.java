@@ -95,11 +95,18 @@ public final class SQL {
 
         public static final class Comment {
             public static final String getAppCommentList = "SELECT " +
-                    "A.SCID, A.CONTENT, A.CREATETIME, B.UID, B.NAME, B.URL " +
+                    "A.SCID, A.CONTENT, A.CREATETIME, B.UID, B.NAME, B.URL, A.SHOP " +
                     "FROM TB_SHOP_COMMENT A " +
                     "LEFT OUTER JOIN TB_USER B " +
                     "ON A.USER = B.UID " +
                     "WHERE A.SHOP = ? ORDER BY A.CREATETIME DESC";
+        }
+
+        public static final class Reply {
+            public static final String queryAppReplyList = "SELECT " +
+                    "A.SRID,A.CONTENT,B.NAME,B.URL,A.CREATETIME FROM TB_SHOP_REPLY A " +
+                    "LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
+                    "WHERE A.SHOPCOMMENT = ? ORDER BY A.CREATETIME DESC";
         }
     }
 
