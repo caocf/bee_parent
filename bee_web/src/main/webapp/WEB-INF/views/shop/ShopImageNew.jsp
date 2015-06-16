@@ -38,9 +38,9 @@
           <label class="btn btn-default <c:if test="${image.type == 0}">active</c:if>">
               <input type="radio" name="type" value="0" autocomplete="off" <c:if test="${image.type == 0}">checked="checked"</c:if>> &nbsp;主图&nbsp;
             </label>
-            <label class="btn btn-default <c:if test="${image.type == 1}">active</c:if>">
-              <input type="radio" name="type" value="1" autocomplete="off" <c:if test="${image.type == 1}">checked="checked"</c:if>> 缩略图
-            </label>
+              <label class="btn btn-default <c:if test="${image.type == 2}">active</c:if>">
+                  <input type="radio" name="type" value="2" autocomplete="off" <c:if test="${image.type == 2}">checked="checked"</c:if>> 相册图
+              </label>
           </div>
         </div>
       </div>

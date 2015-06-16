@@ -36,8 +36,6 @@ public class ShopImage implements java.io.Serializable {
     public ImageFactory.Image getImage() {
         ImageFactory.ImageType imageType = null;
         if(getType() == Consts.Shop.ImageType.Big) {
-            imageType = ImageFactory.ImageType.ShopMainSize;
-        } else if(getType() == Consts.Shop.ImageType.Thumbnail) {
             imageType = ImageFactory.ImageType.ShopListSize;
         } else if(getType() == Consts.Shop.ImageType.Photo) {
             imageType = ImageFactory.ImageType.ShopImage;
@@ -51,9 +49,6 @@ public class ShopImage implements java.io.Serializable {
         switch (getType()) {
             case Consts.Shop.ImageType.Big:
                 s = "主图";
-                break;
-            case Consts.Shop.ImageType.Thumbnail:
-                s = "缩略图";
                 break;
             case Consts.Shop.ImageType.Photo:
                 s = "相册图";

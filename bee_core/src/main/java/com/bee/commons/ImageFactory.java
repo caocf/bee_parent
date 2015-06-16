@@ -4,8 +4,11 @@ import com.qsd.framework.commons.utils.FileUtil;
 import com.qsd.framework.commons.utils.ImageUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by suntongwei on 15/4/23.
@@ -15,7 +18,7 @@ public class ImageFactory {
     private static final int Auto = 0;
 
     public enum ImageType {
-        UserImage, ShopListSize, ShopMainSize, ShopAdSize, PartyAdSize, PartyMainSize,
+        UserImage, ShopListSize, ShopAdSize, PartyAdSize, PartyMainSize,
         ShopImage
     }
 
@@ -26,12 +29,9 @@ public class ImageFactory {
 
     // 商家列表缩略图
     public static final int[][] ShopListSize = new int[][]{
-            new int[]{160, 160} // 720
-    };
-
-    // 商家详细大图
-    public static final int[][] ShopMainSize = new int[][]{
-            new int[]{750, 360} // 720
+            new int[] {750, 400},
+            new int[] {160, 160}, // 720
+            new int[] {215, 290}  // 推荐缩略图
     };
 
     // 商家图片
@@ -81,8 +81,6 @@ public class ImageFactory {
             sizes = UserImage;
         } else if (ImageType.ShopListSize == imageType) {
             sizes = ShopListSize;
-        } else if (ImageType.ShopMainSize == imageType) {
-            sizes = ShopMainSize;
         } else if (ImageType.ShopAdSize == imageType) {
             sizes = ShopAdSize;
         } else if (ImageType.PartyAdSize == imageType) {
@@ -93,15 +91,13 @@ public class ImageFactory {
             sizes = ShopImageSize;
         }
 
-        String filePath = "";
+        String filePath;
         for (int i = 0; i < sizes.length; i++) {
-            int[] size = sizes[i];
-            filePath = path + File.separator + "p_" + size[0] + "x" + size[1] + ".jpg";
-            ImageUtils.zoomImage(size[0], size[1], mFile, new File(filePath));
+            filePath = path + File.separator + "p_" + sizes[i][0] + "x" + sizes[i][1] + ".jpg";
+            ImageUtils.zoomImage(sizes[i][0], sizes[i][1], mFile, new File(filePath));
         }
         return new String[]{p, path};
     }
-
 
     /**
      * 删除本地图片
@@ -126,12 +122,14 @@ public class ImageFactory {
         private String path720;
         private String path;
         private String remark;
+        private String baseUrl;
 
         // 构造方法
         public Image(String toPath, ImageType type) {
             path720 = "";
             path = "";
             remark = "";
+            baseUrl = toPath;
             if (toPath != null && !"".equals(toPath)) {
                 if (ImageType.UserImage == type) {
                     this.path720 =
@@ -145,9 +143,6 @@ public class ImageFactory {
                 } else if (ImageType.ShopAdSize == type) {
                     this.path720 =
                             toPath + File.separator + "p_" + ShopAdSize[0][0] + "x" + ShopAdSize[0][1] + ".jpg";
-                } else if (ImageType.ShopMainSize == type) {
-                    this.path720 =
-                            toPath + File.separator + "p_" + ShopMainSize[0][0] + "x" + ShopMainSize[0][1] + ".jpg";
                 } else if (ImageType.PartyMainSize == type) {
                     this.path720 =
                             toPath + File.separator + "p_" + PartyMainSize[0][0] + "x" + PartyMainSize[0][1] + ".jpg";
@@ -169,6 +164,15 @@ public class ImageFactory {
         }
         public String getPath() {
             return path;
+        }
+        public String getRemark() {
+            return remark;
+        }
+        public String getBaseUrl() {
+            return baseUrl;
+        }
+        public void setBaseUrl(String baseUrl) {
+            this.baseUrl = baseUrl;
         }
     }
 

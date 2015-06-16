@@ -146,7 +146,7 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setArea(StringUtil.parseString(obj[9], ""));
                 item.setType(NumberUtil.parseInteger(obj[10], Consts.Shop.Type.Club));
                 item.setImage(new ImageFactory.Image(
-                                StringUtil.parseString(obj[11], ""), ImageFactory.ImageType.ShopMainSize));
+                                StringUtil.parseString(obj[11], ""), ImageFactory.ImageType.ShopListSize));
                 return item;
             }
         }, sid);

@@ -1,8 +1,6 @@
 package com.bee.commons;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,7 +8,7 @@ import java.util.Map;
  */
 public final class Consts {
 
-    public static final boolean isDebug = true;
+    public static final boolean isDebug = false;
     private static final String LocalBaseUrl = "http://localhost:8080";
     private static final String RemoteBaseUrl = "http://120.26.103.71";
 
@@ -80,8 +78,6 @@ public final class Consts {
         public static final class ImageType {
             // 主图
             public static final int Big = 0;
-            // 副图
-            public static final int Thumbnail = 1;
             // 相册图
             public static final int Photo = 2;
         }

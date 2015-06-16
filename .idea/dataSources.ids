@@ -51,6 +51,14 @@
       <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="FID"/>
     </table>
+    <table name="TB_FIND_REPLY" schema="" catalog="db_bee" type="TABLE">
+      <column name="FRID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="CONTENT" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="FIND" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="FRID"/>
+    </table>
     <table name="TB_IMAGE" schema="" catalog="db_bee" type="TABLE">
       <column name="IID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="URL" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
@@ -156,6 +164,7 @@
       <primary-key name="PRIMARY" columns="SCID"/>
       <foreign-key name="FK_p3uso2ofagv3wrtqd8p5sgi1f" columns="USER" ref-table="TB_USER" ref-schema="" ref-catalog="db_bee" ref-columns="UID" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_49i4k8jji8vklwaxtmjswfayc" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_rwu24uqccj8jst2xq4nhj9t2a" table="TB_SHOP_REPLY" schema="" catalog="db_bee" columns="SHOPCOMMENT"/>
       <index name="FK_49i4k8jji8vklwaxtmjswfayc" unique="false" columns="SHOP"/>
       <index name="FK_p3uso2ofagv3wrtqd8p5sgi1f" unique="false" columns="USER"/>
     </table>
@@ -210,6 +219,10 @@
       <column name="SHOPCOMMENT" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="SRID"/>
+      <foreign-key name="FK_sqfmvviraajte460iib5u8kwn" columns="USER" ref-table="TB_USER" ref-schema="" ref-catalog="db_bee" ref-columns="UID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_rwu24uqccj8jst2xq4nhj9t2a" columns="SHOPCOMMENT" ref-table="TB_SHOP_COMMENT" ref-schema="" ref-catalog="db_bee" ref-columns="SCID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_rwu24uqccj8jst2xq4nhj9t2a" unique="false" columns="SHOPCOMMENT"/>
+      <index name="FK_sqfmvviraajte460iib5u8kwn" unique="false" columns="USER"/>
     </table>
     <table name="TB_USER" schema="" catalog="db_bee" type="TABLE">
       <column name="UID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -230,6 +243,7 @@
       <exported-key name="FK_42snp5hosxsmqgocio607e30b" table="TB_PARTY_USER" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_p3uso2ofagv3wrtqd8p5sgi1f" table="TB_SHOP_COMMENT" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_hfnwplmri8wf8syg561a3nxjy" table="TB_SHOP_FOCUS" schema="" catalog="db_bee" columns="USER"/>
+      <exported-key name="FK_sqfmvviraajte460iib5u8kwn" table="TB_SHOP_REPLY" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_d3pibi4obqeeixcfv3lwtu7o5" table="TB_USER_FRIEND" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_f3qp1kau0b5wjmyqaw5gfqtdk" table="TB_USER_FRIEND" schema="" catalog="db_bee" columns="FRIEND"/>
       <exported-key name="FK_82fe7qd5vvr4g7dbi0kuro9we" table="TB_USER_LOGIN_STAT" schema="" catalog="db_bee" columns="USER"/>

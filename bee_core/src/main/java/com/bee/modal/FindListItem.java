@@ -16,7 +16,7 @@ public class FindListItem implements java.io.Serializable {
     private Long shopId;
     private String shopName;
     private ImageFactory.Image shopImage;
-    private Integer commentNum;
+    private Integer replyNum;
 
     public Long getFindId() {
         return findId;
@@ -82,12 +82,12 @@ public class FindListItem implements java.io.Serializable {
         this.shopImage = shopImage;
     }
 
-    public Integer getCommentNum() {
-        return commentNum;
+    public Integer getReplyNum() {
+        return replyNum;
     }
 
-    public void setCommentNum(Integer commentNum) {
-        this.commentNum = commentNum;
+    public void setReplyNum(Integer replyNum) {
+        this.replyNum = replyNum;
     }
 
     public Long getShopId() {

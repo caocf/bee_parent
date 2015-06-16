@@ -23,6 +23,11 @@ public class Find implements java.io.Serializable {
     // 所属商家
     private Shop shop;
 
+    public Find() {}
+    public Find(Long id) {
+        fid = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FID", unique = true, nullable = false)

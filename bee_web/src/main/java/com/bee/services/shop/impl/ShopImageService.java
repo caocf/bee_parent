@@ -81,10 +81,13 @@ public class ShopImageService implements IShopImageService {
 
     private ImageFactory.ImageType getImageType(int type) {
         ImageFactory.ImageType imageType = null;
-        if (type == Consts.Shop.ImageType.Big) {
-            imageType = ImageFactory.ImageType.ShopMainSize;
-        } else if (type == Consts.Shop.ImageType.Thumbnail) {
-            imageType = ImageFactory.ImageType.ShopListSize;
+        switch (type) {
+            case Consts.Shop.ImageType.Big:
+                imageType = ImageFactory.ImageType.ShopListSize;
+                break;
+            case Consts.Shop.ImageType.Photo:
+                imageType = ImageFactory.ImageType.ShopImage;
+                break;
         }
         return imageType;
     }

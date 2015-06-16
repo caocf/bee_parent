@@ -30,7 +30,6 @@ public class FindDao extends JpaDaoSupport<Find, Long> {
         entity.setQueryDataConver(new QueryDataConver<FindListItem>() {
             @Override
             public FindListItem converData(Object[] objs) {
-                // A.FID, B.UID, B.NAME AS USERNAME, B.URL, A.CREATETIME, A.CONTENT, C.SID, C.NAME, IMAGE
                 FindListItem item = new FindListItem();
                 item.setFindId(NumberUtil.parseLong(objs[0], 0));
                 item.setUserId(NumberUtil.parseLong(objs[1], 0));
@@ -45,6 +44,7 @@ public class FindDao extends JpaDaoSupport<Find, Long> {
                 item.setShopImage(new ImageFactory.Image(
                         StringUtil.parseString(objs[8], null), ImageFactory.ImageType.ShopListSize
                 ));
+                item.setReplyNum(NumberUtil.parseInteger(objs[9], 0));
                 return item;
             }
         });

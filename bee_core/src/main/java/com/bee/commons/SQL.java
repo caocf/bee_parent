@@ -50,7 +50,7 @@ public final class SQL {
         public static final String queryRecommendShop =
                 "select " +
                         "A.sid,A.name,A.addr,A.price,B.name as area," +
-                        "(select C.url from TB_SHOP_IMAGE C where C.shop = A.sid and C.type = " + Consts.Shop.ImageType.Thumbnail + " order by C.sort desc limit 1) as image, " +
+                        "(select C.url from TB_SHOP_IMAGE C where C.shop = A.sid and C.type = " + Consts.Shop.ImageType.Big + " order by C.sort desc limit 1) as image, " +
                         "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                         "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
                         "A.lon, A.lat, A.phone, A.type, A.linkName " +
@@ -63,7 +63,7 @@ public final class SQL {
         public static final String queryAppShopList =
                 "select " +
                 "A.sid,A.name,A.addr,A.price,B.name as area," +
-                "(select C.url from TB_SHOP_IMAGE C where C.shop = A.sid and C.type = " + Consts.Shop.ImageType.Thumbnail + " order by C.sort desc limit 1) as image, " +
+                "(select C.url from TB_SHOP_IMAGE C where C.shop = A.sid and C.type = " + Consts.Shop.ImageType.Big + " order by C.sort desc limit 1) as image, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
                 "A.lon, A.lat, A.phone, A.type, A.linkName " +
@@ -124,10 +124,18 @@ public final class SQL {
 
         public static final String queryAppFindList = "SELECT " +
                 "A.FID, B.UID, B.NAME AS USERNAME, B.URL, A.CREATETIME, A.CONTENT, C.SID, C.NAME, " +
-                "(SELECT D.url FROM TB_SHOP_IMAGE D WHERE D.SHOP = C.SID AND C.TYPE = " + Consts.Shop.ImageType.Thumbnail + " ORDER BY C.SORT DESC LIMIT 1) AS IMAGE " +
+                "(SELECT D.url FROM TB_SHOP_IMAGE D WHERE D.SHOP = C.SID AND C.TYPE = " + Consts.Shop.ImageType.Big + " ORDER BY C.SORT DESC LIMIT 1) AS IMAGE, " +
+                "(SELECT COUNT(*) FROM TB_FIND_REPLY D WHERE D.FIND = A.FID) AS REPLYNUM " +
                 "FROM TB_FIND A LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +
                 "ORDER BY A.CREATETIME DESC";
+
+        public static final class Reply {
+            public static final String queryAppReplyList = "SELECT " +
+                    "A.FRID,A.CONTENT,B.NAME,B.URL,A.CREATETIME FROM TB_FIND_REPLY A " +
+                    "LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
+                    "WHERE A.FIND = ? ORDER BY A.CREATETIME DESC";
+        }
     }
 
     public static final class AppVer {
