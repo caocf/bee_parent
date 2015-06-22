@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public final class Consts {
 
-    public static final boolean isDebug = false;
+    public static final boolean isDebug = true;
     private static final String LocalBaseUrl = "http://localhost:8080";
     private static final String RemoteBaseUrl = "http://120.26.103.71";
 
@@ -85,14 +85,25 @@ public final class Consts {
 
     public static final class Order {
 
+        public static final class Type {
+            // 主订单
+            public static final int Master = 0x1;
+            // 子订单
+            public static final int Child = 0x2;
+        }
+
         public static final String ExecTimeType = "yyyy-MM-dd HH:mm";
 
         public static final class Status {
+            // 子订单，等待用户确认
+            public static final int Create = 1;
             // 等待确认
-            public static final int Execute = 1;
+            public static final int Execute = 2;
             // 等待到店
             public static final int Progress = 10;
-            // 已取消
+            // 确认到店
+            public static final int Confirm = 40;
+            // 已取消(用户取消)
             public static final int Cancel = 50;
             // 商家取消
             public static final int ShopCancel = 51;
@@ -115,7 +126,7 @@ public final class Consts {
                     String query = " > 0";
                     switch(queryStatus) {
                         case Query.Monitor:
-                            query = " = 1";
+                            query = " = 2";
                             break;
                         case Query.Ing:
                             query = " < 50";

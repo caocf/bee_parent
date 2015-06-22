@@ -1,6 +1,7 @@
 package com.bee.services.order;
 
 import com.bee.client.params.order.AdminOrderListRequest;
+import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.modal.OrderListItem;
 import com.bee.pojo.order.Order;
@@ -33,10 +34,10 @@ public interface IOrderService {
     /**
      * 创建订单
      *
-     * @param order
+     * @param req
      * @throws DataRunException
      */
-    public void createOrder(Order order) throws DataRunException;
+    public void createOrder(OrderCreateRequest req) throws DataRunException;
 
     /**
      * 接受订单

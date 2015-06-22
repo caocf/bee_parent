@@ -51,7 +51,7 @@ public class ShopController {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ShopItem getShopItem(@PathVariable Long id) {
+    public ShopListItem getShopItem(@PathVariable Long id) {
         return shopService.getShopItemById(id);
     }
 }

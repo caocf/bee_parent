@@ -14,7 +14,7 @@ public final class SQL {
     public static final class User {
         // 根据帐号查询用户
         public static final String queryUserByAccount = "From User A where A.phone = ?";
-        public static final String getUsersByIdentity = "From User A where 1=1";
+        public static final String getUsersByIdentity = "From User A where A.uid in";
         // 根据参数查询用户列表
         public static final String queryUserListByParams = "From User A where 1=1";
         public static final String queryUserListByParamsSort = " order by A.uid desc";
@@ -49,15 +49,15 @@ public final class SQL {
         // 查询推荐商家
         public static final String queryRecommendShop =
                 "select " +
-                        "A.sid,A.name,A.addr,A.price,B.name as area," +
-                        "(select C.url from TB_SHOP_IMAGE C where C.shop = A.sid and C.type = " + Consts.Shop.ImageType.Big + " order by C.sort desc limit 1) as image, " +
-                        "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
-                        "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                        "A.lon, A.lat, A.phone, A.type, A.linkName " +
-                        "from TB_SHOP A " +
-                        "left outer join TB_AREA B " +
-                        "on A.area = B.aid  " +
-                        "where A.recommend = " + Consts.True + " and A.status = " + Consts.Shop.Status.Run + " order by A.sort desc limit 6";
+                "A.sid,A.name,A.addr,A.price,B.name as area," +
+                "(select C.url from TB_SHOP_IMAGE C where C.shop = A.sid and C.type = " + Consts.Shop.ImageType.Big + " order by C.sort desc limit 1) as image, " +
+                "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
+                "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
+                "A.lon, A.lat, A.phone, A.type, A.linkName " +
+                "from TB_SHOP A " +
+                "left outer join TB_AREA B " +
+                "on A.area = B.aid  " +
+                "where A.recommend = " + Consts.True + " and A.status = " + Consts.Shop.Status.Run + " order by A.sort desc limit 6";
 
         // 查询好友关注数
         public static final String queryAppShopList =
@@ -110,11 +110,12 @@ public final class SQL {
         }
     }
 
+    /**
+     * 订单模块SQL
+     */
     public static final class Order {
-
         public static final String getAppOrderListByParam = "select B.name, A.execTime, A.num, A.status, A.oid from TB_ORDER A " +
                 "left outer join TB_SHOP B on A.shop = B.sid where 1=1 ";
-
         public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
                 "left join fetch A.user C left join fetch B.area D where 1=1 ";
         public static final String getOrderListByParamOrder = " order by A.status asc, A.createTime desc";
@@ -141,6 +142,8 @@ public final class SQL {
     public static final class AppVer {
         // 获取app版本列表
         public static final String getAppVerList = "From AppVer A order by A.createTime desc";
+        // 根据手机类型返回最新版本号
+        public static final String getNewAppVer = "From AppVer A where A.type = ? order by A.createTime desc";
     }
 
 

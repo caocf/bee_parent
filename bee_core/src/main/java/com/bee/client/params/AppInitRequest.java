@@ -12,6 +12,16 @@ public class AppInitRequest extends AppRequest {
 
     // 上次同步时间
     private Long updateTime;
+    // 用户ID
+    private Long uid;
+
+    public Long getUid() {
+        return uid;
+    }
+
+    public void setUid(Long uid) {
+        this.uid = uid;
+    }
 
     public Long getUpdateTime() {
         long curTime = System.currentTimeMillis();

@@ -31,6 +31,11 @@ public class AppVerService implements IAppVerService {
     }
 
     @Override
+    public AppVer getNewAppVer(int phoneType) {
+        return appVerDao.getNewAppVer(phoneType);
+    }
+
+    @Override
     @Transactional
     public void saveAppVer(AppVer appVer, MultipartFile file, HttpServletRequest req) throws DataRunException, IOException {
         String fileName = "";
@@ -48,7 +53,7 @@ public class AppVerService implements IAppVerService {
             throw e;
         }
         try {
-            appVer.setUrl(File.separator + "app" + fileName);
+            appVer.setUrl(Consts.getBaseUrl() + File.separator + "app" + fileName);
             appVer.setCreateTime(System.currentTimeMillis());
             appVerDao.save(appVer);
         } catch (DataRunException e) {

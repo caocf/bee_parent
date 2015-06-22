@@ -42,6 +42,10 @@ public class AppVer implements java.io.Serializable {
      * 发布日期
      */
     private Long createTime;
+    /**
+     * 说明
+     */
+    private String remark;
 
     @Transient
     public String getTypeStr() {
@@ -108,5 +112,12 @@ public class AppVer implements java.io.Serializable {
     }
     public void setUrl(String url) {
         this.url = url;
+    }
+    @Column(name = "REMARK")
+    public String getRemark() {
+        return remark;
+    }
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

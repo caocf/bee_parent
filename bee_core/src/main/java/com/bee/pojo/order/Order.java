@@ -21,7 +21,7 @@ public class Order implements java.io.Serializable {
     private Long oid;
     // 订单编号
     private String no;
-    // 订单类型=商家类型
+    // 订单类型
     private Integer type;
     // 订单状态
     private Integer status;
@@ -43,6 +43,22 @@ public class Order implements java.io.Serializable {
     private Shop shop;
     // 订单创建时间
     private Long createTime;
+    // 主订单ID
+    private Long parentId;
+
+    @Transient
+    public String getTypeStr() {
+        String ret = "";
+        switch (getType()) {
+            case Consts.Order.Type.Master:
+                ret = "主订单";
+                break;
+            case Consts.Order.Type.Child:
+                ret = "子订单";
+                break;
+        }
+        return ret;
+    }
 
     @Transient
     public String getExecTimeStr() {
@@ -59,8 +75,14 @@ public class Order implements java.io.Serializable {
             case Consts.Order.Status.Progress:
                 status = "等待到店";
                 break;
+            case Consts.Order.Status.Confirm:
+                status = "确认到店";
+                break;
             case Consts.Order.Status.Finish:
                 status = "已完成";
+                break;
+            case Consts.Order.Status.Create:
+                status = "等待接受";
                 break;
             case Consts.Order.Status.Cancel:
                 status = "已取消";
@@ -180,5 +202,12 @@ public class Order implements java.io.Serializable {
     }
     public void setOrderPhone(String orderPhone) {
         this.orderPhone = orderPhone;
+    }
+    @Column(name = "PARENTID")
+    public Long getParentId() {
+        return parentId;
+    }
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 }

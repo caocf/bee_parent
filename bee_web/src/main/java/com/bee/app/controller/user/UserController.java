@@ -3,6 +3,7 @@ package com.bee.app.controller.user;
 import com.bee.client.params.user.UserResponse;
 import com.bee.client.params.user.UsersResponse;
 import com.bee.commons.Codes;
+import com.bee.core.UserCacheFactory;
 import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
 import com.qsd.framework.commons.utils.StringUtil;
@@ -55,16 +56,18 @@ public class UserController {
     @RequestMapping(value = "/infos", method = RequestMethod.GET)
     public UsersResponse getUsersByParams(String identitys) {
         UsersResponse res = new UsersResponse();
-        String[] identity = identitys.split(",");
-        if (identity.length > 1) {
-            res.setCode(Codes.Success);
-            res.setUsers(userService.getUsersByIdentity(identity));
-        } else {
-            res.setCode(Codes.Error);
-            res.setMsg("参数错误");
+        if (!StringUtil.isNull(identitys)) {
+            String[] identityArray = identitys.split(",");
+            if (identityArray != null && identityArray.length > 0) {
+                res.setCode(Codes.Success);
+                res.setUsers(UserCacheFactory.getInstance().getUsers(identityArray));
+                return res;
+            }
         }
+        res.setCode(Codes.Error);
         return res;
     }
+
 
 
     @RequestMapping(value = "/{uid}/save/avatar", method = RequestMethod.POST)

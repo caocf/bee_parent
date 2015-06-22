@@ -21,8 +21,17 @@ public class AppInitResponse extends BaseResponse {
      * 新的广告
      */
     private List<AdListItem> newAds;
+    /**
+     * 最新APP版本
+     */
+    private Integer newVersion;
 
-
+    public Integer getNewVersion() {
+        return newVersion;
+    }
+    public void setNewVersion(Integer newVersion) {
+        this.newVersion = newVersion;
+    }
     public List<AdListItem> getNewAds() {
         return newAds;
     }

@@ -16,4 +16,8 @@ public class AppVerDao extends JpaDaoSupport<AppVer, Long> {
     public List<AppVer> getAppVerList() {
         return findByParams(SQL.AppVer.getAppVerList);
     }
+
+    public AppVer getNewAppVer(int phoneType) {
+        return findFirstByParams(SQL.AppVer.getNewAppVer, phoneType);
+    }
 }

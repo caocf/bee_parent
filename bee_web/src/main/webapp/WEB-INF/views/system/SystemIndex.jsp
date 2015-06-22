@@ -18,7 +18,7 @@
   <body class="shop">
   	<%@ include file="../includes/navtop.jsp" %>
   	<%@ include file="../includes/navleft.jsp" %>
-  	<%@ include file="ShopMenu.jsp" %>
+  	<%@ include file="SystemMenu.jsp" %>
   	<div class="main inner">
   		
   	</div>

@@ -60,7 +60,7 @@ public interface IShopService {
      * @param sid
      * @return
      */
-    public ShopItem getShopItemById(long sid);
+    public ShopListItem getShopItemById(long sid);
 
     /**
      * 删除商家

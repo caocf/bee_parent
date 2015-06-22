@@ -44,6 +44,8 @@ public class User implements java.io.Serializable, ISecurityUser {
     private Integer level;
     // 用户积分
     private Integer integral;
+    // 用户现金
+    private Double cash;
     // 用户关注的商家
     private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
 
@@ -185,5 +187,12 @@ public class User implements java.io.Serializable, ISecurityUser {
     }
     public void setPath(String path) {
         this.path = path;
+    }
+    @Column(name = "CASH")
+    public Double getCash() {
+        return cash;
+    }
+    public void setCash(Double cash) {
+        this.cash = cash;
     }
 }

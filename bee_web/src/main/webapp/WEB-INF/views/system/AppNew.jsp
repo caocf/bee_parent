@@ -64,6 +64,13 @@
           </div>
         </div>
         <div class="form-group">
+          <label class="col-xs-1 control-label">版本说明</label>
+          <div class="col-xs-4">
+              <input type="text" name="remark" placeholder="版本说明" class="form-control" value="${app.remark}" />
+              <p class="help-block">数字越大，版本越新</p>
+          </div>
+        </div>
+        <div class="form-group">
           <label class="col-xs-1 control-label"></label>
           <div class="col-xs-4">
             <button type="button" class="btn btn-success" onclick="doSubmit()">保存</button>

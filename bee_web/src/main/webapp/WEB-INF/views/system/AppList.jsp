@@ -19,7 +19,7 @@
   	<%@ include file="../includes/navtop.jsp" %>
   	<%@ include file="../includes/navleft.jsp" %>
   	<%@ include file="SystemMenu.jsp" %>
-    <s:form id="deleteForm" method="delete"></s:form>
+    <form:form id="deleteForm" method="delete"></form:form>
   	<div class="main inner">
   		<div class="row title">
         <span class="before">App版本列表</span>

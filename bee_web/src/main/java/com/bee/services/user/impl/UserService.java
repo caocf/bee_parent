@@ -3,6 +3,7 @@ package com.bee.services.user.impl;
 import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
+import com.bee.core.UserCacheFactory;
 import com.bee.dao.user.UserDao;
 import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
@@ -15,6 +16,7 @@ import com.easemob.server.httpclient.vo.Credential;
 import com.easemob.server.httpclient.vo.EndPoints;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.encrypt.Base64;
 import com.qsd.framework.security.encrypt.Md5;
@@ -47,18 +49,27 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public List<User> getAllUser() {
+        return userDao.findAll();
+    }
+
+    @Override
     public User getUserByIdentity(String identity) {
         return userDao.findById(Long.valueOf(identity) - Consts.User.IdentityBaseNum);
     }
 
     @Override
-    public List<User> getUsersByIdentity(String[] identity) {
-        if (null == identity || identity.length < 1) {
+    public List<User> getUsersByIdentity(String identity) {
+        if (StringUtil.isNull(identity)) {
             return null;
         }
-        long[] ids = new long[identity.length];
-        for (int i = 0; i < ids.length; i++) {
-            ids[i] = Long.valueOf(identity[i]) - Consts.User.IdentityBaseNum;
+        String[] identitys = identity.split(",");
+        String ids = "";
+        for (String ide : identitys) {
+            ids += "," + (Long.valueOf(ide) - Consts.User.IdentityBaseNum);
+        }
+        if (!StringUtil.isNull(ids)) {
+            ids = ids.substring(1);
         }
         return userDao.getUsersByIdentity(ids);
     }
@@ -92,6 +103,9 @@ public class UserService implements IUserService {
         ObjectNode res = HTTPClientUtils.sendHTTPRequest(EndPoints.USERS_URL, credential, datanode,
                 HTTPMethod.METHOD_POST);
         Log.debug("[HX_Response]Register:" + res.toString());
+
+        // 把用户放入缓存
+        UserCacheFactory.getInstance().put(user);
     }
 
     @Override
@@ -119,4 +133,5 @@ public class UserService implements IUserService {
         user.setName(nickName);
         userDao.update(user);
     }
+
 }

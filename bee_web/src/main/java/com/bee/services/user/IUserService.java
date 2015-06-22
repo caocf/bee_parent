@@ -23,6 +23,13 @@ public interface IUserService {
     public User getUserByAccount(String account);
 
     /**
+     * 获取所有用户
+     *
+     * @return
+     */
+    public List<User> getAllUser();
+
+    /**
      * 根据用户标识
      *
      * @param identity
@@ -35,7 +42,7 @@ public interface IUserService {
      * @param identity
      * @return
      */
-    public List<User> getUsersByIdentity(String[] identity);
+    public List<User> getUsersByIdentity(String identity);
 
     /**
      * 创建注册用户
@@ -63,4 +70,5 @@ public interface IUserService {
      * @throws DataRunException
      */
     public void saveNickName(long uid, String nickName) throws DataRunException;
+
 }

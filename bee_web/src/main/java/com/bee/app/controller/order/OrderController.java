@@ -1,5 +1,6 @@
 package com.bee.app.controller.order;
 
+import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
@@ -45,13 +46,13 @@ public class OrderController {
     /**
      * 创建订单
      *
-     * @param order
+     * @param request
      */
     @RequestMapping(method = RequestMethod.POST)
-    public BaseResponse create(Order order) {
+    public BaseResponse create(OrderCreateRequest request) {
         BaseResponse res = new BaseResponse();
         try {
-            orderService.createOrder(order);
+            orderService.createOrder(request);
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Order.CreateError);

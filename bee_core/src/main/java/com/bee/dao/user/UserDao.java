@@ -45,15 +45,8 @@ public class UserDao extends JpaDaoSupport<User, Long> {
      * @param ids
      * @return
      */
-    public List<User> getUsersByIdentity(long[] ids) {
-        HQLEntity entity = new HQLEntity();
-        StringBuffer sb = new StringBuffer(SQL.User.getUsersByIdentity);
-        for (int i = 0; i < ids.length; i++) {
-            sb.append(i == 0 ? " and ( A.sid = ?" : " or A.sid = ?");
-            entity.setParams(ids[i]);
-        }
-        sb.append(")");
-        return queryResult(entity);
+    public List<User> getUsersByIdentity(String ids) {
+        return find(SQL.User.getUsersByIdentity + " (" + ids + ")");
     }
 
 }

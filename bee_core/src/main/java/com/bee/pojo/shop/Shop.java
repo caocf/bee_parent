@@ -51,6 +51,8 @@ public class Shop implements java.io.Serializable {
     private String remark;
     // 推荐
     private Integer recommend;
+    // 是否返现
+    private Integer isBack;
 
     public Shop() {}
     public Shop(Long sid) {
@@ -202,5 +204,12 @@ public class Shop implements java.io.Serializable {
     }
     public void setLat(Long lat) {
         this.lat = lat;
+    }
+    @Column(name = "ISBACK")
+    public Integer getIsBack() {
+        return isBack;
+    }
+    public void setIsBack(Integer isBack) {
+        this.isBack = isBack;
     }
 }

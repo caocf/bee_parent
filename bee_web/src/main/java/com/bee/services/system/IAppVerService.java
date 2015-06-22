@@ -21,6 +21,14 @@ public interface IAppVerService {
     public List<AppVer> getAppVerList();
 
     /**
+     * 根据类型返回最新版本
+     *
+     * @param phoneType
+     * @return
+     */
+    public AppVer getNewAppVer(int phoneType);
+
+    /**
      * 发布APP版本
      *
      * @param appVer

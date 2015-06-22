@@ -127,26 +127,25 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
         return queryWithPagingConver(entity);
     }
 
-    public ShopItem getShopItemById(long sid) {
-        return findFirstConverByParams(SQL.Shop.getShopItemById, new QueryDataConver<ShopItem>() {
+    public ShopListItem getShopItemById(long sid) {
+        return findFirstConverByParams(SQL.Shop.queryAppShopList + " and A.SID = " + sid, new QueryDataConver<ShopListItem>() {
             @Override
-            public ShopItem converData(Object[] obj) {
-                ShopItem item = new ShopItem();
+            public ShopListItem converData(Object[] obj) {
+                ShopListItem item = new ShopListItem();
                 item.setShopId(NumberUtil.parseLong(obj[0], 0));
                 item.setName(StringUtil.parseString(obj[1], ""));
-                item.setPrice(NumberUtil.parseDouble(obj[2], 0d));
-                item.setLinkMan(StringUtil.parseString(obj[3], ""));
-                item.setPhone(StringUtil.parseString(obj[4], ""));
-                item.setAddr(StringUtil.parseString(obj[5], ""));
-                item.setRemark(StringUtil.parseString(obj[6], ""));
-                long lon = NumberUtil.parseLong(obj[7], 0);
-                item.setLon(lon > 0 ? lon / 1E6 : 0d);
-                long lat = NumberUtil.parseLong(obj[8], 0);
-                item.setLat(lat > 0 ? lat / 1E6 : 0d);
-                item.setArea(StringUtil.parseString(obj[9], ""));
-                item.setType(NumberUtil.parseInteger(obj[10], Consts.Shop.Type.Club));
+                item.setAddr(StringUtil.parseString(obj[2], ""));
+                item.setPrice(NumberUtil.parseDouble(obj[3], 0));
+                item.setArea(StringUtil.parseString(obj[4], ""));
                 item.setImage(new ImageFactory.Image(
-                                StringUtil.parseString(obj[11], ""), ImageFactory.ImageType.ShopListSize));
+                        StringUtil.parseString(obj[5], ""), ImageFactory.ImageType.ShopListSize));
+                item.setFocusNum(NumberUtil.parseInteger(obj[6], 0));
+                item.setFriendNum(NumberUtil.parseInteger(obj[7], 0));
+                item.setLon(NumberUtil.parseLong(obj[8], 0));
+                item.setLat(NumberUtil.parseLong(obj[9], 0));
+                item.setPhone(StringUtil.parseString(obj[10], ""));
+                item.setType(NumberUtil.parseInteger(obj[11], Consts.Shop.Type.Club));
+                item.setLinkName(StringUtil.parseString(obj[12], ""));
                 return item;
             }
         }, sid);

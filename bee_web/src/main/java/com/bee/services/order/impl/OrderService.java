@@ -1,11 +1,13 @@
 package com.bee.services.order.impl;
 
 import com.bee.client.params.order.AdminOrderListRequest;
+import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Consts;
 import com.bee.dao.order.OrderDao;
 import com.bee.modal.OrderListItem;
 import com.bee.pojo.order.Order;
+import com.bee.pojo.user.User;
 import com.bee.services.order.IOrderService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
@@ -34,10 +36,39 @@ public class OrderService implements IOrderService {
 
     @Override
     @Transactional
-    public void createOrder(Order order) throws DataRunException {
-        order.setCreateTime(System.currentTimeMillis());
-        order.setStatus(Consts.Order.Status.Execute);
-        orderDao.save(order);
+    public void createOrder(OrderCreateRequest req) throws DataRunException {
+        try {
+
+            long createOrderTime = System.currentTimeMillis();
+
+            // 创建主订单
+            req.getOrder().setType(Consts.Order.Type.Master);
+            req.getOrder().setCreateTime(createOrderTime);
+            req.getOrder().setStatus(Consts.Order.Status.Execute);
+            orderDao.save(req.getOrder());
+
+            // 创建子订单
+            if (req.getOrderUserIdentitys() != null && !"".equals(req.getOrderUserIdentitys())) {
+                String[] identitys = req.getOrderUserIdentitys().split(",");
+                for (String identity : identitys) {
+                    Order order = new Order();
+                    order.setType(Consts.Order.Type.Child);
+                    order.setStatus(Consts.Order.Status.Execute);
+                    order.setCreateTime(createOrderTime);
+                    order.setExecTime(req.getOrder().getExecTime());
+                    order.setNum(req.getOrder().getNum());
+                    order.setOrderName(req.getOrder().getOrderName());
+                    order.setOrderPhone(req.getOrder().getOrderPhone());
+                    order.setRemark(req.getOrder().getRemark());
+                    order.setShop(req.getOrder().getShop());
+                    order.setUser(new User(Long.valueOf(identity) - Consts.User.IdentityBaseNum));
+                    orderDao.save(order);
+                }
+            }
+
+        } catch (DataRunException e) {
+            throw e;
+        }
     }
 
     @Override

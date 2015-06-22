@@ -29,9 +29,9 @@ public class ImageFactory {
 
     // 商家列表缩略图
     public static final int[][] ShopListSize = new int[][]{
-            new int[] {750, 400},
+            new int[] {750, 460},
             new int[] {160, 160}, // 720
-            new int[] {215, 290}  // 推荐缩略图
+            new int[] {215, 300}  // 推荐缩略图
     };
 
     // 商家图片

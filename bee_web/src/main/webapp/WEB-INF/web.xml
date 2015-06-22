@@ -51,11 +51,10 @@
     <listener>
         <listener-class>com.qsd.framework.spring.SpringFactory</listener-class>
     </listener>
-    <!-- 系统监听器
+    <!-- 系统监听器 -->
     <listener>
-        <listener-class>com.qsd.club.commons.SystemListener</listener-class>
+        <listener-class>com.bee.core.SystemStartListener</listener-class>
     </listener>
-    -->
 
     <!-- 转换字符 -->
     <filter>
