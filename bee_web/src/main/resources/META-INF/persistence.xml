@@ -11,7 +11,7 @@
             <!--
             <property name="hibernate.connection.url"
                      value="jdbc:mysql://10.252.87.175:3306/db_bee?characterEncoding=utf8"/>
-                     -->
+            -->
         </properties>
     </persistence-unit>
 </persistence>
