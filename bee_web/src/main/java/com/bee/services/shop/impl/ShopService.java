@@ -72,11 +72,13 @@ public class ShopService implements IShopService {
                 image.setSort(100);
                 imageDao.save(image);
                 shop.setImage(image);
+            } else {
+                shop.setImage(new Image(0l));
             }
 
             // 保存商家推荐图
-            if (req.getFile("recommedFile") != null) {
-                MultipartFile file = req.getFile("recommedFile");
+            if (req.getFile("recommendFile") != null) {
+                MultipartFile file = req.getFile("recommendFile");
                 String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.RecommedSize, req, file);
                 Image image = new Image();
                 image.setType(0);
@@ -86,9 +88,10 @@ public class ShopService implements IShopService {
                 image.setPath(paths[1]);
                 image.setSort(100);
                 imageDao.save(image);
-                shop.setRecommedImage(image);
+                shop.setRecommendImage(image);
+            } else {
+                shop.setRecommendImage(new Image(0l));
             }
-
             shop.setCreateTime(System.currentTimeMillis());
             shop.setIdentity("S" + shop.getCreateTime());
             shop.setPrice(0d);
@@ -125,8 +128,8 @@ public class ShopService implements IShopService {
     @Transactional
     public void updateShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException {
         try {
-            if (req.getFile("file") != null) {
-                MultipartFile file = req.getFile("file");
+            MultipartFile file = req.getFile("file");
+            if (file != null && file.getSize() > 0) {
                 Image image = new Image();
                 if (shop.getImage().getIid() > 0) {
                     image = imageDao.findById(shop.getImage().getIid());
@@ -148,11 +151,11 @@ public class ShopService implements IShopService {
                 }
                 shop.setImage(image);
             }
-            if (req.getFile("recommedFile") != null) {
-                MultipartFile file = req.getFile("recommedFile");
+            MultipartFile recommendFile = req.getFile("recommendFile");
+            if (recommendFile != null && recommendFile.getSize() > 0) {
                 Image image = new Image();
-                if (shop.getImage().getIid() > 0) {
-                    image = imageDao.findById(shop.getImage().getIid());
+                if (shop.getRecommendImage().getIid() > 0) {
+                    image = imageDao.findById(shop.getRecommendImage().getIid());
                     ImageFactory.getInstance().deleteImage(image.getPath());
                 } else {
                     image.setIid(null);
@@ -161,7 +164,7 @@ public class ShopService implements IShopService {
                     image.setCreateTime(System.currentTimeMillis());
                     image.setSort(100);
                 }
-                String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.RecommedSize, req, file);
+                String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.RecommedSize, req, recommendFile);
                 image.setUrl(paths[0]);
                 image.setPath(paths[1]);
                 if (image.getIid() != null && image.getIid() > 0) {
@@ -169,7 +172,7 @@ public class ShopService implements IShopService {
                 } else {
                     imageDao.save(image);
                 }
-                shop.setRecommedImage(image);
+                shop.setRecommendImage(image);
             }
             shopDao.update(shop);
         } catch(DataRunException e) {

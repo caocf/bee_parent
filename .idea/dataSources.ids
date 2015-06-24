@@ -24,6 +24,15 @@
       <index name="FK_c5ong3fkxu0lajx0wl1ylganw" unique="false" columns="AREA"/>
       <index name="FK_hr58730vjl236felr49hqe28u" unique="false" columns="SHOP"/>
     </table>
+    <table name="TB_ADVICE" schema="" catalog="db_bee" type="TABLE">
+      <column name="AID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="MSG" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="PHONE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="DEVICE" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="AID"/>
+    </table>
     <table name="TB_APP_VER" schema="" catalog="db_bee" type="TABLE">
       <column name="AVID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="VER" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
@@ -157,7 +166,7 @@
       <column name="RECOMMEND" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="ISBACK" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="IMAGE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
-      <column name="RECOMMEDIMAGE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="RECOMMENDIMAGE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="SID"/>
       <foreign-key name="FK_k3cu981hvkkswoaq82al88vwd" columns="AREA" ref-table="TB_AREA" ref-schema="" ref-catalog="db_bee" ref-columns="AID" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_hr58730vjl236felr49hqe28u" table="TB_AD" schema="" catalog="db_bee" columns="SHOP"/>

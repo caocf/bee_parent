@@ -26,7 +26,7 @@ public class Shop implements java.io.Serializable {
     // 商家图片
     private Image image;
     // 推荐图片
-    private Image recommedImage;
+    private Image recommendImage;
     // 名字
     private String name;
     // 所属地区
@@ -113,12 +113,12 @@ public class Shop implements java.io.Serializable {
         this.image = image;
     }
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    @JoinColumn(name = "RECOMMEDIMAGE")
-    public Image getRecommedImage() {
-        return recommedImage;
+    @JoinColumn(name = "RECOMMENDIMAGE")
+    public Image getRecommendImage() {
+        return recommendImage;
     }
-    public void setRecommedImage(Image recommedImage) {
-        this.recommedImage = recommedImage;
+    public void setRecommendImage(Image recommendImage) {
+        this.recommendImage = recommendImage;
     }
     @Column(name = "NAME")
     public String getName() {

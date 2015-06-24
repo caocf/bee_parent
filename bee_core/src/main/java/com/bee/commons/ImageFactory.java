@@ -115,7 +115,10 @@ public class ImageFactory {
         if (null == path || "".equals(path.trim())) {
             return;
         }
-        FileUtil.deleteFile(new File(path));
+        File f = new File(path);
+        if (f.exists()) {
+            FileUtil.deleteFile(f);
+        }
     }
 
     /**

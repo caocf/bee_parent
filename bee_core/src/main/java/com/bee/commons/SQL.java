@@ -36,7 +36,7 @@ public final class SQL {
     public static final class Shop {
 
         public static final String queryShopById = "From Shop A left join fetch A.area B " +
-                "left join fetch A.image B left join fetch A.recommedImage C where A.sid = ?";
+                "left join fetch A.image B left join fetch A.recommendImage C where A.sid = ?";
 
         // 查询商家列表
         public static final String queryShopList = "From Shop A left join fetch A.area B where 1=1";
@@ -53,7 +53,7 @@ public final class SQL {
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid  " +
                 "LEFT OUTER JOIN TB_IMAGE C " +
-                "ON A.RECOMMEDIMAGE = C.IID " +
+                "ON A.RECOMMENDIMAGE = C.IID " +
                 "where A.recommend = " + Consts.True + " and A.status = " + Consts.Shop.Status.Run + " order by A.sort desc limit 6";
 
         // 查询好友关注数

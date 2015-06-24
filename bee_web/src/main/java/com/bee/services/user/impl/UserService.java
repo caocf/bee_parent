@@ -88,6 +88,7 @@ public class UserService implements IUserService {
         user.setLevel(0);
         user.setPath("");
         user.setUrl("");
+        user.setCash(0d);
         userDao.save(user);
 
         /**
