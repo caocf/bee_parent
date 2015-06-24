@@ -70,7 +70,7 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setPrice(NumberUtil.parseDouble(obj[3], 0));
                 item.setArea(StringUtil.parseString(obj[4], ""));
                 item.setImage(new ImageFactory.Image(
-                        StringUtil.parseString(obj[5], ""), ImageFactory.ImageType.ShopListSize));
+                        StringUtil.parseString(obj[5], ""), ImageFactory.ImageType.RecommedSize));
                 item.setFocusNum(NumberUtil.parseInteger(obj[6], 0));
                 item.setFriendNum(NumberUtil.parseInteger(obj[7], 0));
                 item.setLon(NumberUtil.parseLong(obj[8], 0));
