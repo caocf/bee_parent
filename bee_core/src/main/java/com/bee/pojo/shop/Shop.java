@@ -2,6 +2,7 @@ package com.bee.pojo.shop;
 
 import com.bee.commons.Consts;
 import com.bee.pojo.Area;
+import com.bee.pojo.Image;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -22,6 +23,10 @@ public class Shop implements java.io.Serializable {
     private Long sid;
     // 商家标识
     private String identity;
+    // 商家图片
+    private Image image;
+    // 推荐图片
+    private Image recommedImage;
     // 名字
     private String name;
     // 所属地区
@@ -98,6 +103,22 @@ public class Shop implements java.io.Serializable {
     }
     public void setIdentity(String identity) {
         this.identity = identity;
+    }
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "IMAGE")
+    public Image getImage() {
+        return image;
+    }
+    public void setImage(Image image) {
+        this.image = image;
+    }
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "RECOMMEDIMAGE")
+    public Image getRecommedImage() {
+        return recommedImage;
+    }
+    public void setRecommedImage(Image recommedImage) {
+        this.recommedImage = recommedImage;
     }
     @Column(name = "NAME")
     public String getName() {

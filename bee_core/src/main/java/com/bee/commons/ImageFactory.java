@@ -18,7 +18,7 @@ public class ImageFactory {
     private static final int Auto = 0;
 
     public enum ImageType {
-        UserImage, ShopListSize, ShopAdSize, PartyAdSize, PartyMainSize,
+        UserImage, ShopListSize, RecommedSize, ShopAdSize, PartyAdSize, PartyMainSize,
         ShopImage
     }
 
@@ -30,8 +30,12 @@ public class ImageFactory {
     // 商家列表缩略图
     public static final int[][] ShopListSize = new int[][]{
             new int[] {750, 460},
-            new int[] {160, 160}, // 720
-            new int[] {215, 300}  // 推荐缩略图
+            new int[] {160, 160} // 720
+    };
+
+    // 商家推荐图
+    public static final int[][] RecommedSize = new int[][] {
+            new int[] {215, 300} // 720
     };
 
     // 商家图片
@@ -59,7 +63,7 @@ public class ImageFactory {
 
     /**
      * <p>保存图片</p>
-     * <b>文件名规则</b> /file/{fileName}/{fileName}_{width}x{height}.jpg
+     * <b>文件名规则</b> /file/{fileName}/p_{width}x{height}.jpg
      *
      * @param request
      * @param mFile
@@ -89,6 +93,8 @@ public class ImageFactory {
             sizes = PartyMainSize;
         } else if (ImageType.ShopImage == imageType) {
             sizes = ShopImageSize;
+        } else if (ImageType.RecommedSize == imageType) {
+            sizes = RecommedSize;
         }
 
         String filePath;
@@ -106,6 +112,9 @@ public class ImageFactory {
      * @return
      */
     public synchronized void deleteImage(String path) {
+        if (null == path || "".equals(path.trim())) {
+            return;
+        }
         FileUtil.deleteFile(new File(path));
     }
 

@@ -11,7 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by suntongwei on 15/4/18.
@@ -56,10 +60,10 @@ public class AdminShopController {
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView save(Shop shop) {
+    public ModelAndView save(Shop shop, MultipartHttpServletRequest req) {
         ModelAndView mav = new ModelAndView("shop/ShopPriceNew");
         try {
-            shopService.addShop(shop);
+            shopService.addShop(shop, req);
             mav.addObject("sid", shop.getSid());
             mav.addObject("name", shop.getName());
             mav.addObject("isRegShop", Consts.True);
@@ -112,10 +116,10 @@ public class AdminShopController {
      *
      * @return
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ModelAndView update(@PathVariable Long id, Shop shop) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public ModelAndView update(@PathVariable Long id, Shop shop, MultipartHttpServletRequest req) {
         try {
-            shopService.updateShop(shop);
+            shopService.updateShop(shop, req);
             return shopListView(new AdminShopListRequest());
         } catch (DataRunException e) {
             return edit(id).addObject("msg", "更新失败");

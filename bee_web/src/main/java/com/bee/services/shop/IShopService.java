@@ -8,7 +8,10 @@ import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.Shop;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -44,7 +47,7 @@ public interface IShopService {
      *
      * @throws DataRunException
      */
-    public void addShop(Shop shop) throws DataRunException;
+    public void addShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException;
 
     /**
      * 查询一个商家信息
@@ -76,5 +79,5 @@ public interface IShopService {
      * @param shop
      * @throws DataRunException
      */
-    public void updateShop(Shop shop) throws DataRunException;
+    public void updateShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException;
 }

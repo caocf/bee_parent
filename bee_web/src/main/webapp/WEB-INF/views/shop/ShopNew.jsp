@@ -31,7 +31,7 @@
   		<div class="row">
   			<div class="alert alert-danger <c:if test="${msg != ''}">hidden</c:if>" role="alert">${msg}</div>
   		</div>
-  		<form id="shopForm" class="form-horizontal" action="${basePath}/admin/shop" method="post">
+  		<form id="shopForm" class="form-horizontal" action="${basePath}/admin/shop" method="post" enctype="multipart/form-data">
   			<input type="hidden" name="_method" value="post" />
   			<input type="hidden" id="action" value="${action}" />
   			<input type="hidden" id="sid" name="sid" value="${shop.sid}" />
@@ -39,6 +39,7 @@
   			<input type="hidden" name="status" value="${shop.status}" />
   			<input type="hidden" name="price" value="${shop.price}" />
   			<input type="hidden" name="createTime" value="${shop.createTime}" />
+  			<input type="hidden" name="isBack" value="${shop.isBack}" />
 				<div class="form-group info-title">基本信息</div>
 				<div class="form-group">
 					<label class="col-xs-1 control-label">商家名称</label>
@@ -87,6 +88,25 @@
 						</div>
 					</div>
 				</div>
+				<div class="form-group info-title">商家图片</div>
+				<div class="form-group">
+					<button  id="btnImage" type="button" class="btn btn-primary icon-text">
+    				<i class="fa fa-upload"></i>上传主图
+    			</button>
+    			<input type="file" id="file" name="file" />
+  				<input type="hidden" name="image.iid" value="${shop.image.iid}" />
+  				<button  id="btnRecommedImage" type="button" class="btn btn-primary icon-text">
+    				<i class="fa fa-upload"></i>上传推广图
+    			</button>
+    			<input type="file" id="recommedFile" name="recommedFile" />
+  				<input type="hidden" name="recommedImage.iid" value="${shop.recommedImage.iid}" />
+				</div>
+				<div class="form-group">
+  				<div>
+  					<img id="recommedImage" width="108px" height="150px" <c:if test="i${shop.recommedImage.iid != 0}"> src="${basePath}${shop.recommedImage.url}/p_215x300.jpg"</c:if> />
+  					<img id="image" width="188px" height="115px" <c:if test="${shop.image.iid != 0}"> src="${basePath}${shop.image.url}/p_750x460.jpg"</c:if> />
+  				</div>
+  			</div>
 				<div class="form-group info-title">地图选择</div>
 				<div class="form-group">
 					<label class="col-xs-1 control-label">所属地区</label>
@@ -121,11 +141,14 @@
   	<script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
+  	<script type="text/javascript" src="${resPath}/assets/js/plugin/upload.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/area.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/map.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/cxcalendar/jquery.cxcalendar.min.js"></script>
   	<script type="text/javascript">
   		Navbar.init("ShopNew");
+  		Upload.init("btnImage", "file", "image");
+  		Upload.init("btnRecommedImage", "recommedFile", "recommedImage");
   		$("#area").area({
   			areaId: $("#areaId").val(),
   			initId: 1,

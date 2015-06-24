@@ -27,6 +27,11 @@ public class Image implements java.io.Serializable {
     // 图片排序
     private Integer sort;
 
+    public Image() {}
+    public Image(Long id) {
+        iid = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IID", unique = true, nullable = false)
