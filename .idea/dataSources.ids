@@ -32,6 +32,7 @@
       <column name="PHONE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="DEVICE" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <primary-key name="PRIMARY" columns="AID"/>
+      <index name="FK_cijte973p6no4afw2rlwj5u98" unique="false" columns="USER"/>
     </table>
     <table name="TB_APP_VER" schema="" catalog="db_bee" type="TABLE">
       <column name="AVID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -173,7 +174,6 @@
       <exported-key name="FK_20cewdm85stdu6v7s97idi1pq" table="TB_FIND" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_kjf30805e521nr8oi35jimg9g" table="TB_ORDER" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_49i4k8jji8vklwaxtmjswfayc" table="TB_SHOP_COMMENT" schema="" catalog="db_bee" columns="SHOP"/>
-      <exported-key name="FK_8rir64wpgrbs9bcysxwswybgb" table="TB_SHOP_ERROR" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_tm5w1672w73kfbxek0k4w6s7k" table="TB_SHOP_FOCUS" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_7mwbrpstkbyuxi8xx71e8yn58" table="TB_SHOP_IMAGE" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_m6vcy1sp0dui5rnrfco61236e" table="TB_SHOP_PRICE" schema="" catalog="db_bee" columns="SHOP"/>
@@ -194,14 +194,14 @@
     </table>
     <table name="TB_SHOP_ERROR" schema="" catalog="db_bee" type="TABLE">
       <column name="SEID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="ERRORMSG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="ERRORMSG" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="PHONE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="SEID"/>
-      <foreign-key name="FK_8rir64wpgrbs9bcysxwswybgb" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="FK_8rir64wpgrbs9bcysxwswybgb" unique="false" columns="SHOP"/>
     </table>
     <table name="TB_SHOP_FOCUS" schema="" catalog="db_bee" type="TABLE">
       <column name="SFID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>

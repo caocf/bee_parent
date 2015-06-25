@@ -1,6 +1,7 @@
 package com.bee.pojo.shop;
 
 import com.bee.commons.Consts;
+import com.bee.pojo.user.User;
 import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
@@ -31,6 +32,14 @@ public class ShopError implements java.io.Serializable {
      * 创建时间
      */
     private Long createTime;
+    /**
+     * 手机号
+     */
+    private String phone;
+    /**
+     * 所属用户
+     */
+    private User user;
     /**
      * 状态
      */
@@ -100,5 +109,20 @@ public class ShopError implements java.io.Serializable {
     }
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+    @Column(name = "PHONE")
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER")
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
 }

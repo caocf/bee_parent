@@ -12,6 +12,7 @@ public class ShopListItem implements java.io.Serializable {
 
     private Long shopId;
     private ImageFactory.Image image;
+    private ImageFactory.Image recommendImage;
     private String area;
     private String name;
     private String addr;
@@ -101,5 +102,11 @@ public class ShopListItem implements java.io.Serializable {
     }
     public void setLinkName(String linkName) {
         this.linkName = linkName;
+    }
+    public ImageFactory.Image getRecommendImage() {
+        return recommendImage;
+    }
+    public void setRecommendImage(ImageFactory.Image recommendImage) {
+        this.recommendImage = recommendImage;
     }
 }

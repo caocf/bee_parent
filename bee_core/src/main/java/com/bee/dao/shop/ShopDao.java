@@ -70,14 +70,16 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setPrice(NumberUtil.parseDouble(obj[3], 0));
                 item.setArea(StringUtil.parseString(obj[4], ""));
                 item.setImage(new ImageFactory.Image(
-                        StringUtil.parseString(obj[5], ""), ImageFactory.ImageType.RecommedSize));
-                item.setFocusNum(NumberUtil.parseInteger(obj[6], 0));
-                item.setFriendNum(NumberUtil.parseInteger(obj[7], 0));
-                item.setLon(NumberUtil.parseLong(obj[8], 0));
-                item.setLat(NumberUtil.parseLong(obj[9], 0));
-                item.setPhone(StringUtil.parseString(obj[10], ""));
-                item.setType(NumberUtil.parseInteger(obj[11], Consts.Shop.Type.Club));
-                item.setLinkName(StringUtil.parseString(obj[12], ""));
+                        StringUtil.parseString(obj[5], ""), ImageFactory.ImageType.ShopListSize));
+                item.setRecommendImage(new ImageFactory.Image(
+                        StringUtil.parseString(obj[6], ""), ImageFactory.ImageType.RecommedSize));
+                item.setFocusNum(NumberUtil.parseInteger(obj[7], 0));
+                item.setFriendNum(NumberUtil.parseInteger(obj[8], 0));
+                item.setLon(NumberUtil.parseLong(obj[9], 0));
+                item.setLat(NumberUtil.parseLong(obj[10], 0));
+                item.setPhone(StringUtil.parseString(obj[11], ""));
+                item.setType(NumberUtil.parseInteger(obj[12], Consts.Shop.Type.Club));
+                item.setLinkName(StringUtil.parseString(obj[13], ""));
                 return item;
             }
         }, uid);
