@@ -21,6 +21,7 @@ public class ShopErrorService implements IShopErrorService {
     @Override
     @Transactional
     public void addShopError(ShopError shopError) throws DataRunException {
+        shopError.setType(0);
         shopError.setCreateTime(System.currentTimeMillis());
         shopError.setStatus(Consts.Shop.ErrorStatus.New);
         shopErrorDao.save(shopError);

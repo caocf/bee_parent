@@ -25,7 +25,7 @@ public class ShopError implements java.io.Serializable {
      */
     private String errorMsg;
     /**
-     * 类型
+     * 类型(未使用)
      */
     private Integer type;
     /**

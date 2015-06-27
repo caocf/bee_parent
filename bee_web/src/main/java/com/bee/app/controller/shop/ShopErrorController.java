@@ -23,7 +23,7 @@ public class ShopErrorController {
     private IShopErrorService shopErrorService;
 
     /**
-     * 
+     *
      *
      * @param sid
      * @param shopError

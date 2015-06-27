@@ -34,6 +34,14 @@
       <primary-key name="PRIMARY" columns="AID"/>
       <index name="FK_cijte973p6no4afw2rlwj5u98" unique="false" columns="USER"/>
     </table>
+    <table name="TB_APPLYER" schema="" catalog="db_bee" type="TABLE">
+      <column name="AID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="LINKNAME" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="PHONE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="EXTRAINFO" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="AID"/>
+    </table>
     <table name="TB_APP_VER" schema="" catalog="db_bee" type="TABLE">
       <column name="AVID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="VER" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
