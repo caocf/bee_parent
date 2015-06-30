@@ -4,6 +4,7 @@ import com.bee.client.params.shop.ShopListRequest;
 import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
+import com.bee.modal.ShopMap;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +54,15 @@ public class ShopController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ShopListItem getShopItem(@PathVariable Long id) {
         return shopService.getShopItemById(id);
+    }
+
+    /**
+     * 返回所有商家地图
+     *
+     * @return
+     */
+    @RequestMapping(value = "/map", method = RequestMethod.GET)
+    public List<ShopMap> queryShopMap() {
+        return shopService.queryShopMapAll();
     }
 }

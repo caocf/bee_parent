@@ -8,6 +8,7 @@ import com.bee.commons.SQL;
 import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
+import com.bee.modal.ShopMap;
 import com.bee.pojo.shop.Shop;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
@@ -155,5 +156,23 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
 
     public Shop getShopById(long sid) {
         return findFirstByParams(SQL.Shop.queryShopById, sid);
+    }
+
+
+    public List<ShopMap> queryShopMapAll() {
+        return findConverByParams(SQL.Shop.queryShopMap, new QueryDataConver<ShopMap>() {
+            @Override
+            public ShopMap converData(Object[] obj) {
+                ShopMap item = new ShopMap();
+                item.setShopId(NumberUtil.parseLong(obj[0], 0));
+                item.setName(StringUtil.parseString(obj[1], ""));
+                item.setAddr(StringUtil.parseString(obj[2], ""));
+                long lon = NumberUtil.parseLong(obj[3], 0);
+                item.setLon(lon > 0 ? lon / 1E6 : 0);
+                long lat = NumberUtil.parseLong(obj[4], 0);
+                item.setLat(lat > 0 ? lat / 1E6 : 0);
+                return item;
+            }
+        });
     }
 }

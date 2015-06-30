@@ -5,6 +5,7 @@ import com.bee.client.params.shop.ShopListRequest;
 import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
+import com.bee.modal.ShopMap;
 import com.bee.pojo.shop.Shop;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
@@ -80,4 +81,11 @@ public interface IShopService {
      * @throws DataRunException
      */
     public void updateShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException;
+
+    /**
+     * 查询全部商家地图
+     *
+     * @return
+     */
+    public List<ShopMap> queryShopMapAll();
 }

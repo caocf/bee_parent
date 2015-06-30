@@ -73,6 +73,9 @@ public final class SQL {
                 "where A.status = " + Consts.Shop.Status.Run;
         public static final String queryAppShopListSort = " order by A.sort desc";
 
+        // 查询商家地图
+        public static final String queryShopMap = "SELECT A.SID, A.NAME, A.ADDR, A.LON, A.LAT FROM TB_SHOP A";
+
         public static final class Price {
             public static final String queryShopPriceByShopId = "From ShopPrice A left join fetch A.shop B where B.sid = ?";
             public static final String getShopPriceById = "From ShopPrice A left join fetch A.shop B where A.spid = ?";
@@ -124,7 +127,7 @@ public final class SQL {
     public static final class Find {
 
         public static final String queryAppFindList = "SELECT " +
-                "A.FID, B.UID, B.NAME AS USERNAME, B.URL, A.CREATETIME, A.CONTENT, C.SID, C.NAME, D.URL, " +
+                "A.FID, B.UID, B.NAME AS USERNAME, B.URL AS AVATAR, A.CREATETIME, A.CONTENT, C.SID, C.NAME, D.URL, " +
                 "(SELECT COUNT(*) FROM TB_FIND_REPLY D WHERE D.FIND = A.FID) AS REPLYNUM " +
                 "FROM TB_FIND A LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +

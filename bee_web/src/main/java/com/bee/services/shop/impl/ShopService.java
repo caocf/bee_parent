@@ -12,6 +12,7 @@ import com.bee.dao.user.UserFriendDao;
 import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
+import com.bee.modal.ShopMap;
 import com.bee.pojo.Image;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopFocus;
@@ -179,5 +180,10 @@ public class ShopService implements IShopService {
             throw e;
         }
 
+    }
+
+    @Override
+    public List<ShopMap> queryShopMapAll() {
+        return shopDao.queryShopMapAll();
     }
 }
