@@ -90,7 +90,8 @@ public final class SQL {
 
         public static final class Focus {
             public static final String getFocusList = "From ShopFocus A where A.shop.sid = ?";
-            public static final String getShopFocusFriend = "select B.`NAME`, B.UID, B.IMAGE " +
+            public static final String getShopFocusFriend =
+                    "select B.`NAME`, B.UID, B.URL " +
                     "from TB_USER_FRIEND A left outer join TB_USER B on A.friend = B.uid " +
                     "left outer join TB_SHOP_FOCUS C on A.friend=C.`USER`" +
                     "where A.`USER` = ? and C.shop = ?";
@@ -98,7 +99,8 @@ public final class SQL {
 
         public static final class Comment {
             public static final String getAppCommentList = "SELECT " +
-                    "A.SCID, A.CONTENT, A.CREATETIME, B.UID, B.NAME, B.URL, A.SHOP " +
+                    "A.SCID, A.CONTENT, A.CREATETIME, B.UID, B.NAME, B.URL, A.SHOP, " +
+                    "(SELECT COUNT(*) FROM TB_SHOP_REPLY C WHERE C.SHOPCOMMENT = A.SCID) AS REPLY_NUM " +
                     "FROM TB_SHOP_COMMENT A " +
                     "LEFT OUTER JOIN TB_USER B " +
                     "ON A.USER = B.UID " +

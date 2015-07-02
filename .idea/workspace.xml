@@ -51,37 +51,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ShopDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1913" max-vertical-offset="2652">
-              <caret line="161" column="41" selection-start-line="161" selection-start-column="41" selection-end-line="161" selection-end-column="41" />
-              <folding>
-                <element signature="e#2242#3605#0" expanded="true" />
-                <element signature="e#3604#3605#0" expanded="true" />
-                <element signature="e#7446#8078#0" expanded="true" />
-                <element signature="e#8077#8078#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IShopService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/IShopService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="740" max-vertical-offset="1428">
-              <caret line="85" column="15" selection-start-line="85" selection-start-column="15" selection-end-line="85" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShopController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ShopController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62936044" vertical-offset="247" max-vertical-offset="935">
-              <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="349" max-vertical-offset="1037">
+              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
               <folding>
+                <element signature="e#1009#1010#0" expanded="true" />
+                <element signature="e#1065#1066#0" expanded="true" />
+                <element signature="e#1249#1250#0" expanded="true" />
+                <element signature="e#1307#1308#0" expanded="true" />
+                <element signature="e#1484#1485#0" expanded="true" />
+                <element signature="e#1538#1539#0" expanded="true" />
                 <element signature="e#1699#1700#0" expanded="true" />
                 <element signature="e#1751#1752#0" expanded="true" />
               </folding>
@@ -92,52 +73,95 @@
       <file leaf-file-name="ShopService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2618">
-              <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2618">
+              <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
               <folding>
-                <element signature="e#6837#6838#0" expanded="true" />
-                <element signature="e#6885#6886#0" expanded="true" />
+                <element signature="e#1671#1672#0" expanded="true" />
+                <element signature="e#1723#1724#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShopCacheFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/core/ShopCacheFactory.java">
+      <file leaf-file-name="ShopDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1017" max-vertical-offset="2550">
+              <caret line="91" column="64" selection-start-line="91" selection-start-column="64" selection-end-line="91" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShopNew.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee_web/src/main/webapp/WEB-INF/views/shop/ShopNew.jsp">
+      <file leaf-file-name="ShopFocusDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopFocusDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-90.23077" vertical-offset="816" max-vertical-offset="3315">
-              <caret line="186" column="8" selection-start-line="186" selection-start-column="8" selection-end-line="186" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Order.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/order/Order.java">
+      <file leaf-file-name="ShopFocus.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/shop/ShopFocus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="2601">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShopCommentService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopCommentService.java">
+      <file leaf-file-name="SQL.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/SQL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="694" max-vertical-offset="3383">
+              <caret line="61" column="39" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShopFocusController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopFocusController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="850">
+              <caret line="44" column="32" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/user/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.84011626" vertical-offset="102" max-vertical-offset="2142">
+              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IShopFocusService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/IShopFocusService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShopFocusService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopFocusService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+              <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+              <folding>
+                <element signature="e#1214#1215#0" expanded="true" />
+                <element signature="e#1272#1273#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,13 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/user/IUserService.java" />
-        <option value="$PROJECT_DIR$/bee_web/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/user/UserController.java" />
-        <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/client/params/order/OrderCreateRequest.java" />
-        <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/order/IOrderService.java" />
-        <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/order/OrderController.java" />
-        <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/order/impl/OrderService.java" />
         <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/order/Order.java" />
         <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/client/params/AppInitResponse.java" />
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/system/IAppVerService.java" />
@@ -189,15 +206,22 @@
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/system/IApplyerService.java" />
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/system/impl/ApplyerService.java" />
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/AppController.java" />
-        <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/Consts.java" />
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopErrorController.java" />
         <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/ImageFactory.java" />
         <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/modal/ShopMap.java" />
-        <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/SQL.java" />
         <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopDao.java" />
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopService.java" />
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/IShopService.java" />
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopController.java" />
+        <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/modal/ShopCommentListItem.java" />
+        <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopCommentDao.java" />
+        <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/Consts.java" />
+        <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/SQL.java" />
+        <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/modal/ShopFocusFriendList.java" />
+        <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopFocusDao.java" />
+        <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/IShopFocusService.java" />
+        <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopFocusService.java" />
+        <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopFocusController.java" />
       </list>
     </option>
   </component>
@@ -455,49 +479,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
+              <option name="myItemId" value="META-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -528,64 +514,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -658,86 +586,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shop" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -872,78 +720,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shop" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1478,12 +1254,12 @@
       <workItem from="1434868999264" duration="4260000" />
       <workItem from="1434993027441" duration="14490000" />
       <workItem from="1435142053570" duration="5932000" />
-      <workItem from="1435152134384" duration="12896000" />
+      <workItem from="1435152134384" duration="16267000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="409071000" />
+    <option name="totallyTimeSpent" value="412442000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1507,7 +1283,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="834" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1524,7 +1300,7 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22889842" sideWeight="0.49581006" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24749643" sideWeight="0.49581006" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3337989" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1584,12 +1360,6 @@
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopCommentController.java</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopService.java</url>
           <line>132</line>
           <properties />
@@ -1611,156 +1381,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/system/impl/AdviceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_web/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="520">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/maven-repository/com/qsd/qsd_framework_commons/1.0.0.Final/qsd_framework_commons-1.0.0.Final.jar!/com/qsd/framework/commons/utils/FileUtil.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.740566" vertical-offset="1063" max-vertical-offset="1785">
-          <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/maven-repository/org/springframework/spring-core/4.1.4.RELEASE/spring-core-4.1.4.RELEASE.jar!/org/springframework/util/MultiValueMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12028302" vertical-offset="0" max-vertical-offset="424">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/maven-repository/org/springframework/spring-web/4.1.4.RELEASE/spring-web-4.1.4.RELEASE-sources.jar!/org/springframework/web/multipart/support/AbstractMultipartHttpServletRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36971048" vertical-offset="667" max-vertical-offset="1768">
-          <caret line="84" column="40" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/maven-repository/org/springframework/spring-web/4.1.4.RELEASE/spring-web-4.1.4.RELEASE-sources.jar!/org/springframework/web/multipart/MultipartRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33184856" vertical-offset="412" max-vertical-offset="1258">
-          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/modal/ShopListItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-          <folding>
-            <element signature="e#2491#2492#0" expanded="false" />
-            <element signature="e#2528#2529#0" expanded="false" />
-            <element signature="e#2599#2600#0" expanded="false" />
-            <element signature="e#2651#2652#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopErrorDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/AdviceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/shop/Shop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1411" max-vertical-offset="2567">
-          <caret line="115" column="37" selection-start-line="115" selection-start-column="37" selection-end-line="115" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/Advice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="782">
-          <caret line="22" column="57" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/ApplyerDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/system/impl/AppVerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/system/IApplyerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/Consts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="2890">
-          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bee_web/src/main/resources/base.spring.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.32" vertical-offset="1003" max-vertical-offset="1666">
           <caret line="83" column="10" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_web/src/main/resources/JdbcDataSource.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_web/src/main/resources/META-INF/persistence.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1868,22 +1492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/ImageFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3145">
-          <caret line="146" column="34" selection-start-line="146" selection-start-column="34" selection-end-line="146" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="2142">
-          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/user/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
@@ -1964,14 +1572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopCommentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/core/ShopCacheFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
@@ -1996,14 +1596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/SQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38226745" vertical-offset="1029" max-vertical-offset="3349">
-          <caret line="76" column="35" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bee_web/src/main/webapp/WEB-INF/views/shop/ShopNew.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-90.23077" vertical-offset="816" max-vertical-offset="3315">
@@ -2017,70 +1609,254 @@
         <state vertical-scroll-proportion="0.49418604" vertical-offset="0" max-vertical-offset="1054">
           <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
           <folding>
-            <element signature="e#372#373#0" expanded="true" />
-            <element signature="e#398#399#0" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
-            <element signature="e#496#497#0" expanded="true" />
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
-            <element signature="e#692#693#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#826#827#0" expanded="true" />
-            <element signature="e#858#859#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#916#917#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#988#989#0" expanded="true" />
+            <element signature="e#372#373#0" expanded="false" />
+            <element signature="e#398#399#0" expanded="false" />
+            <element signature="e#436#437#0" expanded="false" />
+            <element signature="e#466#467#0" expanded="false" />
+            <element signature="e#496#497#0" expanded="false" />
+            <element signature="e#522#523#0" expanded="false" />
+            <element signature="e#560#561#0" expanded="false" />
+            <element signature="e#590#591#0" expanded="false" />
+            <element signature="e#621#622#0" expanded="false" />
+            <element signature="e#650#651#0" expanded="false" />
+            <element signature="e#692#693#0" expanded="false" />
+            <element signature="e#728#729#0" expanded="false" />
+            <element signature="e#759#760#0" expanded="false" />
+            <element signature="e#786#787#0" expanded="false" />
+            <element signature="e#826#827#0" expanded="false" />
+            <element signature="e#858#859#0" expanded="false" />
+            <element signature="e#889#890#0" expanded="false" />
+            <element signature="e#916#917#0" expanded="false" />
+            <element signature="e#956#957#0" expanded="false" />
+            <element signature="e#988#989#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopCommentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="196" max-vertical-offset="884">
+          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopCommentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
+          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/shop/ShopReply.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/modal/ShopCommentListItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1860465" vertical-offset="0" max-vertical-offset="1054">
+          <caret line="76" column="31" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
+          <folding>
+            <element signature="e#1509#1510#0" expanded="false" />
+            <element signature="e#1555#1556#0" expanded="false" />
+            <element signature="e#1595#1596#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/IShopCommentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopCommentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="782">
+          <caret line="29" column="67" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
+          <folding>
+            <element signature="e#1078#1972#0" expanded="true" />
+            <element signature="e#1971#1972#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/Consts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="2890">
+          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/resources/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/resources/JdbcDataSource.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/ImageFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3145">
+          <caret line="146" column="34" selection-start-line="146" selection-start-column="34" selection-end-line="146" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopReplyDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="697">
+          <caret line="44" column="44" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopImageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/modal/ShopFocusFriendList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="595">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="e#515#516#0" expanded="false" />
+            <element signature="e#543#544#0" expanded="false" />
+            <element signature="e#596#597#0" expanded="false" />
+            <element signature="e#630#631#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopReplyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/IShopService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="218" max-vertical-offset="1428">
+          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2618">
+          <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+          <folding>
+            <element signature="e#1671#1672#0" expanded="true" />
+            <element signature="e#1723#1724#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1913" max-vertical-offset="2652">
-          <caret line="161" column="41" selection-start-line="161" selection-start-column="41" selection-end-line="161" selection-end-column="41" />
-          <folding>
-            <element signature="e#2242#3605#0" expanded="true" />
-            <element signature="e#3604#3605#0" expanded="true" />
-            <element signature="e#7446#8078#0" expanded="true" />
-            <element signature="e#8077#8078#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="1017" max-vertical-offset="2550">
+          <caret line="91" column="64" selection-start-line="91" selection-start-column="64" selection-end-line="91" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopService.java">
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/SQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2618">
-          <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
-          <folding>
-            <element signature="e#6837#6838#0" expanded="true" />
-            <element signature="e#6885#6886#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/IShopService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="740" max-vertical-offset="1428">
-          <caret line="85" column="15" selection-start-line="85" selection-start-column="15" selection-end-line="85" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="694" max-vertical-offset="3383">
+          <caret line="61" column="39" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62936044" vertical-offset="247" max-vertical-offset="935">
-          <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="349" max-vertical-offset="1037">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
           <folding>
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1307#1308#0" expanded="true" />
+            <element signature="e#1484#1485#0" expanded="true" />
+            <element signature="e#1538#1539#0" expanded="true" />
             <element signature="e#1699#1700#0" expanded="true" />
             <element signature="e#1751#1752#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/shop/ShopFocus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopFocusDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/IShopFocusService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopFocusService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+          <folding>
+            <element signature="e#1214#1215#0" expanded="true" />
+            <element signature="e#1272#1273#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopFocusController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="850">
+          <caret line="44" column="32" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.84011626" vertical-offset="102" max-vertical-offset="2142">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -36,4 +36,9 @@ public class ShopFocusService implements IShopFocusService {
         shopFocus.setShop(new Shop(shopId));
         shopFocusDao.save(shopFocus);
     }
+
+    @Override
+    public ShopFocus getsFoucsShop(long sid, long uid) {
+        return shopFocusDao.getFoucsShop(sid, uid);
+    }
 }

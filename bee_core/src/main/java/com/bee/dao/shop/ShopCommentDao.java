@@ -43,6 +43,7 @@ public class ShopCommentDao extends JpaDaoSupport<ShopComment, Long> {
                         StringUtil.parseString(objs[5], null), ImageFactory.ImageType.UserImage
                 ));
                 item.setShopId(NumberUtil.parseLong(objs[6], 0));
+                item.setReplyNum(NumberUtil.parseLong(objs[7], 0));
                 return item;
             }
         });

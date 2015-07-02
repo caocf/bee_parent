@@ -16,7 +16,7 @@ public class ShopCommentListItem implements java.io.Serializable {
     private String content;
     private Long uid;
     private ImageFactory.Image image;
-
+    private Long replyNum;
 
     public Long getScid() {
         return scid;
@@ -72,5 +72,13 @@ public class ShopCommentListItem implements java.io.Serializable {
 
     public void setImage(ImageFactory.Image image) {
         this.image = image;
+    }
+
+    public Long getReplyNum() {
+        return replyNum;
+    }
+
+    public void setReplyNum(Long replyNum) {
+        this.replyNum = replyNum;
     }
 }

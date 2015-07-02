@@ -34,8 +34,13 @@ public class ShopFocusController {
     public BaseResponse addShopFocus(@PathVariable Long sid, Long uid) {
         BaseResponse res = new BaseResponse();
         try {
-            shopFocusService.addShopFocus(uid, sid);
-            res.setCode(Codes.Success);
+            if (shopFocusService.getShopFocusFriend(sid, uid) != null) {
+                res.setCode(Codes.Error);
+                res.setMsg("您已关注该商家");
+            } else {
+                shopFocusService.addShopFocus(uid, sid);
+                res.setCode(Codes.Success);
+            }
         } catch (DataRunException e) {
             e.printStackTrace();
             res.setCode(Codes.Error);

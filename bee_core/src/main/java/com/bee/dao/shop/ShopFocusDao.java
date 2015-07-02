@@ -1,5 +1,6 @@
 package com.bee.dao.shop;
 
+import com.bee.commons.ImageFactory;
 import com.bee.commons.SQL;
 import com.bee.modal.ShopFocusFriendList;
 import com.bee.pojo.shop.ShopFocus;
@@ -29,9 +30,16 @@ public class ShopFocusDao extends JpaDaoSupport<ShopFocus, Long> {
                 ShopFocusFriendList item = new ShopFocusFriendList();
                 item.setName(StringUtil.parseString(objects[0], ""));
                 item.setUid(NumberUtil.parseLong(objects[1], 0));
-                item.setImage(StringUtil.parseString(objects[2], ""));
+                item.setImage(new ImageFactory.Image(
+                        StringUtil.parseString(objects[2], ""), ImageFactory.ImageType.UserImage
+                ));
                 return item;
             }
         }, uid, sid);
+    }
+
+
+    public ShopFocus getFoucsShop(long sid, long uid) {
+        return findFirstByParams("From ShopFocus A where shop.sid = ? and user.uid = ?", sid, uid);
     }
 }
