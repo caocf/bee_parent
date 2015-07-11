@@ -1,5 +1,8 @@
 package com.bee.pojo;
 
+import com.bee.pojo.find.Find;
+import com.bee.pojo.shop.ShopUser;
+
 import javax.persistence.*;
 
 /**
@@ -26,6 +29,11 @@ public class Image implements java.io.Serializable {
     private Long createTime;
     // 图片排序
     private Integer sort;
+
+    // 是否是商家管理员图片
+    private ShopUser shopUser = new ShopUser(0l);
+    // 发现图片集合
+    private Find find = new Find(0l);
 
     public Image() {}
     public Image(Long id) {
@@ -82,5 +90,21 @@ public class Image implements java.io.Serializable {
     }
     public void setSort(Integer sort) {
         this.sort = sort;
+    }
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "SHOP_USER")
+    public ShopUser getShopUser() {
+        return shopUser;
+    }
+    public void setShopUser(ShopUser shopUser) {
+        this.shopUser = shopUser;
+    }
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "FIND")
+    public Find getFind() {
+        return find;
+    }
+    public void setFind(Find find) {
+        this.find = find;
     }
 }

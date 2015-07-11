@@ -1,9 +1,12 @@
 package com.bee.pojo.find;
 
+import com.bee.pojo.Image;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/6/10.
@@ -22,6 +25,8 @@ public class Find implements java.io.Serializable {
     private String content;
     // 所属商家
     private Shop shop;
+    // 图片集合
+    private List<Image> images = new ArrayList<>(0);
 
     public Find() {}
     public Find(Long id) {
@@ -67,5 +72,12 @@ public class Find implements java.io.Serializable {
     }
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "find")
+    public List<Image> getImages() {
+        return images;
+    }
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

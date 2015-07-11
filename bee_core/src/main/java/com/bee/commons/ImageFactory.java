@@ -15,6 +15,7 @@ import java.io.IOException;
  */
 public class ImageFactory {
 
+    // 原始尺寸
     private static final int Auto = 0;
 
     public enum ImageType {
@@ -41,7 +42,8 @@ public class ImageFactory {
     // 商家图片
     public static final int[][] ShopImageSize = new int[][] {
             new int[] {340, 340}, // 720缩略图
-            new int[] {Auto, Auto} // 原尺寸图
+            new int[] {Auto, Auto}, // 原尺寸图
+            new int[] {-3, -3} //缩略图
     };
 
     // 首页广告尺寸
@@ -104,6 +106,7 @@ public class ImageFactory {
         }
         return new String[]{p, path};
     }
+
 
     /**
      * 删除本地图片

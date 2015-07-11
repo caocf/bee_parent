@@ -1,10 +1,12 @@
 package com.bee.app.controller.shop;
 
 import com.bee.client.params.shop.ShopListRequest;
+import com.bee.client.params.shop.ShopResponse;
 import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.modal.ShopMap;
+import com.bee.services.shop.IShopImageService;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class ShopController {
 
     @Autowired
     private IShopService shopService;
+    @Autowired
+    private IShopImageService shopImageService;
 
     /**
      * 查询商家列表
@@ -52,8 +56,11 @@ public class ShopController {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ShopListItem getShopItem(@PathVariable Long id) {
-        return shopService.getShopItemById(id);
+    public ShopResponse getShopItem(@PathVariable Long id) {
+        ShopResponse res = new ShopResponse();
+        res.setShopListItem(shopService.getShopItemById(id));
+        res.setShopImages(shopImageService.queryAppShopImage(id));
+        return res;
     }
 
     /**

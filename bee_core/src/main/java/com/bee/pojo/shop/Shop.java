@@ -6,7 +6,9 @@ import com.bee.pojo.Image;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -37,6 +39,8 @@ public class Shop implements java.io.Serializable {
     private Integer status;
     // 联系人
     private String linkName;
+    // 商家管理员
+    private Set<ShopUser> admins = new HashSet<>(0);
     // 最低价格
     private Double price;
     // 商家联系电话
@@ -58,6 +62,7 @@ public class Shop implements java.io.Serializable {
     private Integer recommend;
     // 是否返现
     private Integer isBack;
+
 
     public Shop() {}
     public Shop(Long sid) {
@@ -232,5 +237,12 @@ public class Shop implements java.io.Serializable {
     }
     public void setIsBack(Integer isBack) {
         this.isBack = isBack;
+    }
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "shop")
+    public Set<ShopUser> getAdmins() {
+        return admins;
+    }
+    public void setAdmins(Set<ShopUser> admins) {
+        this.admins = admins;
     }
 }

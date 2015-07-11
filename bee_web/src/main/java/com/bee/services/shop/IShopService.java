@@ -21,6 +21,13 @@ import java.util.List;
 public interface IShopService {
 
     /**
+     * 查询所有商家
+     *
+     * @return
+     */
+    public List<Shop> getShopAll();
+
+    /**
      * 查询商家列表
      *
      * @param req

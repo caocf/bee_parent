@@ -11,6 +11,7 @@ public class SystemStartListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         UserCacheFactory.getInstance();
+        ShopCacheFactory.getInstance();
     }
 
     @Override

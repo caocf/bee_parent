@@ -44,6 +44,10 @@ public class ShopService implements IShopService {
     @Autowired
     private ImageDao imageDao;
 
+    public List<Shop> getShopAll() {
+        return shopDao.findAll();
+    }
+
     public PagingResult<Shop> queryShopList(AdminShopListRequest req) {
         return shopDao.queryShopList(req);
     }

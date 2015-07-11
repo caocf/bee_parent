@@ -1,5 +1,6 @@
 package com.bee.services.shop;
 
+import com.bee.commons.ImageFactory;
 import com.bee.modal.ShopImageListItem;
 import com.bee.pojo.shop.ShopImage;
 import com.qsd.framework.hibernate.exception.DataRunException;

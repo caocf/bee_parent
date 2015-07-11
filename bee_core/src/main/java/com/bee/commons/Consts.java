@@ -48,6 +48,8 @@ public final class Consts {
             public static final int Ktv = 2;
             // 酒吧
             public static final int Bar = 3;
+            // 游艺
+            public static final int Game = 4;
 
             public static Map<Integer, String> Select() {
                 Map<Integer, String> ret = new LinkedHashMap<Integer, String>();
@@ -55,6 +57,7 @@ public final class Consts {
                 ret.put(Massage, "足浴");
                 ret.put(Ktv, "夜总会");
                 ret.put(Bar, "酒吧");
+                ret.put(Game, "游艺");
                 return ret;
             }
         }
