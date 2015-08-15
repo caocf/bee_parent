@@ -81,6 +81,7 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setPhone(StringUtil.parseString(obj[11], ""));
                 item.setType(NumberUtil.parseInteger(obj[12], Consts.Shop.Type.Club));
                 item.setLinkName(StringUtil.parseString(obj[13], ""));
+                item.setNowInfo(StringUtil.parseString(obj[13], ""));
                 return item;
             }
         }, uid);
@@ -124,6 +125,7 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setPhone(StringUtil.parseString(obj[10], ""));
                 item.setType(NumberUtil.parseInteger(obj[11], Consts.Shop.Type.Club));
                 item.setLinkName(StringUtil.parseString(obj[12], ""));
+                item.setNowInfo(StringUtil.parseString(obj[13], ""));
                 return item;
             }
         });
@@ -149,6 +151,7 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setPhone(StringUtil.parseString(obj[10], ""));
                 item.setType(NumberUtil.parseInteger(obj[11], Consts.Shop.Type.Club));
                 item.setLinkName(StringUtil.parseString(obj[12], ""));
+                item.setNowInfo(StringUtil.parseString(obj[13], ""));
                 return item;
             }
         }, sid);

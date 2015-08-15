@@ -24,6 +24,7 @@ public class ShopListItem implements java.io.Serializable {
     private String phone;
     private Integer type;
     private String linkName;
+    private String nowInfo;
 
     public Long getShopId() {
         return shopId;
@@ -108,5 +109,11 @@ public class ShopListItem implements java.io.Serializable {
     }
     public void setRecommendImage(ImageFactory.Image recommendImage) {
         this.recommendImage = recommendImage;
+    }
+    public String getNowInfo() {
+        return nowInfo;
+    }
+    public void setNowInfo(String nowInfo) {
+        this.nowInfo = nowInfo;
     }
 }

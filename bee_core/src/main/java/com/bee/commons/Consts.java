@@ -10,7 +10,7 @@ public final class Consts {
 
     public static final boolean isDebug = false;
     private static final String LocalBaseUrl = "http://localhost:8080";
-    private static final String RemoteBaseUrl = "http://120.26.103.71";
+    private static final String RemoteBaseUrl = "http://139.196.27.231";
 
     public static String getBaseUrl() {
         return isDebug ? LocalBaseUrl : RemoteBaseUrl;
