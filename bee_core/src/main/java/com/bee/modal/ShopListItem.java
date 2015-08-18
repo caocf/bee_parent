@@ -25,6 +25,7 @@ public class ShopListItem implements java.io.Serializable {
     private Integer type;
     private String linkName;
     private String nowInfo;
+    private Integer isBack;
 
     public Long getShopId() {
         return shopId;
@@ -115,5 +116,11 @@ public class ShopListItem implements java.io.Serializable {
     }
     public void setNowInfo(String nowInfo) {
         this.nowInfo = nowInfo;
+    }
+    public Integer getIsBack() {
+        return isBack;
+    }
+    public void setIsBack(Integer isBack) {
+        this.isBack = isBack;
     }
 }

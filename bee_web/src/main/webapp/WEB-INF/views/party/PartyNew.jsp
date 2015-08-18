@@ -11,7 +11,7 @@
 
 	<link href="${resPath}/assets/css/jquery.cxcalendar.css" rel="stylesheet">
 	<link href="${resPath}/assets/css/main.min.css" rel="stylesheet">
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=2iLGIOjXebTSNG6hiDmtEU9V"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ER70GzvxyZ4xCKbjMfl6vGVs"></script>
     <!--[if lt IE 9]>
     <script src="${resPath}/assets/js/bootstrap/html5shiv.min.js"></script>
     <script src="${resPath}/assets/js/bootstrap/respond.min.js"></script>

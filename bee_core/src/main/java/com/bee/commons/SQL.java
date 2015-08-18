@@ -48,7 +48,7 @@ public final class SQL {
                 "A.sid,A.name,A.addr,A.price,B.name as area, I.URL as image, R.URL as recommendImage," +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                "A.lon, A.lat, A.phone, A.type, A.linkName, A.remark " +
+                "A.lon, A.lat, A.phone, A.type, A.linkName, A.remark, A.isBack " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid  " +
@@ -64,7 +64,7 @@ public final class SQL {
                 "A.sid,A.name,A.addr,A.price,B.name as area, C.URL, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                "A.lon, A.lat, A.phone, A.type, A.linkName, A.remark " +
+                "A.lon, A.lat, A.phone, A.type, A.linkName, A.remark, A.isBack " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid  " +
