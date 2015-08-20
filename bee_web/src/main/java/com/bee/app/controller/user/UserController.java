@@ -4,7 +4,6 @@ import com.bee.client.params.user.UserResponse;
 import com.bee.client.params.user.UsersResponse;
 import com.bee.commons.Codes;
 import com.bee.core.UserCacheFactory;
-import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;

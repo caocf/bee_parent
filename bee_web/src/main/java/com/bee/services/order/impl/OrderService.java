@@ -34,48 +34,50 @@ public class OrderService implements IOrderService {
         return orderDao.getAppOrderListByParam(request);
     }
 
+    @Deprecated
     @Override
     @Transactional
     public void createOrder(OrderCreateRequest req) throws DataRunException {
+
         try {
 
-            long createOrderTime = System.currentTimeMillis();
-
-            // 创建主订单
+            // 添加订单类型, 该字段无效
             req.getOrder().setType(Consts.Order.Type.Master);
-            req.getOrder().setCreateTime(createOrderTime);
-            req.getOrder().setStatus(Consts.Order.Status.Execute);
-            orderDao.save(req.getOrder());
+            // 添加订单创建时间
+            req.getOrder().setCreateTime(System.currentTimeMillis());
+            // 设置订单初始化状态
+            req.getOrder().setStatus(Consts.Order.Status.Create);
 
-            // 创建子订单
-            if (req.getOrderUserIdentitys() != null && !"".equals(req.getOrderUserIdentitys())) {
-                String[] identitys = req.getOrderUserIdentitys().split(",");
-                for (String identity : identitys) {
-                    Order order = new Order();
-                    order.setType(Consts.Order.Type.Child);
-                    order.setStatus(Consts.Order.Status.Execute);
-                    order.setCreateTime(createOrderTime);
-                    order.setExecTime(req.getOrder().getExecTime());
-                    order.setNum(req.getOrder().getNum());
-                    order.setOrderName(req.getOrder().getOrderName());
-                    order.setOrderPhone(req.getOrder().getOrderPhone());
-                    order.setRemark(req.getOrder().getRemark());
-                    order.setShop(req.getOrder().getShop());
-                    order.setUser(new User(Long.valueOf(identity) - Consts.User.IdentityBaseNum));
-                    orderDao.save(order);
-                }
-            }
+            // 保存订单
+            orderDao.save(req.getOrder());
 
         } catch (DataRunException e) {
             throw e;
         }
     }
 
+    /**
+     * 创建订单
+     *
+     * @param order
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void createOrder(Order order) throws DataRunException {
+        // 添加订单类型, 该字段无效
+        order.setType(Consts.Order.Type.Master);
+        // 添加订单创建时间
+        order.setCreateTime(System.currentTimeMillis());
+        // 设置订单初始化状态
+        order.setStatus(Consts.Order.Status.Create);
+    }
+
     @Override
     @Transactional
     public void acceptOrder(long id) throws DataRunException {
         Order order = orderDao.findById(id);
-        order.setStatus(Consts.Order.Status.Progress);
+        order.setStatus(Consts.Order.Status.Underway);
         orderDao.update(order);
     }
 

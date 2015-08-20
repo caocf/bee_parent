@@ -40,6 +40,14 @@ public interface IOrderService {
     public void createOrder(OrderCreateRequest req) throws DataRunException;
 
     /**
+     * 创建订单
+     *
+     * @param order
+     * @throws DataRunException
+     */
+    public void createOrder(Order order) throws DataRunException;
+
+    /**
      * 接受订单
      *
      * @param id

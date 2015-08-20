@@ -43,8 +43,8 @@ public class Order implements java.io.Serializable {
     private Shop shop;
     // 订单创建时间
     private Long createTime;
-    // 主订单ID
-    private Long parentId;
+    // 订单记录
+    private String record;
 
     @Transient
     public String getTypeStr() {
@@ -67,33 +67,7 @@ public class Order implements java.io.Serializable {
 
     @Transient
     public String getStatusStr() {
-        String status = "";
-        switch (getStatus()) {
-            case Consts.Order.Status.Execute:
-                status = "等待确认";
-                break;
-            case Consts.Order.Status.Progress:
-                status = "等待到店";
-                break;
-            case Consts.Order.Status.Confirm:
-                status = "确认到店";
-                break;
-            case Consts.Order.Status.Finish:
-                status = "已完成";
-                break;
-            case Consts.Order.Status.Create:
-                status = "等待接受";
-                break;
-            case Consts.Order.Status.Cancel:
-                status = "已取消";
-                break;
-            case Consts.Order.Status.ShopCancel:
-                status = "商家取消";
-                break;
-            default:
-                status = getStatus().toString();
-        }
-        return status;
+        return Consts.Order.Status.getStatusName(status);
     }
 
     @Transient
@@ -203,11 +177,11 @@ public class Order implements java.io.Serializable {
     public void setOrderPhone(String orderPhone) {
         this.orderPhone = orderPhone;
     }
-    @Column(name = "PARENTID")
-    public Long getParentId() {
-        return parentId;
+    @Column(name = "RECORD")
+    public String getRecord() {
+        return record;
     }
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    public void setRecord(String record) {
+        this.record = record;
     }
 }

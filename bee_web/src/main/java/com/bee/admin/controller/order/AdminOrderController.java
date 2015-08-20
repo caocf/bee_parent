@@ -67,7 +67,7 @@ public class AdminOrderController {
     public BaseResponse cancel(@PathVariable Long id) {
         BaseResponse res = new BaseResponse();
         try {
-            orderService.cancelOrder(id, Consts.Order.Status.ShopCancel);
+            orderService.cancelOrder(id, Consts.Order.Status.CancelShop);
             res.setCode(Codes.Success);
         } catch(DataRunException e) {
             res.setCode(Codes.Order.CancelError);

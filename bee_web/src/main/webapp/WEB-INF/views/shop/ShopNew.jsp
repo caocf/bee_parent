@@ -103,8 +103,8 @@
 				</div>
 				<div class="form-group">
   				<div>
-  					<img id="recommendImage" width="108px" height="150px" <c:if test="${shop.recommendImage.iid != 0}"> src="${basePath}${shop.recommendImage.url}/p_215x300.jpg"</c:if> />
   					<img id="image" width="188px" height="115px" <c:if test="${shop.image.iid != 0}"> src="${basePath}${shop.image.url}/p_750x460.jpg"</c:if> />
+  					<img id="recommendImage" width="108px" height="150px" <c:if test="${shop.recommendImage.iid != 0}"> src="${basePath}${shop.recommendImage.url}/p_215x300.jpg"</c:if> />
   				</div>
   			</div>
 				<div class="form-group info-title">地图选择</div>

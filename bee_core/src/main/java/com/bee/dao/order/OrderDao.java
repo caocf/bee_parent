@@ -76,7 +76,7 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
                 item.setName(StringUtil.parseString(obj[0], ""));
                 item.setTime(NumberUtil.parseLong(obj[1], 0));
                 item.setNum(NumberUtil.parseInteger(obj[2], 0));
-                item.setStatus(NumberUtil.parseInteger(obj[3], Consts.Order.Status.Execute));
+                item.setStatus(NumberUtil.parseInteger(obj[3], Consts.Order.Status.Create));
                 item.setOid(NumberUtil.parseLong(obj[4], 0));
                 return item;
             }

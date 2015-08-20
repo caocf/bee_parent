@@ -246,8 +246,8 @@ CREATE TABLE `TB_ORDER` (
   `USER` bigint(20) DEFAULT NULL,
   `SHOP` bigint(20) DEFAULT NULL,
   `CREATETIME` bigint(20) DEFAULT NULL,
-  `PARENTID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY(`OID`) 
+  `RECORD` varchar (255) NOT NULL DEFAULT '',
+  PRIMARY KEY(`OID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='订单表';
 
 -- ----------------------------

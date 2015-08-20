@@ -18,7 +18,6 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
-import com.qsd.framework.security.encrypt.Base64;
 import com.qsd.framework.security.encrypt.Md5;
 import com.qsd.framework.spring.PagingResult;
 import org.slf4j.Logger;

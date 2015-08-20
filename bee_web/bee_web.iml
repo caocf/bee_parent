@@ -16,7 +16,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="db_bee" value="c3058cfe-5df4-4c62-95cd-d4408ee7f3c9" />
+          <factory-entry name="db_bee" value="9d21b096-7da6-4e2c-a9c2-6fa0964da2df" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>

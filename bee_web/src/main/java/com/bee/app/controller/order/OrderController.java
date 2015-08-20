@@ -44,15 +44,13 @@ public class OrderController {
     }
 
     /**
-     * 创建订单
-     *
-     * @param request
+     * App创建订单
      */
     @RequestMapping(method = RequestMethod.POST)
-    public BaseResponse create(OrderCreateRequest request) {
+    public BaseResponse create(Order order) {
         BaseResponse res = new BaseResponse();
         try {
-            orderService.createOrder(request);
+            orderService.createOrder(order);
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Order.CreateError);
@@ -60,6 +58,29 @@ public class OrderController {
         }
         return res;
     }
+
+
+
+    /**
+     * 创建订单
+     *
+     * 2015.8.20删除该接口
+     *
+     * @param request
+     */
+//    @Deprecated
+//    @RequestMapping(method = RequestMethod.POST)
+//    public BaseResponse create(OrderCreateRequest request) {
+//        BaseResponse res = new BaseResponse();
+//        try {
+//            orderService.createOrder(request);
+//            res.setCode(Codes.Success);
+//        } catch (DataRunException e) {
+//            res.setCode(Codes.Order.CreateError);
+//            res.setMsg("创建失败，请重试");
+//        }
+//        return res;
+//    }
 
     /**
      * 取消订单
@@ -71,7 +92,7 @@ public class OrderController {
     public BaseResponse cancel(@PathVariable Long id) {
         BaseResponse res = new BaseResponse();
         try {
-            orderService.cancelOrder(id, Consts.Order.Status.Cancel);
+            orderService.cancelOrder(id, Consts.Order.Status.CancelUser);
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Order.CancelError);

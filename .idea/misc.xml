@@ -51,6 +51,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/bee_commons/pom.xml" />
+        <option value="$PROJECT_DIR$/bee_order/pom.xml" />
         <option value="$PROJECT_DIR$/bee_test/pom.xml" />
       </set>
     </option>

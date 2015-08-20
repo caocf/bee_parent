@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - db_bee@120.26.103.71" uuid="c3058cfe-5df4-4c62-95cd-d4408ee7f3c9">
+    <data-source name="MySQL - db_bee@139.196.27.231" uuid="9d21b096-7da6-4e2c-a9c2-6fa0964da2df">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
       <schema-pattern>db_bee.*</schema-pattern>
       <default-schemas>db_bee.*</default-schemas>
-      <ssh-properties>
-        <enabled>true</enabled>
-        <proxy-host>120.26.103.71</proxy-host>
-        <proxy-port>22</proxy-port>
-        <secret-storage>master_key</secret-storage>
-        <user>root</user>
-        <use-password>true</use-password>
-      </ssh-properties>
     </data-source>
   </component>
 </project>

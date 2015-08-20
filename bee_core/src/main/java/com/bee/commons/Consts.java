@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public final class Consts {
 
-    public static final boolean isDebug = false;
+    public static final boolean isDebug = true;
     private static final String LocalBaseUrl = "http://localhost:8080";
     private static final String RemoteBaseUrl = "http://139.196.27.231";
 
@@ -98,20 +98,54 @@ public final class Consts {
         public static final String ExecTimeType = "yyyy-MM-dd HH:mm";
 
         public static final class Status {
-            // 子订单，等待用户确认
-            public static final int Create = 1;
-            // 等待确认
-            public static final int Execute = 2;
+
             // 等待到店
-            public static final int Progress = 10;
-            // 确认到店
-            public static final int Confirm = 40;
-            // 已取消(用户取消)
-            public static final int Cancel = 50;
-            // 商家取消
-            public static final int ShopCancel = 51;
+            public static final int Create = 1;
+            // 到店进行中
+            public static final int Underway = 10;
             // 完成
-            public static final int Finish = 99;
+            public static final int Finish = 50;
+            // 用户取消
+            public static final int CancelUser = 90;
+            // 商家取消
+            public static final int CancelShop = 91;
+            // 管理员取消
+            public static final int CancelAdmin = 92;
+
+            public static final String CreateStr = "等待到店";
+            public static final String UnderwayStr = "进行中";
+            public static final String FinishStr = "已完成";
+            public static final String CancelUserStr = "已取消";
+            public static final String CancelShopStr = "商家取消";
+            public static final String CancelAdminStr = "管理员取消";
+
+            public static String getStatusName(int status) {
+                String ret;
+                switch (status) {
+                    case Consts.Order.Status.Create:
+                        ret = Consts.Order.Status.CreateStr;
+                        break;
+                    case Consts.Order.Status.Underway:
+                        ret = Consts.Order.Status.UnderwayStr;
+                        break;
+                    case Consts.Order.Status.Finish:
+                        ret = Consts.Order.Status.FinishStr;
+                        break;
+                    case Consts.Order.Status.CancelUser:
+                        ret = Consts.Order.Status.CancelUserStr;
+                        break;
+                    case Consts.Order.Status.CancelAdmin:
+                        ret = Consts.Order.Status.CancelAdminStr;
+                        break;
+                    case Consts.Order.Status.CancelShop:
+                        ret = Consts.Order.Status.CancelShopStr;
+                        break;
+                    default:
+                        ret = "未知";
+                        break;
+                }
+                return ret;
+            }
 
             public static final class Query {
                 // 正在进行订单
@@ -129,16 +163,16 @@ public final class Consts {
                     String query = " > 0";
                     switch(queryStatus) {
                         case Query.Monitor:
-                            query = " = 2";
+                            query = " <= " + Underway;
                             break;
                         case Query.Ing:
-                            query = " < 50";
+                            query = " <= " + Finish;
                             break;
                         case Query.Finish:
-                            query = " >= 50";
+                            query = " = " + Consts.Order.Status.Finish;
                             break;
                         case Query.Cancel:
-                            query = " = 51";
+                            query = " > " + Consts.Order.Status.Finish;
                             break;
                     }
                     return query;

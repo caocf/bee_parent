@@ -5,6 +5,7 @@ import com.bee.client.params.shop.ShopListRequest;
 import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
 import com.bee.dao.ImageDao;
+import com.bee.dao.find.FindDao;
 import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopFocusDao;
 import com.bee.dao.shop.ShopImageDao;
@@ -14,6 +15,7 @@ import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.modal.ShopMap;
 import com.bee.pojo.Image;
+import com.bee.pojo.find.Find;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopFocus;
 import com.bee.pojo.user.User;
@@ -43,6 +45,8 @@ public class ShopService implements IShopService {
     private ShopDao shopDao;
     @Autowired
     private ImageDao imageDao;
+    @Autowired
+    private FindDao findDao;
 
     public List<Shop> getShopAll() {
         return shopDao.findAll();
@@ -105,7 +109,19 @@ public class ShopService implements IShopService {
             if(null == shop.getSort()) {
                 shop.setSort(100);
             }
+
+            // 保存商家信息
             shopDao.save(shop);
+
+            /**
+             * 加入到发现推广中
+             */
+            Find find = new Find();
+            find.setContent("新店加入，欢迎大家前往");
+            find.setCreateTime(System.currentTimeMillis());
+            find.setShop(shop);
+            findDao.save(find);
+
         } catch (DataRunException e) {
             throw e;
         }
