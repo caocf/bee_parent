@@ -88,10 +88,14 @@
       <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
-      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MTAw"/>
       <column name="SHOP_USER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <column name="FIND" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="WIDTH" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="HEIGHT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <primary-key name="PRIMARY" columns="IID"/>
+      <index name="FK_6yga94qdvdo39n72m0rwmtnj7" unique="false" columns="FIND"/>
+      <index name="FK_blfnd9u14s8c86sc8wsor02w0" unique="false" columns="SHOP_USER"/>
     </table>
     <table name="TB_ORDER" schema="" catalog="db_bee" type="TABLE">
       <column name="OID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>

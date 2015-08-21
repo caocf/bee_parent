@@ -80,7 +80,7 @@
 						<p class="help-block">设置有效期，到期后排序将恢复默认</p>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group hide">
 					<label class="col-xs-1 control-label">商家介绍</label>
 					<div class="col-xs-10">
 						<div class="textarea">
@@ -89,24 +89,30 @@
 					</div>
 				</div>
 				<div class="form-group info-title">商家图片</div>
+
 				<div class="form-group">
+                    <button  id="btnThum" type="button" class="btn btn-primary icon-text">
+                        <i class="fa fa-upload"></i>上传缩略图
+                    </button>
+                    <input type="file" id="thumbnailFile" name="thumbnailFile" />
 					<button  id="btnImage" type="button" class="btn btn-primary icon-text">
-    				<i class="fa fa-upload"></i>上传主图
-    			</button>
-    			<input type="file" id="file" name="file" />
-  				<input type="hidden" name="image.iid" value="${shop.image.iid}" />
-  				<button  id="btnRecommendImage" type="button" class="btn btn-primary icon-text">
-    				<i class="fa fa-upload"></i>上传推广图
-    			</button>
-    			<input type="file" id="recommendFile" name="recommendFile" />
-  				<input type="hidden" name="recommendImage.iid" value="${shop.recommendImage.iid}" />
+    				    <i class="fa fa-upload"></i>上传主图
+    			    </button>
+    			    <input type="file" id="file" name="file" />
+  				    <input type="hidden" name="image.iid" value="${shop.image.iid}" />
+  				    <button  id="btnRecommendImage" type="button" class="btn btn-primary icon-text">
+    				    <i class="fa fa-upload"></i>上传推广图
+    			    </button>
+    			    <input type="file" id="recommendFile" name="recommendFile" />
+  				    <input type="hidden" name="recommendImage.iid" value="${shop.recommendImage.iid}" />
 				</div>
 				<div class="form-group">
-  				<div>
-  					<img id="image" width="188px" height="115px" <c:if test="${shop.image.iid != 0}"> src="${basePath}${shop.image.url}/p_750x460.jpg"</c:if> />
-  					<img id="recommendImage" width="108px" height="150px" <c:if test="${shop.recommendImage.iid != 0}"> src="${basePath}${shop.recommendImage.url}/p_215x300.jpg"</c:if> />
-  				</div>
-  			</div>
+  				    <div>
+                        <img id="thumbnailImage" width="160px" height="160px" src="${basePath}/static/shop/shop_${shop.sid }/thumbnail_720.jpg" />
+  					    <img id="image" width="188px" height="115px" <c:if test="${shop.image.iid != 0}"> src="${basePath}${shop.image.url}/p_750x460.jpg"</c:if> />
+  					    <img id="recommendImage" width="108px" height="150px" <c:if test="${shop.recommendImage.iid != 0}"> src="${basePath}${shop.recommendImage.url}/p_215x300.jpg"</c:if> />
+  				    </div>
+  			    </div>
 				<div class="form-group info-title">地图选择</div>
 				<div class="form-group">
 					<label class="col-xs-1 control-label">所属地区</label>
@@ -147,7 +153,8 @@
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/cxcalendar/jquery.cxcalendar.min.js"></script>
   	<script type="text/javascript">
   		Navbar.init("ShopNew");
-  		Upload.init("btnImage", "file", "image");
+  		Upload.init("btnThum", "thumbnailFile", "thumbnailImage");
+        Upload.init("btnImage", "file", "image");
   		Upload.init("btnRecommendImage", "recommendFile", "recommendImage");
   		$("#area").area({
   			areaId: $("#areaId").val(),

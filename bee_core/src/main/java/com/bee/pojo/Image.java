@@ -25,6 +25,10 @@ public class Image implements java.io.Serializable {
     private Integer type;
     // 图片说明
     private String remark;
+    // 原始宽
+    private Integer width;
+    // 原始高
+    private Integer height;
     // 创建时间
     private Long createTime;
     // 图片排序
@@ -106,5 +110,19 @@ public class Image implements java.io.Serializable {
     }
     public void setFind(Find find) {
         this.find = find;
+    }
+    @Column(name = "WIDTH")
+    public Integer getWidth() {
+        return width;
+    }
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+    @Column(name = "HEIGHT")
+    public Integer getHeight() {
+        return height;
+    }
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 }

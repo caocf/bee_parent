@@ -10,6 +10,8 @@ import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopFocusDao;
 import com.bee.dao.shop.ShopImageDao;
 import com.bee.dao.user.UserFriendDao;
+import com.bee.image.ImageParser;
+import com.bee.image.impl.ShopListImage;
 import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
@@ -67,7 +69,9 @@ public class ShopService implements IShopService {
     @Override
     @Transactional
     public void addShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException {
+
         try {
+
             // 保存商家主图
             if (req.getFile("file") != null) {
                 MultipartFile file = req.getFile("file");
@@ -79,6 +83,8 @@ public class ShopService implements IShopService {
                 image.setUrl(paths[0]);
                 image.setPath(paths[1]);
                 image.setSort(100);
+                image.setWidth(0);
+                image.setHeight(0);
                 imageDao.save(image);
                 shop.setImage(image);
             } else {
@@ -96,6 +102,8 @@ public class ShopService implements IShopService {
                 image.setUrl(paths[0]);
                 image.setPath(paths[1]);
                 image.setSort(100);
+                image.setWidth(0);
+                image.setHeight(0);
                 imageDao.save(image);
                 shop.setRecommendImage(image);
             } else {
@@ -113,6 +121,12 @@ public class ShopService implements IShopService {
             // 保存商家信息
             shopDao.save(shop);
 
+            // 保存列表缩略图
+            if (req.getFile("thumbnailFile") != null) {
+                req.setAttribute("shopId", shop.getSid());
+                ImageParser.getImageParser(ImageParser.ImageType.ShopListThum).generate(req, req.getFile("thumbnailFile"));
+            }
+
             /**
              * 加入到发现推广中
              */
@@ -120,6 +134,7 @@ public class ShopService implements IShopService {
             find.setContent("新店加入，欢迎大家前往");
             find.setCreateTime(System.currentTimeMillis());
             find.setShop(shop);
+            find.setUser(new User(1l));
             findDao.save(find);
 
         } catch (DataRunException e) {
@@ -149,6 +164,14 @@ public class ShopService implements IShopService {
     @Transactional
     public void updateShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException {
         try {
+
+            // 修改缩略图
+            MultipartFile thumFile = req.getFile("thumbnailFile");
+            if (thumFile != null && thumFile.getSize() > 0) {
+                req.setAttribute("shopId", shop.getSid());
+                ImageParser.getImageParser(ImageParser.ImageType.ShopListThum).generate(req, thumFile);
+            }
+
             MultipartFile file = req.getFile("file");
             if (file != null && file.getSize() > 0) {
                 Image image = new Image();
