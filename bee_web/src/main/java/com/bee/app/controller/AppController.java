@@ -54,7 +54,7 @@ public class AppController {
     public AppVerResponse checkAppVer(Integer phoneType, Integer ver) {
         AppVerResponse res = new AppVerResponse();
         AppVer appVer = appVerService.getNewAppVer(phoneType);
-        if (appVer.getVer() > ver) {
+        if (appVer != null && appVer.getVer() > ver) {
             res.setCode(Codes.Success);
             res.setRemark(appVer.getRemark());
             res.setUrl(appVer.getUrl());

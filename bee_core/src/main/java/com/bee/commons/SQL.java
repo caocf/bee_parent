@@ -35,8 +35,7 @@ public final class SQL {
      */
     public static final class Shop {
 
-        public static final String queryShopById = "From Shop A left join fetch A.area B " +
-                "left join fetch A.image B left join fetch A.recommendImage C where A.sid = ?";
+        public static final String queryShopById = "From Shop A left join fetch A.area B where A.sid = ?";
 
         // 查询商家列表
         public static final String queryShopList = "From Shop A left join fetch A.area B where 1=1";
@@ -45,31 +44,25 @@ public final class SQL {
         // 查询推荐商家
         public static final String queryRecommendShop =
                 "select " +
-                "A.sid,A.name,A.addr,A.price,B.name as area, I.URL as image, R.URL as recommendImage," +
+                "A.sid,A.name,A.addr,A.price,B.name as area," +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
                 "A.lon, A.lat, A.phone, A.type, A.linkName, A.remark, A.isBack " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
-                "on A.area = B.aid  " +
-                "LEFT OUTER JOIN TB_IMAGE R " +
-                "ON A.RECOMMENDIMAGE = R.IID " +
-                "LEFT OUTER JOIN TB_IMAGE I " +
-                "ON A.IMAGE = I.IID " +
+                "on A.area = B.aid " +
                 "where A.recommend = " + Consts.True + " and A.status = " + Consts.Shop.Status.Run + " order by A.sort desc limit 6";
 
         // 查询好友关注数
         public static final String queryAppShopList =
                 "select " +
-                "A.sid,A.name,A.addr,A.price,B.name as area, C.URL, " +
+                "A.sid,A.name,A.addr,A.price,B.name as area, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
                 "A.lon, A.lat, A.phone, A.type, A.linkName, A.remark, A.isBack " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid  " +
-                "LEFT OUTER JOIN TB_IMAGE C " +
-                "ON A.IMAGE = C.IID " +
                 "where A.status = " + Consts.Shop.Status.Run;
         public static final String queryAppShopListSort = " order by A.sort desc";
 

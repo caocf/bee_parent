@@ -1,6 +1,8 @@
 package com.bee.image;
 
+import com.bee.image.impl.ShopImage;
 import com.bee.image.impl.ShopListImage;
+import com.bee.image.impl.ShopRecommendImage;
 import com.bee.pojo.Image;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-
-import static com.bee.image.ImageParser.ImageType.*;
 
 /**
  * Created by suntongwei on 15/8/21.
@@ -20,7 +20,7 @@ public abstract class ImageParser {
 
 
     public enum ImageType {
-        ShopListThum
+        ShopListThum, ShopImage, ShopRecommend
     }
 
 
@@ -29,6 +29,12 @@ public abstract class ImageParser {
         switch (type) {
             case ShopListThum:
                 parser = new ShopListImage();
+                break;
+            case ShopImage:
+                parser = new ShopImage();
+                break;
+            case ShopRecommend:
+                parser = new ShopRecommendImage();
                 break;
         }
         return parser;

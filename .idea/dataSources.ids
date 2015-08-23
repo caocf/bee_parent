@@ -174,7 +174,6 @@
       <column name="REMARK" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
       <column name="RECOMMEND" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="ISBACK" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
-      <column name="IMAGE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <column name="RECOMMENDIMAGE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="SID"/>
       <exported-key name="FK_hr58730vjl236felr49hqe28u" table="TB_AD" schema="" catalog="db_bee" columns="SHOP"/>
@@ -183,7 +182,6 @@
       <exported-key name="FK_m6vcy1sp0dui5rnrfco61236e" table="TB_SHOP_PRICE" schema="" catalog="db_bee" columns="SHOP"/>
       <index name="FK_gmmbvlqaexnr5cio0p1t50y11" unique="false" columns="RECOMMENDIMAGE"/>
       <index name="FK_k3cu981hvkkswoaq82al88vwd" unique="false" columns="AREA"/>
-      <index name="FK_kft42ja7ir397novfccbp8p44" unique="false" columns="IMAGE"/>
     </table>
     <table name="TB_SHOP_COMMENT" schema="" catalog="db_bee" type="TABLE">
       <column name="SCID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>

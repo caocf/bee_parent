@@ -72,43 +72,6 @@ public class ShopService implements IShopService {
 
         try {
 
-            // 保存商家主图
-            if (req.getFile("file") != null) {
-                MultipartFile file = req.getFile("file");
-                String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.ShopListSize, req, file);
-                Image image = new Image();
-                image.setType(0);
-                image.setRemark("");
-                image.setCreateTime(System.currentTimeMillis());
-                image.setUrl(paths[0]);
-                image.setPath(paths[1]);
-                image.setSort(100);
-                image.setWidth(0);
-                image.setHeight(0);
-                imageDao.save(image);
-                shop.setImage(image);
-            } else {
-                shop.setImage(new Image(0l));
-            }
-
-            // 保存商家推荐图
-            if (req.getFile("recommendFile") != null) {
-                MultipartFile file = req.getFile("recommendFile");
-                String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.RecommedSize, req, file);
-                Image image = new Image();
-                image.setType(0);
-                image.setRemark("");
-                image.setCreateTime(System.currentTimeMillis());
-                image.setUrl(paths[0]);
-                image.setPath(paths[1]);
-                image.setSort(100);
-                image.setWidth(0);
-                image.setHeight(0);
-                imageDao.save(image);
-                shop.setRecommendImage(image);
-            } else {
-                shop.setRecommendImage(new Image(0l));
-            }
             shop.setCreateTime(System.currentTimeMillis());
             shop.setIdentity("S" + shop.getCreateTime());
             shop.setPrice(0d);
@@ -125,6 +88,18 @@ public class ShopService implements IShopService {
             if (req.getFile("thumbnailFile") != null) {
                 req.setAttribute("shopId", shop.getSid());
                 ImageParser.getImageParser(ImageParser.ImageType.ShopListThum).generate(req, req.getFile("thumbnailFile"));
+            }
+
+            // 保存商家门店图
+            if (req.getFile("file") != null) {
+                req.setAttribute("shopId", shop.getSid());
+                ImageParser.getImageParser(ImageParser.ImageType.ShopImage).generate(req, req.getFile("file"));
+            }
+
+            // 保存商家推广图
+            if (req.getFile("recommendFile") != null) {
+                req.setAttribute("shopId", shop.getSid());
+                ImageParser.getImageParser(ImageParser.ImageType.ShopRecommend).generate(req, req.getFile("recommendFile"));
             }
 
             /**
@@ -163,8 +138,8 @@ public class ShopService implements IShopService {
     @Override
     @Transactional
     public void updateShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException {
-        try {
 
+        try {
             // 修改缩略图
             MultipartFile thumFile = req.getFile("thumbnailFile");
             if (thumFile != null && thumFile.getSize() > 0) {
@@ -172,53 +147,23 @@ public class ShopService implements IShopService {
                 ImageParser.getImageParser(ImageParser.ImageType.ShopListThum).generate(req, thumFile);
             }
 
+            // 修改主图
             MultipartFile file = req.getFile("file");
             if (file != null && file.getSize() > 0) {
-                Image image = new Image();
-                if (shop.getImage().getIid() > 0) {
-                    image = imageDao.findById(shop.getImage().getIid());
-                    ImageFactory.getInstance().deleteImage(image.getPath());
-                } else {
-                    image.setIid(null);
-                    image.setType(0);
-                    image.setRemark("");
-                    image.setCreateTime(System.currentTimeMillis());
-                    image.setSort(100);
-                }
-                String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.ShopListSize, req, file);
-                image.setUrl(paths[0]);
-                image.setPath(paths[1]);
-                if (image.getIid() != null && image.getIid() > 0) {
-                    imageDao.update(image);
-                } else {
-                    imageDao.save(image);
-                }
-                shop.setImage(image);
+                req.setAttribute("shopId", shop.getSid());
+                ImageParser.getImageParser(ImageParser.ImageType.ShopImage).generate(req, file);
             }
+
+            // 修改推广图
             MultipartFile recommendFile = req.getFile("recommendFile");
             if (recommendFile != null && recommendFile.getSize() > 0) {
-                Image image = new Image();
-                if (shop.getRecommendImage().getIid() > 0) {
-                    image = imageDao.findById(shop.getRecommendImage().getIid());
-                    ImageFactory.getInstance().deleteImage(image.getPath());
-                } else {
-                    image.setIid(null);
-                    image.setType(0);
-                    image.setRemark("");
-                    image.setCreateTime(System.currentTimeMillis());
-                    image.setSort(100);
-                }
-                String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.RecommedSize, req, recommendFile);
-                image.setUrl(paths[0]);
-                image.setPath(paths[1]);
-                if (image.getIid() != null && image.getIid() > 0) {
-                    imageDao.update(image);
-                } else {
-                    imageDao.save(image);
-                }
-                shop.setRecommendImage(image);
+                req.setAttribute("shopId", shop.getSid());
+                ImageParser.getImageParser(ImageParser.ImageType.ShopRecommend).generate(req, recommendFile);
             }
+
+            // 保存商家其他信息
             shopDao.update(shop);
+
         } catch(DataRunException e) {
             throw e;
         }
