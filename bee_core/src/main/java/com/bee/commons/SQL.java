@@ -70,6 +70,7 @@ public final class SQL {
         public static final String queryShopMap = "SELECT A.SID, A.NAME, A.ADDR, A.LON, A.LAT FROM TB_SHOP A";
 
         public static final class Price {
+            public static final String queryAppShopPriceByShopId = "SELECT A.PRICE, A.MARK FROM TB_SHOP_PRICE A WHERE A.SHOP = ?";
             public static final String queryShopPriceByShopId = "From ShopPrice A left join fetch A.shop B where B.sid = ?";
             public static final String getShopPriceById = "From ShopPrice A left join fetch A.shop B where A.spid = ?";
         }

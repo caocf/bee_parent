@@ -1,5 +1,6 @@
 package com.bee.services.shop;
 
+import com.bee.modal.ShopPriceItem;
 import com.bee.pojo.shop.ShopPrice;
 import com.qsd.framework.hibernate.exception.DataRunException;
 
@@ -25,6 +26,14 @@ public interface IShopPriceService {
      * @return
      */
     public List<ShopPrice> queryShopPriceByShopId(long sid);
+
+    /**
+     * 查询商家价格列表 For App
+     *
+     * @param sid
+     * @return
+     */
+    public List<ShopPriceItem> queryAppShopPriceByShopId(long sid);
 
     /**
      * 根据ID获取商家价格

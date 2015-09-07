@@ -12,14 +12,13 @@ public class ShopListRequest extends PagingRequest {
 
     private Long uid;
     private String search;
-    private String types;
+    private Integer type;
 
-    public String getTypes() {
-        return types;
+    public Integer getType() {
+        return type;
     }
-
-    public void setTypes(String types) {
-        this.types = types;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public String getSearch() {

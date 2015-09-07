@@ -77,8 +77,14 @@ public class ShopService implements IShopService {
             shop.setPrice(0d);
             shop.setStatus(Consts.Shop.Status.Run);
             shop.setIsBack(Consts.False);
-            if(null == shop.getSort()) {
+            if (null == shop.getSort()) {
                 shop.setSort(100);
+            }
+            if (null == shop.getRecommend()) {
+                shop.setRecommend(Consts.False);
+            }
+            if (null == shop.getSortTime()) {
+                shop.setSortTime(0l);
             }
 
             // 保存商家信息

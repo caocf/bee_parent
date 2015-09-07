@@ -92,14 +92,9 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
             sb.append(" and A.name like ?");
             entity.setParams("%" + request.getSearch() + "%");
         }
-        if (request.getTypes() != null && !"".equals(request.getTypes())) {
-            String[] types = request.getTypes().split(",");
-            sb.append(" and (");
-            for (int i = 0; i < types.length; i++) {
-                sb.append(i == 0 ? "A.type = ?" : " or A.type = ?");
-                entity.setParams(Integer.valueOf(types[i]));
-            }
-            sb.append(")");
+        if (request.getType() != null && request.getType() >= 0) {
+            sb.append(" and A.type = ?");
+            entity.setParams(request.getType());
         }
         sb.append(SQL.Shop.queryAppShopListSort);
         entity.setEntity(sb.toString());

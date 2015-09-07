@@ -2,6 +2,7 @@ package com.bee.services.shop.impl;
 
 import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopPriceDao;
+import com.bee.modal.ShopPriceItem;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopPrice;
 import com.bee.services.shop.IShopPriceService;
@@ -33,6 +34,11 @@ public class ShopPriceService implements IShopPriceService {
         } catch (DataRunException e) {
             throw e;
         }
+    }
+
+    @Override
+    public List<ShopPriceItem> queryAppShopPriceByShopId(long sid) {
+        return shopPriceDao.queryAppShopPriceByShopId(sid);
     }
 
     @Override
