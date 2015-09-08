@@ -5,6 +5,7 @@ import com.bee.commons.ImageFactory;
 import com.bee.commons.SQL;
 import com.bee.modal.ShopImageListItem;
 import com.bee.pojo.shop.ShopImage;
+import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
@@ -28,11 +29,13 @@ public class ShopImageDao extends JpaDaoSupport<ShopImage, Long> {
             @Override
             public ShopImageListItem converData(Object[] objects) {
                 ShopImageListItem item = new ShopImageListItem();
-                item.setImage(new ImageFactory.Image(StringUtil.parseString(objects[0], null), ImageFactory.ImageType.ShopImage));
+                item.setUrl(StringUtil.parseString(objects[0], ""));
                 item.setRemark(StringUtil.parseString(objects[1], ""));
+                item.setWidth(NumberUtil.parseInteger(objects[2], 0));
+                item.setHeight(NumberUtil.parseInteger(objects[3], 0));
                 return item;
             }
-        }, sid, Consts.Shop.ImageType.Photo);
+        }, sid);
     }
 
     /**
