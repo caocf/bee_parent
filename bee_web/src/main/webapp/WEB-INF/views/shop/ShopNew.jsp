@@ -152,7 +152,7 @@
   	<script type="text/javascript">
   		Navbar.init("ShopNew");
   		Upload.init("btnThum", "thumbnailFile", "thumbnailImage");
-        Upload.init("btnImage", "file", "image");
+      Upload.init("btnImage", "file", "image");
   		Upload.init("btnRecommendImage", "recommendFile", "recommendImage");
   		$("#area").area({
   			areaId: $("#areaId").val(),

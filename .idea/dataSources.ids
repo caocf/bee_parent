@@ -160,27 +160,25 @@
       <column name="IDENTITY" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="NAME" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="AREA" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="PRICE" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
-      <column name="LINKNAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
-      <column name="PHONE" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
-      <column name="ADDR" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="LON" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="LAT" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="SORTTIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="REMARK" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <column name="RECOMMEND" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="LINKNAME" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="PHONE" sqlType="VARCHAR" precision="11" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="ADDR" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="LON" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="LAT" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MTAw"/>
+      <column name="SORTTIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="REMARK" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="RECOMMEND" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="ISBACK" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
-      <column name="RECOMMENDIMAGE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="SID"/>
       <exported-key name="FK_hr58730vjl236felr49hqe28u" table="TB_AD" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_kjf30805e521nr8oi35jimg9g" table="TB_ORDER" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_7mwbrpstkbyuxi8xx71e8yn58" table="TB_SHOP_IMAGE" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_m6vcy1sp0dui5rnrfco61236e" table="TB_SHOP_PRICE" schema="" catalog="db_bee" columns="SHOP"/>
-      <index name="FK_gmmbvlqaexnr5cio0p1t50y11" unique="false" columns="RECOMMENDIMAGE"/>
       <index name="FK_k3cu981hvkkswoaq82al88vwd" unique="false" columns="AREA"/>
     </table>
     <table name="TB_SHOP_COMMENT" schema="" catalog="db_bee" type="TABLE">
@@ -217,12 +215,14 @@
     </table>
     <table name="TB_SHOP_IMAGE" schema="" catalog="db_bee" type="TABLE">
       <column name="SIID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="URL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="URL" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="SORT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MTAw"/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="WIDTH" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="HEIGHT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <primary-key name="PRIMARY" columns="SIID"/>
       <foreign-key name="FK_7mwbrpstkbyuxi8xx71e8yn58" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_7mwbrpstkbyuxi8xx71e8yn58" unique="false" columns="SHOP"/>

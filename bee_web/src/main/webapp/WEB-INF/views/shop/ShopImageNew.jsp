@@ -31,26 +31,7 @@
       <form id="submitForm" class="form-horizontal" action="${basePath}/admin/shop/${sid}/image" method="post" enctype="multipart/form-data">
           <input type="hidden" name="shop.sid" value="${image.shop.sid}" />
           <input type="hidden" id="imageId" name="siid" value="${image.siid}" />
-      <div class="form-group">
-        <div id="uploader">
-            <div class="queueList">
-                <div id="dndArea" class="placeholder">
-                    <div id="filePicker"></div>
-                    <p>或将照片拖到这里，单次最多可选300张</p>
-                </div>
-            </div>
-            <div class="statusBar" style="display:none;">
-                <div class="progress">
-                    <span class="text">0%</span>
-                    <span class="percentage"></span>
-                </div><div class="info"></div>
-                <div class="btns">
-                    <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
-                </div>
-            </div>
-        </div>
-      </div>
-      
+          <input type="hidden" name="shop.type" value="0" />
       <!--
       <div class="form-group">
         <label class="col-xs-1 control-label">图片类型</label>
@@ -65,9 +46,13 @@
           </div>
         </div>
       </div>
+      -->
       <div class="form-group">
         <label class="col-xs-1 control-label">上传图片</label>
         <div class="col-xs-4">
+          <button  id="btnFile" type="button" class="btn btn-primary icon-text">
+              <i class="fa fa-upload"></i>上传图片
+          </button>
           <input type="file" id="file" name="file" />
           <input type="hidden" name="url" value="${image.url}" />
           <input type="hidden" name="path" value="${image.path}" />
@@ -75,7 +60,7 @@
       </div>
       <div class="form-group">
         <div class="col-xs-4 col-xs-offset-1">
-          <img id="image" width="120px" height="60px" src="${image.image.mainPic}" />
+          <img id="image" width="${image.width}" height="${image.height}" src="${image.url}/thum.jpg" />
         </div>
       </div>
       <div class="form-group">
@@ -98,23 +83,23 @@
           <button type="button" class="btn btn-success" onclick="doSubmit();">保存</button>
         </div>
       </div>
-      -->
+
     </form>
   </div>
   <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
-  <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
+  <script type="text/javascript" src="${resPath}/assets/js/global.js"></script> 
   <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
+  <script type="text/javascript" src="${resPath}/assets/js/plugin/upload.js"></script>
   <script type="text/javascript">
     Navbar.init("ShopImage");
-
-    // Upload.init("file", "image");
-    // function doSubmit() {
-    //   if($("#imageId").val() != "") {
-    //     document.forms["submitForm"].action += "/${image.siid}";
-    //   }
-    //   document.forms["submitForm"].submit();
-    // }
+    Upload.init("btnFile", "file", "image");
+    function doSubmit() {
+      if($("#imageId").val() != "") {
+        document.forms["submitForm"].action += "/${image.siid}";
+      }
+      document.forms["submitForm"].submit();
+    }
 </script>
 </body>
 </html>

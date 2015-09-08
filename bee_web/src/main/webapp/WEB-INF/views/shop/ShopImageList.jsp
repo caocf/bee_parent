@@ -35,14 +35,14 @@
       <table class="table table-hover">
       	<tr>
       		<th>主键</th>
-      		<th>类型</th>
+          <th>图片说明</th>
       		<th>排序</th>
       		<th>操作</th>
       	</tr>
       	<c:forEach items="${result}" var="image">
 	      	<tr>
 	      		<td>${image.siid}</td>
-	      		<td>${image.typeStr}</td>
+            <td>${image.remark}</td>
 	      		<td>${image.sort}</td>
 	      		<td>
 	      			<a href="${basePath}/admin/shop/${sid}/image/${image.siid}/edit" class="icon" role="button">

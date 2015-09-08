@@ -2,6 +2,7 @@ package com.bee.image;
 
 import com.bee.image.impl.ShopImage;
 import com.bee.image.impl.ShopListImage;
+import com.bee.image.impl.ShopPhotoListImage;
 import com.bee.image.impl.ShopRecommendImage;
 import com.bee.pojo.Image;
 import org.slf4j.Logger;
@@ -12,18 +13,55 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
 /**
+ * 图片解析抽象父类
+ *
+ *
  * Created by suntongwei on 15/8/21.
  */
-public abstract class ImageParser {
+public abstract class ImageParser implements ImageFileNameGenerate {
 
     protected static final Logger Log = LoggerFactory.getLogger(ImageParser.class);
 
+    /**
+     * 图片原始比例
+     */
+    public static final int ImageSizeAuto = 0;
 
+    /**
+     * 图片文件名生成器
+     */
+    private ImageFileNameGenerate mImageFileNameGenerate;
+
+    /**
+     * 图片类型枚举类
+     */
     public enum ImageType {
-        ShopListThum, ShopImage, ShopRecommend
+        ShopListThum, ShopImage, ShopRecommend, ShopPhoto
     }
 
+    /**
+     * 图片文件扩展名枚举类
+     */
+    public enum ImageTypeEnum {
 
+        JPG(".jpg"), JPEG(".jpeg"), PNG(".png");
+
+        private String extension;
+        private ImageTypeEnum(String extension) {
+            this.extension = extension;
+        }
+
+        @Override
+        public String toString() {
+            return extension;
+        }
+    }
+
+    /**
+     *
+     * @param type
+     * @return
+     */
     public static ImageParser getImageParser(ImageType type) {
         ImageParser parser = null;
         switch (type) {
@@ -36,6 +74,9 @@ public abstract class ImageParser {
             case ShopRecommend:
                 parser = new ShopRecommendImage();
                 break;
+            case ShopPhoto:
+                parser = new ShopPhotoListImage();
+                break;
         }
         return parser;
     }
@@ -46,9 +87,13 @@ public abstract class ImageParser {
      *
      * @param request
      * @param file
+     * @return String[] 0：网络路径，1：本地路径
      */
-    public abstract Image generate(HttpServletRequest request, MultipartFile file);
+    public abstract String[] generate(HttpServletRequest request, MultipartFile file);
 
+    /**
+     * 解析图片
+     */
     public abstract void parser();
 
 
@@ -93,5 +138,30 @@ public abstract class ImageParser {
         file.mkdirs();
     }
 
+    /**
+     * 返回ImageFileNameGenerate
+     *
+     * @return
+     */
+    public ImageFileNameGenerate getImageFileNameGenerate() {
+        if (null == mImageFileNameGenerate) {
+            return this;
+        }
+        return mImageFileNameGenerate;
+    }
 
+    public void setImageFileNameGenerate(ImageFileNameGenerate l) {
+        mImageFileNameGenerate = l;
+    }
+
+
+    /**
+     * 默认文件名返回
+     *
+     * @return
+     */
+    @Override
+    public String getFileName(HttpServletRequest request) {
+        return System.currentTimeMillis() + ImageTypeEnum.JPG.toString();
+    }
 }

@@ -1,8 +1,5 @@
 package com.bee.pojo.shop;
 
-import com.bee.commons.Consts;
-import com.bee.commons.ImageFactory;
-
 import javax.persistence.*;
 
 /**
@@ -22,6 +19,10 @@ public class ShopImage implements java.io.Serializable {
     private String remark;
     // 类型
     private Integer type;
+    // 图片宽
+    private Integer width;
+    // 图片高
+    private Integer height;
     // 排序
     private Integer sort;
     // 所属商家
@@ -32,32 +33,32 @@ public class ShopImage implements java.io.Serializable {
         siid = id;
     }
 
-    @Transient
-    public ImageFactory.Image getImage() {
-        ImageFactory.ImageType imageType = null;
-        if(getType() == Consts.Shop.ImageType.Big) {
-            imageType = ImageFactory.ImageType.ShopListSize;
-        } else if(getType() == Consts.Shop.ImageType.Photo) {
-            imageType = ImageFactory.ImageType.ShopImage;
-        }
-        return new ImageFactory.Image(getUrl(), imageType);
-    }
+//    @Transient
+//    public ImageFactory.Image getImage() {
+//        ImageFactory.ImageType imageType = null;
+//        if(getType() == Consts.Shop.ImageType.Big) {
+//            imageType = ImageFactory.ImageType.ShopListSize;
+//        } else if(getType() == Consts.Shop.ImageType.Photo) {
+//            imageType = ImageFactory.ImageType.ShopImage;
+//        }
+//        return new ImageFactory.Image(getUrl(), imageType);
+//    }
 
-    @Transient
-    public String getTypeStr() {
-        String s;
-        switch (getType()) {
-            case Consts.Shop.ImageType.Big:
-                s = "主图";
-                break;
-            case Consts.Shop.ImageType.Photo:
-                s = "相册图";
-                break;
-            default:
-                s = "";
-        }
-        return s;
-    }
+//    @Transient
+//    public String getTypeStr() {
+//        String s;
+//        switch (getType()) {
+//            case Consts.Shop.ImageType.Big:
+//                s = "主图";
+//                break;
+//            case Consts.Shop.ImageType.Photo:
+//                s = "相册图";
+//                break;
+//            default:
+//                s = "";
+//        }
+//        return s;
+//    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -110,5 +111,19 @@ public class ShopImage implements java.io.Serializable {
     }
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+    @Column(name = "WIDTH")
+    public Integer getWidth() {
+        return width;
+    }
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+    @Column(name = "HEIGHT")
+    public Integer getHeight() {
+        return height;
+    }
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 }
