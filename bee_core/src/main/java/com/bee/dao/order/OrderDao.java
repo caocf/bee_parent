@@ -49,7 +49,7 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
     }
 
     /**
-     *
+     * App（C端）获取订单列表
      *
      * @param request
      * @return
@@ -84,6 +84,7 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
                 item.setPhone(StringUtil.parseString(obj[8], ""));
                 item.setRemark(StringUtil.parseString(obj[9], ""));
                 item.setNo(StringUtil.parseString(obj[10], ""));
+                item.setAddr(StringUtil.parseString(obj[11], ""));
                 return item;
             }
         });
@@ -93,5 +94,15 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         sb.append(SQL.Order.getOrderListByParamOrder);
         entity.setEntity(sb.toString());
         return queryWithPagingConver(entity);
+    }
+
+    /**
+     * 根据OID查询订单
+     *
+     * @param oid
+     * @return
+     */
+    public Order queryOrderByOid(long oid) {
+        return findFirstByParams(SQL.Order.queryOrderByOid, oid);
     }
 }

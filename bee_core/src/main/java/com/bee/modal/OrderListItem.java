@@ -21,6 +21,7 @@ public class OrderListItem implements java.io.Serializable {
     private Long execTime;
     private String phone;
     private String remark;
+    private String addr;
 
     public Long getOid() {
         return oid;
@@ -87,5 +88,11 @@ public class OrderListItem implements java.io.Serializable {
     }
     public void setNo(String no) {
         this.no = no;
+    }
+    public String getAddr() {
+        return addr;
+    }
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 }

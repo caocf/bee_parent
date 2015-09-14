@@ -5,7 +5,7 @@ package com.bee.commons;
  *
  * Created by suntongwei on 15/9/14.
  */
-public class OrderStatusMachine {
+public final class OrderStatusMachine {
 
     /**
      * 是否能够取消订单
@@ -14,6 +14,17 @@ public class OrderStatusMachine {
      * @return true 能取消订单, false 不能取消订单
      */
     public static boolean isCancelOrder(int status) {
+        return (status == Consts.Order.Status.Create || status == Consts.Order.Status.Underway);
+    }
+
+    /**
+     * 是否能修改订单
+     * 只有订单状态 Consts.Order.Status.Create, Consts.Order.Status.Underway 才能修改
+     *
+     * @param status 当前订单状态
+     * @return true 能修改订单, false 不能修改订单
+     */
+    public static boolean isEditOrder(int status) {
         return (status == Consts.Order.Status.Create || status == Consts.Order.Status.Underway);
     }
 

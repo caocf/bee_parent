@@ -1,6 +1,5 @@
 package com.bee.app.controller.order;
 
-import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderCreateResponse;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
@@ -43,6 +42,17 @@ public class OrderController {
         PagingResult<OrderListItem> items = orderService.getAppOrderListByParam(request);
         items.setMaxRows(request.getMaxRows());
         return items;
+    }
+
+    /**
+     * 查询订单信息
+     * 主要用于查看订单时，实时更新订单状态等订单信息
+     *
+     * @return oid 订单ID
+     */
+    @RequestMapping(value = "/{oid}", method = RequestMethod.GET)
+    public Order queryOrder(@PathVariable Long oid) {
+        return orderService.getOrderByOid(oid);
     }
 
     /**

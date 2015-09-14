@@ -71,4 +71,11 @@ public interface IOrderService {
      * @throws DataRunException
      */
     public void finishOrder(long id) throws DataRunException;
+
+    /**
+     * 查询订单
+     *
+     * @param oid
+     */
+    public Order getOrderByOid(long oid);
 }

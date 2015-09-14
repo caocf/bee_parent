@@ -121,11 +121,14 @@ public final class SQL {
     public static final class Order {
         public static final String getAppOrderListByParam = "SELECT " +
                 "B.NAME, A.CREATETIME, A.NUM, A.STATUS, A.OID, B.SID, A.ORDERNAME, A.EXECTIME, " +
-                "A.ORDERPHONE, A.REMARK, A.NO " +
+                "A.ORDERPHONE, A.REMARK, A.NO, B.ADDR " +
                 "FROM TB_ORDER A LEFT OUTER JOIN TB_SHOP B ON A.SHOP = B.SID WHERE 1=1 ";
         public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
                 "left join fetch A.user C left join fetch B.area D where 1=1 ";
         public static final String getOrderListByParamOrder = " order by A.status asc, A.createTime desc";
+        public static final String queryOrderByOid = "From Order A " +
+                "left join fetch A.shopUser B left join fetch A.user C left join fetch A.shop C " +
+                "where A.oid = ?";
     }
 
     public static final class Find {

@@ -128,4 +128,15 @@ public class OrderService implements IOrderService {
         order.setStatus(Consts.Order.Status.Finish);
         orderDao.update(order);
     }
+
+    /**
+     * 查询订单
+     *
+     * @param oid
+     * @return
+     */
+    @Override
+    public Order getOrderByOid(long oid) {
+        return orderDao.queryOrderByOid(oid);
+    }
 }
