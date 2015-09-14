@@ -30,7 +30,6 @@
         <tr>
           <th>主键</th>
           <th>手机号</th>
-          <th>支付宝</th>
           <th>等级</th>
           <th>积分</th>
           <th>操作</th>
@@ -47,7 +46,6 @@
           <tr>
             <td>${user.uid}</td>
             <td>${user.phone}</td>
-            <td>${user.alipay}</td>
             <td>${user.level}</td>
             <td>${user.integral}</td>
             <td></td>

@@ -20,8 +20,11 @@ public class ShopUser implements java.io.Serializable {
     private Long suid;
     private Shop shop;
     private User user;
+    private String name;
+    private String phone;
     private String introduce;
     private List<Image> images = new ArrayList<>(0);
+    private Long createTime;
 
     public ShopUser(){}
     public ShopUser(long id) {
@@ -67,5 +70,26 @@ public class ShopUser implements java.io.Serializable {
     }
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+    @Column(name = "NAME")
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    @Column(name = "PHONE")
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    @Column(name = "CREATETIME")
+    public Long getCreateTime() {
+        return createTime;
+    }
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
     }
 }

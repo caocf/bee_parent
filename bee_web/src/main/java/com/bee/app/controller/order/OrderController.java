@@ -1,6 +1,7 @@
 package com.bee.app.controller.order;
 
 import com.bee.client.params.order.OrderCreateRequest;
+import com.bee.client.params.order.OrderCreateResponse;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
@@ -31,6 +32,7 @@ public class OrderController {
     @Autowired
     private IOrderService orderService;
 
+
     /**
      * 查询订单列表
      *
@@ -47,10 +49,11 @@ public class OrderController {
      * App创建订单
      */
     @RequestMapping(method = RequestMethod.POST)
-    public BaseResponse create(Order order) {
-        BaseResponse res = new BaseResponse();
+    public OrderCreateResponse create(Order order) {
+        OrderCreateResponse res = new OrderCreateResponse();
         try {
             orderService.createOrder(order);
+            res.setOrder(order);
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Order.CreateError);
@@ -96,7 +99,7 @@ public class OrderController {
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Order.CancelError);
-            res.setMsg("取消失败，请重试");
+            res.setMsg(Codes.Order.CancelErrorStr);
         }
         return res;
     }

@@ -78,6 +78,12 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
                 item.setNum(NumberUtil.parseInteger(obj[2], 0));
                 item.setStatus(NumberUtil.parseInteger(obj[3], Consts.Order.Status.Create));
                 item.setOid(NumberUtil.parseLong(obj[4], 0));
+                item.setShopId(NumberUtil.parseLong(obj[5], 0));
+                item.setUserName(StringUtil.parseString(obj[6], ""));
+                item.setExecTime(NumberUtil.parseLong(obj[7], 0));
+                item.setPhone(StringUtil.parseString(obj[8], ""));
+                item.setRemark(StringUtil.parseString(obj[9], ""));
+                item.setNo(StringUtil.parseString(obj[10], ""));
                 return item;
             }
         });

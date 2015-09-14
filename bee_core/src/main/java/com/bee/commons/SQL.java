@@ -107,14 +107,22 @@ public final class SQL {
                     "LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
                     "WHERE A.SHOPCOMMENT = ? ORDER BY A.CREATETIME DESC";
         }
+
+        public static final class User {
+            public static final String getShopUserByShopId = "FROM ShopUser A " +
+                    "left join fetch A.shop B " +
+                    "left join fetch A.user C where B.sid = ?";
+        }
     }
 
     /**
      * 订单模块SQL
      */
     public static final class Order {
-        public static final String getAppOrderListByParam = "select B.name, A.execTime, A.num, A.status, A.oid from TB_ORDER A " +
-                "left outer join TB_SHOP B on A.shop = B.sid where 1=1 ";
+        public static final String getAppOrderListByParam = "SELECT " +
+                "B.NAME, A.CREATETIME, A.NUM, A.STATUS, A.OID, B.SID, A.ORDERNAME, A.EXECTIME, " +
+                "A.ORDERPHONE, A.REMARK, A.NO " +
+                "FROM TB_ORDER A LEFT OUTER JOIN TB_SHOP B ON A.SHOP = B.SID WHERE 1=1 ";
         public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
                 "left join fetch A.user C left join fetch B.area D where 1=1 ";
         public static final String getOrderListByParamOrder = " order by A.status asc, A.createTime desc";

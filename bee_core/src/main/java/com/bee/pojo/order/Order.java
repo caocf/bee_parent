@@ -2,6 +2,7 @@ package com.bee.pojo.order;
 
 import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
+import com.bee.pojo.shop.ShopUser;
 import com.bee.pojo.user.User;
 import com.qsd.framework.commons.utils.DateUtil;
 
@@ -41,10 +42,10 @@ public class Order implements java.io.Serializable {
     private User user;
     // 所属店
     private Shop shop;
+    // 商家接待管理员
+    private ShopUser shopUser;
     // 订单创建时间
     private Long createTime;
-    // 订单记录
-    private String record;
 
     @Transient
     public String getTypeStr() {
@@ -177,11 +178,12 @@ public class Order implements java.io.Serializable {
     public void setOrderPhone(String orderPhone) {
         this.orderPhone = orderPhone;
     }
-    @Column(name = "RECORD")
-    public String getRecord() {
-        return record;
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "SHOPUSER")
+    public ShopUser getShopUser() {
+        return shopUser;
     }
-    public void setRecord(String record) {
-        this.record = record;
+    public void setShopUser(ShopUser shopUser) {
+        this.shopUser = shopUser;
     }
 }

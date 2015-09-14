@@ -9,6 +9,7 @@ import com.bee.services.stat.IUserStatService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class UserStatService implements IUserStatService {
     private UserRegStatDao userRegStatDao;
 
     @Override
+    @Transactional
     public void addUserLoginStat(long uid) throws DataRunException {
         UserLoginStat stat = new UserLoginStat();
         stat.setUser(new User(uid));

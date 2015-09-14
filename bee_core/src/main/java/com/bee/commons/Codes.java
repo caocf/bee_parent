@@ -27,6 +27,8 @@ public final class Codes {
         public static final int CreateError = 0x12c;
         // 301 取消订单失败
         public static final int CancelError = 0x12d;
+        // 订单无法取消
+        public static final String CancelErrorStr = "不能取消订单";
     }
 
 }

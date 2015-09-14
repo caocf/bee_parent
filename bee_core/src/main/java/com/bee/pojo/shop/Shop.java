@@ -4,6 +4,7 @@ import com.bee.commons.Consts;
 import com.bee.pojo.Area;
 import com.bee.pojo.Image;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "TB_SHOP")
+@JsonIgnoreProperties(value = {"admins"})
 public class Shop implements java.io.Serializable {
 
     // serialVersionUID
@@ -58,6 +60,7 @@ public class Shop implements java.io.Serializable {
     private Integer recommend;
     // 是否返现
     private Integer isBack;
+
 
 
     public Shop() {}
