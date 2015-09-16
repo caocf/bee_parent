@@ -121,24 +121,28 @@ public final class SQL {
     public static final class Order {
         public static final String getAppOrderListByParam = "SELECT " +
                 "B.NAME, A.CREATETIME, A.NUM, A.STATUS, A.OID, B.SID, A.ORDERNAME, A.EXECTIME, " +
-                "A.ORDERPHONE, A.REMARK, A.NO, B.ADDR " +
+                "A.ORDERPHONE, A.REMARK " +
                 "FROM TB_ORDER A LEFT OUTER JOIN TB_SHOP B ON A.SHOP = B.SID WHERE 1=1 ";
         public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
                 "left join fetch A.user C left join fetch B.area D where 1=1 ";
         public static final String getOrderListByParamOrder = " order by A.status asc, A.createTime desc";
-        public static final String queryOrderByOid = "From Order A " +
-                "left join fetch A.shopUser B left join fetch A.user C left join fetch A.shop C " +
-                "where A.oid = ?";
+        public static final String QueryOrderByOid = "SELECT A.NO, A.CREATETIME, A.STATUS, C.ADDR " +
+                "FROM TB_ORDER A " +
+                "LEFT OUTER JOIN TB_SHOP_USER B ON A.SHOPUSER = B.SUID " +
+                "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +
+                "WHERE A.OID = ?";
     }
 
+    /**
+     * 发现模块SQL
+     */
     public static final class Find {
 
         public static final String queryAppFindList = "SELECT " +
-                "A.FID, B.UID, B.NAME AS USERNAME, B.URL AS AVATAR, A.CREATETIME, A.CONTENT, C.SID, C.NAME, D.URL, " +
+                "A.FID, B.UID, B.NAME AS USERNAME, B.URL AS AVATAR, A.CREATETIME, A.CONTENT, C.SID, C.NAME, " +
                 "(SELECT COUNT(*) FROM TB_FIND_REPLY D WHERE D.FIND = A.FID) AS REPLYNUM " +
                 "FROM TB_FIND A LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +
-                "LEFT OUTER JOIN TB_IMAGE D ON C.IMAGE = D.IID " +
                 "ORDER BY A.CREATETIME DESC";
 
         public static final class Reply {

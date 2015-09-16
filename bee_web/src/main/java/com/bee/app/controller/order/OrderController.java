@@ -1,5 +1,6 @@
 package com.bee.app.controller.order;
 
+import com.bee.app.modal.order.OrderItem;
 import com.bee.client.params.order.OrderCreateResponse;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
@@ -51,7 +52,7 @@ public class OrderController {
      * @return oid 订单ID
      */
     @RequestMapping(value = "/{oid}", method = RequestMethod.GET)
-    public Order queryOrder(@PathVariable Long oid) {
+    public OrderItem queryOrder(@PathVariable Long oid) {
         return orderService.getOrderByOid(oid);
     }
 

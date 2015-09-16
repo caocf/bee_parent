@@ -41,10 +41,7 @@ public class FindDao extends JpaDaoSupport<Find, Long> {
                 item.setContent(StringUtil.parseString(objs[5], ""));
                 item.setShopId(NumberUtil.parseLong(objs[6], 0));
                 item.setShopName(StringUtil.parseString(objs[7], ""));
-                item.setShopImage(new ImageFactory.Image(
-                        StringUtil.parseString(objs[8], null), ImageFactory.ImageType.ShopListSize
-                ));
-                item.setReplyNum(NumberUtil.parseInteger(objs[9], 0));
+                item.setReplyNum(NumberUtil.parseInteger(objs[8], 0));
                 return item;
             }
         });

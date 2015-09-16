@@ -99,6 +99,9 @@ public final class Consts {
 
         public static final class Status {
 
+            // 未知状态
+            public static final int Unknow = 0;
+
             // 等待到店
             public static final int Create = 1;
             // 到店进行中

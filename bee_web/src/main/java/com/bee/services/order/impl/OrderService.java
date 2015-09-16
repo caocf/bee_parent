@@ -1,5 +1,6 @@
 package com.bee.services.order.impl;
 
+import com.bee.app.modal.order.OrderItem;
 import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderListRequest;
@@ -136,7 +137,7 @@ public class OrderService implements IOrderService {
      * @return
      */
     @Override
-    public Order getOrderByOid(long oid) {
+    public OrderItem getOrderByOid(long oid) {
         return orderDao.queryOrderByOid(oid);
     }
 }

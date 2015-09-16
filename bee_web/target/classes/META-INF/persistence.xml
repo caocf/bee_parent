@@ -8,7 +8,7 @@
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.url"
                       value="jdbc:mysql://139.196.27.231:3306/db_bee?characterEncoding=utf8"/>
-           <!--
+            <!--
             <property name="hibernate.connection.url"
                      value="jdbc:mysql://10.174.117.100:3306/db_bee?characterEncoding=utf8" />
                      -->

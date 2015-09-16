@@ -9,7 +9,6 @@ public class OrderListItem implements java.io.Serializable {
     private static final long serialVersionUID = -879359212825537989L;
 
     private Long oid;
-    private String no;
     private String name;
     // 下单时间
     private Long time;
@@ -21,7 +20,6 @@ public class OrderListItem implements java.io.Serializable {
     private Long execTime;
     private String phone;
     private String remark;
-    private String addr;
 
     public Long getOid() {
         return oid;
@@ -82,17 +80,5 @@ public class OrderListItem implements java.io.Serializable {
     }
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-    public String getNo() {
-        return no;
-    }
-    public void setNo(String no) {
-        this.no = no;
-    }
-    public String getAddr() {
-        return addr;
-    }
-    public void setAddr(String addr) {
-        this.addr = addr;
     }
 }

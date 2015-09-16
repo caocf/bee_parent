@@ -1,5 +1,6 @@
 package com.bee.dao.order;
 
+import com.bee.app.modal.order.OrderItem;
 import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Consts;
@@ -83,8 +84,6 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
                 item.setExecTime(NumberUtil.parseLong(obj[7], 0));
                 item.setPhone(StringUtil.parseString(obj[8], ""));
                 item.setRemark(StringUtil.parseString(obj[9], ""));
-                item.setNo(StringUtil.parseString(obj[10], ""));
-                item.setAddr(StringUtil.parseString(obj[11], ""));
                 return item;
             }
         });
@@ -102,7 +101,17 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
      * @param oid
      * @return
      */
-    public Order queryOrderByOid(long oid) {
-        return findFirstByParams(SQL.Order.queryOrderByOid, oid);
+    public OrderItem queryOrderByOid(long oid) {
+        return findFirstConverByParams(SQL.Order.QueryOrderByOid, new QueryDataConver<OrderItem>() {
+            @Override
+            public OrderItem converData(Object[] objects) {
+                OrderItem item = new OrderItem();
+                item.setNo(StringUtil.parseString(objects[0], ""));
+                item.setCreateTime(NumberUtil.parseLong(objects[1], 0));
+                item.setStatus(NumberUtil.parseInteger(objects[2], Consts.Order.Status.Unknow));
+                item.setAddr(StringUtil.parseString(objects[3], ""));
+                return item;
+            }
+        }, oid);
     }
 }
