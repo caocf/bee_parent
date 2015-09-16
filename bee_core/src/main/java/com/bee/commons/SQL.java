@@ -76,8 +76,10 @@ public final class SQL {
         }
 
         public static final class Image {
-            public static final String queryAppShopImage =
-                    "select A.URL,A.REMARK,A.WIDTH, A.HEIGHT from TB_SHOP_IMAGE A where A.SHOP = ? order by A.SORT desc";
+            public static final String queryAppShopImage = "SELECT " +
+                    "A.URL,A.REMARK,A.WIDTH, A.HEIGHT " +
+                    "FROM TB_SHOP_IMAGE A WHERE A.SHOP = ? " +
+                    "ORDER BY A.SORT DESC";
             public static final String queryShopImageByShopId = "From ShopImage A left join fetch A.shop B where B.sid = ?";
             public static final String getShopImageById = "From ShopImage A left join fetch A.shop B where A.siid = ?";
         }

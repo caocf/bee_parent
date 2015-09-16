@@ -1,6 +1,5 @@
 package com.bee.image;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
 /**
