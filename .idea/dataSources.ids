@@ -67,6 +67,7 @@
       <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="CONTENT" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <primary-key name="PRIMARY" columns="FID"/>
       <index name="FK_20cewdm85stdu6v7s97idi1pq" unique="false" columns="SHOP"/>
       <index name="FK_o2sr57end0rgevtofsakjpeem" unique="false" columns="USER"/>

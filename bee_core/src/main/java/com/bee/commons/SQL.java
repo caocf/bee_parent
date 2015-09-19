@@ -5,7 +5,6 @@ package com.bee.commons;
  */
 public final class SQL {
 
-
     public static final class Area {
         public static final String queryAreaById = "From Area A where A.parentId = ? order by A.sort desc";
     }
@@ -140,10 +139,12 @@ public final class SQL {
      */
     public static final class Find {
 
+        // 查询发现列表
         public static final String queryAppFindList = "SELECT " +
-                "A.FID, B.UID, B.NAME AS USERNAME, B.URL AS AVATAR, A.CREATETIME, A.CONTENT, C.SID, C.NAME, " +
+                "A.FID, B.UID, A.TYPE, B.NAME AS USERNAME, A.CREATETIME, A.CONTENT, C.SID, C.NAME, " +
                 "(SELECT COUNT(*) FROM TB_FIND_REPLY D WHERE D.FIND = A.FID) AS REPLYNUM " +
-                "FROM TB_FIND A LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
+                "FROM TB_FIND A " +
+                "LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +
                 "ORDER BY A.CREATETIME DESC";
 

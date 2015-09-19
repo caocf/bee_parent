@@ -116,6 +116,7 @@ public class ShopService implements IShopService {
             find.setCreateTime(System.currentTimeMillis());
             find.setShop(shop);
             find.setUser(new User(1l));
+            find.setType(Consts.Find.Type.ShopNew);
             findDao.save(find);
 
         } catch (DataRunException e) {

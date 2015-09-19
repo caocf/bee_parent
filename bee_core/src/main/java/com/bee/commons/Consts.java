@@ -186,6 +186,19 @@ public final class Consts {
         }
     }
 
+    /**
+     * 发现
+     */
+    public static final class Find {
+        public static final class Type {
+            // 未知
+            public static final int Unknow = 0x0;
+            // 新店加入
+            public static final int ShopNew = 0x1;
+            // 商家推广
+            public static final int ShopPop = 0x2;
+        }
+    }
 
     public static final class Ad {
         public static final class Type {

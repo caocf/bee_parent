@@ -68,7 +68,14 @@ public class UserController {
     }
 
 
-
+    /**
+     * 保存用户头像
+     *
+     * @param uid
+     * @param file
+     * @param req
+     * @return
+     */
     @RequestMapping(value = "/{uid}/save/avatar", method = RequestMethod.POST)
     public UserResponse saveAvatar(@PathVariable Long uid, MultipartFile file, HttpServletRequest req) {
         UserResponse res = new UserResponse();

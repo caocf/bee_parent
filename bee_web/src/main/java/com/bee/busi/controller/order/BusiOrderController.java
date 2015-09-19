@@ -1,6 +1,7 @@
 package com.bee.busi.controller.order;
 
 import com.bee.client.params.order.BusiOrderListRequest;
+import com.bee.services.order.IOrderService;
 import com.bee.services.shop.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BusiOrderController {
 
     @Autowired
-    private IShopService shopService;
+    private IOrderService orderService;
 
     /**
      * 商家订单查询

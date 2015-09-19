@@ -38,7 +38,6 @@ public class ShopImage extends ShopImageParser {
             // 创建文件
             // 720p
             File f = new File(diskPath + File.separator + fileName);
-            ImageUtils.getBufferedImage(file);
             ImageUtils.zoomImage(750, 460, file, f);
 
             return new String[] {
@@ -47,8 +46,6 @@ public class ShopImage extends ShopImageParser {
             };
 
         } catch (RuntimeException e) {
-            Log.error(e.getMessage(), e);
-        } catch (IOException e) {
             Log.error(e.getMessage(), e);
         }
 

@@ -5,6 +5,8 @@ import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
 import com.bee.core.UserCacheFactory;
 import com.bee.dao.user.UserDao;
+import com.bee.image.ImageParser;
+import com.bee.image.impl.UserAvatarImage;
 import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
 import com.easemob.server.comm.Constants;
@@ -31,6 +33,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
+ * 用户业务实现类
+ *
+ * 2015.9.17
+ * 更改用户头像实现, 使用ImageParser生成头像
+ *
  * Created by suntongwei on 15/4/15.
  */
 @Service
@@ -42,21 +49,41 @@ public class UserService implements IUserService {
     @Autowired
     private UserDao userDao;
 
+    /**
+     *
+     * @param account
+     * @return
+     */
     @Override
     public User getUserByAccount(String account) {
         return userDao.getUserByAccount(account);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<User> getAllUser() {
         return userDao.findAll();
     }
 
+    /**
+     *
+     * @param identity
+     * @return
+     */
     @Override
     public User getUserByIdentity(String identity) {
         return userDao.findById(Long.valueOf(identity) - Consts.User.IdentityBaseNum);
     }
 
+    /**
+     *
+     *
+     * @param identity
+     * @return
+     */
     @Override
     public List<User> getUsersByIdentity(String identity) {
         if (StringUtil.isNull(identity)) {
@@ -73,6 +100,13 @@ public class UserService implements IUserService {
         return userDao.getUsersByIdentity(ids);
     }
 
+    /**
+     * 注册一个新用户
+     * 通知环信，加入环信用户体系
+     *
+     * @param user
+     * @throws DataRunException
+     */
     @Override
     @Transactional
     public void createUser(User user) throws DataRunException {
@@ -108,17 +142,40 @@ public class UserService implements IUserService {
         UserCacheFactory.getInstance().put(user);
     }
 
+    /**
+     *
+     * @param req
+     * @return
+     */
     @Override
     public PagingResult<User> queryUserListByParams(AdminUserListRequest req) {
         return userDao.queryUserListByParams(req);
     }
 
+    /**
+     * 保存用户头像
+     *
+     * 2015.9.17
+     * 更改图片创建实现
+     *
+     * @param uid 用户ID
+     * @param file MultipartFile图片文件
+     * @param req HttpServletRequest
+     * @return
+     * @throws RuntimeException
+     */
     @Override
     @Transactional
     public User saveAvatar(Long uid, MultipartFile file, HttpServletRequest req) throws RuntimeException {
         User user = userDao.findById(uid);
         if (!file.isEmpty()) {
-            String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.UserImage, req, file);
+            // String[] paths = ImageFactory.getInstance().saveImage(ImageFactory.ImageType.UserImage, req, file);
+            req.setAttribute(UserAvatarImage.USER_ID, uid);
+            ImageParser imageParser = ImageParser.getImageParser(ImageParser.ImageType.UserAvatar);
+            String[] paths = imageParser.generate(req, file);
+            // 暂时不去除，可以无需再使用URL和PATH字段
+            // 用户头像路径改为固定路径
+            // 路径地址：/static/user/user_{userId}/avatar_720.jpg
             user.setUrl(paths[0]);
             user.setPath(paths[1]);
             userDao.update(user);
@@ -126,6 +183,13 @@ public class UserService implements IUserService {
         return user;
     }
 
+    /**
+     * 保存用户昵称
+     *
+     * @param uid
+     * @param nickName
+     * @throws DataRunException
+     */
     @Override
     @Transactional
     public void saveNickName(long uid, String nickName) throws DataRunException {

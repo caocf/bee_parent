@@ -1,9 +1,6 @@
 package com.bee.image;
 
-import com.bee.image.impl.ShopImage;
-import com.bee.image.impl.ShopListImage;
-import com.bee.image.impl.ShopPhotoListImage;
-import com.bee.image.impl.ShopRecommendImage;
+import com.bee.image.impl.*;
 import com.bee.pojo.Image;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +33,7 @@ public abstract class ImageParser implements ImageFileNameGenerate {
      * 图片类型枚举类
      */
     public enum ImageType {
-        ShopListThum, ShopImage, ShopRecommend, ShopPhoto
+        UserAvatar, ShopListThum, ShopImage, ShopRecommend, ShopPhoto
     }
 
     /**
@@ -65,6 +62,9 @@ public abstract class ImageParser implements ImageFileNameGenerate {
     public static ImageParser getImageParser(ImageType type) {
         ImageParser parser = null;
         switch (type) {
+            case UserAvatar:
+                parser = new UserAvatarImage();
+                break;
             case ShopListThum:
                 parser = new ShopListImage();
                 break;
