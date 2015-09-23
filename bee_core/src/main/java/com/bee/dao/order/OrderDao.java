@@ -1,8 +1,11 @@
 package com.bee.dao.order;
 
-import com.bee.app.modal.order.OrderItem;
+import com.bee.app.model.order.OrderItem;
+import com.bee.busi.model.order.BusiOrderListItem;
+import com.bee.busi.params.order.BusiOrderListRequest;
 import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderListRequest;
+import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.modal.OrderListItem;
@@ -14,9 +17,11 @@ import com.qsd.framework.hibernate.QueryDataConver;
 import com.qsd.framework.hibernate.bean.DataEntity;
 import com.qsd.framework.hibernate.bean.HQLEntity;
 import com.qsd.framework.hibernate.bean.SQLEntity;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
-import com.sun.tools.internal.jxc.apt.Const;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/24.
@@ -93,6 +98,53 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         sb.append(SQL.Order.getOrderListByParamOrder);
         entity.setEntity(sb.toString());
         return queryWithPagingConver(entity);
+    }
+
+    /**
+     * 获取商户端订单列表
+     *
+     * @param request
+     * @return
+     */
+    public List<BusiOrderListItem> getBusiOrderListByParam(BusiOrderListRequest request) {
+        if (null == request || null == request.getShopId() || request.getShopId() <= 0) {
+            throw new DataRunException(Codes.ParamsError);
+        }
+        StringBuffer sb = new StringBuffer(SQL.Order.getBusiOrderListByParam);
+        if (request.getQueryStatus() != null) {
+            sb.append(" and A.status" + Consts.Order.Status.Query.getQueryStatus(request.getQueryStatus()));
+        }
+        sb.append(SQL.Order.getBusiOrderListByParamOrderBy);
+        return findConverByParams(sb.toString(), new QueryDataConver<BusiOrderListItem>() {
+            @Override
+            public BusiOrderListItem converData(Object[] objects) {
+                BusiOrderListItem item = new BusiOrderListItem();
+                int i = 0;
+                item.setOid(NumberUtil.parseLong(objects[i++], 0));
+                item.setOrderNo(StringUtil.parseString(objects[i++], ""));
+                item.setStatus(NumberUtil.parseInteger(objects[i++], Consts.Order.Status.Unknow));
+                item.setNum(NumberUtil.parseInteger(objects[i++], 1));
+                item.setOrderTime(NumberUtil.parseLong(objects[i++], 0));
+
+                // 预订用户名，如没有User则使用orderName
+                String orderName = StringUtil.parseString(objects[i++], "");
+
+                // 处理订单用户
+                Long userId = NumberUtil.parseLong(objects[i++], 0);
+                String userName = StringUtil.parseString(objects[i++], "");
+                if (userId > 0) {
+                    item.setUserId(userId);
+                    item.setUserName(userName);
+                } else {
+                    item.setUserId(0l);
+                    item.setUserName(orderName);
+                }
+
+                item.setCreateTime(NumberUtil.parseLong(objects[i++], 0));
+                item.setHisNum(NumberUtil.parseInteger(objects[i++], 0));
+                return item;
+            }
+        }, request.getShopId(), request.getShopId());
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.bee.app.modal.order;
+package com.bee.app.model.order;
 
 /**
  * Created by suntongwei on 15/9/16.

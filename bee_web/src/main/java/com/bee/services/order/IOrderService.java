@@ -1,6 +1,8 @@
 package com.bee.services.order;
 
-import com.bee.app.modal.order.OrderItem;
+import com.bee.app.model.order.OrderItem;
+import com.bee.busi.model.order.BusiOrderListItem;
+import com.bee.busi.params.order.BusiOrderListRequest;
 import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderListRequest;
@@ -31,6 +33,16 @@ public interface IOrderService {
      * @return
      */
     public PagingResult<OrderListItem> getAppOrderListByParam(OrderListRequest request);
+
+
+    /**
+     * 根据参数查询商户端订单列表
+     *
+     * @param request
+     * @return
+     */
+    public List<BusiOrderListItem> getBusiOrderListByParam(BusiOrderListRequest request);
+
 
     /**
      * 创建订单

@@ -1,12 +1,14 @@
 package com.bee.busi.controller.order;
 
-import com.bee.client.params.order.BusiOrderListRequest;
+import com.bee.busi.model.order.BusiOrderListItem;
+import com.bee.busi.params.order.BusiOrderListRequest;
 import com.bee.services.order.IOrderService;
-import com.bee.services.shop.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/8/19.
@@ -24,12 +26,8 @@ public class BusiOrderController {
      * @param req
      */
     @RequestMapping(method = RequestMethod.GET)
-    public void queryOrder(BusiOrderListRequest req) {
-
-
-
-
-
+    public List<BusiOrderListItem> queryOrder(BusiOrderListRequest req) {
+        return orderService.getBusiOrderListByParam(req);
     }
 
 

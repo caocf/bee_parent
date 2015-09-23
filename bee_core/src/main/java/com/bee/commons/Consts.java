@@ -151,20 +151,25 @@ public final class Consts {
             }
 
             public static final class Query {
+                // 新订单
+                public static final int New = 1;
                 // 正在进行订单
-                public static final int Ing = 1;
+                public static final int Ing = 2;
                 // 已完成订单
-                public static final int Finish = 2;
+                public static final int Finish = 3;
                 // 监控订单
                 public static final int Monitor = 10;
                 // 取消订单
-                public static final int Cancel = 3;
+                public static final int Cancel = 5;
                 /**
                  * 返回查询状态SQL语句
                  */
                 public static String getQueryStatus(int queryStatus) {
                     String query = " > 0";
                     switch(queryStatus) {
+                        case Query.New:
+                            query = " = " + Create;
+                            break;
                         case Query.Monitor:
                             query = " <= " + Underway;
                             break;

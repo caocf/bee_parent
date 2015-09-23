@@ -10,6 +10,8 @@ public final class Codes {
     // 100
     public static final int Error = 0x64;
 
+    public static final int ParamsError = 0x64;
+
     public static final class User {
         // 400 登录账户不存在
         public static final int LoginAccount = 0x190;

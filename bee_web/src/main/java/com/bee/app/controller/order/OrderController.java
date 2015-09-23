@@ -1,6 +1,6 @@
 package com.bee.app.controller.order;
 
-import com.bee.app.modal.order.OrderItem;
+import com.bee.app.model.order.OrderItem;
 import com.bee.client.params.order.OrderCreateResponse;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;

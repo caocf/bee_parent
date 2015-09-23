@@ -1,6 +1,8 @@
 package com.bee.services.order.impl;
 
-import com.bee.app.modal.order.OrderItem;
+import com.bee.app.model.order.OrderItem;
+import com.bee.busi.model.order.BusiOrderListItem;
+import com.bee.busi.params.order.BusiOrderListRequest;
 import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderListRequest;
@@ -13,13 +15,14 @@ import com.bee.dao.shop.ShopUserDao;
 import com.bee.modal.OrderListItem;
 import com.bee.pojo.order.Order;
 import com.bee.pojo.shop.ShopUser;
-import com.bee.pojo.user.User;
 import com.bee.services.order.IOrderService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/24.
@@ -42,6 +45,17 @@ public class OrderService implements IOrderService {
     @Override
     public PagingResult<OrderListItem> getAppOrderListByParam(OrderListRequest request) {
         return orderDao.getAppOrderListByParam(request);
+    }
+
+    /**
+     * 根据参数查询商户端订单列表
+     *
+     * @param request
+     * @return
+     */
+    @Override
+    public List<BusiOrderListItem> getBusiOrderListByParam(BusiOrderListRequest request) {
+        return orderDao.getBusiOrderListByParam(request);
     }
 
     @Deprecated
