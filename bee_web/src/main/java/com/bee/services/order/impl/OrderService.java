@@ -1,6 +1,7 @@
 package com.bee.services.order.impl;
 
 import com.bee.app.model.order.OrderItem;
+import com.bee.busi.model.order.BusiOrderItem;
 import com.bee.busi.model.order.BusiOrderListItem;
 import com.bee.busi.params.order.BusiOrderListRequest;
 import com.bee.client.params.order.AdminOrderListRequest;
@@ -58,6 +59,21 @@ public class OrderService implements IOrderService {
         return orderDao.getBusiOrderListByParam(request);
     }
 
+    /**
+     * 根据订单ID查询商户端订单详细
+     *
+     * @return
+     */
+    public BusiOrderItem getBusiOrderItem(long oid) {
+        return orderDao.getBusiOrderItem(oid);
+    }
+
+    /**
+     * 创建订单（不使用）
+     *
+     * @param req
+     * @throws DataRunException
+     */
     @Deprecated
     @Override
     @Transactional
@@ -109,16 +125,25 @@ public class OrderService implements IOrderService {
         orderDao.save(order);
     }
 
+    /**
+     * 接受订单
+     *
+     * @param id
+     * @throws DataRunException
+     */
     @Override
     @Transactional
     public void acceptOrder(long id) throws DataRunException {
         Order order = orderDao.findById(id);
+        if (order.getStatus() != Consts.Order.Status.Create) {
+            throw new DataRunException(Codes.Order.AcceptError);
+        }
         order.setStatus(Consts.Order.Status.Underway);
         orderDao.update(order);
     }
 
     /**
-     * 取消订单
+     * 【C端】用户取消订单
      *
      * @param id
      * @param status
@@ -136,10 +161,54 @@ public class OrderService implements IOrderService {
         orderDao.update(order);
     }
 
+    /**
+     * 【B端】商户取消订单
+     *
+     * @param id
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void cancelBusiOrder(long id) throws DataRunException {
+        Order order = orderDao.findById(id);
+        // 判断订单是否可以取消
+        if (!OrderStatusMachine.isCancelBusiOrder(order.getStatus())) {
+            throw new DataRunException(Codes.Order.CancelError, Codes.Order.CancelErrorStr);
+        }
+        order.setStatus(Consts.Order.Status.CancelShop);
+        orderDao.update(order);
+    }
+
+    /**
+     * 【B端】商家拒绝订单
+     *
+     * @param id
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void rejectOrder(long id) throws DataRunException {
+        Order order = orderDao.findById(id);
+        if (!OrderStatusMachine.isRejectOrder(order.getStatus())) {
+            throw new DataRunException(Codes.Order.RejectError);
+        }
+        order.setStatus(Consts.Order.Status.ShopReject);
+        orderDao.update(order);
+    }
+
+    /**
+     * 完成订单
+     *
+     * @param id
+     * @throws DataRunException
+     */
     @Override
     @Transactional
     public void finishOrder(long id) throws DataRunException {
         Order order = orderDao.findById(id);
+        if (order.getStatus() != Consts.Order.Status.Underway) {
+            throw new DataRunException(Codes.Order.FinishError);
+        }
         order.setStatus(Consts.Order.Status.Finish);
         orderDao.update(order);
     }

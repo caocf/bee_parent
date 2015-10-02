@@ -16,6 +16,11 @@ public class BusiOrderListRequest extends AppRequest {
     private Long shopId;
     /**
      * 查询状态
+     * @see com.bee.commons.Consts.Order.Status
+     */
+    private Integer status;
+    /**
+     * 查询状态
      * @see com.bee.commons.Consts.Order.Status.Query
      */
     private Integer queryStatus;
@@ -31,5 +36,11 @@ public class BusiOrderListRequest extends AppRequest {
     }
     public void setQueryStatus(Integer queryStatus) {
         this.queryStatus = queryStatus;
+    }
+    public Integer getStatus() {
+        return status;
+    }
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

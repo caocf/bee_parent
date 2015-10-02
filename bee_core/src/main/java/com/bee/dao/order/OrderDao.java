@@ -1,6 +1,7 @@
 package com.bee.dao.order;
 
 import com.bee.app.model.order.OrderItem;
+import com.bee.busi.model.order.BusiOrderItem;
 import com.bee.busi.model.order.BusiOrderListItem;
 import com.bee.busi.params.order.BusiOrderListRequest;
 import com.bee.client.params.order.AdminOrderListRequest;
@@ -111,8 +112,10 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
             throw new DataRunException(Codes.ParamsError);
         }
         StringBuffer sb = new StringBuffer(SQL.Order.getBusiOrderListByParam);
-        if (request.getQueryStatus() != null) {
-            sb.append(" and A.status" + Consts.Order.Status.Query.getQueryStatus(request.getQueryStatus()));
+        if (request.getStatus() != null) {
+            sb.append(" and A.status = " + request.getStatus());
+        } else if (request.getQueryStatus() != null) {
+            sb.append(" and A.status " + Consts.Order.Status.Query.getQueryStatus(request.getQueryStatus()));
         }
         sb.append(SQL.Order.getBusiOrderListByParamOrderBy);
         return findConverByParams(sb.toString(), new QueryDataConver<BusiOrderListItem>() {
@@ -145,6 +148,46 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
                 return item;
             }
         }, request.getShopId(), request.getShopId());
+    }
+
+    /**
+     * [B端]根据订单ID查询商户端订单详细
+     *
+     * @return
+     */
+    public BusiOrderItem getBusiOrderItem(long oid) {
+        return findFirstConverByParams(SQL.Order.GetBusiOrderItem, new QueryDataConver<BusiOrderItem>() {
+            @Override
+            public BusiOrderItem converData(Object[] obj) {
+                BusiOrderItem item = new BusiOrderItem();
+                int i = 0;
+                item.setOid(NumberUtil.parseLong(obj[i++], 0));
+                item.setNo(StringUtil.parseString(obj[i++], ""));
+                item.setNum(NumberUtil.parseInteger(obj[i++], 1));
+                item.setCreateTime(NumberUtil.parseLong(obj[i++], 0));
+                item.setExecTime(NumberUtil.parseLong(obj[i++], 0));
+
+                // 预订用户名，如没有User则使用orderName
+                String orderName = StringUtil.parseString(obj[i++], "");
+
+                // 处理订单用户
+                Long userId = NumberUtil.parseLong(obj[i++], 0);
+                String userName = StringUtil.parseString(obj[i++], "");
+                if (userId > 0) {
+                    item.setUserId(userId);
+                    item.setUserName(userName);
+                } else {
+                    item.setUserId(0l);
+                    item.setUserName(orderName);
+                }
+
+                item.setUserPhone(StringUtil.parseString(obj[i++], ""));
+                item.setRemark(StringUtil.parseString(obj[i++], ""));
+                item.setStatus(NumberUtil.parseInteger(obj[i++], Consts.Order.Status.Unknow));
+                item.setUserLevel(NumberUtil.parseInteger(obj[i++], 0));
+                return item;
+            }
+        }, oid);
     }
 
     /**

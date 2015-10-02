@@ -134,6 +134,18 @@ public final class SQL {
                 "ON A.SHOP = C.SID " +
                 "WHERE C.SID = ?";
         public static final String getBusiOrderListByParamOrderBy = " ORDER BY A.EXECTIME DESC";
+
+        /**
+         * 【B端】获取订单详细信息
+         */
+        public static final String GetBusiOrderItem = "SELECT " +
+                "A.OID, A.`NO`, A.NUM, A.CREATETIME, A.EXECTIME, A.ORDERNAME, B.UID, B.NAME, A.ORDERPHONE, A.REMARK, " +
+                "A.`STATUS`, B.LEVEL " +
+                "FROM TB_ORDER A " +
+                "LEFT OUTER JOIN TB_USER B " +
+                "ON A.USER = B.UID " +
+                "WHERE A.OID = ? ORDER BY A.EXECTIME DESC";
+
         public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
                 "left join fetch A.user C left join fetch B.area D where 1=1 ";
         public static final String getOrderListByParamOrder = " order by A.status asc, A.createTime desc";

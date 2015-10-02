@@ -57,7 +57,6 @@ public final class Consts {
                 ret.put(Massage, "足浴");
                 ret.put(Ktv, "夜总会");
                 ret.put(Bar, "酒吧");
-                ret.put(Game, "游艺");
                 return ret;
             }
         }
@@ -65,6 +64,8 @@ public final class Consts {
         public static final class Status {
             // 运营中
             public static final int Run = 1;
+            // 暂停中（由商家发起）
+            public static final int Pause = 2;
             // 关闭中
             public static final int Close = 0;
         }
@@ -114,6 +115,8 @@ public final class Consts {
             public static final int CancelShop = 91;
             // 管理员取消
             public static final int CancelAdmin = 92;
+            // 商家拒绝订单
+            public static final int ShopReject = 93;
 
             public static final String CreateStr = "等待到店";
             public static final String UnderwayStr = "进行中";
@@ -121,6 +124,7 @@ public final class Consts {
             public static final String CancelUserStr = "已取消";
             public static final String CancelShopStr = "商家取消";
             public static final String CancelAdminStr = "管理员取消";
+            public static final String ShopRejectStr = "商家拒绝订单";
 
             public static String getStatusName(int status) {
                 String ret;
@@ -143,6 +147,9 @@ public final class Consts {
                     case Consts.Order.Status.CancelShop:
                         ret = Consts.Order.Status.CancelShopStr;
                         break;
+                    case Consts.Order.Status.ShopReject:
+                        ret = Consts.Order.Status.ShopRejectStr;
+                        break;
                     default:
                         ret = "未知";
                         break;
@@ -161,6 +168,8 @@ public final class Consts {
                 public static final int Monitor = 10;
                 // 取消订单
                 public static final int Cancel = 5;
+                // 历史订单
+                public static final int History = 6;
                 /**
                  * 返回查询状态SQL语句
                  */
@@ -177,10 +186,13 @@ public final class Consts {
                             query = " <= " + Finish;
                             break;
                         case Query.Finish:
-                            query = " = " + Consts.Order.Status.Finish;
+                            query = " = " + Status.Finish;
                             break;
                         case Query.Cancel:
-                            query = " > " + Consts.Order.Status.Finish;
+                            query = " > " + Status.Finish;
+                            break;
+                        case Query.History:
+                            query = " >= " + Status.Finish;
                             break;
                     }
                     return query;

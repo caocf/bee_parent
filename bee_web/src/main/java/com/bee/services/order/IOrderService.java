@@ -1,6 +1,7 @@
 package com.bee.services.order;
 
 import com.bee.app.model.order.OrderItem;
+import com.bee.busi.model.order.BusiOrderItem;
 import com.bee.busi.model.order.BusiOrderListItem;
 import com.bee.busi.params.order.BusiOrderListRequest;
 import com.bee.client.params.order.AdminOrderListRequest;
@@ -43,6 +44,12 @@ public interface IOrderService {
      */
     public List<BusiOrderListItem> getBusiOrderListByParam(BusiOrderListRequest request);
 
+    /**
+     * 根据订单ID查询商户端订单详细
+     *
+     * @return
+     */
+    public BusiOrderItem getBusiOrderItem(long oid);
 
     /**
      * 创建订单
@@ -69,13 +76,29 @@ public interface IOrderService {
     public void acceptOrder(long id) throws DataRunException;
 
     /**
-     * 取消订单
+     * 【C端】用户取消订单
      *
      * @param id
      * @param status
      * @throws DataRunException
      */
     public void cancelOrder(long id, int status) throws DataRunException;
+
+    /**
+     * 【B端】商户取消订单
+     *
+     * @param id
+     * @throws DataRunException
+     */
+    public void cancelBusiOrder(long id) throws DataRunException;
+
+    /**
+     * 【B端】商家拒绝订单
+     *
+     * @param id
+     * @throws DataRunException
+     */
+    public void rejectOrder(long id) throws DataRunException;
 
     /**
      * 完成订单

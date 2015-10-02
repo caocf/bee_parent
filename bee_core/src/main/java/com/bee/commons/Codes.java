@@ -29,6 +29,14 @@ public final class Codes {
         public static final int CreateError = 0x12c;
         // 301 取消订单失败
         public static final int CancelError = 0x12d;
+        // 302 接受订单失败
+        public static final int AcceptError = 0x12e;
+        // 303 拒绝订单失败
+        public static final int RejectError = 0x12f;
+        // 304 完成订单失败
+        public static final int FinishError = 0x130;
+        // 350 订单数据操作失败
+        public static final int OrderDbError = 0x15e;
         // 订单无法取消
         public static final String CancelErrorStr = "不能取消订单";
     }
