@@ -26,6 +26,11 @@ public class AppInitResponse extends BaseResponse {
      */
     private Integer newVersion;
 
+    /**
+     * 客服电话
+     */
+    private String servicePhone;
+
     public Integer getNewVersion() {
         return newVersion;
     }
@@ -43,5 +48,11 @@ public class AppInitResponse extends BaseResponse {
     }
     public void setUpdateTime(Long updateTime) {
         this.updateTime = updateTime;
+    }
+    public String getServicePhone() {
+        return servicePhone;
+    }
+    public void setServicePhone(String servicePhone) {
+        this.servicePhone = servicePhone;
     }
 }

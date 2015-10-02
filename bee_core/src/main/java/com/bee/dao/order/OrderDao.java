@@ -205,6 +205,7 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
                 item.setCreateTime(NumberUtil.parseLong(objects[1], 0));
                 item.setStatus(NumberUtil.parseInteger(objects[2], Consts.Order.Status.Unknow));
                 item.setAddr(StringUtil.parseString(objects[3], ""));
+                item.setShopPhone(StringUtil.parseString(objects[4], ""));
                 return item;
             }
         }, oid);

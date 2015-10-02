@@ -4,6 +4,7 @@ import com.bee.client.params.AppInitRequest;
 import com.bee.client.params.AppInitResponse;
 import com.bee.client.params.AppVerResponse;
 import com.bee.commons.Codes;
+import com.bee.commons.Consts;
 import com.bee.pojo.AppVer;
 import com.bee.pojo.Applyer;
 import com.bee.services.market.IAdService;
@@ -40,6 +41,9 @@ public class AppController {
         if (req.getUid() != null && req.getUid() > 0) {
             userStatService.addUserLoginStat(req.getUid());
         }
+
+        // 客服电话
+        res.setServicePhone(Consts.Config.ServicePhone);
 
         // 更新广告
         // res.setNewAds(adService.getAppAdListByUpdateTime(req.getUpdateTime()));

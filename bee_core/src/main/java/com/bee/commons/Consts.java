@@ -22,7 +22,15 @@ public final class Consts {
     public static final int Android = 0x1;
     public static final int IOS = 0x2;
 
-    public static class User {
+    /**
+     * 系统配置
+     */
+    public static final class Config {
+        // 客服电话
+        public static final String ServicePhone = "13162725286";
+    }
+
+    public static final class User {
 
         // 用户编号从1000开始
         public static final int IdentityBaseNum = 1000;
@@ -177,13 +185,13 @@ public final class Consts {
                     String query = " > 0";
                     switch(queryStatus) {
                         case Query.New:
-                            query = " = " + Create;
+                            query = " = " + Status.Create;
                             break;
                         case Query.Monitor:
-                            query = " <= " + Underway;
+                            query = " <= " + Status.Underway;
                             break;
                         case Query.Ing:
-                            query = " <= " + Finish;
+                            query = " <= " + Status.Finish;
                             break;
                         case Query.Finish:
                             query = " = " + Status.Finish;

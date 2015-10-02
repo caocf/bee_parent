@@ -11,6 +11,8 @@ public class OrderItem implements java.io.Serializable {
     private String no;
     // 商家地址
     private String addr;
+    // 商家联系电话
+    private String shopPhone;
     // 订单状态
     private Integer status;
 
@@ -20,32 +22,31 @@ public class OrderItem implements java.io.Serializable {
     public String getNo() {
         return no;
     }
-
     public void setNo(String no) {
         this.no = no;
     }
-
     public String getAddr() {
         return addr;
     }
-
     public void setAddr(String addr) {
         this.addr = addr;
     }
-
     public Integer getStatus() {
         return status;
     }
-
     public void setStatus(Integer status) {
         this.status = status;
     }
-
     public Long getCreateTime() {
         return createTime;
     }
-
     public void setCreateTime(Long createTime) {
         this.createTime = createTime;
+    }
+    public String getShopPhone() {
+        return shopPhone;
+    }
+    public void setShopPhone(String shopPhone) {
+        this.shopPhone = shopPhone;
     }
 }
