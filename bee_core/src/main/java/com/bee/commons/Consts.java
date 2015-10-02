@@ -191,7 +191,7 @@ public final class Consts {
                             query = " <= " + Status.Underway;
                             break;
                         case Query.Ing:
-                            query = " <= " + Status.Finish;
+                            query = " < " + Status.Finish;
                             break;
                         case Query.Finish:
                             query = " = " + Status.Finish;

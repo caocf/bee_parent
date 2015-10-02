@@ -46,6 +46,8 @@ public class Order implements java.io.Serializable {
     private ShopUser shopUser;
     // 订单创建时间
     private Long createTime;
+    // 是否点评订单
+    private Integer isComment;
 
     @Transient
     public String getTypeStr() {
@@ -185,5 +187,12 @@ public class Order implements java.io.Serializable {
     }
     public void setShopUser(ShopUser shopUser) {
         this.shopUser = shopUser;
+    }
+    @Column(name = "ISCOMMENT")
+    public Integer getIsComment() {
+        return isComment;
+    }
+    public void setIsComment(Integer isComment) {
+        this.isComment = isComment;
     }
 }

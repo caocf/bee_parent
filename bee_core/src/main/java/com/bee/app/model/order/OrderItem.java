@@ -15,6 +15,8 @@ public class OrderItem implements java.io.Serializable {
     private String shopPhone;
     // 订单状态
     private Integer status;
+    // 是否点评
+    private Integer isComment;
 
     // 创建时间
     private Long createTime;
@@ -48,5 +50,11 @@ public class OrderItem implements java.io.Serializable {
     }
     public void setShopPhone(String shopPhone) {
         this.shopPhone = shopPhone;
+    }
+    public Integer getIsComment() {
+        return isComment;
+    }
+    public void setIsComment(Integer isComment) {
+        this.isComment = isComment;
     }
 }

@@ -191,7 +191,7 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
     }
 
     /**
-     * 根据OID查询订单
+     * 【C端】根据订单ID查询订单详细（OrderDetail）
      *
      * @param oid
      * @return
@@ -206,6 +206,7 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
                 item.setStatus(NumberUtil.parseInteger(objects[2], Consts.Order.Status.Unknow));
                 item.setAddr(StringUtil.parseString(objects[3], ""));
                 item.setShopPhone(StringUtil.parseString(objects[4], ""));
+                item.setIsComment(NumberUtil.parseInteger(objects[5], Consts.False));
                 return item;
             }
         }, oid);
