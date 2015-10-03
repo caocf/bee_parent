@@ -29,6 +29,15 @@ public class ShopPriceService implements IShopPriceService {
     @Transactional
     public void addShopPrice(ShopPrice shopPrice) throws DataRunException {
         try {
+            if (null == shopPrice.getSort()) {
+                shopPrice.setSort(100);
+            }
+            if (null == shopPrice.getTitle() || "".equals(shopPrice.getTitle())) {
+                shopPrice.setTitle("");
+            }
+            if (null == shopPrice.getShop()) {
+                shopPrice.setShop(new Shop(0l));
+            }
             shopPriceDao.save(shopPrice);
             updatePriceForShop(shopPrice.getPrice(), shopPrice.getShop().getSid());
         } catch (DataRunException e) {

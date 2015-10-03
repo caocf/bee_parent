@@ -14,6 +14,7 @@ public class ShopPrice implements java.io.Serializable {
 
     private Long spid;
     private Double price;
+    private String title;
     private String discount;
     private String mark;
     private Integer sort;
@@ -64,5 +65,11 @@ public class ShopPrice implements java.io.Serializable {
     public void setSort(Integer sort) {
         this.sort = sort;
     }
-
+    @Column(name = "TITLE")
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
