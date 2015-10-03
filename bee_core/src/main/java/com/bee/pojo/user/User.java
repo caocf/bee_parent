@@ -49,6 +49,14 @@ public class User implements java.io.Serializable, ISecurityUser {
     // 用户关注的商家
     private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
 
+    /**
+     * 增加积分
+     */
+    @Transient
+    public void addIntegral(int integral) {
+        this.integral += integral;
+    }
+
     @Override
     @Transient
     public String getIdentity() {

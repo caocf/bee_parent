@@ -1,5 +1,6 @@
 package com.bee.pojo.shop;
 
+import com.bee.pojo.order.Order;
 import com.bee.pojo.user.User;
 
 import javax.persistence.*;
@@ -24,6 +25,8 @@ public class ShopComment implements java.io.Serializable {
     private Shop shop;
     // 创建时间
     private Long createTime;
+    // 所属订单
+    private Order order;
 
     @Transient
     public String getCreateTimeStr() {
@@ -74,5 +77,13 @@ public class ShopComment implements java.io.Serializable {
     }
     public void setCreateTime(Long createTime) {
         this.createTime = createTime;
+    }
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "`ORDER`")
+    public Order getOrder() {
+        return order;
+    }
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

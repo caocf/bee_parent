@@ -9,13 +9,16 @@ import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
+import com.bee.commons.IntegralMachine;
 import com.bee.commons.OrderStatusMachine;
 import com.bee.dao.order.OrderDao;
 import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopUserDao;
+import com.bee.dao.user.UserDao;
 import com.bee.modal.OrderListItem;
 import com.bee.pojo.order.Order;
 import com.bee.pojo.shop.ShopUser;
+import com.bee.pojo.user.User;
 import com.bee.services.order.IOrderService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
@@ -37,12 +40,24 @@ public class OrderService implements IOrderService {
     private ShopDao shopDao;
     @Autowired
     private ShopUserDao shopUserDao;
+    @Autowired
+    private UserDao userDao;
 
+    /**
+     *
+     * @param request
+     * @return
+     */
     @Override
     public PagingResult<Order> getOrderListByParam(AdminOrderListRequest request) {
         return orderDao.getOrderListByParam(request);
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     */
     @Override
     public PagingResult<OrderListItem> getAppOrderListByParam(OrderListRequest request) {
         return orderDao.getAppOrderListByParam(request);
@@ -105,12 +120,16 @@ public class OrderService implements IOrderService {
     @Override
     @Transactional
     public void createOrder(Order order) throws DataRunException {
+        // 先填写空的NO号，等订单创建成功后，使用ID号
+        order.setNo("");
         // 添加订单类型, 该字段无效
         order.setType(Consts.Order.Type.Master);
         // 添加订单创建时间
         order.setCreateTime(System.currentTimeMillis());
         // 设置订单初始化状态
         order.setStatus(Consts.Order.Status.Create);
+        // 设置订单是否评论状态
+        order.setIsComment(Consts.False);
         // 查询订单商家
         order.setShop(shopDao.getShopById(order.getShop().getSid()));
         // 查询接待经理
@@ -197,7 +216,7 @@ public class OrderService implements IOrderService {
     }
 
     /**
-     * 完成订单
+     * 【B端】完成订单
      *
      * @param id
      * @throws DataRunException
@@ -205,12 +224,22 @@ public class OrderService implements IOrderService {
     @Override
     @Transactional
     public void finishOrder(long id) throws DataRunException {
+
+        // 设置完成订单
         Order order = orderDao.findById(id);
         if (order.getStatus() != Consts.Order.Status.Underway) {
             throw new DataRunException(Codes.Order.FinishError);
         }
         order.setStatus(Consts.Order.Status.Finish);
         orderDao.update(order);
+
+        // 增加用户积分
+        // 先判断是否是注册用户
+        User user = order.getUser();
+        if (user != null && user.getUid() > 0) {
+            user.addIntegral(IntegralMachine.OrderFinish);
+            userDao.update(user);
+        }
     }
 
     /**

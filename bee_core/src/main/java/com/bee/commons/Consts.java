@@ -42,9 +42,11 @@ public final class Consts {
             public static final int PinkUser = 0x3;
             public static final int BussUser = 0x10;
         }
-
     }
 
+    /**
+     * 商家
+     */
     public static final class Shop {
 
         public static final class Type {

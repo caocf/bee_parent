@@ -186,6 +186,7 @@
       <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="ORDER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="SCID"/>
       <exported-key name="FK_rwu24uqccj8jst2xq4nhj9t2a" table="TB_SHOP_REPLY" schema="" catalog="db_bee" columns="SHOPCOMMENT"/>
       <index name="FK_49i4k8jji8vklwaxtmjswfayc" unique="false" columns="SHOP"/>
