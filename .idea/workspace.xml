@@ -62,16 +62,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IShopCommentService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/IShopCommentService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="561">
-              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ShopCommentService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopCommentService.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -82,11 +72,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShopPriceService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ShopPriceService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopPriceService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6971047" vertical-offset="163" max-vertical-offset="1717">
-              <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="554" max-vertical-offset="1717">
+              <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/easemob/server/comm/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.44155845" vertical-offset="0" max-vertical-offset="561">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HTTPMethod.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/easemob/server/comm/HTTPMethod.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Roles.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/easemob/server/comm/Roles.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -107,16 +127,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="2410" max-vertical-offset="6800">
               <caret line="159" column="42" selection-start-line="159" selection-start-column="42" selection-end-line="159" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntegralMachine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/commons/IntegralMachine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -150,7 +160,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/client/params/order/OrderCreateResponse.java" />
         <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/shop/Shop.java" />
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopUserService.java" />
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/shop/ShopUserController.java" />
@@ -201,6 +210,7 @@
         <option value="$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/shop/ShopPrice.java" />
         <option value="$PROJECT_DIR$/db/db_bee.sql" />
         <option value="$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopPriceService.java" />
+        <option value="$PROJECT_DIR$/bee_web/src/main/java/com/easemob/server/comm/Constants.java" />
       </list>
     </option>
   </component>
@@ -407,6 +417,94 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="httpclient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee_parent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee_parent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee_web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee_parent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee_parent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee_web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1764,12 +1862,12 @@
       <workItem from="1440076938299" duration="404000" />
       <workItem from="1440077614350" duration="66098000" />
       <workItem from="1443426450948" duration="6821000" />
-      <workItem from="1443769867687" duration="9115000" />
+      <workItem from="1443769867687" duration="10209000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="533303000" />
+    <option name="totallyTimeSpent" value="534397000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1811,13 +1909,13 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24749643" sideWeight="0.49581006" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3337989" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3337989" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39944133" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20810056" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20810056" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24391988" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1903,40 +2001,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/find/FindDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
-          <caret line="51" column="28" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
-          <folding>
-            <element signature="e#1035#2123#0" expanded="false" />
-            <element signature="e#2122#2123#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/dao/shop/ShopImageDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="383" max-vertical-offset="1309">
-          <caret line="45" column="52" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
-          <folding>
-            <element signature="e#724#1259#0" expanded="false" />
-            <element signature="e#1258#1259#0" expanded="false" />
-            <element signature="e#1514#2049#0" expanded="false" />
-            <element signature="e#2048#2049#0" expanded="false" />
-            <element signature="e#2372#2373#0" expanded="false" />
-            <element signature="e#2449#2450#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee_core/src/main/java/com/bee/pojo/shop/ShopImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1649">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/app/controller/find/FindController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
@@ -2219,8 +2283,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="571" max-vertical-offset="2108">
           <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
           <folding>
-            <element signature="e#1719#1720#0" expanded="true" />
-            <element signature="e#1773#1774#0" expanded="true" />
+            <element signature="e#1719#1720#0" expanded="false" />
+            <element signature="e#1773#1774#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2337,18 +2401,42 @@
         <state vertical-scroll-proportion="0.56792873" vertical-offset="0" max-vertical-offset="969">
           <caret line="15" column="23" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="24" />
           <folding>
-            <element signature="e#1662#1663#0" expanded="true" />
-            <element signature="e#1690#1691#0" expanded="true" />
-            <element signature="e#1731#1732#0" expanded="true" />
-            <element signature="e#1765#1766#0" expanded="true" />
+            <element signature="e#1662#1663#0" expanded="false" />
+            <element signature="e#1690#1691#0" expanded="false" />
+            <element signature="e#1731#1732#0" expanded="false" />
+            <element signature="e#1765#1766#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/services/shop/impl/ShopPriceService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6971047" vertical-offset="163" max-vertical-offset="1717">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="554" max-vertical-offset="1717">
+          <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/easemob/server/comm/Roles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/easemob/server/comm/HTTPMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/easemob/server/comm/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44155845" vertical-offset="0" max-vertical-offset="561">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
