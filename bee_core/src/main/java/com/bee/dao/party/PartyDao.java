@@ -33,13 +33,12 @@ public class PartyDao extends JpaDaoSupport<Party, Long> {
      * @return
      */
     public List<PartyListItem> getAppPartyList() {
-        return findConverByParams(SQL.Party.getAppPartyList, new QueryDataConver<PartyListItem>() {
+        return findConverByParams(SQL.Party.GetAppPartyList, new QueryDataConver<PartyListItem>() {
             @Override
             public PartyListItem converData(Object[] obj) {
                 PartyListItem item = new PartyListItem();
                 item.setPid(NumberUtil.parseLong(obj[0], 0));
-                item.setImage(new ImageFactory.Image(
-                        StringUtil.parseString(obj[1], null), ImageFactory.ImageType.PartyMainSize));
+                item.setImage("");
                 item.setLookNum(NumberUtil.parseInteger(obj[2], 0));
                 item.setExplain(StringUtil.parseString(obj[3], ""));
                 item.setPrice(NumberUtil.parseDouble(obj[4], 0));

@@ -71,11 +71,6 @@ public class User implements java.io.Serializable, ISecurityUser {
         this.uid = uid;
     }
 
-    @Transient
-    public ImageFactory.Image getImage() {
-        return new ImageFactory.Image(getUrl(), ImageFactory.ImageType.UserImage);
-    }
-
     @Override
     @Transient
     public Set<String> getAuthName() {

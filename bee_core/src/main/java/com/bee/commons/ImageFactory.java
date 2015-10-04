@@ -13,6 +13,7 @@ import java.io.IOException;
 /**
  * Created by suntongwei on 15/4/23.
  */
+@Deprecated
 public class ImageFactory {
 
     // 原始尺寸
@@ -128,6 +129,7 @@ public class ImageFactory {
      * Image 封装类
      * 主要为了解决多尺寸图片
      */
+    @Deprecated
     public static class Image implements java.io.Serializable {
 
         // serialVersionUID

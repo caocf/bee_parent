@@ -39,11 +39,8 @@ public class ShopCommentDao extends JpaDaoSupport<ShopComment, Long> {
                 item.setCreateTime(NumberUtil.parseLong(objs[2], 0));
                 item.setUid(NumberUtil.parseLong(objs[3], 0));
                 item.setName(StringUtil.parseString(objs[4], ""));
-                item.setImage(new ImageFactory.Image(
-                        StringUtil.parseString(objs[5], null), ImageFactory.ImageType.UserImage
-                ));
-                item.setShopId(NumberUtil.parseLong(objs[6], 0));
-                item.setReplyNum(NumberUtil.parseLong(objs[7], 0));
+                item.setShopId(NumberUtil.parseLong(objs[5], 0));
+                item.setReplyNum(NumberUtil.parseLong(objs[6], 0));
                 return item;
             }
         });

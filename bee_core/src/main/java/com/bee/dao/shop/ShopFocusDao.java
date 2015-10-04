@@ -23,16 +23,13 @@ public class ShopFocusDao extends JpaDaoSupport<ShopFocus, Long> {
     }
 
     public List<ShopFocusFriendList> getShopFocusFriend(long sid, long uid) {
-        return findConverByParams(SQL.Shop.Focus.getShopFocusFriend,
+        return findConverByParams(SQL.Shop.Focus.GetShopFocusFriend,
                 new QueryDataConver<ShopFocusFriendList>() {
             @Override
             public ShopFocusFriendList converData(Object[] objects) {
                 ShopFocusFriendList item = new ShopFocusFriendList();
                 item.setName(StringUtil.parseString(objects[0], ""));
                 item.setUid(NumberUtil.parseLong(objects[1], 0));
-                item.setImage(new ImageFactory.Image(
-                        StringUtil.parseString(objects[2], ""), ImageFactory.ImageType.UserImage
-                ));
                 return item;
             }
         }, uid, sid);

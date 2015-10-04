@@ -85,8 +85,8 @@ public final class SQL {
 
         public static final class Focus {
             public static final String getFocusList = "From ShopFocus A where A.shop.sid = ?";
-            public static final String getShopFocusFriend =
-                    "select B.`NAME`, B.UID, B.URL " +
+            public static final String GetShopFocusFriend =
+                    "select B.`NAME`, B.UID " +
                     "from TB_USER_FRIEND A left outer join TB_USER B on A.friend = B.uid " +
                     "left outer join TB_SHOP_FOCUS C on A.friend=C.`USER`" +
                     "where A.`USER` = ? and C.shop = ?";
@@ -94,7 +94,7 @@ public final class SQL {
 
         public static final class Comment {
             public static final String getAppCommentList = "SELECT " +
-                    "A.SCID, A.CONTENT, A.CREATETIME, B.UID, B.NAME, B.URL, A.SHOP, " +
+                    "A.SCID, A.CONTENT, A.CREATETIME, B.UID, B.NAME, A.SHOP, " +
                     "(SELECT COUNT(*) FROM TB_SHOP_REPLY C WHERE C.SHOPCOMMENT = A.SCID) AS REPLY_NUM " +
                     "FROM TB_SHOP_COMMENT A " +
                     "LEFT OUTER JOIN TB_USER B " +
@@ -104,8 +104,10 @@ public final class SQL {
 
         public static final class Reply {
             public static final String queryAppReplyList = "SELECT " +
-                    "A.SRID,A.CONTENT,B.NAME,B.URL,A.CREATETIME FROM TB_SHOP_REPLY A " +
-                    "LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
+                    "A.SRID,A.CONTENT,B.NAME,B.UID,A.CREATETIME " +
+                    "FROM TB_SHOP_REPLY A " +
+                    "LEFT OUTER JOIN TB_USER B " +
+                    "ON A.USER = B.UID " +
                     "WHERE A.SHOPCOMMENT = ? ORDER BY A.CREATETIME DESC";
         }
 
@@ -177,8 +179,10 @@ public final class SQL {
 
         public static final class Reply {
             public static final String queryAppReplyList = "SELECT " +
-                    "A.FRID,A.CONTENT,B.NAME,B.URL,A.CREATETIME FROM TB_FIND_REPLY A " +
-                    "LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
+                    "A.FRID,A.CONTENT,B.NAME,B.UID,A.CREATETIME " +
+                    "FROM TB_FIND_REPLY A " +
+                    "LEFT OUTER JOIN TB_USER B " +
+                    "ON A.USER = B.UID " +
                     "WHERE A.FIND = ? ORDER BY A.CREATETIME DESC";
         }
     }
@@ -212,7 +216,7 @@ public final class SQL {
 
         public static final String getPartyList = "From Party A order By A.stopTime";
 
-        public static final String getAppPartyList =
+        public static final String GetAppPartyList =
                 "select A.PID, A.URL, A.lOOKNUM, A.TITLE, " +
                         "(select B.price from TB_PARTY_MEET B where A.TYPE = " + Consts.Party.Type.Offline + " and B.PMID = A.CHILDID limit 1) as PRICE " +
                         "from TB_PARTY A where A.STOPTIME > ? and A.STARTTIME < ? " +

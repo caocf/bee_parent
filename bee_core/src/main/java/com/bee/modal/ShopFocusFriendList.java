@@ -11,7 +11,6 @@ public class ShopFocusFriendList implements java.io.Serializable {
     private static final long serialVersionUID = 6462440660001882295L;
 
     private Long uid;
-    private ImageFactory.Image image;
     private String name;
 
     public Long getUid() {
@@ -19,12 +18,6 @@ public class ShopFocusFriendList implements java.io.Serializable {
     }
     public void setUid(Long uid) {
         this.uid = uid;
-    }
-    public ImageFactory.Image getImage() {
-        return image;
-    }
-    public void setImage(ImageFactory.Image image) {
-        this.image = image;
     }
     public String getName() {
         return name;

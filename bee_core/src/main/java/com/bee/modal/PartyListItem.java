@@ -11,7 +11,7 @@ public class PartyListItem implements java.io.Serializable {
     private static final long serialVersionUID = -166145041633258869L;
 
     private Long pid;
-    private ImageFactory.Image image;
+    private String image;
     private String explain;
     private Integer lookNum;
     private Double price;
@@ -19,39 +19,30 @@ public class PartyListItem implements java.io.Serializable {
     public Long getPid() {
         return pid;
     }
-
     public void setPid(Long pid) {
         this.pid = pid;
     }
-
-    public ImageFactory.Image getImage() {
+    public String getImage() {
         return image;
     }
-
-    public void setImage(ImageFactory.Image image) {
+    public void setImage(String image) {
         this.image = image;
     }
-
     public String getExplain() {
         return explain;
     }
-
     public void setExplain(String explain) {
         this.explain = explain;
     }
-
     public Integer getLookNum() {
         return lookNum;
     }
-
     public void setLookNum(Integer lookNum) {
         this.lookNum = lookNum;
     }
-
     public Double getPrice() {
         return price;
     }
-
     public void setPrice(Double price) {
         this.price = price;
     }

@@ -35,9 +35,7 @@ public class ShopReplyDao extends JpaDaoSupport<ShopReply, Long> {
                 item.setSrid(NumberUtil.parseLong(objs[0], 0));
                 item.setContent(StringUtil.parseString(objs[1], ""));
                 item.setName(StringUtil.parseString(objs[2], ""));
-                item.setAvatar(new ImageFactory.Image(
-                        StringUtil.parseString(objs[3], null), ImageFactory.ImageType.UserImage
-                ));
+                item.setUid(NumberUtil.parseLong(objs[3], 0));
                 item.setCreateTime(NumberUtil.parseLong(objs[4], 0));
                 return item;
             }
