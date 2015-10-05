@@ -1,5 +1,6 @@
 package com.bee.services.user.impl;
 
+import com.bee.app.model.user.UserInfo;
 import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
@@ -66,6 +67,16 @@ public class UserService implements IUserService {
     @Override
     public List<User> getAllUser() {
         return userDao.findAll();
+    }
+
+    /**
+     * 查询用户实时信息
+     *
+     * @param uid
+     * @return
+     */
+    public UserInfo queryUserInfo(long uid) {
+        return userDao.queryUserInfo(uid);
     }
 
     /**

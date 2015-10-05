@@ -2,7 +2,9 @@ package com.bee.pojo.user;
 
 import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
+import com.bee.commons.LevelMachine;
 import com.bee.pojo.shop.ShopFocus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qsd.framework.security.entity.ISecurityUser;
 
@@ -42,6 +44,8 @@ public class User implements java.io.Serializable, ISecurityUser {
     private String alipay;
     // 用户等级
     private Integer level;
+    // 用户等级经验
+    private Integer exp;
     // 用户积分
     private Integer integral;
     // 用户现金
@@ -53,8 +57,19 @@ public class User implements java.io.Serializable, ISecurityUser {
      * 增加积分
      */
     @Transient
+    @JsonIgnore
     public void addIntegral(int integral) {
         this.integral += integral;
+    }
+
+    /**
+     * 增加经验
+     */
+    @Transient
+    @JsonIgnore
+    public void addExp(int exp) {
+        this.exp += exp;
+        this.level = LevelMachine.GetLevel(this.exp);
     }
 
     @Override
@@ -197,5 +212,12 @@ public class User implements java.io.Serializable, ISecurityUser {
     }
     public void setCash(Double cash) {
         this.cash = cash;
+    }
+    @Column(name = "EXP")
+    public Integer getExp() {
+        return exp;
+    }
+    public void setExp(Integer exp) {
+        this.exp = exp;
     }
 }

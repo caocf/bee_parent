@@ -1,5 +1,6 @@
 package com.bee.services.user;
 
+import com.bee.app.model.user.UserInfo;
 import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.pojo.user.User;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -28,6 +29,14 @@ public interface IUserService {
      * @return
      */
     public List<User> getAllUser();
+
+    /**
+     * 查询用户实时信息
+     *
+     * @param uid
+     * @return
+     */
+    public UserInfo queryUserInfo(long uid);
 
     /**
      * 根据用户标识

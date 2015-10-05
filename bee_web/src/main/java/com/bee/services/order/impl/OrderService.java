@@ -7,10 +7,7 @@ import com.bee.busi.params.order.BusiOrderListRequest;
 import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderListRequest;
-import com.bee.commons.Codes;
-import com.bee.commons.Consts;
-import com.bee.commons.IntegralMachine;
-import com.bee.commons.OrderStatusMachine;
+import com.bee.commons.*;
 import com.bee.dao.order.OrderDao;
 import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopUserDao;
@@ -238,6 +235,7 @@ public class OrderService implements IOrderService {
         User user = order.getUser();
         if (user != null && user.getUid() > 0) {
             user.addIntegral(IntegralMachine.OrderFinish);
+            user.addExp(LevelMachine.OrderFinish);
             userDao.update(user);
         }
     }

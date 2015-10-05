@@ -265,19 +265,20 @@
     </table>
     <table name="TB_USER" schema="" catalog="db_bee" type="TABLE">
       <column name="UID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="DEVICE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
-      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="NAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
-      <column name="PHONE" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
-      <column name="PASSWORD" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
-      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="ALIPAY" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
-      <column name="LEVEL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="INTEGRAL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DEVICE" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="NAME" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="PHONE" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="ALIPAY" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="LEVEL" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="INTEGRAL" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="PATH" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="URL" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="IDENTITY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="CASH" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8" def="MA=="/>
+      <column name="IDENTITY" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="CASH" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8" def="MA=="/>
+      <column name="EXP" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <primary-key name="PRIMARY" columns="UID"/>
       <exported-key name="FK_42snp5hosxsmqgocio607e30b" table="TB_PARTY_USER" schema="" catalog="db_bee" columns="USER"/>
       <exported-key name="FK_sqfmvviraajte460iib5u8kwn" table="TB_SHOP_REPLY" schema="" catalog="db_bee" columns="USER"/>

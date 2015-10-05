@@ -1,9 +1,11 @@
 package com.bee.app.controller.user;
 
+import com.bee.app.model.user.UserInfo;
 import com.bee.client.params.user.UserResponse;
 import com.bee.client.params.user.UsersResponse;
 import com.bee.commons.Codes;
 import com.bee.core.UserCacheFactory;
+import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -26,6 +28,17 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+
+    /**
+     * 查询用户实时数据
+     *
+     * @param uid
+     * @return
+     */
+    @RequestMapping(value = "/{uid}", method = RequestMethod.GET)
+    public UserInfo getUserById(@PathVariable Long uid) {
+        return userService.queryUserInfo(uid);
+    }
 
     /**
      * 根据手机号或标识获取用户信息

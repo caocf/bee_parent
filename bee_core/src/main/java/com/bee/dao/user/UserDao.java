@@ -1,9 +1,12 @@
 package com.bee.dao.user;
 
+import com.bee.app.model.user.UserInfo;
 import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.commons.SQL;
 import com.bee.pojo.user.User;
+import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
+import com.qsd.framework.hibernate.QueryDataConver;
 import com.qsd.framework.hibernate.bean.DataEntity;
 import com.qsd.framework.hibernate.bean.HQLEntity;
 import com.qsd.framework.spring.PagingResult;
@@ -38,6 +41,25 @@ public class UserDao extends JpaDaoSupport<User, Long> {
         entity.setEntity(sb.toString());
         entity.setPaging(req);
         return queryWithPaging(entity);
+    }
+
+    /**
+     * 查询用户实时信息
+     *
+     * @param uid
+     * @return
+     */
+    public UserInfo queryUserInfo(long uid) {
+        return findFirstConverByParams(SQL.User.QueryUserInfo, new QueryDataConver<UserInfo>() {
+            @Override
+            public UserInfo converData(Object[] obj) {
+                UserInfo item = new UserInfo();
+                item.setUid(NumberUtil.parseLong(obj[0], 0));
+                item.setLevel(NumberUtil.parseInteger(obj[1], 0));
+                item.setIntegral(NumberUtil.parseInteger(obj[2], 0));
+                return item;
+            }
+        }, uid);
     }
 
     /**

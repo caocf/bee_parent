@@ -3,6 +3,7 @@ package com.bee.services.shop.impl;
 import com.bee.client.params.shop.ShopCommentRequest;
 import com.bee.commons.Consts;
 import com.bee.commons.IntegralMachine;
+import com.bee.commons.LevelMachine;
 import com.bee.dao.order.OrderDao;
 import com.bee.dao.shop.ShopCommentDao;
 import com.bee.dao.user.UserDao;
@@ -57,6 +58,7 @@ public class ShopCommentService implements IShopCommentService {
                     // 增加用户积分
                     User user = userDao.findById(shopComment.getUser().getUid());
                     user.addIntegral(IntegralMachine.OrderComment);
+                    user.addExp(LevelMachine.OrderComment);
                     userDao.update(user);
 
                     // 完成订单评论

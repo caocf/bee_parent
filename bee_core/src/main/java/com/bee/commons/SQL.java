@@ -18,6 +18,11 @@ public final class SQL {
         public static final String queryUserListByParams = "From User A where 1=1";
         public static final String queryUserListByParamsSort = " order by A.uid desc";
 
+        // 查询用户实时数据
+        public static final String QueryUserInfo = "SELECT " +
+                "A.UID, A.LEVEL, A.INTEGRAL " +
+                "FROM TB_USER A WHERE A.UID = ?";
+
         public static final class Friend {
             // 获取该用户的所有好友
             public static final String getFriendByUser = "From UserFriend A where A.user.uid = ? or A.friend.uid = ?";
