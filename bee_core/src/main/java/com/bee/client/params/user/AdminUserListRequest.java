@@ -29,7 +29,7 @@ public class AdminUserListRequest extends PagingRequest {
             case Consts.User.Type.PinkUser:
                 pageType = "UserPink";
                 break;
-            case Consts.User.Type.BussUser:
+            case Consts.User.Type.BusiUser:
                 pageType = "UserBuss";
                 break;
             case Consts.User.Type.AdminUser:

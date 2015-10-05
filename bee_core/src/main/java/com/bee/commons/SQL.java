@@ -120,6 +120,13 @@ public final class SQL {
             public static final String getShopUserByShopId = "FROM ShopUser A " +
                     "left join fetch A.shop B " +
                     "left join fetch A.user C where B.sid = ?";
+
+            public static final String GetShopUserByLogin = "SELECT " +
+                    "B.SID, B.NAME, B.STATUS " +
+                    "FROM TB_SHOP_USER A " +
+                    "LEFT OUTER JOIN TB_SHOP B " +
+                    "ON A.SHOP = B.SID " +
+                    "WHERE A.USER = ?";
         }
     }
 

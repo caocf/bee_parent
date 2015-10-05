@@ -1,0 +1,32 @@
+package com.bee.busi.params;
+
+import com.bee.busi.model.user.BusiShopUser;
+import com.bee.pojo.shop.ShopUser;
+import com.qsd.framework.spring.BaseResponse;
+
+/**
+ * Created by suntongwei on 15/10/5.
+ */
+public class BusiAuthLoginResponse extends BaseResponse implements java.io.Serializable {
+
+    private static final long serialVersionUID = 8564441521809428186L;
+    /**
+     * 商家用户
+     */
+    private BusiShopUser shopUser;
+    // 标识
+    private Integer flag;
+
+    public BusiShopUser getShopUser() {
+        return shopUser;
+    }
+    public void setShopUser(BusiShopUser shopUser) {
+        this.shopUser = shopUser;
+    }
+    public Integer getFlag() {
+        return flag;
+    }
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
+}

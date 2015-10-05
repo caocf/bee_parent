@@ -23,7 +23,6 @@ public class ShopUser implements java.io.Serializable {
     private String name;
     private String phone;
     private String introduce;
-    private List<Image> images = new ArrayList<>(0);
     private Long createTime;
 
     public ShopUser(){}
@@ -63,13 +62,6 @@ public class ShopUser implements java.io.Serializable {
     }
     public void setIntroduce(String introduce) {
         this.introduce = introduce;
-    }
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "shopUser")
-    public List<Image> getImages() {
-        return images;
-    }
-    public void setImages(List<Image> images) {
-        this.images = images;
     }
     @Column(name = "NAME")
     public String getName() {

@@ -12,7 +12,7 @@
 	<a id="navbar-inner-user-pink" href="${basePath}/admin/user?type=<%=Consts.User.Type.PinkUser %>">
 		<i class="fa fa-female"></i>粉色用户
 	</a>
-	<a id="navbar-inner-user-buss" href="${basePath}/admin/user?type=<%=Consts.User.Type.BussUser %>">
+	<a id="navbar-inner-user-buss" href="${basePath}/admin/user?type=<%=Consts.User.Type.BusiUser %>">
 		<i class="fa fa-street-view"></i>商户管理员
 	</a>
 	<a id="navbar-inner-user-admin" href="${basePath}/admin/user?type=<%=Consts.User.Type.AdminUser %>">

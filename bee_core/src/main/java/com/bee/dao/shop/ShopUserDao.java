@@ -1,8 +1,12 @@
 package com.bee.dao.shop;
 
+import com.bee.busi.model.user.BusiShopUser;
 import com.bee.commons.SQL;
 import com.bee.pojo.shop.ShopUser;
+import com.qsd.framework.commons.utils.NumberUtil;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
+import com.qsd.framework.hibernate.QueryDataConver;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -23,4 +27,22 @@ public class ShopUserDao extends JpaDaoSupport<ShopUser, Long> {
         return findFirstByParams(SQL.Shop.User.getShopUserByShopId, shopId);
     }
 
+    /**
+     * 返回登录商户信息
+     *
+     * @param uid 用户ID
+     * @return
+     */
+    public BusiShopUser getShopUserByLogin(long uid) {
+        return findFirstConverByParams(SQL.Shop.User.GetShopUserByLogin, new QueryDataConver<BusiShopUser>() {
+            @Override
+            public BusiShopUser converData(Object[] objs) {
+                BusiShopUser item = new BusiShopUser();
+                item.setShopId(NumberUtil.parseLong(objs[0], 0));
+                item.setShopName(StringUtil.parseString(objs[1], ""));
+                item.setShopStatus(NumberUtil.parseInteger(objs[2], 0));
+                return item;
+            }
+        }, uid);
+    }
 }
