@@ -20,6 +20,7 @@ public class AppVer implements java.io.Serializable {
     private Long avid;
     /**
      * Android和IOS
+     * @see com.bee.commons.Consts.AppType
      */
     private Integer type;
     /**

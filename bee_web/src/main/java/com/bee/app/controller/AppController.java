@@ -33,6 +33,12 @@ public class AppController {
     @Autowired
     private IApplyerService applyerService;
 
+    /**
+     * 初始化
+     *
+     * @param req
+     * @return
+     */
     @RequestMapping(value = "/init", method = RequestMethod.GET)
     public AppInitResponse initAppInfo(AppInitRequest req) {
         AppInitResponse res = new AppInitResponse();
@@ -53,7 +59,13 @@ public class AppController {
         return res;
     }
 
-
+    /**
+     * 检查版本
+     *
+     * @param phoneType
+     * @param ver
+     * @return
+     */
     @RequestMapping(value = "/check/ver", method = RequestMethod.GET)
     public AppVerResponse checkAppVer(Integer phoneType, Integer ver) {
         AppVerResponse res = new AppVerResponse();

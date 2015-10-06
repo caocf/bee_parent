@@ -237,6 +237,7 @@ public final class Consts {
     public static final class AppType {
         public static final int Android = 1;
         public static final int iOS = 2;
+        public static final int AndroidForBusi = 3;
     }
 
     public static final class Party {
