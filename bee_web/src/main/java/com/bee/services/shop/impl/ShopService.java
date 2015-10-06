@@ -147,25 +147,27 @@ public class ShopService implements IShopService {
     public void updateShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException {
 
         try {
-            // 修改缩略图
-            MultipartFile thumFile = req.getFile("thumbnailFile");
-            if (thumFile != null && thumFile.getSize() > 0) {
-                req.setAttribute("shopId", shop.getSid());
-                ImageParser.getImageParser(ImageParser.ImageType.ShopListThum).generate(req, thumFile);
-            }
+            if (req != null) {
+                // 修改缩略图
+                MultipartFile thumFile = req.getFile("thumbnailFile");
+                if (thumFile != null && thumFile.getSize() > 0) {
+                    req.setAttribute("shopId", shop.getSid());
+                    ImageParser.getImageParser(ImageParser.ImageType.ShopListThum).generate(req, thumFile);
+                }
 
-            // 修改主图
-            MultipartFile file = req.getFile("file");
-            if (file != null && file.getSize() > 0) {
-                req.setAttribute("shopId", shop.getSid());
-                ImageParser.getImageParser(ImageParser.ImageType.ShopImage).generate(req, file);
-            }
+                // 修改主图
+                MultipartFile file = req.getFile("file");
+                if (file != null && file.getSize() > 0) {
+                    req.setAttribute("shopId", shop.getSid());
+                    ImageParser.getImageParser(ImageParser.ImageType.ShopImage).generate(req, file);
+                }
 
-            // 修改推广图
-            MultipartFile recommendFile = req.getFile("recommendFile");
-            if (recommendFile != null && recommendFile.getSize() > 0) {
-                req.setAttribute("shopId", shop.getSid());
-                ImageParser.getImageParser(ImageParser.ImageType.ShopRecommend).generate(req, recommendFile);
+                // 修改推广图
+                MultipartFile recommendFile = req.getFile("recommendFile");
+                if (recommendFile != null && recommendFile.getSize() > 0) {
+                    req.setAttribute("shopId", shop.getSid());
+                    ImageParser.getImageParser(ImageParser.ImageType.ShopRecommend).generate(req, recommendFile);
+                }
             }
 
             // 保存商家其他信息

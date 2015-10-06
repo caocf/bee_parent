@@ -74,7 +74,7 @@ public interface IShopService {
     public ShopListItem getShopItemById(long sid);
 
     /**
-     * 删除商家
+     *【A端】删除商家
      *
      * @param sid
      * @throws DataRunException
