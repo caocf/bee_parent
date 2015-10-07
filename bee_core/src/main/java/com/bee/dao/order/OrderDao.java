@@ -148,6 +148,7 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
 
                 item.setCreateTime(NumberUtil.parseLong(objects[i++], 0));
                 item.setHisNum(NumberUtil.parseInteger(objects[i++], 0));
+                item.setUserLevel(NumberUtil.parseInteger(objects[i++], 0));
                 return item;
             }
         }, request.getShopId(), request.getShopId());

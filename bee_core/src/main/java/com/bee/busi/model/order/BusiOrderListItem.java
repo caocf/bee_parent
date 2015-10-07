@@ -18,6 +18,7 @@ public class BusiOrderListItem implements java.io.Serializable {
     private Integer num;
     private Long userId;
     private String userName;
+    private Integer userLevel;
     private Long createTime;
     // 历史订单数
     private Integer hisNum;
@@ -75,5 +76,11 @@ public class BusiOrderListItem implements java.io.Serializable {
     }
     public void setHisNum(Integer hisNum) {
         this.hisNum = hisNum;
+    }
+    public Integer getUserLevel() {
+        return userLevel;
+    }
+    public void setUserLevel(Integer userLevel) {
+        this.userLevel = userLevel;
     }
 }

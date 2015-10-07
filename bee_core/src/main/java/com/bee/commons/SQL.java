@@ -142,7 +142,8 @@ public final class SQL {
                 "FROM TB_ORDER A LEFT OUTER JOIN TB_SHOP B ON A.SHOP = B.SID WHERE 1=1 ";
         public static final String getBusiOrderListByParam = "SELECT " +
                 "A.OID, A.NO, A.STATUS, A.NUM, A.EXECTIME, A.ORDERNAME, B.UID, B.NAME, A.CREATETIME," +
-                "(SELECT COUNT(*) FROM TB_ORDER O WHERE O.SHOP = ? AND O.USER = B.UID AND O.STATUS = " + Consts.Order.Status.Finish + ") AS 'HIS_NUMBER' " +
+                "(SELECT COUNT(*) FROM TB_ORDER O WHERE O.SHOP = ? AND O.USER = B.UID AND O.STATUS = " + Consts.Order.Status.Finish + ") AS 'HIS_NUMBER', " +
+                "B.LEVEL " +
                 "FROM TB_ORDER A " +
                 "LEFT OUTER JOIN TB_USER B " +
                 "ON A.USER = B.UID " +
