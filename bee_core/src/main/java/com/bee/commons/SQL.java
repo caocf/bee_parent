@@ -175,6 +175,18 @@ public final class SQL {
                 "LEFT OUTER JOIN TB_SHOP_USER B ON A.SHOPUSER = B.SUID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +
                 "WHERE A.OID = ?";
+
+        /**
+         * 统计
+         */
+        public static final class Stat {
+
+            public static final String QueryBusiOrderNumberStat = "SELECT " +
+                    "COUNT(*) FROM TB_ORDER A " +
+                    "WHERE A.SHOP = ? " +
+                    "AND A.FINISHTIME >= ? " +
+                    "AND A.STATUS ";
+        }
     }
 
     /**

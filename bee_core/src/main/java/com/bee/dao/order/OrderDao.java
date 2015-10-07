@@ -3,6 +3,7 @@ package com.bee.dao.order;
 import com.bee.app.model.order.OrderItem;
 import com.bee.busi.model.order.BusiOrderItem;
 import com.bee.busi.model.order.BusiOrderListItem;
+import com.bee.busi.model.order.BusiOrderNumberStat;
 import com.bee.busi.params.order.BusiOrderListRequest;
 import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderListRequest;
@@ -11,6 +12,7 @@ import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.modal.OrderListItem;
 import com.bee.pojo.order.Order;
+import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
@@ -22,6 +24,7 @@ import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -210,5 +213,52 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
                 return item;
             }
         }, oid);
+    }
+
+    /**
+     * 查询B端订单统计
+     * 今日成功订单数，今日总订单数，一周（周期）总订单数
+     *
+     * @param shopId 商家ID
+     * @return BusiOrderNumberStat
+     */
+    public BusiOrderNumberStat queryBusiOrderNumberStat(long shopId) {
+
+        BusiOrderNumberStat stat = new BusiOrderNumberStat();
+
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        today.set(Calendar.MINUTE, 0);
+        today.set(Calendar.SECOND, 0);
+        today.set(Calendar.MILLISECOND, 0);
+
+        // 查询今天成功订单数
+        stat.setToday(
+                getDataCount(
+                        SQL.Order.Stat.QueryBusiOrderNumberStat + " = " + Consts.Order.Status.Finish,
+                        shopId,
+                        today.getTimeInMillis())
+        );
+
+        // 查询今日总订单数
+        stat.setTodayTotal(
+                getDataCount(
+                        SQL.Order.Stat.QueryBusiOrderNumberStat + " > " + Consts.Order.Status.Unknow,
+                        shopId,
+                        today.getTimeInMillis())
+        );
+
+        // 设置时间为过去七天
+        today.add(Calendar.DAY_OF_MONTH, -7);
+
+        // 查询一周总订单数
+        stat.setTotal(
+                getDataCount(
+                        SQL.Order.Stat.QueryBusiOrderNumberStat + " = " + Consts.Order.Status.Finish,
+                        shopId,
+                        today.getTimeInMillis())
+        );
+
+        return stat;
     }
 }

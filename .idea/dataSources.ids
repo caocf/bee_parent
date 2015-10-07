@@ -114,6 +114,7 @@
       <column name="ORDERPHONE" sqlType="VARCHAR" precision="11" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="SHOPUSER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <column name="ISCOMMENT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="FINISHTIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="OID"/>
       <index name="FK_kjf30805e521nr8oi35jimg9g" unique="false" columns="SHOP"/>
       <index name="FK_q09a68flx3nbjgdw6sf0p46dl" unique="false" columns="USER"/>

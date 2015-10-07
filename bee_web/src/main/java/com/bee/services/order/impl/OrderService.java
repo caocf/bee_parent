@@ -143,6 +143,8 @@ public class OrderService implements IOrderService {
         order.setStatus(Consts.Order.Status.Create);
         // 设置订单是否评论状态
         order.setIsComment(Consts.False);
+        // 设置结束时间为0
+        order.setFinishTime(0l);
         // 查询订单商家
         order.setShop(shopDao.getShopById(order.getShop().getSid()));
         // 查询接待经理
@@ -228,6 +230,7 @@ public class OrderService implements IOrderService {
         if (!OrderStatusMachine.isCancelOrder(order.getStatus())) {
             throw new DataRunException(Codes.Order.CancelError, Codes.Order.CancelErrorStr);
         }
+        order.setFinishTime(System.currentTimeMillis());
         order.setStatus(status);
         orderDao.update(order);
     }
@@ -246,6 +249,7 @@ public class OrderService implements IOrderService {
         if (!OrderStatusMachine.isCancelBusiOrder(order.getStatus())) {
             throw new DataRunException(Codes.Order.CancelError, Codes.Order.CancelErrorStr);
         }
+        order.setFinishTime(System.currentTimeMillis());
         order.setStatus(Consts.Order.Status.CancelShop);
         orderDao.update(order);
     }
@@ -263,6 +267,7 @@ public class OrderService implements IOrderService {
         if (!OrderStatusMachine.isRejectOrder(order.getStatus())) {
             throw new DataRunException(Codes.Order.RejectError);
         }
+        order.setFinishTime(System.currentTimeMillis());
         order.setStatus(Consts.Order.Status.ShopReject);
         orderDao.update(order);
     }
@@ -282,6 +287,7 @@ public class OrderService implements IOrderService {
         if (order.getStatus() != Consts.Order.Status.Underway) {
             throw new DataRunException(Codes.Order.FinishError);
         }
+        order.setFinishTime(System.currentTimeMillis());
         order.setStatus(Consts.Order.Status.Finish);
         orderDao.update(order);
 

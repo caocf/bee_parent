@@ -48,6 +48,8 @@ public class Order implements java.io.Serializable {
     private Long createTime;
     // 是否点评订单
     private Integer isComment;
+    // 订单结束时间
+    private Long finishTime;
 
     @Transient
     public String getTypeStr() {
@@ -194,5 +196,12 @@ public class Order implements java.io.Serializable {
     }
     public void setIsComment(Integer isComment) {
         this.isComment = isComment;
+    }
+    @Column(name = "FINISHTIME")
+    public Long getFinishTime() {
+        return finishTime;
+    }
+    public void setFinishTime(Long finishTime) {
+        this.finishTime = finishTime;
     }
 }
