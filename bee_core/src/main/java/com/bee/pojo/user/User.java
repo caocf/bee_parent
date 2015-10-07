@@ -72,6 +72,11 @@ public class User implements java.io.Serializable, ISecurityUser {
         this.level = LevelMachine.GetLevel(this.exp);
     }
 
+    @Transient
+    public String getHXName() {
+        return getIdentity();
+    }
+
     @Override
     @Transient
     public String getIdentity() {

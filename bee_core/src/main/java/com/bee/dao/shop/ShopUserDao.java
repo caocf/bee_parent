@@ -41,6 +41,8 @@ public class ShopUserDao extends JpaDaoSupport<ShopUser, Long> {
                 item.setShopId(NumberUtil.parseLong(objs[0], 0));
                 item.setShopName(StringUtil.parseString(objs[1], ""));
                 item.setShopStatus(NumberUtil.parseInteger(objs[2], 0));
+                item.setUserId(NumberUtil.parseLong(objs[3], 0));
+                item.setUserNick(StringUtil.parseString(objs[4], ""));
                 return item;
             }
         }, uid);

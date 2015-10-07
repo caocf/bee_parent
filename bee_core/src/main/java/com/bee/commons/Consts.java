@@ -30,6 +30,13 @@ public final class Consts {
         public static final String ServicePhone = "13162725286";
     }
 
+    public static final class HXConfig {
+
+        // 系统管理员的环信ID
+        public static final String SystemAdminHXName = "1001";
+
+    }
+
     public static final class User {
 
         // 用户编号从1000开始

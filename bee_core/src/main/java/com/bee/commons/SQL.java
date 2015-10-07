@@ -122,11 +122,13 @@ public final class SQL {
                     "left join fetch A.user C where B.sid = ?";
 
             public static final String GetShopUserByLogin = "SELECT " +
-                    "B.SID, B.NAME, B.STATUS " +
+                    "B.SID, B.NAME, B.STATUS, C.UID, C.`NAME` AS USERNAME " +
                     "FROM TB_SHOP_USER A " +
                     "LEFT OUTER JOIN TB_SHOP B " +
                     "ON A.SHOP = B.SID " +
-                    "WHERE A.USER = ?";
+                    "LEFT OUTER JOIN TB_USER C " +
+                    "ON A.USER = C.UID " +
+                    "WHERE C.UID = ?";
         }
     }
 
