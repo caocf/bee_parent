@@ -130,6 +130,25 @@ public final class SQL {
                     "ON A.USER = C.UID " +
                     "WHERE C.UID = ?";
         }
+
+        /**
+         * 商家组
+         */
+        public static final class Group {
+
+            public static final String GetShopGroupByShopId = "From ShopGroup A where A.shop.sid = ? order by A.sgId desc";
+        }
+
+        /**
+         * 商家技师
+         */
+        public static final class Techee {
+
+            /**
+             * 返回所属ShopGroup的所有ShopTechee
+             */
+            public static final String GetShopTecheeByGroupId = "From ShopTechee A where A.shopGroup.sgId = ?";
+        }
     }
 
     /**

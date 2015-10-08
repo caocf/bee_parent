@@ -237,6 +237,28 @@ CREATE TABLE `TB_SHOP_ERROR` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商户纠错表';
 
 -- ----------------------------
+--  Table structure for `TB_SHOP_GROUP`
+-- ----------------------------
+DROP TABLE IF EXISTS `TB_SHOP_GROUP`;
+CREATE TABLE `TB_SHOP_GROUP` (
+  `SGID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `GROUPNAME` varchar(255) NOT NULL DEFAULT '',
+  `SHOP` BIGINT(20) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`SGID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商户组';
+
+-- ----------------------------
+--  Table structure for `TB_SHOP_TECHEE`
+-- ----------------------------
+DROP TABLE IF EXISTS `TB_SHOP_TECHEE`;
+CREATE TABLE `TB_SHOP_TECHEE` (
+  `STID` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `NUMBER` VARCHAR(30) NOT NULL DEFAULT '',
+  `SHOPGROUP` BIGINT(20) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`STID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商户技师';
+
+-- ----------------------------
 --  Table structure for `TB_ORDER`
 -- ----------------------------
 DROP TABLE IF EXISTS `TB_ORDER`;
