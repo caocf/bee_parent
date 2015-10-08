@@ -182,6 +182,13 @@
       <exported-key name="FK_m6vcy1sp0dui5rnrfco61236e" table="TB_SHOP_PRICE" schema="" catalog="db_bee" columns="SHOP"/>
       <index name="FK_k3cu981hvkkswoaq82al88vwd" unique="false" columns="AREA"/>
     </table>
+    <table name="TB_SHOP_ATTEND" schema="" catalog="db_bee" type="TABLE">
+      <column name="SAID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="SHOPTECHEE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="ATTENDTIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="SAID"/>
+    </table>
     <table name="TB_SHOP_COMMENT" schema="" catalog="db_bee" type="TABLE">
       <column name="SCID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="CONTENT" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
@@ -221,6 +228,7 @@
       <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="SGID"/>
       <foreign-key name="FK_pll80k2okpm2xdo5xwfhymsbk" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_65da833d7q961m036lfq82qmc" table="TB_SHOP_TECHEE" schema="" catalog="db_bee" columns="SHOPGROUP"/>
       <index name="FK_pll80k2okpm2xdo5xwfhymsbk" unique="false" columns="SHOP"/>
     </table>
     <table name="TB_SHOP_IMAGE" schema="" catalog="db_bee" type="TABLE">
@@ -266,6 +274,8 @@
       <column name="NUMBER" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="SHOPGROUP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="STID"/>
+      <foreign-key name="FK_65da833d7q961m036lfq82qmc" columns="SHOPGROUP" ref-table="TB_SHOP_GROUP" ref-schema="" ref-catalog="db_bee" ref-columns="SGID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_65da833d7q961m036lfq82qmc" unique="false" columns="SHOPGROUP"/>
     </table>
     <table name="TB_SHOP_USER" schema="" catalog="db_bee" type="TABLE">
       <column name="SUID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>

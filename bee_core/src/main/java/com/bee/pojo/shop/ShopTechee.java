@@ -22,6 +22,11 @@ public class ShopTechee implements java.io.Serializable {
     // 所属商家组
     private ShopGroup shopGroup;
 
+    public ShopTechee() {}
+    public ShopTechee(Long id) {
+        stId = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "STID", unique = true, nullable = false)

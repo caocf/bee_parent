@@ -149,6 +149,15 @@ public final class SQL {
              */
             public static final String GetShopTecheeByGroupId = "From ShopTechee A where A.shopGroup.sgId = ?";
         }
+
+        /**
+         * 商家出勤表
+         */
+        public static final class Attend {
+
+            public static final String GetShopAttendByShopId = "SELECT " +
+                    "A.SAID, A.SHOPTECHEE FROM TB_SHOP_ATTEND A WHERE A.SHOP = ? AND A.ATTENDTIME = ?";
+        }
     }
 
     /**
