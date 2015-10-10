@@ -19,6 +19,14 @@ public interface IShopTecheeService {
     public List<ShopTechee> getShopTecheeByGroupId(long gid);
 
     /**
+     * 返回所属商家的所有ShopTechee
+     *
+     * @param shopId 商家ID
+     * @return
+     */
+    public List<ShopTechee> getShopTecheeByShopId(long shopId);
+
+    /**
      * 保存一个技师
      *
      * @param shopTechee

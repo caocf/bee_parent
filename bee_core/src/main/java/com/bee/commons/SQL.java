@@ -148,6 +148,12 @@ public final class SQL {
              * 返回所属ShopGroup的所有ShopTechee
              */
             public static final String GetShopTecheeByGroupId = "From ShopTechee A where A.shopGroup.sgId = ?";
+
+            /**
+             * 返回所属商家的所有ShopTechee
+             */
+            public static final String GetShopTecheeByShopId = "From ShopTechee A " +
+                    "left join fetch A.shopGroup B left join fetch B.shop C where C.sid = ?";
         }
 
         /**

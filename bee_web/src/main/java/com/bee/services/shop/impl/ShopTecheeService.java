@@ -31,6 +31,17 @@ public class ShopTecheeService implements IShopTecheeService {
 
 
     /**
+     * 返回所属商家的所有ShopTechee
+     *
+     * @param shopId 商家ID
+     * @return
+     */
+    public List<ShopTechee> getShopTecheeByShopId(long shopId) {
+        return shopTecheeDao.getShopTecheeByShopId(shopId);
+    }
+
+
+    /**
      * 保存一个技师
      *
      * @param shopTechee
