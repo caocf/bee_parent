@@ -5,35 +5,36 @@ package com.bee.modal;
  */
 public class ShopImageListItem implements java.io.Serializable {
 
+    private Long shopImageId;
     private String url;
     private String remark;
     private Integer width;
     private Integer height;
 
+    public Long getShopImageId() {
+        return shopImageId;
+    }
+    public void setShopImageId(Long shopImageId) {
+        this.shopImageId = shopImageId;
+    }
     public String getUrl() {
         return url;
     }
-
     public void setUrl(String url) {
         this.url = url;
     }
-
     public Integer getWidth() {
         return width;
     }
-
     public void setWidth(Integer width) {
         this.width = width;
     }
-
     public Integer getHeight() {
         return height;
     }
-
     public void setHeight(Integer height) {
         this.height = height;
     }
-
     public String getRemark() {
         return remark;
     }

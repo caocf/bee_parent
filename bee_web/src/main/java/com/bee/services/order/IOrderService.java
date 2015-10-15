@@ -109,6 +109,15 @@ public interface IOrderService {
     public void finishOrder(long id) throws DataRunException;
 
     /**
+     * 修改订单人数
+     *
+     * @param oid 订单ID
+     * @param num 新人数
+     * @throws DataRunException
+     */
+    public void editOrderNum(long oid, int num) throws DataRunException;
+
+    /**
      * 查询订单
      *
      * @param oid

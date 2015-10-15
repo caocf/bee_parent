@@ -118,7 +118,7 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         if (request.getStatus() != null) {
             sb.append(" and A.status = " + request.getStatus());
         } else if (request.getQueryStatus() != null) {
-            sb.append(" and A.status " + Consts.Order.Status.Query.getQueryStatus(request.getQueryStatus()));
+            sb.append(" and " + Consts.Order.Status.Query.getQueryString("A.status", request.getQueryStatus()));
         }
         sb.append(SQL.Order.getBusiOrderListByParamOrderBy);
         return findConverByParams(sb.toString(), new QueryDataConver<BusiOrderListItem>() {
@@ -233,33 +233,36 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         today.set(Calendar.SECOND, 0);
         today.set(Calendar.MILLISECOND, 0);
 
+
         // 查询今天成功订单数
         stat.setToday(
-                getDataCount(
-                        SQL.Order.Stat.QueryBusiOrderNumberStat + " = " + Consts.Order.Status.Finish,
-                        shopId,
-                        today.getTimeInMillis())
+                getDataCount(SQL.Order.Stat.QueryBusiOrderNumberStat + " = " + Consts.Order.Status.Finish,
+                        shopId, today.getTimeInMillis()).intValue()
         );
 
         // 查询今日总订单数
         stat.setTodayTotal(
-                getDataCount(
-                        SQL.Order.Stat.QueryBusiOrderNumberStat + " > " + Consts.Order.Status.Unknow,
-                        shopId,
-                        today.getTimeInMillis())
+                getDataCount(SQL.Order.Stat.QueryBusiOrderNumberStat + " = " + Consts.Order.Status.Unknow,
+                        shopId, today.getTimeInMillis()).intValue()
         );
 
         // 设置时间为过去七天
         today.add(Calendar.DAY_OF_MONTH, -7);
 
         // 查询一周总订单数
-        stat.setTotal(
-                getDataCount(
-                        SQL.Order.Stat.QueryBusiOrderNumberStat + " = " + Consts.Order.Status.Finish,
-                        shopId,
-                        today.getTimeInMillis())
+        stat.setTotal (
+                getDataCount(SQL.Order.Stat.QueryBusiOrderNumberStat + " = " + Consts.Order.Status.Finish,
+                        shopId, today.getTimeInMillis()).intValue()
         );
 
         return stat;
     }
+
+
+    private QueryDataConver<Integer> queryBusiOrderNumberStatConver = new QueryDataConver<Integer>() {
+        @Override
+        public Integer converData(Object[] objects) {
+            return NumberUtil.parseInteger(objects[0], 0);
+        }
+    };
 }

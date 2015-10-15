@@ -1,8 +1,11 @@
 package com.bee.services.shop;
 
+import com.bee.app.model.shop.ShopFocusItem;
+import com.bee.app.params.shop.ShopFocusListRequest;
 import com.bee.modal.ShopFocusFriendList;
 import com.bee.pojo.shop.ShopFocus;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.spring.PagingResult;
 
 import java.util.List;
 
@@ -35,4 +38,11 @@ public interface IShopFocusService {
      * @throws DataRunException
      */
     public void addShopFocus(long uid, long shopId) throws DataRunException;
+
+    /**
+     * 返回用户所有关注商户
+     *
+     * @return
+     */
+    public PagingResult<ShopFocusItem> getShopFocusList(ShopFocusListRequest request);
 }

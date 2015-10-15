@@ -1,63 +1,48 @@
-package com.bee.pojo.shop;
+package com.bee.busi.model.shop;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.*;
 
 /**
- * Created by suntongwei on 15/10/8.
+ * Created by suntongwei on 15/10/15.
  */
-@Entity
-@Table(name = "TB_SHOP_GROUP")
-@JsonIgnoreProperties({"shop"})
-public class ShopGroup implements java.io.Serializable {
+public class BusiShopGroup implements java.io.Serializable {
 
     // serialVersionUID
-    private static final long serialVersionUID = -3243135882371937198L;
+    private static final long serialVersionUID = -4768096872376924035L;
 
-    // 主键
     private Long sgId;
     // 组名
     private String groupName;
     // 所属商家
-    private Shop shop;
+    private Long shop;
     // 价格
     private Double price;
     // 价格说明
     private String remark;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "SGID", unique = true, nullable = false)
     public Long getSgId() {
         return sgId;
     }
     public void setSgId(Long sgId) {
         this.sgId = sgId;
     }
-    @Column(name = "GROUPNAME")
     public String getGroupName() {
         return groupName;
     }
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    @JoinColumn(name = "SHOP")
-    public Shop getShop() {
+    public Long getShop() {
         return shop;
     }
-    public void setShop(Shop shop) {
+    public void setShop(Long shop) {
         this.shop = shop;
     }
-    @Column(name = "PRICE")
     public Double getPrice() {
         return price;
     }
     public void setPrice(Double price) {
         this.price = price;
     }
-    @Column(name = "REMARK")
     public String getRemark() {
         return remark;
     }

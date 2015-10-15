@@ -3,10 +3,13 @@ package com.bee.pojo.shop;
 import javax.persistence.*;
 
 /**
+ * Deprecated，使用ShopGroup
+ *
  * Created by suntongwei on 15/4/16.
  */
 @Entity
 @Table(name = "TB_SHOP_PRICE")
+@Deprecated
 public class ShopPrice implements java.io.Serializable {
 
     // serialVersionUID

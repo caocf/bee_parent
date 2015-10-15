@@ -1,5 +1,6 @@
 package com.bee.busi.controller;
 
+import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.params.BusiInitResponse;
 import com.bee.client.params.AppVerResponse;
 import com.bee.commons.Codes;
@@ -12,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/10/6.
@@ -47,7 +51,8 @@ public class BusiAppController {
         // 同步商家技师
         res.setShopTechees(shopTecheeService.getShopTecheeByShopId(sid));
         // 同步商家出勤表
-        res.setShopAttends(shopAttendService.getShopAttendByShopId(sid, res.getCurrentTime()));
+        List<BusiShopAttend> shopAttends = shopAttendService.getShopAttendByShopId(sid, res.getCurrentTime());
+        res.setShopAttends(shopAttends != null ? shopAttends : new ArrayList<BusiShopAttend>());
         res.setCode(Codes.Success);
         return res;
     }

@@ -24,6 +24,12 @@ public final class Codes {
     }
 
 
+    public static final class Shop {
+        // 500
+        public static final int ShopImageSizeOut = 0x1f4;
+    }
+
+
     public static final class Order {
         // 300 创建订单失败
         public static final int CreateError = 0x12c;
@@ -35,6 +41,10 @@ public final class Codes {
         public static final int RejectError = 0x12f;
         // 304 完成订单失败
         public static final int FinishError = 0x130;
+        // 305 修改订单失败
+        public static final int EditError = 0x131;
+        // 306 修改订单人数未改变
+        public static final int EditNoChangeError = 0x132;
         // 350 订单数据操作失败
         public static final int OrderDbError = 0x15e;
         // 订单无法取消

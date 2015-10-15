@@ -52,4 +52,14 @@ public final class OrderStatusMachine {
         return (status != Consts.Order.Status.Finish);
     }
 
+    /**
+     * 用户是否可以修改订单
+     * 只有当订单在进行中才能修改人数
+     *
+     * @param status
+     * @return
+     */
+    public static boolean isEditOrderNum(int status) {
+        return status < Consts.Order.Status.Finish;
+    }
 }

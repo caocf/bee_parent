@@ -1,5 +1,7 @@
 package com.bee.busi.controller.shop;
 
+import com.bee.busi.model.shop.BusiShopGroup;
+import com.bee.busi.params.shop.ShopGroupSaveResponse;
 import com.bee.commons.Codes;
 import com.bee.pojo.shop.ShopGroup;
 import com.bee.services.shop.IShopGroupService;
@@ -30,7 +32,7 @@ public class BusiShopGroupController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public List<ShopGroup> getShopGroupByShopId(@PathVariable Long sid) {
+    public List<BusiShopGroup> getShopGroupByShopId(@PathVariable Long sid) {
         return shopGroupService.getShopGroupByShopId(sid);
     }
 
@@ -41,14 +43,50 @@ public class BusiShopGroupController {
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public BaseResponse saveShopGroup(ShopGroup shopGroup) {
-        BaseResponse res = new BaseResponse();
+    public ShopGroupSaveResponse saveShopGroup(ShopGroup shopGroup) {
+        ShopGroupSaveResponse res = new ShopGroupSaveResponse();
         try {
             shopGroupService.saveShopGroup(shopGroup);
+            res.setShopGroupId(shopGroup.getSgId());
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Error);
             res.setMsg("保存出错，请重试");
+        }
+        return res;
+    }
+
+    /**
+     *
+     * @param shopGroup
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.PUT)
+    public BaseResponse updateShopGroup(ShopGroup shopGroup) {
+        BaseResponse res = new BaseResponse();
+        try {
+            shopGroupService.updateShopGroup(shopGroup);
+            res.setCode(Codes.Success);
+        } catch (DataRunException e) {
+            res.setCode(Codes.Error);
+            res.setMsg("保存出错，请重试");
+        }
+        return res;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @RequestMapping(value = "/{shopGroupId}", method = RequestMethod.DELETE)
+    public BaseResponse deleteShopGroup(@PathVariable Long shopGroupId) {
+        BaseResponse res = new BaseResponse();
+        try {
+            shopGroupService.deleteShopGroup(shopGroupId);
+            res.setCode(Codes.Success);
+        } catch (DataRunException e) {
+            res.setCode(Codes.Error);
+            res.setMsg("删除出错，请重试");
         }
         return res;
     }

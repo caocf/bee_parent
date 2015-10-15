@@ -4,6 +4,7 @@ import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopUser;
 import com.bee.pojo.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
@@ -50,6 +51,22 @@ public class Order implements java.io.Serializable {
     private Integer isComment;
     // 订单结束时间
     private Long finishTime;
+    // 订单操作记录
+    private String operate;
+
+    /**
+     * 写入操作日志
+     *
+     * @param operate
+     */
+    @Transient
+    @JsonIgnore
+    public void writeOperate(String operate) {
+        if (operate != null && !"".equals(operate)) {
+            operate += ";";
+        }
+        operate += DateUtil.formatDateTime(System.currentTimeMillis()) + operate;
+    }
 
     @Transient
     public String getTypeStr() {
@@ -203,5 +220,12 @@ public class Order implements java.io.Serializable {
     }
     public void setFinishTime(Long finishTime) {
         this.finishTime = finishTime;
+    }
+    @Column(name = "OPERATE")
+    public String getOperate() {
+        return operate;
+    }
+    public void setOperate(String operate) {
+        this.operate = operate;
     }
 }

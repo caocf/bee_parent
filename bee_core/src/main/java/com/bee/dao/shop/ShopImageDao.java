@@ -31,6 +31,7 @@ public class ShopImageDao extends JpaDaoSupport<ShopImage, Long> {
                 item.setRemark(StringUtil.parseString(objects[1], ""));
                 item.setWidth(NumberUtil.parseInteger(objects[2], 0));
                 item.setHeight(NumberUtil.parseInteger(objects[3], 0));
+                item.setShopImageId(NumberUtil.parseLong(objects[4], 0));
                 return item;
             }
         }, sid);

@@ -132,4 +132,30 @@ public class OrderController {
         }
         return res;
     }
+
+    /**
+     * 修改订单人数
+     *
+     * @param oid 订单ID
+     * @param num 新人数
+     * @return
+     */
+    @RequestMapping(value = "/{oid}/edit/num", method = RequestMethod.PATCH)
+    public BaseResponse editOrderNum(@PathVariable Long oid, Integer num) {
+        BaseResponse res = new BaseResponse();
+        try {
+            orderService.editOrderNum(oid, num);
+            res.setCode(Codes.Success);
+        } catch (DataRunException e) {
+            if (e.getErrorCode() == Codes.Order.EditError) {
+                res.setMsg("订单状态发生改变");
+            } else if (e.getErrorCode() == Codes.Order.EditNoChangeError) {
+                res.setMsg("订单人数未改变");
+            } else {
+                res.setCode(Codes.Order.OrderDbError);
+                res.setMsg("操作失败，请重试");
+            }
+        }
+        return res;
+    }
 }

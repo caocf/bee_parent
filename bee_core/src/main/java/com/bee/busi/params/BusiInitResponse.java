@@ -1,7 +1,7 @@
 package com.bee.busi.params;
 
 import com.bee.busi.model.shop.BusiShopAttend;
-import com.bee.pojo.shop.ShopGroup;
+import com.bee.busi.model.shop.BusiShopGroup;
 import com.bee.pojo.shop.ShopTechee;
 import com.qsd.framework.spring.BaseResponse;
 
@@ -18,7 +18,7 @@ public class BusiInitResponse extends BaseResponse {
     /**
      * 商家所有群组
      */
-    private List<ShopGroup> shopGroups;
+    private List<BusiShopGroup> shopGroups;
     /**
      * 商家所有技师
      */
@@ -32,10 +32,10 @@ public class BusiInitResponse extends BaseResponse {
      */
     private Long currentTime;
 
-    public List<ShopGroup> getShopGroups() {
+    public List<BusiShopGroup> getShopGroups() {
         return shopGroups;
     }
-    public void setShopGroups(List<ShopGroup> shopGroups) {
+    public void setShopGroups(List<BusiShopGroup> shopGroups) {
         this.shopGroups = shopGroups;
     }
     public List<ShopTechee> getShopTechees() {

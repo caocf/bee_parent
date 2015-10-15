@@ -1,11 +1,13 @@
 package com.bee.app.controller.shop;
 
+import com.bee.app.model.shop.ShopFocusItem;
+import com.bee.app.params.shop.ShopFocusListRequest;
 import com.bee.commons.Codes;
 import com.bee.modal.ShopFocusFriendList;
 import com.bee.services.shop.IShopFocusService;
 import com.qsd.framework.hibernate.exception.DataRunException;
-import com.qsd.framework.spring.BaseRequest;
 import com.qsd.framework.spring.BaseResponse;
+import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,6 +53,16 @@ public class ShopFocusController {
     @RequestMapping(value = "/user/{uid}", method = RequestMethod.GET)
     public List<ShopFocusFriendList> getFriendFocus(@PathVariable Long sid, @PathVariable Long uid) {
         return shopFocusService.getShopFocusFriend(sid, uid);
+    }
+
+    /**
+     * 获取用户关注商户列表
+     *
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public PagingResult<ShopFocusItem> getShopFocusList(@PathVariable Long sid, ShopFocusListRequest request) {
+        return shopFocusService.getShopFocusList(request);
     }
 
 }

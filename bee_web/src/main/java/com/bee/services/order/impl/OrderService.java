@@ -27,8 +27,10 @@ import com.easemob.server.httpclient.vo.EndPoints;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
+import com.sun.tools.internal.jxc.apt.Const;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -141,6 +143,8 @@ public class OrderService implements IOrderService {
         order.setCreateTime(System.currentTimeMillis());
         // 设置订单初始化状态
         order.setStatus(Consts.Order.Status.Create);
+        // 设置操作记录
+        order.writeOperate(Consts.Order.Operate.Create);
         // 设置订单是否评论状态
         order.setIsComment(Consts.False);
         // 设置结束时间为0
@@ -212,6 +216,7 @@ public class OrderService implements IOrderService {
             throw new DataRunException(Codes.Order.AcceptError);
         }
         order.setStatus(Consts.Order.Status.Underway);
+        order.writeOperate(Consts.Order.Operate.Underway);
         orderDao.update(order);
     }
 
@@ -232,6 +237,7 @@ public class OrderService implements IOrderService {
         }
         order.setFinishTime(System.currentTimeMillis());
         order.setStatus(status);
+        order.writeOperate(Consts.Order.Operate.UserCancel);
         orderDao.update(order);
     }
 
@@ -251,6 +257,7 @@ public class OrderService implements IOrderService {
         }
         order.setFinishTime(System.currentTimeMillis());
         order.setStatus(Consts.Order.Status.CancelShop);
+        order.writeOperate(Consts.Order.Operate.ShopCancel);
         orderDao.update(order);
     }
 
@@ -269,6 +276,7 @@ public class OrderService implements IOrderService {
         }
         order.setFinishTime(System.currentTimeMillis());
         order.setStatus(Consts.Order.Status.ShopReject);
+        order.writeOperate(Consts.Order.Operate.ShopReject);
         orderDao.update(order);
     }
 
@@ -289,6 +297,7 @@ public class OrderService implements IOrderService {
         }
         order.setFinishTime(System.currentTimeMillis());
         order.setStatus(Consts.Order.Status.Finish);
+        order.writeOperate(Consts.Order.Operate.Finish);
         orderDao.update(order);
 
         // 增加用户积分
@@ -299,6 +308,34 @@ public class OrderService implements IOrderService {
             user.addExp(LevelMachine.OrderFinish);
             userDao.update(user);
         }
+    }
+
+    /**
+     *【C端】修改订单人数
+     *
+     * @param oid 订单ID
+     * @param num 新人数
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void editOrderNum(long oid, int num) throws DataRunException {
+
+        Order order = orderDao.findById(oid);
+
+        // 判断订单是否可以被修改
+        if (!OrderStatusMachine.isEditOrderNum(order.getStatus())) {
+            throw new DataRunException(Codes.Order.EditError);
+        }
+
+        if (null == order.getNum() || num == order.getNum()) {
+            throw new DataRunException(Codes.Order.EditNoChangeError);
+        }
+
+        order.setNum(num);
+        order.writeOperate(Consts.Order.Operate.Edited);
+        orderDao.update(order);
+
     }
 
     /**

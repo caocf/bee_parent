@@ -115,6 +115,7 @@
       <column name="SHOPUSER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <column name="ISCOMMENT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="FINISHTIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="OPERATE" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="OID"/>
       <index name="FK_kjf30805e521nr8oi35jimg9g" unique="false" columns="SHOP"/>
       <index name="FK_q09a68flx3nbjgdw6sf0p46dl" unique="false" columns="USER"/>
@@ -177,6 +178,7 @@
       <column name="ISBACK" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <primary-key name="PRIMARY" columns="SID"/>
       <exported-key name="FK_hr58730vjl236felr49hqe28u" table="TB_AD" schema="" catalog="db_bee" columns="SHOP"/>
+      <exported-key name="FK_jcxh1x8o7ixln463bdptb7m8e" table="TB_SHOP_ATTEND" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_pll80k2okpm2xdo5xwfhymsbk" table="TB_SHOP_GROUP" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_7mwbrpstkbyuxi8xx71e8yn58" table="TB_SHOP_IMAGE" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_m6vcy1sp0dui5rnrfco61236e" table="TB_SHOP_PRICE" schema="" catalog="db_bee" columns="SHOP"/>
@@ -188,6 +190,10 @@
       <column name="ATTENDTIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="SAID"/>
+      <foreign-key name="FK_fbt2trtk2nbrcdgk8o27smvj2" columns="SHOPTECHEE" ref-table="TB_SHOP_TECHEE" ref-schema="" ref-catalog="db_bee" ref-columns="STID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_jcxh1x8o7ixln463bdptb7m8e" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_fbt2trtk2nbrcdgk8o27smvj2" unique="false" columns="SHOPTECHEE"/>
+      <index name="FK_jcxh1x8o7ixln463bdptb7m8e" unique="false" columns="SHOP"/>
     </table>
     <table name="TB_SHOP_COMMENT" schema="" catalog="db_bee" type="TABLE">
       <column name="SCID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -216,8 +222,9 @@
     </table>
     <table name="TB_SHOP_FOCUS" schema="" catalog="db_bee" type="TABLE">
       <column name="SFID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="SFID"/>
       <index name="FK_hfnwplmri8wf8syg561a3nxjy" unique="false" columns="USER"/>
       <index name="FK_tm5w1672w73kfbxek0k4w6s7k" unique="false" columns="SHOP"/>
@@ -226,6 +233,8 @@
       <column name="SGID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="GROUPNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="PRICE" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8" def="MA=="/>
+      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <primary-key name="PRIMARY" columns="SGID"/>
       <foreign-key name="FK_pll80k2okpm2xdo5xwfhymsbk" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_65da833d7q961m036lfq82qmc" table="TB_SHOP_TECHEE" schema="" catalog="db_bee" columns="SHOPGROUP"/>
@@ -275,6 +284,7 @@
       <column name="SHOPGROUP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="STID"/>
       <foreign-key name="FK_65da833d7q961m036lfq82qmc" columns="SHOPGROUP" ref-table="TB_SHOP_GROUP" ref-schema="" ref-catalog="db_bee" ref-columns="SGID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_fbt2trtk2nbrcdgk8o27smvj2" table="TB_SHOP_ATTEND" schema="" catalog="db_bee" columns="SHOPTECHEE"/>
       <index name="FK_65da833d7q961m036lfq82qmc" unique="false" columns="SHOPGROUP"/>
     </table>
     <table name="TB_SHOP_USER" schema="" catalog="db_bee" type="TABLE">

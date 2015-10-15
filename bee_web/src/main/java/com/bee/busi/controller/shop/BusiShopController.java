@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 /**
  * Created by suntongwei on 15/8/19.
@@ -60,6 +61,35 @@ public class BusiShopController {
             res.setCode(Codes.Error);
             res.setMsg("未知商家");
         }
+        return res;
+    }
+
+
+    /**
+     * 上传商家列表图片
+     *
+     * @param req
+     * @return
+     */
+    @RequestMapping(value = "/{sid}/edit/image/list", method = RequestMethod.POST)
+    public BaseResponse updateShopListImage(@PathVariable Long sid, MultipartHttpServletRequest req) {
+        BaseResponse res = new BaseResponse();
+        shopService.saveShopListImage(sid, req);
+        res.setCode(Codes.Success);
+        return res;
+    }
+
+    /**
+     * 上传商家门店图片
+     *
+     * @param req
+     * @return
+     */
+    @RequestMapping(value = "/{sid}/edit/image/face", method = RequestMethod.POST)
+    public BaseResponse updateShopImage(@PathVariable Long sid, MultipartHttpServletRequest req) {
+        BaseResponse res = new BaseResponse();
+        shopService.saveShopImage(sid, req);
+        res.setCode(Codes.Success);
         return res;
     }
 }

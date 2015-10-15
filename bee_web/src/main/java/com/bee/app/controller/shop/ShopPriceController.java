@@ -1,6 +1,7 @@
 package com.bee.app.controller.shop;
 
 import com.bee.modal.ShopPriceItem;
+import com.bee.services.shop.IShopGroupService;
 import com.bee.services.shop.IShopPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,8 @@ public class ShopPriceController {
 
     @Autowired
     private IShopPriceService shopPriceService;
+    @Autowired
+    private IShopGroupService shopGroupService;
 
     /**
      * 查询商家价格列表
@@ -28,7 +31,7 @@ public class ShopPriceController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public List<ShopPriceItem> queryShopPrice(@PathVariable Long sid) {
-        return shopPriceService.queryAppShopPriceByShopId(sid);
+        return shopGroupService.queryShopPriceByShopId(sid);
     }
 
 }

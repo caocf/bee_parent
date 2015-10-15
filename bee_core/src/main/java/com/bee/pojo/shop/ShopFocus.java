@@ -18,6 +18,7 @@ public class ShopFocus implements java.io.Serializable {
     private Long sfid;
     private Shop shop;
     private User user;
+    private Long createTime;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,5 +44,12 @@ public class ShopFocus implements java.io.Serializable {
     }
     public void setUser(User user) {
         this.user = user;
+    }
+    @Column(name = "CREATETIME")
+    public Long getCreateTime() {
+        return createTime;
+    }
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
     }
 }

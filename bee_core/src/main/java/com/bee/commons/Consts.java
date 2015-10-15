@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public final class Consts {
 
-    public static final boolean isDebug = false;
+    public static final boolean isDebug = true;
     private static final String LocalBaseUrl = "http://localhost:8080";
     private static final String RemoteBaseUrl = "http://139.196.27.231";
 
@@ -115,11 +115,28 @@ public final class Consts {
 
         public static final String ExecTimeType = "yyyy-MM-dd HH:mm";
 
+
+        public static final class Operate {
+
+            public static final String Create = "创建订单";
+
+            public static final String UserCancel = "用户取消订单";
+
+            public static final String ShopCancel = "商户取消订单";
+
+            public static final String ShopReject = "商户拒绝订单";
+
+            public static final String Underway = "商家接受订单";
+
+            public static final String Finish = "订单完成";
+
+            public static final String Edited = "用户修改了订单人数";
+        }
+
         public static final class Status {
 
             // 未知状态
             public static final int Unknow = 0;
-
             // 等待到店
             public static final int Create = 1;
             // 到店进行中
@@ -187,6 +204,8 @@ public final class Consts {
                 public static final int Cancel = 5;
                 // 历史订单
                 public static final int History = 6;
+                // 商户端进行中
+                public static final int BusiFinish = 7;
                 /**
                  * 返回查询状态SQL语句
                  */
@@ -210,6 +229,19 @@ public final class Consts {
                             break;
                         case Query.History:
                             query = " >= " + Status.Finish;
+                            break;
+                    }
+                    return query;
+                }
+
+                public static String getQueryString(String column, int queryStatus) {
+                    String query = column + " > 0";
+                    switch(queryStatus) {
+                        case Query.BusiFinish:
+                            query = column + " = " + Status.Underway;
+                            break;
+                        case Query.History:
+                            query = column + " >= " + Status.Finish;
                             break;
                     }
                     return query;

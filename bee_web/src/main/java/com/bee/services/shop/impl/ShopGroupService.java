@@ -1,6 +1,8 @@
 package com.bee.services.shop.impl;
 
+import com.bee.busi.model.shop.BusiShopGroup;
 import com.bee.dao.shop.ShopGroupDao;
+import com.bee.modal.ShopPriceItem;
 import com.bee.pojo.shop.ShopGroup;
 import com.bee.services.shop.IShopGroupService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -25,8 +27,18 @@ public class ShopGroupService implements IShopGroupService {
      * @param sid
      * @return
      */
-    public List<ShopGroup> getShopGroupByShopId(Long sid) {
+    public List<BusiShopGroup> getShopGroupByShopId(Long sid) {
         return shopGroupDao.getShopGroupByShopId(sid);
+    }
+
+    /**
+     * 根据组查询所有价格
+     *
+     * @param sid
+     * @return
+     */
+    public List<ShopPriceItem> queryShopPriceByShopId(Long sid) {
+        return shopGroupDao.queryShopPriceByShopId(sid);
     }
 
     /**
@@ -39,5 +51,29 @@ public class ShopGroupService implements IShopGroupService {
     @Transactional
     public void saveShopGroup(ShopGroup shopGroup) throws DataRunException {
         shopGroupDao.save(shopGroup);
+    }
+
+    /**
+     * 更新一个分组
+     *
+     * @param shopGroup
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void updateShopGroup(ShopGroup shopGroup) throws DataRunException {
+        shopGroupDao.update(shopGroup);
+    }
+
+    /**
+     * 删除一个分组
+     *
+     * @param shopGroupId
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void deleteShopGroup(long shopGroupId) throws DataRunException {
+        shopGroupDao.deleteById(shopGroupId);
     }
 }

@@ -95,4 +95,22 @@ public interface IShopService {
      * @return
      */
     public List<ShopMap> queryShopMapAll();
+
+
+    /**
+     * 修改商家列表图片
+     *
+     * @param shopId
+     * @param req
+     */
+    public void saveShopListImage(long shopId, MultipartHttpServletRequest req);
+
+
+    /**
+     * 保存商家门店图片
+     *
+     * @param shopId
+     * @param req
+     */
+    public void saveShopImage(long shopId, MultipartHttpServletRequest req);
 }

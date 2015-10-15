@@ -81,7 +81,7 @@ public final class SQL {
 
         public static final class Image {
             public static final String queryAppShopImage = "SELECT " +
-                    "A.URL,A.REMARK,A.WIDTH, A.HEIGHT " +
+                    "A.URL,A.REMARK,A.WIDTH, A.HEIGHT, A.SIID " +
                     "FROM TB_SHOP_IMAGE A WHERE A.SHOP = ? " +
                     "ORDER BY A.SORT DESC";
             public static final String queryShopImageByShopId = "From ShopImage A left join fetch A.shop B where B.sid = ?";
@@ -95,6 +95,18 @@ public final class SQL {
                     "from TB_USER_FRIEND A left outer join TB_USER B on A.friend = B.uid " +
                     "left outer join TB_SHOP_FOCUS C on A.friend=C.`USER`" +
                     "where A.`USER` = ? and C.shop = ?";
+            public static final String GetFocusShop = "From ShopFocus A where shop.sid = ? and user.uid = ?";
+            public static final String GetShopFocusList = "SELECT " +
+                    "A.SID, A.NAME " +
+                    "FROM TB_SHOP A " +
+                    "LEFT OUTER JOIN " +
+                    "TB_SHOP_FOCUS B " +
+                    "ON A.SID = B.SHOP " +
+                    "LEFT OUTER JOIN " +
+                    "TB_USER C " +
+                    "ON B.USER = C.UID " +
+                    "WHERE C.UID = ? " +
+                    "ORDER BY B.CREATETIME DESC";
         }
 
         public static final class Comment {
@@ -136,7 +148,15 @@ public final class SQL {
          */
         public static final class Group {
 
-            public static final String GetShopGroupByShopId = "From ShopGroup A where A.shop.sid = ? order by A.sgId desc";
+            public static final String GetShopGroupByShopId = "SELECT " +
+                    "A.SGID, A.GROUPNAME, A.SHOP, A.PRICE, A.REMARK " +
+                    "FROM TB_SHOP_GROUP A " +
+                    "WHERE A.SHOP = ?";
+
+            public static final String QueryShopPriceByShopId = "SELECT " +
+                    "A.GROUPNAME, A.PRICE, A.REMARK " +
+                    "FROM TB_SHOP_GROUP A " +
+                    "WHERE A.SHOP = ?";
         }
 
         /**
@@ -217,7 +237,7 @@ public final class SQL {
         public static final class Stat {
 
             public static final String QueryBusiOrderNumberStat = "SELECT " +
-                    "COUNT(*) FROM TB_ORDER A " +
+                    "SUM(A.NUM) FROM TB_ORDER A " +
                     "WHERE A.SHOP = ? " +
                     "AND A.FINISHTIME >= ? " +
                     "AND A.STATUS ";

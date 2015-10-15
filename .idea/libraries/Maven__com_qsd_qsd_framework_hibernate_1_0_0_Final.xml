@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/Documents/maven-repository/com/qsd/qsd_framework_hibernate/1.0.0.Final/qsd_framework_hibernate-1.0.0.Final-sources.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../web/qsd_framework_hibernate/src/main/java" />
     </SOURCES>
   </library>
 </component>
