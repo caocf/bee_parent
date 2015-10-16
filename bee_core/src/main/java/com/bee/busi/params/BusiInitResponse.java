@@ -2,6 +2,7 @@ package com.bee.busi.params;
 
 import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.model.shop.BusiShopGroup;
+import com.bee.busi.model.shop.BusiShopTechee;
 import com.bee.pojo.shop.ShopTechee;
 import com.qsd.framework.spring.BaseResponse;
 
@@ -22,7 +23,7 @@ public class BusiInitResponse extends BaseResponse {
     /**
      * 商家所有技师
      */
-    private List<ShopTechee> shopTechees;
+    private List<BusiShopTechee> shopTechees;
     /**
      * 商家出勤表
      */
@@ -38,10 +39,10 @@ public class BusiInitResponse extends BaseResponse {
     public void setShopGroups(List<BusiShopGroup> shopGroups) {
         this.shopGroups = shopGroups;
     }
-    public List<ShopTechee> getShopTechees() {
+    public List<BusiShopTechee> getShopTechees() {
         return shopTechees;
     }
-    public void setShopTechees(List<ShopTechee> shopTechees) {
+    public void setShopTechees(List<BusiShopTechee> shopTechees) {
         this.shopTechees = shopTechees;
     }
     public List<BusiShopAttend> getShopAttends() {

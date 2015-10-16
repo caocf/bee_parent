@@ -51,8 +51,7 @@ public class BusiAppController {
         // 同步商家技师
         res.setShopTechees(shopTecheeService.getShopTecheeByShopId(sid));
         // 同步商家出勤表
-        List<BusiShopAttend> shopAttends = shopAttendService.getShopAttendByShopId(sid, res.getCurrentTime());
-        res.setShopAttends(shopAttends != null ? shopAttends : new ArrayList<BusiShopAttend>());
+        res.setShopAttends(shopAttendService.getShopAttendByShopId(sid, res.getCurrentTime()));
         res.setCode(Codes.Success);
         return res;
     }

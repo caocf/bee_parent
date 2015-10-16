@@ -172,8 +172,10 @@ public final class SQL {
             /**
              * 返回所属商家的所有ShopTechee
              */
-            public static final String GetShopTecheeByShopId = "From ShopTechee A " +
-                    "left join fetch A.shopGroup B left join fetch B.shop C where C.sid = ?";
+            public static final String GetShopTecheeByShopId = "SELECT " +
+                    "A.STID, A.NUMBER, A.SHOPGROUP, A.SHOP " +
+                    "FROM TB_SHOP_TECHEE A " +
+                    "WHERE A.SHOP = ?";
         }
 
         /**

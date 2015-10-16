@@ -9,7 +9,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "TB_SHOP_TECHEE")
-@JsonIgnoreProperties({"shopGroup"})
 public class ShopTechee implements java.io.Serializable {
 
     // serialVersionUID
@@ -21,6 +20,8 @@ public class ShopTechee implements java.io.Serializable {
     private String number;
     // 所属商家组
     private ShopGroup shopGroup;
+    // 所属商家
+    private Shop shop;
 
     public ShopTechee() {}
     public ShopTechee(Long id) {
@@ -50,5 +51,13 @@ public class ShopTechee implements java.io.Serializable {
     }
     public void setShopGroup(ShopGroup shopGroup) {
         this.shopGroup = shopGroup;
+    }
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "SHOP")
+    public Shop getShop() {
+        return shop;
+    }
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 }

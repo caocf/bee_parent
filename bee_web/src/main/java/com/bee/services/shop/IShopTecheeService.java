@@ -1,5 +1,6 @@
 package com.bee.services.shop;
 
+import com.bee.busi.model.shop.BusiShopTechee;
 import com.bee.pojo.shop.ShopTechee;
 import com.qsd.framework.hibernate.exception.DataRunException;
 
@@ -24,7 +25,7 @@ public interface IShopTecheeService {
      * @param shopId 商家ID
      * @return
      */
-    public List<ShopTechee> getShopTecheeByShopId(long shopId);
+    public List<BusiShopTechee> getShopTecheeByShopId(long shopId);
 
     /**
      * 保存一个技师
@@ -33,4 +34,20 @@ public interface IShopTecheeService {
      * @throws DataRunException
      */
     public void saveShopTechee(ShopTechee shopTechee) throws DataRunException;
+
+    /**
+     * 更新一个技师
+     *
+     * @param shopTechee
+     * @throws DataRunException
+     */
+    public void updateShopTechee(ShopTechee shopTechee) throws DataRunException;
+
+    /**
+     * 删除一个技师
+     *
+     * @param id
+     * @throws DataRunException
+     */
+    public void deleteShopTechee(long id) throws DataRunException;
 }
