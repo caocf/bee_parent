@@ -2,6 +2,7 @@ package com.bee.busi.controller.shop;
 
 import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.params.shop.ShopAttendSaveRequest;
+import com.bee.busi.params.shop.ShopAttendSaveResponse;
 import com.bee.commons.Codes;
 import com.bee.services.shop.IShopAttendService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -31,11 +32,12 @@ public class BusiShopAttendController {
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public BaseResponse saveShopAttend(@PathVariable Long sid, ShopAttendSaveRequest req) {
-        BaseResponse res = new BaseResponse();
+    public ShopAttendSaveResponse saveShopAttend(@PathVariable Long sid, ShopAttendSaveRequest req) {
+        ShopAttendSaveResponse res = new ShopAttendSaveResponse();
         try {
             req.setShopId(sid);
             shopAttendService.saveShopAttend(req);
+            res.setShopAttends(shopAttendService.getShopAttendByShopId(sid, req.getAttendTime()));
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Error);

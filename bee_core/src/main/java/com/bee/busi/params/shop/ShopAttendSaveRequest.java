@@ -10,7 +10,7 @@ public class ShopAttendSaveRequest extends AppRequest {
     // serialVersionUID
     private static final long serialVersionUID = -1322584574751459682L;
 
-    private Long[] techeeIds;
+    private String techeeIds;
     private Long attendTime;
     private Long shopId;
 
@@ -20,10 +20,10 @@ public class ShopAttendSaveRequest extends AppRequest {
     public void setShopId(Long shopId) {
         this.shopId = shopId;
     }
-    public Long[] getTecheeIds() {
+    public String getTecheeIds() {
         return techeeIds;
     }
-    public void setTecheeIds(Long[] techeeIds) {
+    public void setTecheeIds(String techeeIds) {
         this.techeeIds = techeeIds;
     }
     public Long getAttendTime() {

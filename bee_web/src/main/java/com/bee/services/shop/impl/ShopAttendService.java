@@ -7,6 +7,7 @@ import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopAttend;
 import com.bee.pojo.shop.ShopTechee;
 import com.bee.services.shop.IShopAttendService;
+import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,16 +34,25 @@ public class ShopAttendService implements IShopAttendService {
     @Override
     @Transactional
     public void saveShopAttend(ShopAttendSaveRequest req) throws DataRunException {
-        List<ShopAttend> shopAttendList = new ArrayList<>();
-        for (Long id : req.getTecheeIds()) {
-            ShopAttend item = new ShopAttend();
-            item.setShopTechee(new ShopTechee(id));
-            item.setAttendTime(getAttendTime(req.getAttendTime()));
-            item.setShop(new Shop(req.getShopId()));
-            shopAttendList.add(item);
-        }
+        try {
+            // 保存前先删除出勤记录
+            deleteShopAttend(req.getShopId(), req.getAttendTime());
 
-        shopAttendDao.saveAll(shopAttendList);
+            // 保存数据
+            List<ShopAttend> shopAttendList = new ArrayList<>();
+            String[] ids = req.getTecheeIds().split(",");
+            for (String id : ids) {
+                ShopAttend item = new ShopAttend();
+                item.setShopTechee(new ShopTechee(Long.valueOf(id)));
+                item.setAttendTime(req.getAttendTime());
+                item.setShop(new Shop(req.getShopId()));
+                shopAttendList.add(item);
+            }
+            shopAttendDao.saveAll(shopAttendList);
+
+        } catch (DataRunException e) {
+            throw e;
+        }
     }
 
 
@@ -52,8 +62,34 @@ public class ShopAttendService implements IShopAttendService {
      * @param sid
      * @return
      */
+    @Override
     public List<BusiShopAttend> getShopAttendByShopId(long sid, long attendTime) {
         return shopAttendDao.getShopAttendByShopId(sid, getAttendTime(attendTime));
+    }
+
+
+    /**
+     * 查询商家出勤表，大于查询时间
+     *
+     * @param sid
+     * @param attendTime
+     * @return
+     */
+    public List<BusiShopAttend> getShopAttendByShopIdAfter(long sid, long attendTime) {
+        return shopAttendDao.getShopAttendByShopIdAfter(sid, getAttendTime(attendTime));
+    }
+
+
+    /**
+     * 根据时间删除出勤表
+     *
+     * @param attendTime
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void deleteShopAttend(long sid, long attendTime) throws DataRunException {
+        shopAttendDao.deleteShopAttend(sid, attendTime);
     }
 
 

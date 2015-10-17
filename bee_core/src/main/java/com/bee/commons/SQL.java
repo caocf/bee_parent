@@ -184,7 +184,17 @@ public final class SQL {
         public static final class Attend {
 
             public static final String GetShopAttendByShopId = "SELECT " +
-                    "A.SAID, A.SHOPTECHEE FROM TB_SHOP_ATTEND A WHERE A.SHOP = ? AND A.ATTENDTIME = ?";
+                    "A.SAID, A.SHOPTECHEE, A.ATTENDTIME, A.SHOP " +
+                    "FROM TB_SHOP_ATTEND A WHERE A.SHOP = ? AND A.ATTENDTIME = ?";
+
+
+            public static final String GetShopAttendByShopIdAfter = "SELECT " +
+                    "A.SAID, A.SHOPTECHEE, A.ATTENDTIME, A.SHOP " +
+                    "FROM TB_SHOP_ATTEND A WHERE A.SHOP = ? AND A.ATTENDTIME >= ?";
+
+
+            public static final String DeleteShopAttend = "DELETE FROM TB_SHOP_ATTEND " +
+                    "WHERE SHOP = ? AND ATTENDTIME = ?";
         }
     }
 

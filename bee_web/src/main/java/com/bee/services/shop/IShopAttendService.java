@@ -19,10 +19,28 @@ public interface IShopAttendService {
     public void saveShopAttend(ShopAttendSaveRequest req) throws DataRunException;
 
     /**
+     * 根据时间删除出勤表
+     *
+     * @param attendTime
+     * @throws DataRunException
+     */
+    public void deleteShopAttend(long sid, long attendTime) throws DataRunException;
+
+
+    /**
      * 查询商家出勤表
      *
      * @param sid
      * @return
      */
     public List<BusiShopAttend> getShopAttendByShopId(long sid, long attendTime);
+
+    /**
+     * 查询商家出勤表，大于查询时间
+     *
+     * @param sid
+     * @param attendTime
+     * @return
+     */
+    public List<BusiShopAttend> getShopAttendByShopIdAfter(long sid, long attendTime);
 }
