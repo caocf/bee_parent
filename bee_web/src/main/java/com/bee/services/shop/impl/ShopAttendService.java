@@ -1,5 +1,6 @@
 package com.bee.services.shop.impl;
 
+import com.bee.app.model.shop.ShopAttendItem;
 import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.params.shop.ShopAttendSaveRequest;
 import com.bee.dao.shop.ShopAttendDao;
@@ -41,6 +42,9 @@ public class ShopAttendService implements IShopAttendService {
             // 保存数据
             List<ShopAttend> shopAttendList = new ArrayList<>();
             String[] ids = req.getTecheeIds().split(",");
+            if (ids.length < 1) {
+                return;
+            }
             for (String id : ids) {
                 ShopAttend item = new ShopAttend();
                 item.setShopTechee(new ShopTechee(Long.valueOf(id)));
@@ -67,6 +71,20 @@ public class ShopAttendService implements IShopAttendService {
         return shopAttendDao.getShopAttendByShopId(sid, getAttendTime(attendTime));
     }
 
+    /**
+     *【C端】查询商家出勤表
+     *
+     * @param sid
+     * @return
+     */
+    @Override
+    public List<ShopAttendItem> getAppShopAttendByShopId(long sid) {
+        long time = getAttendTime(System.currentTimeMillis());
+        System.out.println(time + "_" + DateUtil.formatDateTime(time));
+        System.out.println(DateUtil.formatDateTime(1445140800000l));
+        System.out.println(DateUtil.formatDateTime(1445054400000l));
+        return shopAttendDao.getAppShopAttendByShopId(sid, time);
+    }
 
     /**
      * 查询商家出勤表，大于查询时间
@@ -96,6 +114,8 @@ public class ShopAttendService implements IShopAttendService {
     private Long getAttendTime(long attendTime) {
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(attendTime);
+        cal.set(Calendar.AM_PM, Calendar.AM);
+        cal.set(Calendar.HOUR, 0);
         cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);

@@ -1,8 +1,11 @@
 package com.bee.client.params.shop;
 
+import com.bee.app.model.shop.ShopAttendItem;
+import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.commons.ImageFactory;
 import com.bee.modal.ShopImageListItem;
 import com.bee.modal.ShopListItem;
+import com.bee.pojo.shop.ShopAttend;
 
 import java.util.List;
 
@@ -16,6 +19,7 @@ public class ShopResponse implements java.io.Serializable {
 
     private List<ShopImageListItem> shopImages;
     private ShopListItem shopListItem;
+    private List<ShopAttendItem> shopAttends;
 
     public ShopListItem getShopListItem() {
         return shopListItem;
@@ -28,5 +32,11 @@ public class ShopResponse implements java.io.Serializable {
     }
     public void setShopImages(List<ShopImageListItem> shopImages) {
         this.shopImages = shopImages;
+    }
+    public List<ShopAttendItem> getShopAttends() {
+        return shopAttends;
+    }
+    public void setShopAttends(List<ShopAttendItem> shopAttends) {
+        this.shopAttends = shopAttends;
     }
 }

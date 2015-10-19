@@ -6,6 +6,7 @@ import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.modal.ShopMap;
+import com.bee.services.shop.IShopAttendService;
 import com.bee.services.shop.IShopImageService;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.spring.PagingResult;
@@ -28,6 +29,8 @@ public class ShopController {
     private IShopService shopService;
     @Autowired
     private IShopImageService shopImageService;
+    @Autowired
+    private IShopAttendService shopAttendService;
 
     /**
      * 查询商家列表
@@ -57,9 +60,24 @@ public class ShopController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ShopResponse getShopItem(@PathVariable Long id) {
+
         ShopResponse res = new ShopResponse();
+
+        /**
+         * 获取商家信息
+         */
         res.setShopListItem(shopService.getShopItemById(id));
+
+        /**
+         * 获取商家滚动相册
+         */
         res.setShopImages(shopImageService.queryAppShopImage(id));
+
+        /**
+         * 加入商家出勤表
+         */
+        res.setShopAttends(shopAttendService.getAppShopAttendByShopId(id));
+
         return res;
     }
 

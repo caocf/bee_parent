@@ -188,6 +188,18 @@ public final class SQL {
                     "FROM TB_SHOP_ATTEND A WHERE A.SHOP = ? AND A.ATTENDTIME = ?";
 
 
+            public static final String GetShopAttendByShopIdForApp = "SELECT " +
+                    "B.NUMBER, C.GROUPNAME " +
+                    "FROM TB_SHOP_ATTEND A " +
+                    "LEFT OUTER JOIN " +
+                    "TB_SHOP_TECHEE B " +
+                    "ON A.SHOPTECHEE = B.STID " +
+                    "LEFT OUTER JOIN " +
+                    "TB_SHOP_GROUP C " +
+                    "ON B.SHOPGROUP = C.SGID " +
+                    "WHERE A.SHOP = ? AND A.ATTENDTIME = ?";
+
+
             public static final String GetShopAttendByShopIdAfter = "SELECT " +
                     "A.SAID, A.SHOPTECHEE, A.ATTENDTIME, A.SHOP " +
                     "FROM TB_SHOP_ATTEND A WHERE A.SHOP = ? AND A.ATTENDTIME >= ?";

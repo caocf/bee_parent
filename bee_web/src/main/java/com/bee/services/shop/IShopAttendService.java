@@ -1,5 +1,6 @@
 package com.bee.services.shop;
 
+import com.bee.app.model.shop.ShopAttendItem;
 import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.params.shop.ShopAttendSaveRequest;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -28,12 +29,20 @@ public interface IShopAttendService {
 
 
     /**
-     * 查询商家出勤表
+     * 【B端】查询商家出勤表
      *
      * @param sid
      * @return
      */
     public List<BusiShopAttend> getShopAttendByShopId(long sid, long attendTime);
+
+    /**
+     *【C端】查询商家出勤表
+     *
+     * @param sid
+     * @return
+     */
+    public List<ShopAttendItem> getAppShopAttendByShopId(long sid);
 
     /**
      * 查询商家出勤表，大于查询时间
