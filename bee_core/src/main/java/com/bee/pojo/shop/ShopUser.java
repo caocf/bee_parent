@@ -1,11 +1,9 @@
 package com.bee.pojo.shop;
 
-import com.bee.pojo.Image;
 import com.bee.pojo.user.User;
+import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by suntongwei on 15/7/9.
@@ -22,12 +20,18 @@ public class ShopUser implements java.io.Serializable {
     private User user;
     private String name;
     private String phone;
+    // 个人介绍
     private String introduce;
     private Long createTime;
 
     public ShopUser(){}
     public ShopUser(long id) {
         suid = id;
+    }
+
+    @Transient
+    public String getCreateTimeStr() {
+        return DateUtil.formatDate(createTime);
     }
 
     @Id

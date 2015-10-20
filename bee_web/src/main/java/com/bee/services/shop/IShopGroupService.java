@@ -13,6 +13,22 @@ import java.util.List;
 public interface IShopGroupService {
 
     /**
+     * 返回商家所有组
+     *
+     * @param sid
+     * @return
+     */
+    public List<ShopGroup> queryAdminShopGroupList(Long sid);
+
+    /**
+     * 返回一个商家组
+     *
+     * @param sgId
+     * @return
+     */
+    public ShopGroup getAdminShopGroupById(long sgId);
+
+    /**
      * 返回商家对应的所有组
      *
      * @param sid
@@ -50,5 +66,5 @@ public interface IShopGroupService {
      * @param shopGroupId
      * @throws DataRunException
      */
-    public void deleteShopGroup(long shopGroupId) throws DataRunException;
+    public void deleteShopGroup(long shopId, long shopGroupId) throws DataRunException;
 }

@@ -76,7 +76,7 @@
 					</div>
 					<label class="col-xs-2 control-label">排序有效期</label>
 					<div class="col-xs-4">
-						<input type="text" id="sortTime" name="sortTime" placeholder="商家排序有效期" class="form-control" value="${shop.sortTime}" data-position="bottom" />
+						<input type="text" id="sortTime" name="sortTimeText" placeholder="商家排序有效期" class="form-control" value="${shop.sortTimeStr}" data-position="bottom" />
 						<p class="help-block">设置有效期，到期后排序将恢复默认</p>
 					</div>
 				</div>

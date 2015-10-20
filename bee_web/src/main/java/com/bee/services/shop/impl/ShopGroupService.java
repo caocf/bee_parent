@@ -1,8 +1,10 @@
 package com.bee.services.shop.impl;
 
 import com.bee.busi.model.shop.BusiShopGroup;
+import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopGroupDao;
 import com.bee.modal.ShopPriceItem;
+import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopGroup;
 import com.bee.services.shop.IShopGroupService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -20,6 +22,29 @@ public class ShopGroupService implements IShopGroupService {
 
     @Autowired
     private ShopGroupDao shopGroupDao;
+    @Autowired
+    private ShopDao shopDao;
+
+    /**
+     *
+     * @param sid
+     * @return
+     */
+    @Override
+    public List<ShopGroup> queryAdminShopGroupList(Long sid) {
+        return shopGroupDao.queryAdminShopGroupList(sid);
+    }
+
+    /**
+     * 返回一个商家组
+     *
+     * @param sgId
+     * @return
+     */
+    @Override
+    public ShopGroup getAdminShopGroupById(long sgId) {
+        return shopGroupDao.getAdminShopGroupById(sgId);
+    }
 
     /**
      * 返回商家对应的所有组
@@ -50,7 +75,14 @@ public class ShopGroupService implements IShopGroupService {
     @Override
     @Transactional
     public void saveShopGroup(ShopGroup shopGroup) throws DataRunException {
-        shopGroupDao.save(shopGroup);
+        try {
+            // 保存一个商家分组
+            shopGroupDao.save(shopGroup);
+            // 修改商家最低价
+            updateMinShopPrice(shopGroup.getShop().getSid());
+        } catch (DataRunException e) {
+            throw e;
+        }
     }
 
     /**
@@ -62,7 +94,13 @@ public class ShopGroupService implements IShopGroupService {
     @Override
     @Transactional
     public void updateShopGroup(ShopGroup shopGroup) throws DataRunException {
-        shopGroupDao.update(shopGroup);
+        try {
+            shopGroupDao.update(shopGroup);
+            // 修改商家最低价
+            updateMinShopPrice(shopGroup.getShop().getSid());
+        } catch (DataRunException e) {
+            throw e;
+        }
     }
 
     /**
@@ -73,7 +111,24 @@ public class ShopGroupService implements IShopGroupService {
      */
     @Override
     @Transactional
-    public void deleteShopGroup(long shopGroupId) throws DataRunException {
-        shopGroupDao.deleteById(shopGroupId);
+    public void deleteShopGroup(long shopId, long shopGroupId) throws DataRunException {
+        try {
+            shopGroupDao.deleteById(shopGroupId);
+            updateMinShopPrice(shopId);
+        } catch (DataRunException e) {
+            throw e;
+        }
     }
+
+    /**
+     *
+     *
+     * @param shopId
+     */
+    private void updateMinShopPrice(long shopId) {
+        Shop shop = shopDao.getShopById(shopId);
+        shop.setPrice(shopGroupDao.getShopGroupMinPrice(shopId));
+        shopDao.update(shop);
+    }
+
 }

@@ -4,6 +4,8 @@ import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
+import com.qsd.framework.commons.utils.DateUtil;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,13 +62,16 @@ public class AdminShopController {
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView save(Shop shop, MultipartHttpServletRequest req) {
-        ModelAndView mav = new ModelAndView("shop/ShopPriceNew");
+    public ModelAndView save(Shop shop, String sortTimeText, MultipartHttpServletRequest req) {
+        ModelAndView mav;
         try {
+            if (!StringUtil.isNull(sortTimeText)) {
+                shop.setSortTime(DateUtil.parseDateLong(sortTimeText));
+            }
             shopService.addShop(shop, req);
-            mav.addObject("sid", shop.getSid());
-            mav.addObject("name", shop.getName());
-            mav.addObject("isRegShop", Consts.True);
+            AdminShopListRequest request = new AdminShopListRequest();
+            request.setIndexPage(1);
+            mav = shopListView(request);
         } catch(DataRunException e) {
             mav = create();
             mav.addObject("msg", "添加商家出错");
@@ -117,8 +122,11 @@ public class AdminShopController {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public ModelAndView update(@PathVariable Long id, Shop shop, MultipartHttpServletRequest req) {
+    public ModelAndView update(@PathVariable Long id, Shop shop, String sortTimeText, MultipartHttpServletRequest req) {
         try {
+            if (!StringUtil.isNull(sortTimeText)) {
+                shop.setSortTime(DateUtil.parseDateLong(sortTimeText));
+            }
             shopService.updateShop(shop, req);
             return shopListView(new AdminShopListRequest());
         } catch (DataRunException e) {

@@ -79,10 +79,10 @@ public class BusiShopGroupController {
      * @return
      */
     @RequestMapping(value = "/{shopGroupId}", method = RequestMethod.DELETE)
-    public BaseResponse deleteShopGroup(@PathVariable Long shopGroupId) {
+    public BaseResponse deleteShopGroup(@PathVariable Long sid, @PathVariable Long shopGroupId) {
         BaseResponse res = new BaseResponse();
         try {
-            shopGroupService.deleteShopGroup(shopGroupId);
+            shopGroupService.deleteShopGroup(sid, shopGroupId);
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Error);

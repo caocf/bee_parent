@@ -9,6 +9,7 @@ import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.security.encrypt.Md5;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -111,6 +112,36 @@ public class UserController {
         } catch (DataRunException e) {
             res.setCode(Codes.Error);
             e.printStackTrace();
+        }
+        return res;
+    }
+
+    /**
+     * 修改密码
+     *
+     * @return
+     */
+    @RequestMapping(value = "/{uid}/edit/pass", method = RequestMethod.PATCH)
+    public BaseResponse editPass(@PathVariable Long uid, String oldPass, String newPass) {
+        BaseResponse res = new BaseResponse();
+        try {
+            User user = userService.getUserById(uid);
+            if (user != null) {
+                if (Md5.encodePassword(oldPass).equals(user.getPassword())) {
+                    user.setPassword(Md5.encodePassword(newPass));
+                    userService.editUser(user);
+                    res.setCode(Codes.Success);
+                } else {
+                    res.setCode(Codes.Error);
+                    res.setMsg("原密码错误");
+                }
+            } else {
+                res.setCode(Codes.Error);
+                res.setMsg("未知用户");
+            }
+        } catch (DataRunException e) {
+            res.setCode(Codes.Error);
+            res.setMsg("修改失败，请重试");
         }
         return res;
     }

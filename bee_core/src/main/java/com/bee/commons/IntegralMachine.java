@@ -10,12 +10,12 @@ public final class IntegralMachine {
     /**
      * 完成订单获得积分
      */
-    public static final int OrderFinish = 100;
+    public static final int OrderFinish = 1000;
 
     /**
      * 完成订单评论积分
      */
-    public static final int OrderComment = 20;
+    public static final int OrderComment = 200;
 
 
 }

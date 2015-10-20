@@ -5,6 +5,7 @@ import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.pojo.user.User;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,14 @@ public interface IUserService {
      * @return
      */
     public User getUserByAccount(String account);
+
+    /**
+     * 根据ID获取用户
+     *
+     * @param uid
+     * @return
+     */
+    public User getUserById(long uid);
 
     /**
      * 获取所有用户
@@ -80,4 +89,12 @@ public interface IUserService {
      */
     public void saveNickName(long uid, String nickName) throws DataRunException;
 
+
+    /**
+     * 用户更新
+     *
+     * @param user
+     * @throws DataRunException
+     */
+    public void editUser(User user) throws DataRunException;
 }

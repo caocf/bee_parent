@@ -71,12 +71,15 @@
             <td>${shop.sid}</td>
             <td>${shop.name}</td>
             <td>${shop.area.name}</td>
-            <td><a href="${basePath}/admin/shop/${shop.sid}/price">${shop.priceStr}</a></td>
+            <td><a href="${basePath}/admin/shop/${shop.sid}/group">${shop.priceStr}</a></td>
             <td>${shop.linkName}</td>
             <td>${shop.phone}</td>
             <td>${shop.statusStr}</td>
             <td>${shop.sort}</td>
             <td>
+              <a href="${basePath}/admin/shop/${shop.sid}/admin" class="icon">
+                <i class="fa fa-street-view fa-lg font-color-red"></i>
+              </a>
               <a href="${basePath}/admin/shop/${shop.sid}" class="icon">
                 <i class="fa fa-file-text-o fa-lg font-color-gray"></i>
               </a>

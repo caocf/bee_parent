@@ -20,6 +20,7 @@ import com.bee.pojo.Image;
 import com.bee.pojo.find.Find;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopFocus;
+import com.bee.pojo.shop.ShopGroup;
 import com.bee.pojo.user.User;
 import com.bee.pojo.user.UserFriend;
 import com.bee.services.shop.IShopService;

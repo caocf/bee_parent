@@ -5,6 +5,7 @@ import com.bee.pojo.Area;
 import com.bee.pojo.Image;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -91,6 +92,12 @@ public class Shop implements java.io.Serializable {
         }
         return status;
     }
+
+    @Transient
+    public String getSortTimeStr() {
+        return DateUtil.formatDate(sortTime);
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

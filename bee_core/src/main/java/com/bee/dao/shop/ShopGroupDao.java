@@ -19,6 +19,41 @@ import java.util.List;
 public class ShopGroupDao extends JpaDaoSupport<ShopGroup, Long> {
 
     /**
+     * 返回所有商家组
+     *
+     * @param sid
+     * @return
+     */
+    public List<ShopGroup> queryAdminShopGroupList(Long sid) {
+        return findByParams(SQL.Shop.Group.QueryAdminShopGroupList, sid);
+    }
+
+    /**
+     *
+     * @param sgId
+     * @return
+     */
+    public ShopGroup getAdminShopGroupById(long sgId) {
+        return findById(sgId);
+    }
+
+    /**
+     * 返回商家最低价格
+     *
+     * @param sid
+     * @return
+     */
+    public Double getShopGroupMinPrice(Long sid) {
+        return findFirstConverByParams(SQL.Shop.Group.GetShopGroupMinPrice, new QueryDataConver<Double>() {
+            @Override
+            public Double converData(Object[] row) {
+                return NumberUtil.parseDouble(row[1], 0);
+            }
+        }, sid);
+    }
+
+
+    /**
      * 返回商家对应的所有组
      *
      * @param sid

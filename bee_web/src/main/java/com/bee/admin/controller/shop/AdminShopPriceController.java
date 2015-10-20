@@ -1,7 +1,5 @@
 package com.bee.admin.controller.shop;
 
-import com.bee.commons.Consts;
-import com.bee.dao.shop.ShopPriceDao;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopPrice;
 import com.bee.services.shop.IShopPriceService;
@@ -16,11 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 /**
  * Created by suntongwei on 15/4/21.
  */
+@Deprecated
 @Controller
 @RequestMapping("/admin/shop/{sid}/price")
 public class AdminShopPriceController {

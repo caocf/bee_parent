@@ -73,6 +73,17 @@ public final class SQL {
         // 查询商家地图
         public static final String queryShopMap = "SELECT A.SID, A.NAME, A.ADDR, A.LON, A.LAT FROM TB_SHOP A";
 
+        /**
+         * 商家管理员
+         */
+        public static final class Admin {
+
+            public static final String queryShopAdminList = "From ShopUser A " +
+                    "LEFT JOIN FETCH A.shop B " +
+                    "LEFT JOIN FETCH A.user C " +
+                    "WHERE B.sid = ?";
+        }
+
         public static final class Price {
             public static final String queryAppShopPriceByShopId = "SELECT A.PRICE, A.MARK FROM TB_SHOP_PRICE A WHERE A.SHOP = ?";
             public static final String queryShopPriceByShopId = "From ShopPrice A left join fetch A.shop B where B.sid = ?";
@@ -147,6 +158,15 @@ public final class SQL {
          * 商家组
          */
         public static final class Group {
+
+            public static final String QueryAdminShopGroupList = "FROM " +
+                    "ShopGroup A LEFT JOIN FETCH A.shop B WHERE B.sid = ?";
+
+
+            public static final String GetShopGroupMinPrice = "SELECT " +
+                    "A.GROUPNAME, A.PRICE FROM TB_SHOP_GROUP A " +
+                    "WHERE A.SHOP = ? ORDER BY A.PRICE ASC LIMIT 1";
+
 
             public static final String GetShopGroupByShopId = "SELECT " +
                     "A.SGID, A.GROUPNAME, A.SHOP, A.PRICE, A.REMARK " +

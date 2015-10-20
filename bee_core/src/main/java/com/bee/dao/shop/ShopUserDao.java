@@ -9,11 +9,24 @@ import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by suntongwei on 15/9/13.
  */
 @Repository
 public class ShopUserDao extends JpaDaoSupport<ShopUser, Long> {
+
+
+    /**
+     * 查询所有商家用户
+     *
+     * @param shopId 商家ID
+     * @return
+     */
+    public List<ShopUser> queryShopUserList(long shopId) {
+        return findByParams(SQL.Shop.Admin.queryShopAdminList, shopId);
+    }
 
 
     /**

@@ -61,6 +61,17 @@ public class UserService implements IUserService {
     }
 
     /**
+     * 根据ID获取用户
+     *
+     * @param uid
+     * @return
+     */
+    @Override
+    public User getUserById(long uid) {
+        return userDao.findById(uid);
+    }
+
+    /**
      *
      * @return
      */
@@ -206,6 +217,18 @@ public class UserService implements IUserService {
     public void saveNickName(long uid, String nickName) throws DataRunException {
         User user = userDao.findById(uid);
         user.setName(nickName);
+        userDao.update(user);
+    }
+
+    /**
+     * 用户更新
+     *
+     * @param user
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void editUser(User user) throws DataRunException {
         userDao.update(user);
     }
 
