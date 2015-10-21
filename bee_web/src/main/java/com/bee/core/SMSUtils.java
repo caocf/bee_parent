@@ -71,19 +71,11 @@ public class SMSUtils {
         String curTime = String.valueOf(System.currentTimeMillis());
         String code = String.valueOf(curTime).substring(curTime.length() - 4, curTime.length());
 
-        String tempId = SMSType.Register == type ? "43432" : "43436";
+        String tempId = SMSType.Register == type ? "43437" : "43436";
 
         Map<String, Object> result = restAPI.sendTemplateSMS(phone, tempId ,new String[]{code});
         System.out.println("SDKTestGetSubAccounts result=" + result);
-        if ("000000".equals(result.get("statusCode"))) {
-            //正常返回输出data包体信息（map）
-            HashMap<String,Object> data = (HashMap<String, Object>) result.get("data");
-            Set<String> keySet = data.keySet();
-            for(String key : keySet) {
-                Object object = data.get(key);
-                System.out.println(key +" = "+object);
-            }
-        } else {
+        if (!"000000".equals(result.get("statusCode"))) {
             //异常返回输出错误码和错误信息
             System.out.println("错误码=" + result.get("statusCode") +" 错误信息= "+result.get("statusMsg"));
         }

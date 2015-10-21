@@ -66,7 +66,7 @@ public class AdminShopController {
         ModelAndView mav;
         try {
             if (!StringUtil.isNull(sortTimeText)) {
-                shop.setSortTime(DateUtil.parseDateLong(sortTimeText));
+                shop.setSortTime(DateUtil.parseDateLong(sortTimeText, DateUtil.DATE));
             }
             shopService.addShop(shop, req);
             AdminShopListRequest request = new AdminShopListRequest();
@@ -125,7 +125,7 @@ public class AdminShopController {
     public ModelAndView update(@PathVariable Long id, Shop shop, String sortTimeText, MultipartHttpServletRequest req) {
         try {
             if (!StringUtil.isNull(sortTimeText)) {
-                shop.setSortTime(DateUtil.parseDateLong(sortTimeText));
+                shop.setSortTime(DateUtil.parseDateLong(sortTimeText, DateUtil.DATE));
             }
             shopService.updateShop(shop, req);
             return shopListView(new AdminShopListRequest());

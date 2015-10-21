@@ -122,12 +122,24 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/{uid}/edit/pass", method = RequestMethod.PATCH)
-    public BaseResponse editPass(@PathVariable Long uid, String oldPass, String newPass) {
+    public BaseResponse editPass(@PathVariable Long uid, String oldPass, String newPass, String phone) {
         BaseResponse res = new BaseResponse();
         try {
-            User user = userService.getUserById(uid);
+            User user;
+            // 通过手机找回密码修改
+            if (!StringUtil.isNull(phone)) {
+                user = userService.getUserByAccount(phone);
+            } else {
+                user = userService.getUserById(uid);
+            }
             if (user != null) {
-                if (Md5.encodePassword(oldPass).equals(user.getPassword())) {
+                if (StringUtil.isNull(phone) && Md5.encodePassword(oldPass).equals(user.getPassword())) {
+                    // 如果手机为空，则表示修改密码，需要输入原密码
+                    user.setPassword(Md5.encodePassword(newPass));
+                    userService.editUser(user);
+                    res.setCode(Codes.Success);
+                } else if (!StringUtil.isNull(phone)) {
+                    // 如果手机不为空，则标识通过手机找回密码，不需要判断旧密码是否正确
                     user.setPassword(Md5.encodePassword(newPass));
                     userService.editUser(user);
                     res.setCode(Codes.Success);
@@ -145,4 +157,9 @@ public class UserController {
         }
         return res;
     }
+
+
+
+
+
 }

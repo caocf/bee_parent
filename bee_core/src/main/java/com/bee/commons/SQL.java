@@ -358,4 +358,32 @@ public final class SQL {
         }
 
     }
+
+    /**
+     *
+     */
+    public static final class Store {
+
+        public static final String QueryGoodsList = "SELECT " +
+                "A.GID, A.NAME, A.INTEGRAL, A.NUMBER " +
+                "FROM TB_GOODS A ";
+
+
+        public static final String GetEffectivePhoneCard = "FROM " +
+                "PhoneCard A " +
+                "WHERE A.status = " + Consts.True + " AND A.operator = ? " +
+                "ORDER BY A.pcId ASC ";
+
+
+        public static final String QueryUserConverList = "SELECT " +
+                "A.CARDNUMBER, A.CREATETIME, B.NAME, B.INTEGRAL " +
+                "FROM TB_USER_CONVERT A " +
+                "LEFT OUTER JOIN " +
+                "TB_GOODS B " +
+                "ON A.GOODS = B.GID " +
+                "WHERE A.USER = ? " +
+                "ORDER BY A.CREATETIME DESC";
+
+    }
+
 }

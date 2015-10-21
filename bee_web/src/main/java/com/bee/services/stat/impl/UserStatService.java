@@ -30,6 +30,7 @@ public class UserStatService implements IUserStatService {
         UserLoginStat stat = new UserLoginStat();
         stat.setUser(new User(uid));
         stat.setCreateTime(System.currentTimeMillis());
+        stat.setDevice("");
         userLoginStatDao.save(stat);
     }
 

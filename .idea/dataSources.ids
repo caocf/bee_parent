@@ -82,6 +82,14 @@
       <index name="FK_112tt89066dp23rf78o5raglg" unique="false" columns="FIND"/>
       <index name="FK_j2m3fvrfhmvttrufoa1vi9f3b" unique="false" columns="USER"/>
     </table>
+    <table name="TB_GOODS" schema="" catalog="db_bee" type="TABLE">
+      <column name="GID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="TYPE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="NUMBER" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="INTEGRAL" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="GID"/>
+    </table>
     <table name="TB_IMAGE" schema="" catalog="db_bee" type="TABLE">
       <column name="IID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="URL" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
@@ -157,6 +165,14 @@
       <index name="FK_42snp5hosxsmqgocio607e30b" unique="false" columns="USER"/>
       <index name="FK_7cpdob7smdw9ah984jped0yym" unique="false" columns="PARTY"/>
     </table>
+    <table name="TB_PHONE_CARD" schema="" catalog="db_bee" type="TABLE">
+      <column name="PCID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="CARDNUMBER" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="OPERATOR" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="PCID"/>
+    </table>
     <table name="TB_SHOP" schema="" catalog="db_bee" type="TABLE">
       <column name="SID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="IDENTITY" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
@@ -180,6 +196,7 @@
       <exported-key name="FK_hr58730vjl236felr49hqe28u" table="TB_AD" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_7mwbrpstkbyuxi8xx71e8yn58" table="TB_SHOP_IMAGE" schema="" catalog="db_bee" columns="SHOP"/>
       <exported-key name="FK_m6vcy1sp0dui5rnrfco61236e" table="TB_SHOP_PRICE" schema="" catalog="db_bee" columns="SHOP"/>
+      <exported-key name="FK_iv8dd04uysj65e1nk5rxxj2yg" table="TB_SHOP_TECHEE" schema="" catalog="db_bee" columns="SHOP"/>
       <index name="FK_k3cu981hvkkswoaq82al88vwd" unique="false" columns="AREA"/>
     </table>
     <table name="TB_SHOP_ATTEND" schema="" catalog="db_bee" type="TABLE">
@@ -278,7 +295,9 @@
       <column name="SHOPGROUP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <column name="SHOP" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="STID"/>
+      <foreign-key name="FK_iv8dd04uysj65e1nk5rxxj2yg" columns="SHOP" ref-table="TB_SHOP" ref-schema="" ref-catalog="db_bee" ref-columns="SID" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_65da833d7q961m036lfq82qmc" unique="false" columns="SHOPGROUP"/>
+      <index name="FK_iv8dd04uysj65e1nk5rxxj2yg" unique="false" columns="SHOP"/>
     </table>
     <table name="TB_SHOP_USER" schema="" catalog="db_bee" type="TABLE">
       <column name="SUID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -315,6 +334,14 @@
       <exported-key name="FK_f3qp1kau0b5wjmyqaw5gfqtdk" table="TB_USER_FRIEND" schema="" catalog="db_bee" columns="FRIEND"/>
       <exported-key name="FK_82fe7qd5vvr4g7dbi0kuro9we" table="TB_USER_LOGIN_STAT" schema="" catalog="db_bee" columns="USER"/>
       <index name="INDEX_PHONE" unique="false" columns="PHONE"/>
+    </table>
+    <table name="TB_USER_CONVERT" schema="" catalog="db_bee" type="TABLE">
+      <column name="UCID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="GOODS" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="USER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="CARDNUMBER" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="UCID"/>
     </table>
     <table name="TB_USER_FRIEND" schema="" catalog="db_bee" type="TABLE">
       <column name="UFID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>

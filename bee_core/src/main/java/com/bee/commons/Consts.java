@@ -284,4 +284,13 @@ public final class Consts {
             public static final int Offline = 1;
         }
     }
+
+    /**
+     * 运营商
+     */
+    public static final class Operator {
+        public static final int ChinaMobile = 1;
+        public static final int ChinaUnicom = 2;
+        public static final int ChinaTelecom = 3;
+    }
 }

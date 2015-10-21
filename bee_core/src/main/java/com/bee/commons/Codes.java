@@ -51,4 +51,13 @@ public final class Codes {
         public static final String CancelErrorStr = "不能取消订单";
     }
 
+
+    public static final class Store {
+
+        // 600 库存不足
+        public static final int StockError = 0x258;
+        // 601 没有足够的积分
+        public static final int IntegralNotEnough = 0x259;
+    }
+
 }

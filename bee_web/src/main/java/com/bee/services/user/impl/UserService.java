@@ -139,6 +139,8 @@ public class UserService implements IUserService {
         user.setPassword(Md5.encodePassword(user.getPassword()));
         user.setType(Consts.User.Type.AppUser);
         user.setCreateTime(System.currentTimeMillis());
+        user.setAlipay("");
+        user.setExp(0);
         user.setIntegral(0);
         user.setLevel(0);
         user.setPath("");
