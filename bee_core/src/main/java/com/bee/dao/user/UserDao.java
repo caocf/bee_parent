@@ -1,10 +1,12 @@
 package com.bee.dao.user;
 
+import com.bee.admin.params.user.QueryUserParam;
 import com.bee.app.model.user.UserInfo;
 import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.commons.SQL;
 import com.bee.pojo.user.User;
 import com.qsd.framework.commons.utils.NumberUtil;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
 import com.qsd.framework.hibernate.bean.DataEntity;
@@ -71,4 +73,43 @@ public class UserDao extends JpaDaoSupport<User, Long> {
         return find(SQL.User.getUsersByIdentity + " (" + ids + ")");
     }
 
+    /**
+     * 根据参数查询用户列表
+     *
+     * @param param
+     * @return
+     */
+    public List<User> queryUserByParams(QueryUserParam param) {
+
+        // 创建查询实体
+        HQLEntity entity = new HQLEntity();
+
+        // 创建查询语句
+        StringBuffer sb = new StringBuffer(SQL.User.QueryUserByParams);
+
+        /**
+         * 设置参数
+         */
+        if (param != null) {
+            /**
+             * 查询起始创建时间，根据用户注册时间开始计算
+             */
+            if (param.getStartCreateTime() != null) {
+                sb.append(" and A.createTime >= ?");
+                entity.setParams(param.getStartCreateTime());
+            }
+
+            /**
+             * 增加排序部分
+             * 必须放在param最后
+             */
+            if (!StringUtil.isNull(param.getSortSection())) {
+                sb.append(" ORDER BY ");
+                sb.append(param.getSortSection());
+            }
+        }
+        // 导入HQL
+        entity.setEntity(sb);
+        return queryResult(entity);
+    }
 }

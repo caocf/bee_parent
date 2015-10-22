@@ -11,6 +11,10 @@ public final class SQL {
 
 
     public static final class User {
+
+        // 查询用户
+        public static final String QueryUserByParams = "From User A WHERE 1=1";
+
         // 根据帐号查询用户
         public static final String queryUserByAccount = "From User A where A.phone = ?";
         public static final String getUsersByIdentity = "From User A where A.uid in";
@@ -351,11 +355,8 @@ public final class SQL {
 
     public static final class Stat {
 
-        public static final class User {
-            // 统计过去30天用户注册量
-            public static final String statUserRegStat =
-                    "select A.YEAR, A.MONTH, A.DAY, A.NUM from TB_USER_REG_STAT A order by A.URSID desc limit 30";
-        }
+
+        public static final String QueryUserLoginStatByParam = "From UserLoginStat A WHERE 1=1";
 
     }
 
