@@ -80,7 +80,7 @@ public class ShopUserService implements IShopUserService {
             user = new User();
             user.setPhone(req.getAccount());
             user.setName(req.getName());
-            user.setPassword(Md5.encodePassword("000000"));
+            user.setPassword(Md5.encodePassword(Consts.User.BusiInitPassword));
             user.setLevel(0);
             user.setIntegral(0);
             user.setCash(0d);

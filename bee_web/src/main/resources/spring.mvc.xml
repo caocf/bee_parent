@@ -56,8 +56,9 @@
 	<!-- 上传拦截，如最大上传值及最小上传值 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- 最大上传5MB -->
+		<!-- 最大上传5MB
 		<property name="maxUploadSize" value="5242880" />
+		-->
 	</bean>
 
 	<!-- 总错误处理 -->
