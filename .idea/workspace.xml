@@ -55,7 +55,7 @@
       <file leaf-file-name="BusiAuthController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/busi/controller/BusiAuthController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31848553" vertical-offset="282" max-vertical-offset="1037">
+            <state vertical-scroll-proportion="0.94654787" vertical-offset="0" max-vertical-offset="1037">
               <caret line="39" column="65" selection-start-line="39" selection-start-column="65" selection-end-line="39" selection-end-column="65" />
               <folding />
             </state>
@@ -1452,12 +1452,12 @@
       <workItem from="1444924831974" duration="3833000" />
       <workItem from="1444989630591" duration="46420000" />
       <workItem from="1445434319633" duration="213000" />
-      <workItem from="1445435333763" duration="2898000" />
+      <workItem from="1445435333763" duration="2993000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="641444000" />
+    <option name="totallyTimeSpent" value="641539000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2072,7 +2072,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bee_web/src/main/java/com/bee/busi/controller/BusiAuthController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31848553" vertical-offset="282" max-vertical-offset="1037">
+        <state vertical-scroll-proportion="0.94654787" vertical-offset="0" max-vertical-offset="1037">
           <caret line="39" column="65" selection-start-line="39" selection-start-column="65" selection-end-line="39" selection-end-column="65" />
           <folding />
         </state>
