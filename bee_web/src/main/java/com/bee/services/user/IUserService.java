@@ -25,6 +25,16 @@ public interface IUserService {
     public User getUserByAccount(String account);
 
     /**
+     * 通过昵称获取用户
+     * v1.0.0版本BUG导致增加
+     * 该版本会把nick当phone传入做密码修改
+     *
+     * @return
+     */
+    public User getUserByNick(String nick);
+
+
+    /**
      * 根据ID获取用户
      *
      * @param uid

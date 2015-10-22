@@ -17,6 +17,8 @@ public final class SQL {
 
         // 根据帐号查询用户
         public static final String queryUserByAccount = "From User A where A.phone = ?";
+        public static final String queryUserByNick = "From User A where A.name = ?";
+
         public static final String getUsersByIdentity = "From User A where A.uid in";
         // 根据参数查询用户列表
         public static final String queryUserListByParams = "From User A where 1=1";
@@ -144,12 +146,17 @@ public final class SQL {
         }
 
         public static final class User {
+
+            public static final String GetShopUserById = "From ShopUser A " +
+                    "left join fetch A.shop B " +
+                    "left join fetch A.user C where A.suid = ?";
+
             public static final String getShopUserByShopId = "FROM ShopUser A " +
                     "left join fetch A.shop B " +
                     "left join fetch A.user C where B.sid = ?";
 
             public static final String GetShopUserByLogin = "SELECT " +
-                    "B.SID, B.NAME, B.STATUS, C.UID, C.`NAME` AS USERNAME " +
+                    "B.SID, B.NAME, B.STATUS, C.UID, C.`NAME` AS USERNAME, C.PHONE " +
                     "FROM TB_SHOP_USER A " +
                     "LEFT OUTER JOIN TB_SHOP B " +
                     "ON A.SHOP = B.SID " +

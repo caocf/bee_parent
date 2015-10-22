@@ -22,8 +22,24 @@ import java.util.List;
 @Repository
 public class UserDao extends JpaDaoSupport<User, Long> {
 
+    /**
+     *
+     * @param account
+     * @return
+     */
     public User getUserByAccount(String account) {
         return findFirstByParams(SQL.User.queryUserByAccount, account);
+    }
+
+    /**
+     * 通过昵称获取用户
+     * v1.0.0版本BUG导致增加
+     * 该版本会把nick当phone传入做密码修改
+     *
+     * @return
+     */
+    public User getUserByNick(String nick) {
+        return findFirstByParams(SQL.User.queryUserByNick, nick);
     }
 
     /**
@@ -44,6 +60,7 @@ public class UserDao extends JpaDaoSupport<User, Long> {
         entity.setPaging(req);
         return queryWithPaging(entity);
     }
+
 
     /**
      * 查询用户实时信息

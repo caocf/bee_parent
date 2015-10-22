@@ -11,6 +11,7 @@ public class BusiShopUser implements java.io.Serializable {
     // userId & userNick 用于环信登录
     private Long userId;
     private String userNick;
+    private String phone;
     private Long shopId;
     private String shopName;
     private Integer shopStatus;
@@ -44,5 +45,11 @@ public class BusiShopUser implements java.io.Serializable {
     }
     public void setShopStatus(Integer shopStatus) {
         this.shopStatus = shopStatus;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

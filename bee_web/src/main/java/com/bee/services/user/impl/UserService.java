@@ -61,6 +61,17 @@ public class UserService implements IUserService {
     }
 
     /**
+     * 通过昵称获取用户
+     * v1.0.0版本BUG导致增加
+     * 该版本会把nick当phone传入做密码修改
+     *
+     * @return
+     */
+    public User getUserByNick(String nick) {
+        return userDao.getUserByNick(nick);
+    }
+
+    /**
      * 根据ID获取用户
      *
      * @param uid

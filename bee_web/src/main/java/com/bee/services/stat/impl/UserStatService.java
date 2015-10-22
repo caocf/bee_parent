@@ -36,11 +36,11 @@ public class UserStatService implements IUserStatService {
      */
     @Override
     @Transactional
-    public void addUserLoginStat(long uid) throws DataRunException {
+    public void addUserLoginStat(long uid, String device) throws DataRunException {
         UserLoginStat stat = new UserLoginStat();
         stat.setUser(new User(uid));
         stat.setCreateTime(System.currentTimeMillis());
-        stat.setDevice("");
+        stat.setDevice(device);
         userLoginStatDao.save(stat);
     }
 

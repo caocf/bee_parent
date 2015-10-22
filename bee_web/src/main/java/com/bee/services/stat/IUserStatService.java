@@ -13,7 +13,7 @@ public interface IUserStatService {
      * @param uid
      * @throws DataRunException
      */
-    public void addUserLoginStat(long uid) throws DataRunException;
+    public void addUserLoginStat(long uid, String device) throws DataRunException;
 
     /**
      * 统计过去number天用户登录数量

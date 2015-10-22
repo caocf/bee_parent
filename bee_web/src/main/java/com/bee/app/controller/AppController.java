@@ -49,9 +49,9 @@ public class AppController {
         AppInitResponse res = new AppInitResponse();
 
         // 更新用户登录
-        if (req.getUid() != null && req.getUid() > 0) {
-            userStatService.addUserLoginStat(req.getUid());
-        }
+        userStatService.addUserLoginStat(
+                req.getUid() != null && req.getUid() > 0 ?
+                        req.getUid() : 0, req.getDevice());
 
         // 客服电话
         res.setServicePhone(Consts.Config.ServicePhone);

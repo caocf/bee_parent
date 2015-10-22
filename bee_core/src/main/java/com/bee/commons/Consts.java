@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public final class Consts {
 
-    public static final boolean isDebug = true;
+    public static final boolean isDebug = false;
     private static final String LocalBaseUrl = "http://localhost:8080";
     private static final String RemoteBaseUrl = "http://139.196.27.231";
 

@@ -28,6 +28,15 @@ public class ShopUserDao extends JpaDaoSupport<ShopUser, Long> {
         return findByParams(SQL.Shop.Admin.queryShopAdminList, shopId);
     }
 
+    /**
+     *
+     *
+     * @param shopUserId
+     * @return
+     */
+    public ShopUser getShopUserById(long shopUserId) {
+        return findFirstByParams(SQL.Shop.User.GetShopUserById, shopUserId);
+    }
 
     /**
      * 查询商家管理员
@@ -56,6 +65,7 @@ public class ShopUserDao extends JpaDaoSupport<ShopUser, Long> {
                 item.setShopStatus(NumberUtil.parseInteger(objs[2], 0));
                 item.setUserId(NumberUtil.parseLong(objs[3], 0));
                 item.setUserNick(StringUtil.parseString(objs[4], ""));
+                item.setPhone(StringUtil.parseString(objs[5], ""));
                 return item;
             }
         }, uid);

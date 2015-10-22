@@ -23,7 +23,6 @@ public interface IShopUserService {
     public List<ShopUser> queryShopUserList(long shopId);
 
 
-
     /**
      * 返回登录商户信息
      *
