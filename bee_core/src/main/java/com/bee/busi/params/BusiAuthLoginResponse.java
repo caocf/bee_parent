@@ -17,7 +17,7 @@ public class BusiAuthLoginResponse extends BaseResponse implements java.io.Seria
     // 标识
     private Integer flag;
     // 是否是第一次登录，即判断密码是否是6个0的初始密码
-    private Integer isFisrtLogin;
+    private Integer isFirstLogin;
 
     public BusiShopUser getShopUser() {
         return shopUser;
@@ -31,10 +31,10 @@ public class BusiAuthLoginResponse extends BaseResponse implements java.io.Seria
     public void setFlag(Integer flag) {
         this.flag = flag;
     }
-    public Integer getIsFisrtLogin() {
-        return isFisrtLogin;
+    public Integer getIsFirstLogin() {
+        return isFirstLogin;
     }
-    public void setIsFisrtLogin(Integer isFisrtLogin) {
-        this.isFisrtLogin = isFisrtLogin;
+    public void setIsFirstLogin(Integer isFirstLogin) {
+        this.isFirstLogin = isFirstLogin;
     }
 }

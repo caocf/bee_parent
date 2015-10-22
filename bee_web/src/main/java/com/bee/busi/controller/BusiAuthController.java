@@ -39,7 +39,7 @@ public class BusiAuthController {
             // 登录成功
             if(user.getPassword().equals(Md5.encodePassword(password))) {
                 addUserSession(user, req);
-                res.setIsFisrtLogin(Consts.User.BusiInitPassword.equals(password) ? Consts.True : Consts.False);
+                res.setIsFirstLogin(Consts.User.BusiInitPassword.equals(password) ? Consts.True : Consts.False);
                 res.setShopUser(shopUserService.getShopUserByLogin(user.getUid()));
                 res.setFlag(Consts.True);
                 res.setCode(Codes.Success);
