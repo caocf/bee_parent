@@ -110,6 +110,11 @@ public class Shop implements java.io.Serializable {
     }
 
     @Transient
+    public String getCreateTimeStr() {
+        return DateUtil.formatDate(createTime);
+    }
+
+    @Transient
     public String getStartServiceTimeHour() {
         if (StringUtil.isNull(serviceTime)) {
             return "13";

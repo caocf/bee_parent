@@ -63,7 +63,7 @@
 <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
 <script type="text/javascript">
-    Navbar.init("ShopAdmin");
+    Navbar.init("navbar-left-shop", "navbar-inner-shop-list");
     function deleteGroup(id) {
         document.forms['delForm'].action = "${basePath}/admin/shop/${sid}/group/" + id;
         document.forms['delForm'].submit();

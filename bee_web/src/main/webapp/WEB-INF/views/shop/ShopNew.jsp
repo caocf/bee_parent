@@ -222,7 +222,7 @@
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/map.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/cxcalendar/jquery.cxcalendar.min.js"></script>
   	<script type="text/javascript">
-  		Navbar.init("ShopNew");
+  		Navbar.init("navbar-left-shop", "navbar-inner-shop-new");
   		Upload.init("btnThum", "thumbnailFile", "thumbnailImage");
       Upload.init("btnImage", "file", "image");
   		Upload.init("btnRecommendImage", "recommendFile", "recommendImage");
