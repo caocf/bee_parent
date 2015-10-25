@@ -23,7 +23,7 @@
       <div class="row title">
         <span class="before">发布版本</span>
         <i class="fa fa-angle-double-right"></i>    
-        <span class="after">发布一个Android和iOs版本</span>
+        <span class="after">发布一个Android和iOS版本</span>
       </div>
       <div class="row">
         <div class="alert alert-danger <c:if test="${msg == null}">hidden</c:if>" role="alert">${msg}</div>
@@ -83,7 +83,7 @@
     <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
     <script type="text/javascript">
-      Navbar.init("AppNew");
+      Navbar.init("navbar-left-system", "navbar-inner-system-app-new");
       function doSubmit() {
         if($("#avid").val() != "") {
           document.forms["submitForm"].action += "/${app.avid}";

@@ -64,7 +64,7 @@
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
   	<script type="text/javascript">
-  		Navbar.init("SystemArea");
+  		Navbar.init("navbar-left-system", "navbar-inner-system-area");
   	</script>
   </body>
   </html>

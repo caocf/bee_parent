@@ -50,12 +50,21 @@ public class AppVer implements java.io.Serializable {
 
     @Transient
     public String getTypeStr() {
-        if (getType() == Consts.AppType.Android) {
-            return "Android";
-        } else if(getType() == Consts.AppType.iOS) {
-            return "iOS";
+        String typeStr;
+        switch (getType()) {
+            case Consts.AppType.Android:
+                typeStr = "Android";
+                break;
+            case Consts.AppType.iOS:
+                typeStr = "iOS";
+                break;
+            case Consts.AppType.AndroidForBusi:
+                typeStr = "商户端";
+                break;
+            default:
+                typeStr = "未知";
         }
-        return "未知";
+        return typeStr;
     }
 
     @Transient
