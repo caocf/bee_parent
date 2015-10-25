@@ -1,5 +1,7 @@
 package com.bee.commons;
 
+import net.sf.ehcache.search.expression.And;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -22,6 +24,15 @@ public final class Consts {
     public static final int Android = 0x1;
     public static final int IOS = 0x2;
     public static final int AndroidForBusi = 3;
+
+    public static Map<Integer, String> GetAppVerSelect() {
+        Map<Integer, String> ret = new LinkedHashMap<>();
+        ret.put(Android, "Android");
+        ret.put(IOS, "iOS");
+        ret.put(AndroidForBusi, "商务端");
+        return ret;
+    }
+
 
     /**
      * 系统配置
