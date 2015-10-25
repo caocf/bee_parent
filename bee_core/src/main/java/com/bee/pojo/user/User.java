@@ -89,6 +89,9 @@ public class User implements java.io.Serializable, ISecurityUser {
 
     @Transient
     public String getCreateTimeStr() {
+        if (null == createTime) {
+            return "";
+        }
         return DateUtil.formatDate(createTime);
     }
 

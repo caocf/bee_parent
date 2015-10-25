@@ -57,7 +57,7 @@ public final class SQL {
                 "A.sid,A.name,A.addr,A.price,B.name as area," +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                "A.lon, A.lat, A.phone, A.type, A.linkName, A.remark, A.isBack " +
+                " A.type, A.isBack " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid " +
@@ -69,12 +69,27 @@ public final class SQL {
                 "A.sid,A.name,A.addr,A.price,B.name as area, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                "A.lon, A.lat, A.phone, A.type, A.linkName, A.remark, A.isBack " +
+                " A.type, A.isBack " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid  " +
                 "where A.status = " + Consts.Shop.Status.Run;
         public static final String queryAppShopListSort = " order by A.sort desc";
+
+        /**
+         * 查询商家详细
+         */
+        public static final String QueryAppShopItem =
+                "select " +
+                "A.sid,A.name,A.addr,A.price,B.name as area, " +
+                "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
+                "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
+                "A.lon, A.lat, A.phone, A.type, A.LINKNAME, A.remark, A.isBack, A.SERVICETIME " +
+                "from TB_SHOP A " +
+                "left outer join TB_AREA B " +
+                "on A.area = B.aid  " +
+                "where A.status = " + Consts.Shop.Status.Run;
+
 
         // 查询商家地图
         public static final String queryShopMap = "SELECT A.SID, A.NAME, A.ADDR, A.LON, A.LAT FROM TB_SHOP A";
@@ -245,6 +260,13 @@ public final class SQL {
      * 订单模块SQL
      */
     public static final class Order {
+
+        /**
+         * 根据参数查询订单，主要用于订单统计
+         */
+        public static final String QueryOrderByParams = "From Order A " +
+                "left join fetch A.shop B where 1=1";
+
         public static final String getAppOrderListByParam = "SELECT " +
                 "B.NAME, A.CREATETIME, A.NUM, A.STATUS, A.OID, B.SID, A.ORDERNAME, A.EXECTIME, " +
                 "A.ORDERPHONE, A.REMARK " +

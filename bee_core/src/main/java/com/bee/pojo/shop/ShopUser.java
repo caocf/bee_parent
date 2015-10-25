@@ -31,6 +31,9 @@ public class ShopUser implements java.io.Serializable {
 
     @Transient
     public String getCreateTimeStr() {
+        if (null == createTime) {
+            return "";
+        }
         return DateUtil.formatDate(createTime);
     }
 

@@ -62,10 +62,10 @@ public class Order implements java.io.Serializable {
     @Transient
     @JsonIgnore
     public void writeOperate(String operate) {
-        if (operate != null && !"".equals(operate)) {
-            operate += ";";
+        if (this.operate != null && !"".equals(this.operate)) {
+            this.operate += ";";
         }
-        operate += DateUtil.formatDateTime(System.currentTimeMillis()) + operate;
+        this.operate += DateUtil.formatDateTime(System.currentTimeMillis()) + operate;
     }
 
     @Transient

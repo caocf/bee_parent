@@ -27,6 +27,8 @@ public final class Codes {
     public static final class Shop {
         // 500
         public static final int ShopImageSizeOut = 0x1f4;
+        // 501 已关注
+        public static final int ShopFocusError = 0x1f5;
     }
 
 

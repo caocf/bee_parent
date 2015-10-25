@@ -42,7 +42,7 @@ public class ShopFocusService implements IShopFocusService {
     }
 
     @Override
-    public ShopFocus getsFoucsShop(long sid, long uid) {
+    public ShopFocus getFoucsShop(long sid, long uid) {
         return shopFocusDao.getFoucsShop(sid, uid);
     }
 

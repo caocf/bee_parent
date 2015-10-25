@@ -168,7 +168,7 @@ public class ShopService implements IShopService {
      * @return
      */
     @Override
-    public ShopListItem getShopItemById(long sid) {
+    public ShopItem getShopItemById(long sid) {
         return shopDao.getShopItemById(sid);
     }
 

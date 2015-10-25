@@ -1,7 +1,5 @@
 package com.bee.modal;
 
-import com.bee.commons.ImageFactory;
-
 /**
  * Created by suntongwei on 15/5/1.
  */
@@ -11,112 +9,110 @@ public class ShopItem implements java.io.Serializable {
     private static final long serialVersionUID = 3942497770019366727L;
 
     private Long shopId;
-    private ImageFactory.Image image;
-    private Integer type;
-    private String name;
     private String area;
-    private Double price;
-    private String linkMan;
-    private String phone;
+    private String name;
     private String addr;
-    private Double lon;
-    private Double lat;
-    private String remark;
+    private Integer friendNum;
+    private Integer focusNum;
+    private Double price;
+    private Long lon;
+    private Long lat;
+    private String phone;
+    private Integer type;
+    private String linkName;
+    private String nowInfo;
+    private Integer isBack;
+    private String serviceTime;
 
     public Long getShopId() {
         return shopId;
     }
-
     public void setShopId(Long shopId) {
         this.shopId = shopId;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getLinkMan() {
-        return linkMan;
-    }
-
-    public void setLinkMan(String linkMan) {
-        this.linkMan = linkMan;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddr() {
-        return addr;
-    }
-
-    public void setAddr(String addr) {
-        this.addr = addr;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Double getLon() {
-        return lon;
-    }
-
-    public void setLon(Double lon) {
-        this.lon = lon;
-    }
-
-    public Double getLat() {
-        return lat;
-    }
-
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
-
     public String getArea() {
         return area;
     }
-
     public void setArea(String area) {
         this.area = area;
     }
-
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getAddr() {
+        return addr;
+    }
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+    public Integer getFriendNum() {
+        return friendNum;
+    }
+    public void setFriendNum(Integer friendNum) {
+        this.friendNum = friendNum;
+    }
+    public Integer getFocusNum() {
+        return focusNum;
+    }
+    public void setFocusNum(Integer focusNum) {
+        this.focusNum = focusNum;
+    }
+    public Double getPrice() {
+        return price;
+    }
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+    public Long getLon() {
+        return lon;
+    }
+    public void setLon(Long lon) {
+        this.lon = lon;
+    }
+    public Long getLat() {
+        return lat;
+    }
+    public void setLat(Long lat) {
+        this.lat = lat;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
     public Integer getType() {
         return type;
     }
-
     public void setType(Integer type) {
         this.type = type;
     }
-
-    public ImageFactory.Image getImage() {
-        return image;
+    public String getLinkName() {
+        return linkName;
     }
-
-    public void setImage(ImageFactory.Image image) {
-        this.image = image;
+    public void setLinkName(String linkName) {
+        this.linkName = linkName;
+    }
+    public String getNowInfo() {
+        return nowInfo;
+    }
+    public void setNowInfo(String nowInfo) {
+        this.nowInfo = nowInfo;
+    }
+    public Integer getIsBack() {
+        return isBack;
+    }
+    public void setIsBack(Integer isBack) {
+        this.isBack = isBack;
+    }
+    public String getServiceTime() {
+        return serviceTime;
+    }
+    public void setServiceTime(String serviceTime) {
+        this.serviceTime = serviceTime;
     }
 }
 
