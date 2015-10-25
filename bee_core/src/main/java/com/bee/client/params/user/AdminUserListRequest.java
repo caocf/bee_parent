@@ -21,22 +21,22 @@ public class AdminUserListRequest extends PagingRequest {
     }
 
     public String getPageType() {
-        String pageType = null;
+        String pageType;
         switch (getType()) {
             case Consts.User.Type.VipUser:
-                pageType = "UserVip";
+                pageType = "navbar-inner-user-vip";
                 break;
             case Consts.User.Type.PinkUser:
-                pageType = "UserPink";
+                pageType = "navbar-inner-user-pink";
                 break;
             case Consts.User.Type.BusiUser:
-                pageType = "UserBuss";
+                pageType = "navbar-inner-user-buss";
                 break;
             case Consts.User.Type.AdminUser:
-                pageType = "UserAdmin";
+                pageType = "navbar-inner-user-admin";
                 break;
             default:
-                pageType = "UserApp";
+                pageType = "navbar-inner-user-app";
         }
         return pageType;
     }
