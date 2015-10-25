@@ -36,7 +36,7 @@
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/echarts/echarts.js"></script>
   	
     <script type="text/javascript">
-  		Navbar.init("StatUser");
+  		Navbar.init("navbar-left-stat", "navbar-inner-stat-user");
       require.config({
         paths: {
           echarts: '${resPath}/assets/js/plugin/echarts'

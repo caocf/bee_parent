@@ -8,6 +8,7 @@ import com.bee.dao.user.UserDao;
 import com.bee.pojo.stat.UserLoginStat;
 import com.bee.pojo.user.User;
 import com.bee.services.stat.IUserStatService;
+import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,6 +72,8 @@ public class UserStatService implements IUserStatService {
 
         // 获取集合是否为空
         boolean isEmpty = userLoginStats.isEmpty();
+        // 统计时间
+        long statTime = 0l;
 
         /**
          * 遍历组装数据
@@ -82,7 +85,7 @@ public class UserStatService implements IUserStatService {
             /**
              * 按天计算
              */
-            queryTime = queryTime + (i * time);
+            statTime = queryTime + (i * time);
 
             /**
              * 如果集合不为空
@@ -93,7 +96,7 @@ public class UserStatService implements IUserStatService {
                  * 每统计一个，从集合中删除
                  */
                 while (userLoginStats.size() > 0) {
-                    if (userLoginStats.get(0).getCreateTime() > queryTime) {
+                    if (userLoginStats.get(0).getCreateTime() > statTime) {
                         break;
                     }
                     userLoginStats.remove(0);
@@ -127,13 +130,15 @@ public class UserStatService implements IUserStatService {
         // 组装参数
         QueryUserParam param = new QueryUserParam();
         param.setStartCreateTime(queryTime);
-        param.setSortSection("A.uid ASC");
+        param.setSortSection("A.createTime ASC");
 
         // 进行查询
         List<User> users = userDao.queryUserByParams(param);
 
         // 获取集合是否为空
         boolean isEmpty = users.isEmpty();
+        // 统计时间
+        long statTime = 0l;
 
         /**
          * 遍历组装数据
@@ -145,7 +150,7 @@ public class UserStatService implements IUserStatService {
             /**
              * 按天计算
              */
-            queryTime = queryTime + (i * time);
+            statTime = queryTime + (i * time);
 
             /**
              * 如果集合不为空
@@ -156,7 +161,7 @@ public class UserStatService implements IUserStatService {
                  * 每统计一个，从集合中删除
                  */
                 while (users.size() > 0) {
-                    if (users.get(0).getCreateTime() > queryTime) {
+                    if (users.get(0).getCreateTime() > statTime) {
                         break;
                     }
                     users.remove(0);
