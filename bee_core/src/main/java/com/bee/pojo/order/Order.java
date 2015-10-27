@@ -54,6 +54,11 @@ public class Order implements java.io.Serializable {
     // 订单操作记录
     private String operate;
 
+    public Order() {}
+    public Order(long oid) {
+        this.oid = oid;
+    }
+
     /**
      * 写入操作日志
      *

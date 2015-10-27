@@ -69,7 +69,7 @@
         <c:forEach items="${result.data}" var="shop">
           <tr>
             <td>${shop.sid}</td>
-            <td><a href="#">${shop.name}</a></td>
+            <td><a href="${basePath}/admin/shop/${shop.sid}">${shop.name}</a></td>
             <td>${shop.typeStr}</td>
             <td>${shop.area.name}</td>
             <td><a href="${basePath}/admin/shop/${shop.sid}/group">${shop.priceStr}</a></td>

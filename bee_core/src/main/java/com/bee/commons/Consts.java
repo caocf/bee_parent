@@ -1,7 +1,5 @@
 package com.bee.commons;
 
-import net.sf.ehcache.search.expression.And;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 

@@ -20,14 +20,56 @@
   	<%@ include file="../includes/navleft.jsp" %>
   	<%@ include file="ShopMenu.jsp" %>
   	<div class="main inner">
-  		
+      <div class="row title">
+        <span class="before">商家详情</span>
+        <i class="fa fa-angle-double-right"></i>  
+        <span class="after">查看商家的详细信息</span>
+      </div>
+      <form class="form-horizontal">	
+      <div class="form-group info-title">基本信息</div>	
+      <div class="form-group">
+        <label class="col-xs-1 control-label">商家名称</label>
+        <div class="col-xs-4">${shop.name}</div>
+        <label class="col-xs-1 control-label">商家类型</label>
+        <div class="col-xs-4">${shop.typeStr}</div>
+      </div>
+      <div class="form-group">
+       <label class="col-xs-1 control-label">接单开始</label>
+       <div class="col-xs-4">${shop.startServiceTimeHour}:${shop.startServiceTimeMinute}</div> 
+       <label class="col-xs-2 control-label">接单结束</label> 
+        <div class="col-xs-4">${shop.endServiceTimeHour}:${shop.endServiceTimeMinute}</div>
+      </div> 
+      <div class="form-group">
+        <label class="col-xs-1 control-label">排序</label>
+        <div class="col-xs-4">${shop.sort}</div>
+        <label class="col-xs-2 control-label">排序有效期</label>
+        <div class="col-xs-4">${shop.sortTimeStr}</div>
+      </div>
+      <div class="form-group info-title">商家图片</div>
+      <div class="form-group">
+        <div>
+          <img id="thumbnailImage" width="160px" height="160px" src="${basePath}/static/shop/shop_${shop.sid }/thumbnail_720.jpg" />
+          <img id="image" width="188px" height="115px" src="${basePath}/static/shop/shop_${shop.sid }/face_720.jpg" />
+          <img id="recommendImage" width="108px" height="150px" src="${basePath}/static/shop/shop_${shop.sid }/recommend_720.jpg"/>
+        </div>
+      </div>
+      <div class="form-group info-title">地图选择</div>
+      <div class="form-group">
+        <label class="col-xs-1 control-label">所属地区</label>
+        <div class="col-xs-10">${shop.area.name}</div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-1 control-label">商家地址</label>
+        <div class="col-xs-10">${shop.addr}</div>
+      </div>
+    </form>
   	</div>
   	<script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
   	<script type="text/javascript">
-  		Navbar.init("ShopView");
-  	</script>
+  	 Navbar.init("navbar-left-shop", "navbar-inner-shop-list");
+    </script>
   </body>
   </html>

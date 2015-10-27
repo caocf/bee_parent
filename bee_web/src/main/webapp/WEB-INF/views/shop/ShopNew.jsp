@@ -41,6 +41,8 @@
   			<input type="hidden" name="shop.createTime" value="${shop.createTime}" />
   			<input type="hidden" name="shop.isBack" value="${shop.isBack}" />
   			<input type="hidden" name="shop.updateTime" value="${shop.updateTime}" />
+  			<input type="hidden" name="shop.phone" value="13162725286" />
+  			<input type="hidden" name="shop.linkName" value="小黄蜂" />
 				<div class="form-group info-title">基本信息</div>
 				<div class="form-group">
 					<label class="col-xs-1 control-label">商家名称</label>
@@ -57,16 +59,6 @@
               <option value="${type.key}" <c:if test="${shop.type == type.key}">selected="selected"</c:if>>${type.value}</option>
               </c:forEach>
             </select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-1 control-label">联系人</label>
-					<div class="col-xs-4">
-						<input type="text" name="shop.linkName" placeholder="商家联系人" class="form-control" maxlength="11" value="${shop.linkName}" />
-					</div>
-					<label class="col-xs-2 control-label">联系电话</label>
-					<div class="col-xs-4">
-						<input type="text" name="shop.phone" placeholder="手机号码" class="form-control" value="${shop.phone}" maxlength="11" />
 					</div>
 				</div>
 				<div class="form-group">

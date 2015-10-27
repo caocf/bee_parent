@@ -51,8 +51,8 @@ public class ShopAttendDao extends JpaDaoSupport<ShopAttend, Long> {
             @Override
             public ShopAttendItem converData(Object[] objects) {
                 ShopAttendItem item = new ShopAttendItem();
-                item.setGroupName(StringUtil.parseString(objects[0], ""));
-                item.setTecheeNumber(StringUtil.parseString(objects[1], ""));
+                item.setTecheeNumber(StringUtil.parseString(objects[0], ""));
+                item.setGroupName(StringUtil.parseString(objects[1], ""));
                 return item;
             }
         }, sid, attendTime);

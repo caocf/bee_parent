@@ -21,36 +21,17 @@
   	<%@ include file="MarketMenu.jsp" %>
   	<div class="main inner">
   		<div class="row title">
-        <span class="before">广告列表</span>
+        <span class="before">积分商城商品列表</span>
         <i class="fa fa-angle-double-right"></i>	
-  			<span class="after">查看和发布广告</span>
+  			<span class="after">查看和管理商品</span>
       </div>
       <div class="row query-inner">
         <a href="${basePath}/admin/ad/new" class="btn btn-primary icon-text">
-          <i class="fa fa-plus font-color-white"></i>增加广告
+          <i class="fa fa-plus font-color-white"></i>增加商品
         </a>
       </div>
       <table class="table table-hover">
-      	<tr>
-      		<th>主键</th>
-          <th>类型</th>
-      		<th>顺序</th>
-      		<th>所属商家</th>
-          <th>到期时间</th>
-          <th>是否显示</th>
-          <th>操作</th>
-      	</tr>
-      	<c:forEach items="${AdList}" var="ad">
-          <tr>
-            <td>${ad.adid}</td>
-            <td>${ad.typeStr}</td>
-            <td>${ad.sort}</td>
-            <td>${ad.shop.name}</td>
-            <td>${ad.stopTimeStr}</td>
-            <td>${ad.status}</td>
-            <td></td>
-          </tr>
-      	</c:forEach>
+      	
       </table>
   	</div>
   	<script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
@@ -58,7 +39,7 @@
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
   	<script type="text/javascript">
-  		Navbar.init("navbar-left-marketing", "navbar-inner-market-ad");
+  		Navbar.init("navbar-left-marketing", "navbar-inner-market-store");
   	</script>
   </body>
   </html>

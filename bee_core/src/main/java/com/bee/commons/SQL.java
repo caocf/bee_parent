@@ -296,13 +296,13 @@ public final class SQL {
 
         public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
                 "left join fetch A.user C left join fetch B.area D where 1=1 ";
-        public static final String getOrderListByParamOrder = " order by A.status asc, A.createTime desc";
+        public static final String getOrderListByParamOrder = " order by A.createTime desc";
 
         /**
          *【C端】查询商家详细(ShopDetailActivity)
          */
         public static final String QueryOrderByOid = "SELECT " +
-                "A.NO, A.CREATETIME, A.STATUS, C.ADDR, C.PHONE, A.ISCOMMENT " +
+                "A.NO, A.CREATETIME, A.STATUS, C.ADDR, B.PHONE, A.ISCOMMENT " +
                 "FROM TB_ORDER A " +
                 "LEFT OUTER JOIN TB_SHOP_USER B ON A.SHOPUSER = B.SUID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +

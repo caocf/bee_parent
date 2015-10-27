@@ -83,7 +83,7 @@
     <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
     <script type="text/javascript">
-      Navbar.init("MarketAd");
+      Navbar.init("navbar-left-marketing", "navbar-inner-market-ad");
       function doSubmit() {
         if($("#adid").val() != "") {
           document.forms["submitForm"].action += "/${ad.adid}";
