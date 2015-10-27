@@ -1,5 +1,6 @@
 package com.bee.admin.controller.system;
 
+import com.bee.commons.Consts;
 import com.bee.pojo.AppVer;
 import com.bee.services.system.IAppVerService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -32,7 +33,7 @@ public class AdminAppController {
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView create() {
-        return new ModelAndView("system/AppNew");
+        return new ModelAndView("system/AppNew").addObject("selects", Consts.GetAppVerSelect());
     }
 
     @RequestMapping(method = RequestMethod.POST)

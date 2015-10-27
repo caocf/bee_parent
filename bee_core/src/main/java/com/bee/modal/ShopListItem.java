@@ -15,12 +15,7 @@ public class ShopListItem implements java.io.Serializable {
     private Integer friendNum;
     private Integer focusNum;
     private Double price;
-    private Long lon;
-    private Long lat;
-    private String phone;
     private Integer type;
-    private String linkName;
-    private String nowInfo;
     private Integer isBack;
 
     public Long getShopId() {
@@ -65,41 +60,11 @@ public class ShopListItem implements java.io.Serializable {
     public void setArea(String area) {
         this.area = area;
     }
-    public Long getLon() {
-        return lon;
-    }
-    public void setLon(Long lon) {
-        this.lon = lon;
-    }
-    public Long getLat() {
-        return lat;
-    }
-    public void setLat(Long lat) {
-        this.lat = lat;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
     public Integer getType() {
         return type;
     }
     public void setType(Integer type) {
         this.type = type;
-    }
-    public String getLinkName() {
-        return linkName;
-    }
-    public void setLinkName(String linkName) {
-        this.linkName = linkName;
-    }
-    public String getNowInfo() {
-        return nowInfo;
-    }
-    public void setNowInfo(String nowInfo) {
-        this.nowInfo = nowInfo;
     }
     public Integer getIsBack() {
         return isBack;

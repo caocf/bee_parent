@@ -59,7 +59,7 @@
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
   	<script type="text/javascript">
-  		Navbar.init("AppList");
+  		Navbar.init("navbar-left-system", "navbar-inner-system-app");
       function deleteAppVer(id) {
         document.forms["deleteForm"].action = "${basePath}/admin/app/" + id;
         document.forms["deleteForm"].submit();

@@ -30,7 +30,7 @@ public interface IShopFocusService {
      * @param uid
      * @return
      */
-    public ShopFocus getsFoucsShop(long sid, long uid);
+    public ShopFocus getFoucsShop(long sid, long uid);
 
     /**
      * 添加用户关注

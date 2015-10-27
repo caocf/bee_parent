@@ -6,6 +6,7 @@ import com.bee.commons.LevelMachine;
 import com.bee.pojo.shop.ShopFocus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.security.entity.ISecurityUser;
 
 import javax.persistence.*;
@@ -84,6 +85,14 @@ public class User implements java.io.Serializable, ISecurityUser {
             return "";
         }
         return String.valueOf(Consts.User.IdentityBaseNum + getUid());
+    }
+
+    @Transient
+    public String getCreateTimeStr() {
+        if (null == createTime) {
+            return "";
+        }
+        return DateUtil.formatDate(createTime);
     }
 
     public User(){}

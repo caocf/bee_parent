@@ -80,9 +80,6 @@ public class ShopAttendService implements IShopAttendService {
     @Override
     public List<ShopAttendItem> getAppShopAttendByShopId(long sid) {
         long time = getAttendTime(System.currentTimeMillis());
-        System.out.println(time + "_" + DateUtil.formatDateTime(time));
-        System.out.println(DateUtil.formatDateTime(1445140800000l));
-        System.out.println(DateUtil.formatDateTime(1445054400000l));
         return shopAttendDao.getAppShopAttendByShopId(sid, time);
     }
 

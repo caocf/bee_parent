@@ -72,13 +72,8 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setArea(StringUtil.parseString(obj[4], ""));
                 item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
                 item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
-                item.setLon(NumberUtil.parseLong(obj[7], 0));
-                item.setLat(NumberUtil.parseLong(obj[8], 0));
-                item.setPhone(StringUtil.parseString(obj[9], ""));
-                item.setType(NumberUtil.parseInteger(obj[10], Consts.Shop.Type.Club));
-                item.setLinkName(StringUtil.parseString(obj[11], ""));
-                item.setNowInfo(StringUtil.parseString(obj[12], ""));
-                item.setIsBack(NumberUtil.parseInteger(obj[13], Consts.False));
+                item.setType(NumberUtil.parseInteger(obj[7], Consts.Shop.Type.Club));
+                item.setIsBack(NumberUtil.parseInteger(obj[8], Consts.False));
                 return item;
             }
         }, uid);
@@ -110,24 +105,19 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setArea(StringUtil.parseString(obj[4], ""));
                 item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
                 item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
-                item.setLon(NumberUtil.parseLong(obj[7], 0));
-                item.setLat(NumberUtil.parseLong(obj[8], 0));
-                item.setPhone(StringUtil.parseString(obj[9], ""));
-                item.setType(NumberUtil.parseInteger(obj[10], Consts.Shop.Type.Club));
-                item.setLinkName(StringUtil.parseString(obj[11], ""));
-                item.setNowInfo(StringUtil.parseString(obj[12], ""));
-                item.setIsBack(NumberUtil.parseInteger(obj[13], Consts.False));
+                item.setType(NumberUtil.parseInteger(obj[7], Consts.Shop.Type.Club));
+                item.setIsBack(NumberUtil.parseInteger(obj[8], Consts.False));
                 return item;
             }
         });
         return queryWithPagingConver(entity);
     }
 
-    public ShopListItem getShopItemById(long sid) {
-        return findFirstConverByParams(SQL.Shop.queryAppShopList + " and A.SID = " + sid, new QueryDataConver<ShopListItem>() {
+    public ShopItem getShopItemById(long sid) {
+        return findFirstConverByParams(SQL.Shop.QueryAppShopItem + " and A.SID = " + sid, new QueryDataConver<ShopItem>() {
             @Override
-            public ShopListItem converData(Object[] obj) {
-                ShopListItem item = new ShopListItem();
+            public ShopItem converData(Object[] obj) {
+                ShopItem item = new ShopItem();
                 item.setShopId(NumberUtil.parseLong(obj[0], 0));
                 item.setName(StringUtil.parseString(obj[1], ""));
                 item.setAddr(StringUtil.parseString(obj[2], ""));
@@ -142,6 +132,7 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
                 item.setLinkName(StringUtil.parseString(obj[11], ""));
                 item.setNowInfo(StringUtil.parseString(obj[12], ""));
                 item.setIsBack(NumberUtil.parseInteger(obj[13], Consts.False));
+                item.setServiceTime(StringUtil.parseString(obj[14], "13:0-0:30"));
                 return item;
             }
         }, sid);

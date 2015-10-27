@@ -7,6 +7,9 @@
 		<i class="fa fa-sellsy"></i>用户统计
 	</a>
 	<a id="navbar-inner-stat-shop" href="#">
-		<i class="fa fa-line-chart"></i>商家统计
+		<i class="fa fa-area-chart"></i>商家统计
+	</a>
+	<a id="navbar-inner-stat-order" href="${basePath}/admin/stat/order">
+		<i class="fa fa-line-chart"></i>订单统计
 	</a>
 </div>

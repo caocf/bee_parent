@@ -24,6 +24,7 @@ import com.bee.pojo.shop.ShopGroup;
 import com.bee.pojo.user.User;
 import com.bee.pojo.user.UserFriend;
 import com.bee.services.shop.IShopService;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,22 +52,50 @@ public class ShopService implements IShopService {
     @Autowired
     private FindDao findDao;
 
+    /**
+     * 查询所有商家信息
+     *
+     * @return
+     */
     public List<Shop> getShopAll() {
         return shopDao.findAll();
     }
 
+    /**
+     * 查询商家列表
+     *
+     * @param req
+     * @return
+     */
     public PagingResult<Shop> queryShopList(AdminShopListRequest req) {
         return shopDao.queryShopList(req);
     }
 
+    /**
+     *
+     * @param req
+     * @return
+     */
     public PagingResult<ShopListItem> queryAppShopList(ShopListRequest req) {
         return shopDao.queryAppShopList(req);
     }
 
+    /**
+     *
+     * @param uid
+     * @return
+     */
     public List<ShopListItem> queryRecommendShop(long uid) {
         return shopDao.queryRecommendShop(uid);
     }
 
+    /**
+     * 保存商家
+     *
+     * @param shop
+     * @param req
+     * @throws DataRunException
+     */
     @Override
     @Transactional
     public void addShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException {
@@ -86,6 +115,10 @@ public class ShopService implements IShopService {
             }
             if (null == shop.getSortTime()) {
                 shop.setSortTime(0l);
+            }
+            shop.setUpdateTime(System.currentTimeMillis());
+            if (StringUtil.isNull(shop.getServiceTime())) {
+                shop.setServiceTime("13:30-0:30");
             }
 
             // 保存商家信息
@@ -119,16 +152,31 @@ public class ShopService implements IShopService {
         }
     }
 
+    /**
+     *
+     * @param sid
+     * @return
+     */
     @Override
     public Shop getShopById(long sid) {
         return shopDao.getShopById(sid);
     }
 
+    /**
+     *
+     * @param sid
+     * @return
+     */
     @Override
-    public ShopListItem getShopItemById(long sid) {
+    public ShopItem getShopItemById(long sid) {
         return shopDao.getShopItemById(sid);
     }
 
+    /**
+     *
+     * @param sid
+     * @throws DataRunException
+     */
     @Override
     @Transactional
     public void deleteShop(long sid) throws DataRunException {
@@ -137,6 +185,12 @@ public class ShopService implements IShopService {
         shopDao.update(shop);
     }
 
+    /**
+     *
+     * @param shop
+     * @param req
+     * @throws DataRunException
+     */
     @Override
     @Transactional
     public void updateShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException {
@@ -181,7 +235,11 @@ public class ShopService implements IShopService {
         }
     }
 
-
+    /**
+     *
+     * @param shopId
+     * @param req
+     */
     @Override
     public void saveShopImage(long shopId, MultipartHttpServletRequest req) {
         MultipartFile file = req.getFile("file");
@@ -191,6 +249,10 @@ public class ShopService implements IShopService {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<ShopMap> queryShopMapAll() {
         return shopDao.queryShopMapAll();

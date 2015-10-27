@@ -30,8 +30,10 @@
         <tr>
           <th>主键</th>
           <th>手机号</th>
+          <th>昵称</th>
           <th>等级</th>
           <th>积分</th>
+          <th>加入时间</th>
           <th>操作</th>
         </tr>
         <c:if test="${result.totalData < 1}">
@@ -46,8 +48,10 @@
           <tr>
             <td>${user.uid}</td>
             <td>${user.phone}</td>
+            <td>${user.name}</td>
             <td>${user.level}</td>
             <td>${user.integral}</td>
+            <td>${user.createTimeStr}</td>
             <td></td>
           </tr>
         </c:forEach>
@@ -60,7 +64,7 @@
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/paging.js"></script>
     <script type="text/javascript">
-  		Navbar.init("${params.pageType}");
+  		Navbar.init("navbar-left-user", "${params.pageType}");
       $("#paging").paging({
         index: ${result.indexPage},
         total: ${result.totalPage},

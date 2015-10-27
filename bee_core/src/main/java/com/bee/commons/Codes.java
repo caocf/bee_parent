@@ -27,6 +27,8 @@ public final class Codes {
     public static final class Shop {
         // 500
         public static final int ShopImageSizeOut = 0x1f4;
+        // 501 已关注
+        public static final int ShopFocusError = 0x1f5;
     }
 
 
@@ -48,7 +50,7 @@ public final class Codes {
         // 350 订单数据操作失败
         public static final int OrderDbError = 0x15e;
         // 订单无法取消
-        public static final String CancelErrorStr = "不能取消订单";
+        public static final String CancelErrorStr = "不能取消订单,商家已修改此订单";
     }
 
 

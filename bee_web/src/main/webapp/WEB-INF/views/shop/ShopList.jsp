@@ -58,30 +58,27 @@
         <tr>
           <th>ID</th>
           <th>商家名</th>
+          <th>类型</th>
           <th>地区</th>
           <th>最低价</th>
-          <th>联系人</th>
-          <th>电话</th>
           <th>状态</th>
           <th>权重</th>
+          <th>加入时间</th>
           <th>操作</th>
         </tr>
         <c:forEach items="${result.data}" var="shop">
           <tr>
             <td>${shop.sid}</td>
-            <td>${shop.name}</td>
+            <td><a href="${basePath}/admin/shop/${shop.sid}">${shop.name}</a></td>
+            <td>${shop.typeStr}</td>
             <td>${shop.area.name}</td>
             <td><a href="${basePath}/admin/shop/${shop.sid}/group">${shop.priceStr}</a></td>
-            <td>${shop.linkName}</td>
-            <td>${shop.phone}</td>
             <td>${shop.statusStr}</td>
             <td>${shop.sort}</td>
+            <td>${shop.createTimeStr}</td>
             <td>
               <a href="${basePath}/admin/shop/${shop.sid}/admin" class="icon">
-                <i class="fa fa-street-view fa-lg font-color-red"></i>
-              </a>
-              <a href="${basePath}/admin/shop/${shop.sid}" class="icon">
-                <i class="fa fa-file-text-o fa-lg font-color-gray"></i>
+                <i class="fa fa-street-view fa-lg font-color-gray"></i>
               </a>
               <a href="${basePath}/admin/shop/${shop.sid}/image" class="icon">
                 <i class="fa fa-picture-o fa-lg font-color-green"></i>
@@ -127,7 +124,7 @@
     <script type="text/javascript" src="${resPath}/assets/js/plugin/paging.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/plugin/area.js"></script>
     <script type="text/javascript">
-      Navbar.init("ShopList");
+      Navbar.init("navbar-left-shop", "navbar-inner-shop-list");
       $("#paging").paging({
         index: ${result.indexPage},
         total: ${result.totalPage},

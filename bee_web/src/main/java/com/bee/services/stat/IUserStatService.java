@@ -1,9 +1,6 @@
 package com.bee.services.stat;
 
-import com.bee.pojo.stat.UserRegStat;
 import com.qsd.framework.hibernate.exception.DataRunException;
-
-import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/28.
@@ -16,12 +13,23 @@ public interface IUserStatService {
      * @param uid
      * @throws DataRunException
      */
-    public void addUserLoginStat(long uid) throws DataRunException;
+    public void addUserLoginStat(long uid, String device) throws DataRunException;
 
     /**
-     * 统计过去30天用户注册数量
+     * 统计过去number天用户登录数量
      *
+     * @param number 切割粒度
+     * @param time   时间粒度(长整型)，按长整型时间作为切割粒度
      * @return
      */
-    public List<UserRegStat> statUserRegStat();
+    public Double[] statUserLogin(int number, long time);
+
+    /**
+     * 统计过去number天用户注册数量
+     *
+     * @param number 切割粒度
+     * @param time   时间粒度(长整型)，按长整型时间作为切割粒度
+     * @return
+     */
+    public Double[] statUserRegStat(int number, long time);
 }

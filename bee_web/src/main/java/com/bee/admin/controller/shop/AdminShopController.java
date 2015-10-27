@@ -1,5 +1,6 @@
 package com.bee.admin.controller.shop;
 
+import com.bee.admin.params.shop.AdminShopSaveRequest;
 import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
@@ -62,16 +63,21 @@ public class AdminShopController {
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView save(Shop shop, String sortTimeText, MultipartHttpServletRequest req) {
+    public ModelAndView save(AdminShopSaveRequest req, MultipartHttpServletRequest request) {
         ModelAndView mav;
         try {
-            if (!StringUtil.isNull(sortTimeText)) {
-                shop.setSortTime(DateUtil.parseDateLong(sortTimeText, DateUtil.DATE));
+            if (!StringUtil.isNull(req.getSortTimeText())) {
+                req.getShop().setSortTime(DateUtil.parseDateLong(req.getSortTimeText(), DateUtil.DATE));
+            } else {
+                req.getShop().setSortTime(0l);
             }
-            shopService.addShop(shop, req);
-            AdminShopListRequest request = new AdminShopListRequest();
-            request.setIndexPage(1);
-            mav = shopListView(request);
+            req.getShop().setServiceTime(
+                    req.getStartServiceTimeHour() + ":" + req.getStartServiceTimeMinute() +
+                            "-" + req.getEndServiceTimeHour() + ":" + req.getEndServiceTimeMinute());
+            shopService.addShop(req.getShop(), request);
+            AdminShopListRequest adminShopListRequest = new AdminShopListRequest();
+            adminShopListRequest.setIndexPage(1);
+            mav = shopListView(adminShopListRequest);
         } catch(DataRunException e) {
             mav = create();
             mav.addObject("msg", "添加商家出错");
@@ -122,12 +128,17 @@ public class AdminShopController {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public ModelAndView update(@PathVariable Long id, Shop shop, String sortTimeText, MultipartHttpServletRequest req) {
+    public ModelAndView update(@PathVariable Long id, AdminShopSaveRequest req, MultipartHttpServletRequest request) {
         try {
-            if (!StringUtil.isNull(sortTimeText)) {
-                shop.setSortTime(DateUtil.parseDateLong(sortTimeText, DateUtil.DATE));
+            if (!StringUtil.isNull(req.getSortTimeText())) {
+                req.getShop().setSortTime(DateUtil.parseDateLong(req.getSortTimeText(), DateUtil.DATE));
+            } else {
+                req.getShop().setSortTime(0l);
             }
-            shopService.updateShop(shop, req);
+            req.getShop().setServiceTime(
+                    req.getStartServiceTimeHour() + ":" + req.getStartServiceTimeMinute() +
+                            "-" + req.getEndServiceTimeHour() + ":" + req.getEndServiceTimeMinute());
+            shopService.updateShop(req.getShop(), request);
             return shopListView(new AdminShopListRequest());
         } catch (DataRunException e) {
             return edit(id).addObject("msg", "更新失败");

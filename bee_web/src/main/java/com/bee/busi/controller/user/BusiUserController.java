@@ -37,6 +37,13 @@ public class BusiUserController {
             // 通过手机找回密码修改
             if (!StringUtil.isNull(phone)) {
                 user = userService.getUserByAccount(phone);
+                /**
+                 * v1.0.0版本，有版本这里传过来的是nick
+                 * 为了兼容BUG，如果USER查不到，则按nick查询
+                 */
+                if (null == user) {
+                    user = userService.getUserByNick(phone);
+                }
             } else {
                 user = userService.getUserById(uid);
             }

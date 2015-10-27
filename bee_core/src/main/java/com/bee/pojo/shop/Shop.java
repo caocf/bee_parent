@@ -6,6 +6,7 @@ import com.bee.pojo.Image;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qsd.framework.commons.utils.DateUtil;
+import com.qsd.framework.commons.utils.StringUtil;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -62,6 +63,13 @@ public class Shop implements java.io.Serializable {
     // 是否返现
     private Integer isBack;
 
+    // 修改时间
+    private Long updateTime;
+
+    /**
+     * 商家营业时间
+     */
+    private String serviceTime;
 
 
     public Shop() {}
@@ -95,9 +103,48 @@ public class Shop implements java.io.Serializable {
 
     @Transient
     public String getSortTimeStr() {
+        if (null == sortTime || sortTime == 0) {
+            return "";
+        }
         return DateUtil.formatDate(sortTime);
     }
 
+    @Transient
+    public String getCreateTimeStr() {
+        return DateUtil.formatDate(createTime);
+    }
+
+    @Transient
+    public String getStartServiceTimeHour() {
+        if (StringUtil.isNull(serviceTime)) {
+            return "13";
+        }
+        return serviceTime.substring(0, serviceTime.indexOf(":"));
+    }
+
+    @Transient
+    public String getStartServiceTimeMinute() {
+        if (StringUtil.isNull(serviceTime)) {
+            return "30";
+        }
+        return serviceTime.substring(serviceTime.indexOf(":") + 1, serviceTime.indexOf("-"));
+    }
+
+    @Transient
+    public String getEndServiceTimeHour() {
+        if (StringUtil.isNull(serviceTime)) {
+            return "0";
+        }
+        return serviceTime.substring(serviceTime.indexOf("-") + 1, serviceTime.lastIndexOf(":"));
+    }
+
+    @Transient
+    public String getEndServiceTimeMinute() {
+        if (StringUtil.isNull(serviceTime)) {
+            return "30";
+        }
+        return serviceTime.substring(serviceTime.lastIndexOf(":") + 1, serviceTime.length());
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -234,5 +281,19 @@ public class Shop implements java.io.Serializable {
     }
     public void setAdmins(Set<ShopUser> admins) {
         this.admins = admins;
+    }
+    @Column(name = "UPDATETIME")
+    public Long getUpdateTime() {
+        return updateTime;
+    }
+    public void setUpdateTime(Long updateTime) {
+        this.updateTime = updateTime;
+    }
+    @Column(name = "SERVICETIME")
+    public String getServiceTime() {
+        return serviceTime;
+    }
+    public void setServiceTime(String serviceTime) {
+        this.serviceTime = serviceTime;
     }
 }

@@ -63,7 +63,7 @@
     <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
     <script type="text/javascript">
-      Navbar.init("SystemArea");
+    Navbar.init("navbar-left-system", "navbar-inner-system-area");
       function doSubmit() {
         if($("#aid").val() != "") {
           document.forms["submitForm"].action += "/${result.aid}";

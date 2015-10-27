@@ -61,7 +61,13 @@ public class ShopController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ShopResponse getShopItem(@PathVariable Long id) {
 
+        // ShopResponse
         ShopResponse res = new ShopResponse();
+
+        /**
+         * 增加商家浏览统计
+         */
+
 
         /**
          * 获取商家信息

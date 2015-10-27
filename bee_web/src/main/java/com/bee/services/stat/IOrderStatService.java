@@ -15,4 +15,14 @@ public interface IOrderStatService {
      * @return
      */
     public BusiOrderNumberStat queryBusiOrderNumberStat(long shopId);
+
+
+    /**
+     * 统计全部完成订单
+     *
+     * @param shopId 如果是0，则代表统计全部商户
+     * @return
+     */
+    public Double[] statFinishOrder(long shopId, int number, long time);
+
 }

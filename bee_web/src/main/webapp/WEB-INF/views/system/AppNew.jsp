@@ -23,7 +23,7 @@
       <div class="row title">
         <span class="before">发布版本</span>
         <i class="fa fa-angle-double-right"></i>    
-        <span class="after">发布一个Android和iOs版本</span>
+        <span class="after">发布一个Android和iOS版本</span>
       </div>
       <div class="row">
         <div class="alert alert-danger <c:if test="${msg == null}">hidden</c:if>" role="alert">${msg}</div>
@@ -33,14 +33,13 @@
         <input type="hidden" id="avid" name="avid" value="${app.avid}" />
         <input type="hidden" name="createTime" value="${app.createTime}" />
         <div class="form-group">
-          <label class="col-xs-1 control-label">APP类型</label>
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-default <c:if test="${app.type == 1}">active</c:if>">
-              <input type="radio" name="type" value="<%=Consts.AppType.Android %>" autocomplete="off" <c:if test="${app.type == 1}">checked="checked"</c:if>> Android
-            </label>
-            <label class="btn btn-default <c:if test="${app.type == 2}">active</c:if>">
-              <input type="radio" name="type" value="<%=Consts.AppType.iOS %>" autocomplete="off" <c:if test="${app.type == 0}">checked="checked"</c:if>> iOS
-            </label>
+          <label class="col-xs-1 control-label">版本类型</label>
+          <div class="col-xs-4">
+            <select name="type">
+              <c:forEach items="${selects}" var="t">
+              <option value="${t.key}" <c:if test="${app.type == t.key}">selected="selected"</c:if>>${t.value}</option>
+              </c:forEach>
+            </select>
           </div>
         </div>
         <div class="form-group">
@@ -83,7 +82,7 @@
     <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
     <script type="text/javascript">
-      Navbar.init("AppNew");
+      Navbar.init("navbar-left-system", "navbar-inner-system-app-new");
       function doSubmit() {
         if($("#avid").val() != "") {
           document.forms["submitForm"].action += "/${app.avid}";

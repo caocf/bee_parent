@@ -174,6 +174,13 @@
  			var marker = new BMap.Marker(options.point);
  			marker.setTitle("MarkerPoint");
 	  	this._map.addOverlay(marker);
+ 		},
+
+ 		/**
+ 		 * 查询地址
+ 		 */
+ 		queryAddr: function(addr) {
+
  		}
 
 

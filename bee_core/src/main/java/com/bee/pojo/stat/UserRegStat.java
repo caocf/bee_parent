@@ -3,8 +3,12 @@ package com.bee.pojo.stat;
 import javax.persistence.*;
 
 /**
+ * 2015-10-23
+ * 删除该类
+ *
  * Created by suntongwei on 15/5/7.
  */
+@Deprecated
 @Entity
 @Table(name = "TB_USER_REG_STAT")
 public class UserRegStat implements java.io.Serializable {

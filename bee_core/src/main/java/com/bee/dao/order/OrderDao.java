@@ -1,5 +1,6 @@
 package com.bee.dao.order;
 
+import com.bee.admin.params.order.QueryOrderParam;
 import com.bee.app.model.order.OrderItem;
 import com.bee.busi.model.order.BusiOrderItem;
 import com.bee.busi.model.order.BusiOrderListItem;
@@ -258,11 +259,59 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         return stat;
     }
 
+    /**
+     * 根据参数查询订单
+     *
+     * @return
+     */
+    public List<Order> queryOrderByParams(QueryOrderParam param) {
 
-    private QueryDataConver<Integer> queryBusiOrderNumberStatConver = new QueryDataConver<Integer>() {
-        @Override
-        public Integer converData(Object[] objects) {
-            return NumberUtil.parseInteger(objects[0], 0);
+        // 创建查询实体
+        HQLEntity entity = new HQLEntity();
+
+        // 创建查询语句
+        StringBuffer sb = new StringBuffer(SQL.Order.QueryOrderByParams);
+
+        /**
+         * 设置参数
+         */
+        if (param != null) {
+
+            /**
+             * 如果shopId不等于0，则查询全部
+             */
+            if (param.getShopId() != null && param.getShopId() > 0) {
+                sb.append(" and B.sid = ?");
+                entity.setParams(param.getShopId());
+            }
+
+            /**
+             * 根据状态查询
+             */
+            if (param.getStatus() != null) {
+                sb.append(" and A.status = ?");
+                entity.setParams(param.getStatus());
+            }
+
+            /**
+             * 查询起始创建时间，根据用户注册时间开始计算
+             */
+            if (param.getStartCreateTime() != null) {
+                sb.append(" and A.createTime >= ?");
+                entity.setParams(param.getStartCreateTime());
+            }
+
+            /**
+             * 增加排序部分
+             * 必须放在param最后
+             */
+            if (!StringUtil.isNull(param.getSortSection())) {
+                sb.append(" ORDER BY ");
+                sb.append(param.getSortSection());
+            }
         }
-    };
+        // 导入HQL
+        entity.setEntity(sb);
+        return queryResult(entity);
+    }
 }

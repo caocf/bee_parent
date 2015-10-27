@@ -11,8 +11,14 @@ public final class SQL {
 
 
     public static final class User {
+
+        // 查询用户
+        public static final String QueryUserByParams = "From User A WHERE 1=1";
+
         // 根据帐号查询用户
         public static final String queryUserByAccount = "From User A where A.phone = ?";
+        public static final String queryUserByNick = "From User A where A.name = ?";
+
         public static final String getUsersByIdentity = "From User A where A.uid in";
         // 根据参数查询用户列表
         public static final String queryUserListByParams = "From User A where 1=1";
@@ -51,7 +57,7 @@ public final class SQL {
                 "A.sid,A.name,A.addr,A.price,B.name as area," +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                "A.lon, A.lat, A.phone, A.type, A.linkName, A.remark, A.isBack " +
+                " A.type, A.isBack " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid " +
@@ -63,12 +69,27 @@ public final class SQL {
                 "A.sid,A.name,A.addr,A.price,B.name as area, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                "A.lon, A.lat, A.phone, A.type, A.linkName, A.remark, A.isBack " +
+                " A.type, A.isBack " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid  " +
                 "where A.status = " + Consts.Shop.Status.Run;
         public static final String queryAppShopListSort = " order by A.sort desc";
+
+        /**
+         * 查询商家详细
+         */
+        public static final String QueryAppShopItem =
+                "select " +
+                "A.sid,A.name,A.addr,A.price,B.name as area, " +
+                "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
+                "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
+                "A.lon, A.lat, A.phone, A.type, A.LINKNAME, A.remark, A.isBack, A.SERVICETIME " +
+                "from TB_SHOP A " +
+                "left outer join TB_AREA B " +
+                "on A.area = B.aid  " +
+                "where A.status = " + Consts.Shop.Status.Run;
+
 
         // 查询商家地图
         public static final String queryShopMap = "SELECT A.SID, A.NAME, A.ADDR, A.LON, A.LAT FROM TB_SHOP A";
@@ -140,12 +161,17 @@ public final class SQL {
         }
 
         public static final class User {
+
+            public static final String GetShopUserById = "From ShopUser A " +
+                    "left join fetch A.shop B " +
+                    "left join fetch A.user C where A.suid = ?";
+
             public static final String getShopUserByShopId = "FROM ShopUser A " +
                     "left join fetch A.shop B " +
                     "left join fetch A.user C where B.sid = ?";
 
             public static final String GetShopUserByLogin = "SELECT " +
-                    "B.SID, B.NAME, B.STATUS, C.UID, C.`NAME` AS USERNAME " +
+                    "B.SID, B.NAME, B.STATUS, C.UID, C.`NAME` AS USERNAME, C.PHONE " +
                     "FROM TB_SHOP_USER A " +
                     "LEFT OUTER JOIN TB_SHOP B " +
                     "ON A.SHOP = B.SID " +
@@ -234,6 +260,13 @@ public final class SQL {
      * 订单模块SQL
      */
     public static final class Order {
+
+        /**
+         * 根据参数查询订单，主要用于订单统计
+         */
+        public static final String QueryOrderByParams = "From Order A " +
+                "left join fetch A.shop B where 1=1";
+
         public static final String getAppOrderListByParam = "SELECT " +
                 "B.NAME, A.CREATETIME, A.NUM, A.STATUS, A.OID, B.SID, A.ORDERNAME, A.EXECTIME, " +
                 "A.ORDERPHONE, A.REMARK " +
@@ -263,13 +296,13 @@ public final class SQL {
 
         public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
                 "left join fetch A.user C left join fetch B.area D where 1=1 ";
-        public static final String getOrderListByParamOrder = " order by A.status asc, A.createTime desc";
+        public static final String getOrderListByParamOrder = " order by A.createTime desc";
 
         /**
          *【C端】查询商家详细(ShopDetailActivity)
          */
         public static final String QueryOrderByOid = "SELECT " +
-                "A.NO, A.CREATETIME, A.STATUS, C.ADDR, C.PHONE, A.ISCOMMENT " +
+                "A.NO, A.CREATETIME, A.STATUS, C.ADDR, B.PHONE, A.ISCOMMENT " +
                 "FROM TB_ORDER A " +
                 "LEFT OUTER JOIN TB_SHOP_USER B ON A.SHOPUSER = B.SUID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +
@@ -351,11 +384,8 @@ public final class SQL {
 
     public static final class Stat {
 
-        public static final class User {
-            // 统计过去30天用户注册量
-            public static final String statUserRegStat =
-                    "select A.YEAR, A.MONTH, A.DAY, A.NUM from TB_USER_REG_STAT A order by A.URSID desc limit 30";
-        }
+
+        public static final String QueryUserLoginStatByParam = "From UserLoginStat A WHERE 1=1";
 
     }
 

@@ -17,7 +17,17 @@
 			this.Inner.init(type);
 		},
 
+		init: function(leftType, innerType) {
+			this.Left.setActive(leftType);
+			this.Inner.setActive(innerType);
+		},
+
 		Left: {
+
+			setActive: function(type) {
+				$("#" + type).addClass('active');
+			},
+
 			init: function(type) {
 				if(type == "Home") {
 					$("#navbar-left-home").addClass('active');
@@ -35,10 +45,18 @@
 					$("#navbar-left-user").addClass('active');
 				} else if(type == "MarketAd") {
 					$("#navbar-left-marketing").addClass('active');
+				} else if(type == "FinanceShop") {
+					$("#navbar-left-finance").addClass('active');
 				} 
 			}
 		},
+		
 		Inner: {
+
+			setActive: function(type) {
+				$("#" + type).addClass('active');
+			},
+
 			init: function(type) {
 				if(type == "ShopList" || type == "ShopView" || type == "ShopPrice" || type == "ShopImage") {
 					$("#navbar-inner-shop-list").addClass('active');
@@ -74,6 +92,8 @@
 					$("#navbar-inner-market-ad").addClass('active')
 				} else if(type == "SystemArea") {
 					$("#navbar-inner-system-area").addClass('active');
+				} else if(type == "FinanceShop") {
+					$("#navbar-inner-finance-shop").addClass('active');
 				}
 			}	
 		}

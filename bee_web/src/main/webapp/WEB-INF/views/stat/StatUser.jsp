@@ -32,68 +32,30 @@
   	<script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
+    <script type="text/javascript" src="${resPath}/assets/js/jquery/json2.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/echarts/echarts.js"></script>
   	
     <script type="text/javascript">
-  		Navbar.init("StatUser");
+  		Navbar.init("navbar-left-stat", "navbar-inner-stat-user");
       require.config({
-          paths: {
-              echarts: '${resPath}/assets/js/plugin/echarts'
-          }
+        paths: {
+          echarts: '${resPath}/assets/js/plugin/echarts'
+        }
       });
-      // 使用
+      $.get(BasePath + "/admin/stat/user/chart", function(data) {
         require(
-            [
-                'echarts',
-                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
-            ],
-            function (ec) {
-                // 基于准备好的dom，初始化echarts图表
-                var myChart = ec.init(document.getElementById('EChart')); 
-                
-      var option = {
-    title : {
-        text: '30天用户登录和注册统计',
-        subtext: ''
-      },
-    legend: {
-        data:['登录','注册']
-    },
-    toolbox: {
-        show : true,
-        feature : {
-            saveAsImage : {show: true}
-        }
-    },
-    xAxis : [
-        {
-            type : 'category',
-            data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
-        }
-    ],
-    yAxis : [
-        {
-            type : 'value'
-        }
-    ],
-    series : [
-        {
-            name:'登录',
-            type:'bar',
-            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-            
-        },
-        {
-            name:'注册',
-            type:'bar',
-            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-        }
-    ]
-};
-       // 为echarts对象加载数据 
-                myChart.setOption(option); 
-            }
-        );
+                [
+                  'echarts',
+                  'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+                  'echarts/chart/line'
+                ],
+                function (ec) {
+                  // 基于准备好的dom，初始化echarts图表
+                  var myChart = ec.init(document.getElementById('EChart'));
+                  myChart.setOption(JSON.parse(data));
+                }
+        );  
+      }); 
   	</script>
   </body>
   </html>

@@ -38,7 +38,7 @@ public class UserConvertController {
         } catch (DataRunException e) {
             if (e.getErrorCode() == Codes.Store.StockError) {
                 res.setCode(Codes.Store.StockError);
-                res.setMsg("非常保险，该商品没有库存");
+                res.setMsg("非常抱歉，该商品没有库存");
             } else if (e.getErrorCode() == Codes.Store.IntegralNotEnough) {
                 res.setCode(Codes.Store.IntegralNotEnough);
                 res.setMsg("您没有足够的积分");

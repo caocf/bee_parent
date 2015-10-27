@@ -4,6 +4,7 @@ import com.bee.app.model.shop.ShopAttendItem;
 import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.commons.ImageFactory;
 import com.bee.modal.ShopImageListItem;
+import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
 import com.bee.pojo.shop.ShopAttend;
 
@@ -18,13 +19,13 @@ public class ShopResponse implements java.io.Serializable {
     private static final long serialVersionUID = -6979109816828423070L;
 
     private List<ShopImageListItem> shopImages;
-    private ShopListItem shopListItem;
+    private ShopItem shopListItem;
     private List<ShopAttendItem> shopAttends;
 
-    public ShopListItem getShopListItem() {
+    public ShopItem getShopListItem() {
         return shopListItem;
     }
-    public void setShopListItem(ShopListItem shopListItem) {
+    public void setShopListItem(ShopItem shopListItem) {
         this.shopListItem = shopListItem;
     }
     public List<ShopImageListItem> getShopImages() {
