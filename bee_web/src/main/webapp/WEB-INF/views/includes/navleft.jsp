@@ -13,10 +13,6 @@
 		<i class="fa fa-desktop fa-lg"></i>
 		<span>商家</span>
 	</a>
-	<a id="navbar-left-party" href="${basePath}/admin/party">
-		<i class="fa fa-flag fa-lg"></i>
-		<span>活动</span>
-	</a>
 	<a id="navbar-left-user" href="${basePath}/admin/user?type=<%=Consts.User.Type.AppUser %>">
 		<i class="fa fa-user fa-lg2"></i>
 		<span>用户</span>

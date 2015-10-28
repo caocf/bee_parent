@@ -1,5 +1,7 @@
 package com.bee.pojo.store;
 
+import com.bee.commons.Consts;
+
 import javax.persistence.*;
 
 /**
@@ -18,12 +20,34 @@ public class Goods implements java.io.Serializable {
     private Long gid;
     // 商品类型
     private Integer type;
+    // 商品状态
+    private Integer status;
     // 商品名称
     private String name;
     // 库存
     private Integer number;
     // 商品所需要积分
     private Integer integral;
+
+    @Transient
+    public String getTypeStr() {
+        return Consts.Goods.Type.Select().get(type);
+    }
+
+    @Transient
+    public String getStatusStr() {
+        String str;
+        switch (status) {
+            case Consts.Goods.Status.Offline:
+                str = "下架";
+                break;
+            default:
+                str = "上架";
+                break;
+        }
+        return str;
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,5 +85,12 @@ public class Goods implements java.io.Serializable {
     }
     public void setIntegral(Integer integral) {
         this.integral = integral;
+    }
+    @Column(name = "STATUS")
+    public Integer getStatus() {
+        return status;
+    }
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

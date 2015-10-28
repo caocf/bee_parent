@@ -1,5 +1,6 @@
 package com.bee.commons;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -297,6 +298,46 @@ public final class Consts {
         }
     }
 
+
+    /**
+     *
+     */
+    public static final class Goods {
+
+        public static final class Type {
+            // 实体物品
+            public static final int Entity = 1;
+            // 虚拟物品
+            public static final int Virtual = 2;
+
+            public static Map<Integer, String> Select() {
+                Map<Integer, String> ret = new HashMap<>();
+                ret.put(Type.Entity, "实体物品");
+                ret.put(Type.Virtual, "虚拟物品");
+                return ret;
+            }
+        }
+
+        public static final class Status {
+
+            public static final int Online = 0x1;
+
+            public static final int Offline = 0x0;
+        }
+
+
+        public static final class PhoneCard {
+
+            public static final class Status {
+                public static final int UnUse = 1;
+                public static final int Used = 0;
+            }
+
+
+        }
+    }
+
+
     /**
      * 运营商
      */
@@ -305,4 +346,14 @@ public final class Consts {
         public static final int ChinaUnicom = 2;
         public static final int ChinaTelecom = 3;
     }
+
+
+    public static final Map<Integer, String> GetOperatorSelect() {
+        Map<Integer, String> ret = new HashMap<>();
+        ret.put(Operator.ChinaMobile, "中国移动");
+        ret.put(Operator.ChinaUnicom, "中国联通");
+        ret.put(Operator.ChinaTelecom, "中国电信");
+        return ret;
+    }
+
 }

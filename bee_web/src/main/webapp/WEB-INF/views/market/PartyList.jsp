@@ -18,7 +18,7 @@
   <body>
   	<%@ include file="../includes/navtop.jsp" %>
   	<%@ include file="../includes/navleft.jsp" %>
-  	<%@ include file="PartyMenu.jsp" %>
+  	<%@ include file="MarketMenu.jsp" %>
   	<div class="main inner">
   		<div class="row title">
         <span class="before">活动列表</span>
@@ -53,7 +53,7 @@
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
   	<script type="text/javascript">
-  		Navbar.init("PartyList");
+  		Navbar.init("navbar-left-marketing", "navbar-inner-market-party");
   	</script>
   </body>
   </html>

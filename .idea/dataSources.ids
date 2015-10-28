@@ -88,6 +88,7 @@
       <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="NUMBER" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <column name="INTEGRAL" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="STATUS" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <primary-key name="PRIMARY" columns="GID"/>
       <exported-key name="FK_43l9nf272uqovfxje4brka1kl" table="TB_USER_CONVERT" schema="" catalog="db_bee" columns="GOODS"/>
     </table>
@@ -126,8 +127,6 @@
       <column name="FINISHTIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <column name="OPERATE" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="OID"/>
-      <foreign-key name="FK_1nm0ds56gg1vo53ycusn26w7" columns="SHOPUSER" ref-table="TB_SHOP_USER" ref-schema="" ref-catalog="db_bee" ref-columns="SUID" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="FK_ovwo27m8tc20pk1n6vkp6u4to" table="TB_SHOP_COMMENT" schema="" catalog="db_bee" columns="ORDER"/>
       <index name="FK_1nm0ds56gg1vo53ycusn26w7" unique="false" columns="SHOPUSER"/>
       <index name="FK_kjf30805e521nr8oi35jimg9g" unique="false" columns="SHOP"/>
       <index name="FK_q09a68flx3nbjgdw6sf0p46dl" unique="false" columns="USER"/>
@@ -221,7 +220,6 @@
       <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="ORDER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="SCID"/>
-      <foreign-key name="FK_ovwo27m8tc20pk1n6vkp6u4to" columns="ORDER" ref-table="TB_ORDER" ref-schema="" ref-catalog="db_bee" ref-columns="OID" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_49i4k8jji8vklwaxtmjswfayc" unique="false" columns="SHOP"/>
       <index name="FK_ovwo27m8tc20pk1n6vkp6u4to" unique="false" columns="ORDER"/>
       <index name="FK_p3uso2ofagv3wrtqd8p5sgi1f" unique="false" columns="USER"/>
@@ -311,7 +309,6 @@
       <column name="PHONE" sqlType="VARCHAR" precision="11" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="CREATETIME" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <primary-key name="PRIMARY" columns="SUID"/>
-      <exported-key name="FK_1nm0ds56gg1vo53ycusn26w7" table="TB_ORDER" schema="" catalog="db_bee" columns="SHOPUSER"/>
       <index name="FK_3u1s5cpsrdy1aymp4cpw58xcd" unique="false" columns="USER"/>
       <index name="FK_9nv7pdaq7m51mtey8hadea1o8" unique="false" columns="SHOP"/>
     </table>

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -49,7 +50,14 @@ public class OrderStatService implements IOrderStatService {
         /**
          * 查询时间，按照 粒度 * 时间粒度
          */
-        long queryTime = System.currentTimeMillis() - (time * number);
+        Calendar today = Calendar.getInstance();
+        // 加1是为了包含今天
+        today.add(Calendar.DAY_OF_MONTH, 1);
+        today.set(Calendar.HOUR_OF_DAY, 23);
+        today.set(Calendar.MINUTE, 59);
+        today.set(Calendar.SECOND, 59);
+        today.set(Calendar.MILLISECOND, 999);
+        long queryTime = today.getTimeInMillis() - (time * number);
 
         // 组装参数
         QueryOrderParam param = new QueryOrderParam();

@@ -1,5 +1,6 @@
 package com.bee.services.store.impl;
 
+import com.bee.admin.params.store.GoodsRequest;
 import com.bee.app.model.store.GoodsListItem;
 import com.bee.app.params.store.GoodsQueryRequest;
 import com.bee.dao.store.GoodsDao;
@@ -17,6 +18,27 @@ public class GoodsService implements IGoodsService {
 
     @Autowired
     private GoodsDao goodsDao;
+
+    /**
+     * 【A端】查询商品列表
+     *
+     * @return
+     */
+    public PagingResult<Goods> getGoodsList(GoodsRequest request) {
+        return goodsDao.getGoodsList(request);
+    }
+
+
+    /**
+     * 【A端】查询单个商品
+     *
+     * @param goodsId
+     * @return
+     */
+    public Goods getGoodsById(long goodsId) {
+        return goodsDao.findById(goodsId);
+    }
+
 
     /**
      * 【C端】查询商品列表

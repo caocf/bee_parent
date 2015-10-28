@@ -20,7 +20,7 @@
   <body>
   	<%@ include file="../includes/navtop.jsp" %>
   	<%@ include file="../includes/navleft.jsp" %>
-  	<%@ include file="PartyMenu.jsp" %>
+  	<%@ include file="MarketMenu.jsp" %>
   	<div class="main inner">
   		<div class="row title">
   			<span class="before">添加活动</span>
@@ -128,7 +128,7 @@
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/plugin/map.js"></script>
   	<script type="text/javascript">
-  		Navbar.init("PartyNew");
+  		Navbar.init("navbar-left-marketing", "navbar-inner-market-party");
   		Upload.init("btnImage", "file", "image");
   		function doSubmit() {
 

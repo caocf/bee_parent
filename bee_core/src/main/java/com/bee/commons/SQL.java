@@ -398,10 +398,12 @@ public final class SQL {
                 "A.GID, A.NAME, A.INTEGRAL, A.NUMBER " +
                 "FROM TB_GOODS A ";
 
+        public static final String GetGoodsList = "From Goods A";
+
 
         public static final String GetEffectivePhoneCard = "FROM " +
                 "PhoneCard A " +
-                "WHERE A.status = " + Consts.True + " AND A.operator = ? " +
+                "WHERE A.status = " + Consts.Goods.PhoneCard.Status.UnUse + " AND A.operator = ? " +
                 "ORDER BY A.pcId ASC ";
 
 
@@ -413,6 +415,14 @@ public final class SQL {
                 "ON A.GOODS = B.GID " +
                 "WHERE A.USER = ? " +
                 "ORDER BY A.CREATETIME DESC";
+
+
+        public static final class PhoneCard {
+
+            public static final String QueryPhoneCard = "From PhoneCard A where 1=1";
+
+
+        }
 
     }
 

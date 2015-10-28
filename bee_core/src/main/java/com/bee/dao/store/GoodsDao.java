@@ -1,5 +1,6 @@
 package com.bee.dao.store;
 
+import com.bee.admin.params.store.GoodsRequest;
 import com.bee.app.model.store.GoodsListItem;
 import com.bee.app.params.store.GoodsQueryRequest;
 import com.bee.commons.SQL;
@@ -8,6 +9,8 @@ import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
+import com.qsd.framework.hibernate.bean.DataEntity;
+import com.qsd.framework.hibernate.bean.HQLEntity;
 import com.qsd.framework.hibernate.bean.SQLEntity;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
@@ -17,6 +20,17 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class GoodsDao extends JpaDaoSupport<Goods, Long> {
+
+    /**
+     * 【A端】查询商品列表
+     *
+     * @return
+     */
+    public PagingResult<Goods> getGoodsList(GoodsRequest request) {
+        DataEntity entity = new HQLEntity(SQL.Store.GetGoodsList);
+        entity.setPaging(request);
+        return queryWithPaging(entity);
+    }
 
     /**
      * 查询商品列表

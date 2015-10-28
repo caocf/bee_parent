@@ -1,8 +1,6 @@
 package com.bee.admin.controller.party;
 
 import com.bee.client.params.party.AdminPartyRequest;
-import com.bee.pojo.party.Party;
-import com.bee.pojo.party.PartyMeet;
 import com.bee.services.party.IPartyService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +25,14 @@ public class AdminPartyController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index() {
-        ModelAndView mav = new ModelAndView("party/PartyList");
+        ModelAndView mav = new ModelAndView("market/PartyList");
         mav.addObject("PartyList", partyService.getPartyList());
         return mav;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView create() {
-        return new ModelAndView("party/PartyNew");
+        return new ModelAndView("market/PartyNew");
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -60,6 +60,13 @@ public final class Codes {
         public static final int StockError = 0x258;
         // 601 没有足够的积分
         public static final int IntegralNotEnough = 0x259;
+
+
+        public static final class PhoneCard {
+            // 602 手机卡已被兑换
+            public static final int PhoneCardIsUsed = 0x260;
+
+        }
     }
 
 }

@@ -1,5 +1,8 @@
 package com.bee.pojo.store;
 
+import com.bee.commons.Consts;
+import com.qsd.framework.commons.utils.DateUtil;
+
 import javax.persistence.*;
 
 /**
@@ -22,6 +25,33 @@ public class PhoneCard implements java.io.Serializable {
     private Integer status;
     // 创建时间
     private Long createTime;
+
+    @Transient
+    public String getOperatorStr() {
+        return Consts.GetOperatorSelect().get(operator);
+    }
+
+    @Transient
+    public String getStatusStr() {
+        String ret;
+        switch (status) {
+            case Consts.Goods.PhoneCard.Status.UnUse:
+                ret = "未兑换";
+                break;
+            case Consts.Goods.PhoneCard.Status.Used:
+                ret = "已兑换";
+                break;
+            default:
+                ret = "未知";
+        }
+        return ret;
+    }
+
+    @Transient
+    public String getCreateTimeStr() {
+        return DateUtil.formatDateTime(createTime);
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
