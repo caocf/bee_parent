@@ -7,7 +7,7 @@
     <groupId>com.bee</groupId>
     <artifactId>bee_parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.3.Final</version>
     <modules>
         <module>bee_core</module>
         <module>bee_web</module>

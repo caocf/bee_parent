@@ -25,42 +25,47 @@
         <i class="fa fa-angle-double-right"></i>  
         <span class="after">查看商家的详细信息</span>
       </div>
+      <div class="row query-inner">
+        <a href="${basePath}/admin/shop/${shop.sid}/edit" class="btn btn-primary icon-text" alt="修改">
+            <i class="fa fa-pencil font-color-white"></i>修改
+        </a>
+    </div>
       <form class="form-horizontal">	
       <div class="form-group info-title">基本信息</div>	
       <div class="form-group">
         <label class="col-xs-1 control-label">商家名称</label>
-        <div class="col-xs-4">${shop.name}</div>
-        <label class="col-xs-1 control-label">商家类型</label>
-        <div class="col-xs-4">${shop.typeStr}</div>
+        <div class="col-xs-4 assist-label">${shop.name}</div>
+        <label class="col-xs-2 control-label">商家类型</label>
+        <div class="col-xs-4 assist-label">${shop.typeStr}</div>
       </div>
       <div class="form-group">
-       <label class="col-xs-1 control-label">接单开始</label>
-       <div class="col-xs-4">${shop.startServiceTimeHour}:${shop.startServiceTimeMinute}</div> 
-       <label class="col-xs-2 control-label">接单结束</label> 
-        <div class="col-xs-4">${shop.endServiceTimeHour}:${shop.endServiceTimeMinute}</div>
+        <label class="col-xs-1 control-label">接单开始</label>
+        <div class="col-xs-4 assist-label">${shop.startServiceTimeHour}:${shop.startServiceTimeMinute}</div> 
+        <label class="col-xs-2 control-label">接单结束</label> 
+        <div class="col-xs-4 assist-label">${shop.endServiceTimeHour}:${shop.endServiceTimeMinute}</div>
       </div> 
       <div class="form-group">
         <label class="col-xs-1 control-label">排序</label>
-        <div class="col-xs-4">${shop.sort}</div>
+        <div class="col-xs-4 assist-label">${shop.sort}</div>
         <label class="col-xs-2 control-label">排序有效期</label>
-        <div class="col-xs-4">${shop.sortTimeStr}</div>
+        <div class="col-xs-4 assist-label">${shop.sortTimeStr}</div>
       </div>
       <div class="form-group info-title">商家图片</div>
       <div class="form-group">
         <div>
-          <img id="thumbnailImage" width="160px" height="160px" src="${basePath}/static/shop/shop_${shop.sid }/thumbnail_720.jpg" />
-          <img id="image" width="188px" height="115px" src="${basePath}/static/shop/shop_${shop.sid }/face_720.jpg" />
-          <img id="recommendImage" width="108px" height="150px" src="${basePath}/static/shop/shop_${shop.sid }/recommend_720.jpg"/>
+          <img id="thumbnailImage" width="160px" height="160px" src="${imagePath}/static/shop/shop_${shop.sid }/thumbnail_720.jpg" />
+          <img id="image" width="188px" height="115px" src="${imagePath}/static/shop/shop_${shop.sid }/face_720.jpg" />
+          <img id="recommendImage" width="108px" height="150px" src="${imagePath}/static/shop/shop_${shop.sid }/recommend_720.jpg"/>
         </div>
       </div>
       <div class="form-group info-title">地图选择</div>
       <div class="form-group">
         <label class="col-xs-1 control-label">所属地区</label>
-        <div class="col-xs-10">${shop.area.name}</div>
+        <div class="col-xs-10 assist-label">${shop.area.name}</div>
       </div>
       <div class="form-group">
         <label class="col-xs-1 control-label">商家地址</label>
-        <div class="col-xs-10">${shop.addr}</div>
+        <div class="col-xs-10 assist-label">${shop.addr}</div>
       </div>
     </form>
   	</div>

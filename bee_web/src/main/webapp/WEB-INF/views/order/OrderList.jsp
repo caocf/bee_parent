@@ -35,7 +35,6 @@
             <th>用户电话</th>
             <th>预约时间</th>
             <th>状态</th>
-            <th>操作</th>
         </tr>
         <c:forEach items="${result.data}" var="order">
             <tr>
@@ -47,13 +46,6 @@
                 <td>${order.orderPhone}</td>
                 <td>${order.execTimeStr}</td>
                 <td>${order.statusStr}</td>
-                <td>
-                  <c:if test="${order.status == 1}">
-                    <a href="#" class="icon" role="button" onclick="Order.doCheck(${order.oid});">
-                      <i class="fa fa-check-square-o fa-lg"></i>
-                    </a>
-                  </c:if>
-                </td>
             </tr>
         </c:forEach>
     </table>
@@ -85,7 +77,7 @@
 <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
 <script type="text/javascript">
-    Navbar.init("${params.pageType}");
+    Navbar.init("navbar-left-order", "${params.pageType}");
 </script>
 </body>
 </html>

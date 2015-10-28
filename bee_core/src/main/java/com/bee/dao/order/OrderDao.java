@@ -50,11 +50,6 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
             sb.append(" and A.createTime > ?");
             entity.setParam(request.getQueryTime());
         }
-        // 判断是否是实时监控
-        if(request.getStatus() != Consts.Order.Status.Query.Monitor) {
-            sb.append(SQL.Order.getOrderListByParamOrder);
-            entity.setPaging(request);
-        }
         entity.setEntity(sb.toString());
         return queryWithPaging(entity);
     }

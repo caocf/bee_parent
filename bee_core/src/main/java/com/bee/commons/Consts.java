@@ -8,12 +8,16 @@ import java.util.Map;
  */
 public final class Consts {
 
-    public static final boolean isDebug = false;
+    public static final boolean isDebug = true;
     private static final String LocalBaseUrl = "http://localhost:8080";
     private static final String RemoteBaseUrl = "http://139.196.27.231";
 
     public static String getBaseUrl() {
         return isDebug ? LocalBaseUrl : RemoteBaseUrl;
+    }
+
+    public static String GetRemoteImageUrl() {
+        return RemoteBaseUrl;
     }
 
     public static final int True = 0x1;
@@ -211,8 +215,6 @@ public final class Consts {
                 public static final int Ing = 2;
                 // 已完成订单
                 public static final int Finish = 3;
-                // 监控订单
-                public static final int Monitor = 10;
                 // 取消订单
                 public static final int Cancel = 5;
                 // 历史订单
@@ -227,9 +229,6 @@ public final class Consts {
                     switch(queryStatus) {
                         case Query.New:
                             query = " = " + Status.Create;
-                            break;
-                        case Query.Monitor:
-                            query = " <= " + Status.Underway;
                             break;
                         case Query.Ing:
                             query = " < " + Status.Finish;

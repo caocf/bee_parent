@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -60,7 +61,14 @@ public class UserStatService implements IUserStatService {
         /**
          * 查询时间，按照 粒度 * 时间粒度
          */
-        long queryTime = System.currentTimeMillis() - (time * number);
+        Calendar today = Calendar.getInstance();
+        // 时间+1，为了包含今天
+        today.add(Calendar.DAY_OF_MONTH, 1);
+        today.set(Calendar.HOUR_OF_DAY, 23);
+        today.set(Calendar.MINUTE, 59);
+        today.set(Calendar.SECOND, 59);
+        today.set(Calendar.MILLISECOND, 999);
+        long queryTime = today.getTimeInMillis() - (time * number); // 这里减1是为了包含今天
 
         // 组装参数
         QueryUserLoginStatParam param = new QueryUserLoginStatParam();
@@ -125,18 +133,23 @@ public class UserStatService implements IUserStatService {
         /**
          * 查询时间，按照 粒度 * 时间粒度
          */
-        long queryTime = System.currentTimeMillis() - (time * number);
+        Calendar today = Calendar.getInstance();
+        // 加1是为了包含今天
+        today.add(Calendar.DAY_OF_MONTH, 1);
+        today.set(Calendar.HOUR_OF_DAY, 23);
+        today.set(Calendar.MINUTE, 59);
+        today.set(Calendar.SECOND, 59);
+        today.set(Calendar.MILLISECOND, 999);
+        long queryTime = today.getTimeInMillis() - (time * number);
 
         // 组装参数
         QueryUserParam param = new QueryUserParam();
         param.setStartCreateTime(queryTime);
-        param.setSortSection("A.createTime ASC");
+        param.setSortSection("A.uid ASC");
 
         // 进行查询
         List<User> users = userDao.queryUserByParams(param);
 
-        // 获取集合是否为空
-        boolean isEmpty = users.isEmpty();
         // 统计时间
         long statTime = 0l;
 
@@ -155,7 +168,7 @@ public class UserStatService implements IUserStatService {
             /**
              * 如果集合不为空
              */
-            if (!isEmpty) {
+            if (!users.isEmpty()) {
                 /**
                  * 把统计结果放入集合
                  * 每统计一个，从集合中删除

@@ -68,7 +68,12 @@ public class AdminUserStatController {
         xAxis.setType("category");
         String[] xAxisDatas = new String[day];
         Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(System.currentTimeMillis() - (day * DateUtil.ONE_DAY_TIME));
+        cal.add(Calendar.DAY_OF_MONTH, 1);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        cal.setTimeInMillis(cal.getTimeInMillis() - (day * DateUtil.ONE_DAY_TIME));
         for (int i = 0; i < day; i++) {
             if (i != 0) {
                 cal.add(Calendar.DAY_OF_MONTH, 1);

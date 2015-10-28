@@ -18,6 +18,7 @@
     }
 
     String resPath = basePath;
+    String imagePath = Consts.GetRemoteImageUrl();
     request.setAttribute("basePath", basePath);
     request.setAttribute("resPath", resPath);
 %>

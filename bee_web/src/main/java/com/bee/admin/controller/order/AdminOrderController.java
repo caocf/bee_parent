@@ -40,22 +40,6 @@ public class AdminOrderController {
         return mav;
     }
 
-    @RequestMapping(value = "/monitor", method = RequestMethod.GET)
-    public ModelAndView monitor() {
-        return new ModelAndView("order/OrderMonitor");
-    }
-
-    /**
-     * 监控订单，查询订单
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/monitor", method = RequestMethod.POST)
-    public List<Order> monitor(AdminOrderListRequest request ) {
-        request.setStatus(Consts.Order.Status.Query.Monitor);
-        return orderService.getOrderListByParam(request).getData();
-    }
 
     /**
      * 取消订单

@@ -31,13 +31,13 @@ public class AdminOrderListRequest extends PagingRequest {
         String pageType = null;
         switch (getStatus()) {
             case Consts.Order.Status.Query.Ing:
-                pageType = "OrderIng";
+                pageType = "navbar-inner-order-ing";
                 break;
             case Consts.Order.Status.Query.Finish:
-                pageType = "OrderEnd";
+                pageType = "navbar-inner-order-end";
                 break;
             default:
-                pageType = "OrderIng";
+                pageType = "navbar-inner-order-cancel";
         }
         return pageType;
     }
