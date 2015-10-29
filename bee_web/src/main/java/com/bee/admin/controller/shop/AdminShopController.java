@@ -9,11 +9,13 @@ import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
+import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,6 +45,19 @@ public class AdminShopController {
         mav.addObject("params", req);
         return mav;
     }
+
+    /**
+     * 查询商家列表信息，ShopSelectDialog
+     *
+     * @param req
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/json", method = RequestMethod.GET)
+    public PagingResult<Shop> queryShopList(AdminShopListRequest req) {
+        return shopService.queryShopList(req);
+    }
+
 
     /**
      * 查看商家详细

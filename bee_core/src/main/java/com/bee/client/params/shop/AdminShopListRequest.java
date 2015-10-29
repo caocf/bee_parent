@@ -42,6 +42,6 @@ public class AdminShopListRequest extends PagingRequest {
 
     @Override
     public Integer getMaxRows() {
-        return 30;
+        return 15;
     }
 }

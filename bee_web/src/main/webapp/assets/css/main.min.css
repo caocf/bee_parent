@@ -8805,6 +8805,9 @@ form .form-group.info-title {
   color: #ffffff;
   padding: 5px 10px;
 }
+form .query_div {
+  margin-bottom: 10px;
+}
 .form-horizontal .control-label {
   padding-right: 15px;
 }

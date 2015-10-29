@@ -30,7 +30,7 @@
           <input type="hidden" name="indexPage" id="indexPage" value="${result.indexPage}" />
           <div class="form-group">
             <label>所属商家</label>
-            <input type="text" name="shopId" class="form-control input-sm" value="${params.shopId}" />
+            <input type="text" id="shopName" name="shopName" class="form-control input-sm" value="" />
           </div>
           <button type="submit" class="btn btn-primary btn-sm icon-text">
             <i class="fa fa-search"></i>查询
@@ -38,7 +38,6 @@
       </form>
     </div>
     <form:form id="delForm" method="delete"></form:form>
-    <c:if test="${result != null}">
     <table class="table table-hover">
         <tr>
             <th>主键</th>
@@ -53,7 +52,7 @@
             </td>
           </tr> 
         </c:if>
-        <c:forEach items="${result}" var="comments">
+        <c:forEach items="${result.data}" var="comments">
             <tr>
                 <td>${comments.scid}</td>
                 <td>${comments.content}</td>
@@ -67,12 +66,13 @@
         </c:forEach>
     </table>
     <div id="paging" class="row"></div>
-    </c:if>
 </div>
 <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
+<script type="text/javascript" src="${resPath}/assets/js/plugin/paging.js"></script>
+<script type="text/javascript" src="${resPath}/assets/js/plugin/area.js"></script>
 <script type="text/javascript">
     Navbar.init("navbar-left-shop", "navbar-inner-shop-comment");
     $("#paging").paging({
@@ -83,10 +83,16 @@
           document.forms["queryForm"].submit();
         }
     });
+    $("#shopName").click(function(event) {
+      ShopSelectDialog.show(function(id, name) {
+        $("#shopName").val(name);
+      });
+    });
     function deleteImage(id) {
         document.forms['delForm'].action = "${basePath}/admin/shop/${sid}/comment/" + id;
         document.forms['delForm'].submit();
     }
 </script>
+<%@ include file="../plugin/ShopSelectDialog.jsp" %>
 </body>
 </html>

@@ -28,10 +28,8 @@ public class AdminShopCommentController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(@PathVariable Long sid, AdminShopCommentRequest req) {
         ModelAndView mav = new ModelAndView("shop/ShopCommentList");
-        if (sid > 0) {
-            req.setShopId(sid);
-            mav.addObject("result", shopCommentService.queryShopComment(req));
-        }
+        req.setShopId(sid);
+        mav.addObject("result", shopCommentService.queryShopComment(req));
         mav.addObject("params", req);
         return mav;
     }
