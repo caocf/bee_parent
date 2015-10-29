@@ -1,5 +1,6 @@
 package com.bee.services.shop;
 
+import com.bee.admin.params.shop.AdminShopCommentRequest;
 import com.bee.client.params.shop.ShopCommentRequest;
 import com.bee.modal.ShopCommentListItem;
 import com.bee.pojo.shop.ShopComment;
@@ -27,5 +28,11 @@ public interface IShopCommentService {
      */
     public void save(ShopComment shopComment) throws DataRunException;
 
-
+    /**
+     *【A端】查询所属商家评论列表
+     *
+     * @param request
+     * @return
+     */
+    public PagingResult<ShopComment> queryShopComment(AdminShopCommentRequest request);
 }

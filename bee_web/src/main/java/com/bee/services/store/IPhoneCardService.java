@@ -40,4 +40,12 @@ public interface IPhoneCardService {
      */
     public PhoneCard getPhoneCardById(long pcId);
 
+    /**
+     * 【A端】删除一个手机充值卡
+     *
+     * @param pcId
+     * @throws DataRunException
+     */
+    public void deletePhoneCard(long goodsId, long pcId) throws DataRunException;
+
 }

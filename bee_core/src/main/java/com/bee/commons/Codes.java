@@ -65,7 +65,8 @@ public final class Codes {
         public static final class PhoneCard {
             // 602 手机卡已被兑换
             public static final int PhoneCardIsUsed = 0x260;
-
+            // 603 已经没有库存
+            public static final int NumberEnough = 0x261;
         }
     }
 

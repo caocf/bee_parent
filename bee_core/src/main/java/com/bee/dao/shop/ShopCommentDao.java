@@ -1,5 +1,6 @@
 package com.bee.dao.shop;
 
+import com.bee.admin.params.shop.AdminShopCommentRequest;
 import com.bee.client.params.shop.ShopCommentRequest;
 import com.bee.commons.ImageFactory;
 import com.bee.commons.SQL;
@@ -9,6 +10,8 @@ import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
+import com.qsd.framework.hibernate.bean.DataEntity;
+import com.qsd.framework.hibernate.bean.HQLEntity;
 import com.qsd.framework.hibernate.bean.SQLEntity;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
@@ -45,6 +48,25 @@ public class ShopCommentDao extends JpaDaoSupport<ShopComment, Long> {
             }
         });
         return queryWithPagingConver(entity);
+    }
+
+
+    /**
+     *
+     * @param request
+     * @return
+     */
+    public PagingResult<ShopComment> queryShopComment(AdminShopCommentRequest request) {
+        DataEntity entity = new HQLEntity();
+        StringBuffer sb = new StringBuffer(SQL.Shop.Comment.QueryShopComment);
+        if (request.getShopId() != null && request.getShopId() > 0) {
+            sb.append(" and A.shop.sid = ?");
+            entity.setParam(request.getShopId());
+        }
+        entity.setPaging(request);
+        sb.append(SQL.Shop.Comment.QueryShopCommentOrderBy);
+        entity.setEntity(sb);
+        return queryWithPaging(entity);
     }
 
 }

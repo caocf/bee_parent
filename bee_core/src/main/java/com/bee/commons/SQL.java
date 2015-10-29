@@ -149,6 +149,11 @@ public final class SQL {
                     "LEFT OUTER JOIN TB_USER B " +
                     "ON A.USER = B.UID " +
                     "WHERE A.SHOP = ? ORDER BY A.CREATETIME DESC";
+
+            public static final String QueryShopComment = "From ShopComment A " +
+                    "left join fetch A.user B " +
+                    "where 1=1";
+            public static final String QueryShopCommentOrderBy = " ORDER BY A.scid DESC";
         }
 
         public static final class Reply {

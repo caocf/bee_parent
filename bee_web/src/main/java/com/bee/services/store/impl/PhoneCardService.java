@@ -85,4 +85,32 @@ public class PhoneCardService implements IPhoneCardService {
     public PhoneCard getPhoneCardById(long pcId) {
         return phoneCardDao.findById(pcId);
     }
+
+    /**
+     * 【A端】删除一个手机充值卡
+     *
+     * @param goodsId 所属商品ID
+     * @param pcId
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void deletePhoneCard(long goodsId, long pcId) throws DataRunException {
+        try {
+            PhoneCard phoneCard = phoneCardDao.findById(pcId);
+            goodsId = phoneCard.getOperator();
+            phoneCardDao.delete(phoneCard);
+            // 如果这张充值卡未使用则减去库存
+            if (phoneCard.getStatus() == Consts.Goods.PhoneCard.Status.UnUse) {
+                Goods goods = goodsDao.findById(goodsId);
+                if (goods.getNumber() <= 0) {
+                    throw new DataRunException(Codes.Store.PhoneCard.NumberEnough);
+                }
+                goods.setNumber(goods.getNumber() - 1);
+                goodsDao.update(goods);
+            }
+        } catch (DataRunException e) {
+            throw e;
+        }
+    }
 }

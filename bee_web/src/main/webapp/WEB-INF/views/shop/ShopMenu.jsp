@@ -9,4 +9,7 @@
 	<a id="navbar-inner-shop-new" href="${basePath}/admin/shop/new">
 		<i class="fa fa-plus"></i>增加商户
 	</a>
+	<a id="navbar-inner-shop-comment" href="${basePath}/admin/shop/0/comment">
+		<i class="fa fa-commenting-o"></i>商家评论
+	</a>
 </div>

@@ -1,5 +1,6 @@
 package com.bee.services.shop.impl;
 
+import com.bee.admin.params.shop.AdminShopCommentRequest;
 import com.bee.client.params.shop.ShopCommentRequest;
 import com.bee.commons.Consts;
 import com.bee.commons.IntegralMachine;
@@ -31,6 +32,11 @@ public class ShopCommentService implements IShopCommentService {
     @Autowired
     private UserDao userDao;
 
+    /**
+     *
+     * @param request
+     * @return
+     */
     @Override
     public PagingResult<ShopCommentListItem> queryAppShopComment(ShopCommentRequest request) {
         return shopCommentDao.queryAppShopComment(request);
@@ -71,5 +77,17 @@ public class ShopCommentService implements IShopCommentService {
         // 保存评论
         shopComment.setCreateTime(System.currentTimeMillis());
         shopCommentDao.save(shopComment);
+    }
+
+
+    /**
+     *【A端】查询所属商家评论列表
+     *
+     * @param request
+     * @return
+     */
+    @Override
+    public PagingResult<ShopComment> queryShopComment(AdminShopCommentRequest request) {
+        return shopCommentDao.queryShopComment(request);
     }
 }

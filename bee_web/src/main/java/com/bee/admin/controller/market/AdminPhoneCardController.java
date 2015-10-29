@@ -100,4 +100,24 @@ public class AdminPhoneCardController {
         }
     }
 
+    /**
+     *
+     * @param pcId
+     * @return
+     */
+    @RequestMapping(value = "/{pcId}", method = RequestMethod.DELETE)
+    public ModelAndView delete(@PathVariable Long pcId) {
+        try {
+            phoneCardService.deletePhoneCard(0, pcId);
+            return index(new PhoneCardRequest());
+        } catch (DataRunException e) {
+            String errorMsg = "保存失败";
+            if (e.getErrorCode() == Codes.Store.PhoneCard.NumberEnough) {
+                errorMsg = "已经没有足够的库存";
+            }
+            return index(new PhoneCardRequest()).addObject("msg", errorMsg);
+        }
+
+    }
+
 }

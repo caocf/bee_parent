@@ -26,7 +26,7 @@
   			<span class="after">查看和管理手机充值卡</span>
       </div>
       <div class="row query-inner">
-        <form id="queryForm" class="form-inline" action="${basePath}/admin/store/${goodsId}/phone" method="get">
+        <form id="queryForm" class="form-inline" action="${basePath}/admin/store/0/phone" method="get">
           <input type="hidden" name="indexPage" id="indexPage" value="${result.indexPage}" />
         </form>
         <a href="${basePath}/admin/store/0/phone/new" class="btn btn-primary icon-text">
@@ -55,7 +55,7 @@
                   <i class="fa fa-pencil font-color-base fa-lg"></i>
                 </a>
               </c:if>
-              <a href="#" class="icon">
+              <a href="#" class="icon" onclick="confirmDelete(${phone.pcId})">
                 <i class="fa fa-trash font-color-red fa-lg"></i>
               </a>
             </td>
@@ -64,6 +64,28 @@
       </table>
       <div id="paging" class="row"></div>
   	</div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="deleteModalLabel">提示确认</h4>
+                </div>
+                <div class="modal-body">
+                    确定删除该手机充值卡？
+                </div>
+                <div class="modal-footer">
+                    <form:form id="delForm" method="delete"></form:form>
+                    <button type="button" class="btn btn-success icon-text" data-dismiss="modal" onclick="deletePhoneCard();">
+                        <i class="fa fa-check"></i>确定
+                    </button>
+                    <button type="button" class="btn btn-danger icon-text" data-dismiss="modal">
+                        <i class="fa fa-times"></i>取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
   	<script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
@@ -79,6 +101,13 @@
           document.forms["queryForm"].submit();
         }
       });
+        function confirmDelete(pcId) {
+            document.forms["delForm"].action = "${basePath}/admin/store/0/phone/" + pcId;
+            $("#deleteModal").modal('show');
+        }
+        function deletePhoneCard() {
+            document.forms["delForm"].submit();
+        }
   	</script>
   </body>
   </html>
