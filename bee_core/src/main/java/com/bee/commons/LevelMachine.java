@@ -17,6 +17,11 @@ public class LevelMachine {
      */
     public static final int OrderComment = 200;
 
+    /**
+     * 评论经验
+     */
+    public static final int Comment = 10;
+
 
     public static final int Exp1 = 1000;
     public static final int Exp2 = 6000;

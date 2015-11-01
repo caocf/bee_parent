@@ -1,6 +1,5 @@
 package com.bee.admin.controller;
 
-import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;

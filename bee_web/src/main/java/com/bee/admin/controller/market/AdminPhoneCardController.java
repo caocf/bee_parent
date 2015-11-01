@@ -5,6 +5,7 @@ import com.bee.commons.Codes;
 import com.bee.pojo.store.PhoneCard;
 import com.bee.services.store.IPhoneCardService;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * Created by suntongwei on 15/10/28.
  */
+@Auth
 @Controller
 @RequestMapping("/admin/store/{goodsId}/phone")
 public class AdminPhoneCardController {

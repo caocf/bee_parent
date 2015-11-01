@@ -6,6 +6,7 @@ import com.bee.commons.Consts;
 import com.bee.pojo.order.Order;
 import com.bee.services.order.IOrderService;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.security.annotation.Auth;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import java.util.List;
 /**
  * Created by suntongwei on 15/4/24.
  */
+@Auth
 @Controller
 @RequestMapping(value = "/admin/order")
 public class AdminOrderController {

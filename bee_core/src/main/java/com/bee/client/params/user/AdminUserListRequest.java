@@ -12,12 +12,19 @@ public class AdminUserListRequest extends PagingRequest {
     private static final long serialVersionUID = -3173318421242792847L;
 
     private Integer type;
+    private String userName;
 
     public Integer getType() {
         return type;
     }
     public void setType(Integer type) {
         this.type = type;
+    }
+    public String getUserName() {
+        return userName;
+    }
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPageType() {
@@ -43,6 +50,6 @@ public class AdminUserListRequest extends PagingRequest {
 
     @Override
     public Integer getMaxRows() {
-        return 20;
+        return 15;
     }
 }

@@ -19,12 +19,14 @@
 			}
 			$("#shopSelectDialog").modal('show');
 		}, 
-		query: function() {
-			$.getJSON(BasePath + "/admin/shop/json", {
+		query: function(index) {
+			$.getJSON(BasePath + "admin/shop/json", {
 				name: $("#shopSelectDialogName").val(),
 				type: $("#shopSelectDialogType").val(),
-				areaId: $("#shopSelectDialogAreaId").val()
+				areaId: $("#shopSelectDialogAreaId").val(),
+				indexPage: index
 			}, function(data) {
+				$("#shopSelectDialogTable tr:gt(0)").remove();
 				for (var i = 0; i < data.data.length; i++) {
 					var $tr = $(document.createElement("tr"));
 					var $a = $(document.createElement("a"));
@@ -42,6 +44,13 @@
 					$tr.append($(document.createElement("td")).html(data.data[i].area.name));
 					$("#shopSelectDialogTable").append($tr);
 				}	
+				$("#shopSelectDialogPaging").paging({
+	        index: data.indexPage,
+	        total: data.totalPage,
+	        fn : function(r) {
+	          ShopSelectDialog.query(r);
+	        }
+	      });
 			});
 		}
 	};
@@ -76,7 +85,7 @@
 			              </c:forEach>
 			            </select>
 			          </div>
-			          <button type="button" class="btn btn-primary btn-sm icon-text" onclick="ShopSelectDialog.query()">
+			          <button type="button" class="btn btn-primary btn-sm icon-text" onclick="ShopSelectDialog.query(1)">
 			            <i class="fa fa-search"></i>查询
 			          </button>
 		        </div>
@@ -94,6 +103,7 @@
 		        	</table>
 		        </div>
           </div>
+          <div id="shopSelectDialogPaging" class="row"></div>
         </div>
       </div>
     </div>

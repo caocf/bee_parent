@@ -2,6 +2,7 @@ package com.bee.busi.controller.shop;
 
 import com.bee.busi.params.shop.ShopImageSaveResponse;
 import com.bee.commons.Codes;
+import com.bee.commons.Consts;
 import com.bee.modal.ShopImageListItem;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopImage;
@@ -66,9 +67,10 @@ public class BusiShopImageController {
     public ShopImageSaveResponse saveShopImage(@PathVariable Long sid, ShopImage shopImage, MultipartHttpServletRequest req) {
         ShopImageSaveResponse res = new ShopImageSaveResponse();
         try {
-            // 判断商户图片数量,目前最多上传10张图片
+            // 判断商户图片数量,目前最多上传30张图片
+            // 2015.11.1 增加图片上线数量到30张
             List<ShopImage> shopImageList = shopImageService.queryShopImageByShopId(sid);
-            if (shopImageList != null && shopImageList.size() >= 10) {
+            if (shopImageList != null && shopImageList.size() >= Consts.Shop.Image.MaxUploadImageSize) {
                 res.setCode(Codes.Shop.ShopImageSizeOut);
                 res.setMsg("图片数量已达上限");
                 return res;

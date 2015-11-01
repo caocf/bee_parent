@@ -47,7 +47,7 @@
         <c:forEach items="${result.data}" var="user">
           <tr>
             <td>${user.uid}</td>
-            <td>${user.phone}</td>
+            <td>${user.phone}<c:if test="${user.phone == '00000000000'}"> <span class="font-color-red">(测试帐号)</span></c:if></td>
             <td>${user.name}</td>
             <td>${user.level}</td>
             <td>${user.integral}</td>

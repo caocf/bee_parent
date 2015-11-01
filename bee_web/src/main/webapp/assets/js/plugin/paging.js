@@ -5,6 +5,7 @@
    * $("#paging").paging({
 			index : 1,
 			totel : 1,
+			count : 0,
 			fn : function() {
 				...
 			}
@@ -24,6 +25,7 @@
 	 	var settings = {
 			index : 0,
 			total : 0,
+			count : 0,
 			fn    : function(index) {}
 		};
 
@@ -111,6 +113,13 @@
 		var $span = $(document.createElement("span"));
 		$span.html("共" + settings.total + "页");
 		$(this).append($span);
+
+		if (settings.count > 0) {
+			var $countSpan = $(document.createElement("span"));
+			$countSpan.html("总数：" + settings.count);
+			$(this).append($countSpan);
+		}
+		
 	};
 
 

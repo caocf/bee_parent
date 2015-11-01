@@ -23,26 +23,31 @@
     <div class="row title">
         <span class="before">商家评论列表</span>
         <i class="fa fa-angle-double-right"></i>
-        <span class="after">${shopName}</span>
+        <span class="after">管理商家的评论</span>
     </div>
     <div class="row query-inner">
-      <form id="queryForm" class="form-inline" action="${basePath}/admin/shop/${shopId}/comment" method="get">
+      <form id="queryForm" class="form-inline" action="${basePath}/admin/shop/${params.shopId}/comment" method="get">
           <input type="hidden" name="indexPage" id="indexPage" value="${result.indexPage}" />
           <div class="form-group">
             <label>所属商家</label>
-            <input type="text" id="shopName" name="shopName" class="form-control input-sm" value="" />
+            <input type="text" id="shopName" name="shopName" class="form-control input-sm" value="${params.shopName}" />
           </div>
           <button type="submit" class="btn btn-primary btn-sm icon-text">
             <i class="fa fa-search"></i>查询
           </button>
+          <button id="shopCommentNew" type="button" class="btn btn-success btn-sm icon-text" onclick="addComment()">
+            <i class="fa fa-plus"></i>增加
+          </button>
       </form>
     </div>
     <form:form id="delForm" method="delete"></form:form>
+    <c:if test="${params.shopId > 0}">
     <table class="table table-hover">
         <tr>
             <th>主键</th>
             <th>评论内容</th>
             <th>用户</th>
+            <th>评论时间</th>
             <th>操作</th>
         </tr>
         <c:if test="${result.totalData < 1}">
@@ -57,6 +62,7 @@
                 <td>${comments.scid}</td>
                 <td>${comments.content}</td>
                 <td>${comments.user.name}</td>
+                <td>${comments.createTimeStr}</td>
                 <td>
                     <a href="#" class="icon" role="button" onclick="deleteImage(${comments.scid})">
                         <i class="fa fa-trash font-color-red fa-lg"></i>
@@ -66,6 +72,7 @@
         </c:forEach>
     </table>
     <div id="paging" class="row"></div>
+    </c:if>
 </div>
 <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
@@ -86,11 +93,15 @@
     $("#shopName").click(function(event) {
       ShopSelectDialog.show(function(id, name) {
         $("#shopName").val(name);
+        document.forms["queryForm"].action = BasePath + "admin/shop/" + id + "/comment";
       });
     });
-    function deleteImage(id) {
-        document.forms['delForm'].action = "${basePath}/admin/shop/${sid}/comment/" + id;
-        document.forms['delForm'].submit();
+    function deleteComment(id) {
+      document.forms['delForm'].action = "${basePath}/admin/shop/${sid}/comment/" + id;
+      document.forms['delForm'].submit();
+    }
+    function addComment() {
+      window.location.href = BasePath + "admin/shop/0/comment/new";
     }
 </script>
 <%@ include file="../plugin/ShopSelectDialog.jsp" %>

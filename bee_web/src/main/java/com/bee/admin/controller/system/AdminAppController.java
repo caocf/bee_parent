@@ -4,6 +4,7 @@ import com.bee.commons.Consts;
 import com.bee.pojo.AppVer;
 import com.bee.services.system.IAppVerService;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import java.io.IOException;
 /**
  * Created by suntongwei on 15/5/4.
  */
+@Auth
 @Controller
 @RequestMapping("/admin/app")
 public class AdminAppController {

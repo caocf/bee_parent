@@ -3,6 +3,7 @@ package com.bee.admin.controller.market;
 import com.bee.pojo.market.Ad;
 import com.bee.services.market.IAdService;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by suntongwei on 15/5/4.
  */
+@Auth
 @Controller
 @RequestMapping("/admin/ad")
 public class AdminAdController {

@@ -128,6 +128,7 @@
       $("#paging").paging({
         index: ${result.indexPage},
         total: ${result.totalPage},
+        count: ${result.totalData},
         fn : function(r) {
           $("#indexPage").val(r);
           document.forms["queryForm"].submit();

@@ -55,6 +55,9 @@ public class UserDao extends JpaDaoSupport<User, Long> {
             sb.append(" and A.type = ?");
             entity.setParams(req.getType());
         }
+        if (!StringUtil.isNull(req.getUserName())) {
+            sb.append(" and A.name like %" + req.getUserName() + "%");
+        }
         sb.append(SQL.User.queryUserListByParamsSort);
         entity.setEntity(sb.toString());
         entity.setPaging(req);

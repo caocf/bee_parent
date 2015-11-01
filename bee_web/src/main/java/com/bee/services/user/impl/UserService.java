@@ -177,10 +177,6 @@ public class UserService implements IUserService {
         UserCacheFactory.getInstance().put(user);
     }
 
-
-
-
-
     /**
      *
      * @param req

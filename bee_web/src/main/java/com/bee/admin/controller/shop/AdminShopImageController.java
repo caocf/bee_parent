@@ -4,6 +4,7 @@ import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopImage;
 import com.bee.services.shop.IShopImageService;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.security.annotation.Auth;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import java.util.List;
 /**
  * Created by suntongwei on 15/4/23.
  */
+@Auth
 @Controller
 @RequestMapping("/admin/shop/{sid}/image")
 public class AdminShopImageController {

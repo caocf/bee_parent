@@ -12,6 +12,8 @@ public class AdminShopCommentRequest extends PagingRequest {
 
     // 所属商家ID（必须），不支持查询所有评论
     private Long shopId;
+    // 商家名，仅限前台使用
+    private String shopName;
 
 
     public Long getShopId() {
@@ -20,7 +22,12 @@ public class AdminShopCommentRequest extends PagingRequest {
     public void setShopId(Long shopId) {
         this.shopId = shopId;
     }
-
+    public String getShopName() {
+        return shopName;
+    }
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
 
     @Override
     public Integer getMaxRows() {

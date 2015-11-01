@@ -3,6 +3,7 @@ package com.bee.admin.controller.stat;
 import com.bee.admin.params.charts.*;
 import com.bee.services.stat.IUserStatService;
 import com.qsd.framework.commons.utils.DateUtil;
+import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import java.util.Calendar;
 /**
  * Created by suntongwei on 15/5/7.
  */
+@Auth
 @Controller
 @RequestMapping("/admin/stat/user")
 public class AdminUserStatController {

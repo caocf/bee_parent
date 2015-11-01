@@ -3,6 +3,7 @@ package com.bee.admin.controller.party;
 import com.bee.client.params.party.AdminPartyRequest;
 import com.bee.services.party.IPartyService;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by suntongwei on 15/4/27.
  */
+@Auth
 @Controller
 @RequestMapping("/admin/party")
 public class AdminPartyController {

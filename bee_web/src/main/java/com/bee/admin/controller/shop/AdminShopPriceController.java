@@ -5,6 +5,7 @@ import com.bee.pojo.shop.ShopPrice;
 import com.bee.services.shop.IShopPriceService;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.security.annotation.Auth;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by suntongwei on 15/4/21.
  */
 @Deprecated
+@Auth
 @Controller
 @RequestMapping("/admin/shop/{sid}/price")
 public class AdminShopPriceController {

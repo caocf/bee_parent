@@ -66,6 +66,15 @@ public final class Consts {
             public static final int VipUser = 0x2;
             public static final int PinkUser = 0x3;
             public static final int BusiUser = 0x10;
+
+            public static final Map<Integer, String> Select() {
+                Map<Integer, String> ret = new HashMap<>();
+                ret.put(Type.AppUser, "普通用户");
+                ret.put(Type.BusiUser, "商家用户");
+                ret.put(Type.VipUser, "VIP用户");
+                ret.put(Type.AdminUser, "管理员");
+                return ret;
+            }
         }
     }
 
@@ -119,6 +128,14 @@ public final class Consts {
             public static final int Big = 0;
             // 相册图
             public static final int Photo = 2;
+        }
+
+        public static final class Image {
+
+            public static final String ShowImageNumberForAppShop = " limit 15";
+
+            public static final int MaxUploadImageSize = 30;
+
         }
     }
 
@@ -269,6 +286,7 @@ public final class Consts {
      * 发现
      */
     public static final class Find {
+
         public static final class Type {
             // 未知
             public static final int Unknow = 0x0;

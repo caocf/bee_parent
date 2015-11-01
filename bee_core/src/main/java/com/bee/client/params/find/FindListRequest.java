@@ -11,6 +11,6 @@ public class FindListRequest extends PagingRequest {
 
     @Override
     public Integer getMaxRows() {
-        return 12;
+        return 15;
     }
 }

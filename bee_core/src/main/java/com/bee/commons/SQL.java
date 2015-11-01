@@ -300,7 +300,7 @@ public final class SQL {
                 "WHERE A.OID = ? ORDER BY A.EXECTIME DESC";
 
         public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
-                "left join fetch A.user C left join fetch B.area D where 1=1 ";
+                "left join fetch A.user C left join fetch B.area D left join fetch A.shopUser E where 1=1 ";
         public static final String getOrderListByParamOrder = " order by A.createTime desc";
 
         /**

@@ -25,12 +25,21 @@
         <i class="fa fa-angle-double-right"></i>
         <span class="after">订单管理列表</span>
     </div>
+    <div class="row query-inner">
+      <form id="queryForm" class="form-inline" action="${basePath}/admin/order" method="get">
+        <input type="hidden" name="status" value="<%=Consts.Order.Status.Query.Ing %>" />
+        <button type="submit" class="btn btn-primary btn-sm icon-text">
+            <i class="fa fa-refresh"></i>刷新
+          </button>
+      </form>
+    </div>
     <table class="table table-hover">
         <tr>
             <th>订单编号</th>
             <th>类型</th>
-            <th>预约人</th>
             <th>预约商家</th>
+            <th>商家电话</th>
+            <th>预约人</th>
             <th>预约人数</th>
             <th>用户电话</th>
             <th>预约时间</th>
@@ -40,8 +49,9 @@
             <tr>
                 <td>${order.no}</td>
                 <td>${order.shop.typeStr}</td>
-                <td>${order.orderName}</td>
                 <td>${order.shop.name}</td>
+                <td>${order.shopUser.phone}</td>
+                <td>${order.orderName}</td>
                 <td>${order.num}人</td>
                 <td>${order.orderPhone}</td>
                 <td>${order.execTimeStr}</td>
