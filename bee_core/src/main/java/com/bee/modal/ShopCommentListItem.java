@@ -1,7 +1,5 @@
 package com.bee.modal;
 
-import com.bee.commons.ImageFactory;
-
 /**
  * Created by suntongwei on 15/6/8.
  */

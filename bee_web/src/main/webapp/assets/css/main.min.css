@@ -8623,6 +8623,9 @@ hr {
 .margin-left-5 {
   margin-left: 5px;
 }
+.badge.red {
+  background-color: #e37360;
+}
 a.icon,
 button.icon {
   margin-left: 2px;

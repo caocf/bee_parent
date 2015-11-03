@@ -213,6 +213,9 @@ public class ShopService implements IShopService {
 
             // 保存商家其他信息
             if (shop != null) {
+                if (null == shop.getRecommend()) {
+                    shop.setRecommend(Consts.False);
+                }
                 shopDao.update(shop);
             }
 

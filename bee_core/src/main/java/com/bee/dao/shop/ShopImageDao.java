@@ -1,6 +1,5 @@
 package com.bee.dao.shop;
 
-import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.modal.ShopImageListItem;
 import com.bee.pojo.shop.ShopImage;
@@ -40,13 +39,13 @@ public class ShopImageDao extends JpaDaoSupport<ShopImage, Long> {
 
     /**
      * 查询商家图片 To Find
-     * 最多只显示15张
+     * 最多只显示9张
      *
      * @param sid
      * @return
      */
     public List<ShopImageListItem> queryFindShopImage(long sid) {
-        return findConverByParams(SQL.Shop.Image.queryAppShopImage + Consts.Shop.Image.ShowImageNumberForAppShop,
+        return findConverByParams(SQL.Shop.Image.queryAppShopImage + " limit 9",
                 new QueryDataConver<ShopImageListItem>() {
             @Override
             public ShopImageListItem converData(Object[] objects) {

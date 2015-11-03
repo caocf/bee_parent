@@ -7,7 +7,7 @@
 	</a>
 	<a id="navbar-left-order" href="${basePath}/admin/order?status=<%=Consts.Order.Status.Query.Ing %>">
 		<i class="fa fa-file-text-o fa-lg"></i>
-		<span>订单</span>
+		<span>订单</span><label id="orderNewNum" class="badge red"></label>
 	</a>
 	<a id="navbar-left-shop" href="${basePath}/admin/shop">
 		<i class="fa fa-desktop fa-lg"></i>

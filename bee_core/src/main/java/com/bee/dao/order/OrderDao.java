@@ -50,6 +50,9 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
             sb.append(" and A.createTime > ?");
             entity.setParam(request.getQueryTime());
         }
+        if (request.getIndexPage() > 0) {
+            entity.setPaging(request);
+        }
         entity.setEntity(sb.toString());
         return queryWithPaging(entity);
     }

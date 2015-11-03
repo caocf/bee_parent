@@ -27,6 +27,7 @@
     </div>
     <div class="row query-inner">
       <form id="queryForm" class="form-inline" action="${basePath}/admin/order" method="get">
+        <input type="hidden" id="statusType" value="${params.pageType}" />
         <input type="hidden" name="status" value="<%=Consts.Order.Status.Query.Ing %>" />
         <button type="submit" class="btn btn-primary btn-sm icon-text">
             <i class="fa fa-refresh"></i>刷新
@@ -88,6 +89,11 @@
 <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
 <script type="text/javascript">
     Navbar.init("navbar-left-order", "${params.pageType}");
+    if ("${params.pageType}" == "navbar-inner-order-ing") {
+      Order.Monitor.stop();
+      Order.Monitor.resetQueryOrderTime();
+      Order.Monitor.setOrderNewNum(0);
+    }
 </script>
 </body>
 </html>

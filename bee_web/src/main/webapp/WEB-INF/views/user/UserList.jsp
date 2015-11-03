@@ -25,7 +25,10 @@
         <i class="fa fa-angle-double-right"></i>  
         <span class="after">管理用户信息列表</span>
       </div>
-      <input type="hidden" id="indexPage" name="indexPage" value="${result.indexPage}" />
+      <form id="queryForm" class="form-inline" action="${basePath}/admin/user" method="get">
+        <input type="hidden" name="type" value="${params.type}" />
+        <input type="hidden" id="indexPage" name="indexPage" value="${result.indexPage}" />
+      </form>
       <table class="table table-hover">
         <tr>
           <th>主键</th>

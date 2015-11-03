@@ -1,5 +1,7 @@
 package com.bee.admin.controller.shop;
 
+import com.bee.commons.Codes;
+import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopImage;
 import com.bee.services.shop.IShopImageService;
@@ -62,6 +64,10 @@ public class AdminShopImageController {
     public ModelAndView save(@PathVariable Long sid, ShopImage shopImage, HttpServletRequest req,
                              @RequestParam(value = "file", required = false) MultipartFile file) {
         try {
+            List<ShopImage> shopImageList = shopImageService.queryShopImageByShopId(sid);
+            if (shopImageList != null && shopImageList.size() >= Consts.Shop.Image.MaxUploadImageSize) {
+                return create(sid).addObject("msg", "图片数量已达上限");
+            }
             shopImage.setShop(new Shop(sid));
             shopImageService.addShopImage(req, file, shopImage);
             return index(sid);
