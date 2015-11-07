@@ -28,7 +28,6 @@ public class AdviceController {
             res.setCode(Codes.Success);
         } catch(DataRunException e) {
             res.setCode(Codes.Error);
-            e.printStackTrace();
         }
         return res;
     }

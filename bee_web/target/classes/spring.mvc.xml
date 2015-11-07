@@ -20,9 +20,18 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+    <!-- Spring MVC 拦截器 -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <bean class="com.bee.interceptors.WebSpeedInterceptor" />
+                <bean class="com.qsd.framework.security.mvc.SecurityInterceptor" />
+            </list>
+        </property>
+    </bean>
+
     <!-- JSON提交和返回自动封装 -->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />  
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">  
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 	    <property name="messageConverters">  
 	        <list>  
 	            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -38,18 +47,7 @@
 	    </property>  
 	</bean> 
 
-	<!-- Spring MVC 拦截器 -->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
-		<property name="interceptors">
-			<list>
-                <bean class="com.bee.interceptors.WebSpeedInterceptor" />
-				<bean class="com.qsd.framework.security.mvc.SecurityInterceptor" />
-			</list>
-		</property>
-	</bean>
-
-	<!-- Spring MVC 拦截器 <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/club/**"/> 
+	<!-- Spring MVC 拦截器 <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/club/**"/>
 		<bean class="com.qsd.club.web.interceptor.ClubInterceptor" /> </mvc:interceptor> 
 		</mvc:interceptors> -->
 

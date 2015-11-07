@@ -8,6 +8,7 @@ import com.bee.commons.Consts;
 import com.bee.modal.OrderListItem;
 import com.bee.pojo.order.Order;
 import com.bee.services.order.IOrderService;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import com.qsd.framework.spring.PagingResult;
@@ -62,6 +63,13 @@ public class OrderController {
     @RequestMapping(method = RequestMethod.POST)
     public OrderCreateResponse create(Order order) {
         OrderCreateResponse res = new OrderCreateResponse();
+        // 对参数进行校验
+        if (StringUtil.checkIllegalChar(order.getRemark(),
+                order.getOrderName(), order.getOrderPhone(), order.getDevice())) {
+            res.setCode(Codes.Error);
+            res.setMsg("输入内容包含非法字符");
+            return res;
+        }
         try {
             orderService.createOrder(order);
             res.setOrder(order);
@@ -72,29 +80,6 @@ public class OrderController {
         }
         return res;
     }
-
-
-
-    /**
-     * 创建订单
-     *
-     * 2015.8.20删除该接口
-     *
-     * @param request
-     */
-//    @Deprecated
-//    @RequestMapping(method = RequestMethod.POST)
-//    public BaseResponse create(OrderCreateRequest request) {
-//        BaseResponse res = new BaseResponse();
-//        try {
-//            orderService.createOrder(request);
-//            res.setCode(Codes.Success);
-//        } catch (DataRunException e) {
-//            res.setCode(Codes.Order.CreateError);
-//            res.setMsg("创建失败，请重试");
-//        }
-//        return res;
-//    }
 
     /**
      * 取消订单
