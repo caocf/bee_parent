@@ -626,7 +626,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.lastSelected" value="preferences.keymap" />
+    <property name="options.lastSelected" value="settings.github" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/bee_admin/src/main/webapp/WEB-INF" />
@@ -1268,12 +1268,12 @@
       <workItem from="1446111437090" duration="35238000" />
       <workItem from="1446722116347" duration="65000" />
       <workItem from="1446722422621" duration="3507000" />
-      <workItem from="1446797487825" duration="27541000" />
+      <workItem from="1446797487825" duration="27696000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="765893000" />
+    <option name="totallyTimeSpent" value="766048000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
