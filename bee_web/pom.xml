@@ -3,12 +3,13 @@
     <parent>
         <artifactId>bee_parent</artifactId>
         <groupId>com.bee</groupId>
-        <version>1.0.3.Final</version>
+        <version>1.1.0.Final</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>bee_web</artifactId>
     <packaging>pom</packaging>
-    <name>bee_web</name>
+    <name>${project.artifactId}</name>
+    <version>${bee.web.version}</version>
     <url></url>
 
     <properties>
@@ -17,7 +18,10 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bee_core</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.qsd</groupId>
             <artifactId>qsd_framework_commons</artifactId>

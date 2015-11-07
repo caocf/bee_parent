@@ -20,18 +20,20 @@ public class UserRegStatDao extends JpaDaoSupport<UserRegStat, Long> {
      *
      * @return
      */
+    @Deprecated
     public List<UserRegStat> statDayRegStat() {
-        return findConverByParams(SQL.Stat.User.statUserRegStat, new QueryDataConver<UserRegStat>() {
-            @Override
-            public UserRegStat converData(Object[] obj) {
-                UserRegStat item = new UserRegStat();
-                item.setYear(NumberUtil.parseInteger(obj[0],0));
-                item.setMonth(NumberUtil.parseInteger(obj[1],0));
-                item.setDay(NumberUtil.parseInteger(obj[2],0));
-                item.setNum(NumberUtil.parseInteger(obj[3],0));
-                return item;
-            }
-        });
+//        return findConverByParams(SQL.Stat.User.statUserRegStat, new QueryDataConver<UserRegStat>() {
+//            @Override
+//            public UserRegStat converData(Object[] obj) {
+//                UserRegStat item = new UserRegStat();
+//                item.setYear(NumberUtil.parseInteger(obj[0],0));
+//                item.setMonth(NumberUtil.parseInteger(obj[1],0));
+//                item.setDay(NumberUtil.parseInteger(obj[2],0));
+//                item.setNum(NumberUtil.parseInteger(obj[3],0));
+//                return item;
+//            }
+//        });
+        return null;
     }
 
 }

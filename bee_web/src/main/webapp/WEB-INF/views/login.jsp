@@ -24,7 +24,7 @@
 			<h4 class="font-color-base">&copy; Bee</h4>
 		</div>
 		<div class="row">
-			<div class="col-xs-11 col-xs-offset-1 col-md-4 col-md-offset-4">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
 				<div class="box out-side">
 					<div class="context">
 						<div class="dialog-title">

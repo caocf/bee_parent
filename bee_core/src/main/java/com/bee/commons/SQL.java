@@ -16,7 +16,7 @@ public final class SQL {
         public static final String QueryUserByParams = "From User A WHERE 1=1";
 
         // 根据帐号查询用户
-        public static final String queryUserByAccount = "From User A where A.phone = ?";
+        public static final String queryUserByAccount = "From User A left join fetch A.userAuths B where A.phone = ?";
         public static final String queryUserByNick = "From User A where A.name = ?";
 
         public static final String getUsersByIdentity = "From User A where A.uid in";

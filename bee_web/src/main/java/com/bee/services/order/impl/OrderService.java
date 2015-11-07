@@ -57,15 +57,6 @@ public class OrderService implements IOrderService {
     @Autowired
     private UserDao userDao;
 
-    /**
-     *
-     * @param request
-     * @return
-     */
-    @Override
-    public PagingResult<Order> getOrderListByParam(AdminOrderListRequest request) {
-        return orderDao.getOrderListByParam(request);
-    }
 
     /**
      *

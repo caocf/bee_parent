@@ -18,7 +18,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "TB_USER")
-@JsonIgnoreProperties(value = {"password", "shopFocus"})
+@JsonIgnoreProperties(value = {"password", "shopFocus", "userAuths"})
 public class User implements java.io.Serializable, ISecurityUser {
 
     // serialVersionUID
@@ -53,6 +53,8 @@ public class User implements java.io.Serializable, ISecurityUser {
     private Double cash;
     // 用户关注的商家
     private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
+    // 用户权限
+    private Set<UserAuth> userAuths = new HashSet<>(0);
 
     /**
      * 增加积分
@@ -102,8 +104,16 @@ public class User implements java.io.Serializable, ISecurityUser {
 
     @Override
     @Transient
+    @JsonIgnore
     public Set<String> getAuthName() {
-        return null;
+        if (null == userAuths || userAuths.isEmpty()) {
+            return null;
+        }
+        Set<String> userAuthSet = new HashSet<>(userAuths.size());
+        for (UserAuth userAuth : userAuths) {
+            userAuthSet.add(userAuth.getAuthName());
+        }
+        return userAuthSet;
     }
     public void setUid(Long uid) {
         this.uid = uid;
@@ -233,5 +243,12 @@ public class User implements java.io.Serializable, ISecurityUser {
     }
     public void setExp(Integer exp) {
         this.exp = exp;
+    }
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    public Set<UserAuth> getUserAuths() {
+        return userAuths;
+    }
+    public void setUserAuths(Set<UserAuth> userAuths) {
+        this.userAuths = userAuths;
     }
 }

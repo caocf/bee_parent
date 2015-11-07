@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/bee_admin/bee_admin.iml" filepath="$PROJECT_DIR$/bee_admin/bee_admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/bee_core/bee_core.iml" filepath="$PROJECT_DIR$/bee_core/bee_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bee_file/bee_file.iml" filepath="$PROJECT_DIR$/bee_file/bee_file.iml" />
       <module fileurl="file://$PROJECT_DIR$/bee_parent.iml" filepath="$PROJECT_DIR$/bee_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/bee_web/bee_web.iml" filepath="$PROJECT_DIR$/bee_web/bee_web.iml" />
     </modules>

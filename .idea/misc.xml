@@ -32,6 +32,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/bee_admin" />
     <file type="web" url="file://$PROJECT_DIR$/bee_web" />
   </component>
   <component name="IdProvider" IDEtalkID="71DC4C8243BE70156C69E96BD48B81A5" />

@@ -24,15 +24,20 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="bee_core" />
+        <module name="bee_file" />
         <module name="bee_order" />
+        <module name="bee_services" />
         <module name="bee_test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bee_admin" target="1.7" />
       <module name="bee_commons" target="1.7" />
       <module name="bee_core" target="1.7" />
+      <module name="bee_file" target="1.7" />
       <module name="bee_order" target="1.7" />
       <module name="bee_parent" target="1.7" />
+      <module name="bee_services" target="1.7" />
       <module name="bee_test" target="1.7" />
       <module name="bee_web" target="1.7" />
     </bytecodeTargetLevel>

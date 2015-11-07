@@ -7,14 +7,19 @@
     <groupId>com.bee</groupId>
     <artifactId>bee_parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.3.Final</version>
+    <version>1.1.0.Final</version>
     <modules>
         <module>bee_core</module>
         <module>bee_web</module>
+        <module>bee_file</module>
+        <module>bee_admin</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <bee.core.version>1.0.0.Final</bee.core.version>
+        <bee.web.version>1.0.4.Final</bee.web.version>
+        <bee.admin.version>1.0.4.Final</bee.admin.version>
         <plugin.tomcat.version>2.2</plugin.tomcat.version>
         <plugin.deploy.version>2.7</plugin.deploy.version>
         <com.qsd.commons.version>1.0.0.Final</com.qsd.commons.version>
@@ -43,6 +48,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- modules -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>bee_core</artifactId>
+                <version>${bee.core.version}</version>
+            </dependency>
+            <!-- qsd_framework -->
             <dependency>
                 <groupId>com.qsd</groupId>
                 <artifactId>qsd_framework_commons</artifactId>

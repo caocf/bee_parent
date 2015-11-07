@@ -85,6 +85,17 @@ CREATE TABLE `TB_USER` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户表';
 
 -- ----------------------------
+--  Table structure for `TB_USER_AUTH`
+-- ----------------------------
+DROP TABLE IF EXISTS `TB_USER_AUTH`;
+CREATE TABLE `TB_USER_AUTH` (
+  `UAID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `AUTHNAME` VARCHAR(255) NOT NULL DEFAULT '',
+  `USER` BIGINT(20) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`UAID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户权限表';
+
+-- ----------------------------
 --  Table structure for `TB_USER_FRIEND`
 -- ----------------------------
 DROP TABLE IF EXISTS `TB_USER_FRIEND`;

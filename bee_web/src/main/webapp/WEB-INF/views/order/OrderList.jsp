@@ -30,8 +30,11 @@
         <input type="hidden" id="statusType" value="${params.pageType}" />
         <input type="hidden" name="status" value="<%=Consts.Order.Status.Query.Ing %>" />
         <button type="submit" class="btn btn-primary btn-sm icon-text">
-            <i class="fa fa-refresh"></i>刷新
-          </button>
+          <i class="fa fa-refresh"></i>刷新
+        </button>
+        <button type="button" class="btn btn-primary btn-sm icon-text">
+          <i class="fa fa-plus"></i>创建订单
+        </button>
       </form>
     </div>
     <table class="table table-hover">

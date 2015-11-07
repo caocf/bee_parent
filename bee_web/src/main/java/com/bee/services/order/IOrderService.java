@@ -20,14 +20,6 @@ import java.util.List;
 public interface IOrderService {
 
     /**
-     * 根据参数查询订单列表
-     *
-     * @param request
-     * @return
-     */
-    public PagingResult<Order> getOrderListByParam(AdminOrderListRequest request);
-
-    /**
      * 根据参数查询订单
      *
      * @param request
@@ -35,27 +27,11 @@ public interface IOrderService {
      */
     public PagingResult<OrderListItem> getAppOrderListByParam(OrderListRequest request);
 
-
-    /**
-     * 根据参数查询商户端订单列表
-     *
-     * @param request
-     * @return
-     */
-    public List<BusiOrderListItem> getBusiOrderListByParam(BusiOrderListRequest request);
-
-    /**
-     * 根据订单ID查询商户端订单详细
-     *
-     * @return
-     */
-    public BusiOrderItem getBusiOrderItem(long oid);
-
     /**
      * 创建订单
      *
      * @param req
-     * @throws DataRunException
+     * @throws com.qsd.framework.hibernate.exception.DataRunException
      */
     public void createOrder(OrderCreateRequest req) throws DataRunException;
 
@@ -68,12 +44,21 @@ public interface IOrderService {
     public void createOrder(Order order) throws DataRunException;
 
     /**
-     * 接受订单
+     * 修改订单人数
+     *
+     * @param oid 订单ID
+     * @param num 新人数
+     * @throws DataRunException
+     */
+    public void editOrderNum(long oid, int num) throws DataRunException;
+
+    /**
+     * 完成订单
      *
      * @param id
      * @throws DataRunException
      */
-    public void acceptOrder(long id) throws DataRunException;
+    public void finishOrder(long id) throws DataRunException;
 
     /**
      * 【C端】用户取消订单
@@ -101,26 +86,32 @@ public interface IOrderService {
     public void rejectOrder(long id) throws DataRunException;
 
     /**
-     * 完成订单
-     *
-     * @param id
-     * @throws DataRunException
-     */
-    public void finishOrder(long id) throws DataRunException;
-
-    /**
-     * 修改订单人数
-     *
-     * @param oid 订单ID
-     * @param num 新人数
-     * @throws DataRunException
-     */
-    public void editOrderNum(long oid, int num) throws DataRunException;
-
-    /**
      * 查询订单
      *
      * @param oid
      */
     public OrderItem getOrderByOid(long oid);
+
+    /**
+     * 根据参数查询商户端订单列表
+     *
+     * @param request
+     * @return
+     */
+    public List<BusiOrderListItem> getBusiOrderListByParam(BusiOrderListRequest request);
+
+    /**
+     * 根据订单ID查询商户端订单详细
+     *
+     * @return
+     */
+    public BusiOrderItem getBusiOrderItem(long oid);
+
+    /**
+     * 接受订单
+     *
+     * @param id
+     * @throws DataRunException
+     */
+    public void acceptOrder(long id) throws DataRunException;
 }

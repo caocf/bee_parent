@@ -3,12 +3,13 @@
     <parent>
         <artifactId>bee_parent</artifactId>
         <groupId>com.bee</groupId>
-        <version>1.0.3.Final</version>
+        <version>1.1.0.Final</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>bee_core</artifactId>
     <packaging>jar</packaging>
     <name>bee_core</name>
+    <version>${bee.core.version}</version>
     <url></url>
 
     <properties>
