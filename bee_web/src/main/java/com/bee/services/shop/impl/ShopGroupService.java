@@ -25,26 +25,7 @@ public class ShopGroupService implements IShopGroupService {
     @Autowired
     private ShopDao shopDao;
 
-    /**
-     *
-     * @param sid
-     * @return
-     */
-    @Override
-    public List<ShopGroup> queryAdminShopGroupList(Long sid) {
-        return shopGroupDao.queryAdminShopGroupList(sid);
-    }
 
-    /**
-     * 返回一个商家组
-     *
-     * @param sgId
-     * @return
-     */
-    @Override
-    public ShopGroup getAdminShopGroupById(long sgId) {
-        return shopGroupDao.getAdminShopGroupById(sgId);
-    }
 
     /**
      * 返回商家对应的所有组

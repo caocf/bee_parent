@@ -1,6 +1,7 @@
 package com.bee.admin.controller.order;
 
 import com.bee.client.params.order.AdminOrderListRequest;
+import com.bee.commons.AuthName;
 import com.bee.commons.Consts;
 import com.bee.pojo.order.Order;
 import com.bee.admin.services.order.IOrderService;
@@ -34,13 +35,13 @@ public class OrderController {
      * @return OrderMonitorView
      * @version v1.0.0
      */
-    @Auth(name = "ORDER_MONITOR")
+    @Auth(name = AuthName.OrderMonitor)
     @RequestMapping(value = "/monitor", method = RequestMethod.GET)
     public ModelAndView monitor() {
         ModelAndView mav = new ModelAndView(OrderMonitorView);
         AdminOrderListRequest request = new AdminOrderListRequest();
         request.setIndexPage(0);
-        request.setStatus(Consts.Order.Status.Query.New);
+        request.setStatus(Consts.Order.Status.Query.Ing);
         PagingResult<Order> result = orderService.getOrderListByParam(request);
         if (result != null && result.getTotalData() > 0) {
             mav.addObject("result", result.getData());

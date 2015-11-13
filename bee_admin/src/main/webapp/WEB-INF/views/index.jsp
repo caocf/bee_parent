@@ -22,7 +22,12 @@
     <div class="main">
       
     </div> 
-    <script src="${resPath}/assets/js/jquery/jquery.min.js"></script>
-    <script src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
+    <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
+    <script type="text/javascript" >
+        Navbar.init("navbar-left-home", null);
+    </script>
  </body>
 </html>

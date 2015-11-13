@@ -87,47 +87,6 @@ public class ShopImageService implements IShopImageService {
         }
     }
 
-    @Override
-    public ShopImage getShopImageById(long id) {
-        return shopImageDao.getShopImageById(id);
-    }
-
-    @Override
-    @Transactional
-    public void updateShopImage(HttpServletRequest req, MultipartFile file, ShopImage shopImage) throws DataRunException {
-        try {
-            if (!file.isEmpty()) {
-                // 2015.9.8 删除
-                // String[] paths = ImageFactory.getInstance().saveImage(getImageType(shopImage.getType()), req, file);
-
-                // 判断原有文件是否存在
-                String oldImageDiskPath = shopImage.getPath();
-                File oldFile = new File(oldImageDiskPath);
-                if (oldFile.exists()) {
-                    // 删除所有文件，重新创建
-                    FileUtil.deleteFile(oldFile);
-                }
-
-                // 创建文件
-                ImageParser parser = ImageParser.getImageParser(ImageParser.ImageType.ShopPhoto);
-                req.setAttribute(ShopImageParser.SHOP_ID, shopImage.getShop().getSid());
-                String[] paths = parser.generate(req, file);
-                shopImage.setUrl(paths[0]);
-                shopImage.setPath(paths[1]);
-                // 设置宽和高
-                shopImage.setWidth(Integer.valueOf(paths[2]));
-                shopImage.setHeight(Integer.valueOf(paths[3]));
-            }
-            shopImage.setType(0);
-            if (null == shopImage.getSort()) {
-                shopImage.setSort(100);
-            }
-            shopImageDao.update(shopImage);
-        } catch (DataRunException e) {
-            throw e;
-        }
-    }
-
     /**
      * 返回图片类型
      * 2015.9.7 删除该方法，取消图片类型，该类保存所有图片均为商家相册图片

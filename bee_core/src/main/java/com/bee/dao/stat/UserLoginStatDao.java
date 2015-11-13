@@ -35,6 +35,44 @@ public class UserLoginStatDao extends JpaDaoSupport<UserLoginStat, Long> {
                 sb.append(" and A.createTime >= ?");
                 entity.setParams(param.getStartCreateTime());
             }
+            if (param.getEndCreateTime() != null) {
+                sb.append(" and A.createTime < ?");
+                entity.setParams(param.getEndCreateTime());
+            }
+
+            if (!StringUtil.isNull(param.getSortSection())) {
+                sb.append(" ORDER BY ");
+                sb.append(param.getSortSection());
+            }
+        }
+
+        entity.setEntity(sb);
+
+        return queryResult(entity);
+    }
+
+    /**
+     * 查询用户登录统计，获取每天新设备号的登录
+     *
+     * @param param
+     * @return
+     */
+    public List<UserLoginStat> queryUserLoginStatNewDevice(QueryUserLoginStatParam param) {
+        // HQLEntity
+        HQLEntity entity = new HQLEntity();
+
+        // HQL
+        StringBuffer sb = new StringBuffer(SQL.Stat.QueryUserLoginStatByParam);
+
+        // 组装参数
+        if (param != null) {
+            if (param.getStartCreateTime() != null) {
+                sb.append(" and A.createTime >= ?");
+                entity.setParams(param.getStartCreateTime());
+            }
+
+            // 对device增加设备
+            sb.append(" GROUP BY A.device");
 
             if (!StringUtil.isNull(param.getSortSection())) {
                 sb.append(" ORDER BY ");

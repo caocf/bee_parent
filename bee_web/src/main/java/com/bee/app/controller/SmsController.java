@@ -2,7 +2,7 @@ package com.bee.app.controller;
 
 import com.bee.app.params.SMSResponse;
 import com.bee.commons.Codes;
-import com.bee.core.SMSUtils;
+import com.bee.sms.SMSUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

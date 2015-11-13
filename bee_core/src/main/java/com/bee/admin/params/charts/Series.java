@@ -1,5 +1,7 @@
 package com.bee.admin.params.charts;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * Created by suntongwei on 15/10/22.
  */
@@ -11,6 +13,7 @@ public class Series implements java.io.Serializable {
     private String name;
     private String type;
     private Double[] data;
+    private ItemStyle itemStyle;
 
     public String getName() {
         return name;
@@ -29,5 +32,12 @@ public class Series implements java.io.Serializable {
     }
     public void setData(Double[] data) {
         this.data = data;
+    }
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public ItemStyle getItemStyle() {
+        return itemStyle;
+    }
+    public void setItemStyle(ItemStyle itemStyle) {
+        this.itemStyle = itemStyle;
     }
 }

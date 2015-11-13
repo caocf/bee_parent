@@ -18,7 +18,7 @@
   <body>
     <%@ include file="../includes/navtop.jsp" %>
     <%@ include file="../includes/navleft.jsp" %>
-    <%@ include file="SystemMenu.jsp" %>
+    <%@ include file="../../../../../../../bee_admin/src/main/webapp/WEB-INF/views/system/SystemMenu.jsp" %>
     <div class="main inner">
       <div class="row title">
         <span class="before">发布版本</span>

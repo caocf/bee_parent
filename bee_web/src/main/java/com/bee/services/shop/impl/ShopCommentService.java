@@ -33,7 +33,6 @@ public class ShopCommentService implements IShopCommentService {
     private UserDao userDao;
 
     /**
-     *
      * @param request
      * @return
      */
@@ -92,20 +91,5 @@ public class ShopCommentService implements IShopCommentService {
             user.addExp(LevelMachine.Comment);
             userDao.update(user);
         }
-    }
-
-
-    /**
-     *【A端】查询所属商家评论列表
-     *
-     * @param request
-     * @return
-     */
-    @Override
-    public PagingResult<ShopComment> queryShopComment(AdminShopCommentRequest request) {
-        if (null == request.getShopId() || request.getShopId() < 1) {
-            return new PagingResult<>();
-        }
-        return shopCommentDao.queryShopComment(request);
     }
 }

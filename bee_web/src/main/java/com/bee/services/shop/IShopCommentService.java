@@ -28,11 +28,4 @@ public interface IShopCommentService {
      */
     public void save(ShopComment shopComment) throws DataRunException;
 
-    /**
-     *【A端】查询所属商家评论列表
-     *
-     * @param request
-     * @return
-     */
-    public PagingResult<ShopComment> queryShopComment(AdminShopCommentRequest request);
 }

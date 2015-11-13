@@ -15,19 +15,15 @@ public class ToolBox implements java.io.Serializable {
 
     private Feature feature;
 
-
     public Boolean getShow() {
         return show;
     }
-
     public void setShow(Boolean show) {
         this.show = show;
     }
-
     public Feature getFeature() {
         return feature;
     }
-
     public void setFeature(Feature feature) {
         this.feature = feature;
     }

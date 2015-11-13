@@ -7,5 +7,11 @@
       <schema-pattern>db_bee.*</schema-pattern>
       <default-schemas>db_bee.*</default-schemas>
     </data-source>
+    <data-source name="MySQL - db_bee@localhost" uuid="2655e5c3-a142-4f06-89c7-6b2959db55ae">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>db_bee.*</schema-pattern>
+      <default-schemas>db_bee.*</default-schemas>
+    </data-source>
   </component>
 </project>

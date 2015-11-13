@@ -32,6 +32,7 @@
 							&nbsp;Please Enter Your Information
 						</div>
 						<form action="${basePath }/login.html" method="post">
+                            <input type="hidden" name="returnUrl" value="${returnUrl}" />
               <div class="input-group margin-bottom-sm">
                   <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
                   <input class="form-control" name="account" type="text" placeholder="用户名" />

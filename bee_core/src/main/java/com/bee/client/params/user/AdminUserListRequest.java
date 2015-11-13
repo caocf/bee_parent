@@ -42,6 +42,9 @@ public class AdminUserListRequest extends PagingRequest {
             case Consts.User.Type.AdminUser:
                 pageType = "navbar-inner-user-admin";
                 break;
+            case Consts.User.Type.TestUser:
+                pageType = "navbar-inner-user-test";
+                break;
             default:
                 pageType = "navbar-inner-user-app";
         }

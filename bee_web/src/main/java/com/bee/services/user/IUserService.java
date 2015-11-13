@@ -66,26 +66,11 @@ public interface IUserService {
     public User getUserByIdentity(String identity);
 
     /**
-     *
-     * @param identity
-     * @return
-     */
-    public List<User> getUsersByIdentity(String identity);
-
-    /**
      * 创建注册用户
      *
      * @param user
      */
     public void createUser(User user) throws DataRunException;
-
-    /**
-     * 根据参数查询用户列表
-     *
-     * @param req
-     * @return
-     */
-    public PagingResult<User> queryUserListByParams(AdminUserListRequest req);
 
     /**
      * 保存用户头像

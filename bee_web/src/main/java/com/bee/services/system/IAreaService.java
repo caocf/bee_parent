@@ -10,42 +10,5 @@ import java.util.List;
  */
 public interface IAreaService {
 
-    /**
-     * 根据ID查询地区
-     *
-     * @param id
-     * @return
-     */
-    public List<Area> getAreaListById(long id);
-
-    /**
-     * 根据参数查询地区
-     *
-     * @return
-     */
-    public List<Area> getAreaListAll();
-
-    /**
-     * 保存地区
-     *
-     * @param area
-     * @throws DataRunException
-     */
-    public void addArea(Area area) throws DataRunException;
-
-    /**
-     * 获取单个地区
-     *
-     * @param id
-     * @return
-     */
-    public Area getAreaById(long id);
-
-    /**
-     * 更新地区
-     *
-     * @param area
-     * @throws DataRunException
-     */
-    public void updateArea(Area area) throws DataRunException;
+    List<Area> getAreaListById(long id);
 }

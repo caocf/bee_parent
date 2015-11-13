@@ -7,6 +7,7 @@
           <element id="module-output" name="bee_web" />
           <element id="jpa-descriptors" facet="bee_web/jpa/JPA" />
           <element id="module-output" name="bee_core" />
+          <element id="module-output" name="bee_easemob" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.1.4.RELEASE" />
@@ -20,6 +21,7 @@
           <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.3.1" />
           <element id="library" level="project" name="Maven: commons-io:commons-io:2.2" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.34" />
+          <element id="file-copy" path="$PROJECT_DIR$/bee_web/src/main/webapp/WEB-INF/lib/CCP_REST_SMS_SDK_JAVA_v2.6.3r.jar" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="bee_web/web/Web" />

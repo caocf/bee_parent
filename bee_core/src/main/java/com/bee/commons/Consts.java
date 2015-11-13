@@ -66,6 +66,7 @@ public final class Consts {
             public static final int VipUser = 0x2;
             public static final int PinkUser = 0x3;
             public static final int BusiUser = 0x10;
+            public static final int TestUser = 0x63;
 
             public static final Map<Integer, String> Select() {
                 Map<Integer, String> ret = new HashMap<>();
@@ -73,6 +74,7 @@ public final class Consts {
                 ret.put(Type.BusiUser, "商家用户");
                 ret.put(Type.VipUser, "VIP用户");
                 ret.put(Type.AdminUser, "管理员");
+                ret.put(Type.TestUser, "测试用户");
                 return ret;
             }
         }

@@ -25,26 +25,4 @@ public class AreaService implements IAreaService {
     public List<Area> getAreaListById(long id) {
         return areaDao.getAreaListById(id);
     }
-
-    @Override
-    public List<Area> getAreaListAll() {
-        return areaDao.findAll();
-    }
-
-    @Override
-    @Transactional
-    public void addArea(Area area) throws DataRunException {
-        areaDao.save(area);
-    }
-
-    @Override
-    public Area getAreaById(long id) {
-        return areaDao.findById(id);
-    }
-
-    @Override
-    @Transactional
-    public void updateArea(Area area) throws DataRunException {
-        areaDao.update(area);
-    }
 }

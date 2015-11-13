@@ -54,6 +54,9 @@
 		Inner: {
 
 			setActive: function(type) {
+                if (type == "" || type == null || type == undefined) {
+                    return;
+                }
 				$("#" + type).addClass('active');
 			},
 

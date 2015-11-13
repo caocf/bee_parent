@@ -118,6 +118,13 @@ public class UserDao extends JpaDaoSupport<User, Long> {
                 sb.append(" and A.createTime >= ?");
                 entity.setParams(param.getStartCreateTime());
             }
+            /**
+             * 根据用户类型查询
+             */
+            if (param.getType() != null) {
+                sb.append(" and A.type = ?");
+                entity.setParams(param.getType());
+            }
 
             /**
              * 增加排序部分

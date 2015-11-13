@@ -389,9 +389,7 @@ public final class SQL {
 
     public static final class Stat {
 
-
         public static final String QueryUserLoginStatByParam = "From UserLoginStat A WHERE 1=1";
-
     }
 
     /**

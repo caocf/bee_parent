@@ -7,6 +7,7 @@
           <element id="module-output" name="bee_web" />
           <element id="module-output" name="bee_core" />
           <element id="jpa-descriptors" facet="bee_web/jpa/JPA" />
+          <element id="module-output" name="bee_easemob" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
@@ -20,6 +21,7 @@
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.5" />
           <element id="library" level="project" name="Maven: org.ow2.asm:asm:4.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.1.4.RELEASE" />
+          <element id="file-copy" path="$PROJECT_DIR$/bee_web/src/main/webapp/WEB-INF/lib/CCP_REST_SMS_SDK_JAVA_v2.6.3r.jar" />
         </element>
       </element>
       <element id="directory" name="META-INF">

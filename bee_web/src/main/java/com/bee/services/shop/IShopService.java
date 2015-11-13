@@ -28,14 +28,6 @@ public interface IShopService {
     public List<Shop> getShopAll();
 
     /**
-     * 查询商家列表
-     *
-     * @param req
-     * @return
-     */
-    public PagingResult<Shop> queryShopList(AdminShopListRequest req);
-
-    /**
      * 查询APP商家列表
      *
      * @param req
@@ -50,12 +42,6 @@ public interface IShopService {
      */
     public List<ShopListItem> queryRecommendShop(long uid);
 
-    /**
-     * 增加商家
-     *
-     * @throws DataRunException
-     */
-    public void addShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException;
 
     /**
      * 查询一个商家信息
@@ -63,7 +49,8 @@ public interface IShopService {
      * @param sid
      * @return
      */
-    public Shop getShopById(long sid);
+    Shop getShopById(long sid);
+
 
     /**
      * 根据ID查询商家信息
@@ -74,28 +61,11 @@ public interface IShopService {
     public ShopItem getShopItemById(long sid);
 
     /**
-     *【A端】删除商家
-     *
-     * @param sid
-     * @throws DataRunException
-     */
-    public void deleteShop(long sid) throws DataRunException;
-
-    /**
-     * 更新商家
-     *
-     * @param shop
-     * @throws DataRunException
-     */
-    public void updateShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException;
-
-    /**
      * 查询全部商家地图
      *
      * @return
      */
     public List<ShopMap> queryShopMapAll();
-
 
     /**
      * 修改商家列表图片
@@ -113,4 +83,12 @@ public interface IShopService {
      * @param req
      */
     public void saveShopImage(long shopId, MultipartHttpServletRequest req);
+
+    /**
+     * 关闭商家(B端)
+     *
+     * @param shop
+     */
+    void closeShop(Shop shop) throws DataRunException;
+
 }

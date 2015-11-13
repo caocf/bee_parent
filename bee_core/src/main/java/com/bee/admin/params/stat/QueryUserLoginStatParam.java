@@ -10,6 +10,10 @@ public class QueryUserLoginStatParam {
      */
     private Long startCreateTime;
     /**
+     * 截至时间
+     */
+    private Long endCreateTime;
+    /**
      * 排序
      */
     private String sortSection;
@@ -25,5 +29,11 @@ public class QueryUserLoginStatParam {
     }
     public void setSortSection(String sortSection) {
         this.sortSection = sortSection;
+    }
+    public Long getEndCreateTime() {
+        return endCreateTime;
+    }
+    public void setEndCreateTime(Long endCreateTime) {
+        this.endCreateTime = endCreateTime;
     }
 }

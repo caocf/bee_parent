@@ -112,28 +112,6 @@ public class UserService implements IUserService {
     }
 
     /**
-     *
-     *
-     * @param identity
-     * @return
-     */
-    @Override
-    public List<User> getUsersByIdentity(String identity) {
-        if (StringUtil.isNull(identity)) {
-            return null;
-        }
-        String[] identitys = identity.split(",");
-        String ids = "";
-        for (String ide : identitys) {
-            ids += "," + (Long.valueOf(ide) - Consts.User.IdentityBaseNum);
-        }
-        if (!StringUtil.isNull(ids)) {
-            ids = ids.substring(1);
-        }
-        return userDao.getUsersByIdentity(ids);
-    }
-
-    /**
      * 注册一个新用户
      * 通知环信，加入环信用户体系
      *
@@ -175,16 +153,6 @@ public class UserService implements IUserService {
 
         // 把用户放入缓存
         UserCacheFactory.getInstance().put(user);
-    }
-
-    /**
-     *
-     * @param req
-     * @return
-     */
-    @Override
-    public PagingResult<User> queryUserListByParams(AdminUserListRequest req) {
-        return userDao.queryUserListByParams(req);
     }
 
     /**

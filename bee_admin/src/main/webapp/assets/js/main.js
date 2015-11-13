@@ -35,7 +35,7 @@
 			start: function() {
 				var queryOrder = function() {
 					$.post(
-						BasePath + "admin/order/monitor", 
+						BasePath + "/admin/order/monitor",
 						{queryTime: Order.Monitor.getQueryTime()},
 						function(json) {
 							Order.Monitor.setOrderNewNum(json);

@@ -45,20 +45,5 @@ public interface IShopImageService {
      */
     public void delShopImage(long shopImageId) throws DataRunException;
 
-    /**
-     * 获取一个商家图片
-     *
-     * @return
-     */
-    public ShopImage getShopImageById(long id);
 
-    /**
-     * 更新商家图片
-     *
-     * @param req
-     * @param file
-     * @param shopImage
-     * @throws DataRunException
-     */
-    public void updateShopImage(HttpServletRequest req, MultipartFile file, ShopImage shopImage) throws DataRunException;
 }

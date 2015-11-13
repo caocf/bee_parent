@@ -23,6 +23,14 @@
             <artifactId>bee_core</artifactId>
         </dependency>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bee_easemob</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bee_sms</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.qsd</groupId>
             <artifactId>qsd_framework_commons</artifactId>
         </dependency>

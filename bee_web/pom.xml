@@ -23,6 +23,14 @@
             <artifactId>bee_core</artifactId>
         </dependency>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bee_easemob</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bee_sms</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.qsd</groupId>
             <artifactId>qsd_framework_commons</artifactId>
         </dependency>
@@ -137,37 +145,6 @@
                         <extdirs>${project.basedir}/src/main/webapp/WEB-INF/lib</extdirs>
                     </compilerArguments>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.lesscss</groupId>
-                <artifactId>lesscss-maven-plugin</artifactId>
-                <version>1.7.0.1.1</version>
-                <inherited>false</inherited>
-                <configuration>
-                    <sourceDirectory>${project.basedir}/src/main/webapp/assets/less</sourceDirectory>
-                    <!--
-                    <outputDirectory>${project.build.directory}/${project.build.finalName}/assets/css</outputDirectory>
-                    -->
-                    <outputDirectory>${project.basedir}/src/main/webapp/assets/css</outputDirectory>
-                    <compress>false</compress>
-                    <force>true</force>
-                    <includes>
-                        <include>main.less</include>
-                    </includes>
-                    <excludes>
-                        <exclude>bootstrap/*.less</exclude>
-                        <exclude>global.less</exclude>
-                        <exclude>variable.less</exclude>
-                    </excludes>
-                    <outputFileFormat>{fileName}.min.css</outputFileFormat>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

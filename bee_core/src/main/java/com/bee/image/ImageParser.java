@@ -1,5 +1,6 @@
 package com.bee.image;
 
+import com.bee.commons.Consts;
 import com.bee.image.impl.*;
 import com.bee.pojo.Image;
 import org.slf4j.Logger;
@@ -106,6 +107,11 @@ public abstract class ImageParser implements ImageFileNameGenerate {
      */
     public String getDiskPath(HttpServletRequest request, String p) {
         // 本地磁盘路径
+        // 因admin分工程，导致获取硬盘路径错误
+        // 目前全部使用写死的绝对路径
+        if (!Consts.isDebug) {
+            return "/home/default/ROOT" + p;
+        }
         return request.getSession().getServletContext().getRealPath(p);
     }
 

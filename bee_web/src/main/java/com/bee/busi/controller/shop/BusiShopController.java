@@ -49,7 +49,7 @@ public class BusiShopController {
             } else {
                 try {
                     shop.setStatus(status);
-                    shopService.updateShop(shop, null);
+                    shopService.closeShop(shop);
                     res.setCode(Codes.Success);
                 } catch (DataRunException e) {
                     Log.error("BusiShopController.openOrCloseShop error.", e);
