@@ -9,10 +9,16 @@
     <artifactId>bee_sms</artifactId>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
-    <version>${bee.sms.version}</version>
     <url></url>
 
     <dependencies>
+        <dependency>
+            <groupId>com.cloopen</groupId>
+            <artifactId>CCP_REST_SMS_SDK</artifactId>
+            <version>v2.6.3r</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/CCP_REST_SMS_SDK_JAVA_v2.6.3r.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
@@ -29,10 +35,6 @@
                         <extdirs>${project.basedir}/lib</extdirs>
                     </compilerArguments>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

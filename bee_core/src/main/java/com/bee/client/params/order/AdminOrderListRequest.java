@@ -19,6 +19,10 @@ public class AdminOrderListRequest extends PagingRequest {
      * 实时监控，刷新时间s
      */
     private Long queryTime;
+    /**
+     * 是否自动更新
+     */
+    private Boolean isAuto;
 
     public Integer getStatus() {
         return status;
@@ -49,8 +53,15 @@ public class AdminOrderListRequest extends PagingRequest {
         this.queryTime = queryTime;
     }
 
+    public Boolean getIsAuto() {
+        return isAuto;
+    }
+    public void setIsAuto(Boolean isAuto) {
+        this.isAuto = isAuto;
+    }
+
     @Override
     public Integer getMaxRows() {
-        return 20;
+        return 15;
     }
 }

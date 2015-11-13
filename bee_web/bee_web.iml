@@ -47,6 +47,15 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.4.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.4.4" level="project" />
     <orderEntry type="module" module-name="bee_sms" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.cloopen:CCP_REST_SMS_SDK:v2.6.3r">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../bee_sms/lib/CCP_REST_SMS_SDK_JAVA_v2.6.3r.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: com.qsd:qsd_framework_commons:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.10-FINAL" level="project" />
     <orderEntry type="library" name="Maven: dom4j:dom4j:1.6.1" level="project" />

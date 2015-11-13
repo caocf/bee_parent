@@ -37,7 +37,7 @@ public class SMSUtils {
     public static final String AppId = "8a48b551506fd26f01507f8a2b4227cd";
 
     /**
-     *
+     * CCPRestSmsSDK
      */
     private CCPRestSmsSDK restAPI = new CCPRestSmsSDK();
 
@@ -52,12 +52,37 @@ public class SMSUtils {
 
 
     /**
-     *
+     * Order: 【小黄蜂】过期通知，{1}，人数{2}，联系电话{3}
      */
     public static enum SMSType {
 
-        Register, FindPass
+        Register("43437"), FindPass("43436"), Order("44075");
 
+        private String tempCode;
+
+        private SMSType(String tempCode) {
+            this.tempCode = tempCode;
+        }
+
+        public String getTempCode() {
+            return this.tempCode;
+        }
+    }
+
+    /**
+     *
+     * @param type
+     * @param phone
+     * @param text
+     * @return
+     */
+    public boolean sendSMS(SMSType type, String phone, String... text) {
+        Map<String, Object> result = restAPI.sendTemplateSMS(phone, type.getTempCode() , text);
+        if (!"000000".equals(result.get("statusCode"))) {
+            System.out.println("错误码=" + result.get("statusCode") +" 错误信息= "+result.get("statusMsg"));
+            return false;
+        }
+        return true;
     }
 
 
@@ -65,13 +90,9 @@ public class SMSUtils {
      * 发送短信
      */
     public String sendSMS(SMSType type, String phone) {
-
         String curTime = String.valueOf(System.currentTimeMillis());
         String code = String.valueOf(curTime).substring(curTime.length() - 4, curTime.length());
-
-        String tempId = SMSType.Register == type ? "43437" : "43436";
-
-        Map<String, Object> result = restAPI.sendTemplateSMS(phone, tempId ,new String[]{code});
+        Map<String, Object> result = restAPI.sendTemplateSMS(phone, type.getTempCode() ,new String[]{code});
         System.out.println("SDKTestGetSubAccounts result=" + result);
         if (!"000000".equals(result.get("statusCode"))) {
             //异常返回输出错误码和错误信息

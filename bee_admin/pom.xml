@@ -9,7 +9,6 @@
     <artifactId>bee_admin</artifactId>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
-    <version>${bee.admin.version}</version>
     <url></url>
 
     <properties>

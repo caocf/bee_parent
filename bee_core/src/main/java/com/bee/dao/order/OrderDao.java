@@ -44,15 +44,13 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         DataEntity entity = new HQLEntity();
         StringBuffer sb = new StringBuffer(SQL.Order.getOrderListByParam);
         if(request.getStatus() != null) {
-            sb.append(" and A.status " + Consts.Order.Status.Query.getQueryStatus(request.getStatus()));
+            sb.append(" and " + Consts.Order.Status.Query.getQueryString("A.status", request.getStatus()));
         }
         if(request.getQueryTime() != null) {
             sb.append(" and A.createTime > ?");
             entity.setParam(request.getQueryTime());
         }
-        if (request.getIndexPage() > 0) {
-            entity.setPaging(request);
-        }
+        entity.setPaging(request);
         entity.setEntity(sb.toString());
         return queryWithPaging(entity);
     }

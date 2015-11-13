@@ -2,6 +2,7 @@ package com.bee.app.controller.shop;
 
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.client.params.shop.ShopResponse;
+import com.bee.commons.Consts;
 import com.bee.modal.RecommendItem;
 import com.bee.modal.ShopItem;
 import com.bee.modal.ShopListItem;
@@ -9,6 +10,7 @@ import com.bee.modal.ShopMap;
 import com.bee.services.shop.IShopAttendService;
 import com.bee.services.shop.IShopImageService;
 import com.bee.services.shop.IShopService;
+import com.bee.sms.SMSUtils;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

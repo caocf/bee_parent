@@ -18,6 +18,4 @@ public interface IOrderService {
     public PagingResult<Order> getOrderListByParam(AdminOrderListRequest request);
 
 
-
-
 }

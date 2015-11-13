@@ -18,7 +18,7 @@
   <body>
     <%@ include file="../includes/navtop.jsp" %>
     <%@ include file="../includes/navleft.jsp" %>
-    <%@ include file="../../../../../../../bee_admin/src/main/webapp/WEB-INF/views/system/SystemMenu.jsp" %>
+    <%@ include file="SystemMenu.jsp" %>
     <div class="main inner">
       <div class="row title">
         <span class="before">发布版本</span>
@@ -28,7 +28,7 @@
       <div class="row">
         <div class="alert alert-danger <c:if test="${msg == null}">hidden</c:if>" role="alert">${msg}</div>
       </div>
-      <form id="submitForm" class="form-horizontal" action="${basePath}/admin/app" method="post" enctype="multipart/form-data">
+      <form id="submitForm" class="form-horizontal" action="${basePath}/app" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="post" />
         <input type="hidden" id="avid" name="avid" value="${app.avid}" />
         <input type="hidden" name="createTime" value="${app.createTime}" />

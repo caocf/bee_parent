@@ -1,5 +1,7 @@
 package com.bee.admin.params.charts;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * Chart Axis
  *
@@ -17,12 +19,11 @@ public class Axis implements java.io.Serializable {
     /**
      * 两端留白策略
      */
-    private Boolean boundaryGap = true;
+    private Boolean boundaryGap;
     /**
      * 数据
      */
     private String[] data;
-
 
     public String getType() {
         return type;
@@ -36,6 +37,7 @@ public class Axis implements java.io.Serializable {
     public void setData(String[] data) {
         this.data = data;
     }
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Boolean getBoundaryGap() {
         return boundaryGap;
     }

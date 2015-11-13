@@ -269,6 +269,15 @@ public final class Consts {
                 public static String getQueryString(String column, int queryStatus) {
                     String query = column + " > 0";
                     switch(queryStatus) {
+                        case Query.Ing:
+                            query = column + " < " + Status.Finish;
+                            break;
+                        case Query.Finish:
+                            query = column + " = " + Status.Finish;
+                            break;
+                        case Query.Cancel:
+                            query = column + " > " + Status.Finish;
+                            break;
                         case Query.BusiFinish:
                             query = column + " = " + Status.Underway;
                             break;

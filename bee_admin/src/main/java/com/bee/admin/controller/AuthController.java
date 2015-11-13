@@ -1,6 +1,5 @@
 package com.bee.admin.controller;
 
-import com.bee.admin.controller.order.OrderController;
 import com.bee.admin.services.user.IUserService;
 import com.bee.commons.Consts;
 import com.bee.pojo.user.User;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -71,7 +69,7 @@ public class AuthController {
                     if (returnUrl.startsWith(afterUrl)) {
                         returnUrl = returnUrl.substring(afterUrl.length(), returnUrl.length());
                     }
-                    mav.setViewName("redirect:" + returnUrl);
+                    mav.setViewName("redirect:" + returnUrl.replaceAll(":0", "&"));
                 }
             } else {
                 mav.setViewName(LoginView);

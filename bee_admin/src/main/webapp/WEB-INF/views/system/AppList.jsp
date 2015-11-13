@@ -18,7 +18,7 @@
   <body class="shop">
   	<%@ include file="../includes/navtop.jsp" %>
   	<%@ include file="../includes/navleft.jsp" %>
-  	<%@ include file="../../../../../../../bee_admin/src/main/webapp/WEB-INF/views/system/SystemMenu.jsp" %>
+  	<%@ include file="SystemMenu.jsp" %>
     <form:form id="deleteForm" method="delete"></form:form>
   	<div class="main inner">
   		<div class="row title">
@@ -61,7 +61,7 @@
   	<script type="text/javascript">
   		Navbar.init("navbar-left-system", "navbar-inner-system-app");
       function deleteAppVer(id) {
-        document.forms["deleteForm"].action = "${basePath}/admin/app/" + id;
+        document.forms["deleteForm"].action = "${basePath}/app/" + id;
         document.forms["deleteForm"].submit();
       }
   	</script>

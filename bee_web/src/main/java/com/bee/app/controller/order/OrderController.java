@@ -8,6 +8,7 @@ import com.bee.commons.Consts;
 import com.bee.modal.OrderListItem;
 import com.bee.pojo.order.Order;
 import com.bee.services.order.IOrderService;
+import com.bee.sms.SMSUtils;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
@@ -74,6 +75,12 @@ public class OrderController {
             orderService.createOrder(order);
             res.setOrder(order);
             res.setCode(Codes.Success);
+
+            // 发送短信
+            SMSUtils.getInstance().sendSMS(SMSUtils.SMSType.Order, Consts.Config.ServicePhone,
+                    order.getShop().getName() + "," + order.getShopUser().getPhone() + "(" +
+                    order.getShopUser().getName() + ")", order.getNum().toString(), order.getOrderPhone());
+
         } catch (DataRunException e) {
             res.setCode(Codes.Order.CreateError);
             res.setMsg("创建失败，请重试");

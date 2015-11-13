@@ -24,6 +24,8 @@ public class OrderController {
 
     /** 订单监控View */
     public static final String OrderMonitorView = "order/OrderMonitor";
+    /** 订单查询View */
+    public static final String OrderView = "order/OrderList";
 
     @Autowired
     private IOrderService orderService;
@@ -33,7 +35,7 @@ public class OrderController {
      * 监控新订单
      *
      * @return OrderMonitorView
-     * @version v1.0.0
+     * @since v1.0.0
      */
     @Auth(name = AuthName.OrderMonitor)
     @RequestMapping(value = "/monitor", method = RequestMethod.GET)
@@ -41,11 +43,26 @@ public class OrderController {
         ModelAndView mav = new ModelAndView(OrderMonitorView);
         AdminOrderListRequest request = new AdminOrderListRequest();
         request.setIndexPage(0);
-        request.setStatus(Consts.Order.Status.Query.Ing);
+        request.setStatus(Consts.Order.Status.Query.Finish);
         PagingResult<Order> result = orderService.getOrderListByParam(request);
         if (result != null && result.getTotalData() > 0) {
             mav.addObject("result", result.getData());
         }
+        return mav;
+    }
+
+    /**
+     * 进入订单列表
+     *
+     * @return
+     * @since v1.0.0
+     */
+    @Auth(name = AuthName.Order)
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView index(AdminOrderListRequest request) {
+        ModelAndView mav = new ModelAndView(OrderView);
+        mav.addObject("result", orderService.getOrderListByParam(request));
+        mav.addObject("params", request);
         return mav;
     }
 

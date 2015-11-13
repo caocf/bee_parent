@@ -9,12 +9,10 @@
     <artifactId>bee_web</artifactId>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
-    <version>${bee.web.version}</version>
     <url></url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tomcat.path>/Users/suntongwei/Documents/tomcat7/webapps/ROOT</tomcat.path>
     </properties>
 
     <dependencies>

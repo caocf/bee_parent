@@ -299,8 +299,11 @@ public final class SQL {
                 "ON A.USER = B.UID " +
                 "WHERE A.OID = ? ORDER BY A.EXECTIME DESC";
 
-        public static final String getOrderListByParam = "From Order A left join fetch A.shop B " +
-                "left join fetch A.user C left join fetch B.area D left join fetch A.shopUser E where 1=1 ";
+        public static final String getOrderListByParam = "From Order A " +
+                "LEFT JOIN FETCH A.shop B " +
+                "LEFT JOIN FETCH A.user C " +
+                "LEFT JOIN FETCH B.area D " +
+                "LEFT JOIN FETCH A.shopUser E where 1=1 ";
         public static final String getOrderListByParamOrder = " order by A.createTime desc";
 
         /**

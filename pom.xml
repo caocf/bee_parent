@@ -10,21 +10,16 @@
     <version>1.1.0.Final</version>
     <modules>
         <module>bee_core</module>
-        <module>bee_web</module>
-        <module>bee_file</module>
-        <module>bee_admin</module>
         <module>bee_easemob</module>
         <module>bee_sms</module>
         <module>bee_order</module>
+        <module>bee_web</module>
+        <module>bee_file</module>
+        <module>bee_admin</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <bee.core.version>1.0.0.Final</bee.core.version>
-        <bee.web.version>1.0.4.Final</bee.web.version>
-        <bee.admin.version>1.0.0.Final</bee.admin.version>
-        <bee.easemob.version>1.0.0.Final</bee.easemob.version>
-        <bee.sms.version>1.0.0.Final</bee.sms.version>
         <plugin.tomcat.version>2.2</plugin.tomcat.version>
         <plugin.deploy.version>2.7</plugin.deploy.version>
         <com.qsd.commons.version>1.0.0.Final</com.qsd.commons.version>
@@ -57,17 +52,17 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>bee_core</artifactId>
-                <version>${bee.core.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>bee_easemob</artifactId>
-                <version>${bee.easemob.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>bee_sms</artifactId>
-                <version>${bee.sms.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <!-- qsd_framework -->
             <dependency>
@@ -313,9 +308,9 @@
                             <manifest>
                                 <!-- 是否要把第三方jar放到manifest的classpath中 -->
                                 <addClasspath>true</addClasspath>
-                                <!-- 生成的manifest中classpath的前缀，因为要把第三方jar放到lib目录下，所以classpath的前缀是lib/
+                                <!-- 生成的manifest中classpath的前缀，
+                                因为要把第三方jar放到lib目录下，所以classpath的前缀是lib/-->
                                 <classpathPrefix>lib/</classpathPrefix>
-                                -->
                                 <!-- 应用的main class
                                 <mainClass>dbRobot.BeanRobot</mainClass>
                                 -->

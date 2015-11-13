@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
+Class-Path: lib/CCP_REST_SMS_SDK-v2.6.3r.jar
 Build-Jdk: 1.7.0_71
 Built-By: suntongwei
 Created-By: IntelliJ IDEA
