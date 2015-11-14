@@ -33,7 +33,7 @@
 		    } else {  
 		      imgsrc = window.URL.createObjectURL(file.files[0]);  
 		    }  
-		    image.src = imgsrc;  
+		    image.src = imgsrc;
 			});
 		},
 

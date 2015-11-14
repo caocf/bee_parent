@@ -23,6 +23,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="bee_busi" />
         <module name="bee_core" />
         <module name="bee_easemob" />
         <module name="bee_file" />
@@ -34,6 +35,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bee_admin" target="1.7" />
+      <module name="bee_busi" target="1.7" />
       <module name="bee_commons" target="1.7" />
       <module name="bee_core" target="1.7" />
       <module name="bee_easemob" target="1.7" />

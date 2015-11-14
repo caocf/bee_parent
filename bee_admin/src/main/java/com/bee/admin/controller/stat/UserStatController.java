@@ -58,7 +58,7 @@ public class UserStatController {
         chart.setTooltip(tooltip);
 
         Legend legend = new Legend();
-        legend.setData(new String[] {"登录", "设备号", "注册"});
+        legend.setData(new String[] {"设备号", "注册"});
         chart.setLegend(legend);
 
         ToolBox toolBox = new ToolBox();
@@ -93,99 +93,17 @@ public class UserStatController {
         yAxis.setType("value");
         chart.setyAxis(new Axis[] {yAxis});
 
-        Map<String, Double[]> loginResult = userStatService.statUserLogin(day, DateUtil.ONE_DAY_TIME);
-        Series series1 = new Series();
-        series1.setType("line");
-        series1.setName("登录");
-        series1.setData(loginResult.get(UserStatService.LoginStat));
-
         Series series3 = new Series();
         series3.setType("line");
         series3.setName("设备号");
-        series3.setData(loginResult.get(UserStatService.DeviceStat));
+        series3.setData(userStatService.statUserDeviceStat(day, DateUtil.ONE_DAY_TIME));
 
         Series series2 = new Series();
         series2.setType("bar");
         series2.setName("注册");
         series2.setData(userStatService.statUserRegStat(day, DateUtil.ONE_DAY_TIME));
 
-        chart.setSeries(new Series[] {series1, series2, series3});
-
-        return chart;
-    }
-
-    /**
-     * 查看某天详细登录统计
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/detail", method = RequestMethod.GET)
-    public Chart queryLoginDetailStat(StatClickParam params) {
-
-        Chart chart = new Chart();
-
-        Title title = new Title();
-        title.setText("24小时用户登录统计");
-        chart.setTitle(title);
-
-        Tooltip tooltip = new Tooltip();
-        tooltip.setTrigger("item");
-        chart.setTooltip(tooltip);
-
-        Legend legend = new Legend();
-        legend.setData(new String[] {"登录"});
-        chart.setLegend(legend);
-
-        ToolBox toolBox = new ToolBox();
-        toolBox.setShow(true);
-        Feature feature = new Feature();
-        SaveAsImage saveAsImage = new SaveAsImage();
-        saveAsImage.setShow(true);
-        feature.setSaveAsImage(saveAsImage);
-        toolBox.setFeature(feature);
-        chart.setToolbox(toolBox);
-
-        Calendar cal = Calendar.getInstance();
-        if (cal.get(Calendar.DAY_OF_MONTH) < Integer.valueOf(params.getName())) {
-            cal.add(Calendar.MONTH, -1);
-        }
-        cal.set(Calendar.DAY_OF_MONTH, Integer.valueOf(params.getName()));
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        Double[] result = userStatService.statUserLoginDetail(
-                cal.getTimeInMillis(), (cal.getTimeInMillis() + DateUtil.ONE_DAY_TIME - 1));
-
-        Axis xAxis = new Axis();
-        xAxis.setType("category");
-        xAxis.setBoundaryGap(false);
-        String[] xAxisDatas = new String[result.length];
-        for (int i = 0; i < result.length; i++) {
-            xAxisDatas[i] = String.valueOf(i + 1);
-        }
-        xAxis.setData(xAxisDatas);
-        chart.setxAxis(new Axis[] {xAxis});
-
-        Axis yAxis = new Axis();
-        yAxis.setType("value");
-        chart.setyAxis(new Axis[] {yAxis});
-
-        Series series1 = new Series();
-        series1.setType("line");
-        series1.setName("登录");
-        series1.setData(result);
-
-        AreaStyle areaStyle = new AreaStyle();
-        areaStyle.setType("default");
-        Normal normal = new Normal();
-        normal.setAreaStyle(areaStyle);
-        ItemStyle itemStyle = new ItemStyle();
-        itemStyle.setNormal(normal);
-        series1.setItemStyle(itemStyle);
-
-        chart.setSeries(new Series[] {series1});
+        chart.setSeries(new Series[] {series2, series3});
 
         return chart;
     }

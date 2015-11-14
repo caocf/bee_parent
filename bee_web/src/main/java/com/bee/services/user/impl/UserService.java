@@ -1,5 +1,6 @@
 package com.bee.services.user.impl;
 
+import com.bee.app.commons.AppConsts;
 import com.bee.app.model.user.UserInfo;
 import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.commons.Consts;
@@ -138,18 +139,23 @@ public class UserService implements IUserService {
         userDao.save(user);
 
         /**
-         * 注册IM用户[单个]
-         * 给指定AppKey创建一个新的用户
+         * 如果不是DEBUG模式添加环信
          */
-        Credential credential = new ClientSecretCredential(Constants.APP_CLIENT_ID,
-                Constants.APP_CLIENT_SECRET, Roles.USER_ROLE_APPADMIN);
-        ObjectNode datanode = JsonNodeFactory.instance.objectNode();
-        datanode.put("username", user.getIdentity());
-        datanode.put("password", Constants.DEFAULT_PASSWORD);
-        // 返回结果
-        ObjectNode res = HTTPClientUtils.sendHTTPRequest(EndPoints.USERS_URL, credential, datanode,
-                HTTPMethod.METHOD_POST);
-        Log.debug("[HX_Response]Register:" + res.toString());
+        if (!AppConsts.isDebug) {
+            /**
+             * 注册IM用户[单个]
+             * 给指定AppKey创建一个新的用户
+             */
+            Credential credential = new ClientSecretCredential(Constants.APP_CLIENT_ID,
+                    Constants.APP_CLIENT_SECRET, Roles.USER_ROLE_APPADMIN);
+            ObjectNode datanode = JsonNodeFactory.instance.objectNode();
+            datanode.put("username", user.getIdentity());
+            datanode.put("password", Constants.DEFAULT_PASSWORD);
+            // 返回结果
+            ObjectNode res = HTTPClientUtils.sendHTTPRequest(EndPoints.USERS_URL, credential, datanode,
+                    HTTPMethod.METHOD_POST);
+            Log.debug("[HX_Response]Register:" + res.toString());
+        }
 
         // 把用户放入缓存
         UserCacheFactory.getInstance().put(user);

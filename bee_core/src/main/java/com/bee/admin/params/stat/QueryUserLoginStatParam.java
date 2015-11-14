@@ -17,6 +17,10 @@ public class QueryUserLoginStatParam {
      * 排序
      */
     private String sortSection;
+    /**
+     * GroupBy字段
+     */
+    private String groupBy;
 
     public Long getStartCreateTime() {
         return startCreateTime;
@@ -35,5 +39,11 @@ public class QueryUserLoginStatParam {
     }
     public void setEndCreateTime(Long endCreateTime) {
         this.endCreateTime = endCreateTime;
+    }
+    public String getGroupBy() {
+        return groupBy;
+    }
+    public void setGroupBy(String groupBy) {
+        this.groupBy = groupBy;
     }
 }

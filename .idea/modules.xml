@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/bee_admin/bee_admin.iml" filepath="$PROJECT_DIR$/bee_admin/bee_admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bee_busi/bee_busi.iml" filepath="$PROJECT_DIR$/bee_busi/bee_busi.iml" />
       <module fileurl="file://$PROJECT_DIR$/bee_core/bee_core.iml" filepath="$PROJECT_DIR$/bee_core/bee_core.iml" />
       <module fileurl="file://$PROJECT_DIR$/bee_easemob/bee_easemob.iml" filepath="$PROJECT_DIR$/bee_easemob/bee_easemob.iml" />
       <module fileurl="file://$PROJECT_DIR$/bee_file/bee_file.iml" filepath="$PROJECT_DIR$/bee_file/bee_file.iml" />

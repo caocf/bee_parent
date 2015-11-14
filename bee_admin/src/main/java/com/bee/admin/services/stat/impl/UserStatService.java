@@ -42,17 +42,12 @@ public class UserStatService implements IUserStatService {
      * @return
      */
     @Override
-    public Map<String, Double[]> statUserLogin(int number, long time) {
+    public Double[] statUserLogin(int number, long time) {
 
         /**
          * 组装数据
          */
-        Map<String, Double[]> resultMap = new HashMap<>(2);
         Double[] result = new Double[number];
-        Double[] device = new Double[number];
-
-        resultMap.put(LoginStat, result);
-        resultMap.put(DeviceStat, device);
 
         /**
          * 查询时间，按照 粒度 * 时间粒度
@@ -73,7 +68,6 @@ public class UserStatService implements IUserStatService {
 
         // 进行查询
         List<UserLoginStat> userLoginStats = userLoginStatDao.queryUserLoginStatByParam(param);
-        List<UserLoginStat> userDeviceStats = userLoginStatDao.queryUserLoginStatNewDevice(param);
 
         // 统计时间
         long statTime = 0l;
@@ -84,7 +78,7 @@ public class UserStatService implements IUserStatService {
         for (int i = 0; i < number; i++) {
 
             // 记录统计数量
-            double count = 0d, deviceCount = 0d;
+            double count = 0d;
             /**
              * 按天计算
              */
@@ -102,6 +96,60 @@ public class UserStatService implements IUserStatService {
                 count++;
             }
             result[i] = count;
+        }
+
+        return result;
+    }
+
+    /**
+     * 统计设备号数据
+     *
+     * @param number
+     * @param time
+     * @return
+     */
+    @Override
+    public Double[] statUserDeviceStat(int number, long time) {
+        /**
+         * 组装数据
+         */
+        Double[] result = new Double[number];
+
+        /**
+         * 查询时间，按照 粒度 * 时间粒度
+         */
+        Calendar today = Calendar.getInstance();
+        // 时间+1，为了包含今天
+        today.add(Calendar.DAY_OF_MONTH, 1);
+        today.set(Calendar.HOUR_OF_DAY, 23);
+        today.set(Calendar.MINUTE, 59);
+        today.set(Calendar.SECOND, 59);
+        today.set(Calendar.MILLISECOND, 999);
+        long queryTime = today.getTimeInMillis() - (time * number); // 这里减1是为了包含今天
+
+        // 组装参数
+        QueryUserLoginStatParam param = new QueryUserLoginStatParam();
+        param.setStartCreateTime(queryTime);
+        param.setGroupBy("A.device");
+        param.setSortSection("A.ulsId ASC");
+
+        // 进行查询
+        List<UserLoginStat> userDeviceStats = userLoginStatDao.queryUserLoginStatByParam(param);
+
+        // 统计时间
+        long statTime = 0l;
+
+        /**
+         * 遍历组装数据
+         */
+        for (int i = 0; i < number; i++) {
+
+            // 记录统计数量
+            double count = 0d;
+            /**
+             * 按天计算
+             */
+            statTime = queryTime + (i * time);
 
             /**
              * 把统计结果放入集合
@@ -112,14 +160,16 @@ public class UserStatService implements IUserStatService {
                     break;
                 }
                 userDeviceStats.remove(0);
-                deviceCount++;
+                count++;
             }
-            device[i] = deviceCount;
+            result[i] = count;
 
         }
 
-        return resultMap;
+        return result;
     }
+
+
 
     /**
      * 统计过去30天用户注册数量

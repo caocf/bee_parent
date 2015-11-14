@@ -25,8 +25,7 @@
         <i class="fa fa-angle-double-right"></i>	
   			<span class="after">查看完成订单统计表</span>
       </div>
-      <div id="EChart" class="row" style="height:400px;">  
-      </div>
+      <div id="OrderChart"></div>
   	</div>
   	<script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
@@ -50,7 +49,7 @@
                 ],
                 function (ec) {
                   // 基于准备好的dom，初始化echarts图表
-                  var myChart = ec.init(document.getElementById('EChart'));
+                  var myChart = ec.init(document.getElementById('OrderChart'));
                   myChart.setOption(JSON.parse(data));
                 }
         );  

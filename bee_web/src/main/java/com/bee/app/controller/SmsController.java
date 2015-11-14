@@ -1,5 +1,6 @@
 package com.bee.app.controller;
 
+import com.bee.app.commons.AppConsts;
 import com.bee.app.params.SMSResponse;
 import com.bee.commons.Codes;
 import com.bee.sms.SMSUtils;
@@ -21,7 +22,11 @@ public class SmsController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public SMSResponse sendRegisterSMS(String phone) {
         SMSResponse res = new SMSResponse();
-        res.setSmsCode(SMSUtils.getInstance().sendSMS(SMSUtils.SMSType.Register, phone));
+        if (!AppConsts.isDebug) {
+            res.setSmsCode(SMSUtils.getInstance().sendSMS(SMSUtils.SMSType.Register, phone));
+        } else {
+            res.setSmsCode("0000");
+        }
         res.setCode(Codes.Success);
         return res;
     }

@@ -64,7 +64,6 @@ public class UserService implements IUserService {
 
     /**
      * 注册一个新用户
-     * 通知环信，加入环信用户体系
      * A端创建测试用户所用
      *
      * @param user
@@ -78,7 +77,7 @@ public class UserService implements IUserService {
          * 设置用户信息
          */
         user.setPassword(Md5.encodePassword(user.getPassword()));
-        user.setType(Consts.User.Type.AppUser);
+        // user.setType(Consts.User.Type.AppUser);
         user.setCreateTime(System.currentTimeMillis());
         user.setAlipay("");
         user.setExp(0);
@@ -89,19 +88,6 @@ public class UserService implements IUserService {
         user.setCash(0d);
         userDao.save(user);
 
-        /**
-         * 注册IM用户[单个]
-         * 给指定AppKey创建一个新的用户
-         */
-        Credential credential = new ClientSecretCredential(Constants.APP_CLIENT_ID,
-                Constants.APP_CLIENT_SECRET, Roles.USER_ROLE_APPADMIN);
-        ObjectNode datanode = JsonNodeFactory.instance.objectNode();
-        datanode.put("username", user.getIdentity());
-        datanode.put("password", Constants.DEFAULT_PASSWORD);
-        // 返回结果
-        ObjectNode res = HTTPClientUtils.sendHTTPRequest(EndPoints.USERS_URL, credential, datanode,
-                HTTPMethod.METHOD_POST);
-        Log.debug("[HX_Response]Register:" + res.toString());
     }
 
     /**

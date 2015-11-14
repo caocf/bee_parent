@@ -24,7 +24,7 @@
 	</a>
     </sec:security>
     <sec:security auth="<%=AuthName.Stat%>">
-	<a id="navbar-left-stat" href="${basePath}/stat/user">
+	<a id="navbar-left-stat" href="${basePath}/stat/visit">
 		<i class="fa fa-bar-chart fa-lg"></i>
 		<span>统计</span>
 	</a>

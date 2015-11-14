@@ -16,6 +16,7 @@
         <module>bee_web</module>
         <module>bee_file</module>
         <module>bee_admin</module>
+        <module>bee_busi</module>
     </modules>
 
     <properties>

@@ -60,7 +60,7 @@
       </div>
       <div class="form-group">
         <div class="col-xs-4 col-xs-offset-1">
-          <img id="image" width="${image.width}" height="${image.height}" src="${image.url}/thum.jpg" />
+          <img id="image" src="${imagePath}${image.url}/thum.jpg" />
         </div>
       </div>
       <div class="form-group">
