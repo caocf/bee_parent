@@ -29,4 +29,5 @@ public class FindController {
     public PagingResult<FindListItem> queryFindList(FindListRequest req) {
         return findService.queryAppFindList(req);
     }
+
 }

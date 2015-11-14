@@ -35,6 +35,11 @@ public class AdminShopSaveRequest extends BaseRequest {
      * 营业结束时间分钟
      */
     private String endServiceTimeMinute;
+    /**
+     * 发现文字说明
+     * 只对保存新商家管用（未实现）
+     */
+    private String findRemark;
 
     public Shop getShop() {
         return shop;
@@ -71,5 +76,11 @@ public class AdminShopSaveRequest extends BaseRequest {
     }
     public void setEndServiceTimeMinute(String endServiceTimeMinute) {
         this.endServiceTimeMinute = endServiceTimeMinute;
+    }
+    public String getFindRemark() {
+        return findRemark;
+    }
+    public void setFindRemark(String findRemark) {
+        this.findRemark = findRemark;
     }
 }

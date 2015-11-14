@@ -1,9 +1,9 @@
-package com.bee.dao.find;
+package com.bee.dao.find.impl;
 
 import com.bee.client.params.find.FindListRequest;
 import com.bee.commons.Consts;
-import com.bee.commons.ImageFactory;
 import com.bee.commons.SQL;
+import com.bee.dao.find.IFindDao;
 import com.bee.modal.FindListItem;
 import com.bee.pojo.find.Find;
 import com.qsd.framework.commons.utils.NumberUtil;
@@ -15,10 +15,11 @@ import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by suntongwei on 15/6/10.
+ * Created by suntongwei on 15/11/15.
  */
 @Repository
-public class FindDao extends JpaDaoSupport<Find, Long> {
+public class FindDao extends JpaDaoSupport<Find, Long> implements IFindDao {
+
 
     /**
      * 查询发现列表(C端)

@@ -17,6 +17,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bee_domain</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.qsd</groupId>
             <artifactId>qsd_framework_commons</artifactId>
         </dependency>

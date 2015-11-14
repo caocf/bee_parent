@@ -5,10 +5,12 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="bee_admin" />
-          <element id="module-output" name="bee_core" />
           <element id="jpa-descriptors" facet="bee_admin/jpa/JPA" />
           <element id="module-output" name="bee_easemob" />
           <element id="module-output" name="bee_sms" />
+          <element id="module-output" name="bee_domain" />
+          <element id="module-output" name="bee_service" />
+          <element id="module-output" name="bee_core" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />

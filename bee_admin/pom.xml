@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>bee_core</artifactId>
+            <artifactId>bee_service</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>

@@ -23,11 +23,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="bee_app" />
         <module name="bee_busi" />
         <module name="bee_core" />
+        <module name="bee_domain" />
         <module name="bee_easemob" />
         <module name="bee_file" />
         <module name="bee_order" />
+        <module name="bee_service" />
         <module name="bee_services" />
         <module name="bee_sms" />
         <module name="bee_test" />
@@ -35,13 +38,16 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bee_admin" target="1.7" />
+      <module name="bee_app" target="1.7" />
       <module name="bee_busi" target="1.7" />
       <module name="bee_commons" target="1.7" />
       <module name="bee_core" target="1.7" />
+      <module name="bee_domain" target="1.7" />
       <module name="bee_easemob" target="1.7" />
       <module name="bee_file" target="1.7" />
       <module name="bee_order" target="1.7" />
       <module name="bee_parent" target="1.7" />
+      <module name="bee_service" target="1.7" />
       <module name="bee_services" target="1.7" />
       <module name="bee_sms" target="1.7" />
       <module name="bee_test" target="1.7" />

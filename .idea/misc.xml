@@ -33,6 +33,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/bee_admin" />
+    <file type="web" url="file://$PROJECT_DIR$/bee_app" />
     <file type="web" url="file://$PROJECT_DIR$/bee_busi" />
     <file type="web" url="file://$PROJECT_DIR$/bee_web" />
   </component>

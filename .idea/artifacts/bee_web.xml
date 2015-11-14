@@ -9,6 +9,7 @@
           <element id="module-output" name="bee_core" />
           <element id="module-output" name="bee_easemob" />
           <element id="module-output" name="bee_sms" />
+          <element id="module-output" name="bee_domain" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.1.4.RELEASE" />
