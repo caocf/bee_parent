@@ -10,6 +10,7 @@
           <element id="module-output" name="bee_easemob" />
           <element id="module-output" name="bee_service" />
           <element id="module-output" name="bee_sms" />
+          <element id="jpa-descriptors" facet="bee_app/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="archive" name="bee_service-1.1.0.Final.jar">

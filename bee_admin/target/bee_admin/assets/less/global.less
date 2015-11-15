@@ -1,0 +1,277 @@
+@import "variable.less";
+@import "awesome/font-awesome.less";
+@import "bootstrap/bootstrap.less";
+
+@import "plugin/paging.less";
+
+ul,ol,li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+hr {
+	margin-top: 7px !important;
+	margin-bottom: 7px !important;
+}
+.clear-all {
+	margin: 0;
+	padding: 0;
+}
+
+.margin-left-5 {
+	margin-left: 5px;
+}
+
+.badge.red {
+	background-color: @color-red-del;
+}
+
+a, button {
+	&.icon {
+		margin-left: 2px;
+		margin-right: 2px;
+		text-decoration: none;
+	}
+	&.icon-text {
+		i {
+			margin-right: 5px;
+		}
+	}
+}
+
+.fa-lg2 {
+	font-size: 1.7em;
+	line-height: 1em;
+	vertical-align: -15%;
+}
+
+
+.navbar-default {
+	.navbar-header {
+		padding-left: 20px;
+	}
+	.navbar-collapse {
+		padding-right: 20px;
+	}
+}
+
+.navbar-left {
+	position: fixed;
+	top: @navbar-height;
+	left: 0;
+	z-index: 1000;
+	width: @navbar-left-width;
+	height: 100%;
+	background-color: @navbar-left-bg;
+	border-right: 1px solid @color-border;
+	text-align: center;
+	a {
+		&.active, &:active, &:hover {
+			background-color: @color-white;
+			color: @color-base;
+			border-left: 4px solid @color-base;
+		}
+		display: block;
+		text-decoration: none;
+		border-left: 4px solid @navbar-left-bg;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		color: @navbar-font-color;
+		border-bottom: 1px solid @color-border;
+		span {
+			display: block;
+			font-size: 12px;
+		}
+	}
+}
+.navbar-inner {
+	position: fixed;
+	top: @navbar-height;
+	left: @navbar-left-width;
+	z-index: 1000;
+	width: @navbar-inner-width;
+	height: 100%;
+	background-color: @color-white;
+	border-right: 1px solid @color-border;
+	color: @navbar-font-color;
+	padding-top: 20px;
+	span {
+		&.title {
+			font-size: 16px;
+		}
+		display: block;
+		font-size: 12px;
+		padding: 0 15px;
+	}
+	a {
+		&.active, &:active, &:hover {
+			background: @navbar-inner-bg-active;
+			color: @color-base;
+		}
+		display: block;
+		text-decoration: none;
+		background-color: @color-white;
+		margin-top: 5px;
+		padding: 7px 15px;
+		color: @navbar-font-color;
+		&.first {
+			margin-top: 15px;
+		}
+		i {
+			margin-right: 5px;
+		}
+	}
+	.line {
+		height: 1px;
+		border-top: 1px solid @color-border;
+		margin: 10px 0;
+	}
+}
+
+.main {
+	&.inner {
+        padding-left: @navbar-left-width + @navbar-inner-width + 10px;
+	}
+  &.phone {
+      padding: 0;
+  }
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background-color: @color-white;
+	overflow: auto;
+	padding: @navbar-height + 10px 10px 10px @navbar-left-width + 10px;
+	.title {
+		border-bottom: 1px dotted #E2E2E2;
+		margin-bottom: 10px;
+		padding: 10px 15px;
+		.before {
+			.h4;
+			color: @color-base;
+		}
+		.after {
+			color: @color-gray;
+			font-size: 12px;
+		}
+		i {
+			color: @color-gray;
+			margin: 0 10px;
+		}
+	}
+	.query-inner {
+		margin-bottom: 10px;
+	}
+    .border {
+        &.bottom {
+          border: 0px;
+          border-bottom: 1px solid @color-border;
+        }
+        border: 1px solid @color-border;
+        padding: 7px;
+    }
+}
+
+// panel
+.box {
+	&.out-side {
+		background-color: #394557;
+		padding: 7px;
+	}
+	width: 100%;
+	div.context {
+		background: #F7F7F7;
+		padding: 10px;
+	}
+}
+
+.table {
+	margin-bottom: 10px !important;
+	tr {
+		border-top: 1px solid @color-border;
+		border-bottom: 1px solid @color-border;
+	}
+	th {
+		background-color: @color-gray-bg;
+	}
+	&.table-hover {
+		tr {
+			&.active, &:active, &:hover {
+				background-color: @color-active-bg;
+			}
+		}
+	}	
+}
+
+form {
+	select {
+		height: @input-height-base;
+		padding: 0 15px 0 10px;
+	}
+	.form-group.info-title {
+		background-color: lighten(@color-base, 15%);
+		color: @color-white;
+		padding: 5px 10px;
+	}
+	.query_div {
+		margin-bottom: 10px;
+	}
+}
+.form-horizontal {
+	.control-label {
+		padding-right: 15px;
+	}
+	.assist-label {
+		padding-left: 10px;
+		height: @input-height-base;
+		line-height: @input-height-base;
+		label {
+			padding: 0 3px;
+		}
+	}
+	.help-block {
+		margin-bottom: 0;
+	}
+	textarea {
+		width: 100%;
+	}	
+	button.submit {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+}
+
+// 颜色
+.font-color-gray {
+	&:hover {
+		color: darken(@color-gray, 15%);
+	}
+	color: @color-gray;
+}
+.font-color-orange { 
+	&:hover {
+		color: darken(@color-orange, 15%);
+	}
+	color: @color-orange;
+}
+.font-color-white { color: @color-white;}
+.font-color-base { 
+	&:hover {
+		color: darken(@color-base, 15%);
+	}
+	color: @color-base;
+}
+.font-color-green { 
+	&:hover {
+		color: darken(@color-green, 15%);
+	}
+	color: @color-green;
+}
+.font-color-red { 
+	&:hover {
+		color: darken(@color-red-del, 15%);
+	}
+	color: @color-red-del;
+}

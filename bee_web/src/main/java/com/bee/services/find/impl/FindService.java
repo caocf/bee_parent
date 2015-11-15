@@ -2,7 +2,7 @@ package com.bee.services.find.impl;
 
 import com.bee.client.params.find.FindListRequest;
 import com.bee.commons.Consts;
-import com.bee.dao.find.IFindDao;
+import com.bee.dao.find.FindDao;
 import com.bee.dao.shop.ShopImageDao;
 import com.bee.modal.FindListItem;
 import com.bee.services.find.IFindService;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class FindService implements IFindService {
 
     @Autowired
-    private IFindDao findDao;
+    private FindDao findDao;
     @Autowired
     private ShopImageDao shopImageDao;
 

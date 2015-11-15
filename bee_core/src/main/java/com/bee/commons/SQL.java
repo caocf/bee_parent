@@ -112,6 +112,12 @@ public final class SQL {
         }
 
         public static final class Image {
+
+            public static final String QueryShopImageApp = "SELECT " +
+                    "A.SIID, A.URL, A.REMARK, A.WIDTH, A.HEIGHT " +
+                    "FROM TB_SHOP_IMAGE A " +
+                    "WHERE 1=1 ";
+
             public static final String queryAppShopImage = "SELECT " +
                     "A.URL,A.REMARK,A.WIDTH, A.HEIGHT, A.SIID " +
                     "FROM TB_SHOP_IMAGE A WHERE A.SHOP = ? " +
@@ -341,7 +347,7 @@ public final class SQL {
                 "FROM TB_FIND A " +
                 "LEFT OUTER JOIN TB_USER B ON A.USER = B.UID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +
-                "WHERE 1=1";
+                "WHERE C.STATUS = " + Consts.Shop.Status.Run;
 
         // 查询发现列表
         public static final String queryAppFindList = "SELECT " +

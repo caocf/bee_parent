@@ -7,6 +7,7 @@ import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
+import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -44,6 +45,7 @@ public class ShopImageDao extends JpaDaoSupport<ShopImage, Long> {
      * @param sid
      * @return
      */
+    @Deprecated
     public List<ShopImageListItem> queryFindShopImage(long sid) {
         return findConverByParams(SQL.Shop.Image.queryAppShopImage + " limit 9",
                 new QueryDataConver<ShopImageListItem>() {

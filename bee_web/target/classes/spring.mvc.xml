@@ -82,7 +82,8 @@
         <property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 
-    <mvc:resources mapping="/app/**" location="/app/" />
+    <mvc:resources mapping="/static/**" location="/static/" />
+
     <!--
 	<mvc:resources mapping="/images/**" location="/images/" />
 	<mvc:resources mapping="/js/**" location="/js/" />
