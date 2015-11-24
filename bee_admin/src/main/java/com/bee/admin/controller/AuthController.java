@@ -1,8 +1,8 @@
 package com.bee.admin.controller;
 
-import com.bee.admin.services.user.IUserService;
 import com.bee.commons.Consts;
 import com.bee.pojo.user.User;
+import com.bee.services.user.admin.IUserAdminService;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.security.SecuritySessionFactory;
 import com.qsd.framework.security.consts.SecurityConsts;
@@ -19,7 +19,7 @@ import java.io.File;
 /**
  * 鉴权控制器
  *
- * @see com.bee.admin.services.user.IUserService
+ * @see com.bee.services.user.admin.IUserAdminService
  * @since v1.0.0
  */
 @Controller
@@ -29,7 +29,7 @@ public class AuthController {
     public static final String LoginView = "login";
 
     @Autowired
-    private IUserService userService;
+    private IUserAdminService userService;
 
     /**
      *

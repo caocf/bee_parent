@@ -1,10 +1,10 @@
 package com.bee.admin.controller.shop;
 
 import com.bee.admin.params.shop.AdminShopSaveRequest;
-import com.bee.admin.services.shop.IShopService;
 import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.commons.AuthName;
 import com.bee.pojo.shop.Shop;
+import com.bee.services.shop.admin.IShopAdminService;
 import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -29,7 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ShopController {
 
     @Autowired
-    private IShopService shopService;
+    private IShopAdminService shopService;
 
     /**
      * 商家列表

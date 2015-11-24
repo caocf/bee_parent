@@ -4,6 +4,7 @@ import com.bee.commons.Codes;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopError;
 import com.bee.services.shop.IShopErrorService;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class ShopErrorController {
     @RequestMapping(method = RequestMethod.POST)
     public BaseResponse addShopError(@PathVariable Long sid, ShopError shopError) {
         BaseResponse res = new BaseResponse();
+        if (StringUtil.checkIllegalChar(shopError.getErrorMsg(), shopError.getPhone())) {
+            res.setCode(Codes.Error);
+            res.setMsg("输入内容不合法，请重新输入");
+            return res;
+        }
         try {
             shopError.setShop(new Shop(sid));
             shopErrorService.addShopError(shopError);

@@ -15,6 +15,8 @@ public final class SQL {
         // 查询用户
         public static final String QueryUserByParams = "From User A WHERE 1=1";
 
+        public static final String GetUserLoginByParam = "From User A left join fetch A.userAuths B WHERE 1=1";
+
         // 根据帐号查询用户
         public static final String queryUserByAccount = "From User A left join fetch A.userAuths B where A.phone = ?";
         public static final String queryUserByNick = "From User A where A.name = ?";
@@ -145,6 +147,14 @@ public final class SQL {
                     "ON B.USER = C.UID " +
                     "WHERE C.UID = ? " +
                     "ORDER BY B.CREATETIME DESC";
+
+            public static final String GetShopFocusListByParam = "SELECT " +
+                    "A.SID, A.NAME, B.CREATETIME, A.STATUS " +
+                    "FROM TB_SHOP A " +
+                    "LEFT OUTER JOIN " +
+                    "TB_SHOP_FOCUS B " +
+                    "ON A.SID = B.SHOP " +
+                    "WHERE 1=1";
         }
 
         public static final class Comment {

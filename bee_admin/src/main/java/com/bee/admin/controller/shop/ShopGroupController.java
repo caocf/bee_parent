@@ -1,9 +1,9 @@
 package com.bee.admin.controller.shop;
 
-import com.bee.admin.services.shop.IShopGroupService;
-import com.bee.admin.services.shop.IShopService;
 import com.bee.commons.AuthName;
 import com.bee.pojo.shop.ShopGroup;
+import com.bee.services.shop.admin.IShopAdminService;
+import com.bee.services.shop.admin.IShopGroupAdminService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +26,9 @@ public class ShopGroupController {
     public static final String ShopGroupNewView = "shop/ShopGroupNew";
 
     @Autowired
-    private IShopGroupService shopGroupService;
+    private IShopGroupAdminService shopGroupAdminService;
     @Autowired
-    private IShopService shopService;
+    private IShopAdminService shopAdminService;
 
     /**
      *
@@ -38,7 +38,7 @@ public class ShopGroupController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(@PathVariable Long sid) {
         ModelAndView mav = new ModelAndView(ShopGroupListView);
-        mav.addObject("result", shopGroupService.queryAdminShopGroupList(sid));
+        mav.addObject("result", shopGroupAdminService.queryAdminShopGroupList(sid));
         mav.addObject("sid", sid);
         return mav;
     }
@@ -53,7 +53,7 @@ public class ShopGroupController {
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView create(@PathVariable Long sid) {
         ModelAndView mav = new ModelAndView(ShopGroupNewView);
-        mav.addObject("shop", shopService.getShopById(sid));
+        mav.addObject("shop", shopAdminService.getShopById(sid));
         mav.addObject("sid", sid);
         return mav;
     }
@@ -67,7 +67,7 @@ public class ShopGroupController {
     @Auth(name = AuthName.ShopGroupEdit)
     @RequestMapping(value = "/{sgId}/edit", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable Long sid, @PathVariable Long sgId) {
-        return create(sid).addObject("shopGroup", shopGroupService.getAdminShopGroupById(sgId));
+        return create(sid).addObject("shopGroup", shopGroupAdminService.getAdminShopGroupById(sgId));
     }
 
 
@@ -82,7 +82,7 @@ public class ShopGroupController {
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView save(@PathVariable Long sid, ShopGroup group) {
         try {
-            shopGroupService.saveShopGroup(group);
+            shopGroupAdminService.saveShopGroup(group);
             return index(sid);
         } catch (DataRunException e) {
             return create(sid).addObject("msg", "创建失败，请重试");
@@ -100,7 +100,7 @@ public class ShopGroupController {
     @RequestMapping(value = "/{sgId}", method = RequestMethod.PUT)
     public ModelAndView update(@PathVariable Long sid, ShopGroup group) {
         try {
-            shopGroupService.updateShopGroup(group);
+            shopGroupAdminService.updateShopGroup(group);
             return index(sid);
         } catch (DataRunException e) {
             return edit(sid, group.getSgId()).addObject("msg", "修改失败，请重试").addObject("shopGroup", group);
@@ -119,7 +119,7 @@ public class ShopGroupController {
     @RequestMapping(value = "/{sgid}", method = RequestMethod.DELETE)
     public ModelAndView delete(@PathVariable Long sid, @PathVariable Long sgid) {
         try {
-            shopGroupService.deleteShopGroup(sid, sgid);
+            shopGroupAdminService.deleteShopGroup(sid, sgid);
             return index(sid);
         } catch (DataRunException e) {
             return index(sid).addObject("msg", "删除失败，请重试");

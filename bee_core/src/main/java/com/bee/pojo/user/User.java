@@ -31,7 +31,7 @@ public class User implements java.io.Serializable, ISecurityUser {
     private String path;
     // 手机标识(imei号或IOS编号)
     private String device;
-    // 用户名
+    // 用户名(昵称)
     private String name;
     // 手机
     private String phone;

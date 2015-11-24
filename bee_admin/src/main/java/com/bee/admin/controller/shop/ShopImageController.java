@@ -1,13 +1,11 @@
 package com.bee.admin.controller.shop;
 
-import com.bee.admin.services.shop.IShopImageService;
 import com.bee.commons.AuthName;
-import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.image.ImageParser;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopImage;
-import com.qsd.framework.commons.utils.StringUtil;
+import com.bee.services.shop.admin.IShopImageAdminService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
 import org.slf4j.Logger;
@@ -22,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.crypto.Data;
 import java.util.List;
 
 /**
@@ -36,7 +33,7 @@ public class ShopImageController {
     private final Logger Log = LoggerFactory.getLogger(ShopImageController.class);
 
     @Autowired
-    private IShopImageService shopImageService;
+    private IShopImageAdminService shopImageService;
 
     /**
      * 查看商家图片
@@ -85,11 +82,8 @@ public class ShopImageController {
             return create(sid).addObject("msg", "图片不存在");
         }
         // 对图片格式进行安全性检查
-        if (file.getOriginalFilename().lastIndexOf(".") < 1) {
-            return create(sid).addObject("msg", "图片文件名有误");
-        }
         String fileName = file.getOriginalFilename().trim().toLowerCase();
-        String ext = file.getOriginalFilename().substring(fileName.lastIndexOf("."), fileName.length());
+        String ext = fileName.substring(fileName.lastIndexOf("."), fileName.length());
         if (!ImageParser.ImageTypeEnum.JPG.toString().equals(ext)
             && !ImageParser.ImageTypeEnum.JPEG.toString().equals(ext)
             && !ImageParser.ImageTypeEnum.PNG.toString().equals(ext)) {

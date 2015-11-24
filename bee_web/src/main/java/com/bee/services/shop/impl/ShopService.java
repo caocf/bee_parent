@@ -28,16 +28,6 @@ public class ShopService implements IShopService {
     private ShopDao shopDao;
 
     /**
-     * 查询所有商家信息
-     *
-     * @return
-     */
-    @Override
-    public List<Shop> getShopAll() {
-        return shopDao.findAll();
-    }
-
-    /**
      *
      * @param req
      * @return
@@ -63,53 +53,10 @@ public class ShopService implements IShopService {
      * @return
      */
     @Override
-    public Shop getShopById(long sid) {
-        return shopDao.getShopById(sid);
-    }
-
-    /**
-     *
-     * @param sid
-     * @return
-     */
-    @Override
     public ShopItem getShopItemById(long sid) {
         return shopDao.getShopItemById(sid);
     }
 
-    @Override
-    @Transactional
-    public void closeShop(Shop shop) throws DataRunException {
-        shopDao.update(shop);
-    }
-
-
-    /**
-     *
-     * @param shopId
-     * @param req
-     */
-    public void saveShopListImage(long shopId, MultipartHttpServletRequest req) {
-        MultipartFile thumFile = req.getFile("thumbnailFile");
-        if (thumFile != null && thumFile.getSize() > 0) {
-            req.setAttribute("shopId", shopId);
-            ImageParser.getImageParser(ImageParser.ImageType.ShopListThum).generate(req, thumFile);
-        }
-    }
-
-    /**
-     *
-     * @param shopId
-     * @param req
-     */
-    @Override
-    public void saveShopImage(long shopId, MultipartHttpServletRequest req) {
-        MultipartFile file = req.getFile("file");
-        if (file != null && file.getSize() > 0) {
-            req.setAttribute("shopId", shopId);
-            ImageParser.getImageParser(ImageParser.ImageType.ShopImage).generate(req, file);
-        }
-    }
 
     /**
      *

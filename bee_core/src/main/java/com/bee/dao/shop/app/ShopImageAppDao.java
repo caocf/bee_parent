@@ -2,13 +2,13 @@ package com.bee.dao.shop.app;
 
 import com.bee.commons.SQL;
 import com.bee.dao.shop.ShopImageDao;
-import com.bee.domain.params.ShopImageListParam;
+import com.bee.domain.modal.app.shop.ShopImage;
+import com.bee.domain.params.shop.ShopImageListParam;
 import com.bee.modal.ShopImageListItem;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.QueryDataConver;
 import com.qsd.framework.hibernate.bean.SQLEntity;
-import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class ShopImageAppDao extends ShopImageDao {
      * @param param
      * @return
      */
-    public List<ShopImageListItem> queryShopImageApp(ShopImageListParam param) {
+    public List<ShopImage> queryShopImage(ShopImageListParam param) {
         SQLEntity entity = new SQLEntity();
         StringBuffer sb = new StringBuffer(SQL.Shop.Image.QueryShopImageApp);
 
@@ -47,10 +47,10 @@ public class ShopImageAppDao extends ShopImageDao {
         }
 
         entity.setEntity(sb);
-        entity.setQueryDataConver(new QueryDataConver<ShopImageListItem>() {
+        entity.setQueryDataConver(new QueryDataConver<ShopImage>() {
             @Override
-            public ShopImageListItem converData(Object[] row) {
-                ShopImageListItem item = new ShopImageListItem();
+            public ShopImage converData(Object[] row) {
+                ShopImage item = new ShopImage();
                 item.setShopImageId(NumberUtil.parseLong(row[0], 0));
                 item.setUrl(StringUtil.parseString(row[1], ""));
                 item.setRemark(StringUtil.parseString(row[2], ""));

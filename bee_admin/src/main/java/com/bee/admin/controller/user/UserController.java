@@ -1,9 +1,9 @@
 package com.bee.admin.controller.user;
 
-import com.bee.admin.services.user.IUserService;
 import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.commons.AuthName;
 import com.bee.pojo.user.User;
+import com.bee.services.user.admin.IUserAdminService;
 import com.qsd.framework.security.annotation.Auth;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 
     @Autowired
-    private IUserService userService;
+    private IUserAdminService userService;
 
     /**
      * 用户管理首页

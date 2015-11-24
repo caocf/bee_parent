@@ -1,9 +1,10 @@
 package com.bee.app.controller.finds;
 
-import com.bee.domain.params.FindListParam;
-import com.bee.modal.FindListItem;
+import com.bee.commons.Codes;
+import com.bee.domain.modal.app.find.Find;
+import com.bee.domain.params.find.FindListParam;
 import com.bee.services.find.app.IFindAppService;
-import com.qsd.framework.spring.PagingResult;
+import com.qsd.framework.domain.response.ResponsePaging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,8 +31,11 @@ public class FindController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public PagingResult<FindListItem> queryFindList(FindListParam param) {
-        return findService.queryFindList(param);
+    public ResponsePaging<Find> queryFindList(FindListParam param) {
+        ResponsePaging<Find> res = new ResponsePaging<>();
+        res.setResult(findService.queryFindList(param));
+        res.setCode(Codes.Success);
+        return res;
     }
 
 

@@ -6,6 +6,7 @@ import com.bee.modal.ShopCommentListItem;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopComment;
 import com.bee.services.shop.IShopCommentService;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import com.qsd.framework.spring.PagingResult;
@@ -46,6 +47,11 @@ public class ShopCommentController {
     @RequestMapping(method = RequestMethod.POST)
     public BaseResponse save(@PathVariable Long sid, ShopComment comment) {
         BaseResponse res = new BaseResponse();
+        if (StringUtil.checkIllegalChar(comment.getContent())) {
+            res.setCode(Codes.Error);
+            res.setMsg("输入内容包含非法字符，请重新输入");
+            return res;
+        }
         try {
             comment.setShop(new Shop(sid));
             shopCommentService.save(comment);

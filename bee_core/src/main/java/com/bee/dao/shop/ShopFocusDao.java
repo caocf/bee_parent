@@ -4,6 +4,7 @@ import com.bee.app.model.shop.ShopFocusItem;
 import com.bee.app.params.shop.ShopFocusListRequest;
 import com.bee.commons.ImageFactory;
 import com.bee.commons.SQL;
+import com.bee.domain.modal.app.shop.ShopFavorite;
 import com.bee.modal.ShopFocusFriendList;
 import com.bee.pojo.shop.ShopFocus;
 import com.qsd.framework.commons.utils.NumberUtil;
@@ -65,4 +66,7 @@ public class ShopFocusDao extends JpaDaoSupport<ShopFocus, Long> {
         });
         return queryWithPagingConver(entity);
     }
+
+
+
 }

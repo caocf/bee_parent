@@ -1,10 +1,8 @@
 package com.bee.admin.controller.stat;
 
 import com.bee.admin.params.charts.*;
-import com.bee.admin.params.stat.StatClickParam;
-import com.bee.admin.services.stat.IUserStatService;
-import com.bee.admin.services.stat.impl.UserStatService;
 import com.bee.commons.AuthName;
+import com.bee.services.stat.admin.IUserStatAdminService;
 import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.mail.FetchProfile;
 import java.util.Calendar;
-import java.util.Map;
 
 /**
  * Created by suntongwei on 15/11/11.
@@ -26,7 +22,7 @@ import java.util.Map;
 public class UserStatController {
 
     @Autowired
-    private IUserStatService userStatService;
+    private IUserStatAdminService userStatService;
 
     /**
      *

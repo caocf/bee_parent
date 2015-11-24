@@ -21,13 +21,6 @@ import java.util.List;
 public interface IShopService {
 
     /**
-     * 查询所有商家
-     *
-     * @return
-     */
-    public List<Shop> getShopAll();
-
-    /**
      * 查询APP商家列表
      *
      * @param req
@@ -41,16 +34,6 @@ public interface IShopService {
      * @return
      */
     public List<ShopListItem> queryRecommendShop(long uid);
-
-
-    /**
-     * 查询一个商家信息
-     *
-     * @param sid
-     * @return
-     */
-    Shop getShopById(long sid);
-
 
     /**
      * 根据ID查询商家信息
@@ -66,29 +49,5 @@ public interface IShopService {
      * @return
      */
     public List<ShopMap> queryShopMapAll();
-
-    /**
-     * 修改商家列表图片
-     *
-     * @param shopId
-     * @param req
-     */
-    public void saveShopListImage(long shopId, MultipartHttpServletRequest req);
-
-
-    /**
-     * 保存商家门店图片
-     *
-     * @param shopId
-     * @param req
-     */
-    public void saveShopImage(long shopId, MultipartHttpServletRequest req);
-
-    /**
-     * 关闭商家(B端)
-     *
-     * @param shop
-     */
-    void closeShop(Shop shop) throws DataRunException;
 
 }

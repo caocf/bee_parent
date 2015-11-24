@@ -12,29 +12,6 @@ import java.util.List;
  */
 public interface IShopAttendService {
 
-    /**
-     * 保存商家出勤表
-     *
-     * @param req
-     */
-    public void saveShopAttend(ShopAttendSaveRequest req) throws DataRunException;
-
-    /**
-     * 根据时间删除出勤表
-     *
-     * @param attendTime
-     * @throws DataRunException
-     */
-    public void deleteShopAttend(long sid, long attendTime) throws DataRunException;
-
-
-    /**
-     * 【B端】查询商家出勤表
-     *
-     * @param sid
-     * @return
-     */
-    public List<BusiShopAttend> getShopAttendByShopId(long sid, long attendTime);
 
     /**
      *【C端】查询商家出勤表
@@ -44,12 +21,4 @@ public interface IShopAttendService {
      */
     public List<ShopAttendItem> getAppShopAttendByShopId(long sid);
 
-    /**
-     * 查询商家出勤表，大于查询时间
-     *
-     * @param sid
-     * @param attendTime
-     * @return
-     */
-    public List<BusiShopAttend> getShopAttendByShopIdAfter(long sid, long attendTime);
 }

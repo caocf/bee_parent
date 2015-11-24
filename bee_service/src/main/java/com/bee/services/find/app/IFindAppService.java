@@ -1,6 +1,7 @@
 package com.bee.services.find.app;
 
-import com.bee.domain.params.FindListParam;
+import com.bee.domain.modal.app.find.Find;
+import com.bee.domain.params.find.FindListParam;
 import com.bee.modal.FindListItem;
 import com.bee.services.find.IFindService;
 import com.qsd.framework.spring.PagingResult;
@@ -15,8 +16,8 @@ public interface IFindAppService extends IFindService {
      * @see com.bee.modal.FindListItem
      *
      * @param param 查询参数
-     * @return PagingResult<FindListItem>
+     * @return PagingResult<Find>
      */
-    PagingResult<FindListItem> queryFindList(FindListParam param);
+    PagingResult<Find> queryFindList(FindListParam param);
 
 }

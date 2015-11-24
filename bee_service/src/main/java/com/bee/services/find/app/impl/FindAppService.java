@@ -3,8 +3,9 @@ package com.bee.services.find.app.impl;
 import com.bee.commons.Consts;
 import com.bee.dao.find.app.FindAppDao;
 import com.bee.dao.shop.app.ShopImageAppDao;
-import com.bee.domain.params.FindListParam;
-import com.bee.domain.params.ShopImageListParam;
+import com.bee.domain.modal.app.find.Find;
+import com.bee.domain.params.find.FindListParam;
+import com.bee.domain.params.shop.ShopImageListParam;
 import com.bee.modal.FindListItem;
 import com.bee.services.find.app.IFindAppService;
 import com.bee.services.find.impl.FindService;
@@ -19,18 +20,18 @@ import org.springframework.stereotype.Service;
 public class FindAppService extends FindService implements IFindAppService {
 
     @Autowired
-    private FindAppDao findDao;
+    private FindAppDao findAppDao;
     @Autowired
     private ShopImageAppDao shopImageAppDao;
 
     /**
      * @see com.bee.services.find.app.IFindAppService#queryFindList
      * @param param 查询参数
-     * @return PagingResult<FindListItem>
+     * @return PagingResult<Find>
      */
     @Override
-    public PagingResult<FindListItem> queryFindList(FindListParam param) {
-        PagingResult<FindListItem> items = findDao.queryFindListApp(param);
+    public PagingResult<Find> queryFindList(FindListParam param) {
+        PagingResult<Find> items = findAppDao.queryFindListApp(param);
         if (null == items.getData() || items.getData().size() < 1) {
             return items;
         }
@@ -41,14 +42,14 @@ public class FindAppService extends FindService implements IFindAppService {
         ShopImageListParam shopImageParam = new ShopImageListParam();
         shopImageParam.setTop(9);
         shopImageParam.setOrderBy(" A.SORT DESC ");
-        for (FindListItem item : items.getData()) {
+        for (Find item : items.getData()) {
             shopImageParam.setShopId(item.getShopId());
             switch (item.getType()) {
                 case Consts.Find.Type.ShopNew:
-                    item.setShopImages(shopImageAppDao.queryShopImageApp(shopImageParam));
+                    item.setShopImages(shopImageAppDao.queryShopImage(shopImageParam));
                     break;
                 case Consts.Find.Type.ShopPop:
-                    item.setShopImages(shopImageAppDao.queryShopImageApp(shopImageParam));
+                    item.setShopImages(shopImageAppDao.queryShopImage(shopImageParam));
                     break;
             }
         }

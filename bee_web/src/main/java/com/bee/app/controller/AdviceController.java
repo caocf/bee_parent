@@ -3,6 +3,7 @@ package com.bee.app.controller;
 import com.bee.commons.Codes;
 import com.bee.pojo.Advice;
 import com.bee.services.system.IAdviceService;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class AdviceController {
     @RequestMapping(method = RequestMethod.POST)
     public BaseResponse addAdvice(Advice advice) {
         BaseResponse res = new BaseResponse();
+        if (StringUtil.checkIllegalChar(advice.getMsg(), advice.getPhone())) {
+            res.setCode(Codes.Error);
+            res.setMsg("输入内容不合法，请重新输入");
+            return res;
+        }
         try {
             adviceService.saveAdvice(advice);
             res.setCode(Codes.Success);

@@ -4,6 +4,7 @@ import com.bee.app.model.user.UserInfo;
 import com.bee.client.params.user.UserResponse;
 import com.bee.client.params.user.UsersResponse;
 import com.bee.commons.Codes;
+import com.bee.commons.Consts;
 import com.bee.core.UserCacheFactory;
 import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
@@ -128,11 +129,27 @@ public class UserController {
             User user;
             // 通过手机找回密码修改
             if (!StringUtil.isNull(phone)) {
+                if (phone.length() != 11) {
+                    res.setCode(Codes.Error);
+                    res.setMsg("未知手机号");
+                    return res;
+                }
+                if (!"isPassFind".equals(oldPass)) {
+                    res.setCode(Codes.Error);
+                    res.setMsg("参数错误");
+                    return res;
+                }
                 user = userService.getUserByAccount(phone);
             } else {
                 user = userService.getUserById(uid);
             }
             if (user != null) {
+                if (user.getType() == Consts.User.Type.AdminUser
+                        || user.getType() == Consts.User.Type.TestUser) {
+                    res.setCode(Codes.Error);
+                    res.setMsg("参数错误");
+                    return res;
+                }
                 if (StringUtil.isNull(phone) && Md5.encodePassword(oldPass).equals(user.getPassword())) {
                     // 如果手机为空，则表示修改密码，需要输入原密码
                     user.setPassword(Md5.encodePassword(newPass));

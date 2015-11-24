@@ -11,6 +11,7 @@ import com.bee.services.market.IAdService;
 import com.bee.services.stat.IUserStatService;
 import com.bee.services.system.IAppVerService;
 import com.bee.services.system.IApplyerService;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,6 +91,11 @@ public class AppController {
     @RequestMapping(value = "/apply", method = RequestMethod.POST)
     public BaseResponse shopApply(Applyer applyer) {
         BaseResponse res = new BaseResponse();
+        if (StringUtil.checkIllegalChar(applyer.getExtraInfo(), applyer.getPhone(), applyer.getLinkName())) {
+            res.setCode(Codes.Error);
+            res.setMsg("输入内容不合法，请重新输入");
+            return res;
+        }
         try {
             applyerService.addApplyer(applyer);
             res.setCode(Codes.Success);

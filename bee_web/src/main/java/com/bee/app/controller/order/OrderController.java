@@ -7,6 +7,7 @@ import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.modal.OrderListItem;
 import com.bee.pojo.order.Order;
+import com.bee.pojo.user.User;
 import com.bee.services.order.IOrderService;
 import com.bee.sms.SMSUtils;
 import com.qsd.framework.commons.utils.StringUtil;
@@ -71,6 +72,15 @@ public class OrderController {
             res.setMsg("输入内容包含非法字符");
             return res;
         }
+        // 除了APP用户和VIP用户，都无法下单
+        if (order.getUser() != null) {
+            if (order.getUser().getType() != Consts.User.Type.AppUser
+                    || order.getUser().getType() != Consts.User.Type.VipUser) {
+                res.setCode(Codes.Error);
+                res.setMsg("该帐号无法下单");
+                return res;
+            }
+        }
         try {
             orderService.createOrder(order);
             res.setOrder(order);
@@ -107,23 +117,23 @@ public class OrderController {
         return res;
     }
 
-    /**
-     * 完成订单
-     *
-     * @return
-     */
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public BaseResponse finish(@PathVariable Long id) {
-        BaseResponse res = new BaseResponse();
-        try {
-            orderService.finishOrder(id);
-            res.setCode(Codes.Success);
-        } catch(DataRunException e) {
-            e.printStackTrace();
-            res.setCode(Codes.Error);
-        }
-        return res;
-    }
+//    /**
+//     * 完成订单
+//     *
+//     * @return
+//     */
+//    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+//    public BaseResponse finish(@PathVariable Long id) {
+//        BaseResponse res = new BaseResponse();
+//        try {
+//            orderService.finishOrder(id);
+//            res.setCode(Codes.Success);
+//        } catch(DataRunException e) {
+//            e.printStackTrace();
+//            res.setCode(Codes.Error);
+//        }
+//        return res;
+//    }
 
     /**
      * 修改订单人数

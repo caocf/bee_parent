@@ -2,8 +2,8 @@ package com.bee.admin.controller.stat;
 
 import com.bee.admin.params.charts.*;
 import com.bee.admin.params.stat.StatClickParam;
-import com.bee.admin.services.stat.IUserStatService;
 import com.bee.commons.AuthName;
+import com.bee.services.stat.admin.IUserStatAdminService;
 import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import java.util.Calendar;
 public class VisitStatController {
 
     @Autowired
-    private IUserStatService userStatService;
+    private IUserStatAdminService userStatService;
 
     /**
      *

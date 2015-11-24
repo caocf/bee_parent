@@ -13,14 +13,6 @@ import java.util.List;
 public interface IShopGroupService {
 
     /**
-     * 返回商家对应的所有组
-     *
-     * @param sid
-     * @return
-     */
-    public List<BusiShopGroup> getShopGroupByShopId(Long sid);
-
-    /**
      * 根据组查询所有价格
      *
      * @param sid
@@ -28,27 +20,4 @@ public interface IShopGroupService {
      */
     public List<ShopPriceItem> queryShopPriceByShopId(Long sid);
 
-    /**
-     * 保存一个分组
-     *
-     * @param shopGroup
-     * @throws DataRunException
-     */
-    public void saveShopGroup(ShopGroup shopGroup) throws DataRunException;
-
-    /**
-     * 更新一个分组
-     *
-     * @param shopGroup
-     * @throws DataRunException
-     */
-    public void updateShopGroup(ShopGroup shopGroup) throws DataRunException;
-
-    /**
-     * 删除一个分组
-     *
-     * @param shopGroupId
-     * @throws DataRunException
-     */
-    public void deleteShopGroup(long shopId, long shopGroupId) throws DataRunException;
 }

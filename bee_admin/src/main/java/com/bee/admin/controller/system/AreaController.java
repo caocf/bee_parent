@@ -1,8 +1,8 @@
 package com.bee.admin.controller.system;
 
-import com.bee.admin.services.system.IAreaService;
 import com.bee.commons.AuthName;
 import com.bee.pojo.Area;
+import com.bee.services.system.admin.IAreaAdminService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import java.util.List;
 public class AreaController {
 
     @Autowired
-    private IAreaService areaService;
+    private IAreaAdminService areaService;
 
     /**
      *

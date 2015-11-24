@@ -21,29 +21,4 @@ public interface IShopImageService {
      */
     public List<ShopImageListItem> queryAppShopImage(long sid);
 
-    /**
-     * 根据商家ID查询商家图片集合
-     *
-     * @param sid
-     * @return
-     */
-    public List<ShopImage> queryShopImageByShopId(long sid);
-
-    /**
-     * 保存商家图片
-     *
-     * @param shopImage
-     * @throws DataRunException
-     */
-    public void addShopImage(HttpServletRequest req, MultipartFile file, ShopImage shopImage) throws DataRunException;
-
-    /**
-     * 删除一张图片
-     *
-     * @param shopImageId
-     * @throws DataRunException
-     */
-    public void delShopImage(long shopImageId) throws DataRunException;
-
-
 }

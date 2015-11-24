@@ -3,7 +3,8 @@ package com.bee.dao.find.app;
 import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.dao.find.FindDao;
-import com.bee.domain.params.FindListParam;
+import com.bee.domain.modal.app.find.Find;
+import com.bee.domain.params.find.FindListParam;
 import com.bee.modal.FindListItem;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
@@ -23,7 +24,7 @@ public class FindAppDao extends FindDao {
      * @param param
      * @return
      */
-    public PagingResult<FindListItem> queryFindListApp(FindListParam param) {
+    public PagingResult<Find> queryFindListApp(FindListParam param) {
         SQLEntity entity = new SQLEntity();
         StringBuffer sb = new StringBuffer(SQL.Find.QueryFindAppList);
         if (param != null) {
@@ -38,11 +39,11 @@ public class FindAppDao extends FindDao {
             entity.setPaging(param);
         }
         entity.setEntity(sb);
-        entity.setQueryDataConver(new QueryDataConver<FindListItem>() {
+        entity.setQueryDataConver(new QueryDataConver<Find>() {
             @Override
-            public FindListItem converData(Object[] objs) {
+            public Find converData(Object[] objs) {
                 int i = 0;
-                FindListItem item = new FindListItem();
+                Find item = new Find();
                 item.setFindId(NumberUtil.parseLong(objs[i++], 0));
                 item.setUserId(NumberUtil.parseLong(objs[i++], 0));
                 item.setType(NumberUtil.parseInteger(objs[i++], Consts.Find.Type.Unknow));

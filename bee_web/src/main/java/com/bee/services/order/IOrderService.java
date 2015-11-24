@@ -53,14 +53,6 @@ public interface IOrderService {
     public void editOrderNum(long oid, int num) throws DataRunException;
 
     /**
-     * 完成订单
-     *
-     * @param id
-     * @throws DataRunException
-     */
-    public void finishOrder(long id) throws DataRunException;
-
-    /**
      * 【C端】用户取消订单
      *
      * @param id
@@ -70,48 +62,10 @@ public interface IOrderService {
     public void cancelOrder(long id, int status) throws DataRunException;
 
     /**
-     * 【B端】商户取消订单
-     *
-     * @param id
-     * @throws DataRunException
-     */
-    public void cancelBusiOrder(long id) throws DataRunException;
-
-    /**
-     * 【B端】商家拒绝订单
-     *
-     * @param id
-     * @throws DataRunException
-     */
-    public void rejectOrder(long id) throws DataRunException;
-
-    /**
      * 查询订单
      *
      * @param oid
      */
     public OrderItem getOrderByOid(long oid);
 
-    /**
-     * 根据参数查询商户端订单列表
-     *
-     * @param request
-     * @return
-     */
-    public List<BusiOrderListItem> getBusiOrderListByParam(BusiOrderListRequest request);
-
-    /**
-     * 根据订单ID查询商户端订单详细
-     *
-     * @return
-     */
-    public BusiOrderItem getBusiOrderItem(long oid);
-
-    /**
-     * 接受订单
-     *
-     * @param id
-     * @throws DataRunException
-     */
-    public void acceptOrder(long id) throws DataRunException;
 }

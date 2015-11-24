@@ -69,6 +69,8 @@ public class Order implements java.io.Serializable {
     public void writeOperate(String operate) {
         if (this.operate != null && !"".equals(this.operate)) {
             this.operate += ";";
+        } else {
+            this.operate = "";
         }
         this.operate += DateUtil.formatDateTime(System.currentTimeMillis()) + operate;
     }

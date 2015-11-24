@@ -4,7 +4,7 @@ import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.commons.AuthName;
 import com.bee.commons.Consts;
 import com.bee.pojo.order.Order;
-import com.bee.admin.services.order.IOrderService;
+import com.bee.services.order.admin.IOrderAdminService;
 import com.qsd.framework.security.annotation.Auth;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class OrderController {
     public static final String OrderView = "order/OrderList";
 
     @Autowired
-    private IOrderService orderService;
+    private IOrderAdminService orderService;
 
     /**
      * <b>监控订单</b>
