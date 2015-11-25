@@ -1,18 +1,12 @@
 package com.bee.services.order;
 
-import com.bee.app.model.order.OrderItem;
-import com.bee.busi.model.order.BusiOrderItem;
-import com.bee.busi.model.order.BusiOrderListItem;
-import com.bee.busi.params.order.BusiOrderListRequest;
-import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderListRequest;
-import com.bee.modal.OrderListItem;
+import com.bee.domain.modal.app.order.OrderItem;
+import com.bee.domain.modal.app.order.OrderListItem;
 import com.bee.pojo.order.Order;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
-
-import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/24.
@@ -26,14 +20,6 @@ public interface IOrderService {
      * @return
      */
     public PagingResult<OrderListItem> getAppOrderListByParam(OrderListRequest request);
-
-    /**
-     * 创建订单
-     *
-     * @param req
-     * @throws com.qsd.framework.hibernate.exception.DataRunException
-     */
-    public void createOrder(OrderCreateRequest req) throws DataRunException;
 
     /**
      * 创建订单

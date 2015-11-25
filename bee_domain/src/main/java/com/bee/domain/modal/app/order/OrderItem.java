@@ -1,11 +1,12 @@
-package com.bee.app.model.order;
+package com.bee.domain.modal.app.order;
 
 /**
- * Created by suntongwei on 15/9/16.
+ * Created by suntongwei on 15/11/25.
  */
 public class OrderItem implements java.io.Serializable {
 
-    private static final long serialVersionUID = 6210947803471133096L;
+    // serialVersionUID
+    private static final long serialVersionUID = -2467369067154140623L;
 
     // 订单编号
     private String no;
@@ -17,9 +18,10 @@ public class OrderItem implements java.io.Serializable {
     private Integer status;
     // 是否点评
     private Integer isComment;
-
     // 创建时间
     private Long createTime;
+    // 是否返现
+    private Integer isBack;
 
     public String getNo() {
         return no;
@@ -56,5 +58,11 @@ public class OrderItem implements java.io.Serializable {
     }
     public void setIsComment(Integer isComment) {
         this.isComment = isComment;
+    }
+    public Integer getIsBack() {
+        return isBack;
+    }
+    public void setIsBack(Integer isBack) {
+        this.isBack = isBack;
     }
 }

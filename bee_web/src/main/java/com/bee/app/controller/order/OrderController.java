@@ -1,13 +1,12 @@
 package com.bee.app.controller.order;
 
-import com.bee.app.model.order.OrderItem;
 import com.bee.client.params.order.OrderCreateResponse;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
-import com.bee.modal.OrderListItem;
+import com.bee.domain.modal.app.order.OrderItem;
+import com.bee.domain.modal.app.order.OrderListItem;
 import com.bee.pojo.order.Order;
-import com.bee.pojo.user.User;
 import com.bee.services.order.IOrderService;
 import com.bee.sms.SMSUtils;
 import com.qsd.framework.commons.utils.StringUtil;
@@ -34,7 +33,6 @@ public class OrderController {
 
     @Autowired
     private IOrderService orderService;
-
 
     /**
      * 查询订单列表

@@ -1,21 +1,15 @@
 package com.bee.services.shop.impl;
 
 import com.bee.client.params.shop.ShopListRequest;
-import com.bee.dao.shop.ShopDao;
-import com.bee.image.ImageParser;
-import com.bee.modal.ShopItem;
-import com.bee.modal.ShopListItem;
+import com.bee.dao.shop.app.ShopAppDao;
+import com.bee.domain.modal.app.shop.ShopItem;
+import com.bee.domain.modal.app.shop.ShopListItem;
 import com.bee.modal.ShopMap;
-import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
-import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -25,7 +19,7 @@ import java.util.List;
 public class ShopService implements IShopService {
 
     @Autowired
-    private ShopDao shopDao;
+    private ShopAppDao shopDao;
 
     /**
      *

@@ -1,18 +1,11 @@
 package com.bee.services.shop;
 
-import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.client.params.shop.ShopListRequest;
-import com.bee.modal.RecommendItem;
-import com.bee.modal.ShopItem;
-import com.bee.modal.ShopListItem;
+import com.bee.domain.modal.app.shop.ShopItem;
+import com.bee.domain.modal.app.shop.ShopListItem;
 import com.bee.modal.ShopMap;
-import com.bee.pojo.shop.Shop;
-import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**

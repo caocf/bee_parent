@@ -55,4 +55,14 @@ public class FindAppService extends FindService implements IFindAppService {
         }
         return items;
     }
+
+    /**
+     * 保存发现
+     *
+     * @param find 发现实体
+     */
+    @Override
+    public void saveFind(com.bee.pojo.find.Find find) {
+        // C端不实现
+    }
 }

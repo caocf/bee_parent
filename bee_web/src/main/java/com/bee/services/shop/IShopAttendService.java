@@ -3,6 +3,7 @@ package com.bee.services.shop;
 import com.bee.app.model.shop.ShopAttendItem;
 import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.params.shop.ShopAttendSaveRequest;
+import com.bee.domain.modal.app.shop.ShopAttend;
 import com.qsd.framework.hibernate.exception.DataRunException;
 
 import java.util.List;
@@ -19,6 +20,6 @@ public interface IShopAttendService {
      * @param sid
      * @return
      */
-    public List<ShopAttendItem> getAppShopAttendByShopId(long sid);
+    public List<ShopAttend> getAppShopAttendByShopId(long sid);
 
 }

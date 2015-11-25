@@ -59,24 +59,25 @@ public final class SQL {
                 "A.sid,A.name,A.addr,A.price,B.name as area," +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                " A.type, A.isBack " +
+                " A.type " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid " +
                 "where A.recommend = " + Consts.True + " and A.status = " + Consts.Shop.Status.Run + " order by A.sort desc limit 6";
 
-        // 查询好友关注数
-        public static final String queryAppShopList =
+        // 查询商家列表App
+        public static final String ShopListApp =
                 "select " +
-                "A.sid,A.name,A.addr,A.price,B.name as area, " +
-                "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
+                "A.SID,A.NAME,A.ADDR,A.PRICE,B.NAME AS AREA, " +
+                "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as FOCUSNUM," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                " A.type, A.isBack " +
+                " A.TYPE " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
-                "on A.area = B.aid  " +
-                "where A.status = " + Consts.Shop.Status.Run;
+                "on A.AREA = B.AID  " +
+                "where A.STATUS = " + Consts.Shop.Status.Run;
         public static final String queryAppShopListSort = " order by A.sort desc";
+
 
         /**
          * 查询商家详细
@@ -86,7 +87,7 @@ public final class SQL {
                 "A.sid,A.name,A.addr,A.price,B.name as area, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                "A.lon, A.lat, A.phone, A.type, A.LINKNAME, A.remark, A.isBack, A.SERVICETIME " +
+                "A.lon, A.lat, A.type, A.SERVICETIME, A.ISFREEPARKING, A.ISFOOD, A.ISINVOICE " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid  " +
@@ -290,7 +291,7 @@ public final class SQL {
 
         public static final String getAppOrderListByParam = "SELECT " +
                 "B.NAME, A.CREATETIME, A.NUM, A.STATUS, A.OID, B.SID, A.ORDERNAME, A.EXECTIME, " +
-                "A.ORDERPHONE, A.REMARK " +
+                "A.ORDERPHONE, A.REMARK, A.ISBACK " +
                 "FROM TB_ORDER A LEFT OUTER JOIN TB_SHOP B ON A.SHOP = B.SID WHERE 1=1 ";
         public static final String getBusiOrderListByParam = "SELECT " +
                 "A.OID, A.NO, A.STATUS, A.NUM, A.EXECTIME, A.ORDERNAME, B.UID, B.NAME, A.CREATETIME," +
@@ -326,7 +327,7 @@ public final class SQL {
          *【C端】查询商家详细(ShopDetailActivity)
          */
         public static final String QueryOrderByOid = "SELECT " +
-                "A.NO, A.CREATETIME, A.STATUS, C.ADDR, B.PHONE, A.ISCOMMENT " +
+                "A.NO, A.CREATETIME, A.STATUS, C.ADDR, B.PHONE, A.ISCOMMENT, A.ISBACK " +
                 "FROM TB_ORDER A " +
                 "LEFT OUTER JOIN TB_SHOP_USER B ON A.SHOPUSER = B.SUID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +

@@ -57,16 +57,18 @@ public class ShopAdminService extends ShopService implements IShopAdminService {
             shop.setIdentity("S" + shop.getCreateTime());
             shop.setPrice(0d);
             shop.setStatus(Consts.Shop.Status.Run);
-            shop.setIsBack(Consts.False);
+
             if (null == shop.getSort()) {
                 shop.setSort(100);
             }
             if (null == shop.getRecommend()) {
                 shop.setRecommend(Consts.False);
             }
-            if (null == shop.getSortTime()) {
-                shop.setSortTime(0l);
-            }
+            // v1.0.5删除
+//            if (null == shop.getSortTime()) {
+//                shop.setSortTime(0l);
+//            }
+//            shop.setIsBack(Consts.False);
             shop.setUpdateTime(System.currentTimeMillis());
             if (StringUtil.isNull(shop.getServiceTime())) {
                 shop.setServiceTime("13:30-0:30");

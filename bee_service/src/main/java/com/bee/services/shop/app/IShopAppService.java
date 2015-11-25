@@ -1,8 +1,8 @@
 package com.bee.services.shop.app;
 
 import com.bee.client.params.shop.ShopListRequest;
-import com.bee.domain.modal.app.shop.Shop;
-import com.bee.modal.ShopListItem;
+import com.bee.domain.modal.app.shop.ShopItem;
+import com.bee.domain.modal.app.shop.ShopListItem;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.spring.PagingResult;
 
@@ -27,5 +27,5 @@ public interface IShopAppService extends IShopService {
      * @param sid
      * @return
      */
-    public Shop getShop(long sid);
+    public ShopItem getShop(long sid);
 }

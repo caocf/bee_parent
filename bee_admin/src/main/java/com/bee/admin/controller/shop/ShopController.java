@@ -82,11 +82,6 @@ public class ShopController {
     public ModelAndView save(AdminShopSaveRequest req, MultipartHttpServletRequest request) {
         ModelAndView mav;
         try {
-            if (!StringUtil.isNull(req.getSortTimeText())) {
-                req.getShop().setSortTime(DateUtil.parseDateLong(req.getSortTimeText(), DateUtil.DATE));
-            } else {
-                req.getShop().setSortTime(0l);
-            }
             req.getShop().setServiceTime(
                     req.getStartServiceTimeHour() + ":" + req.getStartServiceTimeMinute() +
                             "-" + req.getEndServiceTimeHour() + ":" + req.getEndServiceTimeMinute());
@@ -150,11 +145,6 @@ public class ShopController {
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
     public ModelAndView update(@PathVariable Long id, AdminShopSaveRequest req, MultipartHttpServletRequest request) {
         try {
-            if (!StringUtil.isNull(req.getSortTimeText())) {
-                req.getShop().setSortTime(DateUtil.parseDateLong(req.getSortTimeText(), DateUtil.DATE));
-            } else {
-                req.getShop().setSortTime(0l);
-            }
             req.getShop().setServiceTime(
                     req.getStartServiceTimeHour() + ":" + req.getStartServiceTimeMinute() +
                             "-" + req.getEndServiceTimeHour() + ":" + req.getEndServiceTimeMinute());

@@ -1,20 +1,11 @@
 package com.bee.services.shop.impl;
 
-import com.bee.app.model.shop.ShopAttendItem;
-import com.bee.busi.model.shop.BusiShopAttend;
-import com.bee.busi.params.shop.ShopAttendSaveRequest;
-import com.bee.dao.shop.ShopAttendDao;
-import com.bee.pojo.shop.Shop;
-import com.bee.pojo.shop.ShopAttend;
-import com.bee.pojo.shop.ShopTechee;
+import com.bee.dao.shop.app.ShopAttendAppDao;
+import com.bee.domain.modal.app.shop.ShopAttend;
 import com.bee.services.shop.IShopAttendService;
-import com.qsd.framework.commons.utils.DateUtil;
-import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -25,7 +16,7 @@ import java.util.List;
 public class ShopAttendService implements IShopAttendService {
 
     @Autowired
-    private ShopAttendDao shopAttendDao;
+    private ShopAttendAppDao shopAttendDao;
 
 
     /**
@@ -35,9 +26,9 @@ public class ShopAttendService implements IShopAttendService {
      * @return
      */
     @Override
-    public List<ShopAttendItem> getAppShopAttendByShopId(long sid) {
+    public List<ShopAttend> getAppShopAttendByShopId(long sid) {
         long time = getAttendTime(System.currentTimeMillis());
-        return shopAttendDao.getAppShopAttendByShopId(sid, time);
+        return shopAttendDao.getShopAttendByShopId(sid, time);
     }
 
 

@@ -53,6 +53,8 @@ public class Order implements java.io.Serializable {
     private Long finishTime;
     // 订单操作记录
     private String operate;
+    // 是否返现 v1.0.5增加
+    private Integer isBack;
 
     public Order() {}
     public Order(long oid) {
@@ -234,5 +236,12 @@ public class Order implements java.io.Serializable {
     }
     public void setOperate(String operate) {
         this.operate = operate;
+    }
+    @Column(name = "ISBACK")
+    public Integer getIsBack() {
+        return isBack;
+    }
+    public void setIsBack(Integer isBack) {
+        this.isBack = isBack;
     }
 }

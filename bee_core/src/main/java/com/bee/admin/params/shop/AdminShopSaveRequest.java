@@ -16,10 +16,6 @@ public class AdminShopSaveRequest extends BaseRequest {
      */
     private Shop shop;
     /**
-     * 排序时间字符
-     */
-    private String sortTimeText;
-    /**
      * 营业开始时间小时
      */
     private String startServiceTimeHour;
@@ -46,12 +42,6 @@ public class AdminShopSaveRequest extends BaseRequest {
     }
     public void setShop(Shop shop) {
         this.shop = shop;
-    }
-    public String getSortTimeText() {
-        return sortTimeText;
-    }
-    public void setSortTimeText(String sortTimeText) {
-        this.sortTimeText = sortTimeText;
     }
     public String getStartServiceTimeHour() {
         return startServiceTimeHour;

@@ -2,13 +2,14 @@ package com.bee.app.controller.shop;
 
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.commons.Codes;
+import com.bee.domain.modal.app.shop.ShopListItem;
 import com.bee.domain.response.ShopResponse;
-import com.bee.modal.ShopListItem;
 import com.bee.services.shop.app.IShopAppService;
 import com.bee.services.shop.app.IShopAttendAppService;
 import com.bee.services.shop.app.IShopImageAppService;
 import com.qsd.framework.domain.response.ResponsePaging;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,7 +55,7 @@ public class ShopController {
         // 增加商家浏览统计
 
         // 获取商家信息
-        res.setShop(shopAppService.getShop(id));
+        res.setShopItem(shopAppService.getShop(id));
         // 获取商家滚动相册
         res.setShopImages(shopImageAppService.queryShopImage(id));
         // 加入商家出勤表

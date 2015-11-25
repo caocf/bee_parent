@@ -2,8 +2,8 @@ package com.bee.services.shop.app.impl;
 
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.dao.shop.app.ShopAppDao;
-import com.bee.domain.modal.app.shop.Shop;
-import com.bee.modal.ShopListItem;
+import com.bee.domain.modal.app.shop.ShopItem;
+import com.bee.domain.modal.app.shop.ShopListItem;
 import com.bee.services.shop.app.IShopAppService;
 import com.bee.services.shop.impl.ShopService;
 import com.qsd.framework.spring.PagingResult;
@@ -26,7 +26,7 @@ public class ShopAppService extends ShopService implements IShopAppService {
      */
     @Override
     public PagingResult<ShopListItem> queryShopList(ShopListRequest req) {
-        return shopDao.queryAppShopList(req);
+        return shopAppDao.getShopList(req);
     }
 
     /**
@@ -35,7 +35,7 @@ public class ShopAppService extends ShopService implements IShopAppService {
      * @return
      */
     @Override
-    public Shop getShop(long shopId) {
-        return shopAppDao.getShop(shopId);
+    public ShopItem getShop(long shopId) {
+        return shopAppDao.getShopItemById(shopId);
     }
 }

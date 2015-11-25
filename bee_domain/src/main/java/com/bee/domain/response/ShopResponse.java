@@ -1,8 +1,8 @@
 package com.bee.domain.response;
 
-import com.bee.domain.modal.app.shop.Shop;
 import com.bee.domain.modal.app.shop.ShopAttend;
 import com.bee.domain.modal.app.shop.ShopImage;
+import com.bee.domain.modal.app.shop.ShopItem;
 import com.qsd.framework.domain.response.Response;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class ShopResponse extends Response {
     private static final long serialVersionUID = -9089202824661887433L;
 
     private List<ShopImage> shopImages;
-    private Shop shop;
+    private ShopItem shopItem;
     private List<ShopAttend> shopAttends;
 
 
@@ -32,10 +32,10 @@ public class ShopResponse extends Response {
     public void setShopAttends(List<ShopAttend> shopAttends) {
         this.shopAttends = shopAttends;
     }
-    public Shop getShop() {
-        return shop;
+    public ShopItem getShopItem() {
+        return shopItem;
     }
-    public void setShop(Shop shop) {
-        this.shop = shop;
+    public void setShopItem(ShopItem shop) {
+        this.shopItem = shop;
     }
 }

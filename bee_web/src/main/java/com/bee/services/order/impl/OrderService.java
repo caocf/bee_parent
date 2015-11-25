@@ -1,21 +1,19 @@
 package com.bee.services.order.impl;
 
-import com.bee.app.model.order.OrderItem;
-import com.bee.busi.model.order.BusiOrderItem;
-import com.bee.busi.model.order.BusiOrderListItem;
-import com.bee.busi.params.order.BusiOrderListRequest;
-import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderCreateRequest;
 import com.bee.client.params.order.OrderListRequest;
-import com.bee.commons.*;
+import com.bee.commons.Codes;
+import com.bee.commons.Consts;
+import com.bee.commons.OrderStatusMachine;
 import com.bee.dao.order.OrderDao;
+import com.bee.dao.order.app.OrderAppDao;
 import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopUserDao;
 import com.bee.dao.user.UserDao;
-import com.bee.modal.OrderListItem;
+import com.bee.domain.modal.app.order.OrderItem;
+import com.bee.domain.modal.app.order.OrderListItem;
 import com.bee.pojo.order.Order;
 import com.bee.pojo.shop.ShopUser;
-import com.bee.pojo.user.User;
 import com.bee.services.order.IOrderService;
 import com.easemob.server.comm.Constants;
 import com.easemob.server.comm.HTTPMethod;
@@ -27,17 +25,13 @@ import com.easemob.server.httpclient.vo.EndPoints;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
-import com.sun.tools.internal.jxc.apt.Const;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * Created by suntongwei on 15/4/24.
@@ -49,7 +43,7 @@ public class OrderService implements IOrderService {
     private static final Logger Log = LoggerFactory.getLogger(OrderService.class);
 
     @Autowired
-    private OrderDao orderDao;
+    private OrderAppDao orderDao;
     @Autowired
     private ShopDao shopDao;
     @Autowired
@@ -68,33 +62,6 @@ public class OrderService implements IOrderService {
         return orderDao.getAppOrderListByParam(request);
     }
 
-    /**
-     * 创建订单（不使用）
-     *
-     * @param req
-     * @throws DataRunException
-     */
-    @Deprecated
-    @Override
-    @Transactional
-    public void createOrder(OrderCreateRequest req) throws DataRunException {
-
-        try {
-
-            // 添加订单类型, 该字段无效
-            req.getOrder().setType(Consts.Order.Type.Master);
-            // 添加订单创建时间
-            req.getOrder().setCreateTime(System.currentTimeMillis());
-            // 设置订单初始化状态
-            req.getOrder().setStatus(Consts.Order.Status.Create);
-
-            // 保存订单
-            orderDao.save(req.getOrder());
-
-        } catch (DataRunException e) {
-            throw e;
-        }
-    }
 
     /**
      * 创建订单
@@ -120,6 +87,8 @@ public class OrderService implements IOrderService {
         order.setIsComment(Consts.False);
         // 设置结束时间为0
         order.setFinishTime(0l);
+        // 设置是否返现，默认为否
+        order.setIsBack(Consts.False);
         // 查询订单商家
         order.setShop(shopDao.getShopById(order.getShop().getSid()));
         // 查询接待经理
@@ -230,6 +199,6 @@ public class OrderService implements IOrderService {
      */
     @Override
     public OrderItem getOrderByOid(long oid) {
-        return orderDao.queryOrderByOid(oid);
+        return orderDao.queryOrderItemById(oid);
     }
 }

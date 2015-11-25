@@ -39,10 +39,7 @@
   			<input type="hidden" name="shop.status" value="${shop.status}" />
   			<input type="hidden" name="shop.price" value="${shop.price}" />
   			<input type="hidden" name="shop.createTime" value="${shop.createTime}" />
-  			<input type="hidden" name="shop.isBack" value="${shop.isBack}" />
   			<input type="hidden" name="shop.updateTime" value="${shop.updateTime}" />
-  			<input type="hidden" name="shop.phone" value="13162725286" />
-  			<input type="hidden" name="shop.linkName" value="小黄蜂" />
 				<div class="form-group info-title">基本信息</div>
 				<div class="form-group">
 					<label class="col-xs-1 control-label">商家名称</label>
@@ -134,23 +131,24 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-xs-1 control-label">排序</label>
+                    <label class="col-xs-1 control-label">支持</label>
+                    <div class="col-xs-4">
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="checkbox" name="isFreeParking" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 免费停车
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="checkbox" name="isFood" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 餐饮
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="checkbox" name="isInvoice" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 发票
+                            </label>
+                        </div>
+                    </div>
+					<label class="col-xs-2 control-label">排序</label>
 					<div class="col-xs-4">
 						<input type="text" name="shop.sort" placeholder="100" class="form-control" value="${shop.sort}" />
 						<p class="help-block">数字越大排名越靠前，默认100</p>
-					</div>
-					<label class="col-xs-2 control-label">排序有效期</label>
-					<div class="col-xs-4">
-						<input type="text" id="sortTime" name="sortTimeText" placeholder="商家排序有效期" class="form-control" value="${shop.sortTimeStr}" data-position="bottom" />
-						<p class="help-block">设置有效期，到期后排序将恢复默认</p>
-					</div>
-				</div>
-				<div class="form-group hide">
-					<label class="col-xs-1 control-label">商家介绍</label>
-					<div class="col-xs-10">
-						<div class="textarea">
-							<textarea type="form-control" name="shop.remark" rows="5">${shop.remark}</textarea>
-						</div>
 					</div>
 				</div>
 				<div class="form-group info-title">商家图片</div>
@@ -184,10 +182,22 @@
 				<div class="form-group">
 					<label class="col-xs-1 control-label">商家地址</label>
 					<div class="col-xs-10">
-						<input type="text" name="shop.addr" placeholder="仅需填写路名" class="form-control" value="${shop.addr}" />
-					</div>
+                        <div class="input-group">
+                            <input type="text" name="shop.addr" class="form-control" placeholder="仅需填写路名" value="${shop.addr}" aria-describedby="basic-addon1">
+                            <span class="input-group-addon" id="basic-addon1">查询</span>
+                        </div>
+                    </div>
 				</div>
-				<div class="form-group">
+                <div class="form-group">
+                    <label class="col-xs-1 control-label">详细地址</label>
+                    <div class="col-xs-10">
+                        <div class="input-group">
+                            <input type="text" name="shop.address" class="form-control" placeholder="仅需填写路名" value="${shop.address}" aria-describedby="basic-addon2">
+                            <span class="input-group-addon" id="basic-addon2">查询</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
 					<input type="hidden" id="shopLon" name="shop.lon" value="${shop.lon}" />
 					<input type="hidden" id="shopLat" name="shop.lat" value="${shop.lat}" />
 					<div class="col-xs-10 col-xs-offset-1">

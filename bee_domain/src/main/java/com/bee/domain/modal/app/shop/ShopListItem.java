@@ -1,28 +1,38 @@
-package com.bee.modal;
+package com.bee.domain.modal.app.shop;
 
 /**
- * Created by suntongwei on 15/5/1.
+ * 商家列表实体
+ *
+ * Created by suntongwei on 15/11/25.
  */
-public class ShopItem implements java.io.Serializable {
+public class ShopListItem implements java.io.Serializable {
 
     // serialVersionUID
-    private static final long serialVersionUID = 3942497770019366727L;
+    private static final long serialVersionUID = 1880118987440839974L;
 
+    // 商家ID
     private Long shopId;
+    // 所属地区
     private String area;
+    // 商家名称
     private String name;
+    // 商家模糊地址
     private String addr;
+    // 好友关注数
     private Integer friendNum;
+    // 商家粉丝数
     private Integer focusNum;
+    // 价格
     private Double price;
-    private Long lon;
-    private Long lat;
-    private String phone;
+    // 商家类型
     private Integer type;
-    private String linkName;
-    private String nowInfo;
+
+    /**
+     * 老接口弃用字段
+     */
+    @Deprecated
     private Integer isBack;
-    private String serviceTime;
+
 
     public Long getShopId() {
         return shopId;
@@ -66,53 +76,18 @@ public class ShopItem implements java.io.Serializable {
     public void setPrice(Double price) {
         this.price = price;
     }
-    public Long getLon() {
-        return lon;
-    }
-    public void setLon(Long lon) {
-        this.lon = lon;
-    }
-    public Long getLat() {
-        return lat;
-    }
-    public void setLat(Long lat) {
-        this.lat = lat;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
     public Integer getType() {
         return type;
     }
     public void setType(Integer type) {
         this.type = type;
     }
-    public String getLinkName() {
-        return linkName;
-    }
-    public void setLinkName(String linkName) {
-        this.linkName = linkName;
-    }
-    public String getNowInfo() {
-        return nowInfo;
-    }
-    public void setNowInfo(String nowInfo) {
-        this.nowInfo = nowInfo;
-    }
+    @Deprecated
     public Integer getIsBack() {
         return isBack;
     }
+    @Deprecated
     public void setIsBack(Integer isBack) {
         this.isBack = isBack;
     }
-    public String getServiceTime() {
-        return serviceTime;
-    }
-    public void setServiceTime(String serviceTime) {
-        this.serviceTime = serviceTime;
-    }
 }
-

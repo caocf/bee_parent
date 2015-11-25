@@ -1,9 +1,20 @@
 package com.bee.domain.modal.app.shop;
 
 /**
- * Created by suntongwei on 15/11/22.
+ * <b>【C端】商家实体</b>
+ *
+ * v1.0.5
+ * 添加字段
+ * isFreeParking, isFood, isInvoice
+ * 删除字段
+ * phone, linkName, nowInfo, isBack
+ *
+ * @since v1.0.4
  */
-public class Shop implements java.io.Serializable {
+public class ShopItem implements java.io.Serializable {
+
+    // serialVersionUID
+    private static final long serialVersionUID = -8742191834751433381L;
 
     private Long shopId;
     private String area;
@@ -14,12 +25,26 @@ public class Shop implements java.io.Serializable {
     private Double price;
     private Long lon;
     private Long lat;
+    @Deprecated
     private String phone;
     private Integer type;
+    @Deprecated
     private String linkName;
+    @Deprecated
     private String nowInfo;
+    @Deprecated
     private Integer isBack;
     private String serviceTime;
+
+    /**
+     * v1.0.5新增
+     */
+    // 是否提供免费停车
+    private Integer isFreeParking;
+    // 是否提供餐饮
+    private Integer isFood;
+    // 是否提供发票
+    private Integer isInvoice;
 
     public Long getShopId() {
         return shopId;
@@ -75,9 +100,11 @@ public class Shop implements java.io.Serializable {
     public void setLat(Long lat) {
         this.lat = lat;
     }
+    @Deprecated
     public String getPhone() {
         return phone;
     }
+    @Deprecated
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -87,21 +114,27 @@ public class Shop implements java.io.Serializable {
     public void setType(Integer type) {
         this.type = type;
     }
+    @Deprecated
     public String getLinkName() {
         return linkName;
     }
+    @Deprecated
     public void setLinkName(String linkName) {
         this.linkName = linkName;
     }
+    @Deprecated
     public String getNowInfo() {
         return nowInfo;
     }
+    @Deprecated
     public void setNowInfo(String nowInfo) {
         this.nowInfo = nowInfo;
     }
+    @Deprecated
     public Integer getIsBack() {
         return isBack;
     }
+    @Deprecated
     public void setIsBack(Integer isBack) {
         this.isBack = isBack;
     }
@@ -110,5 +143,23 @@ public class Shop implements java.io.Serializable {
     }
     public void setServiceTime(String serviceTime) {
         this.serviceTime = serviceTime;
+    }
+    public Integer getIsFreeParking() {
+        return isFreeParking;
+    }
+    public void setIsFreeParking(Integer isFreeParking) {
+        this.isFreeParking = isFreeParking;
+    }
+    public Integer getIsFood() {
+        return isFood;
+    }
+    public void setIsFood(Integer isFood) {
+        this.isFood = isFood;
+    }
+    public Integer getIsInvoice() {
+        return isInvoice;
+    }
+    public void setIsInvoice(Integer isInvoice) {
+        this.isInvoice = isInvoice;
     }
 }

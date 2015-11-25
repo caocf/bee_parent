@@ -1,12 +1,16 @@
-package com.bee.modal;
+package com.bee.domain.modal.app.order;
 
 /**
- * Created by suntongwei on 15/6/2.
+ * <b>【C端】订单列表实体</b>
+ * v1.0.5
+ * 增加isBack字段
+ *
+ * @since v1.0.0
  */
 public class OrderListItem implements java.io.Serializable {
 
     // serialVersionUID
-    private static final long serialVersionUID = -879359212825537989L;
+    private static final long serialVersionUID = 1909320038260258789L;
 
     private Long oid;
     private String name;
@@ -14,12 +18,13 @@ public class OrderListItem implements java.io.Serializable {
     private Long time;
     private Integer num;
     private Integer status;
-
     private Long shopId;
     private String userName;
     private Long execTime;
     private String phone;
     private String remark;
+    // v1.0.5增加
+    private Integer isBack;
 
     public Long getOid() {
         return oid;
@@ -80,5 +85,11 @@ public class OrderListItem implements java.io.Serializable {
     }
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+    public Integer getIsBack() {
+        return isBack;
+    }
+    public void setIsBack(Integer isBack) {
+        this.isBack = isBack;
     }
 }

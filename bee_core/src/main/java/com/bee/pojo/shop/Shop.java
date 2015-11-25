@@ -15,6 +15,14 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * <b>商家数据库实体</b>
+ *
+ * v1.0.5
+ * 增加字段
+ * address, isFreeParking, isFood, isInvoice
+ * 删除字段
+ * isBack, phone, sortTime, remark, linkName
+ *
  * Created by suntongwei on 15/4/16.
  */
 @Entity
@@ -37,15 +45,11 @@ public class Shop implements java.io.Serializable {
     private Integer type;
     // 状态
     private Integer status;
-    // 联系人
-    private String linkName;
     // 商家管理员
     private Set<ShopUser> admins = new HashSet<>(0);
     // 最低价格
     private Double price;
-    // 商家联系电话
-    private String phone;
-    // 地址
+    // 地址(模糊地址)
     private String addr;
     // 经纬度
     private Long lon;
@@ -54,15 +58,8 @@ public class Shop implements java.io.Serializable {
     private Long createTime;
     // 权重
     private Integer sort;
-    // 权重到期日
-    private Long sortTime;
-    // 介绍
-    private String remark;
     // 推荐
     private Integer recommend;
-    // 是否返现
-    private Integer isBack;
-
     // 修改时间
     private Long updateTime;
 
@@ -71,6 +68,17 @@ public class Shop implements java.io.Serializable {
      */
     private String serviceTime;
 
+    /**
+     * 以下v1.0.5提供
+     */
+    // 详细地址
+    private String address;
+    // 是否提供免费停车
+    private Integer isFreeParking;
+    // 是否提供餐饮
+    private Integer isFood;
+    // 是否提供发票
+    private Integer isInvoice;
 
     public Shop() {}
     public Shop(Long sid) {
@@ -99,14 +107,6 @@ public class Shop implements java.io.Serializable {
             status = "关闭中";
         }
         return status;
-    }
-
-    @Transient
-    public String getSortTimeStr() {
-        if (null == sortTime || sortTime == 0) {
-            return "";
-        }
-        return DateUtil.formatDate(sortTime);
     }
 
     @Transient
@@ -184,20 +184,6 @@ public class Shop implements java.io.Serializable {
     public void setType(Integer type) {
         this.type = type;
     }
-    @Column(name = "LINKNAME")
-    public String getLinkName() {
-        return linkName;
-    }
-    public void setLinkName(String linkName) {
-        this.linkName = linkName;
-    }
-    @Column(name = "PHONE")
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
     @Column(name = "ADDR")
     public String getAddr() {
         return addr;
@@ -225,20 +211,6 @@ public class Shop implements java.io.Serializable {
     }
     public void setSort(Integer sort) {
         this.sort = sort;
-    }
-    @Column(name = "SORTTIME")
-    public Long getSortTime() {
-        return sortTime;
-    }
-    public void setSortTime(Long sortTime) {
-        this.sortTime = sortTime;
-    }
-    @Column(name = "REMARK")
-    public String getRemark() {
-        return remark;
-    }
-    public void setRemark(String remark) {
-        this.remark = remark;
     }
     @Column(name = "RECOMMEND")
     public Integer getRecommend() {
@@ -268,13 +240,6 @@ public class Shop implements java.io.Serializable {
     public void setLat(Long lat) {
         this.lat = lat;
     }
-    @Column(name = "ISBACK")
-    public Integer getIsBack() {
-        return isBack;
-    }
-    public void setIsBack(Integer isBack) {
-        this.isBack = isBack;
-    }
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "shop")
     public Set<ShopUser> getAdmins() {
         return admins;
@@ -295,5 +260,33 @@ public class Shop implements java.io.Serializable {
     }
     public void setServiceTime(String serviceTime) {
         this.serviceTime = serviceTime;
+    }
+    @Column(name = "ADDRESS")
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    @Column(name = "ISFREEPARKING")
+    public Integer getIsFreeParking() {
+        return isFreeParking;
+    }
+    public void setIsFreeParking(Integer isFreeParking) {
+        this.isFreeParking = isFreeParking;
+    }
+    @Column(name = "ISFOOD")
+    public Integer getIsFood() {
+        return isFood;
+    }
+    public void setIsFood(Integer isFood) {
+        this.isFood = isFood;
+    }
+    @Column(name = "ISINVOICE")
+    public Integer getIsInvoice() {
+        return isInvoice;
+    }
+    public void setIsInvoice(Integer isInvoice) {
+        this.isInvoice = isInvoice;
     }
 }

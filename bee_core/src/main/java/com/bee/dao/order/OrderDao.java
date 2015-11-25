@@ -1,7 +1,6 @@
 package com.bee.dao.order;
 
 import com.bee.admin.params.order.QueryOrderParam;
-import com.bee.app.model.order.OrderItem;
 import com.bee.busi.model.order.BusiOrderItem;
 import com.bee.busi.model.order.BusiOrderListItem;
 import com.bee.busi.model.order.BusiOrderNumberStat;
@@ -11,9 +10,9 @@ import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.commons.SQL;
-import com.bee.modal.OrderListItem;
+import com.bee.domain.modal.app.order.OrderItem;
+import com.bee.domain.modal.app.order.OrderListItem;
 import com.bee.pojo.order.Order;
-import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
@@ -90,6 +89,7 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
                 item.setExecTime(NumberUtil.parseLong(obj[7], 0));
                 item.setPhone(StringUtil.parseString(obj[8], ""));
                 item.setRemark(StringUtil.parseString(obj[9], ""));
+                item.setIsBack(NumberUtil.parseInteger(obj[10], Consts.False));
                 return item;
             }
         });
@@ -186,28 +186,6 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
                 item.setRemark(StringUtil.parseString(obj[i++], ""));
                 item.setStatus(NumberUtil.parseInteger(obj[i++], Consts.Order.Status.Unknow));
                 item.setUserLevel(NumberUtil.parseInteger(obj[i++], 0));
-                return item;
-            }
-        }, oid);
-    }
-
-    /**
-     * 【C端】根据订单ID查询订单详细（OrderDetail）
-     *
-     * @param oid
-     * @return
-     */
-    public OrderItem queryOrderByOid(long oid) {
-        return findFirstConverByParams(SQL.Order.QueryOrderByOid, new QueryDataConver<OrderItem>() {
-            @Override
-            public OrderItem converData(Object[] objects) {
-                OrderItem item = new OrderItem();
-                item.setNo(StringUtil.parseString(objects[0], ""));
-                item.setCreateTime(NumberUtil.parseLong(objects[1], 0));
-                item.setStatus(NumberUtil.parseInteger(objects[2], Consts.Order.Status.Unknow));
-                item.setAddr(StringUtil.parseString(objects[3], ""));
-                item.setShopPhone(StringUtil.parseString(objects[4], ""));
-                item.setIsComment(NumberUtil.parseInteger(objects[5], Consts.False));
                 return item;
             }
         }, oid);

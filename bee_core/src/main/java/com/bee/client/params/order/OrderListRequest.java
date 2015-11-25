@@ -18,31 +18,24 @@ public class OrderListRequest extends PagingRequest {
     private Long uid;
     private String device;
 
-
     public Long getUid() {
         return uid;
     }
-
     public void setUid(Long uid) {
         this.uid = uid;
     }
-
     public String getDevice() {
         return device;
     }
-
     public void setDevice(String device) {
         this.device = device;
     }
-
     public Integer getIsCurOrder() {
         return isCurOrder;
     }
-
     public void setIsCurOrder(Integer isCurOrder) {
         this.isCurOrder = isCurOrder;
     }
-
     public Integer getStatus() {
         return status;
     }
