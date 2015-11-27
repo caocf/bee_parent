@@ -45,6 +45,8 @@ public class ShopItem implements java.io.Serializable {
     private Integer isFood;
     // 是否提供发票
     private Integer isInvoice;
+    // 是否提供刷卡
+    private Integer isPosCard;
 
     public Long getShopId() {
         return shopId;
@@ -161,5 +163,11 @@ public class ShopItem implements java.io.Serializable {
     }
     public void setIsInvoice(Integer isInvoice) {
         this.isInvoice = isInvoice;
+    }
+    public Integer getIsPosCard() {
+        return isPosCard;
+    }
+    public void setIsPosCard(Integer isPosCard) {
+        this.isPosCard = isPosCard;
     }
 }

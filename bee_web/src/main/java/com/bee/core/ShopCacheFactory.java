@@ -4,9 +4,7 @@ import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
 import com.bee.services.shop.impl.ShopService;
 import com.qsd.framework.spring.SpringFactory;
-import com.sun.javafx.tools.packager.Log;
 
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

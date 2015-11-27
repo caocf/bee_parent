@@ -73,6 +73,8 @@ public class Shop implements java.io.Serializable {
      */
     // 详细地址
     private String address;
+    // 是否提供刷卡
+    private Integer isPosCard;
     // 是否提供免费停车
     private Integer isFreeParking;
     // 是否提供餐饮
@@ -288,5 +290,12 @@ public class Shop implements java.io.Serializable {
     }
     public void setIsInvoice(Integer isInvoice) {
         this.isInvoice = isInvoice;
+    }
+    @Column(name = "ISPOSCARD")
+    public Integer getIsPosCard() {
+        return isPosCard;
+    }
+    public void setIsPosCard(Integer isPosCard) {
+        this.isPosCard = isPosCard;
     }
 }

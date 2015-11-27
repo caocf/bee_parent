@@ -45,6 +45,7 @@ public class ShopAppDao extends ShopDao {
                 item.setIsFreeParking(NumberUtil.parseInteger(obj[11], Consts.False));
                 item.setIsFood(NumberUtil.parseInteger(obj[12], Consts.False));
                 item.setIsInvoice(NumberUtil.parseInteger(obj[13], Consts.False));
+                item.setIsPosCard(NumberUtil.parseInteger(obj[14], Consts.False));
                 // 为了兼容v1.0.4版本
                 item.setPhone("");
                 item.setLinkName("");
