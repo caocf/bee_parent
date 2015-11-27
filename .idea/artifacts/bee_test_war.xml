@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="bee_test:war">
-    <output-path>$PROJECT_DIR$/bee_test/target</output-path>
-    <root id="archive" name="bee_test.war">
-      <element id="artifact" artifact-name="bee_test:war exploded" />
-    </root>
-  </artifact>
-</component>
