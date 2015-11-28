@@ -62,11 +62,13 @@ public class ShopController {
 
         // 获取商家信息
         res.setShopItem(shopAppService.getShopItem(uid, id));
+
+        // v1.0.5删除
         // 获取商家滚动相册
-        res.setShopImages(shopImageAppService.queryShopImage(id));
-        // v1.0.5删除商家出勤
+        // res.setShopImages(shopImageAppService.queryShopImage(id));
         // 加入商家出勤表
         // res.setShopAttends(shopAttendAppService.getShopAttendByShopId(id));
+
         res.setCode(Codes.Success);
         return res;
     }

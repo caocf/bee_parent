@@ -136,7 +136,7 @@ public final class Consts {
 
             public static final String ShowImageNumberForAppShop = " limit 15";
 
-            public static final int MaxUploadImageSize = 30;
+            public static final int MaxUploadImageSize = 100;
 
         }
     }
