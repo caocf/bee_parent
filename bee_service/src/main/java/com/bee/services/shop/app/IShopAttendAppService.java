@@ -1,6 +1,5 @@
 package com.bee.services.shop.app;
 
-import com.bee.app.model.shop.ShopAttendItem;
 import com.bee.domain.modal.app.shop.ShopAttend;
 import com.bee.services.shop.IShopAttendService;
 
@@ -17,5 +16,8 @@ public interface IShopAttendAppService extends IShopAttendService {
      * @param sid
      * @return
      */
-    public List<ShopAttend> getShopAttendByShopId(long sid);
+    List<ShopAttend> getShopAttendByShopId(long sid);
+
+
+
 }

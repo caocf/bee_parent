@@ -1,6 +1,5 @@
 package com.bee.services.shop.app.impl;
 
-import com.bee.app.model.shop.ShopAttendItem;
 import com.bee.dao.shop.app.ShopAttendAppDao;
 import com.bee.domain.modal.app.shop.ShopAttend;
 import com.bee.services.shop.app.IShopAttendAppService;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by suntongwei on 15/11/22.
+ * <b>商家出勤表APP</b>
  */
 @Service
 public class ShopAttendAppService extends ShopAttendService implements IShopAttendAppService {
@@ -22,12 +21,19 @@ public class ShopAttendAppService extends ShopAttendService implements IShopAtte
     /**
      *【C端】查询商家出勤表
      *
+     * v1.0.5调整策略
+     * 改变原先获取每天的出勤表,改为获取最近的出勤表
+     * 如果商家从未上传过出勤表,则返回null
+     *
      * @param sid
      * @return
      */
     @Override
     public List<ShopAttend> getShopAttendByShopId(long sid) {
-        long time = getAttendTime(System.currentTimeMillis());
+        Long time = shopAttendAppDao.getShopAttendLastUpdateTime(sid);
+        if (null == time) {
+            return null;
+        }
         return shopAttendAppDao.getShopAttendByShopId(sid, time);
     }
 

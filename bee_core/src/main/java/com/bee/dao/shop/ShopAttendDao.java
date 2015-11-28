@@ -8,7 +8,9 @@ import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
+import com.qsd.framework.hibernate.bean.HQLEntity;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.spring.Paging;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,6 +21,18 @@ import java.util.List;
 @Repository
 public class ShopAttendDao extends JpaDaoSupport<ShopAttend, Long> {
 
+    /**
+     * 返回商家出勤最后更新时间
+     *
+     * @param shopId
+     * @return
+     */
+    public Long getShopAttendLastUpdateTime(long shopId) {
+        HQLEntity entity = new HQLEntity(SQL.Shop.Attend.GetShopAttendLastUpdateTime);
+        entity.setParams(shopId);
+        ShopAttend shopAttend = querySingleResult(entity);
+        return shopAttend != null && shopAttend.getAttendTime() != null ? shopAttend.getAttendTime() : null;
+    }
 
     /**
      *【C端】查询商家出勤表

@@ -23,11 +23,12 @@ public class ShopAppDao extends ShopDao {
      * <b>获取商家详细信息</b>
      * <p>APP商家详细界面</p>
      *
-     * @param sid
+     * @param uid 用户ID,用于查询用户好友关注数
+     * @param sid 商家ID,指定商家
      * @return
      */
-    public ShopItem getShopItemById(long sid) {
-        return findFirstConverByParams(SQL.Shop.QueryAppShopItem + " and A.SID = " + sid, new QueryDataConver<ShopItem>() {
+    public ShopItem getShopItemById(long uid, long sid) {
+        return findFirstConverByParams(SQL.Shop.QueryAppShopItem + " and A.SID = ?", new QueryDataConver<ShopItem>() {
             @Override
             public ShopItem converData(Object[] obj) {
                 ShopItem item = new ShopItem();
@@ -53,7 +54,7 @@ public class ShopAppDao extends ShopDao {
                 item.setIsBack(Consts.False);
                 return item;
             }
-        }, sid);
+        }, uid, sid);
     }
 
     /**

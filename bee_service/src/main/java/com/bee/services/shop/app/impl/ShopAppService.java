@@ -35,7 +35,7 @@ public class ShopAppService extends ShopService implements IShopAppService {
      * @return
      */
     @Override
-    public ShopItem getShop(long shopId) {
-        return shopAppDao.getShopItemById(shopId);
+    public ShopItem getShopItem(long uid, long shopId) {
+        return shopAppDao.getShopItemById(uid, shopId);
     }
 }

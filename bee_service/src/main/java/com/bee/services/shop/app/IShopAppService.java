@@ -18,14 +18,15 @@ public interface IShopAppService extends IShopService {
      * @param req
      * @return
      */
-    public PagingResult<ShopListItem> queryShopList(ShopListRequest req);
+    PagingResult<ShopListItem> queryShopList(ShopListRequest req);
 
 
     /**
      * 根据ID查询商家信息
      *
-     * @param sid
+     * @param uid 用户ID
+     * @param sid 商家ID
      * @return
      */
-    public ShopItem getShop(long sid);
+    ShopItem getShopItem(long uid, long sid);
 }

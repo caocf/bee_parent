@@ -78,7 +78,6 @@ public final class SQL {
                 "where A.STATUS = " + Consts.Shop.Status.Run;
         public static final String queryAppShopListSort = " order by A.sort desc";
 
-
         /**
          * 查询商家详细
          */
@@ -250,6 +249,9 @@ public final class SQL {
          * 商家出勤表
          */
         public static final class Attend {
+
+            public static final String GetShopAttendLastUpdateTime = "From " +
+                    "ShopAttend A where A.shop.sid = ? order by A.saId desc";
 
             public static final String GetShopAttendByShopId = "SELECT " +
                     "A.SAID, A.SHOPTECHEE, A.ATTENDTIME, A.SHOP " +

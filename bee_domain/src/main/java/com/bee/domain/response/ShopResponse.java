@@ -8,7 +8,10 @@ import com.qsd.framework.domain.response.Response;
 import java.util.List;
 
 /**
- * Created by suntongwei on 15/11/22.
+ * <b>商家详细信息</b>
+ *
+ * v1.0.5
+ * 删除shopAttends信息
  */
 public class ShopResponse extends Response {
 
@@ -17,8 +20,8 @@ public class ShopResponse extends Response {
 
     private List<ShopImage> shopImages;
     private ShopItem shopItem;
+    @Deprecated
     private List<ShopAttend> shopAttends;
-
 
     public List<ShopImage> getShopImages() {
         return shopImages;
@@ -26,9 +29,11 @@ public class ShopResponse extends Response {
     public void setShopImages(List<ShopImage> shopImages) {
         this.shopImages = shopImages;
     }
+    @Deprecated
     public List<ShopAttend> getShopAttends() {
         return shopAttends;
     }
+    @Deprecated
     public void setShopAttends(List<ShopAttend> shopAttends) {
         this.shopAttends = shopAttends;
     }

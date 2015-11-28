@@ -15,6 +15,17 @@ public abstract class ShopAttendService implements IShopAttendService {
     protected ShopAttendDao shopAttendDao;
 
     /**
+     * 返回商家出勤最后更新时间
+     *
+     * @param shopId
+     * @return
+     */
+    @Override
+    public Long getShopAttendLastUpdateTime(long shopId) {
+        return shopAttendDao.getShopAttendLastUpdateTime(shopId);
+    }
+
+    /**
      *
      * @param attendTime
      * @return
