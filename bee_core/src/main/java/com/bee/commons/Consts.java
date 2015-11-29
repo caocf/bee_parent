@@ -306,6 +306,11 @@ public final class Consts {
             // 商家推广
             public static final int ShopPop = 0x2;
         }
+
+        public static final class Image {
+            // 商家相册图片
+            public static final int ShopImage = 0x1;
+        }
     }
 
     public static final class Ad {

@@ -23,6 +23,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>bee_sms</artifactId>
+
         </dependency>
         <dependency>
             <groupId>com.qsd</groupId>

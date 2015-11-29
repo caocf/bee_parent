@@ -1,7 +1,7 @@
 package com.bee.services.find;
 
 import com.bee.client.params.find.FindListRequest;
-import com.bee.modal.FindListItem;
+import com.bee.domain.modal.app.find.FindListItem;
 import com.qsd.framework.spring.PagingResult;
 
 /**
@@ -14,6 +14,6 @@ public interface IFindService {
      * @param req
      * @return
      */
-    public PagingResult<FindListItem> queryAppFindList(FindListRequest req);
+    PagingResult<FindListItem> queryAppFindList(FindListRequest req);
 
 }

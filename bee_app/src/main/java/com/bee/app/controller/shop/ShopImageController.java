@@ -1,8 +1,7 @@
 package com.bee.app.controller.shop;
 
 import com.bee.commons.Codes;
-import com.bee.domain.modal.app.shop.ShopImage;
-import com.bee.modal.ShopImageListItem;
+import com.bee.domain.modal.app.shop.ShopImageItem;
 import com.bee.services.shop.app.IShopImageAppService;
 import com.qsd.framework.domain.response.ResponseArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +27,8 @@ public class ShopImageController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseArray<ShopImage> getShopListImage(@PathVariable Long shopId) {
-        ResponseArray<ShopImage> res = new ResponseArray<>();
+    public ResponseArray<ShopImageItem> getShopListImage(@PathVariable Long shopId) {
+        ResponseArray<ShopImageItem> res = new ResponseArray<>();
         res.setResult(shopImageAppService.queryShopImage(shopId));
         res.setCode(Codes.Success);
         return res;

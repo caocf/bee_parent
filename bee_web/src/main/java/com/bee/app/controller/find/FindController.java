@@ -1,7 +1,7 @@
 package com.bee.app.controller.find;
 
 import com.bee.client.params.find.FindListRequest;
-import com.bee.modal.FindListItem;
+import com.bee.domain.modal.app.find.FindListItem;
 import com.bee.services.find.IFindService;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;

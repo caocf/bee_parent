@@ -55,6 +55,9 @@ public class ShopAttendBusiService extends ShopAttendService implements IShopAtt
             if (ids.length < 1) {
                 return;
             }
+            if (ids.length == 1 && "".equals(ids[0])) {
+                return;
+            }
             for (String id : ids) {
                 ShopAttend item = new ShopAttend();
                 item.setShopTechee(new ShopTechee(Long.valueOf(id)));

@@ -3,11 +3,13 @@ package com.bee.busi.controller.shop;
 import com.bee.busi.params.shop.ShopImageSaveResponse;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
+import com.bee.domain.modal.app.shop.ShopImageItem;
 import com.bee.image.ImageParser;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopImage;
 import com.bee.services.shop.app.IShopImageAppService;
 import com.bee.services.shop.busi.IShopImageBusiService;
+import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,7 @@ public class ShopImageController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public List<com.bee.domain.modal.app.shop.ShopImage> queryShopImageList(@PathVariable Long sid) {
+    public List<ShopImageItem> queryShopImageList(@PathVariable Long sid) {
         return shopImageAppService.queryShopImage(sid);
     }
 
@@ -49,8 +51,8 @@ public class ShopImageController {
      * @param imageId
      */
     @RequestMapping(value = "/{imageId}", method = RequestMethod.DELETE)
-    public BaseResponse deleteShopImage(@PathVariable Long imageId) {
-        BaseResponse res = new BaseResponse();
+    public Response deleteShopImage(@PathVariable Long imageId) {
+        Response res = new Response();
         try {
             shopImageBusiService.delShopImage(imageId);
             res.setCode(Codes.Success);
@@ -68,7 +70,8 @@ public class ShopImageController {
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ShopImageSaveResponse saveShopImage(@PathVariable Long sid, ShopImage shopImage, MultipartHttpServletRequest req) {
+    public ShopImageSaveResponse saveShopImage(@PathVariable Long sid, ShopImage shopImage,
+                                               MultipartHttpServletRequest req) {
         ShopImageSaveResponse res = new ShopImageSaveResponse();
         MultipartFile file = req.getFile("file");
         if (null == file) {
@@ -85,8 +88,9 @@ public class ShopImageController {
             res.setMsg("图片格式不正确，只支持JPG,JPEG,PNG格式");
             return res;
         }
-        // 判断商户图片数量,目前最多上传30张图片
-        // 2015.11.1 增加图片上线数量到30张
+        // 判断商户图片数量,目前最多上传100张图片
+        // 2015.11.1  增加图片上限数量到30张
+        // 2015.11.28 增加图片上限数量到100张
         List<ShopImage> shopImageList = shopImageBusiService.queryShopImageByShopId(sid);
         if (shopImageList != null && shopImageList.size() >= Consts.Shop.Image.MaxUploadImageSize) {
             res.setCode(Codes.Shop.ShopImageSizeOut);

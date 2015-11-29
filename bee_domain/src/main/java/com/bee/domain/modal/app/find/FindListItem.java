@@ -1,13 +1,13 @@
 package com.bee.domain.modal.app.find;
 
-import com.bee.domain.modal.app.shop.ShopImage;
+import com.bee.domain.modal.app.shop.ShopImageItem;
 
 import java.util.List;
 
 /**
  * Created by suntongwei on 15/11/22.
  */
-public class Find implements java.io.Serializable {
+public class FindListItem implements java.io.Serializable {
 
     // serialVersionUID
     private static final long serialVersionUID = 5051854087014725552L;
@@ -23,7 +23,7 @@ public class Find implements java.io.Serializable {
     private Integer replyNum;
 
     // 商家图片
-    private List<ShopImage> shopImages;
+    private List<ShopImageItem> shopImages;
 
     public Long getFindId() {
         return findId;
@@ -79,10 +79,10 @@ public class Find implements java.io.Serializable {
     public void setType(Integer type) {
         this.type = type;
     }
-    public List<ShopImage> getShopImages() {
+    public List<ShopImageItem> getShopImages() {
         return shopImages;
     }
-    public void setShopImages(List<ShopImage> shopImages) {
+    public void setShopImages(List<ShopImageItem> shopImages) {
         this.shopImages = shopImages;
     }
 }

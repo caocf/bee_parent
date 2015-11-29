@@ -1,9 +1,8 @@
 package com.bee.services.shop.app.impl;
 
 import com.bee.dao.shop.app.ShopImageAppDao;
-import com.bee.domain.modal.app.shop.ShopImage;
+import com.bee.domain.modal.app.shop.ShopImageItem;
 import com.bee.domain.params.shop.ShopImageListParam;
-import com.bee.modal.ShopImageListItem;
 import com.bee.services.shop.app.IShopImageAppService;
 import com.bee.services.shop.impl.ShopImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +25,10 @@ public class ShopImageAppService extends ShopImageService implements IShopImageA
      * @return
      */
     @Override
-    public List<ShopImage> queryShopImage(long sid) {
+    public List<ShopImageItem> queryShopImage(long sid) {
         ShopImageListParam param = new ShopImageListParam();
         param.setShopId(sid);
+        param.setOrderBy(" A.SIID DESC");
         return shopImageAppDao.queryShopImage(param);
     }
 }

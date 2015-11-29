@@ -3,7 +3,7 @@ package com.bee.domain.modal.app.shop;
 /**
  * Created by suntongwei on 15/11/22.
  */
-public class ShopImage implements java.io.Serializable {
+public class ShopImageItem implements java.io.Serializable {
 
     // serialVersionUID
     private static final long serialVersionUID = 6151977507173531821L;

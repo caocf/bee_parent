@@ -1,7 +1,7 @@
 package com.bee.domain.response;
 
 import com.bee.domain.modal.app.shop.ShopAttend;
-import com.bee.domain.modal.app.shop.ShopImage;
+import com.bee.domain.modal.app.shop.ShopImageItem;
 import com.bee.domain.modal.app.shop.ShopItem;
 import com.qsd.framework.domain.response.Response;
 
@@ -18,15 +18,15 @@ public class ShopResponse extends Response {
     // serialVersionUID
     private static final long serialVersionUID = -9089202824661887433L;
 
-    private List<ShopImage> shopImages;
+    private List<ShopImageItem> shopImages;
     private ShopItem shopItem;
     @Deprecated
     private List<ShopAttend> shopAttends;
 
-    public List<ShopImage> getShopImages() {
+    public List<ShopImageItem> getShopImages() {
         return shopImages;
     }
-    public void setShopImages(List<ShopImage> shopImages) {
+    public void setShopImages(List<ShopImageItem> shopImages) {
         this.shopImages = shopImages;
     }
     @Deprecated

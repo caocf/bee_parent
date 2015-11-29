@@ -379,6 +379,17 @@ public final class SQL {
                     "ON A.USER = B.UID " +
                     "WHERE A.FIND = ? ORDER BY A.CREATETIME DESC";
         }
+
+        public static final class Image {
+
+            // 根据发现ID查询发现图片中的所有商家图片
+            public static final String QueryShopImageByFind = "SELECT " +
+                    "B.SIID, B.URL, B.REMARK, B.WIDTH, B.HEIGHT " +
+                    "FROM TB_FIND_IMAGE A " +
+                    "LEFT OUTER JOIN TB_SHOP_IMAGE B " +
+                    "ON A.SHOPIMAGE = B.SIID " +
+                    "WHERE A.FIND = ?";
+        }
     }
 
     public static final class AppVer {

@@ -4,6 +4,8 @@ import com.bee.pojo.shop.Shop;
 import com.bee.pojo.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/6/10.
@@ -24,6 +26,8 @@ public class Find implements java.io.Serializable {
     private String content;
     // 所属商家
     private Shop shop;
+    // 发现图片
+    private List<FindImage> findImages = new ArrayList<>(0);
 
     public Find() {}
     public Find(Long id) {
@@ -76,5 +80,12 @@ public class Find implements java.io.Serializable {
     }
     public void setType(Integer type) {
         this.type = type;
+    }
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "find")
+    public List<FindImage> getFindImages() {
+        return findImages;
+    }
+    public void setFindImages(List<FindImage> findImages) {
+        this.findImages = findImages;
     }
 }

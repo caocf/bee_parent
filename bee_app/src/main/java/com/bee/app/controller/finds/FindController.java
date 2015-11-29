@@ -1,7 +1,7 @@
 package com.bee.app.controller.finds;
 
 import com.bee.commons.Codes;
-import com.bee.domain.modal.app.find.Find;
+import com.bee.domain.modal.app.find.FindListItem;
 import com.bee.domain.params.find.FindListParam;
 import com.bee.services.find.app.IFindAppService;
 import com.qsd.framework.domain.response.ResponsePaging;
@@ -31,8 +31,8 @@ public class FindController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ResponsePaging<Find> queryFindList(FindListParam param) {
-        ResponsePaging<Find> res = new ResponsePaging<>();
+    public ResponsePaging<FindListItem> queryFindList(FindListParam param) {
+        ResponsePaging<FindListItem> res = new ResponsePaging<>();
         res.setResult(findService.queryFindList(param));
         res.setCode(Codes.Success);
         return res;

@@ -3,7 +3,7 @@ package com.bee.dao.find;
 import com.bee.client.params.find.FindListRequest;
 import com.bee.commons.Consts;
 import com.bee.commons.SQL;
-import com.bee.modal.FindListItem;
+import com.bee.domain.modal.app.find.FindListItem;
 import com.bee.pojo.find.Find;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;

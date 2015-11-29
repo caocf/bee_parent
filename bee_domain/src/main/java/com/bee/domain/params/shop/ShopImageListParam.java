@@ -23,15 +23,6 @@ public class ShopImageListParam extends PagingRequest {
      */
     private String orderBy;
 
-    /**
-     * 是否需要分页
-     *
-     * @return
-     */
-    public Boolean isPaging() {
-        return top == null;
-    }
-
     public Long getShopId() {
         return shopId;
     }
@@ -44,7 +35,6 @@ public class ShopImageListParam extends PagingRequest {
     public void setTop(Integer top) {
         this.top = top;
     }
-
     public String getOrderBy() {
         return orderBy;
     }

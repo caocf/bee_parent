@@ -1,13 +1,12 @@
 package com.bee.dao.shop;
 
 import com.bee.commons.SQL;
-import com.bee.modal.ShopImageListItem;
+import com.bee.domain.modal.app.shop.ShopImageItem;
 import com.bee.pojo.shop.ShopImage;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
-import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,11 +22,11 @@ public class ShopImageDao extends JpaDaoSupport<ShopImage, Long> {
      * @param sid
      * @return
      */
-    public List<ShopImageListItem> queryAppShopImage(long sid) {
-        return findConverByParams(SQL.Shop.Image.queryAppShopImage, new QueryDataConver<ShopImageListItem>() {
+    public List<ShopImageItem> queryAppShopImage(long sid) {
+        return findConverByParams(SQL.Shop.Image.queryAppShopImage, new QueryDataConver<ShopImageItem>() {
             @Override
-            public ShopImageListItem converData(Object[] objects) {
-                ShopImageListItem item = new ShopImageListItem();
+            public ShopImageItem converData(Object[] objects) {
+                ShopImageItem item = new ShopImageItem();
                 item.setUrl(StringUtil.parseString(objects[0], ""));
                 item.setRemark(StringUtil.parseString(objects[1], ""));
                 item.setWidth(NumberUtil.parseInteger(objects[2], 0));
@@ -46,12 +45,12 @@ public class ShopImageDao extends JpaDaoSupport<ShopImage, Long> {
      * @return
      */
     @Deprecated
-    public List<ShopImageListItem> queryFindShopImage(long sid) {
+    public List<ShopImageItem> queryFindShopImage(long sid) {
         return findConverByParams(SQL.Shop.Image.queryAppShopImage + " limit 9",
-                new QueryDataConver<ShopImageListItem>() {
+                new QueryDataConver<ShopImageItem>() {
             @Override
-            public ShopImageListItem converData(Object[] objects) {
-                ShopImageListItem item = new ShopImageListItem();
+            public ShopImageItem converData(Object[] objects) {
+                ShopImageItem item = new ShopImageItem();
                 item.setUrl(StringUtil.parseString(objects[0], ""));
                 item.setRemark(StringUtil.parseString(objects[1], ""));
                 item.setWidth(NumberUtil.parseInteger(objects[2], 0));
