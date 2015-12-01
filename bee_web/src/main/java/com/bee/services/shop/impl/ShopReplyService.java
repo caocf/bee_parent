@@ -2,7 +2,9 @@ package com.bee.services.shop.impl;
 
 import com.bee.client.params.shop.ShopReplyRequest;
 import com.bee.dao.shop.ShopReplyDao;
-import com.bee.modal.ShopReplyListItem;
+import com.bee.dao.shop.app.ShopReplyAppDao;
+import com.bee.domain.modal.app.shop.ShopReplyListItem;
+import com.bee.domain.params.shop.ShopReplyListParam;
 import com.bee.pojo.shop.ShopReply;
 import com.bee.services.shop.IShopReplyService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -18,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ShopReplyService implements IShopReplyService {
 
     @Autowired
-    private ShopReplyDao shopReplyDao;
+    private ShopReplyAppDao shopReplyDao;
 
     /**
      *
@@ -26,8 +28,8 @@ public class ShopReplyService implements IShopReplyService {
      * @return
      */
     @Override
-    public PagingResult<ShopReplyListItem> getAppReplyList(ShopReplyRequest req) {
-        return shopReplyDao.getAppReplyList(req);
+    public PagingResult<ShopReplyListItem> getAppReplyList(ShopReplyListParam req) {
+        return shopReplyDao.getReplyListForApp(req);
     }
 
     /**

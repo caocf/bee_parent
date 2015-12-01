@@ -1,18 +1,19 @@
-package com.bee.modal;
+package com.bee.domain.modal.app.shop;
 
 /**
- * Created by suntongwei on 15/6/12.
+ * Created by suntongwei on 15/12/1.
  */
 public class ShopReplyListItem implements java.io.Serializable {
 
     // serialVersionUID
-    private static final long serialVersionUID = 6417678112928991810L;
+    private static final long serialVersionUID = -3104091966737161534L;
 
     private Long srid;
     private Long uid;
     private String name;
     private Long createTime;
     private String content;
+    private Integer Level;
 
     public Long getSrid() {
         return srid;
@@ -43,5 +44,11 @@ public class ShopReplyListItem implements java.io.Serializable {
     }
     public void setContent(String content) {
         this.content = content;
+    }
+    public Integer getLevel() {
+        return Level;
+    }
+    public void setLevel(Integer level) {
+        Level = level;
     }
 }

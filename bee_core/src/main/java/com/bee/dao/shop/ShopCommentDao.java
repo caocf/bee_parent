@@ -44,6 +44,7 @@ public class ShopCommentDao extends JpaDaoSupport<ShopComment, Long> {
                 item.setName(StringUtil.parseString(objs[4], ""));
                 item.setShopId(NumberUtil.parseLong(objs[5], 0));
                 item.setReplyNum(NumberUtil.parseLong(objs[6], 0));
+                item.setLevel(NumberUtil.parseInteger(objs[7], 0));
                 return item;
             }
         });

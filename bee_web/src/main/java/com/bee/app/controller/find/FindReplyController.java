@@ -1,11 +1,10 @@
 package com.bee.app.controller.find;
 
-import com.bee.client.params.find.FindReplyRequest;
 import com.bee.commons.Codes;
-import com.bee.modal.FindReplyItem;
+import com.bee.domain.modal.app.find.FindReplyItem;
+import com.bee.domain.params.find.FindReplyParam;
 import com.bee.pojo.find.Find;
 import com.bee.pojo.find.FindReply;
-import com.bee.pojo.shop.ShopComment;
 import com.bee.services.find.IFindReplyService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
@@ -33,7 +32,7 @@ public class FindReplyController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public PagingResult<FindReplyItem> getAppReplyList(@PathVariable Long fid, FindReplyRequest req) {
+    public PagingResult<FindReplyItem> getAppReplyList(@PathVariable Long fid, FindReplyParam req) {
         req.setFindId(fid);
         return findReplyService.getAppReplyList(req);
     }

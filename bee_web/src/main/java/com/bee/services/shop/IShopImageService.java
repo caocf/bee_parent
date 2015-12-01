@@ -1,6 +1,6 @@
 package com.bee.services.shop;
 
-import com.bee.domain.modal.app.shop.ShopImage;
+import com.bee.domain.modal.app.shop.ShopImageItem;
 
 import java.util.List;
 
@@ -15,6 +15,6 @@ public interface IShopImageService {
      * @param sid
      * @return
      */
-    public List<ShopImage> queryAppShopImage(long sid);
+    public List<ShopImageItem> queryAppShopImage(long sid);
 
 }

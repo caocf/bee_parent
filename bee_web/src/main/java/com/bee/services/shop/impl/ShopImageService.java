@@ -2,9 +2,8 @@ package com.bee.services.shop.impl;
 
 import com.bee.commons.Consts;
 import com.bee.commons.ImageFactory;
-import com.bee.dao.shop.ShopImageDao;
 import com.bee.dao.shop.app.ShopImageAppDao;
-import com.bee.domain.modal.app.shop.ShopImage;
+import com.bee.domain.modal.app.shop.ShopImageItem;
 import com.bee.domain.params.shop.ShopImageListParam;
 import com.bee.services.shop.IShopImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class ShopImageService implements IShopImageService {
     private ShopImageAppDao shopImageDao;
 
     @Override
-    public List<ShopImage> queryAppShopImage(long sid) {
+    public List<ShopImageItem> queryAppShopImage(long sid) {
         ShopImageListParam param = new ShopImageListParam();
         param.setShopId(sid);
         return shopImageDao.queryShopImage(param);

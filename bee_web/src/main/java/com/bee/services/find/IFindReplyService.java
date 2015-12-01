@@ -1,7 +1,7 @@
 package com.bee.services.find;
 
-import com.bee.client.params.find.FindReplyRequest;
-import com.bee.modal.FindReplyItem;
+import com.bee.domain.modal.app.find.FindReplyItem;
+import com.bee.domain.params.find.FindReplyParam;
 import com.bee.pojo.find.FindReply;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
@@ -16,7 +16,7 @@ public interface IFindReplyService {
      * @param req
      * @return
      */
-    public PagingResult<FindReplyItem> getAppReplyList(FindReplyRequest req);
+    public PagingResult<FindReplyItem> getAppReplyList(FindReplyParam req);
 
     /**
      *

@@ -1,8 +1,8 @@
 package com.bee.app.controller.shop;
 
-import com.bee.client.params.shop.ShopReplyRequest;
 import com.bee.commons.Codes;
-import com.bee.modal.ShopReplyListItem;
+import com.bee.domain.modal.app.shop.ShopReplyListItem;
+import com.bee.domain.params.shop.ShopReplyListParam;
 import com.bee.pojo.shop.ShopComment;
 import com.bee.pojo.shop.ShopReply;
 import com.bee.services.shop.IShopReplyService;
@@ -30,7 +30,7 @@ public class ShopReplyController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public PagingResult<ShopReplyListItem> queryAppShopReplyList(@PathVariable Long sid, @PathVariable Long cid, ShopReplyRequest req) {
+    public PagingResult<ShopReplyListItem> queryAppShopReplyList(@PathVariable Long sid, @PathVariable Long cid, ShopReplyListParam req) {
         req.setShopId(sid);
         req.setCommentId(cid);
         return shopReplyService.getAppReplyList(req);

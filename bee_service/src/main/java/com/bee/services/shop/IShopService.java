@@ -1,6 +1,7 @@
 package com.bee.services.shop;
 
 import com.bee.pojo.shop.Shop;
+import com.qsd.framework.hibernate.exception.DataRunException;
 
 /**
  * Created by suntongwei on 15/11/15.
@@ -15,4 +16,11 @@ public interface IShopService {
      * @return
      */
     Shop getShopById(long sid);
+
+    /**
+     * 更新商家信息
+     *
+     * @param shop
+     */
+    void update(Shop shop) throws DataRunException;
 }

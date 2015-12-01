@@ -15,6 +15,9 @@ public class ShopCommentListItem implements java.io.Serializable {
     private Long uid;
     private Long replyNum;
 
+    // v1.0.5增加
+    private Integer level;
+
     public Long getScid() {
         return scid;
     }
@@ -56,5 +59,11 @@ public class ShopCommentListItem implements java.io.Serializable {
     }
     public void setReplyNum(Long replyNum) {
         this.replyNum = replyNum;
+    }
+    public Integer getLevel() {
+        return level;
+    }
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 }

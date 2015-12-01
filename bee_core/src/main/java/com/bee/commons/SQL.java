@@ -160,7 +160,8 @@ public final class SQL {
         public static final class Comment {
             public static final String getAppCommentList = "SELECT " +
                     "A.SCID, A.CONTENT, A.CREATETIME, B.UID, B.NAME, A.SHOP, " +
-                    "(SELECT COUNT(*) FROM TB_SHOP_REPLY C WHERE C.SHOPCOMMENT = A.SCID) AS REPLY_NUM " +
+                    "(SELECT COUNT(*) FROM TB_SHOP_REPLY C WHERE C.SHOPCOMMENT = A.SCID) AS REPLY_NUM," +
+                    "B.LEVEL " +
                     "FROM TB_SHOP_COMMENT A " +
                     "LEFT OUTER JOIN TB_USER B " +
                     "ON A.USER = B.UID " +
@@ -174,7 +175,7 @@ public final class SQL {
 
         public static final class Reply {
             public static final String queryAppReplyList = "SELECT " +
-                    "A.SRID,A.CONTENT,B.NAME,B.UID,A.CREATETIME " +
+                    "A.SRID,A.CONTENT,B.NAME,B.UID,A.CREATETIME, B.LEVEL " +
                     "FROM TB_SHOP_REPLY A " +
                     "LEFT OUTER JOIN TB_USER B " +
                     "ON A.USER = B.UID " +
@@ -373,7 +374,7 @@ public final class SQL {
 
         public static final class Reply {
             public static final String queryAppReplyList = "SELECT " +
-                    "A.FRID,A.CONTENT,B.NAME,B.UID,A.CREATETIME " +
+                    "A.FRID,A.CONTENT,B.NAME,B.UID,A.CREATETIME, B.LEVEL " +
                     "FROM TB_FIND_REPLY A " +
                     "LEFT OUTER JOIN TB_USER B " +
                     "ON A.USER = B.UID " +

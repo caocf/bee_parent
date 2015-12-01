@@ -49,6 +49,9 @@ public class FindAppService extends FindService implements IFindAppService {
         shopImageParam.setTop(9);
         shopImageParam.setOrderBy(" A.SORT DESC ");
 
+        /**
+         * 发现图片查询
+         */
         FindImageParam findImageParam = new FindImageParam();
 
         /**

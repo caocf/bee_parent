@@ -2,9 +2,11 @@ package com.bee.busi.controller.shop;
 
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
+import com.bee.domain.response.ServiceSupportResponse;
 import com.bee.image.ImageParser;
 import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.busi.IShopBusiService;
+import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import org.slf4j.Logger;
@@ -29,10 +31,56 @@ public class ShopController {
     @Autowired
     private IShopBusiService shopBusiService;
 
-    @RequestMapping(value = "/{sid}", method = RequestMethod.PUT)
-    public void updateShop() {
-
+    /**
+     * 获取商家支持信息
+     *
+     * @return
+     */
+    @RequestMapping(value = "/{sid}/support", method = RequestMethod.GET)
+    public ServiceSupportResponse getShopServiceSupport(@PathVariable Long sid) {
+        ServiceSupportResponse res = new ServiceSupportResponse();
+        Shop shop = shopBusiService.getShopById(sid);
+        if (shop != null) {
+            res.setIsPosCard(shop.getIsPosCard());
+            res.setIsFood(shop.getIsFood());
+            res.setIsFreeParking(shop.getIsFreeParking());
+            res.setIsInvoice(shop.getIsInvoice());
+            res.setCode(Codes.Success);
+        } else {
+            res.setCode(Codes.Error);
+            res.setMsg("未查询到商家信息");
+        }
+        return res;
     }
+
+    /**
+     * 保存商家支持信息
+     *
+     * @return
+     */
+    @RequestMapping(value = "/{sid}/support", method = RequestMethod.POST)
+    public Response saveShopServiceSupport(@PathVariable Long sid, boolean isPosCard,
+                                           boolean isFreeParking, boolean isFood, boolean isInvoice) {
+        Response res = new Response();
+        try {
+            Shop shop = shopBusiService.getShopById(sid);
+            if (shop != null) {
+                shop.setIsPosCard(isPosCard ? Consts.True : Consts.False);
+                shop.setIsFreeParking(isFreeParking ? Consts.True : Consts.False);
+                shop.setIsFood(isFood ? Consts.True : Consts.False);
+                shop.setIsInvoice(isInvoice ? Consts.True : Consts.False);
+                shopBusiService.update(shop);
+            } else {
+                res.setCode(Codes.Error);
+                res.setMsg("未查询到商家信息");
+            }
+        } catch (DataRunException e) {
+            res.setCode(Codes.Error);
+            res.setMsg("更新失败,请重试");
+        }
+        return res;
+    }
+
 
     /**
      * 关闭商家
@@ -41,8 +89,8 @@ public class ShopController {
      * @return
      */
     @RequestMapping(value = "/{sid}", method = RequestMethod.DELETE)
-    public BaseResponse openOrCloseShop(@PathVariable long sid, int status) {
-        BaseResponse res = new BaseResponse();
+    public Response openOrCloseShop(@PathVariable long sid, int status) {
+        Response res = new Response();
         Shop shop = shopBusiService.getShopById(sid);
         if (shop != null) {
             if (shop.getStatus() == Consts.Shop.Status.Close) {
@@ -74,8 +122,8 @@ public class ShopController {
      * @return
      */
     @RequestMapping(value = "/{sid}/edit/image/list", method = RequestMethod.POST)
-    public BaseResponse updateShopListImage(@PathVariable Long sid, MultipartHttpServletRequest req) {
-        BaseResponse res = new BaseResponse();
+    public Response updateShopListImage(@PathVariable Long sid, MultipartHttpServletRequest req) {
+        Response res = new Response();
         MultipartFile file = req.getFile("thumbnailFile");
         if (null == file) {
             res.setCode(Codes.Error);
@@ -103,8 +151,8 @@ public class ShopController {
      * @return
      */
     @RequestMapping(value = "/{sid}/edit/image/face", method = RequestMethod.POST)
-    public BaseResponse updateShopImage(@PathVariable Long sid, MultipartHttpServletRequest req) {
-        BaseResponse res = new BaseResponse();
+    public Response updateShopImage(@PathVariable Long sid, MultipartHttpServletRequest req) {
+        Response res = new Response();
         MultipartFile file = req.getFile("file");
         if (null == file) {
             res.setCode(Codes.Error);

@@ -1,12 +1,12 @@
-package com.bee.modal;
+package com.bee.domain.modal.app.find;
 
 /**
- * Created by suntongwei on 15/6/13.
+ * Created by suntongwei on 15/12/1.
  */
 public class FindReplyItem implements java.io.Serializable {
 
     // serialVersionUID
-    private static final long serialVersionUID = -586893074017900125L;
+    private static final long serialVersionUID = 2387929071196478178L;
 
     private Long frid;
     private Long uid;
@@ -14,6 +14,7 @@ public class FindReplyItem implements java.io.Serializable {
     private String avatar;
     private Long createTime;
     private String content;
+    private Integer level;
 
     public Long getFrid() {
         return frid;
@@ -21,17 +22,23 @@ public class FindReplyItem implements java.io.Serializable {
     public void setFrid(Long frid) {
         this.frid = frid;
     }
+    public Long getUid() {
+        return uid;
+    }
+    public void setUid(Long uid) {
+        this.uid = uid;
+    }
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
-    public Long getUid() {
-        return uid;
+    public String getAvatar() {
+        return avatar;
     }
-    public void setUid(Long uid) {
-        this.uid = uid;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
     public Long getCreateTime() {
         return createTime;
@@ -44,5 +51,11 @@ public class FindReplyItem implements java.io.Serializable {
     }
     public void setContent(String content) {
         this.content = content;
+    }
+    public Integer getLevel() {
+        return level;
+    }
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 }
