@@ -7,6 +7,7 @@ import com.bee.services.order.impl.OrderService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by suntongwei on 15/11/15.
@@ -22,6 +23,18 @@ public class OrderAdminService extends OrderService implements IOrderAdminServic
     @Override
     public PagingResult<Order> getOrderListByParam(AdminOrderListRequest request) {
         return orderDao.getOrderListByParam(request);
+    }
+
+    /**
+     * 创建订单
+     *
+     * @param order
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void createOrder(Order order) throws DataRunException {
+        // nothing
     }
 
     /**

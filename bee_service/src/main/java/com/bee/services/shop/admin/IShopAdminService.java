@@ -41,5 +41,5 @@ public interface IShopAdminService extends IShopService {
      * @param shop
      * @throws DataRunException
      */
-    public void updateShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException;
+    void updateShop(Shop shop, MultipartHttpServletRequest req) throws DataRunException;
 }

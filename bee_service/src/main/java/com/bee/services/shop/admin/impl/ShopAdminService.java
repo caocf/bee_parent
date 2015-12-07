@@ -74,6 +74,7 @@ public class ShopAdminService extends ShopService implements IShopAdminService {
                 shop.setServiceTime("13:30-0:30");
             }
 
+
             // 保存商家信息
             shopDao.save(shop);
 

@@ -1,5 +1,6 @@
 package com.bee.services.order;
 
+import com.bee.pojo.order.Order;
 import com.qsd.framework.hibernate.exception.DataRunException;
 
 /**
@@ -7,12 +8,22 @@ import com.qsd.framework.hibernate.exception.DataRunException;
  */
 public interface IOrderService {
 
+
+    /**
+     * 创建订单
+     *
+     * @param order
+     * @throws DataRunException
+     */
+    void createOrder(Order order) throws DataRunException;
+
+
     /**
      * 取消订单
      *
      * @param id
      * @throws com.qsd.framework.hibernate.exception.DataRunException
      */
-    public void cancelOrder(long id) throws DataRunException;
+    void cancelOrder(long id) throws DataRunException;
 
 }

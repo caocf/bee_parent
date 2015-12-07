@@ -71,7 +71,7 @@ public class OrderController {
             return res;
         }
         // 除了APP用户和VIP用户，都无法下单
-        if (order.getUser() != null) {
+        if (order.getUser() != null && order.getUser().getUid() != 0) {
             if (order.getUser().getType() != Consts.User.Type.AppUser
                     || order.getUser().getType() != Consts.User.Type.VipUser) {
                 res.setCode(Codes.Error);

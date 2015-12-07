@@ -135,13 +135,16 @@
                     <div class="col-xs-4">
                         <div class="btn-group" data-toggle="buttons">
                             <label class="btn btn-primary">
-                                <input type="checkbox" name="isFreeParking" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 免费停车
+                                <input type="checkbox" name="shop.isFreeParking" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 免费停车
                             </label>
                             <label class="btn btn-primary">
-                                <input type="checkbox" name="isFood" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 餐饮
+                                <input type="checkbox" name="shop.isFood" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 餐饮
                             </label>
                             <label class="btn btn-primary">
-                                <input type="checkbox" name="isInvoice" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 发票
+                                <input type="checkbox" name="shop.isPosCard" autocomplete="off" value="1" <c:if test="${shop.isPosCard == 1}">checked="checked"</c:if>> 刷卡
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="checkbox" name="shop.isInvoice" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 发票
                             </label>
                         </div>
                     </div>

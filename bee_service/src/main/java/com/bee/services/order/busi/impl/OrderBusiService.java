@@ -47,6 +47,18 @@ public class OrderBusiService extends OrderService implements IOrderBusiService 
     }
 
     /**
+     * 创建订单
+     *
+     * @param order
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void createOrder(Order order) throws DataRunException {
+        // nothing
+    }
+
+    /**
      * 接受订单
      *
      * @param id

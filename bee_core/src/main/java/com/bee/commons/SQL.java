@@ -179,7 +179,7 @@ public final class SQL {
                     "FROM TB_SHOP_REPLY A " +
                     "LEFT OUTER JOIN TB_USER B " +
                     "ON A.USER = B.UID " +
-                    "WHERE A.SHOPCOMMENT = ? ORDER BY A.CREATETIME DESC";
+                    "WHERE A.SHOPCOMMENT = ? ORDER BY A.SRID DESC";
         }
 
         public static final class User {
