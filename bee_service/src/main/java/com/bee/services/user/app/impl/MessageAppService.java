@@ -5,6 +5,7 @@ import com.bee.pojo.user.Message;
 import com.bee.services.user.app.IMessageAppService;
 import com.bee.services.user.impl.MessageService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,4 +25,6 @@ public class MessageAppService extends MessageService implements IMessageAppServ
     public List<Message> getNewMessage(MessageParam param) {
         return messageDao.getNewMessage(param);
     }
+
+
 }

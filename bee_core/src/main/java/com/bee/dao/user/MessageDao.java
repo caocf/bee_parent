@@ -4,6 +4,7 @@ import com.bee.commons.SQL;
 import com.bee.domain.params.user.MessageParam;
 import com.bee.pojo.user.Message;
 import com.qsd.framework.hibernate.JpaDaoSupport;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
