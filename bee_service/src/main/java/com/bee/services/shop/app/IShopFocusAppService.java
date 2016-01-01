@@ -15,5 +15,5 @@ public interface IShopFocusAppService extends IShopFocusService {
      *
      * @return
      */
-    public PagingResult<ShopFavorite> getShopFocusListByParam(ShopFocusListParam param);
+    PagingResult<ShopFavorite> getShopFocusListByParam(ShopFocusListParam param);
 }

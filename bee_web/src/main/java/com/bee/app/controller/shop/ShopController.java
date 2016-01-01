@@ -1,5 +1,6 @@
 package com.bee.app.controller.shop;
 
+import com.bee.app.commons.ShopResponseV1;
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.domain.modal.app.shop.ShopListItem;
 import com.bee.domain.response.ShopResponse;
@@ -57,10 +58,10 @@ public class ShopController {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ShopResponse getShopItem(@PathVariable Long id) {
+    public ShopResponseV1 getShopItem(@PathVariable Long id) {
 
         // ShopResponse
-        ShopResponse res = new ShopResponse();
+        ShopResponseV1 res = new ShopResponseV1();
 
         /**
          * 增加商家浏览统计
@@ -70,7 +71,7 @@ public class ShopController {
         /**
          * 获取商家信息
          */
-        res.setShopItem(shopService.getShopItemById(id));
+        res.setShopListItem(shopService.getShopItemById(id));
 
         /**
          * 获取商家滚动相册

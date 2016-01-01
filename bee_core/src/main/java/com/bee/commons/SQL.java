@@ -5,8 +5,16 @@ package com.bee.commons;
  */
 public final class SQL {
 
+
+    public static final class SystemConfig {
+
+        public static final String GetSystemConfig = "From SystemConfig A where A.type = ?";
+
+    }
+
     public static final class Area {
         public static final String queryAreaById = "From Area A where A.parentId = ? order by A.sort desc";
+        public static final String getAreaByLastId = "From Area A where A.aid > ?";
     }
 
 
@@ -39,6 +47,11 @@ public final class SQL {
             // 根据ID，删除好友关系
             public static final String deleteFriend =
                     "DELETE FROM TB_USER_FRIEND WHERE (USER = ? AND FRIEND = ?) or (USER = ? AND FRIEND = ?)";
+        }
+
+        public static final class Message {
+            // 获取用户未读消息
+            public static final String GetNewMessage = "From Message A where A.user = ? and A.createTime > ?";
         }
     }
 
@@ -324,7 +337,7 @@ public final class SQL {
                 "LEFT JOIN FETCH A.user C " +
                 "LEFT JOIN FETCH B.area D " +
                 "LEFT JOIN FETCH A.shopUser E where 1=1 ";
-        public static final String getOrderListByParamOrder = " order by A.createTime desc";
+        public static final String getOrderListByParamOrder = " order by A.oid desc";
 
         /**
          *【C端】查询商家详细(ShopDetailActivity)
@@ -397,7 +410,7 @@ public final class SQL {
         // 获取app版本列表
         public static final String getAppVerList = "From AppVer A order by A.createTime desc";
         // 根据手机类型返回最新版本号
-        public static final String getNewAppVer = "From AppVer A where A.type = ? order by A.createTime desc";
+        public static final String getNewAppVer = "From AppVer A where A.type = ? order by A.avid desc";
     }
 
 
@@ -420,13 +433,11 @@ public final class SQL {
 
     public static final class Party {
 
-        public static final String getPartyList = "From Party A order By A.stopTime";
+        public static final String GetPartyList = "SELECT " +
+                "A.PID, A.TYPE, A.PARTYTIME, A.STARTTIME, A.STOPTIME, A.ISBEE, A.TITLE, A.CONTENT " +
+                "FROM TB_PARTY A";
+        public static final String GetPartyListOrderBy = " order by A.SORT DESC";
 
-        public static final String GetAppPartyList =
-                "select A.PID, A.URL, A.lOOKNUM, A.TITLE, " +
-                        "(select B.price from TB_PARTY_MEET B where A.TYPE = " + Consts.Party.Type.Offline + " and B.PMID = A.CHILDID limit 1) as PRICE " +
-                        "from TB_PARTY A where A.STOPTIME > ? and A.STARTTIME < ? " +
-                        "order by A.sort desc";
     }
 
 

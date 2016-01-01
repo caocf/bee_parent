@@ -1,13 +1,30 @@
 package com.bee.app.controller;
 
+import com.bee.app.commons.AppConsts;
+import com.bee.app.commons.SystemConfigFactory;
+import com.bee.client.params.AppInitRequest;
+import com.bee.client.params.AppInitResponse;
+import com.bee.client.params.AppVerResponse;
 import com.bee.commons.Codes;
+import com.bee.commons.Consts;
+import com.bee.pojo.AppVer;
+import com.bee.pojo.Area;
+import com.bee.pojo.SystemConfig;
+import com.bee.pojo.stat.UserLoginStat;
+import com.bee.pojo.user.User;
+import com.bee.services.stat.app.IUserStatAppService;
+import com.bee.services.system.IAreaService;
+import com.bee.services.system.ISystemConfigService;
+import com.bee.services.system.app.IAppVerAppService;
 import com.qsd.framework.domain.response.ResponseArray;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/11/24.
@@ -15,6 +32,75 @@ import java.util.Calendar;
 @RestController
 @RequestMapping("/v1")
 public class AppController {
+
+    @Autowired
+    private IUserStatAppService userStatAppService;
+    @Autowired
+    private IAreaService areaService;
+    @Autowired
+    private ISystemConfigService systemConfigService;
+    @Autowired
+    private IAppVerAppService appVerAppService;
+
+    /**
+     * 初始化
+     *
+     * @param req
+     * @return
+     */
+    @RequestMapping(value = "/init", method = RequestMethod.GET)
+    public AppInitResponse initAppInfo(AppInitRequest req) {
+        AppInitResponse res = new AppInitResponse();
+        // 更新用户登录
+        if (!AppConsts.isDebug) {
+            UserLoginStat userLoginStat = new UserLoginStat();
+            userLoginStat.setAppVer(req.getVersion());
+            userLoginStat.setDevice(req.getDevice());
+            userLoginStat.setPhoneType(req.getPhoneType());
+            userLoginStat.setUser(new User(
+                    req.getUid() != null && req.getUid() > 0 ? req.getUid() : 0));
+            userStatAppService.addUserLoginStat(userLoginStat);
+        }
+        // 客服电话
+        res.setServicePhone(Consts.Config.ServicePhone);
+        // 更新广告
+        // res.setNewAds(adService.getAppAdListByUpdateTime(req.getUpdateTime()));
+        // 返回更新时间，防止手机时间错误
+        res.setUpdateTime(req.getUpdateTime());
+        res.setServerStatus(AppConsts.Normal);
+
+        // 检查地区
+        res.setAreaList(checkAreaVer(req.getAreaLastId()));
+
+        // 增加首页和发现广告图更新时间
+        SystemConfigFactory factory = SystemConfigFactory.getInstance();
+        res.setMainAdUpdateTime(factory.getConfig(Consts.Config.MainAd).getFlag());
+        res.setFindAdUpdateTime(factory.getConfig(Consts.Config.FindAd).getFlag());
+        res.setQrImageUpdateTime(factory.getConfig(Consts.Config.Qr).getFlag());
+
+        res.setCode(Codes.Success);
+        return res;
+    }
+
+    /**
+     * 检查地区
+     *
+     * @param lastId
+     * @return
+     */
+    private List<Area> checkAreaVer(Long lastId) {
+        if (null == lastId) {
+            return null;
+        }
+        SystemConfig config = SystemConfigFactory.getInstance().getConfig(Consts.Config.Area);
+        // 如果客户端发送updateTime == 0,则拉取数据
+        // 如果客户端版本低于系统配置版本也拉取数据
+        if ((config != null && config.getFlag() > lastId) || lastId == 0) {
+            return areaService.getAreaByLastId(lastId);
+        }
+        return null;
+    }
+
 
     /**
      *
@@ -76,5 +162,25 @@ public class AppController {
         return res;
     }
 
-
+    /**
+     * 检查版本
+     *
+     * @param phoneType
+     * @param ver
+     * @return
+     */
+    @RequestMapping(value = "/check/ver", method = RequestMethod.GET)
+    public AppVerResponse checkAppVer(Integer phoneType, Integer ver) {
+        AppVerResponse res = new AppVerResponse();
+        AppVer appVer = appVerAppService.getNewAppVer();
+        if (appVer != null && appVer.getVer() > ver) {
+            res.setCode(Codes.Success);
+            res.setRemark(appVer.getRemark());
+            res.setUrl(appVer.getUrl());
+            res.setVersion(appVer.getVerStr());
+        } else {
+            res.setCode(Codes.Error);
+        }
+        return res;
+    }
 }

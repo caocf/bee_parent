@@ -30,6 +30,14 @@ public class UserLoginStat implements java.io.Serializable {
      * 登录时间
      */
     private Long createTime;
+    /**
+     * 手机类型
+     */
+    private Integer phoneType;
+    /**
+     * app版本号
+     */
+    private Integer appVer;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,5 +69,19 @@ public class UserLoginStat implements java.io.Serializable {
     }
     public void setDevice(String device) {
         this.device = device;
+    }
+    @Column(name = "PHONETYPE")
+    public Integer getPhoneType() {
+        return phoneType;
+    }
+    public void setPhoneType(Integer phoneType) {
+        this.phoneType = phoneType;
+    }
+    @Column(name = "APPVER")
+    public Integer getAppVer() {
+        return appVer;
+    }
+    public void setAppVer(Integer appVer) {
+        this.appVer = appVer;
     }
 }

@@ -11,9 +11,12 @@ public class FindReplyItem implements java.io.Serializable {
     private Long frid;
     private Long uid;
     private String name;
-    private String avatar;
+    // v1.0.5 删除字段, v1.0.4开始就不再使用
+//    private String avatar;
     private Long createTime;
     private String content;
+
+    // v1.0.5增加
     private Integer level;
 
     public Long getFrid() {
@@ -34,12 +37,12 @@ public class FindReplyItem implements java.io.Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public String getAvatar() {
-        return avatar;
-    }
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
+//    public String getAvatar() {
+//        return avatar;
+//    }
+//    public void setAvatar(String avatar) {
+//        this.avatar = avatar;
+//    }
     public Long getCreateTime() {
         return createTime;
     }

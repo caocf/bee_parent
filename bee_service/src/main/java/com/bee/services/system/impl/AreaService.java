@@ -24,4 +24,10 @@ public abstract class AreaService implements IAreaService {
     public List<Area> getAreaListAll() {
         return areaDao.findAll();
     }
+
+
+    @Override
+    public List<Area> getAreaByLastId(long areaLastId) {
+        return areaDao.getAreaByLastId(areaLastId);
+    }
 }

@@ -6,6 +6,7 @@ import com.bee.domain.params.user.UserParam;
 import com.bee.pojo.user.User;
 import com.bee.services.user.busi.IUserBusiService;
 import com.qsd.framework.commons.utils.StringUtil;
+import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.encrypt.Md5;
 import com.qsd.framework.spring.BaseResponse;
@@ -31,8 +32,8 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/{uid}/edit/pass", method = RequestMethod.PATCH)
-    public BaseResponse editPass(@PathVariable Long uid, String oldPass, String newPass, String phone) {
-        BaseResponse res = new BaseResponse();
+    public Response editPass(@PathVariable Long uid, String oldPass, String newPass, String phone) {
+        Response res = new Response();
         try {
             User user;
             // 通过手机找回密码修改

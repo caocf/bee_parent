@@ -46,4 +46,11 @@ public class OrderAdminService extends OrderService implements IOrderAdminServic
     public void cancelOrder(long id) throws DataRunException {
         // nothing...
     }
+
+
+    @Override
+    @Transactional
+    public void changeOrderNum(long oid, int num) throws DataRunException {
+
+    }
 }

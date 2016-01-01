@@ -105,6 +105,8 @@ public class Shop implements java.io.Serializable {
         String status = "";
         if(getStatus() == Consts.Shop.Status.Run) {
             status = "运营中";
+        } else if (getStatus() == Consts.Shop.Status.Pause) {
+            status = "商家关闭中";
         } else if(getStatus() == Consts.Shop.Status.Close) {
             status = "关闭中";
         }

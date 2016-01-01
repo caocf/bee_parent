@@ -43,6 +43,15 @@ public final class Consts {
     public static final class Config {
         // 客服电话
         public static final String ServicePhone = "13162725286";
+
+        // 地区类型标识
+        public static final int Area = 0x1;
+        // 首页广告更新
+        public static final int MainAd = 0x2;
+        // 发现广告更新
+        public static final int FindAd = 0x3;
+        // 二维码更新
+        public static final int Qr = 0x4;
     }
 
     public static final class HXConfig {
@@ -136,7 +145,7 @@ public final class Consts {
 
             public static final String ShowImageNumberForAppShop = " limit 15";
 
-            public static final int MaxUploadImageSize = 100;
+            public static final int MaxUploadImageSize = 300;
 
         }
     }
@@ -174,9 +183,9 @@ public final class Consts {
 
             // 未知状态
             public static final int Unknow = 0;
-            // 等待到店
+            // 等待接单
             public static final int Create = 1;
-            // 到店进行中
+            // 进行中
             public static final int Underway = 10;
             // 完成
             public static final int Finish = 50;
@@ -189,7 +198,7 @@ public final class Consts {
             // 商家拒绝订单
             public static final int ShopReject = 93;
 
-            public static final String CreateStr = "等待到店";
+            public static final String CreateStr = "等待接单";
             public static final String UnderwayStr = "进行中";
             public static final String FinishStr = "已完成";
             public static final String CancelUserStr = "已取消";
@@ -328,7 +337,17 @@ public final class Consts {
 
     public static final class Party {
         public static final class Type {
-            public static final int Offline = 1;
+            public static final int Online = 1;
+            public static final int Offline = 2;
+        }
+
+        public static final class Status {
+            // 未开始
+            public static final int Create = 0x1;
+            // 进行中
+            public static final int Ing = 0x2;
+            // 已结束
+            public static final int Finish = 0x3;
         }
     }
 

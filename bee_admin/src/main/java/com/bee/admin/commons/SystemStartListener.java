@@ -1,5 +1,6 @@
 package com.bee.admin.commons;
 
+import com.bee.sms.SMSCodeFactory;
 import com.qsd.framework.security.config.SecurityConfiguration;
 
 import javax.servlet.ServletContextEvent;
@@ -13,7 +14,7 @@ public class SystemStartListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         SecurityConfiguration.getInstance().setDebug(AdminConsts.isDebug);
-
+        SMSCodeFactory.getInstance();
     }
 
     @Override

@@ -144,4 +144,16 @@ public class OrderBusiService extends OrderService implements IOrderBusiService 
         order.writeOperate(Consts.Order.Operate.ShopCancel);
         orderDao.update(order);
     }
+
+    /**
+     * B端不实现修改人数
+     *
+     * @param oid
+     * @param num
+     * @throws DataRunException
+     */
+    @Override
+    public void changeOrderNum(long oid, int num) throws DataRunException {
+        // nothing
+    }
 }

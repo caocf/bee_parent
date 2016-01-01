@@ -91,12 +91,12 @@ public class ShopImageController {
         // 判断商户图片数量,目前最多上传100张图片
         // 2015.11.1  增加图片上限数量到30张
         // 2015.11.28 增加图片上限数量到100张
-        List<ShopImage> shopImageList = shopImageBusiService.queryShopImageByShopId(sid);
-        if (shopImageList != null && shopImageList.size() >= Consts.Shop.Image.MaxUploadImageSize) {
-            res.setCode(Codes.Shop.ShopImageSizeOut);
-            res.setMsg("图片数量已达上限");
-            return res;
-        }
+//        List<ShopImage> shopImageList = shopImageBusiService.queryShopImageByShopId(sid);
+//        if (shopImageList != null && shopImageList.size() >= Consts.Shop.Image.MaxUploadImageSize) {
+//            res.setCode(Codes.Shop.ShopImageSizeOut);
+//            res.setMsg("图片数量已达上限");
+//            return res;
+//        }
         try {
             shopImage.setShop(new Shop(sid));
             shopImageBusiService.addShopImage(req, file, shopImage);

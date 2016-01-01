@@ -3,6 +3,7 @@ package com.bee.pojo.shop;
 import com.bee.pojo.order.Order;
 import com.bee.pojo.user.User;
 import com.qsd.framework.commons.utils.DateUtil;
+import com.qsd.framework.commons.utils.StringUtil;
 
 import javax.persistence.*;
 
@@ -31,6 +32,9 @@ public class ShopComment implements java.io.Serializable {
 
     @Transient
     public String getCreateTimeStr() {
+        if (null == createTime) {
+            return "";
+        }
         return DateUtil.formatDateTime(createTime);
     }
 

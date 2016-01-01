@@ -15,6 +15,7 @@ import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.domain.response.ResponseObject;
 import com.qsd.framework.domain.response.ResponsePaging;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import com.qsd.framework.spring.BaseResponse;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,15 +46,6 @@ public class OrderController {
             res.setCode(Codes.Error);
             res.setMsg("输入内容包含非法字符");
             return res;
-        }
-        // 除了APP用户和VIP用户，都无法下单
-        if (order.getUser() != null && order.getUser().getUid() != 0) {
-            if (order.getUser().getType() != Consts.User.Type.AppUser
-                    || order.getUser().getType() != Consts.User.Type.VipUser) {
-                res.setCode(Codes.Error);
-                res.setMsg("该帐号无法下单");
-                return res;
-            }
         }
         try {
             // 保存新订单
@@ -101,6 +93,51 @@ public class OrderController {
         ResponseObject res = new ResponseObject();
         res.setResult(orderAppService.queryOrderItemById(oid));
         res.setCode(Codes.Success);
+        return res;
+    }
+
+    /**
+     * 修改订单人数
+     *
+     * @param oid 订单ID
+     * @param num 新人数
+     * @return
+     */
+    @RequestMapping(value = "/{oid}/edit/num", method = RequestMethod.PATCH)
+    public Response editOrderNum(@PathVariable Long oid, Integer num) {
+        Response res = new Response();
+        try {
+            orderAppService.changeOrderNum(oid, num);
+            res.setCode(Codes.Success);
+        } catch (DataRunException e) {
+            if (e.getErrorCode() == Codes.Order.EditError) {
+                res.setMsg("订单状态发生改变");
+            } else if (e.getErrorCode() == Codes.Order.EditNoChangeError) {
+                res.setMsg("订单人数未改变");
+            } else {
+                res.setCode(Codes.Order.OrderDbError);
+                res.setMsg("操作失败，请重试");
+            }
+        }
+        return res;
+    }
+
+    /**
+     * 取消订单
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public Response cancel(@PathVariable Long id) {
+        Response res = new Response();
+        try {
+            orderAppService.cancelOrder(id);
+            res.setCode(Codes.Success);
+        } catch (DataRunException e) {
+            res.setCode(Codes.Order.CancelError);
+            res.setMsg(Codes.Order.CancelErrorStr);
+        }
         return res;
     }
 }

@@ -2,7 +2,9 @@ package com.bee.services.shop.app;
 
 import com.bee.domain.modal.app.shop.ShopReplyListItem;
 import com.bee.domain.params.shop.ShopReplyListParam;
+import com.bee.pojo.shop.ShopReply;
 import com.bee.services.shop.IShopReplyService;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
 
 /**
@@ -17,4 +19,6 @@ public interface IShopReplyAppService extends IShopReplyService {
      * @return
      */
     PagingResult<ShopReplyListItem> getReplyList(ShopReplyListParam param);
+
+
 }

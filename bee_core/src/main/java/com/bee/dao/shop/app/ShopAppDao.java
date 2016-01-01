@@ -71,11 +71,15 @@ public class ShopAppDao extends ShopDao {
         StringBuffer sb = new StringBuffer(SQL.Shop.ShopListApp);
         if (request.getSearch() != null && !"".equals(request.getSearch())) {
             sb.append(" and A.name like ?");
-            entity.setParams("%" + request.getSearch() + "%");
+            entity.setParam("%" + request.getSearch() + "%");
         }
         if (request.getType() != null && request.getType() >= 0) {
             sb.append(" and A.type = ?");
-            entity.setParams(request.getType());
+            entity.setParam(request.getType());
+        }
+        if (request.getAreaId() != null && request.getAreaId() > 1) {
+            sb.append(" and B.aid = ?");
+            entity.setParam(request.getAreaId());
         }
         sb.append(SQL.Shop.queryAppShopListSort);
         entity.setEntity(sb.toString());

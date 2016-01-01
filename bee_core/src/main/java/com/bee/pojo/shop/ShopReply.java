@@ -1,6 +1,8 @@
 package com.bee.pojo.shop;
 
+import com.bee.domain.modal.app.shop.ShopReplyListItem;
 import com.bee.pojo.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 

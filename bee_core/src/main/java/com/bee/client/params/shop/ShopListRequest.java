@@ -13,6 +13,7 @@ public class ShopListRequest extends PagingRequest {
     private Long uid;
     private String search;
     private Integer type;
+    private Long areaId;
 
     public Integer getType() {
         return type;
@@ -20,7 +21,6 @@ public class ShopListRequest extends PagingRequest {
     public void setType(Integer type) {
         this.type = type;
     }
-
     public String getSearch() {
         return search;
     }
@@ -33,9 +33,15 @@ public class ShopListRequest extends PagingRequest {
     public void setUid(Long uid) {
         this.uid = uid;
     }
+    public Long getAreaId() {
+        return areaId;
+    }
+    public void setAreaId(Long areaId) {
+        this.areaId = areaId;
+    }
 
     @Override
     public Integer getMaxRows() {
-        return 20;
+        return 15;
     }
 }

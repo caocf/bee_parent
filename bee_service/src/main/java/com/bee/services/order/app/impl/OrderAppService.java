@@ -1,6 +1,8 @@
 package com.bee.services.order.app.impl;
 
+import com.bee.commons.Codes;
 import com.bee.commons.Consts;
+import com.bee.commons.OrderStatusMachine;
 import com.bee.dao.order.app.OrderAppDao;
 import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopUserDao;
@@ -146,8 +148,46 @@ public class OrderAppService extends OrderService implements IOrderAppService {
         return orderAppDao.queryOrderItemById(orderId);
     }
 
+    /**
+     * 用户取消订单
+     *
+     * @param id
+     * @throws DataRunException
+     */
     @Override
+    @Transactional
     public void cancelOrder(long id) throws DataRunException {
+        Order order = orderDao.findById(id);
+        // 判断订单是否可以取消
+        if (!OrderStatusMachine.isCancelOrder(order.getStatus())) {
+            throw new DataRunException(Codes.Order.CancelError, Codes.Order.CancelErrorStr);
+        }
+        order.setFinishTime(System.currentTimeMillis());
+        order.setStatus(Consts.Order.Status.CancelUser);
+        order.writeOperate(Consts.Order.Operate.UserCancel);
+        orderDao.update(order);
+    }
 
+    /**
+     * 修改订单人数
+     *
+     * @param oid
+     * @param num
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void changeOrderNum(long oid, int num) throws DataRunException {
+        Order order = orderDao.findById(oid);
+        // 判断订单是否可以被修改
+        if (!OrderStatusMachine.isEditOrderNum(order.getStatus())) {
+            throw new DataRunException(Codes.Order.EditError);
+        }
+        if (null == order.getNum() || num == order.getNum()) {
+            throw new DataRunException(Codes.Order.EditNoChangeError);
+        }
+        order.setNum(num);
+        order.writeOperate(Consts.Order.Operate.Edited);
+        orderDao.update(order);
     }
 }

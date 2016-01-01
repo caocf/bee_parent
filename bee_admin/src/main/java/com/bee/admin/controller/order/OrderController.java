@@ -66,4 +66,15 @@ public class OrderController {
         return mav;
     }
 
+    /**
+     * 创建订单
+     *
+     * @return
+     */
+    @Auth(name = AuthName.OrderCreate)
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView createSystemOrder() {
+        return null;
+    }
+
 }

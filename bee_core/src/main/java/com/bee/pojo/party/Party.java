@@ -16,11 +16,8 @@ public class Party implements java.io.Serializable {
     // 主键
     private Long pid;
     private Integer type;
-    private Long childId;
-    private String path;
-    private String url;
     private String title;
-    private Integer lookNum;
+    private String content;
     private String partyTime;
     private Long startTime;
     private Long stopTime;
@@ -29,15 +26,14 @@ public class Party implements java.io.Serializable {
     private Long createTime;
 
     @Transient
-    public ImageFactory.Image getImage() {
-        return new ImageFactory.Image(getUrl(), ImageFactory.ImageType.PartyMainSize);
-    }
-
-    @Transient
     public String getTypeStr() {
-        String typeStr = "";
-        if(type == Consts.Party.Type.Offline) {
-            typeStr = "线下活动";
+        String typeStr;
+        switch (type) {
+            case Consts.Party.Type.Offline:
+                typeStr = "线下活动";
+                break;
+            default:
+                typeStr = "线上活动";
         }
         return typeStr;
     }
@@ -85,34 +81,6 @@ public class Party implements java.io.Serializable {
     }
     public void setType(Integer type) {
         this.type = type;
-    }
-    @Column(name = "CHILDID")
-    public Long getChildId() {
-        return childId;
-    }
-    public void setChildId(Long childId) {
-        this.childId = childId;
-    }
-    @Column(name = "PATH")
-    public String getPath() {
-        return path;
-    }
-    public void setPath(String path) {
-        this.path = path;
-    }
-    @Column(name = "URL")
-    public String getUrl() {
-        return url;
-    }
-    public void setUrl(String url) {
-        this.url = url;
-    }
-    @Column(name = "LOOKNUM")
-    public Integer getLookNum() {
-        return lookNum;
-    }
-    public void setLookNum(Integer lookNum) {
-        this.lookNum = lookNum;
     }
     @Column(name = "PARTYTIME")
     public String getPartyTime() {
@@ -162,5 +130,12 @@ public class Party implements java.io.Serializable {
     }
     public void setTitle(String title) {
         this.title = title;
+    }
+    @Column(name = "CONTENT")
+    public String getContent() {
+        return content;
+    }
+    public void setContent(String content) {
+        this.content = content;
     }
 }

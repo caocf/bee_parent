@@ -1,5 +1,6 @@
 package com.bee.app.controller.order;
 
+import com.bee.app.commons.AppConsts;
 import com.bee.client.params.order.OrderCreateResponse;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
@@ -70,26 +71,20 @@ public class OrderController {
             res.setMsg("输入内容包含非法字符");
             return res;
         }
-        // 除了APP用户和VIP用户，都无法下单
-        if (order.getUser() != null && order.getUser().getUid() != 0) {
-            if (order.getUser().getType() != Consts.User.Type.AppUser
-                    || order.getUser().getType() != Consts.User.Type.VipUser) {
-                res.setCode(Codes.Error);
-                res.setMsg("该帐号无法下单");
-                return res;
-            }
-        }
         try {
             orderService.createOrder(order);
             res.setOrder(order);
             res.setCode(Codes.Success);
 
-            // 发送短信
-            SMSUtils.getInstance().sendSMS(SMSUtils.SMSType.Order, Consts.Config.ServicePhone,
-                    order.getShop().getName() + "," + order.getShopUser().getPhone() + "(" +
-                    order.getShopUser().getName() + ")", order.getNum().toString(), order.getOrderPhone());
+            if (!AppConsts.isDebug) {
+                // 发送短信
+                SMSUtils.getInstance().sendSMS(SMSUtils.SMSType.Order, Consts.Config.ServicePhone,
+                        order.getShop().getName() + "," + order.getShopUser().getPhone() + "(" +
+                                order.getShopUser().getName() + ")", order.getNum().toString(), order.getOrderPhone());
+            }
 
         } catch (DataRunException e) {
+            e.printStackTrace();
             res.setCode(Codes.Order.CreateError);
             res.setMsg("创建失败，请重试");
         }

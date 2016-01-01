@@ -75,7 +75,12 @@
 		/**
 		 * 配置项
 		 */
-		_settings: undefined,	
+		_settings: undefined,
+
+		/**
+		 * 地址解析
+		 */
+		_geocoder: undefined,
 
 		/**
 		 * 装配Map对象
@@ -157,6 +162,7 @@
  		 */
  		setEventListener: function(type, fn) {
  			this._map.addEventListener(type, fn);
+			return this;
  		},
 
  		/**
@@ -173,14 +179,19 @@
  			}
  			var marker = new BMap.Marker(options.point);
  			marker.setTitle("MarkerPoint");
-	  	this._map.addOverlay(marker);
+	  		this._map.addOverlay(marker);
+			return this;
  		},
 
  		/**
  		 * 查询地址
  		 */
- 		queryAddr: function(addr) {
-
+ 		queryAddr: function(addr, fn) {
+			if (this._geocoder == undefined) {
+				this._geocoder = new BMap.Geocoder();
+			}
+			this._geocoder.getPoint(addr, fn);
+			return this;
  		}
 
 

@@ -4,6 +4,7 @@ import com.bee.busi.params.shop.ShopTecheeSaveResponse;
 import com.bee.commons.Codes;
 import com.bee.pojo.shop.ShopTechee;
 import com.bee.services.shop.busi.IShopTecheeBusiService;
+import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,8 +63,8 @@ public class ShopTecheeController {
      * @return
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public BaseResponse updateShopTechee(ShopTechee shopTechee) {
-        BaseResponse res = new BaseResponse();
+    public Response updateShopTechee(ShopTechee shopTechee) {
+        Response res = new Response();
         try {
             shopTecheeBusiService.updateShopTechee(shopTechee);
             res.setCode(Codes.Success);
@@ -82,8 +83,8 @@ public class ShopTecheeController {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public BaseResponse deleteShopTechee(@PathVariable Long id) {
-        BaseResponse res = new BaseResponse();
+    public Response deleteShopTechee(@PathVariable Long id) {
+        Response res = new Response();
         try {
             shopTecheeBusiService.deleteShopTechee(id);
             res.setCode(Codes.Success);

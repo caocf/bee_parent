@@ -26,4 +26,13 @@ public interface IOrderService {
      */
     void cancelOrder(long id) throws DataRunException;
 
+    /**
+     * 修改订单人数
+     *
+     * @param oid
+     * @param num
+     * @throws DataRunException
+     */
+    void changeOrderNum(long oid, int num) throws DataRunException;
+
 }

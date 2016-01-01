@@ -186,8 +186,8 @@
 					<label class="col-xs-1 control-label">商家地址</label>
 					<div class="col-xs-10">
                         <div class="input-group">
-                            <input type="text" name="shop.addr" class="form-control" placeholder="仅需填写路名" value="${shop.addr}" aria-describedby="basic-addon1">
-                            <span class="input-group-addon" id="basic-addon1">查询</span>
+                            <input type="text" id="txtAddr" name="shop.addr" class="form-control" placeholder="仅需填写路名" value="${shop.addr}" aria-describedby="btnQueryAddr1">
+                            <span class="input-group-addon" id="btnQueryAddr1">查询</span>
                         </div>
                     </div>
 				</div>
@@ -195,8 +195,8 @@
                     <label class="col-xs-1 control-label">详细地址</label>
                     <div class="col-xs-10">
                         <div class="input-group">
-                            <input type="text" name="shop.address" class="form-control" placeholder="仅需填写路名" value="${shop.address}" aria-describedby="basic-addon2">
-                            <span class="input-group-addon" id="basic-addon2">查询</span>
+                            <input type="text" id="txtAddress" name="shop.address" class="form-control" placeholder="仅需填写路名" value="${shop.address}" aria-describedby="btnQueryAddr2">
+                            <span class="input-group-addon" id="btnQueryAddr2">查询</span>
                         </div>
                     </div>
                 </div>
@@ -243,7 +243,7 @@
   			startDate: new Date().getTime() - 86400000
   		});
 
-  		$("#map").map({
+  		var map = $("#map").map({
   				height: "500px",
 	  			gps: {
 	  				show: true,
@@ -259,6 +259,32 @@
 	  			$("#shopLon").val(e.point.lng * 1E6);
 	  			$("#shopLat").val(e.point.lat * 1E6);
 	  		});
+
+		var queryAddr = function() {
+			var txt = "";
+			if ($(this).attr("id") == "btnQueryAddr1") {
+				txt = "txtAddr";
+			} else {
+				txt = "txtAddress";
+			}
+			if (txt != null && txt != undefined && txt != "") {
+				map.queryAddr(txt, function(point) {
+					if (point) {
+						Map.addPoint({
+							only: true,
+							point: new BMap.Point(e.point.lng, e.point.lat)
+						});
+						$("#shopLon").val(e.point.lng * 1E6);
+						$("#shopLat").val(e.point.lat * 1E6);
+					} else {
+						alert("没有查询到结果!");
+					}
+				});
+			}
+		}
+
+		$("#btnQueryAddr1").click(queryAddr);
+		$("#btnQueryAddr2").click(queryAddr);
   		
         function doSubmit() {
             if($("#action").val() == "edit") {

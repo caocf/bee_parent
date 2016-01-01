@@ -1,5 +1,6 @@
 package com.bee.services.stat.impl;
 
+import com.bee.commons.Consts;
 import com.bee.dao.stat.UserLoginStatDao;
 import com.bee.pojo.stat.UserLoginStat;
 import com.bee.pojo.user.User;
@@ -31,6 +32,8 @@ public class UserStatService implements IUserStatService {
         stat.setUser(new User(uid));
         stat.setCreateTime(System.currentTimeMillis());
         stat.setDevice(device);
+        stat.setPhoneType(Consts.Android);
+        stat.setAppVer(5);
         userLoginStatDao.save(stat);
     }
 }

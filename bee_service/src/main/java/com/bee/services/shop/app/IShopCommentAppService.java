@@ -16,5 +16,5 @@ public interface IShopCommentAppService extends IShopCommentService {
      * @param request
      * @return
      */
-    public PagingResult<ShopCommentListItem> queryShopComment(ShopCommentRequest request);
+    PagingResult<ShopCommentListItem> queryShopComment(ShopCommentRequest request);
 }

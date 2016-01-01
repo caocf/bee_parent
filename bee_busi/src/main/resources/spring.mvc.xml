@@ -25,6 +25,7 @@
         <property name="interceptors">
             <list>
                 <bean class="com.qsd.framework.security.mvc.SecurityInterceptor" />
+				<bean class="com.bee.busi.commons.BusiHandlerInterceptor" />
             </list>
         </property>
     </bean>

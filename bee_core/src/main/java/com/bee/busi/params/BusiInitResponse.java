@@ -4,6 +4,7 @@ import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.model.shop.BusiShopGroup;
 import com.bee.busi.model.shop.BusiShopTechee;
 import com.bee.pojo.shop.ShopTechee;
+import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.spring.BaseResponse;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * Created by suntongwei on 15/10/10.
  */
-public class BusiInitResponse extends BaseResponse {
+public class BusiInitResponse extends Response {
 
     // serialVersionUID
     private static final long serialVersionUID = -1541922321096097071L;

@@ -105,7 +105,7 @@ public class OrderService implements IOrderService {
         /**
          * 如果商家管理员存在，则发消息通知B端
          */
-        if (shopUser.getSuid() > 0l) {
+        if (shopUser.getSuid() > 0l && !Consts.isDebug) {
 
             Credential credential = new ClientSecretCredential(Constants.APP_CLIENT_ID,
                     Constants.APP_CLIENT_SECRET, Roles.USER_ROLE_APPADMIN);

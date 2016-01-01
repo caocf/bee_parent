@@ -5,6 +5,7 @@ import com.bee.busi.model.order.BusiOrderListItem;
 import com.bee.busi.params.order.BusiOrderListRequest;
 import com.bee.commons.Codes;
 import com.bee.services.order.busi.IOrderBusiService;
+import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +53,8 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "/{oid}", method = RequestMethod.PUT)
-    public BaseResponse accept(@PathVariable Long oid) {
-        BaseResponse res = new BaseResponse();
+    public Response accept(@PathVariable Long oid) {
+        Response res = new Response();
         try {
             orderBusiService.acceptOrder(oid);
             res.setCode(Codes.Success);
@@ -75,8 +76,8 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "/{oid}", method = RequestMethod.DELETE)
-    public BaseResponse reject(@PathVariable Long oid) {
-        BaseResponse res = new BaseResponse();
+    public Response reject(@PathVariable Long oid) {
+        Response res = new Response();
         try {
             orderBusiService.rejectOrder(oid);
             res.setCode(Codes.Success);
@@ -98,8 +99,8 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "/{oid}", method = RequestMethod.POST)
-    public BaseResponse finish(@PathVariable Long oid) {
-        BaseResponse res = new BaseResponse();
+    public Response finish(@PathVariable Long oid) {
+        Response res = new Response();
         try {
             orderBusiService.finishOrder(oid);
             res.setCode(Codes.Success);
@@ -121,8 +122,8 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "/{oid}", method = RequestMethod.PATCH)
-    public BaseResponse cancel(@PathVariable Long oid) {
-        BaseResponse res = new BaseResponse();
+    public Response cancel(@PathVariable Long oid) {
+        Response res = new Response();
         try {
             orderBusiService.cancelOrder(oid);
             res.setCode(Codes.Success);

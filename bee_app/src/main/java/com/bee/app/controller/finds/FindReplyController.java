@@ -33,7 +33,7 @@ public class FindReplyController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ResponsePaging<FindReplyItem> getAppReplyList(@PathVariable Long findId, FindReplyParam req) {
+    public ResponsePaging<FindReplyItem> getReplyList(@PathVariable Long findId, FindReplyParam req) {
         ResponsePaging<FindReplyItem> res = new ResponsePaging<>();
         req.setFindId(findId);
         res.setResult(findReplyAppService.getFindReplyForApp(req));

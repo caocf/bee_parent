@@ -10,7 +10,7 @@ public final class IntegralMachine {
     /**
      * 完成订单获取额外积分（活动积分）
      */
-    public static final int OrderFinishExtra = 1800;
+    public static final int OrderFinishExtra = 0;
 
     /**
      * 完成订单获得积分

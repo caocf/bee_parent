@@ -1,4 +1,4 @@
-package commons;
+package com.bee.busi.commons;
 
 /**
  * Created by suntongwei on 15/11/15.
@@ -6,6 +6,6 @@ package commons;
 public class BusiConsts {
 
     /** */
-    public static final boolean isDebug = true;
+    public static final boolean isDebug = false;
 
 }

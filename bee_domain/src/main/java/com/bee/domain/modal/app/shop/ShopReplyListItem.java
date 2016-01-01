@@ -13,7 +13,7 @@ public class ShopReplyListItem implements java.io.Serializable {
     private String name;
     private Long createTime;
     private String content;
-    private Integer Level;
+    private Integer level;
 
     public Long getSrid() {
         return srid;
@@ -46,9 +46,9 @@ public class ShopReplyListItem implements java.io.Serializable {
         this.content = content;
     }
     public Integer getLevel() {
-        return Level;
+        return level;
     }
     public void setLevel(Integer level) {
-        Level = level;
+        this.level = level;
     }
 }

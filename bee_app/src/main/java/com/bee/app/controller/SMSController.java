@@ -36,7 +36,13 @@ public class SMSController {
             res.setMsg("未知手机号");
             return res;
         }
-        SMSUtils.getInstance().sendSMS(SMSUtils.SMSType.Register, phone);
+        String code;
+        if (!AppConsts.isDebug) {
+            code = SMSUtils.getInstance().sendSMS(SMSUtils.SMSType.Register, phone);
+        } else {
+            code = "1234";
+        }
+        SMSCodeFactory.getInstance().putCode(code, phone);
         res.setCode(Codes.Success);
         return res;
     }
@@ -64,9 +70,9 @@ public class SMSController {
         if (!AppConsts.isDebug) {
             code = SMSUtils.getInstance().sendSMS(SMSUtils.SMSType.FindPass, phone);
         } else {
-            code = "0000";
+            code = "1234";
         }
-        SMSCodeFactory.getInstance().putCode(phone, code);
+        SMSCodeFactory.getInstance().putCode(code, phone);
         res.setCode(Codes.Success);
         return res;
     }

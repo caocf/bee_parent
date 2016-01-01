@@ -5,6 +5,7 @@ import com.bee.busi.params.shop.ShopGroupSaveResponse;
 import com.bee.commons.Codes;
 import com.bee.pojo.shop.ShopGroup;
 import com.bee.services.shop.busi.IShopGroupBusiService;
+import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,8 +63,8 @@ public class ShopGroupController {
      * @return
      */
     @RequestMapping(method = RequestMethod.PUT)
-    public BaseResponse updateShopGroup(ShopGroup shopGroup) {
-        BaseResponse res = new BaseResponse();
+    public Response updateShopGroup(ShopGroup shopGroup) {
+        Response res = new Response();
         try {
             shopGroupBusiService.updateShopGroup(shopGroup);
             res.setCode(Codes.Success);
@@ -79,8 +80,8 @@ public class ShopGroupController {
      * @return
      */
     @RequestMapping(value = "/{shopGroupId}", method = RequestMethod.DELETE)
-    public BaseResponse deleteShopGroup(@PathVariable Long sid, @PathVariable Long shopGroupId) {
-        BaseResponse res = new BaseResponse();
+    public Response deleteShopGroup(@PathVariable Long sid, @PathVariable Long shopGroupId) {
+        Response res = new Response();
         try {
             shopGroupBusiService.deleteShopGroup(sid, shopGroupId);
             res.setCode(Codes.Success);

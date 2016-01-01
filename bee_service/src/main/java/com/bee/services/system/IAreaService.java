@@ -23,4 +23,12 @@ public interface IAreaService {
      * @return
      */
     List<Area> getAreaListAll();
+
+    /**
+     * 获取大于该主键的记录
+     *
+     * @param areaLastId
+     * @return
+     */
+    List<Area> getAreaByLastId(long areaLastId);
 }

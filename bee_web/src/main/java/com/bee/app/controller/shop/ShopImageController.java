@@ -1,6 +1,6 @@
 package com.bee.app.controller.shop;
 
-import com.bee.domain.modal.app.shop.ShopImage;
+import com.bee.domain.modal.app.shop.ShopImageItem;
 import com.bee.services.shop.IShopImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +25,7 @@ public class ShopImageController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public List<ShopImage> queryShopImageList(@PathVariable Long sid) {
+    public List<ShopImageItem> queryShopImageList(@PathVariable Long sid) {
         return shopImageService.queryAppShopImage(sid);
     }
 }

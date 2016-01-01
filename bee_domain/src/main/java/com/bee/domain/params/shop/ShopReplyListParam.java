@@ -1,6 +1,5 @@
 package com.bee.domain.params.shop;
 
-import com.qsd.framework.domain.request.RequestApp;
 import com.qsd.framework.domain.request.RequestPagingApp;
 
 /**

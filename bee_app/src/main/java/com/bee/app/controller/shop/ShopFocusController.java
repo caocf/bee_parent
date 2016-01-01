@@ -29,6 +29,12 @@ public class ShopFocusController {
     @RequestMapping(method = RequestMethod.GET)
     public ResponsePaging<ShopFavorite> getShopFavoritesByUser(ShopFocusListParam param) {
         ResponsePaging<ShopFavorite> res = new ResponsePaging<>();
+        // 检查参数
+        if (null == param.getUid() || param.getUid() < 1) {
+            res.setCode(Codes.ParamsError);
+            res.setMsg("参数错误");
+            return res;
+        }
         res.setResult(shopFocusAppService.getShopFocusListByParam(param));
         res.setCode(Codes.Success);
         return res;

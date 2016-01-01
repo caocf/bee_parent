@@ -8,5 +8,8 @@ public class AppConsts {
     /** Debug模式 */
     public static final boolean isDebug = true;
 
-
+    /**
+     * 服务器状态
+     */
+    public static final int Normal = 0x0;
 }

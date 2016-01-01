@@ -39,6 +39,7 @@ public final class AuthName {
     public static final String ShopUserDelete = "SHOP_USER_DELETE";
 
     public static final String Order = "ORDER";
+    public static final String OrderCreate = "ORDER_CREATE";
     public static final String OrderMonitor = "ORDER_MONITOR";
 
     public static final String User = "USER";
