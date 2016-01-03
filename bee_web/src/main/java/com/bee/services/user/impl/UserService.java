@@ -122,8 +122,8 @@ public class UserService implements IUserService {
         user.setExp(0);
         user.setIntegral(0);
         user.setLevel(0);
-        user.setPath("");
-        user.setUrl("");
+        // user.setPath("");
+        // user.setUrl("");
         user.setCash(0d);
         userDao.save(user);
 
@@ -174,8 +174,9 @@ public class UserService implements IUserService {
             // 暂时不去除，可以无需再使用URL和PATH字段
             // 用户头像路径改为固定路径
             // 路径地址：/static/user/user_{userId}/avatar_720.jpg
-            user.setUrl(paths[0]);
-            user.setPath(paths[1]);
+            // v1.1.0删除
+//            user.setUrl(paths[0]);
+//            user.setPath(paths[1]);
             userDao.update(user);
         }
         return user;

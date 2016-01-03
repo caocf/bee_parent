@@ -1,12 +1,13 @@
 package com.bee.client.params.user;
 
 import com.bee.pojo.user.User;
+import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.spring.BaseResponse;
 
 /**
  * Created by suntongwei on 15/4/15.
  */
-public class AuthLoginResponse extends BaseResponse {
+public class AuthLoginResponse extends Response {
 
     // serialVersionUID
     private static final long serialVersionUID = -3643794676984563131L;

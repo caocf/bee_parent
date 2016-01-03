@@ -9,6 +9,7 @@ import com.bee.core.UserCacheFactory;
 import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
 import com.qsd.framework.commons.utils.StringUtil;
+import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.encrypt.Md5;
 import com.qsd.framework.spring.BaseResponse;
@@ -105,8 +106,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{uid}/save/nick", method = RequestMethod.POST)
-    public BaseResponse saveNickName(@PathVariable Long uid, String nickName) {
-        BaseResponse res = new BaseResponse();
+    public Response saveNickName(@PathVariable Long uid, String nickName) {
+        Response res = new Response();
         try {
             userService.saveNickName(uid, nickName);
             res.setCode(Codes.Success);

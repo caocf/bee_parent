@@ -7,6 +7,7 @@ import com.bee.client.params.AppInitResponse;
 import com.bee.client.params.AppVerResponse;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
+import com.bee.domain.params.user.MessageParam;
 import com.bee.pojo.AppVer;
 import com.bee.pojo.Area;
 import com.bee.pojo.SystemConfig;
@@ -16,7 +17,10 @@ import com.bee.services.stat.app.IUserStatAppService;
 import com.bee.services.system.IAreaService;
 import com.bee.services.system.ISystemConfigService;
 import com.bee.services.system.app.IAppVerAppService;
+import com.bee.services.system.app.IAreaAppService;
+import com.bee.services.user.app.IMessageAppService;
 import com.qsd.framework.domain.response.ResponseArray;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,11 +40,13 @@ public class AppController {
     @Autowired
     private IUserStatAppService userStatAppService;
     @Autowired
-    private IAreaService areaService;
+    private IAreaAppService areaAppService;
     @Autowired
     private ISystemConfigService systemConfigService;
     @Autowired
     private IAppVerAppService appVerAppService;
+    @Autowired
+    private IMessageAppService messageAppService;
 
     /**
      * 初始化
@@ -78,6 +84,14 @@ public class AppController {
         res.setFindAdUpdateTime(factory.getConfig(Consts.Config.FindAd).getFlag());
         res.setQrImageUpdateTime(factory.getConfig(Consts.Config.Qr).getFlag());
 
+        // v1.1.0 增加用户新消息
+        if (req.getMessageLastUpdateTime() != null && req.getUid() != null && req.getUid() > 0) {
+            MessageParam param = new MessageParam();
+            param.setUid(req.getUid());
+            param.setLastUpdateTime(req.getMessageLastUpdateTime());
+            res.setMessageList(messageAppService.getNewMessage(param));
+        }
+
         res.setCode(Codes.Success);
         return res;
     }
@@ -96,7 +110,7 @@ public class AppController {
         // 如果客户端发送updateTime == 0,则拉取数据
         // 如果客户端版本低于系统配置版本也拉取数据
         if ((config != null && config.getFlag() > lastId) || lastId == 0) {
-            return areaService.getAreaByLastId(lastId);
+            return areaAppService.getAreaByLastId(lastId);
         }
         return null;
     }

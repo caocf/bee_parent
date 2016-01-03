@@ -87,6 +87,28 @@ public final class Consts {
                 return ret;
             }
         }
+
+        public static final class Message {
+            public static final int System = 0x1;
+        }
+    }
+
+    public static final class Ticket {
+
+        public static final class Status {
+            public static final int UnKnow = 0x0;
+            public static final int Normal = 0x1;
+            public static final int Useing = 0x2;
+            public static final int Used = 0x3;
+            public static final int Expired = 0x4;
+        }
+
+        public static final class Type {
+            // 减免
+            public static final int Normal = 0x1;
+            // 全免
+            public static final int Free = 0x2;
+        }
     }
 
     /**

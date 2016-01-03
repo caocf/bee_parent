@@ -143,6 +143,10 @@ public class OrderBusiService extends OrderService implements IOrderBusiService 
         order.setStatus(Consts.Order.Status.CancelShop);
         order.writeOperate(Consts.Order.Operate.ShopCancel);
         orderDao.update(order);
+        // 判断是否使用优惠券
+        if (order.getUser() != null && order.getUser().getUid() > 0) {
+            cancelOrderAndTicket(order.getUser().getUid(), order.getOid());
+        }
     }
 
     /**

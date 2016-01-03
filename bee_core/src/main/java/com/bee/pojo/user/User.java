@@ -26,9 +26,6 @@ public class User implements java.io.Serializable, ISecurityUser {
 
     // 用户ID
     private Long uid;
-    // 用户头像图片
-    private String url;
-    private String path;
     // 手机标识(imei号或IOS编号)
     private String device;
     // 用户名(昵称)
@@ -215,20 +212,6 @@ public class User implements java.io.Serializable, ISecurityUser {
     }
     public void setShopFocus(Set<ShopFocus> shopFocus) {
         this.shopFocus = shopFocus;
-    }
-    @Column(name = "URL")
-    public String getUrl() {
-        return url;
-    }
-    public void setUrl(String url) {
-        this.url = url;
-    }
-    @Column(name = "PATH")
-    public String getPath() {
-        return path;
-    }
-    public void setPath(String path) {
-        this.path = path;
     }
     @Column(name = "CASH")
     public Double getCash() {

@@ -51,7 +51,30 @@ public final class SQL {
 
         public static final class Message {
             // 获取用户未读消息
-            public static final String GetNewMessage = "From Message A where A.user = ? and A.createTime > ?";
+            public static final String GetNewMessage = "SELECT " +
+                    "A.MID, A.MSG, A.TYPE, A.CREATETIME, A.USER " +
+                    "FROM TB_MESSAGE A WHERE A.USER = ? and A.CREATETIME > ?";
+            // 删除指定用户所有消息
+            public static final String DeleteMessageByUser = "DELETE FROM TB_MESSAGE WHERE USER = ?";
+        }
+
+        public static final class Ticket {
+            // 获取用户所有优惠券信息
+            public static final String GetUserTickets = "SELECT " +
+                    "A.UTID, B.TID, A.STATUS, B.TITLE, C.SID, C.NAME, A.STARTTIME, A.STOPTIME, B.PRICE, B.TYPE " +
+                    "FROM TB_USER_TICKET A " +
+                    "LEFT OUTER JOIN " +
+                    "TB_TICKET B " +
+                    "ON " +
+                    "A.TICKET = B.TID " +
+                    "LEFT OUTER JOIN " +
+                    "TB_SHOP C " +
+                    "ON " +
+                    "B.SHOP = C.SID " +
+                    "WHERE 1=1";
+
+            public static final String GetOrderTicket = "From UserTicket A " +
+                    "LEFT JOIN FETCH A.ticket B LEFT JOIN FETCH B.shop C WHERE 1=1";
         }
     }
 
@@ -299,6 +322,10 @@ public final class SQL {
      */
     public static final class Order {
 
+        // 返回包含用户信息的订单
+        public static final String GetOrder = "From Order A " +
+                "left join fetch A.user B where B.uid = ?";
+
         /**
          * 根据参数查询订单，主要用于订单统计
          */
@@ -343,7 +370,7 @@ public final class SQL {
          *【C端】查询商家详细(ShopDetailActivity)
          */
         public static final String QueryOrderByOid = "SELECT " +
-                "A.NO, A.CREATETIME, A.STATUS, C.ADDR, B.PHONE, A.ISCOMMENT, A.ISBACK " +
+                "A.NO, A.CREATETIME, A.STATUS, C.ADDR, B.PHONE, A.ISCOMMENT, A.USER " +
                 "FROM TB_ORDER A " +
                 "LEFT OUTER JOIN TB_SHOP_USER B ON A.SHOPUSER = B.SUID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +

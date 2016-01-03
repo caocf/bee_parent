@@ -34,6 +34,15 @@ import java.util.List;
 public class OrderDao extends JpaDaoSupport<Order, Long> {
 
     /**
+     * 返回包含用户信息的Order
+     *
+     * @return
+     */
+    public Order getOrder(Long oid) {
+        return findFirstByParams(SQL.Order.GetOrder, oid);
+    }
+
+    /**
      * 根据参数获取订单列表
      *
      * @param request

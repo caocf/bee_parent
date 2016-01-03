@@ -6,11 +6,13 @@ import com.bee.commons.OrderStatusMachine;
 import com.bee.dao.order.app.OrderAppDao;
 import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopUserDao;
+import com.bee.dao.ticket.UserTicketDao;
 import com.bee.domain.modal.app.order.OrderItem;
 import com.bee.domain.modal.app.order.OrderListItem;
 import com.bee.domain.params.order.OrderListParam;
 import com.bee.pojo.order.Order;
 import com.bee.pojo.shop.ShopUser;
+import com.bee.pojo.tickets.UserTicket;
 import com.bee.services.order.app.IOrderAppService;
 import com.bee.services.order.impl.OrderService;
 import com.easemob.server.comm.Constants;
@@ -32,6 +34,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Set;
+
 /**
  * Created by suntongwei on 15/11/25.
  */
@@ -47,6 +51,7 @@ public class OrderAppService extends OrderService implements IOrderAppService {
     private ShopDao shopDao;
     @Autowired
     private ShopUserDao shopUserDao;
+
 
     /**
      * 创建订单
@@ -86,6 +91,21 @@ public class OrderAppService extends OrderService implements IOrderAppService {
         order.setShopUser(shopUser);
         // 保存订单
         orderDao.save(order);
+
+        // 处理优惠券红包
+        if (!order.getUserTickets().isEmpty()) {
+            Set<UserTicket> tickets = order.getUserTickets();
+            for (UserTicket ticket : tickets) {
+                UserTicket userTicket = userTicketDao.findById(ticket.getUtId());
+                // 判断红包状态
+                if (!userTicket.isUseTicket()) {
+                    throw new DataRunException(Codes.Order.OrderTicketExpired, "红包过期");
+                }
+                userTicket.setStatus(Consts.Ticket.Status.Useing);
+                userTicket.setOrder(order);
+                userTicketDao.update(userTicket);
+            }
+        }
 
         /**
          * 如果商家管理员存在，则发消息通知B端
@@ -166,6 +186,10 @@ public class OrderAppService extends OrderService implements IOrderAppService {
         order.setStatus(Consts.Order.Status.CancelUser);
         order.writeOperate(Consts.Order.Operate.UserCancel);
         orderDao.update(order);
+        // 判断订单是否使用红包
+        if (order.getUser() != null && order.getUser().getUid() > 0) {
+            cancelOrderAndTicket(order.getUser().getUid(), order.getOid());
+        }
     }
 
     /**

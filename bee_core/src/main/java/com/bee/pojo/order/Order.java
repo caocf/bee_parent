@@ -3,18 +3,23 @@ package com.bee.pojo.order;
 import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopUser;
+import com.bee.pojo.tickets.UserTicket;
 import com.bee.pojo.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by suntongwei on 15/4/24.
  */
 @Entity
 @Table(name = "TB_ORDER")
+@JsonIgnoreProperties(value = {"userTickets"})
 public class Order implements java.io.Serializable {
 
     // serialVersionUID
@@ -55,6 +60,8 @@ public class Order implements java.io.Serializable {
     private String operate;
     // 是否返现 v1.0.5增加
     private Integer isBack;
+    // 所使用优惠券/红包
+    private Set<UserTicket> userTickets = new HashSet<>();
 
     public Order() {}
     public Order(long oid) {
@@ -243,5 +250,12 @@ public class Order implements java.io.Serializable {
     }
     public void setIsBack(Integer isBack) {
         this.isBack = isBack;
+    }
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "order")
+    public Set<UserTicket> getUserTickets() {
+        return userTickets;
+    }
+    public void setUserTickets(Set<UserTicket> userTickets) {
+        this.userTickets = userTickets;
     }
 }

@@ -20,8 +20,10 @@ public class OrderItem implements java.io.Serializable {
     private Integer isComment;
     // 创建时间
     private Long createTime;
-    // 是否返现
+    // 是否返现 v1.1.0取消
     private Integer isBack;
+    // v1.1.0 增加user
+    private Long uid;
 
     public String getNo() {
         return no;
@@ -64,5 +66,11 @@ public class OrderItem implements java.io.Serializable {
     }
     public void setIsBack(Integer isBack) {
         this.isBack = isBack;
+    }
+    public Long getUid() {
+        return uid;
+    }
+    public void setUid(Long uid) {
+        this.uid = uid;
     }
 }

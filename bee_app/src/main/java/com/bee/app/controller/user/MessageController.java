@@ -1,6 +1,7 @@
 package com.bee.app.controller.user;
 
 import com.bee.commons.Codes;
+import com.bee.domain.modal.app.user.MessageList;
 import com.bee.domain.params.user.MessageParam;
 import com.bee.pojo.user.Message;
 import com.bee.services.user.app.IMessageAppService;
@@ -32,8 +33,8 @@ public class MessageController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseArray<Message> getNewMessage(@PathVariable Long userId, MessageParam param) {
-        ResponseArray<Message> res = new ResponseArray<>();
+    public ResponseArray<MessageList> getNewMessage(@PathVariable Long userId, MessageParam param) {
+        ResponseArray<MessageList> res = new ResponseArray<>();
         param.setUid(userId);
         res.setResult(messageAppService.getNewMessage(param));
         res.setCode(Codes.Success);
@@ -46,31 +47,49 @@ public class MessageController {
      * @param userId
      * @return
      */
+//    @Deprecated
+//    @RequestMapping(method = RequestMethod.DELETE)
+//    public Response deleteMessage(@PathVariable Long userId, String messageIds) {
+//        Response res = new Response();
+//        if (StringUtil.isNull(messageIds) || null == userId || userId < 1) {
+//            res.setCode(Codes.ParamsError);
+//            res.setMsg("请选择删除的信息");
+//            return res;
+//        }
+//        String[] ids = messageIds.split(",");
+//        Long[] afterIds = new Long[ids.length];
+//        try {
+//            for (int i = 0; i < ids.length; i++) {
+//                afterIds[i] = Long.valueOf(ids[i]);
+//            }
+//            messageAppService.deleteMessages(afterIds);
+//            res.setCode(Codes.Success);
+//        } catch (DataRunException e) {
+//            res.setCode(Codes.Error);
+//            res.setMsg("删除失败,请重试");
+//        } catch (NumberFormatException e) {
+//            res.setCode(Codes.ParamsError);
+//            res.setMsg("请选择删除的信息");
+//        }
+//        return res;
+//    }
+
+    /**
+     * 删除指定用户所有消息
+     *
+     * @param userId
+     * @return
+     */
     @RequestMapping(method = RequestMethod.DELETE)
-    public Response deleteMessage(@PathVariable Long userId, String messageIds) {
+    public Response deleteMessageByUser(@PathVariable Long userId) {
         Response res = new Response();
-        if (StringUtil.isNull(messageIds) || null == userId || userId < 1) {
-            res.setCode(Codes.ParamsError);
-            res.setMsg("请选择删除的信息");
-            return res;
-        }
-        String[] ids = messageIds.split(",");
-        Long[] afterIds = new Long[ids.length];
         try {
-            for (int i = 0; i < ids.length; i++) {
-                afterIds[i] = Long.valueOf(ids[i]);
-            }
-            messageAppService.deleteMessages(afterIds);
+            messageAppService.deleteMessageByUser(userId);
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Error);
-            res.setMsg("删除失败,请重试");
-        } catch (NumberFormatException e) {
-            res.setCode(Codes.ParamsError);
-            res.setMsg("请选择删除的信息");
         }
         return res;
     }
-
 
 }

@@ -11,6 +11,9 @@ import javax.persistence.*;
 @Table(name = "TB_PARTY_USER")
 public class PartyUser implements java.io.Serializable {
 
+    // serialVersionUID
+    private static final long serialVersionUID = -576679298272238983L;
+
     // 主键
     private Long puid;
     // 报名用户

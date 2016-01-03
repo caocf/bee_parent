@@ -20,6 +20,9 @@ public class AppInitRequest extends RequestApp {
     private Integer version;
     // 地区最后主键
     private Long areaLastId;
+    // v1.1.0 增加
+    // 消息最后更新时间
+    private Long messageLastUpdateTime;
 
     public Long getUid() {
         return uid;
@@ -51,5 +54,11 @@ public class AppInitRequest extends RequestApp {
     }
     public void setAreaLastId(Long areaLastId) {
         this.areaLastId = areaLastId;
+    }
+    public Long getMessageLastUpdateTime() {
+        return messageLastUpdateTime;
+    }
+    public void setMessageLastUpdateTime(Long messageLastUpdateTime) {
+        this.messageLastUpdateTime = messageLastUpdateTime;
     }
 }

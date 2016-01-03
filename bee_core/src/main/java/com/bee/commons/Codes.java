@@ -47,6 +47,8 @@ public final class Codes {
         public static final int EditError = 0x131;
         // 306 修改订单人数未改变
         public static final int EditNoChangeError = 0x132;
+        // 307 优惠券过期
+        public static final int OrderTicketExpired = 0x133;
         // 350 订单数据操作失败
         public static final int OrderDbError = 0x15e;
         // 订单无法取消

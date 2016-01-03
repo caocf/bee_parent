@@ -18,7 +18,8 @@ public class AreaDao extends JpaDaoSupport<Area, Long> {
         return findByParams(SQL.Area.queryAreaById, id);
     }
 
-    public List<Area> getAreaByLastId(long areaLastId) {
+    public List<Area> getAreaByLastId(Long areaLastId) {
+        System.out.println(areaLastId);
         return findByParams(SQL.Area.getAreaByLastId, areaLastId);
     }
 }

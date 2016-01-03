@@ -1,8 +1,10 @@
 package com.bee.services.user.app;
 
+import com.bee.domain.modal.app.user.MessageList;
 import com.bee.domain.params.user.MessageParam;
 import com.bee.pojo.user.Message;
 import com.bee.services.user.IMessageService;
+import com.qsd.framework.hibernate.exception.DataRunException;
 
 import java.util.List;
 
@@ -18,6 +20,13 @@ public interface IMessageAppService extends IMessageService {
      * @param param
      * @return
      */
-    List<Message> getNewMessage(MessageParam param);
+    List<MessageList> getNewMessage(MessageParam param);
+
+    /**
+     * 根据用户删除所有消息
+     *
+     * @param userId
+     */
+    void deleteMessageByUser(Long userId) throws DataRunException;
 
 }

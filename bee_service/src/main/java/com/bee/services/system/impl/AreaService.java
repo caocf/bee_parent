@@ -4,6 +4,7 @@ import com.bee.dao.AreaDao;
 import com.bee.pojo.Area;
 import com.bee.services.system.IAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -26,8 +27,4 @@ public abstract class AreaService implements IAreaService {
     }
 
 
-    @Override
-    public List<Area> getAreaByLastId(long areaLastId) {
-        return areaDao.getAreaByLastId(areaLastId);
-    }
 }

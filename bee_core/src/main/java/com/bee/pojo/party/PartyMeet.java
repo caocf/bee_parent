@@ -9,6 +9,9 @@ import javax.persistence.*;
 @Table(name = "TB_PARTY_MEET")
 public class PartyMeet implements java.io.Serializable {
 
+    // serialVersionUID
+    private static final long serialVersionUID = -2063540222987309832L;
+
     private Long pmid;
     private Double price;
     private String remark;

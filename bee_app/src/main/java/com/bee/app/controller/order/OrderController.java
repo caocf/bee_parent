@@ -7,8 +7,13 @@ import com.bee.commons.Consts;
 import com.bee.domain.modal.app.order.OrderItem;
 import com.bee.domain.modal.app.order.OrderListItem;
 import com.bee.domain.params.order.OrderListParam;
+import com.bee.domain.params.ticket.UserTicketParam;
+import com.bee.domain.response.OrderDetailResponse;
 import com.bee.pojo.order.Order;
+import com.bee.pojo.tickets.UserTicket;
 import com.bee.services.order.app.IOrderAppService;
+import com.bee.services.ticket.IUserTicketService;
+import com.bee.services.ticket.app.IUserTicketAppService;
 import com.bee.sms.SMSUtils;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.domain.response.Response;
@@ -17,6 +22,7 @@ import com.qsd.framework.domain.response.ResponsePaging;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import com.qsd.framework.spring.PagingResult;
+import org.hibernate.sql.ordering.antlr.OrderingSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,13 +38,18 @@ public class OrderController {
 
     @Autowired
     private IOrderAppService orderAppService;
+    @Autowired
+    private IUserTicketAppService userTicketAppService;
 
 
     /**
      * App创建订单
+     *
+     * @param order 订单实体
+     *        userTicketId 优惠券ID
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseObject<Order> create(Order order) {
+    public ResponseObject<Order> create(Order order, Long userTicketId) {
         ResponseObject<Order> res = new ResponseObject<>();
         // 对参数进行校验
         if (StringUtil.checkIllegalChar(order.getRemark(),
@@ -48,11 +59,14 @@ public class OrderController {
             return res;
         }
         try {
+            // 使用红包优惠券ID,放入order内
+            if (userTicketId != null && userTicketId > 0) {
+                order.getUserTickets().add(new UserTicket(userTicketId));
+            }
             // 保存新订单
             orderAppService.createOrder(order);
             res.setResult(order);
             res.setCode(Codes.Success);
-
             // 发送短信
             if (!AppConsts.isDebug) {
                 SMSUtils.getInstance().sendSMS(SMSUtils.SMSType.Order, Consts.Config.ServicePhone,
@@ -61,8 +75,13 @@ public class OrderController {
             }
 
         } catch (DataRunException e) {
-            res.setCode(Codes.Order.CreateError);
-            res.setMsg("创建失败，请重试");
+            if (e.getErrorCode() == Codes.Order.OrderTicketExpired) {
+                res.setCode(Codes.Order.OrderTicketExpired);
+                res.setMsg(e.getMessage());
+            } else {
+                res.setCode(Codes.Order.CreateError);
+                res.setMsg("创建失败，请重试");
+            }
         }
         return res;
     }
@@ -89,9 +108,19 @@ public class OrderController {
      * @return oid 订单ID
      */
     @RequestMapping(value = "/{oid}", method = RequestMethod.GET)
-    public ResponseObject<OrderItem> queryOrder(@PathVariable Long oid) {
-        ResponseObject res = new ResponseObject();
-        res.setResult(orderAppService.queryOrderItemById(oid));
+    public OrderDetailResponse queryOrder(@PathVariable Long oid) {
+        OrderDetailResponse res = new OrderDetailResponse();
+        OrderItem orderItem = orderAppService.queryOrderItemById(oid);
+        // 订单信息
+        res.setOrderItem(orderItem);
+        // 优惠券信息
+        if (orderItem.getUid() != null && orderItem.getUid() > 0) {
+            UserTicketParam param = new UserTicketParam();
+            param.setUserId(orderItem.getUid());
+            param.setOrderId(oid);
+            param.setStatus(Consts.Ticket.Status.Useing);
+            res.setTicketLists(userTicketAppService.getUserTickets(param));
+        }
         res.setCode(Codes.Success);
         return res;
     }

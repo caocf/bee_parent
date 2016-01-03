@@ -43,6 +43,7 @@ public class SystemConfigFactory {
     private void init() {
         systemConfigService = SpringFactory.getBean(SystemConfigService.class);
         systemConfigList = systemConfigService.getConfigAll();
+        System.out.println("加载系统配置项: " + systemConfigList.size());
     }
 
     private static SystemConfigFactory ourInstance = new SystemConfigFactory();

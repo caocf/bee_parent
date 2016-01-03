@@ -79,8 +79,8 @@ public class ShopCommentController {
                 user.setName(userName);
                 user.setPassword(Consts.User.BusiInitPassword);
                 user.setType(Consts.User.Type.TestUser);
-                user.setPath("");
-                user.setUrl("");
+//                user.setPath("");
+//                user.setUrl("");
                 user.setExp(0);
                 user.setCreateTime(System.currentTimeMillis());
                 user.setAlipay("");

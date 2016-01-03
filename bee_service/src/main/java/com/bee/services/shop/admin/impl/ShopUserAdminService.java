@@ -95,8 +95,9 @@ public class ShopUserAdminService extends ShopUserService implements IShopUserAd
             user.setCreateTime(System.currentTimeMillis());
             user.setDevice("");
             user.setExp(0);
-            user.setPath("");
-            user.setUrl("");
+            // v1.1.0取消
+            // user.setPath("");
+            // user.setUrl("");
             user.setType(Consts.User.Type.BusiUser);
             userDao.save(user);
 

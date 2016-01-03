@@ -1,5 +1,6 @@
 package com.bee.client.params;
 
+import com.bee.domain.modal.app.user.MessageList;
 import com.bee.modal.AdListItem;
 import com.bee.pojo.Area;
 import com.qsd.framework.spring.BaseResponse;
@@ -41,6 +42,11 @@ public class AppInitResponse extends BaseResponse {
      * 地区列表
      */
     private List<Area> areaList;
+
+    /**
+     * 用户新消息
+     */
+    private List<MessageList> messageList;
 
     /**
      * 首页和发现图片更新时间
@@ -105,5 +111,11 @@ public class AppInitResponse extends BaseResponse {
     }
     public void setQrImageUpdateTime(Long qrImageUpdateTime) {
         this.qrImageUpdateTime = qrImageUpdateTime;
+    }
+    public List<MessageList> getMessageList() {
+        return messageList;
+    }
+    public void setMessageList(List<MessageList> messageList) {
+        this.messageList = messageList;
     }
 }

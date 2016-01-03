@@ -6,6 +6,7 @@ import com.bee.pojo.Area;
 import com.bee.pojo.SystemConfig;
 import com.bee.services.system.IAreaService;
 import com.bee.services.system.ISystemConfigService;
+import com.bee.services.system.app.IAreaAppService;
 import com.qsd.framework.domain.response.ResponseArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AreaController {
 
     @Autowired
-    private IAreaService areaService;
+    private IAreaAppService areaAppService;
     @Autowired
     private ISystemConfigService systemConfigService;
 
@@ -37,7 +38,7 @@ public class AreaController {
         // 如果客户端发送updateTime == 0,则拉取数据
         // 如果客户端版本低于系统配置版本也拉取数据
         if ((config != null && config.getFlag() > lastId) || lastId == 0) {
-            res.setResult(areaService.getAreaByLastId(lastId));
+            res.setResult(areaAppService.getAreaByLastId(lastId));
         }
         res.setCode(Codes.Success);
         return res;

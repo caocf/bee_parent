@@ -84,7 +84,8 @@ public class OrderAppDao extends OrderDao {
                 item.setAddr(StringUtil.parseString(objects[3], ""));
                 item.setShopPhone(StringUtil.parseString(objects[4], ""));
                 item.setIsComment(NumberUtil.parseInteger(objects[5], Consts.False));
-                item.setIsBack(NumberUtil.parseInteger(objects[6], Consts.True));
+                // v1.1.0增加
+                item.setUid(NumberUtil.parseLong(objects[6], 0));
                 return item;
             }
         }, orderId);

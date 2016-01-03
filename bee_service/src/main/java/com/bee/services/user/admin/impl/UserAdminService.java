@@ -53,8 +53,9 @@ public class UserAdminService extends UserService implements IUserAdminService {
         user.setExp(0);
         user.setIntegral(0);
         user.setLevel(0);
-        user.setPath("");
-        user.setUrl("");
+        // v1.1.0删除
+//        user.setPath("");
+//        user.setUrl("");
         user.setCash(0d);
         userDao.save(user);
 
