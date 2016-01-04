@@ -15,5 +15,9 @@
 	<a id="navbar-inner-shop-comment" href="${basePath}/shop/0/comment">
 		<i class="fa fa-commenting-o"></i>商家评论
 	</a>
-    </sec:security>
+  </sec:security>
+	<div class="line"></div>
+	<a id="navbar-inner-shop-image-view" href="${basePath}/shop/0/image/view">
+		<i class="fa fa-picture-o"></i>商家图片
+	</a>
 </div>

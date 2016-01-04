@@ -8,6 +8,7 @@ import com.bee.pojo.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qsd.framework.commons.utils.DateUtil;
+import org.hibernate.LazyInitializationException;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -218,7 +219,11 @@ public class Order implements java.io.Serializable {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "SHOPUSER")
     public ShopUser getShopUser() {
-        return shopUser;
+        try {
+            return shopUser;
+        } catch (LazyInitializationException e) {
+            return new ShopUser(0);
+        }
     }
     public void setShopUser(ShopUser shopUser) {
         this.shopUser = shopUser;

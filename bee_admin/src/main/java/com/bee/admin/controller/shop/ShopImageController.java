@@ -32,6 +32,11 @@ public class ShopImageController {
     // LOG
     private final Logger Log = LoggerFactory.getLogger(ShopImageController.class);
 
+    // 商家图片预览
+    public static final String ShopImageView = "shop/ShopImageView";
+    // 商家图片首页
+    public static final String ShopImageList = "shop/ShopImageList";
+
     @Autowired
     private IShopImageAdminService shopImageService;
 
@@ -44,13 +49,32 @@ public class ShopImageController {
     @Auth(name = AuthName.ShopImage)
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(@PathVariable Long sid) {
-        ModelAndView mav = new ModelAndView("shop/ShopImageList");
+        ModelAndView mav = new ModelAndView(ShopImageList);
         List<ShopImage> shopImageList = shopImageService.queryShopImageByShopId(sid);
         mav.addObject("sid", sid);
         mav.addObject("result", shopImageList);
         if(!shopImageList.isEmpty()) {
             mav.addObject("shopName", shopImageList.get(0).getShop().getName());
         }
+        return mav;
+    }
+
+    /**
+     * 预览商家图片
+     *
+     * @param sid
+     * @return
+     */
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView view(@PathVariable Long sid) {
+        ModelAndView mav;
+        if (null == sid || sid == 0) {
+            mav = new ModelAndView(ShopImageView);
+            mav.addObject("sid", sid);
+            return mav;
+        }
+        mav = index(sid);
+        mav.setViewName(ShopImageView);
         return mav;
     }
 

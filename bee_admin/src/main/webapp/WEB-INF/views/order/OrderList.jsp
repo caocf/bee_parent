@@ -63,7 +63,11 @@
             <tr>
                 <td>${order.no}</td>
                 <td>${order.shop.name}</td>
-                <td>${order.shopUser.phone}</td>
+                <td>
+                    <c:if test="${order.shopUser.suid > 0}">
+                        ${order.shopUser.phone}
+                    </c:if>
+                </td>
                 <td>${order.orderName}</td>
                 <td>${order.num}人</td>
                 <td>${order.orderPhone}</td>

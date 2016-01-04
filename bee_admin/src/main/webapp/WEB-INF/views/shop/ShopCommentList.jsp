@@ -64,7 +64,7 @@
         <c:forEach items="${result.data}" var="comments">
             <tr>
                 <td>${comments.scid}</td>
-                <td>${comments.content}</td>
+                <td width="70%">${comments.content}</td>
                 <td>${comments.user.name}</td>
                 <td>${comments.createTimeStr}</td>
                 <td>
