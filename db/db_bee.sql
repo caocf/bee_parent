@@ -418,6 +418,18 @@ CREATE TABLE `TB_PARTY_USER` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='活动报名表';
 
 -- ----------------------------
+--  Table structure for `TB_PARTY_CONDITION`
+-- ----------------------------
+DROP TABLE IF EXISTS `TB_PARTY_CONDITION`;
+CREATE TABLE `TB_PARTY_CONDITION` (
+  `PCID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `PARTY` bigint(20) NOT NULL DEFAULT 0,
+  `LEVEL` int(11) NOT NULL DEFAULT 0,
+  `EXP` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`PCID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='活动条件表';
+
+-- ----------------------------
 --  Table structure for `TB_PARTY_MEET`
 -- ----------------------------
 DROP TABLE IF EXISTS `TB_PARTY_MEET`;

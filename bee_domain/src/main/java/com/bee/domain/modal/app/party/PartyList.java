@@ -25,6 +25,8 @@ public class PartyList implements java.io.Serializable {
     private String title;
     // 活动内容
     private String content;
+    // 是否报名
+    private Integer isApply;
 
     public Integer getType() {
         return type;
@@ -79,5 +81,11 @@ public class PartyList implements java.io.Serializable {
     }
     public void setContent(String content) {
         this.content = content;
+    }
+    public Integer getIsApply() {
+        return isApply;
+    }
+    public void setIsApply(Integer isApply) {
+        this.isApply = isApply;
     }
 }

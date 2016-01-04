@@ -4,10 +4,8 @@ import com.bee.commons.Codes;
 import com.bee.domain.modal.app.party.PartyList;
 import com.bee.domain.params.party.PartyListParam;
 import com.bee.services.party.app.IPartyAppService;
-import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.domain.response.ResponsePaging;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +19,6 @@ public class PartyController {
 
     @Autowired
     private IPartyAppService partyAppService;
-
 
     /**
      * 获取活动列表
@@ -37,15 +34,6 @@ public class PartyController {
         return res;
     }
 
-    /**
-     * 参加活动
-     *
-     * @return
-     */
-    public Response addParty() {
-        Response res = new Response();
 
-        return res;
-    }
 
 }

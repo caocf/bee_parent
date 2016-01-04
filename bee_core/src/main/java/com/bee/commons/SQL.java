@@ -465,6 +465,17 @@ public final class SQL {
                 "FROM TB_PARTY A";
         public static final String GetPartyListOrderBy = " order by A.SORT DESC";
 
+        public static final class User {
+            // 查询活动用户
+            public static final String QueryPartyUser = "From PartyUser A " +
+                    "LEFT JOIN FETCH A.party B LEFT JOIN FETCH A.user C WHERE 1=1";
+        }
+
+        public static final class Condition {
+            // 获取报名条件
+            public static final String GetCondition = "From PartyCondition A WHERE A.party.pid = ?";
+        }
+
     }
 
 

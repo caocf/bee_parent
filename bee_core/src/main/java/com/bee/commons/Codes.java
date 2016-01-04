@@ -56,6 +56,14 @@ public final class Codes {
     }
 
 
+    public static final class Party {
+        // 用户已报名活动
+        public static final int PartyIsAdd = 0x301;
+        // 用户报名条件不足
+        public static final int PartyCondition = 0x302;
+    }
+
+
     public static final class Store {
 
         // 600 库存不足

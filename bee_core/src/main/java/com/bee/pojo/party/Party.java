@@ -28,6 +28,11 @@ public class Party implements java.io.Serializable {
     private Integer isBee;
     private Long createTime;
 
+    public Party() {}
+    public Party(Long id) {
+        this.pid = id;
+    }
+
     @Transient
     public String getTypeStr() {
         String typeStr;
