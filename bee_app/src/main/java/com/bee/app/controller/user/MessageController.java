@@ -1,15 +1,13 @@
 package com.bee.app.controller.user;
 
 import com.bee.commons.Codes;
+import com.bee.commons.Consts;
 import com.bee.domain.modal.app.user.MessageList;
 import com.bee.domain.params.user.MessageParam;
 import com.bee.pojo.user.Message;
 import com.bee.services.user.app.IMessageAppService;
-import com.qsd.framework.commons.utils.NumberUtil;
-import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.domain.response.ResponseArray;
-import com.qsd.framework.domain.response.ResponsePaging;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,11 +31,30 @@ public class MessageController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseArray<MessageList> getNewMessage(@PathVariable Long userId, MessageParam param) {
+    public ResponseArray<MessageList> getUserMessage(@PathVariable Long userId, MessageParam param) {
         ResponseArray<MessageList> res = new ResponseArray<>();
         param.setUid(userId);
-        res.setResult(messageAppService.getNewMessage(param));
+        res.setResult(messageAppService.getUserMessage(param));
         res.setCode(Codes.Success);
+        return res;
+    }
+
+    /**
+     * 设置消息已读
+     *
+     * @return
+     */
+    @RequestMapping(value = "/{messageId}", method = RequestMethod.POST)
+    public Response setReadMessage(@PathVariable Long userId, @PathVariable  Long messageId) {
+        Response res = new Response();
+        try {
+            Message message = messageAppService.getMessageById(messageId);
+            message.setStatus(Consts.User.Message.Status.Read);
+            messageAppService.updateMessage(message);
+            res.setCode(Codes.Success);
+        } catch (DataRunException e) {
+            res.setCode(Codes.Error);
+        }
         return res;
     }
 

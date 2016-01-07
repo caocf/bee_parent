@@ -12,8 +12,8 @@ public class MessageParam extends RequestApp {
 
     // 用户ID
     private Long uid;
-    // 最后更新时间
-    private Long lastUpdateTime;
+    // 消息状态
+    private Integer status;
 
     public Long getUid() {
         return uid;
@@ -21,10 +21,10 @@ public class MessageParam extends RequestApp {
     public void setUid(Long uid) {
         this.uid = uid;
     }
-    public Long getLastUpdateTime() {
-        return lastUpdateTime;
+    public Integer getStatus() {
+        return status;
     }
-    public void setLastUpdateTime(Long lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

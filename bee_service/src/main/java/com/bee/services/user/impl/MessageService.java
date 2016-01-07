@@ -25,4 +25,6 @@ public abstract class MessageService implements IMessageService {
     public void deleteMessages(Long[] messageIds) throws DataRunException {
         messageDao.deleteByIds(messageIds);
     }
+
+
 }

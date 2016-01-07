@@ -46,7 +46,7 @@ public class AppInitResponse extends BaseResponse {
     /**
      * 用户新消息
      */
-    private List<MessageList> messageList;
+    private Integer newMessageNum;
 
     /**
      * 首页和发现图片更新时间
@@ -112,10 +112,10 @@ public class AppInitResponse extends BaseResponse {
     public void setQrImageUpdateTime(Long qrImageUpdateTime) {
         this.qrImageUpdateTime = qrImageUpdateTime;
     }
-    public List<MessageList> getMessageList() {
-        return messageList;
+    public Integer getNewMessageNum() {
+        return newMessageNum;
     }
-    public void setMessageList(List<MessageList> messageList) {
-        this.messageList = messageList;
+    public void setNewMessageNum(Integer newMessageNum) {
+        this.newMessageNum = newMessageNum;
     }
 }

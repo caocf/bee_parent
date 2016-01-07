@@ -20,7 +20,7 @@ public interface IMessageAppService extends IMessageService {
      * @param param
      * @return
      */
-    List<MessageList> getNewMessage(MessageParam param);
+    List<MessageList> getUserMessage(MessageParam param);
 
     /**
      * 根据用户删除所有消息
@@ -29,4 +29,18 @@ public interface IMessageAppService extends IMessageService {
      */
     void deleteMessageByUser(Long userId) throws DataRunException;
 
+    /**
+     * 更新消息
+     *
+     * @param message
+     * @throws DataRunException
+     */
+    void updateMessage(Message message) throws DataRunException;
+
+    /**
+     * 根据主键获取消息
+     *
+     * @return
+     */
+    Message getMessageById(Long mid);
 }

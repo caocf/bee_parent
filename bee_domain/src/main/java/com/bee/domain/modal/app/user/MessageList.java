@@ -5,6 +5,9 @@ package com.bee.domain.modal.app.user;
  */
 public class MessageList implements java.io.Serializable {
 
+    // serialVersionUID
+    private static final long serialVersionUID = -8618632008509273019L;
+
     // 主键
     private Long mid;
     // 消息类型
@@ -15,7 +18,8 @@ public class MessageList implements java.io.Serializable {
     private Long user;
     // 创建时间
     private Long createTime;
-
+    // 消息状态
+    private Integer status;
 
     public Long getMid() {
         return mid;
@@ -46,5 +50,11 @@ public class MessageList implements java.io.Serializable {
     }
     public void setCreateTime(Long createTime) {
         this.createTime = createTime;
+    }
+    public Integer getStatus() {
+        return status;
+    }
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

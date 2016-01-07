@@ -13,6 +13,8 @@ public class Message implements java.io.Serializable {
     private Long mid;
     // 消息类型
     private Integer type;
+    // 消息状态
+    private Integer status;
     // 消息内容
     private String msg;
     // 接受用户
@@ -57,5 +59,12 @@ public class Message implements java.io.Serializable {
     }
     public void setCreateTime(Long createTime) {
         this.createTime = createTime;
+    }
+    @Column(name = "STATUS")
+    public Integer getStatus() {
+        return status;
+    }
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

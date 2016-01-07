@@ -7,6 +7,7 @@ import com.bee.client.params.AppInitResponse;
 import com.bee.client.params.AppVerResponse;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
+import com.bee.domain.modal.app.user.MessageList;
 import com.bee.domain.params.user.MessageParam;
 import com.bee.pojo.AppVer;
 import com.bee.pojo.Area;
@@ -85,11 +86,12 @@ public class AppController {
         res.setQrImageUpdateTime(factory.getConfig(Consts.Config.Qr).getFlag());
 
         // v1.1.0 增加用户新消息
-        if (req.getMessageLastUpdateTime() != null && req.getUid() != null && req.getUid() > 0) {
+        if (req.getUid() != null && req.getUid() > 0) {
             MessageParam param = new MessageParam();
             param.setUid(req.getUid());
-            param.setLastUpdateTime(req.getMessageLastUpdateTime());
-            res.setMessageList(messageAppService.getNewMessage(param));
+            param.setStatus(Consts.User.Message.Status.UnRead);
+            List<MessageList> messages = messageAppService.getUserMessage(param);
+            res.setNewMessageNum(null == messages || messages.size() < 1 ? 0 : messages.size());
         }
 
         res.setCode(Codes.Success);

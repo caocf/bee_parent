@@ -51,9 +51,9 @@ public final class SQL {
 
         public static final class Message {
             // 获取用户未读消息
-            public static final String GetNewMessage = "SELECT " +
-                    "A.MID, A.MSG, A.TYPE, A.CREATETIME, A.USER " +
-                    "FROM TB_MESSAGE A WHERE A.USER = ? and A.CREATETIME > ?";
+            public static final String GetUserMessage = "SELECT " +
+                    "A.MID, A.MSG, A.TYPE, A.CREATETIME, A.USER, A.STATUS " +
+                    "FROM TB_MESSAGE A WHERE 1=1";
             // 删除指定用户所有消息
             public static final String DeleteMessageByUser = "DELETE FROM TB_MESSAGE WHERE USER = ?";
         }

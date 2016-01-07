@@ -89,7 +89,15 @@ public final class Consts {
         }
 
         public static final class Message {
-            public static final int System = 0x1;
+
+            public static final class Type {
+                public static final int System = 0x1;
+            }
+
+            public static final class Status {
+                public static final int UnRead = 0x0;
+                public static final int Read = 0x1;
+            }
         }
     }
 
