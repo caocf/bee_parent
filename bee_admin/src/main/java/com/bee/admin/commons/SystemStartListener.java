@@ -19,7 +19,7 @@ public class SystemStartListener implements ServletContextListener {
         SMSCodeFactory.getInstance();
 
         // 启动维护线程
-        new Thread(new MateUserLoginThread()).start();
+        // new Thread(new MateUserLoginThread()).start();
         // 启动红包优惠券过期维护线程
         new Thread(new MateTicketExpiredThread()).start();
     }

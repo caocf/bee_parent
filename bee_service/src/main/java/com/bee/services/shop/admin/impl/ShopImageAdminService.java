@@ -40,7 +40,6 @@ public class ShopImageAdminService extends ShopImageService implements IShopImag
             // 设置宽和高
             shopImage.setWidth(Integer.valueOf(paths[2]));
             shopImage.setHeight(Integer.valueOf(paths[3]));
-
             shopImage.setType(0);
             if (null == shopImage.getSort()) {
                 shopImage.setSort(100);

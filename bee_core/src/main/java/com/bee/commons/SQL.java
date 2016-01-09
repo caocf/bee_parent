@@ -75,6 +75,13 @@ public final class SQL {
 
             public static final String GetOrderTicket = "From UserTicket A " +
                     "LEFT JOIN FETCH A.ticket B LEFT JOIN FETCH B.shop C WHERE 1=1";
+
+            public static final String MateUserTicket = "UPDATE " +
+                    "TB_USER_TICKET A " +
+                    "SET " +
+                    "A.STATUS = " + Consts.Ticket.Status.Expired + " " +
+                    "WHERE " +
+                    "A.STATUS = ? AND A.STOPTIME < ? AND A.STOPTIME > 0";
         }
     }
 

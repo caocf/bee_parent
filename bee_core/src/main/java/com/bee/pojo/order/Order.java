@@ -221,7 +221,7 @@ public class Order implements java.io.Serializable {
     public ShopUser getShopUser() {
         try {
             return shopUser;
-        } catch (LazyInitializationException e) {
+        } catch (Exception e) {
             return new ShopUser(0);
         }
     }

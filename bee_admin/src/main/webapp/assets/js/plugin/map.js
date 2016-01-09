@@ -190,7 +190,7 @@
 			if (this._geocoder == undefined) {
 				this._geocoder = new BMap.Geocoder();
 			}
-			this._geocoder.getPoint(addr, fn);
+			this._geocoder.getPoint(this._settings.city + addr, fn);
 			return this;
  		}
 

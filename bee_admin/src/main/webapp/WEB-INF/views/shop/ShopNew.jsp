@@ -131,7 +131,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-                    <label class="col-xs-1 control-label">支持</label>
+                    <label class="col-xs-1 control-label">商家支持</label>
                     <div class="col-xs-4">
                         <div class="btn-group" data-toggle="buttons">
                             <label class="btn btn-primary">
@@ -187,7 +187,7 @@
 					<div class="col-xs-10">
                         <div class="input-group">
                             <input type="text" id="txtAddr" name="shop.addr" class="form-control" placeholder="仅需填写路名" value="${shop.addr}" aria-describedby="btnQueryAddr1">
-                            <span class="input-group-addon" id="btnQueryAddr1">查询</span>
+                            <span class="input-group-addon pointer" id="btnQueryAddr1">查询</span>
                         </div>
                     </div>
 				</div>
@@ -196,7 +196,7 @@
                     <div class="col-xs-10">
                         <div class="input-group">
                             <input type="text" id="txtAddress" name="shop.address" class="form-control" placeholder="仅需填写路名" value="${shop.address}" aria-describedby="btnQueryAddr2">
-                            <span class="input-group-addon" id="btnQueryAddr2">查询</span>
+                            <span class="input-group-addon pointer" id="btnQueryAddr2">查询</span>
                         </div>
                     </div>
                 </div>
@@ -260,31 +260,27 @@
 	  			$("#shopLat").val(e.point.lat * 1E6);
 	  		});
 
-		var queryAddr = function() {
+		var queryAddrToPoint = function() {
+			var toId = $(this).attr("id");
 			var txt = "";
-			if ($(this).attr("id") == "btnQueryAddr1") {
-				txt = "txtAddr";
+			if (toId == "btnQueryAddr1") {
+				txt = $("#txtAddr").val();
 			} else {
-				txt = "txtAddress";
+				txt = $("#txtAddress").val();
 			}
 			if (txt != null && txt != undefined && txt != "") {
 				map.queryAddr(txt, function(point) {
 					if (point) {
-						Map.addPoint({
-							only: true,
-							point: new BMap.Point(e.point.lng, e.point.lat)
-						});
-						$("#shopLon").val(e.point.lng * 1E6);
-						$("#shopLat").val(e.point.lat * 1E6);
+						map._map.centerAndZoom(point, 16);
 					} else {
 						alert("没有查询到结果!");
 					}
 				});
 			}
-		}
+		};
 
-		$("#btnQueryAddr1").click(queryAddr);
-		$("#btnQueryAddr2").click(queryAddr);
+		$("#btnQueryAddr1").click(queryAddrToPoint);
+		$("#btnQueryAddr2").click(queryAddrToPoint);
   		
         function doSubmit() {
             if($("#action").val() == "edit") {

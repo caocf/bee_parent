@@ -1,26 +1,27 @@
 package com.bee.admin.controller.shop;
 
 import com.bee.commons.AuthName;
-import com.bee.commons.Consts;
+import com.bee.commons.Codes;
 import com.bee.image.ImageParser;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopImage;
 import com.bee.services.shop.admin.IShopImageAdminService;
+import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by suntongwei on 15/11/8.
@@ -36,6 +37,10 @@ public class ShopImageController {
     public static final String ShopImageView = "shop/ShopImageView";
     // 商家图片首页
     public static final String ShopImageList = "shop/ShopImageList";
+    // 新增商家图片
+    public static final String ShopImageNew = "shop/ShopImageNew";
+    // 增加商家图片多选
+    public static final String ShopImageAdd = "shop/ShopImageAdd";
 
     @Autowired
     private IShopImageAdminService shopImageService;
@@ -87,9 +92,44 @@ public class ShopImageController {
     @Auth(name = AuthName.ShopImageNew)
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView create(@PathVariable Long sid) {
-        ModelAndView mav = new ModelAndView("shop/ShopImageNew");
+        ModelAndView mav = new ModelAndView(ShopImageAdd);
         mav.addObject("sid", sid);
         return mav;
+    }
+
+    /**
+     * 新增保存多张图片
+     *
+     * @return
+     */
+    @Auth(name = AuthName.ShopImageNew)
+    @ResponseBody
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public Response saveAll(@PathVariable Long sid, HttpServletRequest req,
+                            @RequestParam(value = "file", required = false) MultipartFile file) {
+        Response res = new Response();
+        try {
+            checkImageSec(file);
+            ShopImage shopImage = new ShopImage();
+            shopImage.setShop(new Shop(sid));
+            shopImage.setRemark("");
+            shopImage.setSort(100);
+            shopImageService.addShopImage(req, file, shopImage);
+            res.setCode(Codes.Success);
+        } catch (DataRunException e) {
+            res.setCode(Codes.Error);
+        }
+        return res;
+    }
+
+    private void checkImageSec(MultipartFile file) throws DataRunException {
+        String fileName = file.getOriginalFilename().trim().toLowerCase();
+        String ext = fileName.substring(fileName.lastIndexOf("."), fileName.length());
+        if (!ImageParser.ImageTypeEnum.JPG.toString().equals(ext)
+                && !ImageParser.ImageTypeEnum.JPEG.toString().equals(ext)
+                && !ImageParser.ImageTypeEnum.PNG.toString().equals(ext)) {
+            throw new DataRunException(404);
+        }
     }
 
     /**
@@ -114,10 +154,10 @@ public class ShopImageController {
             return create(sid).addObject("msg", "图片格式不正确，只支持JPG,JPEG,PNG格式");
         }
         // 对商家图片数量是否已达上线
-        List<ShopImage> shopImageList = shopImageService.queryShopImageByShopId(sid);
-        if (shopImageList != null && shopImageList.size() >= Consts.Shop.Image.MaxUploadImageSize) {
-            return create(sid).addObject("msg", "图片数量已达上限");
-        }
+//        List<ShopImage> shopImageList = shopImageService.queryShopImageByShopId(sid);
+//        if (shopImageList != null && shopImageList.size() >= Consts.Shop.Image.MaxUploadImageSize) {
+//            return create(sid).addObject("msg", "图片数量已达上限");
+//        }
         try {
             // 保存图片
             shopImage.setShop(new Shop(sid));
@@ -158,7 +198,7 @@ public class ShopImageController {
     @Auth(name = AuthName.ShopImageEdit)
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable Long sid, @PathVariable Long id) {
-        ModelAndView mav = new ModelAndView("shop/ShopImageNew");
+        ModelAndView mav = new ModelAndView(ShopImageNew);
         mav.addObject("image", shopImageService.getShopImageById(id));
         mav.addObject("sid", sid);
         return mav;
