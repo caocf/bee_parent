@@ -51,6 +51,7 @@
             <th>预约时间</th>
             <th>状态</th>
             <th>下单时间</th>
+            <th>操作</th>
         </tr>
         <c:if test="${result.totalData < 1}">
           <tr>
@@ -74,12 +75,41 @@
                 <td>${order.execTimeStr}</td>
                 <td>${order.statusStr}</td>
                 <td>${order.createTimeStr}</td>
+                <td>
+                    <sec:security auth="<%=AuthName.OrderDelete %>">
+                        <a href="#" class="icon" onclick="confirmDelete(${order.oid})">
+                            <i class="fa fa-trash font-color-red fa-lg"></i>
+                        </a>
+                    </sec:security>
+                </td>
             </tr>
         </c:forEach>
     </table>
     <c:if test="${result.totalData > 0}">
       <div id="paging" class="row"></div>
     </c:if>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="deleteModalLabel">提示确认</h4>
+            </div>
+            <div class="modal-body">
+                确定删除取消该订单？
+            </div>
+            <div class="modal-footer">
+                <form:form id="delForm" method="delete"></form:form>
+                <button type="button" class="btn btn-success icon-text" data-dismiss="modal" onclick="delOrder();">
+                    <i class="fa fa-check"></i>确定
+                </button>
+                <button type="button" class="btn btn-danger icon-text" data-dismiss="modal">
+                    <i class="fa fa-times"></i>取消
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
@@ -130,7 +160,13 @@
     if ($("#statusType").val() == "navbar-inner-order-ing") {
       autoRefresh(document.getElementById("autoRefresh"));
     }
-    
+    function confirmDelete(id) {
+        document.forms["delForm"].action = "${basePath}/order/" + id;
+        $("#deleteModal").modal('show');
+    }
+    function delOrder() {
+        document.forms["delForm"].submit();
+    }
 </script>
 </body>
 </html>

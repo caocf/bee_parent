@@ -193,19 +193,13 @@ public final class Consts {
 
 
         public static final class Operate {
-
             public static final String Create = "创建订单";
-
             public static final String UserCancel = "用户取消订单";
-
             public static final String ShopCancel = "商户取消订单";
-
             public static final String ShopReject = "商户拒绝订单";
-
+            public static final String AdminCancel = "管理员取消订单";
             public static final String Underway = "商家接受订单";
-
             public static final String Finish = "订单完成";
-
             public static final String Edited = "用户修改了订单人数";
         }
 

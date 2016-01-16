@@ -41,6 +41,7 @@ public final class AuthName {
     public static final String Order = "ORDER";
     public static final String OrderCreate = "ORDER_CREATE";
     public static final String OrderMonitor = "ORDER_MONITOR";
+    public static final String OrderDelete = "ORDER_DELETE";
 
     public static final String User = "USER";
 
@@ -72,6 +73,7 @@ public final class AuthName {
         AuthMap.put(ShopUserDelete, "删除商家管理员");
         AuthMap.put(Order, "查看订单");
         AuthMap.put(OrderMonitor, "订单监控");
+        AuthMap.put(OrderDelete, "取消订单");
         AuthMap.put(User, "查看用户");
         AuthMap.put(Stat, "查看统计");
         AuthMap.put(Area, "地区查看");

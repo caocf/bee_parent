@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/user")
 public class UserController {
 
+    public static final String USER_LIST = "user/UserList";
+
     @Autowired
     private IUserAdminService userService;
 
@@ -31,7 +33,7 @@ public class UserController {
     @Auth(name = AuthName.User)
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(AdminUserListRequest request) {
-        ModelAndView mav = new ModelAndView("user/UserList");
+        ModelAndView mav = new ModelAndView(USER_LIST);
         mav.addObject("result", userService.queryUserListByParams(request));
         mav.addObject("params", request);
         return mav;

@@ -1,6 +1,9 @@
 package com.bee.services.order.admin.impl;
 
 import com.bee.client.params.order.AdminOrderListRequest;
+import com.bee.commons.Codes;
+import com.bee.commons.Consts;
+import com.bee.commons.OrderStatusMachine;
 import com.bee.pojo.order.Order;
 import com.bee.services.order.admin.IOrderAdminService;
 import com.bee.services.order.impl.OrderService;
@@ -38,13 +41,28 @@ public class OrderAdminService extends OrderService implements IOrderAdminServic
     }
 
     /**
+     * 取消订单
      *
      * @param id
      * @throws DataRunException
      */
     @Override
     public void cancelOrder(long id) throws DataRunException {
-        // nothing...
+        Order order = orderDao.findById(id);
+        // 判断订单是否可以取消
+        if (!OrderStatusMachine.isCancelOrder(order.getStatus())) {
+            throw new DataRunException(Codes.Order.CancelError, Codes.Order.CancelErrorStr);
+        }
+        order.setFinishTime(System.currentTimeMillis());
+        order.setStatus(Consts.Order.Status.CancelAdmin);
+        order.writeOperate(Consts.Order.Operate.AdminCancel);
+        orderDao.update(order);
+        // 判断订单是否使用红包
+        if (order.getUser() != null && order.getUser().getUid() > 0) {
+            cancelOrderAndTicket(order.getUser().getUid(), order.getOid());
+        }
+        // 减去用户响应诚信积分
+        // 待实现
     }
 
 

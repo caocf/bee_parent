@@ -40,4 +40,12 @@ public abstract class OrderService implements IOrderService {
         }
     }
 
+    /**
+     * 用户取消订单后减去响应用户分数
+     *
+     * @throws DataRunException
+     */
+    protected void cancelOrderAndMinus() throws DataRunException {
+
+    }
 }
