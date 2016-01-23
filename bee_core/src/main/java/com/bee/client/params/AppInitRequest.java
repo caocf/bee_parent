@@ -21,6 +21,11 @@ public class AppInitRequest extends RequestApp {
     // 地区最后主键
     private Long areaLastId;
 
+    // v1.1.0 增加
+    // 用户登录信息
+    private String account;
+    private String password;
+
     public Long getUid() {
         return uid;
     }
@@ -51,5 +56,17 @@ public class AppInitRequest extends RequestApp {
     }
     public void setAreaLastId(Long areaLastId) {
         this.areaLastId = areaLastId;
+    }
+    public String getAccount() {
+        return account;
+    }
+    public void setAccount(String account) {
+        this.account = account;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

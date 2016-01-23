@@ -35,6 +35,12 @@ public class FindController {
             res.setMsg("输入内容不合法,请修改");
             return res;
         }
+        // 判断是否受限制商户
+        if (params.getUid() == 351) {
+            res.setCode(Codes.Error);
+            res.setMsg("你的账户已被管理员限制");
+            return res;
+        }
         try {
             findBusiService.saveFind(params);
             res.setCode(Codes.Success);

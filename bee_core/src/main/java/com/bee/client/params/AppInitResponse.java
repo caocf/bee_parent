@@ -58,6 +58,10 @@ public class AppInitResponse extends BaseResponse {
      */
     private Long qrImageUpdateTime;
 
+    // for iPhone
+    // 是否能够进入小黄蜂
+    private Boolean intoApp;
+
     public Integer getNewVersion() {
         return newVersion;
     }
@@ -117,5 +121,11 @@ public class AppInitResponse extends BaseResponse {
     }
     public void setNewMessageNum(Integer newMessageNum) {
         this.newMessageNum = newMessageNum;
+    }
+    public Boolean getIntoApp() {
+        return intoApp;
+    }
+    public void setIntoApp(Boolean intoApp) {
+        this.intoApp = intoApp;
     }
 }
