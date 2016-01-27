@@ -1,8 +1,12 @@
 *.class
 .idea/
 *.iml
+<<<<<<< HEAD
 target/
 !*.MF
+=======
+/target/
+>>>>>>> 487e8b9b8a0f5e63b24abd3fc755455d648965b3
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -12,6 +16,10 @@ target/
 !*/lib/*.jar
 *.war
 *.ear
+<<<<<<< HEAD
+=======
+
+>>>>>>> 487e8b9b8a0f5e63b24abd3fc755455d648965b3
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
