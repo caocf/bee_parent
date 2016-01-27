@@ -67,10 +67,22 @@ public class TravelChannelFactory {
     }
     private TravelChannelFactory() {
         init();
-        Channel channel = new Channel();
-        channel.setChannelId(1000l);
-        channel.setName("测试频道");
-        channel.setCreateTime(0l);
-        addChannel(channel);
+        Channel channel1 = new Channel();
+        channel1.setChannelId(1000l);
+        channel1.setName("一起去过新年");
+        channel1.setCreateTime(0l);
+        addChannel(channel1);
+
+        Channel channel2 = new Channel();
+        channel2.setChannelId(1001l);
+        channel2.setName("新年活动");
+        channel2.setCreateTime(0l);
+        addChannel(channel2);
+
+        Channel channel3 = new Channel();
+        channel3.setChannelId(1002l);
+        channel3.setName("活动开始拉");
+        channel3.setCreateTime(0l);
+        addChannel(channel3);
     }
 }

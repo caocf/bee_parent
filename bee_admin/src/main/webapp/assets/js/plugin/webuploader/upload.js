@@ -160,7 +160,7 @@
             swf: BasePath + '/assets/js/plugin/webuploader/Uploader.swf',
 
             // 服务器地址
-            server: BasePath + '/shop/0/image/add',
+            server: BasePath + '/shop/' + $("shopId").val() + '/image/add',
 
             // 只允许选择图片文件。
             accept: {

@@ -76,7 +76,7 @@ public class AppController {
         }
 
         // iPhone是否已经过了审核
-        res.setIntoApp(true);
+        res.setIntoApp(false);
 
         // 客服电话
         res.setServicePhone(Consts.Config.ServicePhone);

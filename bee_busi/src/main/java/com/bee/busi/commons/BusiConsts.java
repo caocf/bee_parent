@@ -6,6 +6,6 @@ package com.bee.busi.commons;
 public class BusiConsts {
 
     /** */
-    public static final boolean isDebug = false;
+    public static final boolean isDebug = true;
 
 }
