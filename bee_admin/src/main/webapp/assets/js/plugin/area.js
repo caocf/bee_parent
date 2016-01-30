@@ -4,7 +4,7 @@
 
 		var $this = $(this);
 		var settings = {
-			initId: 0,
+			initId: -1,
 			areaId: -1,
 			hasNull: false,
 			fn: function(id){}
@@ -23,6 +23,9 @@
 				if(settings.hasNull) {
                     $select.append($(document.createElement("option")));
                 }
+				$select.change(function(event) {
+					settings.fn($(this).val());
+				});
 				$.each(data, function(index, val) {
                     if(index == 0 && !settings.hasNull) {
                         $this.val(data[index].aid);
@@ -31,20 +34,20 @@
 					$option.val(data[index].aid);
 					$option.html(data[index].name);
 					// 判断是否是选中
-					if(settings.areaId == data[index].aid) {
+					if (settings.areaId == '' && index == 0) {
 						$option.attr("selected", "selected");
-					}	
+						settings.fn(data[index].aid);
+					}
+					if (settings.areaId == data[index].aid) {
+						$option.attr("selected", "selected");
+					}
 					$select.append($option);
-				});
-				$select.change(function(event) {	
-					settings.fn($(this).val());
 				});
 				$this.append($select);
 			});	
 		};
 
 		createSelect(settings.initId);
-
-	};	
+	};
 
 } (jQuery, window, document, undefined);
