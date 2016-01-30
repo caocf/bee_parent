@@ -263,6 +263,7 @@
 	  		});
 
 		var queryAddrToPoint = function() {
+			Loader.show();
 			var toId = $(this).attr("id");
 			var txt = "";
 			if (toId == "btnQueryAddr1") {
@@ -272,12 +273,15 @@
 			}
 			if (txt != null && txt != undefined && txt != "") {
 				map.queryAddr(txt, function(point) {
+					Loader.hide();
 					if (point) {
 						map._map.centerAndZoom(point, 16);
 					} else {
 						alert("没有查询到结果!");
 					}
 				});
+			} else {
+				Loader.hide();
 			}
 		};
 
@@ -285,6 +289,7 @@
 		$("#btnQueryAddr2").click(queryAddrToPoint);
   		
         function doSubmit() {
+			Loader.show();
             if($("#action").val() == "edit") {
                 document.forms["shopForm"].action = "${basePath}/shop/" + $("#sid").val();
                 document.getElementsByName("_method")[0].value = "put";

@@ -1,5 +1,32 @@
 +function($, window, document, undefined) {
 
+
+	var Loader = window.Loader = {
+
+		_div: undefined,
+		_loader: undefined,
+
+		show: function() {
+			if (this._div == undefined) {
+				this._div = $(document.createElement("DIV"));
+				this._div.addClass("loader_div");
+				this._loader = $(document.createElement("DIV"));
+				this._loader.addClass("loader");
+				$(document.body).append(this._div);
+				$(document.body).append(this._loader);
+			}
+
+			this._div.show();
+			this._loader.show();
+		},
+
+		hide: function() {
+			this._div.hide();
+			this._loader.hide();
+		}
+	};
+
+
 	/**
 	 * 订单模块
 	 */
