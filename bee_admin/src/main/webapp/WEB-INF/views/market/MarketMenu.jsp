@@ -17,7 +17,9 @@
 		<i class="fa fa-mobile-phone fa-lg"></i>  手机充值卡
 	</a>
 	-->
+	<sec:security auth="<%=AuthName.TicketList %>">
 	<a id="navbar-inner-market-ticket" href="${basePath}/ticket">
 		<i class="fa fa-ticket fa-lg"></i>优惠券
 	</a>
+	</sec:security>
 </div>

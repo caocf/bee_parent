@@ -116,6 +116,13 @@ public final class Consts {
             public static final int Normal = 0x1;
             // 全免
             public static final int Free = 0x2;
+
+            public static final Map<Integer, String> Select() {
+                Map<Integer, String> ret = new HashMap<>();
+                ret.put(Type.Normal, "减免类型");
+                ret.put(Type.Free, "全免类型");
+                return ret;
+            }
         }
     }
 

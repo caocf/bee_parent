@@ -33,6 +33,9 @@ public class AdminOrderListRequest extends PagingRequest {
 
     public String getPageType() {
         String pageType = null;
+        if (null == getStatus()) {
+            return "navbar-inner-order-ing";
+        }
         switch (getStatus()) {
             case Consts.Order.Status.Query.Ing:
                 pageType = "navbar-inner-order-ing";

@@ -21,38 +21,22 @@
 <%@ include file="MarketMenu.jsp" %>
 <div class="main inner">
     <div class="row title">
-        <span class="before">优惠券</span>
+        <span class="before">添加优惠券</span>
         <i class="fa fa-angle-double-right"></i>
-        <span class="after">查看和创建优惠券</span>
+        <span class="after">创建一个优惠券</span>
     </div>
-    <sec:security auth="<%=AuthName.TicketNew%>">
-    <div class="row query-inner">
-        <a href="${basePath}/ticket/new" class="btn btn-primary icon-text">
-            <i class="fa fa-plus font-color-white"></i>增加优惠券
-        </a>
+    <div class="row">
+        <div class="alert alert-danger <c:if test='${msg == null}'>hidden</c:if>" role="alert">${msg}</div>
     </div>
-    </sec:security>
-    <table class="table table-hover">
-        <tr>
-            <th>主键</th>
-            <th>类型</th>
-            <th>标题</th>
-            <th>价格</th>
-            <th>所属商家</th>
-        </tr>
-        <c:forEach items="${Tickets}" var="ticket">
-            <tr>
-                <td>${ticket.tid}</td>
-                <td>${ticket.typeStr}</td>
-                <td>${ticket.title}</td>
-                <td>${ticket.price}</td>
-                <td>
-                    <c:if test="${ticket.shop.sid > 0}">${ticket.shop.name}</c:if>
-                    <c:if test="${ticket.shop.sid == 0}">无</c:if>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
+    <form id="submitForm" class="form-horizontal" action="${basePath}/ticket" method="post">
+        <div class="form-group info-title">基本信息</div>
+        <div class="form-group">
+            <label class="col-xs-1 control-label">标题</label>
+            <div class="col-xs-4">
+                <input type="text" name="ticket.title" placeholder="优惠券标题,如（天降红包,活动奖品等）" class="form-control" value="${ticket.title}" />
+            </div>
+        </div>
+    </form>
 </div>
 <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>

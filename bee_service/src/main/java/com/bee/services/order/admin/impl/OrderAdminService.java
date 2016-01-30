@@ -57,6 +57,7 @@ public class OrderAdminService extends OrderService implements IOrderAdminServic
      * @throws DataRunException
      */
     @Override
+    @Transactional
     public void cancelOrder(long id) throws DataRunException {
         Order order = orderDao.findById(id);
         // 判断订单是否可以取消

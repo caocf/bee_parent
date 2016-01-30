@@ -76,11 +76,13 @@
                 <td>${order.statusStr}</td>
                 <td>${order.createTimeStr}</td>
                 <td>
+                    <c:if test="${params.pageType == 'navbar-inner-order-ing'}">
                     <sec:security auth="<%=AuthName.OrderDelete %>">
                         <a href="#" class="icon" onclick="confirmDelete(${order.oid})">
                             <i class="fa fa-trash font-color-red fa-lg"></i>
                         </a>
                     </sec:security>
+                    </c:if>
                 </td>
             </tr>
         </c:forEach>

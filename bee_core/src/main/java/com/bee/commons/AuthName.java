@@ -45,6 +45,10 @@ public final class AuthName {
 
     public static final String User = "USER";
 
+    public static final String Market = "MARKET";
+    public static final String TicketList = "TICKET_LIST";
+    public static final String TicketNew = "TICKET_NEW";
+
     public static final String Stat = "STAT";
 
     public static final String Area = "AREA";
@@ -74,6 +78,9 @@ public final class AuthName {
         AuthMap.put(Order, "查看订单");
         AuthMap.put(OrderMonitor, "订单监控");
         AuthMap.put(OrderDelete, "取消订单");
+        AuthMap.put(Market, "营销权限");
+        AuthMap.put(TicketNew, "创建优惠券");
+        AuthMap.put(TicketList, "查看优惠券");
         AuthMap.put(User, "查看用户");
         AuthMap.put(Stat, "查看统计");
         AuthMap.put(Area, "地区查看");

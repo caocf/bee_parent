@@ -29,10 +29,12 @@
 		<span>统计</span>
 	</a>
     </sec:security>
+	<sec:security auth="<%=AuthName.Market%>">
 	<a id="navbar-left-marketing" href="${basePath}/ticket">
 		<i class="fa fa-cloud fa-lg"></i>
 		<span>营销</span>
 	</a>
+	</sec:security>
 	<a id="navbar-left-finance" href="#">
 		<i class="fa fa-credit-card fa-lg"></i>
 		<span>账务</span>
