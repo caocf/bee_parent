@@ -133,20 +133,22 @@
 				<div class="form-group">
                     <label class="col-xs-1 control-label">商家支持</label>
                     <div class="col-xs-4">
-                        <div class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-primary">
-                                <input type="checkbox" name="shop.isFreeParking" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 免费停车
-                            </label>
-                            <label class="btn btn-primary">
-                                <input type="checkbox" name="shop.isFood" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 餐饮
-                            </label>
-                            <label class="btn btn-primary">
-                                <input type="checkbox" name="shop.isPosCard" autocomplete="off" value="1" <c:if test="${shop.isPosCard == 1}">checked="checked"</c:if>> 刷卡
-                            </label>
-                            <label class="btn btn-primary">
-                                <input type="checkbox" name="shop.isInvoice" autocomplete="off" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>> 发票
-                            </label>
-                        </div>
+						<label class="icheck">
+							<input type="checkbox" name="shop.isFreeParking" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if> />
+							免费停车
+						</label>
+						<label class="icheck">
+							<input type="checkbox" name="shop.isFood" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if> />
+							餐饮
+						</label>
+						<label class="icheck">
+							<input type="checkbox" name="shop.isPosCard" value="1" <c:if test="${shop.isPosCard == 1}">checked="checked"</c:if>>
+							刷卡
+						</label>
+						<label class="icheck">
+							<input type="checkbox" name="shop.isInvoice" value="1" <c:if test="${shop.isFreeParking == 1}">checked="checked"</c:if>>
+							发票
+						</label>
                     </div>
 					<label class="col-xs-2 control-label">排序</label>
 					<div class="col-xs-4">
@@ -229,7 +231,7 @@
   	<script type="text/javascript">
   		Navbar.init("navbar-left-shop", "navbar-inner-shop-new");
   		Upload.init("btnThum", "thumbnailFile", "thumbnailImage");
-      Upload.init("btnImage", "file", "image");
+      	Upload.init("btnImage", "file", "image");
   		Upload.init("btnRecommendImage", "recommendFile", "recommendImage");
   		$("#area").area({
   			areaId: $("#areaId").val(),
