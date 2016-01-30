@@ -24,10 +24,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/order")
 public class OrderController {
 
-    /** 订单监控View */
+    /** 订单监控 */
     public static final String OrderMonitorView = "order/OrderMonitor";
-    /** 订单查询View */
+    /** 订单查询 */
     public static final String OrderView = "order/OrderList";
+    /** 订单详细 */
+    public static final String OrderDetail = "order/OrderDetail";
 
     @Autowired
     private IOrderAdminService orderService;
@@ -50,6 +52,19 @@ public class OrderController {
         if (result != null && result.getTotalData() > 0) {
             mav.addObject("result", result.getData());
         }
+        return mav;
+    }
+
+    /**
+     * 查看订单详细
+     *
+     * @return
+     */
+    @Auth(name = AuthName.Order)
+    @RequestMapping(value = "/{orderId}", method = RequestMethod.GET)
+    public ModelAndView detail(@PathVariable Long orderId) {
+        ModelAndView mav = new ModelAndView(OrderDetail);
+
         return mav;
     }
 

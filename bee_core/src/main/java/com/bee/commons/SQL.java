@@ -59,6 +59,7 @@ public final class SQL {
         }
 
         public static final class Ticket {
+
             // 获取用户所有优惠券信息
             public static final String GetUserTickets = "SELECT " +
                     "A.UTID, B.TID, A.STATUS, B.TITLE, C.SID, C.NAME, A.STARTTIME, A.STOPTIME, B.PRICE, B.TYPE " +
@@ -333,6 +334,7 @@ public final class SQL {
         public static final String GetOrder = "From Order A " +
                 "left join fetch A.user B where B.uid = ?";
 
+
         /**
          * 根据参数查询订单，主要用于订单统计
          */
@@ -464,6 +466,10 @@ public final class SQL {
         }
     }
 
+    public static final class Ticket {
+
+        public static final String GetTicketWithShop = "From Ticket A LEFT JOIN FETCH A.shop B";
+    }
 
     public static final class Party {
 

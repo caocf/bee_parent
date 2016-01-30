@@ -17,4 +17,12 @@ public interface IOrderAdminService extends IOrderService {
      * @return
      */
     PagingResult<Order> getOrderListByParam(AdminOrderListRequest request);
+
+    /**
+     * 查询订单详细
+     *
+     * @param orderId
+     * @return
+     */
+    Order getOrder(Long orderId);
 }

@@ -29,6 +29,16 @@ public class OrderAdminService extends OrderService implements IOrderAdminServic
     }
 
     /**
+     *
+     * @param orderId
+     * @return
+     */
+    @Override
+    public Order getOrder(Long orderId) {
+        return null;
+    }
+
+    /**
      * 创建订单
      *
      * @param order

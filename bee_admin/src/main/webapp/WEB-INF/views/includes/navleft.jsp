@@ -29,7 +29,7 @@
 		<span>统计</span>
 	</a>
     </sec:security>
-	<a id="navbar-left-marketing" href="${basePath}/ad">
+	<a id="navbar-left-marketing" href="${basePath}/ticket">
 		<i class="fa fa-cloud fa-lg"></i>
 		<span>营销</span>
 	</a>

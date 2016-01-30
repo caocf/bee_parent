@@ -1,6 +1,8 @@
 package com.bee.pojo.tickets;
 
+import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
+import com.bee.pojo.shop.ShopUser;
 
 import javax.persistence.*;
 
@@ -28,6 +30,15 @@ public class Ticket implements java.io.Serializable {
     private String remark;
     // 标题
     private String title;
+
+    @Transient
+    public String getTypeStr() {
+        if (type == Consts.Ticket.Type.Free) {
+            return "普通";
+        } else {
+            return "全免";
+        }
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,7 +73,11 @@ public class Ticket implements java.io.Serializable {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "SHOP")
     public Shop getShop() {
-        return shop;
+        try {
+            return shop;
+        } catch (Exception e) {
+            return new Shop(0l);
+        }
     }
     public void setShop(Shop shop) {
         this.shop = shop;
