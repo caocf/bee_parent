@@ -48,6 +48,7 @@ public class ShopTecheeBusiService extends ShopTecheeService implements IShopTec
     @Transactional
     public void saveShopTechee(ShopTechee shopTechee) throws DataRunException {
         shopTecheeDao.save(shopTechee);
+        changeShopTechee(shopTechee.getShop().getSid());
     }
 
     /**
@@ -60,6 +61,7 @@ public class ShopTecheeBusiService extends ShopTecheeService implements IShopTec
     @Transactional
     public void updateShopTechee(ShopTechee shopTechee) throws DataRunException {
         shopTecheeDao.update(shopTechee);
+        changeShopTechee(shopTechee.getShop().getSid());
     }
 
     /**
@@ -71,6 +73,8 @@ public class ShopTecheeBusiService extends ShopTecheeService implements IShopTec
     @Override
     @Transactional
     public void deleteShopTechee(long id) throws DataRunException {
-        shopTecheeDao.deleteById(id);
+        ShopTechee shopTechee = shopTecheeDao.findById(id);
+        shopTecheeDao.delete(shopTechee);
+        changeShopTechee(shopTechee.getShop().getSid());
     }
 }

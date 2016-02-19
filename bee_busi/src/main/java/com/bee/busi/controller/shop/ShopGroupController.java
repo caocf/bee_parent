@@ -1,11 +1,13 @@
 package com.bee.busi.controller.shop;
 
 import com.bee.busi.model.shop.BusiShopGroup;
+import com.bee.busi.model.shop.BusiShopTechee;
 import com.bee.busi.params.shop.ShopGroupSaveResponse;
 import com.bee.commons.Codes;
 import com.bee.pojo.shop.ShopGroup;
 import com.bee.services.shop.busi.IShopGroupBusiService;
 import com.qsd.framework.domain.response.Response;
+import com.qsd.framework.domain.response.ResponseArray;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +78,8 @@ public class ShopGroupController {
     }
 
     /**
+     * 删除一个分组
+     * 删除分组需要判断该分组下的所有技师
      *
      * @return
      */
@@ -83,6 +87,7 @@ public class ShopGroupController {
     public Response deleteShopGroup(@PathVariable Long sid, @PathVariable Long shopGroupId) {
         Response res = new Response();
         try {
+            // 查询该分组下的所有技师
             shopGroupBusiService.deleteShopGroup(sid, shopGroupId);
             res.setCode(Codes.Success);
         } catch (DataRunException e) {

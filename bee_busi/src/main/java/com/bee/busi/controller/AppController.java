@@ -6,7 +6,9 @@ import com.bee.client.params.AppVerResponse;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.pojo.AppVer;
+import com.bee.pojo.shop.ShopUpdate;
 import com.bee.pojo.user.User;
+import com.bee.services.shop.IShopUpdateService;
 import com.bee.services.shop.busi.IShopAttendBusiService;
 import com.bee.services.shop.busi.IShopGroupBusiService;
 import com.bee.services.shop.busi.IShopTecheeBusiService;
@@ -29,15 +31,20 @@ public class AppController {
 
     @Autowired
     private IAppVerBusiService appVerBusiService;
-    @Autowired
-    private IShopGroupBusiService shopGroupBusiService;
+
+    // v1.1 删除
+//    @Autowired
+//    private IShopGroupBusiService shopGroupBusiService;
+//    @Autowired
+//    private IShopAttendBusiService shopAttendBusiService;
+
     @Autowired
     private IShopTecheeBusiService shopTecheeBusiService;
-    @Autowired
-    private IShopAttendBusiService shopAttendBusiService;
+
     @Autowired
     private IUserBusiService userBusiService;
-
+    @Autowired
+    private IShopUpdateService shopUpdateService;
 
     /**
      * 商户端初始化方法
@@ -72,12 +79,24 @@ public class AppController {
         }
         // 发送服务器当前时间
         res.setCurrentTime(System.currentTimeMillis());
+
+        // 商家标识
+        ShopUpdate shopUpdate = shopUpdateService.getShopUpdateByShopId(req.getSid());
+
+        // 是否需要同步技师数据
+        if (req.getUpdateTechee() != null
+                && shopUpdate.getUpdateTechee() > req.getUpdateTechee()) {
+            res.setTecheeUpdate(shopUpdate.getUpdateTechee());
+            res.setShopTechees(shopTecheeBusiService.getShopTecheeByShopId(req.getSid()));
+        }
+
+        // v1.1 删除
         // 同步商家群组
-        res.setShopGroups(shopGroupBusiService.getShopGroupByShopId(req.getSid()));
+//        res.setShopGroups(shopGroupBusiService.getShopGroupByShopId(req.getSid()));
         // 同步商家技师
-        res.setShopTechees(shopTecheeBusiService.getShopTecheeByShopId(req.getSid()));
+//        res.setShopTechees(shopTecheeBusiService.getShopTecheeByShopId(req.getSid()));
         // 同步商家出勤表
-        res.setShopAttends(shopAttendBusiService.getShopAttendByShopIdAfter(req.getSid(), res.getCurrentTime()));
+//        res.setShopAttends(shopAttendBusiService.getShopAttendByShopIdAfter(req.getSid(), res.getCurrentTime()));
         res.setCode(Codes.Success);
         return res;
     }

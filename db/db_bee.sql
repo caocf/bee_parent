@@ -474,6 +474,17 @@ CREATE TABLE `TB_USER_TICKET` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户优惠券表';
 
 -- ----------------------------
+--  Table structure for `TB_SHOP_UPDATE`
+-- ----------------------------
+DROP TABLE IF EXISTS `TB_SHOP_UPDATE`;
+CREATE TABLE `TB_SHOP_UPDATE` (
+  `SUID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `SHOP` bigint(20) NOT NULL DEFAULT 0,
+  `UPDATETECHEE` bigint(20) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`SUID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商家更新表';
+
+-- ----------------------------
 --  Table structure for `TB_USER_REG_STAT`
 -- ----------------------------
 DROP TABLE IF EXISTS `TB_USER_REG_STAT`;

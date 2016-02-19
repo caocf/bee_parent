@@ -76,7 +76,11 @@ public class AppController {
         }
 
         // iPhone是否已经过了审核
-        res.setIntoApp(false);
+        if (req.getPhoneType() == Consts.IOS && req.getVersion() == 2) {
+            res.setIntoApp(false);
+        } else {
+            res.setIntoApp(true);
+        }
 
         // 客服电话
         res.setServicePhone(Consts.Config.ServicePhone);

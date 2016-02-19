@@ -44,6 +44,7 @@ public class ShopTecheeDao extends JpaDaoSupport<ShopTechee, Long> {
                         item.setNumber(StringUtil.parseString(row[1], ""));
                         item.setShopGroup(NumberUtil.parseLong(row[2], 0));
                         item.setShop(NumberUtil.parseLong(row[3], 0));
+                        item.setGroupName(StringUtil.parseString(row[4], ""));
                         return item;
                     }
                 }, shopId);

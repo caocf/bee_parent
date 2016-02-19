@@ -8,9 +8,6 @@ import java.util.Calendar;
 public class Main {
 
     public static void main(String[] args) {
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, 5);
-        cal.set(Calendar.MINUTE, 0);
-        System.out.print(cal.getTimeInMillis());
+        System.out.print(System.currentTimeMillis());
     }
 }

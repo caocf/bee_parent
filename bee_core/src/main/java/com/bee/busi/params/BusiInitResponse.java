@@ -26,6 +26,10 @@ public class BusiInitResponse extends Response {
      */
     private List<BusiShopTechee> shopTechees;
     /**
+     * 商家技师更新标识
+     */
+    private Long techeeUpdate;
+    /**
      * 商家出勤表
      */
     private List<BusiShopAttend> shopAttends;
@@ -57,5 +61,11 @@ public class BusiInitResponse extends Response {
     }
     public void setCurrentTime(Long currentTime) {
         this.currentTime = currentTime;
+    }
+    public Long getTecheeUpdate() {
+        return techeeUpdate;
+    }
+    public void setTecheeUpdate(Long techeeUpdate) {
+        this.techeeUpdate = techeeUpdate;
     }
 }

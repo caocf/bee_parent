@@ -1,10 +1,12 @@
 package com.bee.busi.controller.shop;
 
+import com.bee.busi.model.shop.BusiShopTechee;
 import com.bee.busi.params.shop.ShopTecheeSaveResponse;
 import com.bee.commons.Codes;
 import com.bee.pojo.shop.ShopTechee;
 import com.bee.services.shop.busi.IShopTecheeBusiService;
 import com.qsd.framework.domain.response.Response;
+import com.qsd.framework.domain.response.ResponseArray;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,20 @@ public class ShopTecheeController {
 
     @Autowired
     private IShopTecheeBusiService shopTecheeBusiService;
+
+    /**
+     * 返回商家所有分组
+     *
+     * @param sid
+     * @return
+     */
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public ResponseArray<BusiShopTechee> getShopTecheeAll(@PathVariable Long sid) {
+        ResponseArray<BusiShopTechee> res = new ResponseArray<>();
+        res.setResult(shopTecheeBusiService.getShopTecheeByShopId(sid));
+        res.setCode(Codes.Success);
+        return res;
+    }
 
     /**
      * 返回所属ShopGroup的所有ShopTechee

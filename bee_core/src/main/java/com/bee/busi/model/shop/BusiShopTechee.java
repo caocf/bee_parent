@@ -14,6 +14,8 @@ public class BusiShopTechee implements java.io.Serializable {
     private String number;
     // 所属商家组
     private Long shopGroup;
+    // 组名
+    private String groupName;
     // 所属商家
     private Long shop;
 
@@ -40,5 +42,11 @@ public class BusiShopTechee implements java.io.Serializable {
     }
     public void setShop(Long shop) {
         this.shop = shop;
+    }
+    public String getGroupName() {
+        return groupName;
+    }
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 }

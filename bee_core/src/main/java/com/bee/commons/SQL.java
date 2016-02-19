@@ -285,8 +285,11 @@ public final class SQL {
              * 返回所属商家的所有ShopTechee
              */
             public static final String GetShopTecheeByShopId = "SELECT " +
-                    "A.STID, A.NUMBER, A.SHOPGROUP, A.SHOP " +
+                    "A.STID, A.NUMBER, A.SHOPGROUP, A.SHOP, B.GROUPNAME " +
                     "FROM TB_SHOP_TECHEE A " +
+                    "LEFT OUTER JOIN " +
+                    "TB_SHOP_GROUP B " +
+                    "ON A.SHOPGROUP = B.SGID " +
                     "WHERE A.SHOP = ?";
         }
 
@@ -322,6 +325,12 @@ public final class SQL {
 
             public static final String DeleteShopAttend = "DELETE FROM TB_SHOP_ATTEND " +
                     "WHERE SHOP = ? AND ATTENDTIME = ?";
+        }
+
+
+        public static final class Update {
+
+            public static final String GetShopUpdateByShopId = "From ShopUpdate A where A.shop.sid = ?";
         }
     }
 
