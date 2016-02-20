@@ -402,6 +402,11 @@ public final class SQL {
                 "WHERE A.OID = ?";
 
         /**
+         * 【A端】删除商家管理员对应的订单ID
+         */
+        public static final String DeleteShopUser = "UPDATE TB_ORDER A SET A.SHOPUSER = 0 WHERE A.SHOPUSER = ?";
+
+        /**
          * 统计
          */
         public static final class Stat {

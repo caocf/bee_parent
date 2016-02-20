@@ -147,7 +147,7 @@
                 multiple: true
             },
             formData: {
-                sid: $("shopId").val()
+                sid: $("#shopId").val()
             },
             // 拖拽区域
             dnd: '#dndArea',
@@ -160,7 +160,7 @@
             swf: BasePath + '/assets/js/plugin/webuploader/Uploader.swf',
 
             // 服务器地址
-            server: BasePath + '/shop/' + $("shopId").val() + '/image/add',
+            server: BasePath + '/shop/' + $("#shopId").val() + '/image/add',
 
             // 只允许选择图片文件。
             accept: {

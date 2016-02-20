@@ -308,4 +308,14 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
         entity.setEntity(sb);
         return queryResult(entity);
     }
+
+    /**
+     * <b>删除商家管理员</b>
+     * 删除商家管理员之后,需要对该商家管理员对应的订单的ShopUserId设置成0
+     *
+     * @param shopUserId
+     */
+    public void deleteShopUser(long shopUserId) throws DataRunException {
+        execute(SQL.Order.DeleteShopUser, shopUserId);
+    }
 }

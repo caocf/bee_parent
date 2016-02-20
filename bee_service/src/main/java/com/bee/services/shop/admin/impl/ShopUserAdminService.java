@@ -1,9 +1,12 @@
 package com.bee.services.shop.admin.impl;
 
+import com.bee.admin.params.order.QueryOrderParam;
 import com.bee.admin.params.shop.AdminShopUserSaveRequest;
 import com.bee.commons.Consts;
+import com.bee.dao.order.OrderDao;
 import com.bee.dao.shop.ShopUserDao;
 import com.bee.dao.user.UserDao;
+import com.bee.pojo.order.Order;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopUser;
 import com.bee.pojo.user.User;
@@ -40,6 +43,8 @@ public class ShopUserAdminService extends ShopUserService implements IShopUserAd
     private ShopUserDao shopUserDao;
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private OrderDao orderDao;
 
     /**
      * 查询所有商家用户
@@ -66,6 +71,9 @@ public class ShopUserAdminService extends ShopUserService implements IShopUserAd
         user.setType(Consts.User.Type.AppUser);
         userDao.update(user);
         shopUserDao.deleteById(shopUserId);
+        // 并且删除相关订单
+        // 设置订单ShopUser为0
+        orderDao.deleteShopUser(shopUser.getSuid());
     }
 
     /**

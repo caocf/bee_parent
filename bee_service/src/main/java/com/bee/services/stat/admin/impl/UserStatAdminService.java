@@ -27,6 +27,9 @@ public class UserStatAdminService extends UserStatService implements IUserStatAd
     @Autowired
     private UserDao userDao;
 
+
+
+
     /**
      * 统计过去number天用户登录数量
      *
