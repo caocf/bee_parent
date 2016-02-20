@@ -3,6 +3,7 @@ package com.bee.dao.ticket.admin;
 import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.dao.ticket.UserTicketDao;
+import com.bee.pojo.tickets.UserTicket;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.stereotype.Repository;
 
@@ -23,4 +24,13 @@ public class UserTicketAdminDao extends UserTicketDao {
         execute(SQL.User.Ticket.MateUserTicket, Consts.Ticket.Status.Normal, System.currentTimeMillis());
     }
 
+    /**
+     * 返回订单所使用的优惠券信息
+     *
+     * @param orderId 订单ID
+     * @return
+     */
+    public UserTicket getUserTicketByOrder(long orderId) {
+        return findFirstByParams(SQL.Ticket.GetUserTicketByOrder, orderId);
+    }
 }

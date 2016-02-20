@@ -8,7 +8,9 @@ import com.bee.pojo.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qsd.framework.commons.utils.DateUtil;
+import com.qsd.framework.commons.utils.StringUtil;
 import org.hibernate.LazyInitializationException;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -118,6 +120,21 @@ public class Order implements java.io.Serializable {
         return DateUtil.formatBbsTime(getCreateTime());
     }
 
+    @Transient
+    public String getOperateStr() {
+        return StringUtil.isNull(operate) ? "" : operate.replaceAll(";", "<br/>");
+    }
+
+    /**
+     * 是否是注册用户
+     *
+     * @return
+     */
+    @Transient
+    public Boolean getIsRegUser() {
+        return user != null && user.getUid() > 0;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OID", unique = true, nullable = false)
@@ -221,6 +238,8 @@ public class Order implements java.io.Serializable {
     public ShopUser getShopUser() {
         try {
             return shopUser;
+        } catch (LazyInitializationException le) {
+            return new ShopUser(0);
         } catch (Exception e) {
             return new ShopUser(0);
         }

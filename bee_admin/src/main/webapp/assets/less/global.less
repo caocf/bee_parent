@@ -171,9 +171,9 @@ a, button {
 	&.inner {
         padding-left: @navbar-left-width + @navbar-inner-width + 10px;
 	}
-  &.phone {
-      padding: 0;
-  }
+  	&.phone {
+      	padding: 0;
+  	}
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -266,6 +266,28 @@ form {
 		}
 	}
 }
+
+.table-view {
+	.row;
+	&.info-title {
+		background-color: lighten(@color-base, 15%);
+		color: @color-white;
+		height: @input-height-base;
+		line-height: @input-height-base;
+		padding-left: 8px;
+	}
+	.name {
+		height: @input-height-base;
+		line-height: @input-height-base;
+		text-align: right;
+	}
+	.text {
+		height: @input-height-base;
+		line-height: @input-height-base;
+		padding-left: 4px;
+	}
+}
+
 .form-horizontal {
 	.control-label {
 		padding-right: 15px;

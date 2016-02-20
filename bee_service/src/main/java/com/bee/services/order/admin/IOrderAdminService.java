@@ -24,5 +24,5 @@ public interface IOrderAdminService extends IOrderService {
      * @param orderId
      * @return
      */
-    Order getOrder(Long orderId);
+    Order getOrderDetailByOid(Long orderId);
 }

@@ -8312,6 +8312,8 @@ button.close {
 .panel-body:after,
 .modal-footer:before,
 .modal-footer:after,
+.table-view:before,
+.table-view:after,
 #UserChart:before,
 #UserChart:after,
 #OrderChart:before,
@@ -8338,6 +8340,7 @@ button.close {
 .pager:after,
 .panel-body:after,
 .modal-footer:after,
+.table-view:after,
 #UserChart:after,
 #OrderChart:after,
 #VisitChart:after,
@@ -8891,6 +8894,27 @@ form label.icheck {
 form label.icheck input[type='checkbox'] {
   width: 17px;
   height: 17px;
+}
+.table-view {
+  margin-left: 0;
+  margin-right: 0;
+}
+.table-view.info-title {
+  background-color: #7ab0cf;
+  color: #ffffff;
+  height: 34px;
+  line-height: 34px;
+  padding-left: 8px;
+}
+.table-view .name {
+  height: 34px;
+  line-height: 34px;
+  text-align: right;
+}
+.table-view .text {
+  height: 34px;
+  line-height: 34px;
+  padding-left: 4px;
 }
 .form-horizontal .control-label {
   padding-right: 15px;

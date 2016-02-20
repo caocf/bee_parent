@@ -1,6 +1,7 @@
 package com.bee.services.ticket.admin.impl;
 
 import com.bee.dao.ticket.admin.UserTicketAdminDao;
+import com.bee.pojo.tickets.UserTicket;
 import com.bee.services.ticket.admin.IUserTicketAdminService;
 import com.bee.services.ticket.impl.UserTicketService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -27,5 +28,16 @@ public class UserTicketAdminService extends UserTicketService implements IUserTi
     @Transactional
     public void mateUserTicket() throws DataRunException {
         userTicketAdminDao.mateUserTicket();
+    }
+
+    /**
+     * 返回订单所使用的优惠券信息
+     *
+     * @param orderId
+     * @return
+     */
+    @Override
+    public UserTicket getUserTicketByOrder(long orderId) {
+        return userTicketAdminDao.getUserTicketByOrder(orderId);
     }
 }

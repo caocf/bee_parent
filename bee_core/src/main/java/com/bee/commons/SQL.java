@@ -343,6 +343,13 @@ public final class SQL {
         public static final String GetOrder = "From Order A " +
                 "left join fetch A.user B where B.uid = ?";
 
+        // 返回订单详细信息
+        public static final String GetOrderDetailByOid = "From Order A " +
+                "left join fetch A.shop B " +
+                "left join fetch A.user C " +
+                "left join fetch B.area D " +
+                "left join fetch A.shopUser E " +
+                "where A.oid = ?";
 
         /**
          * 根据参数查询订单，主要用于订单统计
@@ -478,6 +485,8 @@ public final class SQL {
     public static final class Ticket {
 
         public static final String GetTicketWithShop = "From Ticket A LEFT JOIN FETCH A.shop B";
+
+        public static final String GetUserTicketByOrder = "From UserTicket A where A.order.oid = ?";
     }
 
     public static final class Party {

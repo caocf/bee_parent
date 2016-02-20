@@ -1,5 +1,6 @@
 package com.bee.services.ticket.admin;
 
+import com.bee.pojo.tickets.UserTicket;
 import com.bee.services.ticket.IUserTicketService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 
@@ -15,4 +16,10 @@ public interface IUserTicketAdminService extends IUserTicketService {
      */
     void mateUserTicket() throws DataRunException;
 
+    /**
+     * 返回订单所使用的优惠券信息
+     *
+     * @param orderId
+     */
+    UserTicket getUserTicketByOrder(long orderId);
 }

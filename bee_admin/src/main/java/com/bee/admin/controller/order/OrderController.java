@@ -5,6 +5,7 @@ import com.bee.commons.AuthName;
 import com.bee.commons.Consts;
 import com.bee.pojo.order.Order;
 import com.bee.services.order.admin.IOrderAdminService;
+import com.bee.services.ticket.admin.IUserTicketAdminService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
 import com.qsd.framework.spring.PagingResult;
@@ -34,6 +35,8 @@ public class OrderController {
 
     @Autowired
     private IOrderAdminService orderService;
+    @Autowired
+    private IUserTicketAdminService userTicketAdminService;
 
     /**
      * <b>监控订单</b>
@@ -65,7 +68,10 @@ public class OrderController {
     @RequestMapping(value = "/{orderId}", method = RequestMethod.GET)
     public ModelAndView detail(@PathVariable Long orderId) {
         ModelAndView mav = new ModelAndView(OrderDetail);
-
+        // 查询订单基本信息
+        mav.addObject("order", orderService.getOrderDetailByOid(orderId));
+        // 查询用户是否使用优惠券
+        mav.addObject("ticket", userTicketAdminService.getUserTicketByOrder(orderId));
         return mav;
     }
 

@@ -43,6 +43,16 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
     }
 
     /**
+     * 返回订单详细信息
+     *
+     * @param oid
+     * @return
+     */
+    public Order getOrderDetail(Long oid) {
+        return findFirstByParams(SQL.Order.GetOrderDetailByOid, oid);
+    }
+
+    /**
      * 根据参数获取订单列表
      *
      * @param request

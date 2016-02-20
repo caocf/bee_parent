@@ -29,13 +29,14 @@ public class OrderAdminService extends OrderService implements IOrderAdminServic
     }
 
     /**
+     * 查询订单详细
      *
      * @param orderId
      * @return
      */
     @Override
-    public Order getOrder(Long orderId) {
-        return null;
+    public Order getOrderDetailByOid(Long orderId) {
+        return orderDao.getOrderDetail(orderId);
     }
 
     /**

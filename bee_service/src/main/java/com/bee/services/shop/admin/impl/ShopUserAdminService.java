@@ -66,7 +66,6 @@ public class ShopUserAdminService extends ShopUserService implements IShopUserAd
         user.setType(Consts.User.Type.AppUser);
         userDao.update(user);
         shopUserDao.deleteById(shopUserId);
-
     }
 
     /**

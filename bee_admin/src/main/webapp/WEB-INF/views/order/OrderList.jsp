@@ -55,14 +55,16 @@
         </tr>
         <c:if test="${result.totalData < 1}">
           <tr>
-            <td colspan="9" class="text-center">
+            <td colspan="10" class="text-center">
               <i class="fa fa-exclamation-triangle fa-lg font-color-red"></i> 暂时没有新的订单
             </td>
           </tr>
         </c:if>
         <c:forEach items="${result.data}" var="order">
             <tr>
-                <td>${order.no}</td>
+                <td>
+                    <a href="${basePath}/order/${order.oid}">${order.no}</a>
+                </td>
                 <td>${order.shop.name}</td>
                 <td>
                     <c:if test="${order.shopUser.suid > 0}">
