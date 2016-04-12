@@ -48,16 +48,13 @@ public class FindBusiService extends FindService implements IFindBusiService {
         // 如果有附带图片
         // 目前仅支持商家相册中选择, 所以所有的ID, 均为ShopImage的ID
         if (!StringUtil.isNull(param.getImageIds())) {
-
             String[] idsStr = param.getImageIds().trim().split(",");
-
             if (idsStr.length < 1) {
                 return;
             }
             if (idsStr.length == 0 && "".equals(idsStr[0].trim())) {
                 return;
             }
-
             for (String id : idsStr) {
                 FindImage findImage = new FindImage();
                 findImage.setType(Consts.Find.Image.ShopImage);

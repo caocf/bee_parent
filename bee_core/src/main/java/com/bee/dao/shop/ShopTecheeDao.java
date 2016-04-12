@@ -5,6 +5,7 @@ import com.bee.busi.model.shop.BusiShopTechee;
 import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
+import com.bee.domain.modal.app.shop.ShopTecheeItem;
 import com.bee.pojo.shop.ShopTechee;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
@@ -27,9 +28,29 @@ public class ShopTecheeDao extends JpaDaoSupport<ShopTechee, Long> {
      * @param gid
      * @return
      */
-    public List<ShopTechee> getShopTecheeByGroupId(long gid) {
-        return findByParams(SQL.Shop.Techee.GetShopTecheeByGroupId, gid);
+    public List<ShopTecheeItem> getShopTecheeByGroupId(long gid) {
+        return findConverByParams(GetShopTecheeByGroupId, GetShopTecheeByGroupIdConver, gid);
     }
+    private static final String GetShopTecheeByGroupId = "SELECT " +
+            "A.STID, A.NUMBER, B.SGID, A.SHOP, B.GROUPNAME " +
+            "FROM TB_SHOP_TECHEE A " +
+            "LEFT OUTER JOIN " +
+            "TB_SHOP_GROUP B " +
+            "ON A.SHOPGROUP = B.SGID " +
+            "WHERE B.SGID = ?";
+    private static final QueryDataConver<ShopTecheeItem> GetShopTecheeByGroupIdConver =
+            new QueryDataConver<ShopTecheeItem>() {
+        @Override
+        public ShopTecheeItem converData(Object[] row) {
+            ShopTecheeItem item = new ShopTecheeItem();
+            item.setStId(NumberUtil.parseLong(row[0], 0));
+            item.setNumber(StringUtil.parseString(row[1], ""));
+            item.setShopGroup(NumberUtil.parseLong(row[2], 0));
+            item.setShop(NumberUtil.parseLong(row[3], 0));
+            item.setGroupName(StringUtil.parseString(row[4], ""));
+            return item;
+        }
+    };
 
     /**
      * 返回所属商家的所有ShopTechee
@@ -39,19 +60,21 @@ public class ShopTecheeDao extends JpaDaoSupport<ShopTechee, Long> {
      */
     public List<BusiShopTechee> getShopTecheeByShopId(long shopId) {
         return findConverByParams(SQL.Shop.Techee.GetShopTecheeByShopId,
-                new QueryDataConver<BusiShopTechee>() {
-                    @Override
-                    public BusiShopTechee converData(Object[] row) {
-                        BusiShopTechee item = new BusiShopTechee();
-                        item.setStId(NumberUtil.parseLong(row[0], 0));
-                        item.setNumber(StringUtil.parseString(row[1], ""));
-                        item.setShopGroup(NumberUtil.parseLong(row[2], 0));
-                        item.setShop(NumberUtil.parseLong(row[3], 0));
-                        item.setGroupName(StringUtil.parseString(row[4], ""));
-                        return item;
-                    }
-                }, shopId);
+                GetShopTecheeByShopIdConver, shopId);
     }
+    private static final QueryDataConver<BusiShopTechee> GetShopTecheeByShopIdConver =
+            new QueryDataConver<BusiShopTechee>() {
+        @Override
+        public BusiShopTechee converData(Object[] row) {
+            BusiShopTechee item = new BusiShopTechee();
+            item.setStId(NumberUtil.parseLong(row[0], 0));
+            item.setNumber(StringUtil.parseString(row[1], ""));
+            item.setShopGroup(NumberUtil.parseLong(row[2], 0));
+            item.setShop(NumberUtil.parseLong(row[3], 0));
+            item.setGroupName(StringUtil.parseString(row[4], ""));
+            return item;
+        }
+    };
 
     /**
      * 查询商家所有出勤技师

@@ -2,6 +2,7 @@ package com.bee.services.shop.busi;
 
 import com.bee.busi.model.shop.BusiShopTechee;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
+import com.bee.domain.modal.app.shop.ShopTecheeItem;
 import com.bee.pojo.shop.ShopTechee;
 import com.bee.services.shop.IShopTecheeService;
 import com.qsd.framework.hibernate.exception.DataRunException;
@@ -27,7 +28,7 @@ public interface IShopTecheeBusiService extends IShopTecheeService {
      * @param gid
      * @return
      */
-    List<ShopTechee> getShopTecheeByGroupId(long gid);
+    List<ShopTecheeItem> getShopTecheeByGroupId(long gid);
 
     /**
      * 保存一个技师

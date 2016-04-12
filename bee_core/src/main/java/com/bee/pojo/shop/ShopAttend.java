@@ -5,10 +5,14 @@ import javax.persistence.*;
 /**
  * 商家技师出勤表
  *
+ * v1.1.0 删除该表
+ * 不单独保存出勤数据, 出勤标识直接使用ShopTechee表的attend字段
+ *
  * Created by suntongwei on 15/10/8.
  */
 @Entity
 @Table(name = "TB_SHOP_ATTEND")
+@Deprecated
 public class ShopAttend implements java.io.Serializable {
 
     // serialVersionUID

@@ -3,6 +3,7 @@ package com.bee.services.shop.busi.impl;
 import com.bee.busi.model.shop.BusiShopTechee;
 import com.bee.commons.Consts;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
+import com.bee.domain.modal.app.shop.ShopTecheeItem;
 import com.bee.pojo.shop.ShopTechee;
 import com.bee.services.shop.busi.IShopTecheeBusiService;
 import com.bee.services.shop.impl.ShopTecheeService;
@@ -37,7 +38,7 @@ public class ShopTecheeBusiService extends ShopTecheeService implements IShopTec
      * @return
      */
     @Override
-    public List<ShopTechee> getShopTecheeByGroupId(long gid) {
+    public List<ShopTecheeItem> getShopTecheeByGroupId(long gid) {
         return shopTecheeDao.getShopTecheeByGroupId(gid);
     }
 

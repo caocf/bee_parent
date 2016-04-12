@@ -4,6 +4,7 @@ import com.bee.busi.model.shop.BusiShopTechee;
 import com.bee.busi.params.shop.ShopTecheeSaveResponse;
 import com.bee.commons.Codes;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
+import com.bee.domain.modal.app.shop.ShopTecheeItem;
 import com.bee.pojo.shop.ShopTechee;
 import com.bee.services.shop.busi.IShopTecheeBusiService;
 import com.qsd.framework.domain.response.Response;
@@ -35,9 +36,24 @@ public class ShopGroupTecheeController {
      * @return
      */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @Deprecated
     public ResponseArray<BusiShopTechee> getShopTecheeAll(@PathVariable Long sid) {
         ResponseArray<BusiShopTechee> res = new ResponseArray<>();
         res.setResult(shopTecheeBusiService.getShopTecheeByShopId(sid));
+        res.setCode(Codes.Success);
+        return res;
+    }
+
+    /**
+     * 根据组ID返回商家技师
+     *
+     * @param gid
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseArray<ShopTecheeItem> getShopTecheeByGroupId(@PathVariable Long gid) {
+        ResponseArray<ShopTecheeItem> res = new ResponseArray<>();
+        res.setResult(shopTecheeBusiService.getShopTecheeByGroupId(gid));
         res.setCode(Codes.Success);
         return res;
     }
@@ -48,10 +64,10 @@ public class ShopGroupTecheeController {
      * @param gid
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET)
-    public List<ShopTechee> getShopTecheeByGroupId(@PathVariable Long gid) {
-        return shopTecheeBusiService.getShopTecheeByGroupId(gid);
-    }
+//    @RequestMapping(method = RequestMethod.GET)
+//    public List<ShopTechee> getShopTecheeByGroupId(@PathVariable Long gid) {
+//        return shopTecheeBusiService.getShopTecheeByGroupId(gid);
+//    }
 
     /**
      * 保存一个技师
