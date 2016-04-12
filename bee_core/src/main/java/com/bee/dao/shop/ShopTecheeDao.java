@@ -10,6 +10,7 @@ import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -79,4 +80,33 @@ public class ShopTecheeDao extends JpaDaoSupport<ShopTechee, Long> {
             "TB_SHOP_GROUP B " +
             "ON A.SHOPGROUP = B.SGID " +
             "WHERE A.SHOP = ?";
+
+
+    /**
+     * 更新商家技师出勤表记录
+     *
+     * @param ids 更新记录ID集合
+     */
+    public void updateShopTecheeAttend(String ids) throws DataRunException {
+        execute(UpdateShopTecheeAttend.replace("{inParams}", ids), Consts.True);
+    }
+    public static final String UpdateShopTecheeAttend = "UPDATE " +
+            "TB_SHOP_TECHEE A " +
+            "SET A.ATTEND = ? " +
+            "WHERE " +
+            "A.STID IN ({inParams})";
+
+    /**
+     * 根据商家ID,设置出勤表全为不出勤
+     *
+     * @param shopId
+     */
+    public void updateTecheeAttendToFalse(Long shopId) throws DataRunException {
+        execute(UpdateShopTecheeAttendToFalse, Consts.False, shopId);
+    }
+    public static final String UpdateShopTecheeAttendToFalse = "UPDATE " +
+            "TB_SHOP_TECHEE A " +
+            "SET A.ATTEND = ? " +
+            "WHERE " +
+            "A.SHOP = ?";
 }

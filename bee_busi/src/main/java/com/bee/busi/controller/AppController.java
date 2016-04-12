@@ -81,14 +81,15 @@ public class AppController {
         res.setCurrentTime(System.currentTimeMillis());
 
         // 商家标识
-        ShopUpdate shopUpdate = shopUpdateService.getShopUpdateByShopId(req.getSid());
+        // ShopUpdate shopUpdate = shopUpdateService.getShopUpdateByShopId(req.getSid());
 
         // 是否需要同步技师数据
-        if (req.getUpdateTechee() != null
-                && shopUpdate.getUpdateTechee() > req.getUpdateTechee()) {
-            res.setTecheeUpdate(shopUpdate.getUpdateTechee());
-            res.setShopTechees(shopTecheeBusiService.getShopTecheeByShopId(req.getSid()));
-        }
+        // v1.1.0删除
+//        if (req.getUpdateTechee() != null
+//                && shopUpdate.getUpdateTechee() > req.getUpdateTechee()) {
+//            res.setTecheeUpdate(shopUpdate.getUpdateTechee());
+//            res.setShopTechees(shopTecheeBusiService.getShopTecheeByShopId(req.getSid()));
+//        }
 
         // v1.1 删除
         // 同步商家群组

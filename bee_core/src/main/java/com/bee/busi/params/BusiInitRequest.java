@@ -15,10 +15,6 @@ public class BusiInitRequest extends RequestApp {
     private String phone;
     private String password;
 
-    // v1.1 增加
-    // 技师数据同步时间标识
-    private Long updateTechee;
-
     public Long getSid() {
         return sid;
     }
@@ -42,11 +38,5 @@ public class BusiInitRequest extends RequestApp {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-    public Long getUpdateTechee() {
-        return updateTechee;
-    }
-    public void setUpdateTechee(Long updateTechee) {
-        this.updateTechee = updateTechee;
     }
 }

@@ -60,4 +60,12 @@ public interface IShopTecheeBusiService extends IShopTecheeService {
      * @return
      */
     List<ShopTecheeAttend> queryShopTecheeAttend(Long sid);
+
+    /**
+     * 保存商家技师出勤表
+     *
+     * @param sid
+     * @param attends
+     */
+    void saveTecheeAttend(Long sid, String attends) throws DataRunException;
 }

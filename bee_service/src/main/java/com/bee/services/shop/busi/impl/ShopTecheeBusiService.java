@@ -1,10 +1,13 @@
 package com.bee.services.shop.busi.impl;
 
 import com.bee.busi.model.shop.BusiShopTechee;
+import com.bee.commons.Consts;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
 import com.bee.pojo.shop.ShopTechee;
 import com.bee.services.shop.busi.IShopTecheeBusiService;
 import com.bee.services.shop.impl.ShopTecheeService;
+import com.qsd.framework.commons.utils.NumberUtil;
+import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.stereotype.Service;
 
@@ -88,5 +91,24 @@ public class ShopTecheeBusiService extends ShopTecheeService implements IShopTec
     @Override
     public List<ShopTecheeAttend> queryShopTecheeAttend(Long sid) {
         return shopTecheeDao.queryShopTecheeAttend(sid);
+    }
+
+    /**
+     * 保存商家技师出勤表
+     *
+     * @param sid
+     * @param attends
+     */
+    @Override
+    @Transactional
+    public void saveTecheeAttend(Long sid, String attends) throws DataRunException {
+        try {
+            // 设置所有技师都不出勤
+            shopTecheeDao.updateTecheeAttendToFalse(sid);
+            // 更新出勤技师
+            shopTecheeDao.updateShopTecheeAttend(attends);
+        } catch (DataRunException e) {
+            throw e;
+        }
     }
 }
