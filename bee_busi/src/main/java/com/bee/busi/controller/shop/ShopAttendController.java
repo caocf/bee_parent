@@ -4,6 +4,7 @@ import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.params.shop.ShopAttendSaveRequest;
 import com.bee.busi.params.shop.ShopAttendSaveResponse;
 import com.bee.commons.Codes;
+import com.bee.domain.modal.app.shop.ShopTecheeAttend;
 import com.bee.services.shop.busi.IShopAttendBusiService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +53,10 @@ public class ShopAttendController {
      * @param attendTime 出勤时间
      * @return
      */
+    @Deprecated
     @RequestMapping(method = RequestMethod.GET)
     public List<BusiShopAttend> getShopAttendByShopId(@PathVariable Long sid, Long attendTime) {
         return shopAttendBusiService.getShopAttendByShopId(sid, attendTime);
     }
+
 }

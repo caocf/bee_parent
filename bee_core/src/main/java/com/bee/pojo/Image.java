@@ -8,9 +8,6 @@ import javax.persistence.*;
 /**
  * 图片实体
  *
- * 2015.9.17
- * 放弃使用，主要原因因为可能查询图片数据操作过多，会引起查询变慢，外键太多
- *
  * Created by suntongwei on 15/5/5.
  */
 @Entity

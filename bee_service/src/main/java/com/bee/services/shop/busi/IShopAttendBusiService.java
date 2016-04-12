@@ -2,6 +2,7 @@ package com.bee.services.shop.busi;
 
 import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.params.shop.ShopAttendSaveRequest;
+import com.bee.domain.modal.app.shop.ShopTecheeAttend;
 import com.bee.services.shop.IShopAttendService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 
@@ -44,4 +45,6 @@ public interface IShopAttendBusiService extends IShopAttendService {
      * @return
      */
     List<BusiShopAttend> getShopAttendByShopId(long sid, long attendTime);
+
+
 }

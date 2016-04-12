@@ -291,6 +291,7 @@ public final class SQL {
                     "TB_SHOP_GROUP B " +
                     "ON A.SHOPGROUP = B.SGID " +
                     "WHERE A.SHOP = ?";
+
         }
 
         /**

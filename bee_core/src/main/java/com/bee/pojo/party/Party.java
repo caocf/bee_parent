@@ -15,7 +15,7 @@ public class Party implements java.io.Serializable {
 
     // serialVersionUID
     private static final long serialVersionUID = 3170281611477210959L;
-
+    
     // 主键
     private Long pid;
     private Integer type;

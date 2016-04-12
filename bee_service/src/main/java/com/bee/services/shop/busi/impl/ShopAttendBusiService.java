@@ -3,6 +3,7 @@ package com.bee.services.shop.busi.impl;
 import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.params.shop.ShopAttendSaveRequest;
 import com.bee.dao.shop.busi.ShopAttendBusiDao;
+import com.bee.domain.modal.app.shop.ShopTecheeAttend;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.shop.ShopAttend;
 import com.bee.pojo.shop.ShopTechee;
@@ -20,6 +21,7 @@ import java.util.List;
  * Created by suntongwei on 15/11/15.
  */
 @Service
+@Deprecated
 public class ShopAttendBusiService extends ShopAttendService implements IShopAttendBusiService {
 
     @Autowired
@@ -79,6 +81,7 @@ public class ShopAttendBusiService extends ShopAttendService implements IShopAtt
      * @return
      */
     @Override
+    @Deprecated
     public List<BusiShopAttend> getShopAttendByShopId(long sid, long attendTime) {
         return shopAttendBusiDao.getShopAttendByShopId(sid, getAttendTime(attendTime));
     }

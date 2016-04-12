@@ -1,8 +1,6 @@
 package com.bee.image.impl;
 
-import com.bee.image.ImageParser;
 import com.bee.image.ShopImageParser;
-import com.bee.pojo.Image;
 import com.qsd.framework.commons.utils.ImageUtils;
 import org.springframework.web.multipart.MultipartFile;
 

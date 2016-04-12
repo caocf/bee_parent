@@ -2,7 +2,9 @@ package com.bee.dao.shop;
 
 
 import com.bee.busi.model.shop.BusiShopTechee;
+import com.bee.commons.Consts;
 import com.bee.commons.SQL;
+import com.bee.domain.modal.app.shop.ShopTecheeAttend;
 import com.bee.pojo.shop.ShopTechee;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
@@ -49,4 +51,32 @@ public class ShopTecheeDao extends JpaDaoSupport<ShopTechee, Long> {
                     }
                 }, shopId);
     }
+
+    /**
+     * 查询商家所有出勤技师
+     *
+     * @param sid 商家ID
+     * @return
+     */
+    public List<ShopTecheeAttend> queryShopTecheeAttend(Long sid) {
+        return findConverByParams(QueryShopTecheeAttend, new QueryDataConver<ShopTecheeAttend>() {
+            @Override
+            public ShopTecheeAttend converData(Object[] row) {
+                ShopTecheeAttend item = new ShopTecheeAttend();
+                item.setStId(NumberUtil.parseLong(row[0], 0));
+                item.setNumber(StringUtil.parseString(row[1], ""));
+                item.setGroupId(NumberUtil.parseLong(row[2], 0));
+                item.setAttend(NumberUtil.parseInteger(row[3], Consts.False));
+                item.setGroupName(StringUtil.parseString(row[4], ""));
+                return item;
+            }
+        }, sid);
+    }
+    public static final String QueryShopTecheeAttend = "SELECT " +
+            "A.STID, A.NUMBER, A.SHOPGROUP, A.ATTEND, B.GROUPNAME " +
+            "FROM TB_SHOP_TECHEE A " +
+            "LEFT OUTER JOIN " +
+            "TB_SHOP_GROUP B " +
+            "ON A.SHOPGROUP = B.SGID " +
+            "WHERE A.SHOP = ?";
 }

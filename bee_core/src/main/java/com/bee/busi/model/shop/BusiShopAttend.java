@@ -19,31 +19,24 @@ public class BusiShopAttend implements java.io.Serializable {
     public Long getSaId() {
         return saId;
     }
-
     public void setSaId(Long saId) {
         this.saId = saId;
     }
-
     public Long getShopTechee() {
         return shopTechee;
     }
-
     public void setShopTechee(Long shopTechee) {
         this.shopTechee = shopTechee;
     }
-
     public Long getAttendTime() {
         return attendTime;
     }
-
     public void setAttendTime(Long attendTime) {
         this.attendTime = attendTime;
     }
-
     public Long getShop() {
         return shop;
     }
-
     public void setShop(Long shop) {
         this.shop = shop;
     }

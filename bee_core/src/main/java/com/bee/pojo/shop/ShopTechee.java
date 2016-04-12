@@ -1,7 +1,5 @@
 package com.bee.pojo.shop;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
 /**
@@ -22,6 +20,9 @@ public class ShopTechee implements java.io.Serializable {
     private ShopGroup shopGroup;
     // 所属商家
     private Shop shop;
+
+    // 是否出勤
+    private Integer attend;
 
     public ShopTechee() {}
     public ShopTechee(Long id) {
@@ -59,5 +60,12 @@ public class ShopTechee implements java.io.Serializable {
     }
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+    @Column(name = "ATTEND")
+    public Integer getAttend() {
+        return attend;
+    }
+    public void setAttend(Integer attend) {
+        this.attend = attend;
     }
 }

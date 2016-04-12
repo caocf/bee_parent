@@ -1,6 +1,7 @@
 package com.bee.services.shop.busi.impl;
 
 import com.bee.busi.model.shop.BusiShopTechee;
+import com.bee.domain.modal.app.shop.ShopTecheeAttend;
 import com.bee.pojo.shop.ShopTechee;
 import com.bee.services.shop.busi.IShopTecheeBusiService;
 import com.bee.services.shop.impl.ShopTecheeService;
@@ -76,5 +77,16 @@ public class ShopTecheeBusiService extends ShopTecheeService implements IShopTec
         ShopTechee shopTechee = shopTecheeDao.findById(id);
         shopTecheeDao.delete(shopTechee);
         changeShopTechee(shopTechee.getShop().getSid());
+    }
+
+    /**
+     * 查询商家技师出勤表
+     *
+     * @param sid 商家ID
+     * @return
+     */
+    @Override
+    public List<ShopTecheeAttend> queryShopTecheeAttend(Long sid) {
+        return shopTecheeDao.queryShopTecheeAttend(sid);
     }
 }
