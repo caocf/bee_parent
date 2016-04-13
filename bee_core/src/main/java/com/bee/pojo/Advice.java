@@ -1,6 +1,7 @@
 package com.bee.pojo;
 
 import com.bee.pojo.user.User;
+import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
 
@@ -17,6 +18,11 @@ public class Advice implements java.io.Serializable {
     private User user;
     private String phone;
     private String device;
+
+    @Transient
+    public String getCreateTimeStr() {
+        return DateUtil.formatDateTime(createTime);
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

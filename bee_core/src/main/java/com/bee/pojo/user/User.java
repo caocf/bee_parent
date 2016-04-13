@@ -49,7 +49,7 @@ public class User implements java.io.Serializable, ISecurityUser {
     // 用户现金
     private Double cash;
     // 用户关注的商家
-    private Set<ShopFocus> shopFocus = new HashSet<ShopFocus>(0);
+    private Set<ShopFocus> shopFocus = new HashSet<>(0);
     // 用户权限
     private Set<UserAuth> userAuths = new HashSet<>(0);
 

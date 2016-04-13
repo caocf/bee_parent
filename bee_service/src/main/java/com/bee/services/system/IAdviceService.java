@@ -7,11 +7,6 @@ import com.bee.pojo.Advice;
  */
 public interface IAdviceService {
 
-    /**
-     * 提交建议
-     *
-     * @param advice
-     */
-    void addAdvice(Advice advice);
+
 
 }

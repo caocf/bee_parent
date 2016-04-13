@@ -1,5 +1,6 @@
 package com.bee.services.system.app;
 
+import com.bee.pojo.Advice;
 import com.bee.services.system.IAdviceService;
 
 /**
@@ -8,6 +9,11 @@ import com.bee.services.system.IAdviceService;
 public interface IAdviceAppService extends IAdviceService {
 
 
-
+    /**
+     * 提交建议
+     *
+     * @param advice
+     */
+    void addAdvice(Advice advice);
 
 }

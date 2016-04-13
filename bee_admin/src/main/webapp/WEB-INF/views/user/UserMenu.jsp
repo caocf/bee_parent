@@ -25,4 +25,8 @@
 		<i class="fa fa-user-secret"></i>系统管理员
 	</a>
     </sec:security>
+    <div class="line"></div>
+    <a id="navbar-inner-user-advice" href="${basePath}/advice">
+		<i class="fa fa-exclamation-triangle"></i>用户建议
+	</a>
 </div>
