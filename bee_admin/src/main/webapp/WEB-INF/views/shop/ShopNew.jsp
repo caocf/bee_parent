@@ -46,11 +46,8 @@
 					<div class="col-xs-4">
 						<input type="text" name="shop.name" placeholder="商家名称" class="form-control" value="${shop.name}" />
 					</div>
-					<div class="col-xs-1 assist-label">
-						<input type="checkbox" id="recommend" name="shop.recommend" value="1" <c:if test="${shop.recommend == 1}">checked="checked"</c:if> /><label for="recommend">是否推荐</label>
-					</div>
 					<label class="col-xs-1 control-label">商家类型</label>
-					<div class="col-xs-4">
+					<div class="col-xs-5">
 						<select name="shop.type">
               <c:forEach items="<%= Consts.Shop.Type.Select() %>" var="type">
               <option value="${type.key}" <c:if test="${shop.type == type.key}">selected="selected"</c:if>>${type.value}</option>
@@ -59,8 +56,19 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-xs-1 control-label">接单开始</label>
+					<label class="col-xs-1 control-label">商家配置</label>
 					<div class="col-xs-4">
+						<label class="icheck">
+							<input type="checkbox" name="shop.isBeeShop" value="1" <c:if test="${shop.isBeeShop == 1}">checked="checked"</c:if> />
+							是否直营
+						</label>
+						<label class="icheck">
+							<input type="checkbox" name="shop.recommend" value="1" <c:if test="${shop.recommend == 1}">checked="checked"</c:if> />
+							是否推荐
+						</label>
+					</div>
+					<label class="col-xs-1 control-label">接单时间</label>
+					<div class="col-xs-5">
 						<select name="startServiceTimeHour">
 							<option value="12" <c:if test="${shop.startServiceTimeHour == 12}">selected="selected"</c:if>>12点</option>
 							<option value="13" <c:if test="${shop.startServiceTimeHour == 13}">selected="selected"</c:if>>13点</option>
@@ -93,9 +101,7 @@
 							<option value="30" <c:if test="${shop.startServiceTimeMinute == 30}">selected="selected"</c:if>>30分</option>
 							<option value="45" <c:if test="${shop.startServiceTimeMinute == 45}">selected="selected"</c:if>>45分</option>
 						</select>
-					</div>
-					<label class="col-xs-2 control-label">接单结束</label>
-					<div class="col-xs-4">
+						到
 						<select name="endServiceTimeHour">
 							<option value="0" <c:if test="${shop.endServiceTimeHour == 0}">selected="selected"</c:if>>0点</option>
 							<option value="1" <c:if test="${shop.endServiceTimeHour == 1}">selected="selected"</c:if>>1点</option>
@@ -150,8 +156,8 @@
 							发票
 						</label>
                     </div>
-					<label class="col-xs-2 control-label">排序</label>
-					<div class="col-xs-4">
+					<label class="col-xs-1 control-label">排序</label>
+					<div class="col-xs-5">
 						<input type="text" name="shop.sort" placeholder="100" class="form-control" value="${shop.sort}" />
 						<p class="help-block">数字越大排名越靠前，默认100</p>
 					</div>

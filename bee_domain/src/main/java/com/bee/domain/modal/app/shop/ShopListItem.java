@@ -32,6 +32,10 @@ public class ShopListItem implements java.io.Serializable {
      */
     @Deprecated
     private Integer isBack;
+    /**
+     * v1.1.1增加,是否直营店
+     */
+    private Integer isBeeShop;
 
 
     public Long getShopId() {
@@ -89,5 +93,11 @@ public class ShopListItem implements java.io.Serializable {
     @Deprecated
     public void setIsBack(Integer isBack) {
         this.isBack = isBack;
+    }
+    public Integer getIsBeeShop() {
+        return isBeeShop;
+    }
+    public void setIsBeeShop(Integer isBeeShop) {
+        this.isBeeShop = isBeeShop;
     }
 }

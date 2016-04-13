@@ -23,6 +23,10 @@ import java.util.Set;
  * 删除字段
  * isBack, phone, sortTime, remark, linkName
  *
+ * v1.1.0
+ * 增加字段
+ * isBeeShop
+ *
  * Created by suntongwei on 15/4/16.
  */
 @Entity
@@ -81,6 +85,12 @@ public class Shop implements java.io.Serializable {
     private Integer isFood;
     // 是否提供发票
     private Integer isInvoice;
+
+    /**
+     * v1.1.1 增加直营店
+     */
+    // 直营店
+    private Integer isBeeShop;
 
     public Shop() {}
     public Shop(Long sid) {
@@ -299,5 +309,12 @@ public class Shop implements java.io.Serializable {
     }
     public void setIsPosCard(Integer isPosCard) {
         this.isPosCard = isPosCard;
+    }
+    @Column(name = "ISBEESHOP")
+    public Integer getIsBeeShop() {
+        return isBeeShop;
+    }
+    public void setIsBeeShop(Integer isBeeShop) {
+        this.isBeeShop = isBeeShop;
     }
 }

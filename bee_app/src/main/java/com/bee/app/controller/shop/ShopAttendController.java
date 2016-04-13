@@ -15,10 +15,12 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * v1.1.1删除该接口
  * Created by suntongwei on 15/11/28.
  */
 @RestController
 @RequestMapping("/v1/shop/{shopId}/attend")
+@Deprecated
 public class ShopAttendController {
 
     @Autowired
@@ -31,6 +33,7 @@ public class ShopAttendController {
      * @param shopId
      * @return
      */
+    @Deprecated
     @RequestMapping(method = RequestMethod.GET)
     public ResponseMap<String, List<ShopAttend>> getShopAttend(@PathVariable Long shopId) {
         ResponseMap<String, List<ShopAttend>> res = new ResponseMap<>();

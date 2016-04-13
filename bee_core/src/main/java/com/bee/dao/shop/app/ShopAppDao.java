@@ -96,7 +96,7 @@ public class ShopAppDao extends ShopDao {
                 item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
                 item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
                 item.setType(NumberUtil.parseInteger(obj[7], Consts.Shop.Type.Club));
-                // item.setIsBack(NumberUtil.parseInteger(obj[8], Consts.False));
+                item.setIsBeeShop(NumberUtil.parseInteger(obj[8], Consts.False));
                 return item;
             }
         });

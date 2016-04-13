@@ -21,7 +21,11 @@
 				}
 				var $select = $(document.createElement("select"));
 				if(settings.hasNull) {
-                    $select.append($(document.createElement("option")));
+					var $optionNull = $(document.createElement("option"));
+					if (settings.areaId < 0) {
+						$optionNull.attr("selected", "selected");
+					}
+                    $select.append($optionNull);
                 }
 				$select.change(function(event) {
 					settings.fn($(this).val());

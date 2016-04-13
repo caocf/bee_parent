@@ -115,7 +115,7 @@ public final class SQL {
                 "A.SID,A.NAME,A.ADDR,A.PRICE,B.NAME AS AREA, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as FOCUSNUM," +
                 "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                " A.TYPE " +
+                " A.TYPE, A.ISBEESHOP " +
                 "from TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.AREA = B.AID  " +

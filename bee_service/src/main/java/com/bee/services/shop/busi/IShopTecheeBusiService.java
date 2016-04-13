@@ -55,14 +55,6 @@ public interface IShopTecheeBusiService extends IShopTecheeService {
     void deleteShopTechee(long id) throws DataRunException;
 
     /**
-     * 查询商家技师出勤表
-     *
-     * @param sid 商家ID
-     * @return
-     */
-    List<ShopTecheeAttend> queryShopTecheeAttend(Long sid);
-
-    /**
      * 保存商家技师出勤表
      *
      * @param sid

@@ -84,17 +84,6 @@ public class ShopTecheeBusiService extends ShopTecheeService implements IShopTec
     }
 
     /**
-     * 查询商家技师出勤表
-     *
-     * @param sid 商家ID
-     * @return
-     */
-    @Override
-    public List<ShopTecheeAttend> queryShopTecheeAttend(Long sid) {
-        return shopTecheeDao.queryShopTecheeAttend(sid);
-    }
-
-    /**
      * 保存商家技师出勤表
      *
      * @param sid
