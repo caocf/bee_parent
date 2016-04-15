@@ -6,6 +6,7 @@ import com.bee.commons.OrderStatusMachine;
 import com.bee.dao.order.app.OrderAppDao;
 import com.bee.dao.shop.ShopDao;
 import com.bee.dao.shop.ShopUserDao;
+import com.bee.dao.shop.app.ShopAppDao;
 import com.bee.dao.ticket.UserTicketDao;
 import com.bee.domain.modal.app.order.OrderItem;
 import com.bee.domain.modal.app.order.OrderListItem;
@@ -48,7 +49,7 @@ public class OrderAppService extends OrderService implements IOrderAppService {
     @Autowired
     private OrderAppDao orderAppDao;
     @Autowired
-    private ShopDao shopDao;
+    private ShopAppDao shopDao;
     @Autowired
     private ShopUserDao shopUserDao;
 

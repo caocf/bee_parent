@@ -42,6 +42,9 @@
 							<value>application/json;charset=UTF-8</value>
 						</list>
 					</property>
+					<property name="objectMapper">
+						<bean class="com.qsd.framework.hibernate.util.HibernateAwareObjectMapper" />
+					</property>
 	            </bean>  
 	        </list>  
 	    </property>  

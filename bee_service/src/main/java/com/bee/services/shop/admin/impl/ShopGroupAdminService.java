@@ -22,7 +22,6 @@ public class ShopGroupAdminService extends ShopGroupService implements IShopGrou
     private ShopDao shopDao;
 
     /**
-     *
      * @param sid
      * @return
      */
@@ -80,31 +79,4 @@ public class ShopGroupAdminService extends ShopGroupService implements IShopGrou
         }
     }
 
-    /**
-     * 删除一个分组
-     *
-     * @param shopGroupId
-     * @throws DataRunException
-     */
-    @Override
-    @Transactional
-    public void deleteShopGroup(long shopId, long shopGroupId) throws DataRunException {
-        try {
-            shopGroupDao.deleteById(shopGroupId);
-            updateMinShopPrice(shopId);
-        } catch (DataRunException e) {
-            throw e;
-        }
-    }
-
-    /**
-     *
-     *
-     * @param shopId
-     */
-    private void updateMinShopPrice(long shopId) {
-        Shop shop = shopDao.getShopById(shopId);
-        shop.setPrice(shopGroupDao.getShopGroupMinPrice(shopId));
-        shopDao.update(shop);
-    }
 }

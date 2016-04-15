@@ -132,4 +132,17 @@ public class ShopTecheeDao extends JpaDaoSupport<ShopTechee, Long> {
             "SET A.ATTEND = ? " +
             "WHERE " +
             "A.SHOP = ?";
+
+
+    /**
+     * 根据组删除技师
+     *
+     * @param shopGroupId
+     * @throws DataRunException
+     */
+    public void deleteShopGroupTechee(long shopGroupId) throws DataRunException {
+        List<ShopTechee> items = findByParams(DeleteShopGroupTechee, shopGroupId);
+        deleteAll(items);
+    }
+    public static final String DeleteShopGroupTechee = "From ShopTechee A where A.shopGroup.sgId = ?";
 }

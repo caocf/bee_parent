@@ -37,11 +37,4 @@ public interface IShopGroupBusiService extends IShopGroupService {
      */
     void updateShopGroup(ShopGroup shopGroup) throws DataRunException;
 
-    /**
-     * 删除一个分组
-     *
-     * @param shopGroupId
-     * @throws DataRunException
-     */
-    void deleteShopGroup(long shopId, long shopGroupId) throws DataRunException;
 }
