@@ -20,7 +20,7 @@ public class SystemConfigService implements ISystemConfigService {
 
     @Override
     public List<SystemConfig> getConfigAll() {
-        return systemConfigDao.findAll();
+        return systemConfigDao.getSystemConfigAll();
     }
 
     @Override

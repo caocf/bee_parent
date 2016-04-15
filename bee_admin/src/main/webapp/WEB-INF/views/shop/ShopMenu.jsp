@@ -19,6 +19,9 @@
 	-->
   </sec:security>
 	<div class="line"></div>
+	<a id="navbar-inner-shop-applyer" href="#">
+		
+	</a>
 	<a id="navbar-inner-shop-image-view" href="${basePath}/shop/0/image/view">
 		<i class="fa fa-picture-o"></i>商家图片
 	</a>

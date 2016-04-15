@@ -91,11 +91,11 @@
               </a>
                 </sec:security>
               <a href="${basePath}/shop/${shop.sid}/comment" class="icon">
-                <i class="fa fa-commenting-o fa-lg font-color-yellow"></i>
+                <i class="fa fa-commenting-o fa-lg font-color-green"></i>
               </a>
                 <sec:security auth="<%=AuthName.ShopImage%>">
               <a href="${basePath}/shop/${shop.sid}/image" class="icon">
-                <i class="fa fa-picture-o fa-lg font-color-green"></i>
+                <i class="fa fa-picture-o fa-lg font-color-yellow"></i>
               </a>
                 </sec:security>
                 <sec:security auth="<%=AuthName.ShopEdit %>">

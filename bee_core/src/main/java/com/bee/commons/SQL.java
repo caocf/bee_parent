@@ -8,7 +8,13 @@ public final class SQL {
 
     public static final class SystemConfig {
 
-        public static final String GetSystemConfig = "From SystemConfig A where A.type = ?";
+        public static final String GetSystemConfigAll = "SELECT " +
+                "A.SCID, A.TYPE, A.FLAG " +
+                "From TB_SYSTEM_CONFIG A";
+
+        public static final String GetSystemConfig = "SELECT " +
+                "A.SCID, A.TYPE, A.FLAG " +
+                "From TB_SYSTEM_CONFIG A where A.type = ?";
 
     }
 

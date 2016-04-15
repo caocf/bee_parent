@@ -23,7 +23,7 @@ public class Test {
 
         System.out.println("Calendar: " + cal.getTimeInMillis());
 
-        System.out.println(DateFormat.getInstance().format(new Date(1454515200000l)));
+        System.out.println(DateFormat.getInstance().format(new Date(1460687871771l)));
 
         System.out.println(System.currentTimeMillis());
     }

@@ -1,6 +1,7 @@
 package com.bee.app.controller.shop;
 
 import com.bee.commons.Codes;
+import com.bee.commons.Consts;
 import com.bee.domain.modal.app.shop.ShopAttend;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
 import com.bee.services.shop.app.IShopTecheeAppService;
