@@ -28,25 +28,17 @@
         <span class="after">管理商家的评论</span>
     </div>
     <div class="row query-inner">
-      <form id="queryForm" class="form-inline" action="${basePath}/shop/${params.shopId}/comment" method="get">
-          <input type="hidden" name="indexPage" id="indexPage" value="${result.indexPage}" />
-          <div class="form-group">
-            <label>所属商家</label>
-            <input type="text" id="shopName" name="shopName" class="form-control input-sm" value="${params.shopName}" />
-          </div>
-          <button type="submit" class="btn btn-primary btn-sm icon-text">
-            <i class="fa fa-search"></i>查询
-          </button>
+      <form id="queryForm" class="form-inline" action="${basePath}/shop/${shop.sid}/comment" method="get">
           <sec:security auth="<%=AuthName.ShopCommentNew %>">
           <button id="shopCommentNew" type="button" class="btn btn-success btn-sm icon-text" onclick="addComment()">
-            <i class="fa fa-plus"></i>增加
+            <i class="fa fa-plus"></i>增加评论
           </button>
           </sec:security>
       </form>
     </div>
-    <form:form id="delForm" method="delete"></form:form>
-    <c:if test="${params.shopId > 0}">
-    <table class="table table-hover">
+    <div id="content" class="row"></div>
+    <script id="temp" type="text/html">
+      <table class="table table-hover">
         <tr>
             <th>主键</th>
             <th>评论内容</th>
@@ -54,62 +46,74 @@
             <th>评论时间</th>
             <th>操作</th>
         </tr>
-        <c:if test="${result.totalData < 1}">
+        {{if totalData < 1}}
           <tr>
-            <td colspan="6" class="text-center">
+            <td colspan="5" class="text-center">
               <i class="fa fa-exclamation-triangle fa-lg font-color-red"></i> 该商家还没有评论
             </td>
           </tr> 
-        </c:if>
-        <c:forEach items="${result.data}" var="comments">
-            <tr>
-                <td>${comments.scid}</td>
-                <td width="70%">${comments.content}</td>
-                <td>${comments.user.name}</td>
-                <td>${comments.createTimeStr}</td>
-                <td>
-                    <sec:security auth="<%=AuthName.ShopCommentDelete%>">
-                    <a href="#" class="icon" role="button" onclick="deleteImage(${comments.scid})">
-                        <i class="fa fa-trash font-color-red fa-lg"></i>
-                    </a>
-                    </sec:security>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
+        {{/if}}
+        {{each result}}
+        <tr>
+            <td>{{$value.scid}}</td>
+            <td width="60%">{{$value.content}}</td>
+            <td>{{$value.user.name}}</td>
+            <td>{{$value.createTimeStr}}</td>
+            <td>
+                <sec:security auth="<%=AuthName.ShopCommentDelete%>">
+                <a href="#" class="icon" role="button" onclick="deleteImage({{$value.scid}})">
+                    <i class="fa fa-trash font-color-red fa-lg"></i>
+                </a>
+                </sec:security>
+            </td>
+        </tr>
+        {{/each}}
+      </table>
+    </script>        
     <div id="paging" class="row"></div>
-    </c:if>
 </div>
 <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="${resPath}/assets/js/plugin/artTemplate/template.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/plugin/paging.js"></script>
-<script type="text/javascript" src="${resPath}/assets/js/plugin/area.js"></script>
 <script type="text/javascript">
-    Navbar.init("navbar-left-shop", "navbar-inner-shop-comment");
-    $("#paging").paging({
-        index: ${result.indexPage},
-        total: ${result.totalPage},
-        fn : function(r) {
-          $("#indexPage").val(r);
-          document.forms["queryForm"].submit();
-        }
-    });
-    $("#shopName").click(function(event) {
-      ShopSelectDialog.show(function(id, name) {
-        $("#shopName").val(name);
-        document.forms["queryForm"].action = "${basePath}/shop/" + id + "/comment";
+    Navbar.init("navbar-left-shop", "navbar-inner-shop-list");
+
+    var indexPage = 1;
+
+    var query = function() {
+      Loader.show();
+      $.getJSON("${basePath}/shop/${shop.sid}/comment/json", {indexPage: indexPage}, function(data) {
+        $('#content').html(template('temp', data));
+        $("#paging").paging({
+          index: data.indexPage,
+          total: data.totalPage,
+          count: data.totalData,
+          fn : function(r) {
+            indexPage = r;
+            query(r);
+          }
+        });
+        Loader.hide();
       });
+    };
+
+    var deleteComment = function(id) {
+      $.post('${basePath}/shop/${shop.sid}/comment/' + id, {_method: "delete"}, function(data, textStatus, xhr) {
+        query(indexPage);
+      });
+    };
+
+    $(document).ready(function() {
+      query(indexPage);
     });
-    function deleteComment(id) {
-      document.forms['delForm'].action = "${basePath}/shop/${sid}/comment/" + id;
-      document.forms['delForm'].submit();
-    }
+
+
     function addComment() {
-      window.location.href = "${basePath}/shop/0/comment/new";
+      window.location.href = "${basePath}/shop/${shop.sid}/comment/new?shopName=${shop.name}";
     }
 </script>
-<%@ include file="../plugin/ShopSelectDialog.jsp" %>
 </body>
 </html>

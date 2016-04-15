@@ -116,7 +116,7 @@
     </dependencies>
 
     <build>
-        <finalName>bee_web</finalName>
+        <finalName>bee_admin</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

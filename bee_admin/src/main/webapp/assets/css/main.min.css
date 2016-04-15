@@ -8919,6 +8919,9 @@ form label.icheck input[type='checkbox'] {
 .form-horizontal .control-label {
   padding-right: 15px;
 }
+.form-horizontal .control-value {
+  padding-top: 7px;
+}
 .form-horizontal .assist-label {
   padding-left: 10px;
   height: 34px;
@@ -8973,6 +8976,12 @@ form label.icheck input[type='checkbox'] {
 }
 .font-color-red:hover {
   color: #d23e25;
+}
+.font-color-yellow {
+  color: #f6b26b;
+}
+.font-color-yellow:hover {
+  color: #f28c23;
 }
 .uploader,
 #uploader {

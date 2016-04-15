@@ -2,8 +2,10 @@ package com.bee.pojo.shop;
 
 import com.bee.pojo.order.Order;
 import com.bee.pojo.user.User;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.qsd.framework.commons.utils.DateUtil;
-import com.qsd.framework.commons.utils.StringUtil;
 
 import javax.persistence.*;
 
@@ -12,6 +14,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "TB_SHOP_COMMENT")
+@JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY,
+        isGetterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
 public class ShopComment implements java.io.Serializable {
 
     // serialVersionUID
@@ -32,9 +36,6 @@ public class ShopComment implements java.io.Serializable {
 
     @Transient
     public String getCreateTimeStr() {
-        if (null == createTime) {
-            return "";
-        }
         return DateUtil.formatDateTime(createTime);
     }
 

@@ -90,4 +90,11 @@ public class ShopCommentAppService extends ShopCommentService implements IShopCo
             userDao.update(user);
         }
     }
+
+
+    @Override
+    @Transactional
+    public void delete(Long shopCommentId) throws DataRunException {
+
+    }
 }

@@ -12,9 +12,11 @@
 	</a>
     </sec:security>
     <sec:security auth="<%=AuthName.ShopComment %>">
+		<!--
 	<a id="navbar-inner-shop-comment" href="${basePath}/shop/0/comment">
 		<i class="fa fa-commenting-o"></i>商家评论
 	</a>
+	-->
   </sec:security>
 	<div class="line"></div>
 	<a id="navbar-inner-shop-image-view" href="${basePath}/shop/0/image/view">

@@ -107,7 +107,6 @@ public class UserDao extends JpaDaoSupport<User, Long> {
             if (!StringUtil.isNull(param.getNick())) {
                 sb.append(" and A.name = ? ");
                 entity.setParam(param.getNick());
-                LOG.error("Try not to use Nick");
             }
             if (param.getType() != null) {
                 sb.append(" and A.type = ? ");

@@ -26,19 +26,19 @@
         <span class="after">添加一个商家评论</span>
       </div>
       <div class="row">
-        <div class="alert alert-danger <c:if test="${msg == null}">hidden</c:if>" role="alert">${msg}</div>
+        <div id="errorMsg" class="alert alert-danger hidden" role="alert"></div>
       </div>
       <form id="submitForm" class="form-horizontal" action="" method="post">
         <input type="hidden" name="_method" value="POST" />
         <div class="form-group info-title">基本信息</div> 
         <div class="form-group">
           <label class="col-xs-1 control-label">所属商户</label>
-          <div class="col-xs-4">
-            <input type="text" id="shopName" class="form-control" />
-          </div>
-          <label class="col-xs-2 control-label">评论用户</label>
-          <div class="col-xs-4">
-            <input type="text" id="userName" name="userName" class="form-control" />
+          <label class="col-xs-10 control-value">${shopName}</label>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-1 control-label">评论用户</label>
+          <div class="col-xs-10">
+            <input type="text" name="userName" class="form-control" />
           </div>
         </div>
         <div class="form-group">
@@ -52,34 +52,32 @@
         <div class="form-group">
           <label class="col-xs-1 control-label"></label>
           <div class="col-xs-4">
-            <button type="button" class="btn btn-success" onclick="doSubmit()">保存</button>
+            <button type="button" class="btn btn-success" onclick='doSubmit()'>保存</button>
           </div>
         </div>
       </form>
     </div>
-    <%@ include file="../plugin/ShopSelectDialog.jsp" %>
     <script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
-    <script type="text/javascript" src="${resPath}/assets/js/plugin/paging.js"></script>
-    <script type="text/javascript" src="${resPath}/assets/js/plugin/area.js"></script>
     <script type="text/javascript">
-      Navbar.init("navbar-left-shop", "navbar-inner-shop-comment");
-      $("#shopName").click(function(event) {
-        ShopSelectDialog.show(function(id, name) {
-          document.forms["submitForm"].action = "${basePath}/shop/" + id + "/comment";
-          $("#shopName").val(name);
-        });
-      });
+      Navbar.init("navbar-left-shop", "navbar-inner-shop-list");
 
-      function doSubmit() {
-        if (document.forms["submitForm"].action == "") {
-          alert("请选择商家");
-        } else {
-          document.forms["submitForm"].submit();
-        }
-      }
+      var doSubmit = function() {
+        Loader.show();
+        $.post('${basePath}/shop/${sid}/comment', 
+          $("#submitForm").serialize(), 
+          function(data) {
+            Loader.hide();
+            if (data.code == 200) {
+              window.location.href = "${basePath}/shop/${sid}/comment";
+            } else {
+              $("#errorMsg").html(data.msg);
+              $("#errorMsg").removeClass('hidden');
+            }
+        });
+      };
     </script>
   </body>
   </html>

@@ -42,4 +42,17 @@ public class ShopCommentAdminService extends ShopCommentService implements IShop
         }
         return shopCommentDao.queryShopComment(request);
     }
+
+    /**
+     * 删除评论
+     *
+     * @param shopCommentId
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void delete(Long shopCommentId) throws DataRunException {
+        ShopComment comment = shopCommentDao.findById(shopCommentId);
+        // 删除所有回复
+    }
 }

@@ -22,7 +22,7 @@
 				var $select = $(document.createElement("select"));
 				if(settings.hasNull) {
 					var $optionNull = $(document.createElement("option"));
-					if (settings.areaId < 0) {
+					if (settings.areaId < 0 || settings.areaId == '') {
 						$optionNull.attr("selected", "selected");
 					}
                     $select.append($optionNull);
@@ -38,9 +38,11 @@
 					$option.val(data[index].aid);
 					$option.html(data[index].name);
 					// 判断是否是选中
-					if (settings.areaId == '' && index == 0) {
-						$option.attr("selected", "selected");
-						settings.fn(data[index].aid);
+					if (!settings.hasNull) {
+						if (settings.areaId == '' && index == 0) {
+							$option.attr("selected", "selected");
+							settings.fn(data[index].aid);
+						}
 					}
 					if (settings.areaId == data[index].aid) {
 						$option.attr("selected", "selected");

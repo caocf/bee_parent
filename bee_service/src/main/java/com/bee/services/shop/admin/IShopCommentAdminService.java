@@ -12,13 +12,6 @@ import com.qsd.framework.spring.PagingResult;
 public interface IShopCommentAdminService extends IShopCommentService {
 
     /**
-     *
-     * @param shopComment
-     * @throws com.qsd.framework.hibernate.exception.DataRunException
-     */
-    void save(ShopComment shopComment) throws DataRunException;
-
-    /**
      *【A端】查询所属商家评论列表
      *
      * @param request

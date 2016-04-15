@@ -213,6 +213,7 @@ public final class SQL {
 
             public static final String QueryShopComment = "From ShopComment A " +
                     "left join fetch A.user B " +
+                    "left join fetch A.shop C " +
                     "where 1=1";
             public static final String QueryShopCommentOrderBy = " ORDER BY A.scid DESC";
         }

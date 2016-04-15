@@ -17,5 +17,11 @@ public interface IShopCommentService {
      */
     void save(ShopComment shopComment) throws DataRunException;
 
-
+    /**
+     * 删除评论
+     *
+     * @param shopCommentId
+     * @throws DataRunException
+     */
+    void delete(Long shopCommentId) throws DataRunException;
 }
