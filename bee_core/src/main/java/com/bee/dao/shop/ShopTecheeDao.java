@@ -94,7 +94,7 @@ public class ShopTecheeDao extends JpaDaoSupport<ShopTechee, Long> {
                 item.setGroupName(StringUtil.parseString(row[4], ""));
                 return item;
             }
-        }, sid, Consts.True);
+        }, sid);
     }
     public static final String QueryShopTecheeAttend = "SELECT " +
             "A.STID, A.NUMBER, A.SHOPGROUP, A.ATTEND, B.GROUPNAME " +
@@ -102,7 +102,7 @@ public class ShopTecheeDao extends JpaDaoSupport<ShopTechee, Long> {
             "LEFT OUTER JOIN " +
             "TB_SHOP_GROUP B " +
             "ON A.SHOPGROUP = B.SGID " +
-            "WHERE A.SHOP = ? AND A.ATTEND = ?";
+            "WHERE A.SHOP = ?";
 
 
     /**

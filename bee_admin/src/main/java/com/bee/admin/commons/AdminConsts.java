@@ -7,7 +7,7 @@ import com.bee.commons.Consts;
  */
 public class AdminConsts {
 
-    public static final boolean isDebug = false;
+    public static final boolean isDebug = true;
 
     private static final String LocalBaseUrl = "http://localhost:8080/admin";
     private static final String RemoteBaseUrl = "http://139.196.27.231/admin";

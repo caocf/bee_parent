@@ -84,24 +84,24 @@ public class ShopAppDao extends ShopDao {
         sb.append(SQL.Shop.queryAppShopListSort);
         entity.setEntity(sb.toString());
         entity.setPaging(request);
-        entity.setQueryDataConver(new QueryDataConver<ShopListItem>() {
-            @Override
-            public ShopListItem converData(Object[] obj) {
-                ShopListItem item = new ShopListItem();
-                item.setShopId(NumberUtil.parseLong(obj[0], 0));
-                item.setName(StringUtil.parseString(obj[1], ""));
-                item.setAddr(StringUtil.parseString(obj[2], ""));
-                item.setPrice(NumberUtil.parseDouble(obj[3], 0));
-                item.setArea(StringUtil.parseString(obj[4], ""));
-                item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
-                item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
-                item.setType(NumberUtil.parseInteger(obj[7], Consts.Shop.Type.Club));
-                item.setIsBeeShop(NumberUtil.parseInteger(obj[8], Consts.False));
-                return item;
-            }
-        });
+        entity.setQueryDataConver(ShopListConver);
         return queryWithPagingConver(entity);
     }
-
+    public static final QueryDataConver<ShopListItem> ShopListConver = new QueryDataConver<ShopListItem>() {
+        @Override
+        public ShopListItem converData(Object[] obj) {
+            ShopListItem item = new ShopListItem();
+            item.setShopId(NumberUtil.parseLong(obj[0], 0));
+            item.setName(StringUtil.parseString(obj[1], ""));
+            item.setAddr(StringUtil.parseString(obj[2], ""));
+            item.setPrice(NumberUtil.parseDouble(obj[3], 0));
+            item.setArea(StringUtil.parseString(obj[4], ""));
+            item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
+            item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
+            item.setType(NumberUtil.parseInteger(obj[7], Consts.Shop.Type.Club));
+            item.setIsBeeShop(NumberUtil.parseInteger(obj[8], Consts.False));
+            return item;
+        }
+    };
 
 }
