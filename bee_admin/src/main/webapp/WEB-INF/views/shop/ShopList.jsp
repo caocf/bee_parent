@@ -112,7 +112,7 @@
           </tr>
         </c:forEach>
       </table>
-      <div id="paging" class="row"></div>
+      <div id="paging" class="row margin-bottom-4"></div>
     </div>
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
       <div class="modal-dialog">

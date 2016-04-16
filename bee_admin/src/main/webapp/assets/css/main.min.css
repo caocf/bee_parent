@@ -8641,6 +8641,9 @@ hr {
 .margin-left-5 {
   margin-left: 5px;
 }
+.margin-bottom-4 {
+  margin-bottom: 4px;
+}
 .badge.red {
   background-color: #e37360;
 }
@@ -8703,8 +8706,8 @@ button.icon-text i {
   height: 100%;
   z-index: 9998;
   background-color: #000;
-  opacity: 0.1;
-  filter: alpha(opacity=10);
+  opacity: 0.2;
+  filter: alpha(opacity=20);
 }
 .navbar-default .navbar-header {
   padding-left: 20px;

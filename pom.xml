@@ -50,6 +50,7 @@
         <jersey.version>2.15</jersey.version>
         <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
         <javax.ws.rs-api.version>2.0</javax.ws.rs-api.version>
+        <thumbnailator.version>0.4.8</thumbnailator.version>
     </properties>
 
     <dependencyManagement>
@@ -274,6 +275,12 @@
                 <groupId>javaee</groupId>
                 <artifactId>javaee-api</artifactId>
                 <version>5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.coobird</groupId>
+                <artifactId>thumbnailator</artifactId>
+                <version>${thumbnailator.version}</version>
             </dependency>
 
         </dependencies>

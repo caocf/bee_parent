@@ -41,8 +41,8 @@
       <table class="table table-hover">
         <tr>
             <th>主键</th>
-            <th>评论内容</th>
             <th>用户</th>
+            <th>评论内容</th>
             <th>评论时间</th>
             <th>操作</th>
         </tr>
@@ -56,8 +56,8 @@
         {{each result}}
         <tr>
             <td>{{$value.scid}}</td>
-            <td width="60%">{{$value.content}}</td>
             <td>{{$value.user.name}}</td>
+            <td width="60%">{{$value.content}}</td>
             <td>{{$value.createTimeStr}}</td>
             <td>
                 <sec:security auth="<%=AuthName.ShopCommentDelete%>">
