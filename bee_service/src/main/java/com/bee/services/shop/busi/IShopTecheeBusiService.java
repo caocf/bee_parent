@@ -31,28 +31,12 @@ public interface IShopTecheeBusiService extends IShopTecheeService {
     List<ShopTecheeItem> getShopTecheeByGroupId(long gid);
 
     /**
-     * 保存一个技师
-     *
-     * @param shopTechee
-     * @throws com.qsd.framework.hibernate.exception.DataRunException
-     */
-    void saveShopTechee(ShopTechee shopTechee) throws DataRunException;
-
-    /**
      * 更新一个技师
      *
      * @param shopTechee
      * @throws DataRunException
      */
     void updateShopTechee(ShopTechee shopTechee) throws DataRunException;
-
-    /**
-     * 删除一个技师
-     *
-     * @param id
-     * @throws DataRunException
-     */
-    void deleteShopTechee(long id) throws DataRunException;
 
     /**
      * 保存商家技师出勤表

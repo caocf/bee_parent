@@ -19,11 +19,15 @@ public final class AuthName {
     public static final String ShopEdit = "SHOP_EDIT";
     public static final String ShopDelete = "SHOP_DELETE";
 
-
     public static final String ShopGroup = "SHOP_GROUP";
     public static final String ShopGroupNew = "SHOP_GROUP_NEW";
     public static final String ShopGroupEdit = "SHOP_GROUP_EDIT";
     public static final String ShopGroupDelete = "SHOP_GROUP_DELETE";
+
+    public static final String ShopTechee = "SHOP_TECHEE";
+    public static final String ShopTecheeNew = "SHOP_TECHEE_NEW";
+    public static final String ShopTecheeEdit = "SHOP_TECHEE_EDIT";
+    public static final String ShopTecheeDelete = "SHOP_TECHEE_DELETE";
 
     public static final String ShopComment = "SHOP_COMMENT";
     public static final String ShopCommentNew = "SHOP_COMMENT_NEW";
@@ -33,11 +37,12 @@ public final class AuthName {
     public static final String ShopImageNew = "SHOP_IMAGE_NEW";
     public static final String ShopImageEdit = "SHOP_IMAGE_EDIT";
     public static final String ShopImageDelete = "SHOP_IMAGE_DELETE";
-    public static final String ShopApplyer = "SHOP_APPLYER";
 
     public static final String ShopUser = "SHOP_USER";
     public static final String ShopUserNew = "SHOP_USER_NEW";
     public static final String ShopUserDelete = "SHOP_USER_DELETE";
+
+    public static final String ShopApplyer = "SHOP_APPLYER";
 
     public static final String Order = "ORDER";
     public static final String OrderCreate = "ORDER_CREATE";
@@ -62,10 +67,14 @@ public final class AuthName {
         AuthMap.put(ShopNew, "创建商家");
         AuthMap.put(ShopDelete, "删除商家");
         AuthMap.put(ShopEdit, "修改商家");
-        AuthMap.put(ShopGroup, "商家组查看");
+        AuthMap.put(ShopGroup, "查看商家组");
         AuthMap.put(ShopGroupNew, "创建商家组");
         AuthMap.put(ShopGroupEdit, "修改商家组");
         AuthMap.put(ShopGroupDelete, "删除商家组");
+        AuthMap.put(ShopTechee, "查看技师");
+        AuthMap.put(ShopTecheeNew, "创建技师");
+        AuthMap.put(ShopTecheeEdit, "修改技师");
+        AuthMap.put(ShopTecheeDelete, "删除技师");
         AuthMap.put(ShopComment, "查看商家评论");
         AuthMap.put(ShopCommentNew, "发表商家评论");
         AuthMap.put(ShopCommentDelete, "删除商家评论");

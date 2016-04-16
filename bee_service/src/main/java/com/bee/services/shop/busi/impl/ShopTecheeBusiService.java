@@ -42,20 +42,6 @@ public class ShopTecheeBusiService extends ShopTecheeService implements IShopTec
         return shopTecheeDao.getShopTecheeByGroupId(gid);
     }
 
-
-    /**
-     * 保存一个技师
-     *
-     * @param shopTechee
-     * @throws com.qsd.framework.hibernate.exception.DataRunException
-     */
-    @Override
-    @Transactional
-    public void saveShopTechee(ShopTechee shopTechee) throws DataRunException {
-        shopTecheeDao.save(shopTechee);
-        changeShopTechee(shopTechee.getShop().getSid());
-    }
-
     /**
      * 更新一个技师
      *
@@ -66,21 +52,6 @@ public class ShopTecheeBusiService extends ShopTecheeService implements IShopTec
     @Transactional
     public void updateShopTechee(ShopTechee shopTechee) throws DataRunException {
         shopTecheeDao.update(shopTechee);
-        changeShopTechee(shopTechee.getShop().getSid());
-    }
-
-    /**
-     * 删除一个技师
-     *
-     * @param id
-     * @throws DataRunException
-     */
-    @Override
-    @Transactional
-    public void deleteShopTechee(long id) throws DataRunException {
-        ShopTechee shopTechee = shopTecheeDao.findById(id);
-        shopTecheeDao.delete(shopTechee);
-        changeShopTechee(shopTechee.getShop().getSid());
     }
 
     /**

@@ -61,7 +61,7 @@
             <td>{{$value.createTimeStr}}</td>
             <td>
                 <sec:security auth="<%=AuthName.ShopCommentDelete%>">
-                <a href="#" class="icon" role="button" onclick="deleteImage({{$value.scid}})">
+                <a href="#" class="icon" role="button" onclick="deleteComment({{$value.scid}})">
                     <i class="fa fa-trash font-color-red fa-lg"></i>
                 </a>
                 </sec:security>

@@ -1,5 +1,7 @@
 package com.bee.pojo;
 
+import com.qsd.framework.commons.utils.DateUtil;
+
 import javax.persistence.*;
 
 /**
@@ -17,6 +19,11 @@ public class Applyer implements java.io.Serializable {
     private String phone;
     private String extraInfo;
     private Long createTime;
+
+    @Transient
+    public String getCreateTimeStr() {
+        return DateUtil.formatDateTime(createTime);
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

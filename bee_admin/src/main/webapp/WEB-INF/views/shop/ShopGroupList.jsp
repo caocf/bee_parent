@@ -45,7 +45,9 @@
         <c:forEach items="${result}" var="group">
             <tr>
                 <td>${group.sgId}</td>
-                <td>${group.groupName}</td>
+                <td>
+                    <a href="${basePath}/shop/${sid}/group/${group.sgId}/techee">${group.groupName}</a>
+                </td>
                 <td>${group.price}</td>
                 <td>${group.remark}</td>
                 <td>

@@ -26,6 +26,11 @@ public class ShopGroup implements java.io.Serializable {
     // 价格说明
     private String remark;
 
+    public ShopGroup() {}
+    public ShopGroup(Long id) {
+        sgId = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SGID", unique = true, nullable = false)

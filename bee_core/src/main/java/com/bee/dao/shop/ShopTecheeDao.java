@@ -23,6 +23,19 @@ import java.util.List;
 public class ShopTecheeDao extends JpaDaoSupport<ShopTechee, Long> {
 
     /**
+     * 根据组查询商家技师
+     *
+     * @param groupId
+     * @return
+     */
+    public List<ShopTechee> queryShopTecheeByGroup(long groupId) {
+        return findByParams(QueryShopTecheeByGroup, groupId);
+    }
+    private static final String QueryShopTecheeByGroup = "FROM ShopTechee A " +
+            "LEFT JOIN FETCH A.shopGroup B WHERE B.sgId = ? order by A.stId desc";
+
+
+    /**
      * 返回所属ShopGroup的所有ShopTechee
      *
      * @param gid

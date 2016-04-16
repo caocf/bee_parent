@@ -3,6 +3,7 @@ package com.bee.busi.controller.shop;
 import com.bee.busi.model.shop.BusiShopTechee;
 import com.bee.busi.params.shop.ShopTecheeSaveResponse;
 import com.bee.commons.Codes;
+import com.bee.commons.Consts;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
 import com.bee.domain.modal.app.shop.ShopTecheeItem;
 import com.bee.pojo.shop.ShopTechee;
@@ -79,6 +80,9 @@ public class ShopGroupTecheeController {
     public ShopTecheeSaveResponse saveShopTechee(ShopTechee shopTechee) {
         ShopTecheeSaveResponse res = new ShopTecheeSaveResponse();
         try {
+            if (null == shopTechee.getAttend()) {
+                shopTechee.setAttend(Consts.False);
+            }
             shopTecheeBusiService.saveShopTechee(shopTechee);
             res.setShopTecheeId(shopTechee.getStId());
             res.setCode(Codes.Success);

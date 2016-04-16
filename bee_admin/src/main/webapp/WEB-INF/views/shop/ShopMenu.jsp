@@ -19,9 +19,11 @@
 	-->
   </sec:security>
 	<div class="line"></div>
-	<a id="navbar-inner-shop-applyer" href="#">
-		
+	<sec:security auth="<%=AuthName.ShopApplyer %>">
+	<a id="navbar-inner-shop-applyer" href="${basePath}/shop/applyer">
+		<i class="fa fa-user-plus"></i>商家申请
 	</a>
+	</sec:security>
 	<a id="navbar-inner-shop-image-view" href="${basePath}/shop/0/image/view">
 		<i class="fa fa-picture-o"></i>商家图片
 	</a>
