@@ -54,13 +54,13 @@ public class SMSUtils {
     /**
      * Order: 【小黄蜂】过期通知，{1}，人数{2}，联系电话{3}
      */
-    public static enum SMSType {
+    public enum SMSType {
 
         Register("43437"), FindPass("43436"), Order("44075");
 
         private String tempCode;
 
-        private SMSType(String tempCode) {
+        SMSType(String tempCode) {
             this.tempCode = tempCode;
         }
 

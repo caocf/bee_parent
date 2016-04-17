@@ -28,34 +28,35 @@ public class ShopAppDao extends ShopDao {
      * @return
      */
     public ShopItem getShopItemById(long uid, long sid) {
-        return findFirstConverByParams(SQL.Shop.QueryAppShopItem + " and A.SID = ?", new QueryDataConver<ShopItem>() {
-            @Override
-            public ShopItem converData(Object[] obj) {
-                ShopItem item = new ShopItem();
-                item.setShopId(NumberUtil.parseLong(obj[0], 0));
-                item.setName(StringUtil.parseString(obj[1], ""));
-                item.setAddr(StringUtil.parseString(obj[2], ""));
-                item.setPrice(NumberUtil.parseDouble(obj[3], 0));
-                item.setArea(StringUtil.parseString(obj[4], ""));
-                item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
-                item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
-                item.setLon(NumberUtil.parseLong(obj[7], 0));
-                item.setLat(NumberUtil.parseLong(obj[8], 0));
-                item.setType(NumberUtil.parseInteger(obj[9], Consts.Shop.Type.Club));
-                item.setServiceTime(StringUtil.parseString(obj[10], "13:0-0:30"));
-                item.setIsFreeParking(NumberUtil.parseInteger(obj[11], Consts.False));
-                item.setIsFood(NumberUtil.parseInteger(obj[12], Consts.False));
-                item.setIsInvoice(NumberUtil.parseInteger(obj[13], Consts.False));
-                item.setIsPosCard(NumberUtil.parseInteger(obj[14], Consts.False));
-                // 为了兼容v1.0.4版本
-                item.setPhone("");
-                item.setLinkName("");
-                item.setNowInfo("");
-                item.setIsBack(Consts.False);
-                return item;
-            }
-        }, uid, sid);
+        return findFirstConverByParams(SQL.Shop.QueryAppShopItem + " and A.SID = ?", GetShopItemById, uid, sid);
     }
+    public static final QueryDataConver<ShopItem> GetShopItemById = new QueryDataConver<ShopItem>() {
+        @Override
+        public ShopItem converData(Object[] obj) {
+            ShopItem item = new ShopItem();
+            item.setShopId(NumberUtil.parseLong(obj[0], 0));
+            item.setName(StringUtil.parseString(obj[1], ""));
+            item.setAddr(StringUtil.parseString(obj[2], ""));
+            item.setPrice(NumberUtil.parseDouble(obj[3], 0));
+            item.setArea(StringUtil.parseString(obj[4], ""));
+            item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
+            item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
+            item.setLon(NumberUtil.parseLong(obj[7], 0));
+            item.setLat(NumberUtil.parseLong(obj[8], 0));
+            item.setType(NumberUtil.parseInteger(obj[9], Consts.Shop.Type.Club));
+            item.setServiceTime(StringUtil.parseString(obj[10], "13:0-0:30"));
+            item.setIsFreeParking(NumberUtil.parseInteger(obj[11], Consts.False));
+            item.setIsFood(NumberUtil.parseInteger(obj[12], Consts.False));
+            item.setIsInvoice(NumberUtil.parseInteger(obj[13], Consts.False));
+            item.setIsPosCard(NumberUtil.parseInteger(obj[14], Consts.False));
+            // 为了兼容v1.0.4版本
+            item.setPhone("");
+            item.setLinkName("");
+            item.setNowInfo("");
+            item.setIsBack(Consts.False);
+            return item;
+        }
+    };
 
     /**
      * <b>查询商家列表</b>

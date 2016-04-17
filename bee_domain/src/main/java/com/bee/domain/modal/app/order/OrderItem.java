@@ -24,6 +24,9 @@ public class OrderItem implements java.io.Serializable {
     private Integer isBack;
     // v1.1.0 增加user
     private Long uid;
+    // v1.1.1 增加商家GPS
+    private Long lon;
+    private Long lat;
 
     public String getNo() {
         return no;
@@ -72,5 +75,17 @@ public class OrderItem implements java.io.Serializable {
     }
     public void setUid(Long uid) {
         this.uid = uid;
+    }
+    public Long getLon() {
+        return lon;
+    }
+    public void setLon(Long lon) {
+        this.lon = lon;
+    }
+    public Long getLat() {
+        return lat;
+    }
+    public void setLat(Long lat) {
+        this.lat = lat;
     }
 }

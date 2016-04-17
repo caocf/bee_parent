@@ -403,7 +403,7 @@ public final class SQL {
          *【C端】查询商家详细(ShopDetailActivity)
          */
         public static final String QueryOrderByOid = "SELECT " +
-                "A.NO, A.CREATETIME, A.STATUS, C.ADDR, B.PHONE, A.ISCOMMENT, A.USER " +
+                "A.NO, A.CREATETIME, A.STATUS, C.ADDR, B.PHONE, A.ISCOMMENT, A.USER, C.LON, C.LAT " +
                 "FROM TB_ORDER A " +
                 "LEFT OUTER JOIN TB_SHOP_USER B ON A.SHOPUSER = B.SUID " +
                 "LEFT OUTER JOIN TB_SHOP C ON A.SHOP = C.SID " +

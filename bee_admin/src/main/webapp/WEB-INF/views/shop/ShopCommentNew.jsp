@@ -76,7 +76,7 @@
               $("#errorMsg").html(data.msg);
               $("#errorMsg").removeClass('hidden');
             }
-        });
+        }, "json");
       };
     </script>
   </body>

@@ -1,6 +1,5 @@
 package com.bee.dao.order.app;
 
-import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.dao.order.OrderDao;
@@ -74,20 +73,24 @@ public class OrderAppDao extends OrderDao {
      * @return
      */
     public OrderItem queryOrderItemById(long orderId) {
-        return findFirstConverByParams(SQL.Order.QueryOrderByOid, new QueryDataConver<OrderItem>() {
-            @Override
-            public OrderItem converData(Object[] objects) {
-                OrderItem item = new OrderItem();
-                item.setNo(StringUtil.parseString(objects[0], ""));
-                item.setCreateTime(NumberUtil.parseLong(objects[1], 0));
-                item.setStatus(NumberUtil.parseInteger(objects[2], Consts.Order.Status.Unknow));
-                item.setAddr(StringUtil.parseString(objects[3], ""));
-                item.setShopPhone(StringUtil.parseString(objects[4], ""));
-                item.setIsComment(NumberUtil.parseInteger(objects[5], Consts.False));
-                // v1.1.0增加
-                item.setUid(NumberUtil.parseLong(objects[6], 0));
-                return item;
-            }
-        }, orderId);
+        return findFirstConverByParams(SQL.Order.QueryOrderByOid, QueryOrderItemById, orderId);
     }
+    public static final QueryDataConver<OrderItem> QueryOrderItemById = new QueryDataConver<OrderItem>() {
+        @Override
+        public OrderItem converData(Object[] row) {
+            OrderItem item = new OrderItem();
+            item.setNo(StringUtil.parseString(row[0], ""));
+            item.setCreateTime(NumberUtil.parseLong(row[1], 0));
+            item.setStatus(NumberUtil.parseInteger(row[2], Consts.Order.Status.Unknow));
+            item.setAddr(StringUtil.parseString(row[3], ""));
+            item.setShopPhone(StringUtil.parseString(row[4], ""));
+            item.setIsComment(NumberUtil.parseInteger(row[5], Consts.False));
+            // v1.1.0增加
+            item.setUid(NumberUtil.parseLong(row[6], 0));
+            // v1.1.1 增加商家GPS信息
+            item.setLon(NumberUtil.parseLong(row[7], 0));
+            item.setLat(NumberUtil.parseLong(row[8], 0));
+            return item;
+        }
+    };
 }
