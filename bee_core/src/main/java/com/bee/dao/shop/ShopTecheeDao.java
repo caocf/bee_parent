@@ -6,11 +6,13 @@ import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
 import com.bee.domain.modal.app.shop.ShopTecheeItem;
+import com.bee.domain.params.shop.ShopTecheeAttendParam;
 import com.bee.pojo.shop.ShopTechee;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
+import com.qsd.framework.hibernate.bean.SQLEntity;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.stereotype.Repository;
 
@@ -92,23 +94,34 @@ public class ShopTecheeDao extends JpaDaoSupport<ShopTechee, Long> {
     /**
      * 查询商家所有出勤技师
      *
-     * @param sid 商家ID
+     * @param param 查询参数
      * @return
      */
-    public List<ShopTecheeAttend> queryShopTecheeAttend(Long sid) {
-        return findConverByParams(QueryShopTecheeAttend, new QueryDataConver<ShopTecheeAttend>() {
-            @Override
-            public ShopTecheeAttend converData(Object[] row) {
-                ShopTecheeAttend item = new ShopTecheeAttend();
-                item.setStId(NumberUtil.parseLong(row[0], 0));
-                item.setNumber(StringUtil.parseString(row[1], ""));
-                item.setGroupId(NumberUtil.parseLong(row[2], 0));
-                item.setAttend(NumberUtil.parseInteger(row[3], Consts.False));
-                item.setGroupName(StringUtil.parseString(row[4], ""));
-                return item;
-            }
-        }, sid);
+    public List<ShopTecheeAttend> queryShopTecheeAttend(ShopTecheeAttendParam param) {
+        SQLEntity entity = new SQLEntity();
+        StringBuffer sb = new StringBuffer(QueryShopTecheeAttend);
+        entity.setParams(param.getShopId());
+        if (param.getIsAttend() != null && param.getIsAttend() != 0) {
+            sb.append(" AND A.ATTEND = ?");
+            entity.setParams(param.getIsAttend());
+        }
+        entity.setEntity(sb.toString());
+        entity.setQueryDataConver(QueryShopTecheeAttendConver);
+        return queryResultConver(entity);
     }
+    public static final QueryDataConver<ShopTecheeAttend> QueryShopTecheeAttendConver =
+            new QueryDataConver<ShopTecheeAttend>() {
+                @Override
+                public ShopTecheeAttend converData(Object[] row) {
+                    ShopTecheeAttend item = new ShopTecheeAttend();
+                    item.setStId(NumberUtil.parseLong(row[0], 0));
+                    item.setTecheeNumber(StringUtil.parseString(row[1], ""));
+                    item.setGroupId(NumberUtil.parseLong(row[2], 0));
+                    item.setAttend(NumberUtil.parseInteger(row[3], Consts.False));
+                    item.setGroupName(StringUtil.parseString(row[4], ""));
+                    return item;
+                }
+            };
     public static final String QueryShopTecheeAttend = "SELECT " +
             "A.STID, A.NUMBER, A.SHOPGROUP, A.ATTEND, B.GROUPNAME " +
             "FROM TB_SHOP_TECHEE A " +

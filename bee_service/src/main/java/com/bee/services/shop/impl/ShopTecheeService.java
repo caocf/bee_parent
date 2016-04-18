@@ -3,6 +3,7 @@ package com.bee.services.shop.impl;
 import com.bee.dao.shop.ShopTecheeDao;
 import com.bee.dao.shop.ShopUpdateDao;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
+import com.bee.domain.params.shop.ShopTecheeAttendParam;
 import com.bee.pojo.shop.ShopTechee;
 import com.bee.pojo.shop.ShopUpdate;
 import com.bee.services.shop.IShopTecheeService;
@@ -25,12 +26,12 @@ public abstract class ShopTecheeService implements IShopTecheeService {
     /**
      * 查询商家技师出勤表
      *
-     * @param sid 商家ID
+     * @param param
      * @return
      */
     @Override
-    public List<ShopTecheeAttend> queryShopTecheeAttend(Long sid) {
-        return shopTecheeDao.queryShopTecheeAttend(sid);
+    public List<ShopTecheeAttend> queryShopTecheeAttend(ShopTecheeAttendParam param) {
+        return shopTecheeDao.queryShopTecheeAttend(param);
     }
 
     /**

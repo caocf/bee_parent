@@ -31,7 +31,7 @@ public class ShopImageAppDao extends ShopImageDao {
                 sb.append(" AND A.SHOP = ? ");
                 entity.setParam(param.getShopId());
             }
-            if (StringUtil.isNull(param.getOrderBy())) {
+            if (!StringUtil.isNull(param.getOrderBy())) {
                 sb.append(" ORDER BY ");
                 sb.append(param.getOrderBy());
             }

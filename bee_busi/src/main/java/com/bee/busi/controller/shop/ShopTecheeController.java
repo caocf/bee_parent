@@ -2,6 +2,7 @@ package com.bee.busi.controller.shop;
 
 import com.bee.commons.Codes;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
+import com.bee.domain.params.shop.ShopTecheeAttendParam;
 import com.bee.services.shop.busi.IShopTecheeBusiService;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.domain.response.Response;
@@ -35,7 +36,9 @@ public class ShopTecheeController {
     @RequestMapping(value = "/attend", method = RequestMethod.GET)
     public ResponseArray<ShopTecheeAttend> queryShopTecheeAttend(@PathVariable Long sid) {
         ResponseArray res = new ResponseArray();
-        res.setResult(shopTecheeBusiService.queryShopTecheeAttend(sid));
+        ShopTecheeAttendParam param = new ShopTecheeAttendParam();
+        param.setShopId(sid);
+        res.setResult(shopTecheeBusiService.queryShopTecheeAttend(param));
         res.setCode(Codes.Success);
         return res;
     }

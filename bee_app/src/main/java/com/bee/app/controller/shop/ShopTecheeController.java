@@ -4,6 +4,7 @@ import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.domain.modal.app.shop.ShopAttend;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
+import com.bee.domain.params.shop.ShopTecheeAttendParam;
 import com.bee.services.shop.app.IShopTecheeAppService;
 import com.qsd.framework.domain.response.ResponseMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class ShopTecheeController {
     @Autowired
     private IShopTecheeAppService shopTecheeAppService;
 
+
     /**
      * 返回商家出勤表
      *
@@ -35,7 +37,10 @@ public class ShopTecheeController {
     @RequestMapping(value = "/attend", method = RequestMethod.GET)
     public ResponseMap<String, List<ShopTecheeAttend>> getShopAttend(@PathVariable Long shopId) {
         ResponseMap<String, List<ShopTecheeAttend>> res = new ResponseMap<>();
-        List<ShopTecheeAttend> items =  shopTecheeAppService.queryShopTecheeAttend(shopId);
+        ShopTecheeAttendParam param = new ShopTecheeAttendParam();
+        param.setShopId(shopId);
+        param.setIsAttend(Consts.True);
+        List<ShopTecheeAttend> items =  shopTecheeAppService.queryShopTecheeAttend(param);
         if (items != null && !items.isEmpty()) {
             res.setResult(new HashMap<String, List<ShopTecheeAttend>>());
             for (ShopTecheeAttend item : items) {

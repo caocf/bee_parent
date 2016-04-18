@@ -56,25 +56,29 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
         return queryWithPaging(entity);
     }
 
+    public static final QueryDataConver<ShopListItem> ShopListItemConver =
+            new QueryDataConver<ShopListItem>() {
+                @Override
+                public ShopListItem converData(Object[] row) {
+                    ShopListItem item = new ShopListItem();
+                    item.setShopId(NumberUtil.parseLong(row[0], 0));
+                    item.setName(StringUtil.parseString(row[1], ""));
+                    item.setAddr(StringUtil.parseString(row[2], ""));
+                    item.setPrice(NumberUtil.parseDouble(row[3], 0));
+                    item.setArea(StringUtil.parseString(row[4], ""));
+                    item.setFocusNum(NumberUtil.parseInteger(row[5], 0));
+                    item.setFriendNum(NumberUtil.parseInteger(row[6], 0));
+                    item.setType(NumberUtil.parseInteger(row[7], Consts.Shop.Type.Club));
+                    item.setIsBack(Consts.False);
+                    item.setIsBeeShop(Consts.False);
+                    return item;
+                }
+            };
 
     public List<ShopListItem> queryRecommendShop(long uid) {
-        return findConverByParams(SQL.Shop.queryRecommendShop, new QueryDataConver<ShopListItem>() {
-            @Override
-            public ShopListItem converData(Object[] obj) {
-                ShopListItem item = new ShopListItem();
-                item.setShopId(NumberUtil.parseLong(obj[0], 0));
-                item.setName(StringUtil.parseString(obj[1], ""));
-                item.setAddr(StringUtil.parseString(obj[2], ""));
-                item.setPrice(NumberUtil.parseDouble(obj[3], 0));
-                item.setArea(StringUtil.parseString(obj[4], ""));
-                item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
-                item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
-                item.setType(NumberUtil.parseInteger(obj[7], Consts.Shop.Type.Club));
-                item.setIsBack(Consts.False);
-                return item;
-            }
-        }, uid);
+        return findConverByParams(SQL.Shop.queryRecommendShop, ShopListItemConver, uid);
     }
+
 
     public PagingResult<ShopListItem> queryAppShopList(ShopListRequest request) {
         SQLEntity entity = new SQLEntity();
@@ -91,22 +95,7 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
         sb.append(SQL.Shop.queryAppShopListSort);
         entity.setEntity(sb.toString());
         entity.setPaging(request);
-        entity.setQueryDataConver(new QueryDataConver<ShopListItem>() {
-            @Override
-            public ShopListItem converData(Object[] obj) {
-                ShopListItem item = new ShopListItem();
-                item.setShopId(NumberUtil.parseLong(obj[0], 0));
-                item.setName(StringUtil.parseString(obj[1], ""));
-                item.setAddr(StringUtil.parseString(obj[2], ""));
-                item.setPrice(NumberUtil.parseDouble(obj[3], 0));
-                item.setArea(StringUtil.parseString(obj[4], ""));
-                item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
-                item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
-                item.setType(NumberUtil.parseInteger(obj[7], Consts.Shop.Type.Club));
-                item.setIsBack(Consts.False);
-                return item;
-            }
-        });
+        entity.setQueryDataConver(ShopListItemConver);
         return queryWithPagingConver(entity);
     }
 

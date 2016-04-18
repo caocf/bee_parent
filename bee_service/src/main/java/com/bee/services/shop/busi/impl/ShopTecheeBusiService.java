@@ -27,6 +27,7 @@ public class ShopTecheeBusiService extends ShopTecheeService implements IShopTec
      * @param shopId 商家ID
      * @return
      */
+    @Deprecated
     public List<BusiShopTechee> getShopTecheeByShopId(long shopId) {
         return shopTecheeDao.getShopTecheeByShopId(shopId);
     }

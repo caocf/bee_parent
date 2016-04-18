@@ -24,6 +24,7 @@ public class ShopImageService implements IShopImageService {
     public List<ShopImageItem> queryAppShopImage(long sid) {
         ShopImageListParam param = new ShopImageListParam();
         param.setShopId(sid);
+        param.setOrderBy(" A.SIID DESC");
         return shopImageDao.queryShopImage(param);
     }
 

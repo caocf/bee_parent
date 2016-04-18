@@ -1,6 +1,7 @@
 package com.bee.services.shop;
 
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
+import com.bee.domain.params.shop.ShopTecheeAttendParam;
 import com.bee.pojo.shop.ShopTechee;
 import com.qsd.framework.hibernate.exception.DataRunException;
 
@@ -14,10 +15,10 @@ public interface IShopTecheeService {
     /**
      * 查询商家技师出勤表
      *
-     * @param sid 商家ID
+     * @param param 查询参数
      * @return
      */
-    List<ShopTecheeAttend> queryShopTecheeAttend(Long sid);
+    List<ShopTecheeAttend> queryShopTecheeAttend(ShopTecheeAttendParam param);
 
     /**
      * 保存一个技师

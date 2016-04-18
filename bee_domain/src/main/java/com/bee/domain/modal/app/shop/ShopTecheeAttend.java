@@ -14,7 +14,7 @@ public class ShopTecheeAttend implements java.io.Serializable {
     // 技师ID
     private Long stId;
     // 技师编号
-    private String number;
+    private String techeeNumber;
     // 是否出勤
     private Integer attend;
 
@@ -28,12 +28,6 @@ public class ShopTecheeAttend implements java.io.Serializable {
     }
     public void setStId(Long stId) {
         this.stId = stId;
-    }
-    public String getNumber() {
-        return number;
-    }
-    public void setNumber(String number) {
-        this.number = number;
     }
     public Integer getAttend() {
         return attend;
@@ -52,5 +46,11 @@ public class ShopTecheeAttend implements java.io.Serializable {
     }
     public void setGroupName(String groupName) {
         this.groupName = groupName;
+    }
+    public String getTecheeNumber() {
+        return techeeNumber;
+    }
+    public void setTecheeNumber(String techeeNumber) {
+        this.techeeNumber = techeeNumber;
     }
 }

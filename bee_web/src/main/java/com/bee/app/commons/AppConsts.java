@@ -6,7 +6,7 @@ package com.bee.app.commons;
 public class AppConsts {
 
     /** App isDebug */
-    public static final boolean isDebug = true;
+    public static final boolean isDebug = false;
 
 
 }
