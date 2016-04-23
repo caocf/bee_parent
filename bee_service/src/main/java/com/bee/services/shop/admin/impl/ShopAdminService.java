@@ -3,10 +3,12 @@ package com.bee.services.shop.admin.impl;
 import com.bee.client.params.shop.AdminShopListRequest;
 import com.bee.commons.Consts;
 import com.bee.dao.find.FindDao;
+import com.bee.dao.shop.ShopConfigDao;
 import com.bee.dao.shop.ShopDao;
 import com.bee.image.ImageParser;
 import com.bee.pojo.find.Find;
 import com.bee.pojo.shop.Shop;
+import com.bee.pojo.shop.ShopConfig;
 import com.bee.pojo.user.User;
 import com.bee.services.shop.admin.IShopAdminService;
 import com.bee.services.shop.impl.ShopService;
@@ -25,9 +27,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Service
 public class ShopAdminService extends ShopService implements IShopAdminService {
 
-
     @Autowired
     private FindDao findDao;
+    @Autowired
+    private ShopConfigDao shopConfigDao;
 
     /**
      * 查询商家列表
@@ -74,9 +77,14 @@ public class ShopAdminService extends ShopService implements IShopAdminService {
                 shop.setServiceTime("13:30-0:30");
             }
 
-
             // 保存商家信息
             shopDao.save(shop);
+
+            // 保存商家配置信息
+            ShopConfig shopConfig = new ShopConfig();
+            shopConfig.setHasVideo(Consts.False);
+            shopConfig.setShop(shop);
+            shopConfigDao.save(shopConfig);
 
             // 保存列表缩略图
             saveShopListImage(shop.getSid(), req);

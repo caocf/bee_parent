@@ -6,10 +6,12 @@ import com.bee.client.params.AppVerResponse;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.pojo.AppVer;
+import com.bee.pojo.shop.ShopConfig;
 import com.bee.pojo.shop.ShopUpdate;
 import com.bee.pojo.user.User;
 import com.bee.services.shop.IShopUpdateService;
 import com.bee.services.shop.busi.IShopAttendBusiService;
+import com.bee.services.shop.busi.IShopConfigBusiService;
 import com.bee.services.shop.busi.IShopGroupBusiService;
 import com.bee.services.shop.busi.IShopTecheeBusiService;
 import com.bee.services.system.IAppVerService;
@@ -43,6 +45,8 @@ public class AppController {
 
     @Autowired
     private IUserBusiService userBusiService;
+    @Autowired
+    private IShopConfigBusiService shopConfigBusiService;
     @Autowired
     private IShopUpdateService shopUpdateService;
 
@@ -79,6 +83,10 @@ public class AppController {
         }
         // 发送服务器当前时间
         res.setCurrentTime(System.currentTimeMillis());
+
+        // v1.2.0增加
+        // 加载商家配置
+        res.setShopConfig(shopConfigBusiService.getShopConfigById(req.getSid()));
 
         /***********************************************************************************
          * v1.1.0 删除以下部分

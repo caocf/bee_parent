@@ -3,6 +3,7 @@ package com.bee.busi.params;
 import com.bee.busi.model.shop.BusiShopAttend;
 import com.bee.busi.model.shop.BusiShopGroup;
 import com.bee.busi.model.shop.BusiShopTechee;
+import com.bee.pojo.shop.ShopConfig;
 import com.bee.pojo.shop.ShopTechee;
 import com.qsd.framework.domain.response.Response;
 import com.qsd.framework.spring.BaseResponse;
@@ -33,6 +34,10 @@ public class BusiInitResponse extends Response {
      * 商家出勤表
      */
     private List<BusiShopAttend> shopAttends;
+    /**
+     * 商家配置
+     */
+    private ShopConfig shopConfig;
     /**
      * 发送当前服务器时间
      */
@@ -67,5 +72,11 @@ public class BusiInitResponse extends Response {
     }
     public void setTecheeUpdate(Long techeeUpdate) {
         this.techeeUpdate = techeeUpdate;
+    }
+    public ShopConfig getShopConfig() {
+        return shopConfig;
+    }
+    public void setShopConfig(ShopConfig shopConfig) {
+        this.shopConfig = shopConfig;
     }
 }

@@ -6,7 +6,7 @@ package com.bee.app.commons;
 public class AppConsts {
 
     /** Debug模式 */
-    public static final boolean isDebug = false;
+    public static final boolean isDebug = true;
 
     /**
      * 服务器状态

@@ -5,6 +5,8 @@ import com.bee.services.shop.IShopService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.io.IOException;
+
 /**
  * Created by suntongwei on 15/11/15.
  */
@@ -33,4 +35,12 @@ public interface IShopBusiService extends IShopService {
      * @param req
      */
     void saveShopImage(long shopId, MultipartHttpServletRequest req);
+
+    /**
+     * 保存商家宣传视频
+     *
+     * @param shopId
+     * @param req
+     */
+    void saveShopVideo(long shopId, MultipartHttpServletRequest req);
 }

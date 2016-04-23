@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.io.IOException;
+
 /**
  * Created by suntongwei on 15/11/15.
  */
@@ -59,8 +61,8 @@ public class ShopController {
      * @return
      */
     @RequestMapping(value = "/{sid}/support", method = RequestMethod.POST)
-    public Response saveShopServiceSupport(@PathVariable Long sid, boolean isPosCard,
-                                           boolean isFreeParking, boolean isFood, boolean isInvoice) {
+    public Response saveShopServiceSupport(@PathVariable Long sid, Boolean isPosCard,
+                                           Boolean isFreeParking, Boolean isFood, Boolean isInvoice) {
         Response res = new Response();
         try {
             Shop shop = shopBusiService.getShopById(sid);
@@ -70,6 +72,7 @@ public class ShopController {
                 shop.setIsFood(isFood ? Consts.True : Consts.False);
                 shop.setIsInvoice(isInvoice ? Consts.True : Consts.False);
                 shopBusiService.update(shop);
+                res.setCode(Codes.Success);
             } else {
                 res.setCode(Codes.Error);
                 res.setMsg("未查询到商家信息");
@@ -172,4 +175,37 @@ public class ShopController {
         res.setCode(Codes.Success);
         return res;
     }
+
+
+    /**
+     * 上传商家宣传视频
+     *
+     * @param shopId
+     * @param req
+     * @return
+     */
+    @RequestMapping(value = "/{shopId}/video", method = RequestMethod.POST)
+    public Response updateShopVideo(@PathVariable Long shopId, MultipartHttpServletRequest req) {
+        Response res = new Response();
+        MultipartFile file = req.getFile("file");
+        if (null == file) {
+            res.setCode(Codes.Error);
+            res.setMsg("文件不存在");
+            return res;
+        }
+        if (!file.getOriginalFilename().endsWith("video.mp4")) {
+            res.setCode(Codes.Error);
+            res.setMsg("文件格式错误");
+            return res;
+        }
+        try {
+            shopBusiService.saveShopVideo(shopId, req);
+            res.setCode(Codes.Success);
+        } catch (DataRunException e) {
+            res.setCode(Codes.Error);
+            res.setMsg("视频上传失败");
+        }
+        return res;
+    }
+
 }

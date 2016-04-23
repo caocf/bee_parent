@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by suntongwei on 16/1/1.
  */
@@ -48,7 +50,8 @@ public class UserTicketController {
     public ResponseObject<Integer> getTicketNum(@PathVariable Long userId, UserTicketParam param) {
         ResponseObject<Integer> res = new ResponseObject<>();
         param.setUserId(userId);
-        res.setResult(userTicketAppService.getUserTickets(param).size());
+        List<TicketList> result = userTicketAppService.getUserTickets(param);
+        res.setResult(null == result || result.size() < 1 ? 0 : result.size());
         res.setCode(Codes.Success);
         return res;
     }
