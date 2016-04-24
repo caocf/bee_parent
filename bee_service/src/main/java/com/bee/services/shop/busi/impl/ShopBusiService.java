@@ -74,7 +74,7 @@ public class ShopBusiService extends ShopService implements IShopBusiService {
      */
     @Override
     @Transactional
-    public void saveShopVideo(long shopId, MultipartHttpServletRequest req) {
+    public void saveShopVideo(long shopId, MultipartFile file, MultipartHttpServletRequest req) {
         try {
             String path;
             if (!Consts.isDebug) {
@@ -84,7 +84,7 @@ public class ShopBusiService extends ShopService implements IShopBusiService {
                         .getRealPath("video" + File.separator + shopId + ".mp4");
             }
             // 保存文件
-            FileUtil.copy(req.getInputStream(), new File(path));
+            FileUtil.copy(file.getInputStream(), new File(path));
             // 更新该商家配置信息
             ShopConfig shopConfig = shopConfigDao.getShopConfigByShopId(shopId);
             if (null == shopConfig) {

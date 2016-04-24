@@ -199,7 +199,7 @@ public class ShopController {
             return res;
         }
         try {
-            shopBusiService.saveShopVideo(shopId, req);
+            shopBusiService.saveShopVideo(shopId, file, req);
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             res.setCode(Codes.Error);

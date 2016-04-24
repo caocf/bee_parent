@@ -3,6 +3,7 @@ package com.bee.services.shop.busi;
 import com.bee.pojo.shop.Shop;
 import com.bee.services.shop.IShopService;
 import com.qsd.framework.hibernate.exception.DataRunException;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.io.IOException;
@@ -42,5 +43,5 @@ public interface IShopBusiService extends IShopService {
      * @param shopId
      * @param req
      */
-    void saveShopVideo(long shopId, MultipartHttpServletRequest req);
+    void saveShopVideo(long shopId, MultipartFile file, MultipartHttpServletRequest req);
 }
