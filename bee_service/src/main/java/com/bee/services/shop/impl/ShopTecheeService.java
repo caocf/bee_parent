@@ -1,11 +1,9 @@
 package com.bee.services.shop.impl;
 
 import com.bee.dao.shop.ShopTecheeDao;
-import com.bee.dao.shop.ShopUpdateDao;
 import com.bee.domain.modal.app.shop.ShopTecheeAttend;
 import com.bee.domain.params.shop.ShopTecheeAttendParam;
 import com.bee.pojo.shop.ShopTechee;
-import com.bee.pojo.shop.ShopUpdate;
 import com.bee.services.shop.IShopTecheeService;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +18,6 @@ public abstract class ShopTecheeService implements IShopTecheeService {
 
     @Autowired
     protected ShopTecheeDao shopTecheeDao;
-    @Autowired
-    protected ShopUpdateDao shopUpdateDao;
 
     /**
      * 查询商家技师出勤表

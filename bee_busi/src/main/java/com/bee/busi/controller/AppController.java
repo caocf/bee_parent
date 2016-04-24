@@ -6,17 +6,10 @@ import com.bee.client.params.AppVerResponse;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.pojo.AppVer;
-import com.bee.pojo.shop.ShopConfig;
-import com.bee.pojo.shop.ShopUpdate;
 import com.bee.pojo.user.User;
-import com.bee.services.shop.IShopUpdateService;
-import com.bee.services.shop.busi.IShopAttendBusiService;
 import com.bee.services.shop.busi.IShopConfigBusiService;
-import com.bee.services.shop.busi.IShopGroupBusiService;
 import com.bee.services.shop.busi.IShopTecheeBusiService;
-import com.bee.services.system.IAppVerService;
 import com.bee.services.system.busi.IAppVerBusiService;
-import com.bee.services.user.IUserService;
 import com.bee.services.user.busi.IUserBusiService;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.security.encrypt.Md5;
@@ -47,8 +40,6 @@ public class AppController {
     private IUserBusiService userBusiService;
     @Autowired
     private IShopConfigBusiService shopConfigBusiService;
-    @Autowired
-    private IShopUpdateService shopUpdateService;
 
     /**
      * 商户端初始化方法
