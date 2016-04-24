@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>商家评论列表 - <spring:message code="application.name"/></title>
+    <title>商家回复列表 - <spring:message code="application.name"/></title>
 
     <link href="${resPath}/assets/css/main.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -23,14 +23,14 @@
 <%@ include file="ShopMenu.jsp" %>
 <div class="main inner">
     <div class="row title">
-        <span class="before">商家评论列表</span>
+        <span class="before">商家回复列表</span>
         <i class="fa fa-angle-double-right"></i>
-        <span class="after">管理商家的评论</span>
+        <span class="after">管理商家的评论的回复</span>
     </div>
     <div class="row query-inner">
-        <sec:security auth="<%=AuthName.ShopCommentNew %>">
-        <button id="shopCommentNew" type="button" class="btn btn-success btn-sm icon-text" onclick="addComment()">
-          <i class="fa fa-plus"></i>增加评论
+        <sec:security auth="<%=AuthName.ShopReplyNew %>">
+        <button id="shopReplyNew" type="button" class="btn btn-success btn-sm icon-text" onclick="addReply()">
+          <i class="fa fa-plus"></i>增加回复
         </button>
         </sec:security>
     </div>
@@ -40,36 +40,26 @@
         <tr>
             <th>主键</th>
             <th>用户</th>
-            <th>评论内容</th>
-            <th>回复数</th>
-            <th>评论时间</th>
+            <th>回复内容</th>
+            <th>回复时间</th>
             <th>操作</th>
         </tr>
         {{if totalData < 1}}
           <tr>
             <td colspan="5" class="text-center">
-              <i class="fa fa-exclamation-triangle fa-lg font-color-red"></i> 该商家还没有评论
+              <i class="fa fa-exclamation-triangle fa-lg font-color-red"></i> 该评论还没有回复
             </td>
           </tr> 
         {{/if}}
         {{each result}}
         <tr>
-            <td>{{$value.scid}}</td>
+            <td>{{$value.srid}}</td>
             <td>{{$value.user.name}}</td>
             <td width="60%">{{$value.content}}</td>
-            <td>
-              <sec:security auth="<%=AuthName.ShopReply %>">
-              <a href="#" onclick="queryReply({{$value.scid}})">
-              </sec:security>
-              {{$value.replyNum}}
-              <sec:security auth="<%=AuthName.ShopReply %>">
-              </a>
-              </sec:security>
-            </td>
             <td>{{$value.createTimeStr}}</td>
             <td>
-                <sec:security auth="<%=AuthName.ShopCommentDelete%>">
-                <a href="#" class="icon" role="button" onclick="deleteComment({{$value.scid}})">
+                <sec:security auth="<%=AuthName.ShopReplyDelete%>">
+                <a href="#" class="icon" role="button" onclick="deleteReply({{$value.srid}})">
                     <i class="fa fa-trash font-color-red fa-lg"></i>
                 </a>
                 </sec:security>
@@ -93,7 +83,7 @@
 
     var query = function() {
       Loader.show();
-      $.getJSON("${basePath}/shop/${shop.sid}/comment/json", {indexPage: indexPage}, function(data) {
+      $.getJSON("${basePath}/shop/${shopId}/comment/${commentId}/reply/json", {indexPage: indexPage}, function(data) {
         $('#content').html(template('temp', data));
         $("#paging").paging({
           index: data.indexPage,
@@ -108,8 +98,8 @@
       });
     };
 
-    var deleteComment = function(id) {
-      $.post('${basePath}/shop/${shop.sid}/comment/' + id, {_method: "delete"}, function(data, textStatus, xhr) {
+    var deleteReply = function(id) {
+      $.post('${basePath}/shop/${shopId}/comment/${commentId}/reply/' + id, {_method: "delete"}, function(data, textStatus, xhr) {
         query(indexPage);
       });
     };
@@ -119,12 +109,8 @@
     });
 
 
-    function addComment() {
-      window.location.href = "${basePath}/shop/${shop.sid}/comment/new?shopName=${shop.name}";
-    }
-
-    function queryReply(id) {
-      window.location.href = "${basePath}/shop/${shop.sid}/comment/" + id + "/reply";
+    function addReply() {
+      // window.location.href = "${basePath}/shop/${shopId}/comment/new?shopName=${shop.name}";
     }
 </script>
 </body>

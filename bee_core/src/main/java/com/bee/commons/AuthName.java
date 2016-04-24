@@ -33,6 +33,10 @@ public final class AuthName {
     public static final String ShopCommentNew = "SHOP_COMMENT_NEW";
     public static final String ShopCommentDelete = "SHOP_COMMENT_DELETE";
 
+    public static final String ShopReply = "SHOP_REPLY";
+    public static final String ShopReplyNew = "SHOP_REPLY_NEW";
+    public static final String ShopReplyDelete = "SHOP_REPLY_DELETE";
+
     public static final String ShopImage = "SHOP_IMAGE";
     public static final String ShopImageNew = "SHOP_IMAGE_NEW";
     public static final String ShopImageEdit = "SHOP_IMAGE_EDIT";
@@ -83,6 +87,9 @@ public final class AuthName {
         AuthMap.put(ShopComment, "查看商家评论");
         AuthMap.put(ShopCommentNew, "发表商家评论");
         AuthMap.put(ShopCommentDelete, "删除商家评论");
+        AuthMap.put(ShopReply, "查看评论回复");
+        AuthMap.put(ShopReplyNew, "发表评论回复");
+        AuthMap.put(ShopReplyDelete, "删除评论回复");
         AuthMap.put(ShopImage, "查看商家图片");
         AuthMap.put(ShopImageNew, "上传商家图片");
         AuthMap.put(ShopImageEdit, "修改商家图片");

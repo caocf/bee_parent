@@ -43,7 +43,11 @@
               <td>{{$value.verStr}}</td>
               <td>{{$value.ver}}</td>
               <td>{{$value.createTimeStr}}</td>
-              <td></td>
+              <td>
+                <a href="{{$value.url}}" class="icon" role="button">
+                    <i class="fa fa-download font-color-base fa-lg"></i>
+                </a>
+              </td>
             </tr>
           {{/each}} 
         </table>

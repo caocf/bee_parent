@@ -1,8 +1,7 @@
 package com.bee.pojo.shop;
 
-import com.bee.domain.modal.app.shop.ShopReplyListItem;
 import com.bee.pojo.user.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
 
@@ -19,8 +18,13 @@ public class ShopReply implements java.io.Serializable {
     private Long srid;
     private String content;
     private Long createTime;
-    private ShopComment ShopComment;
+    private ShopComment shopComment;
     private User user;
+
+    @Transient
+    public String getCreateTimeStr() {
+        return DateUtil.formatDateTime(createTime);
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,10 +52,10 @@ public class ShopReply implements java.io.Serializable {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "SHOPCOMMENT")
     public ShopComment getShopComment() {
-        return ShopComment;
+        return shopComment;
     }
     public void setShopComment(ShopComment shopComment) {
-        ShopComment = shopComment;
+        this.shopComment = shopComment;
     }
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "USER")
