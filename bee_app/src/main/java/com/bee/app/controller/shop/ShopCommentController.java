@@ -56,11 +56,6 @@ public class ShopCommentController {
             res.setMsg("输入内容包含非法字符，请重新输入");
             return res;
         }
-        if (comment.getContent().length() < 1000) {
-            res.setCode(Codes.Error);
-            res.setMsg("内容不合法,请重新输入");
-            return res;
-        }
         try {
             comment.setShop(new Shop(sid));
             shopCommentAppService.save(comment);

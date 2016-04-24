@@ -109,6 +109,7 @@ public class AppVer implements java.io.Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+    @Lob
     @Column(name = "REMARK")
     public String getRemark() {
         return remark;

@@ -29,7 +29,7 @@ public class MateTicketExpiredThread implements Runnable {
         calendar = Calendar.getInstance();
 
         // 获取下个维护时间
-        if (calendar.get(Calendar.HOUR_OF_DAY) > 0) {
+        if (calendar.get(Calendar.HOUR_OF_DAY) >= 0) {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 

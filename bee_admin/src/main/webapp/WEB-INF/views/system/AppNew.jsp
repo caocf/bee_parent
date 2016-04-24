@@ -28,7 +28,7 @@
       <div class="row">
         <div class="alert alert-danger <c:if test="${msg == null}">hidden</c:if>" role="alert">${msg}</div>
       </div>
-      <form id="submitForm" class="form-horizontal" action="${basePath}/app" method="post" enctype="multipart/form-data">
+      <form id="submitForm" class="form-horizontal" action="${basePath}/appver" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="post" />
         <input type="hidden" id="avid" name="avid" value="${app.avid}" />
         <input type="hidden" name="createTime" value="${app.createTime}" />
@@ -59,20 +59,20 @@
           <label class="col-xs-1 control-label">版本码</label>
           <div class="col-xs-4">
             <input type="text" name="ver" placeholder="整数版本号" class="form-control" value="${app.ver}" />
-            <p class="help-block">数字越大，版本越新</p>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-1 control-label">版本说明</label>
           <div class="col-xs-4">
-              <input type="text" name="remark" placeholder="版本说明" class="form-control" value="${app.remark}" />
-              <p class="help-block">数字越大，版本越新</p>
+            <div class="textarea">
+              <textarea type="form-control" name="remark" rows="5" placeholder="版本说明">${app.remark}</textarea>
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label class="col-xs-1 control-label"></label>
           <div class="col-xs-4">
-            <button type="button" class="btn btn-success" onclick="doSubmit()">保存</button>
+            <button type="button" class="btn btn-success" onclick="doSubmit()">发布</button>
           </div>
         </div>
       </form>

@@ -13,7 +13,9 @@ public final class Consts {
     private static final String LocalBaseUrl = "http://localhost:8080";
     private static final String RemoteBaseUrl = "http://139.196.27.231";
 
-    private static final String RemoteVideoPath = "/home/default/static/video";
+    private static final String RemoteVideoPath = "/home/static/video";
+
+    public static final String RemoteAppDownloadPath = "/home/static/app";
 
     public static String getBaseUrl() {
         return isDebug ? LocalBaseUrl : RemoteBaseUrl;

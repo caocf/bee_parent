@@ -39,8 +39,10 @@
 		<i class="fa fa-credit-card fa-lg"></i>
 		<span>账务</span>
 	</a>
-	<a id="navbar-left-system" href="${basePath}/area">
+	<sec:security auth="<%=AuthName.Setting %>">
+	<a id="navbar-left-system" href="${basePath}/appver">
 		<i class="fa fa-cog fa-lg2"></i>
 		<span>设置</span>
 	</a>
+	</sec:security>
 </div>

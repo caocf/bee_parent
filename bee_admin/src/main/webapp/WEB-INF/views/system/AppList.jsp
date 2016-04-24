@@ -19,51 +19,68 @@
   	<%@ include file="../includes/navtop.jsp" %>
   	<%@ include file="../includes/navleft.jsp" %>
   	<%@ include file="SystemMenu.jsp" %>
-    <form:form id="deleteForm" method="delete"></form:form>
   	<div class="main inner">
   		<div class="row title">
         <span class="before">App版本列表</span>
         <i class="fa fa-angle-double-right"></i>	
   			<span class="after">查看App版本列表</span>
       </div>
-      <table class="table table-hover">
-      	<tr>
-      		<th>主键</th>
-          <th>版本类型</th>
-      		<th>版本号</th>
-      		<th>版本码</th>
-          <th>发布日期</th>
-          <th>操作</th>
-      	</tr>
-      	<c:forEach items="${AppList}" var="app">
+      <div id="content" class="row"></div>
+      <script id="temp" type="text/html">
+        <table class="table table-hover">
           <tr>
-            <td>${app.avid}</td>
-            <td>${app.typeStr}</td>
-            <td>${app.ver}</td>
-            <td>${app.verStr}</td>
-            <td>${app.createTimeStr}</td>
-            <td>
-              <a href="${basePath}${app.url}" class="icon" role="button">
-                <i class="fa fa-download fa-lg"></i>
-              </a>
-              <a href="#" class="icon" role="button" onclick="deleteAppVer(${app.avid})">
-                <i class="fa fa-trash font-color-red fa-lg"></i>
-              </a>
-            </td>
+            <th>主键</th>
+            <th>版本类型</th>
+            <th>版本号</th>
+            <th>版本码</th>
+            <th>发布日期</th>
+            <th>操作</th>
           </tr>
-      	</c:forEach>
-      </table>
+          {{each result}}
+            <tr>
+              <td>{{$value.avid}}</td>
+              <td>{{$value.typeStr}}</td>
+              <td>{{$value.verStr}}</td>
+              <td>{{$value.ver}}</td>
+              <td>{{$value.createTimeStr}}</td>
+              <td></td>
+            </tr>
+          {{/each}} 
+        </table>
+      </script>
+      <div id="paging" class="row"></div>
   	</div>
   	<script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${resPath}/assets/js/plugin/artTemplate/template.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
+    <script type="text/javascript" src="${resPath}/assets/js/plugin/paging.js"></script>
   	<script type="text/javascript">
   		Navbar.init("navbar-left-system", "navbar-inner-system-app");
-      function deleteAppVer(id) {
-        document.forms["deleteForm"].action = "${basePath}/app/" + id;
-        document.forms["deleteForm"].submit();
-      }
+      
+      var indexPage = 1;
+
+      var query = function() {
+        Loader.show();
+        $.getJSON("${basePath}/appver/json", {indexPage: indexPage}, function(data) {
+            $('#content').html(template('temp', data));
+            $("#paging").paging({
+              index: data.indexPage,
+              total: data.totalPage,
+              count: data.totalData,
+              fn : function(r) {
+                indexPage = r;
+                query(r);
+              }
+            });
+            Loader.hide();
+        });
+      };
+
+      $(document).ready(function() {
+        query(indexPage);
+      });
   	</script>
   </body>
   </html>

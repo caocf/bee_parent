@@ -62,6 +62,11 @@ public final class AuthName {
     public static final String AreaEdit = "AREA_EDIT";
     public static final String AreaDelete = "AREA_DELETE";
 
+    public static final String Setting = "SETTING";
+
+    public static final String AppVer = "APPVER";
+    public static final String AppVerNew = "APPVER_NEW";
+
     static {
         AuthMap.put(Shop, "商家查看");
         AuthMap.put(ShopNew, "创建商家");
@@ -98,5 +103,8 @@ public final class AuthName {
         AuthMap.put(AreaNew, "创建地区");
         AuthMap.put(AreaEdit, "修改地区");
         AuthMap.put(AreaDelete, "删除地区");
+        AuthMap.put(Setting, "设置权限");
+        AuthMap.put(AppVer, "查看APP版本列表");
+        AuthMap.put(AppVerNew, "发布APP版本");
     }
 }
