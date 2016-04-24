@@ -84,6 +84,7 @@ public class ShopCommentService implements IShopCommentService {
 
         // 保存评论
         shopComment.setCreateTime(System.currentTimeMillis());
+        shopComment.setReplyNum(0);
         shopCommentDao.save(shopComment);
 
         // 增加用户经验，并且并不是订单评论，因订单评论已增加经验

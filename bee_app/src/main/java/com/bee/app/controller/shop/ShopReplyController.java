@@ -60,7 +60,6 @@ public class ShopReplyController {
             return res;
         }
         try {
-            shopReply.setCreateTime(System.currentTimeMillis());
             shopReply.setShopComment(new ShopComment(commentId));
             shopReplyAppService.save(shopReply);
             res.setCode(Codes.Success);

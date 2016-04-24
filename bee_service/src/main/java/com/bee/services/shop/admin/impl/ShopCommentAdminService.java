@@ -26,6 +26,7 @@ public class ShopCommentAdminService extends ShopCommentService implements IShop
     public void save(ShopComment shopComment) throws DataRunException {
         // 保存评论
         shopComment.setCreateTime(System.currentTimeMillis());
+        shopComment.setReplyNum(0);
         shopCommentDao.save(shopComment);
     }
 

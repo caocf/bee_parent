@@ -43,6 +43,7 @@
             <th>主键</th>
             <th>用户</th>
             <th>评论内容</th>
+            <th>回复数</th>
             <th>评论时间</th>
             <th>操作</th>
         </tr>
@@ -58,6 +59,7 @@
             <td>{{$value.scid}}</td>
             <td>{{$value.user.name}}</td>
             <td width="60%">{{$value.content}}</td>
+            <td>{{$value.replyNum}}</td>
             <td>{{$value.createTimeStr}}</td>
             <td>
                 <sec:security auth="<%=AuthName.ShopCommentDelete%>">

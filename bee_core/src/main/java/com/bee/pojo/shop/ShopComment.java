@@ -8,14 +8,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by suntongwei on 15/6/1.
  */
 @Entity
 @Table(name = "TB_SHOP_COMMENT")
-@JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY,
-        isGetterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
 public class ShopComment implements java.io.Serializable {
 
     // serialVersionUID
@@ -33,6 +33,8 @@ public class ShopComment implements java.io.Serializable {
     private Long createTime;
     // 所属订单
     private Order order;
+    // 回复数
+    private Integer replyNum;
 
     @Transient
     public String getCreateTimeStr() {
@@ -91,5 +93,12 @@ public class ShopComment implements java.io.Serializable {
     }
     public void setOrder(Order order) {
         this.order = order;
+    }
+    @Column(name = "REPLYNUM")
+    public Integer getReplyNum() {
+        return replyNum;
+    }
+    public void setReplyNum(Integer replyNum) {
+        this.replyNum = replyNum;
     }
 }

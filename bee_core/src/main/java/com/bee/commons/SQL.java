@@ -209,18 +209,12 @@ public final class SQL {
 
         public static final class Comment {
             public static final String getAppCommentList = "SELECT " +
-                    "A.SCID, A.CONTENT, A.CREATETIME, B.UID, B.NAME, A.SHOP, " +
-                    "(SELECT COUNT(*) FROM TB_SHOP_REPLY C WHERE C.SHOPCOMMENT = A.SCID) AS REPLY_NUM," +
-                    "B.LEVEL " +
+                    "A.SCID, A.CONTENT, A.CREATETIME, B.UID, B.NAME, A.SHOP, A.REPLYNUM, B.LEVEL " +
                     "FROM TB_SHOP_COMMENT A " +
                     "LEFT OUTER JOIN TB_USER B " +
                     "ON A.USER = B.UID " +
                     "WHERE A.SHOP = ? ORDER BY A.CREATETIME DESC";
 
-            public static final String QueryShopComment = "From ShopComment A " +
-                    "left join fetch A.user B " +
-                    "left join fetch A.shop C " +
-                    "where 1=1";
             public static final String QueryShopCommentOrderBy = " ORDER BY A.scid DESC";
         }
 
