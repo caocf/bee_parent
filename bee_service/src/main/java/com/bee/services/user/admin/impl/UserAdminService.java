@@ -42,10 +42,7 @@ public class UserAdminService extends UserService implements IUserAdminService {
     @Override
     @Transactional
     public void createUser(User user) throws DataRunException {
-
-        /**
-         * 设置用户信息
-         */
+        // 设置用户信息
         user.setPassword(Md5.encodePassword(user.getPassword()));
         user.setType(Consts.User.Type.TestUser);
         user.setCreateTime(System.currentTimeMillis());
@@ -53,12 +50,8 @@ public class UserAdminService extends UserService implements IUserAdminService {
         user.setExp(0);
         user.setIntegral(0);
         user.setLevel(0);
-        // v1.1.0删除
-//        user.setPath("");
-//        user.setUrl("");
         user.setCash(0d);
         userDao.save(user);
-
     }
 
     /**

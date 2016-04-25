@@ -77,7 +77,7 @@
 <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/plugin/paging.js"></script>
 <script type="text/javascript">
-    Navbar.init("navbar-left-shop", "navbar-inner-shop-list");
+    Navbar.init("navbar-left-shop", "navbar-inner-shop-comment");
 
     var indexPage = 1;
 
@@ -110,7 +110,7 @@
 
 
     function addReply() {
-      // window.location.href = "${basePath}/shop/${shopId}/comment/new?shopName=${shop.name}";
+      window.location.href = "${basePath}/shop/${shopId}/comment/${commentId}/reply/new";
     }
 </script>
 </body>

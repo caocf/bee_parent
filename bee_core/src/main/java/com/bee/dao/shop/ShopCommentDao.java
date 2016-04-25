@@ -58,7 +58,7 @@ public class ShopCommentDao extends JpaDaoSupport<ShopComment, Long> {
     public static final String QueryShopComment = "From ShopComment A " +
             "left join fetch A.user B " +
             "left join fetch A.shop C " +
-            "where 1=1";
+            "where 1=1 ";
     public PagingResult<ShopComment> queryShopComment(AdminShopCommentRequest request) {
         DataEntity entity = new HQLEntity();
         StringBuffer sb = new StringBuffer(QueryShopComment);
@@ -68,7 +68,7 @@ public class ShopCommentDao extends JpaDaoSupport<ShopComment, Long> {
         }
         entity.setPaging(request);
         sb.append(SQL.Shop.Comment.QueryShopCommentOrderBy);
-        entity.setEntity(sb);
+        entity.setEntity(sb.toString());
         return queryWithPaging(entity);
     }
 

@@ -51,6 +51,7 @@ public class UserAppService extends UserService implements IUserAppService {
     @Override
     @Transactional
     public void createUser(User user) throws DataRunException {
+
         /**
          * 设置用户信息
          */

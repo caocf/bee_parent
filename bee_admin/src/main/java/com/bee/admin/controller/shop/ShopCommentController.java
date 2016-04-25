@@ -43,7 +43,7 @@ public class ShopCommentController {
     private IUserAdminService userAdminService;
 
     /**
-     * 发表评论首页
+     * 商家发表评论首页
      *
      * @return
      */
@@ -51,7 +51,13 @@ public class ShopCommentController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(@PathVariable Long sid) {
         ModelAndView mav = new ModelAndView(CommentList);
-        mav.addObject("shop", shopAdminService.getShopById(sid));
+        if (sid > 0) {
+            Shop shop = shopAdminService.getShopById(sid);
+            mav.addObject("shopId", shop.getSid());
+            mav.addObject("shopName", shop.getName());
+        } else {
+            mav.addObject("shopId", 0);
+        }
         return mav;
     }
 

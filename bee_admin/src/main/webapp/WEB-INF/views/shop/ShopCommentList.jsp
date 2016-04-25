@@ -27,6 +27,7 @@
         <i class="fa fa-angle-double-right"></i>
         <span class="after">管理商家的评论</span>
     </div>
+    <c:if test="${shopId > 0}">
     <div class="row query-inner">
         <sec:security auth="<%=AuthName.ShopCommentNew %>">
         <button id="shopCommentNew" type="button" class="btn btn-success btn-sm icon-text" onclick="addComment()">
@@ -34,14 +35,18 @@
         </button>
         </sec:security>
     </div>
+    </c:if>
     <div id="content" class="row"></div>
     <script id="temp" type="text/html">
       <table class="table table-hover">
         <tr>
             <th>主键</th>
+            <c:if test="${shopId < 1}">
+              <th>所属商家</th>
+            </c:if>
             <th>用户</th>
             <th>评论内容</th>
-            <th>回复数</th>
+            <th class="text-center">回复数</th>
             <th>评论时间</th>
             <th>操作</th>
         </tr>
@@ -55,21 +60,18 @@
         {{each result}}
         <tr>
             <td>{{$value.scid}}</td>
+            <c:if test="${shopId < 1}">
+              <td>{{$value.shop.name}}</td>
+            </c:if>
             <td>{{$value.user.name}}</td>
-            <td width="60%">{{$value.content}}</td>
-            <td>
-              <sec:security auth="<%=AuthName.ShopReply %>">
-              <a href="#" onclick="queryReply({{$value.scid}})">
-              </sec:security>
-              {{$value.replyNum}}
-              <sec:security auth="<%=AuthName.ShopReply %>">
-              </a>
-              </sec:security>
+            <td width="40%">{{$value.content}}</td>
+            <td class="text-center">
+              <a href="#" onclick="queryReply({{$value.scid}})">{{$value.replyNum}}</a>
             </td>
             <td>{{$value.createTimeStr}}</td>
             <td>
                 <sec:security auth="<%=AuthName.ShopCommentDelete%>">
-                <a href="#" class="icon" role="button" onclick="deleteComment({{$value.scid}})">
+                <a href="#" class="icon" role="button" onclick="deleteComment({{$value.shop.sid}}, {{$value.scid}})">
                     <i class="fa fa-trash font-color-red fa-lg"></i>
                 </a>
                 </sec:security>
@@ -87,13 +89,13 @@
 <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
 <script type="text/javascript" src="${resPath}/assets/js/plugin/paging.js"></script>
 <script type="text/javascript">
-    Navbar.init("navbar-left-shop", "navbar-inner-shop-list");
+    Navbar.init("navbar-left-shop", "navbar-inner-shop-comment");
 
     var indexPage = 1;
 
     var query = function() {
       Loader.show();
-      $.getJSON("${basePath}/shop/${shop.sid}/comment/json", {indexPage: indexPage}, function(data) {
+      $.getJSON("${basePath}/shop/${shopId}/comment/json", {indexPage: indexPage}, function(data) {
         $('#content').html(template('temp', data));
         $("#paging").paging({
           index: data.indexPage,
@@ -108,8 +110,8 @@
       });
     };
 
-    var deleteComment = function(id) {
-      $.post('${basePath}/shop/${shop.sid}/comment/' + id, {_method: "delete"}, function(data, textStatus, xhr) {
+    var deleteComment = function(shopId, id) {
+      $.post('${basePath}/shop/' + shopId + '/comment/' + id, {_method: "delete"}, function(data, textStatus, xhr) {
         query(indexPage);
       });
     };
@@ -120,11 +122,11 @@
 
 
     function addComment() {
-      window.location.href = "${basePath}/shop/${shop.sid}/comment/new?shopName=${shop.name}";
+      window.location.href = "${basePath}/shop/${shopId}/comment/new?shopName=${shopName}";
     }
 
     function queryReply(id) {
-      window.location.href = "${basePath}/shop/${shop.sid}/comment/" + id + "/reply";
+      window.location.href = "${basePath}/shop/${shopId}/comment/" + id + "/reply";
     }
 </script>
 </body>

@@ -38,9 +38,6 @@ public class ShopCommentAdminService extends ShopCommentService implements IShop
      */
     @Override
     public PagingResult<ShopComment> queryShopComment(AdminShopCommentRequest request) {
-        if (null == request.getShopId() || request.getShopId() < 1) {
-            return new PagingResult<>();
-        }
         return shopCommentDao.queryShopComment(request);
     }
 

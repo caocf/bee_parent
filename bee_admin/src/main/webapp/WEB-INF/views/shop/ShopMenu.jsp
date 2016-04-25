@@ -18,13 +18,17 @@
 	</a>
 	-->
   </sec:security>
+  <div class="line"></div>
+ 	<a id="navbar-inner-shop-comment" href="${basePath}/shop/0/comment" class="icon">
+    <i class="fa fa-commenting-o"></i>商家评论
+  </a> 
+  <a id="navbar-inner-shop-image-view" href="${basePath}/shop/0/image/view">
+		<i class="fa fa-picture-o"></i>商家图片
+	</a>
 	<div class="line"></div>
 	<sec:security auth="<%=AuthName.ShopApplyer %>">
 	<a id="navbar-inner-shop-applyer" href="${basePath}/shop/applyer">
 		<i class="fa fa-user-plus"></i>商家申请
 	</a>
 	</sec:security>
-	<a id="navbar-inner-shop-image-view" href="${basePath}/shop/0/image/view">
-		<i class="fa fa-picture-o"></i>商家图片
-	</a>
 </div>

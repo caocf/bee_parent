@@ -1,10 +1,8 @@
 package com.bee.services.shop.app.impl;
 
-import com.bee.dao.shop.ShopCommentDao;
 import com.bee.dao.shop.app.ShopReplyAppDao;
 import com.bee.domain.modal.app.shop.ShopReplyListItem;
 import com.bee.domain.params.shop.ShopReplyListParam;
-import com.bee.pojo.shop.ShopComment;
 import com.bee.pojo.shop.ShopReply;
 import com.bee.services.shop.app.IShopReplyAppService;
 import com.bee.services.shop.impl.ShopReplyService;
@@ -22,8 +20,6 @@ public class ShopReplyAppService extends ShopReplyService implements IShopReplyA
 
     @Autowired
     private ShopReplyAppDao shopReplyAppDao;
-    @Autowired
-    private ShopCommentDao shopCommentDao;
 
 
     @Override
@@ -43,8 +39,6 @@ public class ShopReplyAppService extends ShopReplyService implements IShopReplyA
         shopReply.setCreateTime(System.currentTimeMillis());
         shopReplyAppDao.save(shopReply);
         // 更新ShopComment的ReplyNum+1
-        ShopComment shopComment = shopCommentDao.findById(shopReply.getShopComment().getScid());
-        shopComment.setReplyNum(shopComment.getReplyNum() + 1);
-        shopCommentDao.update(shopComment);
+        updateShopCommentReplyNum(shopReply.getShopComment().getScid(), 1);
     }
 }

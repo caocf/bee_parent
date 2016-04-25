@@ -3,6 +3,7 @@ package com.bee.services.user.admin;
 import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.pojo.user.User;
 import com.bee.services.user.IUserService;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.spring.PagingResult;
 
 /**
@@ -17,4 +18,5 @@ public interface IUserAdminService extends IUserService {
      * @return
      */
     PagingResult<User> queryUserListByParams(AdminUserListRequest req);
+
 }
