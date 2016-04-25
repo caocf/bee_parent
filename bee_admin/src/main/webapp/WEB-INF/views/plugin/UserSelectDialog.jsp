@@ -15,6 +15,7 @@
 			$.getJSON(BasePath + "/user/json", {
 				userName: $("#userSelectDialogName").val(),
 				type: $("#userSelectDialogType").val(),
+				maxRows: 10,
 				indexPage: index
 			}, function(data) {
 				$("#userSelectDialogTable tr:gt(0)").remove();
@@ -32,7 +33,12 @@
 					$tr.append($(document.createElement("td")).append($a));
 					$tr.append($(document.createElement("td")).html(data.data[i].phone));
 					$tr.append($(document.createElement("td")).html(data.data[i].name));
-					$tr.append($(document.createElement("td")).html("普通用户"));
+					if (data.data[i].type == 99) {
+						$tr.append($(document.createElement("td")).html("测试用户"));
+					} else {
+						$tr.append($(document.createElement("td")).html("普通用户"));
+					}
+					
 					$("#userSelectDialogTable").append($tr);
 				}	
 				$("#userSelectDialogPaging").paging({
@@ -60,10 +66,18 @@
       	<form action="${basePath}/user" class="form-inline" method="get">
           <div class="row query_div">
 	          <div class="col-xs-12">
-	          		<input type="hidden" id="userSelectDialogType" value="<%= Consts.User.Type.AppUser %>" />
 			          <div class="form-group">
 			            <label>用户名称</label>
 			            <input type="text" id="userSelectDialogName" class="form-control input-sm" />
+			          </div>
+			          <div class="form-group">
+			            <label>用户类型</label>
+			            <select id="userSelectDialogType">
+			            	<option></option>
+			            	<option value="<%= Consts.User.Type.AppUser %>">普通用户</option>
+			            	<option value="<%= Consts.User.Type.TestUser %>">测试用户</option>
+			            	<option value="<%= Consts.User.Type.BusiUser %>">商家用户</option>
+			            </select>
 			          </div>
 			          <button type="button" class="btn btn-primary btn-sm icon-text" onclick="UserSelectDialog.query(1)">
 			            <i class="fa fa-search"></i>查询

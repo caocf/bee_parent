@@ -13,6 +13,8 @@ public class AdminUserListRequest extends PagingRequest {
 
     private Integer type;
     private String userName;
+    private String phone;
+    private Integer maxRows;
 
     public Integer getType() {
         return type;
@@ -25,6 +27,12 @@ public class AdminUserListRequest extends PagingRequest {
     }
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPageType() {
@@ -51,8 +59,15 @@ public class AdminUserListRequest extends PagingRequest {
         return pageType;
     }
 
+    public void setMaxRows(Integer maxRows) {
+        this.maxRows = maxRows;
+    }
+
     @Override
     public Integer getMaxRows() {
+        if (maxRows != null) {
+            return maxRows;
+        }
         return 15;
     }
 }

@@ -100,6 +100,10 @@ public class UserDao extends JpaDaoSupport<User, Long> {
         HQLEntity entity = new HQLEntity();
         StringBuffer sb = new StringBuffer(SQL.User.QueryUserByParams);
         if (param != null) {
+            if (param.getUserId() != null && param.getUserId() > 0) {
+                sb.append(" and A.uid = ?");
+                entity.setParam(param.getUserId());
+            }
             if (!StringUtil.isNull(param.getPhone())) {
                 sb.append(" and A.phone = ? ");
                 entity.setParam(param.getPhone());

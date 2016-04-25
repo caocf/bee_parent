@@ -100,27 +100,31 @@ public class ShopCommentController {
     @Auth(name = AuthName.ShopCommentNew)
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
-    public Response save(@PathVariable Long sid, ShopComment shopComment, String userName) {
+    public Response save(@PathVariable Long sid, ShopComment shopComment, Long userId, String userName) {
         Response res = new Response();
         try {
-            // 检查用户名是否存在，如不存在，则创建用户
-            UserParam param = new UserParam();
-            param.setNick(userName);
-            param.setType(Consts.User.Type.TestUser);
-            User user = userAdminService.getUserByParam(param);
+            User user = null;
+            // 如果UserId存在,则先检查UserId用户
+            if (userId != null) {
+                UserParam param = new UserParam();
+                param.setUserId(userId);
+                user = userAdminService.getUserByParam(param);
+            }
+            // 如果UserId的用户名和userName的用户名不同, 则有限获取userName用户
+            if (user != null && !user.getName().equals(userName)) {
+                UserParam param = new UserParam();
+                param.setNick(userName);
+                // 强制获取用户必须为测试用户
+                param.setType(Consts.User.Type.TestUser);
+                user = userAdminService.getUserByParam(param);
+            }
+            // 如果User还是不存在,则重新创建
             if (null == user) {
-                // 如果不存在用，则创建用户
                 user = new User();
                 user.setPhone("00000000000");
                 user.setName(userName);
                 user.setPassword(Consts.User.BusiInitPassword);
                 user.setType(Consts.User.Type.TestUser);
-//                user.setPath("");
-//                user.setUrl("");
-                user.setExp(0);
-                user.setCreateTime(System.currentTimeMillis());
-                user.setAlipay("");
-                user.setCash(0d);
                 user.setDevice("00000000000");
                 user.setIntegral(0);
                 user.setLevel(0);

@@ -38,7 +38,13 @@
         <div class="form-group">
           <label class="col-xs-1 control-label">评论用户</label>
           <div class="col-xs-10">
-            <input type="text" name="userName" class="form-control" />
+            <div class="col-xs-3">
+            <input type="hidden" id="userId" name="userId" />
+            <input type="text" id="userName" name="userName" class="form-control" />
+          </div>
+          <div class="col-xs-8">
+            <button type="button" class="btn btn-primary" onclick='openUserSelectDialog()'>选择</button>
+          </div>
           </div>
         </div>
         <div class="form-group">
@@ -61,6 +67,7 @@
     <script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
+    <script type="text/javascript" src="${resPath}/assets/js/plugin/paging.js"></script>
     <script type="text/javascript">
       Navbar.init("navbar-left-shop", "navbar-inner-shop-comment");
 
@@ -78,6 +85,14 @@
             }
         }, "json");
       };
+
+      var openUserSelectDialog = function() {
+        UserSelectDialog.show(function(id, name) {
+          $("#userId").val(id);
+          $("#userName").val(name);
+        });
+      }
     </script>
+    <%@ include file="../plugin/UserSelectDialog.jsp" %>
   </body>
   </html>

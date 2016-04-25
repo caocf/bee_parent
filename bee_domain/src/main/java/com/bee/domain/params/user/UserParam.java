@@ -10,17 +10,13 @@ public class UserParam extends BaseRequest {
     // serialVersionUID
     private static final long serialVersionUID = 3021859094426738264L;
 
-    /**
-     * 手机号
-     */
+    // 用户ID
+    private Long userId;
+    // 手机号
     private String phone;
-    /**
-     * 类型
-     */
+    // 类型
     private Integer type;
-    /**
-     * 昵称
-     */
+    // 昵称
     private String nick;
 
     public String getPhone() {
@@ -40,5 +36,11 @@ public class UserParam extends BaseRequest {
     }
     public void setNick(String nick) {
         this.nick = nick;
+    }
+    public Long getUserId() {
+        return userId;
+    }
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

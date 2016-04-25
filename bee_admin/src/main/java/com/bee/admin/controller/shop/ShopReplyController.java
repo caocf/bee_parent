@@ -118,26 +118,36 @@ public class ShopReplyController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
     public Response saveShopReply(@PathVariable Long shopId, @PathVariable Long commentId,
-                                  ShopReply shopReply, String userName) {
+                                  ShopReply shopReply, Long userId, String userName) {
         Response res = new Response();
-        // 检查用户名是否存在，如不存在，则创建用户
-        UserParam param = new UserParam();
-        param.setNick(userName);
-        param.setType(Consts.User.Type.TestUser);
-        User user = userAdminService.getUserByParam(param);
-        if (null == user) {
-            // 如果不存在用，则创建用户
-            user = new User();
-            user.setPhone("00000000000");
-            user.setName(userName);
-            user.setPassword(Consts.User.BusiInitPassword);
-            user.setType(Consts.User.Type.TestUser);
-            user.setDevice("00000000000");
-            user.setIntegral(0);
-            user.setLevel(0);
-            userAdminService.createUser(user);
-        }
         try {
+            User user = null;
+            // 如果UserId存在,则先检查UserId用户
+            if (userId != null) {
+                UserParam param = new UserParam();
+                param.setUserId(userId);
+                user = userAdminService.getUserByParam(param);
+            }
+            // 如果UserId的用户名和userName的用户名不同, 则有限获取userName用户
+            if (user != null && !user.getName().equals(userName)) {
+                UserParam param = new UserParam();
+                param.setNick(userName);
+                // 强制获取用户必须为测试用户
+                param.setType(Consts.User.Type.TestUser);
+                user = userAdminService.getUserByParam(param);
+            }
+            // 如果User还是不存在,则重新创建
+            if (null == user) {
+                user = new User();
+                user.setPhone("00000000000");
+                user.setName(userName);
+                user.setPassword(Consts.User.BusiInitPassword);
+                user.setType(Consts.User.Type.TestUser);
+                user.setDevice("00000000000");
+                user.setIntegral(0);
+                user.setLevel(0);
+                userAdminService.createUser(user);
+            }
             shopReply.setUser(user);
             shopReply.setShopComment(new ShopComment(commentId));
             shopReplyAdminService.save(shopReply);
