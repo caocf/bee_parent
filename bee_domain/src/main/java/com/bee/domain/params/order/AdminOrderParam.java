@@ -1,34 +1,32 @@
-package com.bee.client.params.order;
+package com.bee.domain.params.order;
 
 import com.bee.commons.Consts;
-import com.qsd.framework.spring.PagingRequest;
+import com.qsd.framework.domain.request.RequestPaging;
 
 /**
- * Created by suntongwei on 15/4/24.
+ * Created by suntongwei on 16/4/26.
  */
-public class AdminOrderListRequest extends PagingRequest {
+public class AdminOrderParam extends RequestPaging {
 
     // serialVersionUID
-    private static final long serialVersionUID = -3658219948438120869L;
+    private static final long serialVersionUID = 5811952730862471470L;
 
-    /**
-     * @see com.bee.commons.Consts.Order.Status.Query
-     */
+    // @see com.bee.commons.Consts.Order.Status.Query
     private Integer status;
-    /**
-     * 实时监控，刷新时间s
-     */
+    // 实时监控，刷新时间s
     private Long queryTime;
-    /**
-     * 是否自动更新
-     */
-    private Boolean isAuto;
 
     public Integer getStatus() {
         return status;
     }
     public void setStatus(Integer status) {
         this.status = status;
+    }
+    public Long getQueryTime() {
+        return queryTime;
+    }
+    public void setQueryTime(Long queryTime) {
+        this.queryTime = queryTime;
     }
 
     public String getPageType() {
@@ -47,20 +45,6 @@ public class AdminOrderListRequest extends PagingRequest {
                 pageType = "navbar-inner-order-cancel";
         }
         return pageType;
-    }
-
-    public Long getQueryTime() {
-        return queryTime;
-    }
-    public void setQueryTime(Long queryTime) {
-        this.queryTime = queryTime;
-    }
-
-    public Boolean getIsAuto() {
-        return isAuto;
-    }
-    public void setIsAuto(Boolean isAuto) {
-        this.isAuto = isAuto;
     }
 
     @Override

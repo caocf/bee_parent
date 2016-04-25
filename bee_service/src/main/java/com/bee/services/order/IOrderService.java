@@ -17,6 +17,21 @@ public interface IOrderService {
      */
     void createOrder(Order order) throws DataRunException;
 
+    /**
+     * 接受订单
+     *
+     * @param id
+     * @throws com.qsd.framework.hibernate.exception.DataRunException
+     */
+    void acceptOrder(long id) throws DataRunException;
+
+    /**
+     * 完成订单
+     *
+     * @param id
+     * @throws DataRunException
+     */
+    void finishOrder(long id) throws DataRunException;
 
     /**
      * 取消订单

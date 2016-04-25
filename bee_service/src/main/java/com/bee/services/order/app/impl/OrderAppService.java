@@ -208,11 +208,28 @@ public class OrderAppService extends OrderService implements IOrderAppService {
         if (!OrderStatusMachine.isEditOrderNum(order.getStatus())) {
             throw new DataRunException(Codes.Order.EditError);
         }
-        if (null == order.getNum() || num == order.getNum()) {
+        if (null == order.getNum() || num < 1 || num == order.getNum()) {
             throw new DataRunException(Codes.Order.EditNoChangeError);
         }
         order.setNum(num);
-        order.writeOperate(Consts.Order.Operate.Edited);
+        order.writeOperate(Consts.Order.Operate.Edited + "为" + num);
         orderDao.update(order);
+    }
+
+    /**
+     * 接受订单
+     * App端无此功能
+     *
+     * @param id
+     * @throws DataRunException
+     */
+    @Override
+    public void acceptOrder(long id) throws DataRunException {
+        // nothing...
+    }
+
+    @Override
+    public void finishOrder(long id) throws DataRunException {
+        // nothing...
     }
 }

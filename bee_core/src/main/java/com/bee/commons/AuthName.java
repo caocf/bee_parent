@@ -51,6 +51,8 @@ public final class AuthName {
     public static final String Order = "ORDER";
     public static final String OrderCreate = "ORDER_CREATE";
     public static final String OrderMonitor = "ORDER_MONITOR";
+    public static final String OrderAccept = "ORDER_ACCEPT";
+    public static final String OrderFinish = "ORDER_FINISH";
     public static final String OrderDelete = "ORDER_DELETE";
 
     public static final String User = "USER";
@@ -100,6 +102,8 @@ public final class AuthName {
         AuthMap.put(ShopUserDelete, "删除商家管理员");
         AuthMap.put(Order, "查看订单");
         AuthMap.put(OrderMonitor, "订单监控");
+        AuthMap.put(OrderAccept, "接受订单");
+        AuthMap.put(OrderFinish, "完成订单");
         AuthMap.put(OrderDelete, "取消订单");
         AuthMap.put(Market, "营销权限");
         AuthMap.put(TicketNew, "创建优惠券");

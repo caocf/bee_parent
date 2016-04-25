@@ -37,14 +37,12 @@
         </div>
         <div class="form-group">
           <label class="col-xs-1 control-label">评论用户</label>
-          <div class="col-xs-10">
-            <div class="col-xs-3">
+          <div class="col-xs-3">
             <input type="hidden" id="userId" name="userId" />
             <input type="text" id="userName" name="userName" class="form-control" />
           </div>
           <div class="col-xs-8">
             <button type="button" class="btn btn-primary" onclick='openUserSelectDialog()'>选择</button>
-          </div>
           </div>
         </div>
         <div class="form-group">

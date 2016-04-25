@@ -11,17 +11,13 @@
 		<i class="fa fa-plus"></i>增加商户
 	</a>
     </sec:security>
-    <sec:security auth="<%=AuthName.ShopComment %>">
-		<!--
-	<a id="navbar-inner-shop-comment" href="${basePath}/shop/0/comment">
-		<i class="fa fa-commenting-o"></i>商家评论
-	</a>
-	-->
-  </sec:security>
+  
+  <sec:security auth="<%=AuthName.ShopComment %>">
   <div class="line"></div>
  	<a id="navbar-inner-shop-comment" href="${basePath}/shop/0/comment" class="icon">
     <i class="fa fa-commenting-o"></i>商家评论
   </a> 
+  </sec:security>
   <a id="navbar-inner-shop-image-view" href="${basePath}/shop/0/image/view">
 		<i class="fa fa-picture-o"></i>商家图片
 	</a>

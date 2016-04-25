@@ -29,14 +29,6 @@ public interface IOrderBusiService extends IOrderService {
     BusiOrderItem getOrderItem(long oid);
 
     /**
-     * 接受订单
-     *
-     * @param id
-     * @throws com.qsd.framework.hibernate.exception.DataRunException
-     */
-    void acceptOrder(long id) throws DataRunException;
-
-    /**
      * 【B端】商家拒绝订单
      *
      * @param id
@@ -44,11 +36,4 @@ public interface IOrderBusiService extends IOrderService {
      */
     void rejectOrder(long id) throws DataRunException;
 
-    /**
-     * 完成订单
-     *
-     * @param id
-     * @throws DataRunException
-     */
-    void finishOrder(long id) throws DataRunException;
 }

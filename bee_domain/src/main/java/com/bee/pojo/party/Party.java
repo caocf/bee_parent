@@ -1,7 +1,6 @@
 package com.bee.pojo.party;
 
 import com.bee.commons.Consts;
-import com.bee.commons.ImageFactory;
 import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;

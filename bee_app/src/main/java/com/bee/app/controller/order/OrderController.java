@@ -140,8 +140,10 @@ public class OrderController {
             res.setCode(Codes.Success);
         } catch (DataRunException e) {
             if (e.getErrorCode() == Codes.Order.EditError) {
+                res.setCode(Codes.Order.EditError);
                 res.setMsg("订单状态发生改变");
             } else if (e.getErrorCode() == Codes.Order.EditNoChangeError) {
+                res.setCode(Codes.Order.EditNoChangeError);
                 res.setMsg("订单人数未改变");
             } else {
                 res.setCode(Codes.Order.OrderDbError);

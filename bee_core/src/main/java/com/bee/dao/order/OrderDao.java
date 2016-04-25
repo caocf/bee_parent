@@ -5,13 +5,12 @@ import com.bee.busi.model.order.BusiOrderItem;
 import com.bee.busi.model.order.BusiOrderListItem;
 import com.bee.busi.model.order.BusiOrderNumberStat;
 import com.bee.busi.params.order.BusiOrderListRequest;
-import com.bee.client.params.order.AdminOrderListRequest;
 import com.bee.client.params.order.OrderListRequest;
 import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.commons.SQL;
-import com.bee.domain.modal.app.order.OrderItem;
 import com.bee.domain.modal.app.order.OrderListItem;
+import com.bee.domain.params.order.AdminOrderParam;
 import com.bee.pojo.order.Order;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
@@ -58,7 +57,7 @@ public class OrderDao extends JpaDaoSupport<Order, Long> {
      * @param request
      * @return
      */
-    public PagingResult<Order> getOrderListByParam(AdminOrderListRequest request) {
+    public PagingResult<Order> getOrderListByParam(AdminOrderParam request) {
         DataEntity entity = new HQLEntity();
         StringBuffer sb = new StringBuffer(SQL.Order.getOrderListByParam);
         if(request.getStatus() != null) {

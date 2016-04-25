@@ -1,6 +1,6 @@
 package com.bee.services.order.admin;
 
-import com.bee.client.params.order.AdminOrderListRequest;
+import com.bee.domain.params.order.AdminOrderParam;
 import com.bee.pojo.order.Order;
 import com.bee.services.order.IOrderService;
 import com.qsd.framework.spring.PagingResult;
@@ -16,7 +16,7 @@ public interface IOrderAdminService extends IOrderService {
      * @param request
      * @return
      */
-    PagingResult<Order> getOrderListByParam(AdminOrderListRequest request);
+    PagingResult<Order> getOrderListByParam(AdminOrderParam request);
 
     /**
      * 查询订单详细

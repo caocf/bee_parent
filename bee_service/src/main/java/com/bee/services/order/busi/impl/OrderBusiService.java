@@ -22,9 +22,6 @@ import java.util.List;
 @Service
 public class OrderBusiService extends OrderService implements IOrderBusiService {
 
-    @Autowired
-    private UserDao userDao;
-
     /**
      * 根据参数查询商户端订单列表
      *
@@ -104,7 +101,6 @@ public class OrderBusiService extends OrderService implements IOrderBusiService 
     @Override
     @Transactional
     public void finishOrder(long id) throws DataRunException {
-
         // 设置完成订单
         Order order = orderDao.findById(id);
         if (order.getStatus() != Consts.Order.Status.Underway) {
@@ -114,15 +110,8 @@ public class OrderBusiService extends OrderService implements IOrderBusiService 
         order.setStatus(Consts.Order.Status.Finish);
         order.writeOperate(Consts.Order.Operate.Finish);
         orderDao.update(order);
-
-        // 增加用户积分
-        // 先判断是否是注册用户
-        User user = order.getUser();
-        if (user != null && user.getUid() > 0) {
-            user.addIntegral(IntegralMachine.OrderFinish);
-            user.addExp(LevelMachine.OrderFinish);
-            userDao.update(user);
-        }
+        // 完成订单后,调整用户信息
+        finishOrderUpdateIntegral(order.getUser());
     }
 
     /**

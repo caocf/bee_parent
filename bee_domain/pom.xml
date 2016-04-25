@@ -20,5 +20,9 @@
             <groupId>com.qsd</groupId>
             <artifactId>qsd_framework_hibernate</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.qsd</groupId>
+            <artifactId>qsd_framework_security</artifactId>
+        </dependency>
     </dependencies>
 </project>

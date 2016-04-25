@@ -1,7 +1,6 @@
 package com.bee.pojo.user;
 
 import com.bee.commons.Consts;
-import com.bee.commons.ImageFactory;
 import com.bee.commons.LevelMachine;
 import com.bee.pojo.shop.ShopFocus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
