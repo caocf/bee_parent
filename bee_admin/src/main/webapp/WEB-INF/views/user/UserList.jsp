@@ -25,10 +25,23 @@
         <i class="fa fa-angle-double-right"></i>  
         <span class="after">管理用户信息列表</span>
       </div>
-      <form id="queryForm" class="form-inline" action="${basePath}/user" method="get">
-        <input type="hidden" name="type" value="${params.type}" />
-        <input type="hidden" id="indexPage" name="indexPage" value="${result.indexPage}" />
-      </form>
+      <div class="row query-inner">
+        <form id="queryForm" class="form-inline" action="${basePath}/user" method="get">
+          <input type="hidden" name="type" value="${params.type}" />
+          <input type="hidden" id="indexPage" name="indexPage" value="${result.indexPage}" />
+          <div class="form-group">
+            <label>手机号</label>
+            <input type="text" name="phone" class="form-control input-sm" value="${params.phone}" />
+          </div>
+          <div class="form-group">
+            <label>用户昵称</label>
+            <input type="text" name="userName" class="form-control input-sm" value="${params.userName}" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm icon-text">
+            <i class="fa fa-search"></i>查询
+          </button>
+        </form>
+      </div>
       <table class="table table-hover">
         <tr>
           <th>主键</th>

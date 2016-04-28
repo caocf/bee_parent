@@ -106,41 +106,40 @@ public final class SQL {
         // 查询推荐商家
         public static final String queryRecommendShop =
                 "select " +
-                "A.sid,A.name,A.addr,A.price,B.name as area," +
-                "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
-                "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                " A.type " +
-                "from TB_SHOP A " +
+                "A.SID, A.NAME, A.ADDR, A.PRICE, B.NAME AS AREA," +
+                "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as FOCUSNUM, " +
+                "A.TYPE, A.ISBEESHOP " +
+                "FROM TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid " +
                 "where A.recommend = " + Consts.True + " and A.status = " + Consts.Shop.Status.Run + " order by A.sort desc limit 6";
 
         // 查询商家列表App
         public static final String ShopListApp =
-                "select " +
-                "A.SID,A.NAME,A.ADDR,A.PRICE,B.NAME AS AREA, " +
+                "SELECT " +
+                "A.SID, A.NAME, A.ADDR, A.PRICE, B.NAME AS AREA, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as FOCUSNUM," +
-                "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
                 " A.TYPE, A.ISBEESHOP " +
-                "from TB_SHOP A " +
-                "left outer join TB_AREA B " +
-                "on A.AREA = B.AID  " +
-                "where A.STATUS = " + Consts.Shop.Status.Run;
+                "FROM TB_SHOP A " +
+                "LEFT OUTER JOIN TB_AREA B " +
+                "ON A.AREA = B.AID  " +
+                "WHERE A.STATUS = " + Consts.Shop.Status.Run;
         public static final String queryAppShopListSort = " order by A.sort desc";
 
         /**
          * 查询商家详细
          */
         public static final String QueryAppShopItem =
-                "select " +
-                "A.sid,A.name,A.addr,A.price,B.name as area, " +
+                "SELECT " +
+                "A.SID, A.NAME, A.ADDR, A.PRICE, B.NAME AS AREA, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
-                "(select count(*) from TB_USER_FRIEND E left outer join TB_SHOP_FOCUS F on E.FRIEND = F.USER where F.shop = A.sid and E.user = ?) as friendNum, " +
-                "A.lon, A.lat, A.type, A.SERVICETIME, A.ISFREEPARKING, A.ISFOOD, A.ISINVOICE, A.ISPOSCARD " +
-                "from TB_SHOP A " +
-                "left outer join TB_AREA B " +
-                "on A.area = B.aid  " +
-                "where A.status = " + Consts.Shop.Status.Run;
+                "A.LON, A.LAT, A.TYPE, A.SERVICETIME, A.ISFREEPARKING, A.ISFOOD, A.ISINVOICE, A.ISPOSCARD " +
+                "FROM TB_SHOP A " +
+                "LEFT OUTER JOIN TB_AREA B " +
+                "ON A.AREA = B.AID " +
+                "LEFT OUTER JOIN TB_SHOP_CONFIG C " +
+                "ON A.SID = C.SHOP " +
+                "WHERE A.STATUS = " + Consts.Shop.Status.Run;
 
 
         // 查询商家地图

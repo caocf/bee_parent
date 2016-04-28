@@ -2,21 +2,17 @@ package com.bee.app.controller.shop;
 
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.commons.Codes;
-import com.bee.domain.modal.app.shop.ShopAttend;
 import com.bee.domain.modal.app.shop.ShopListItem;
 import com.bee.domain.response.ShopResponse;
+import com.bee.domain.response.shop.ShopListResponse;
 import com.bee.services.shop.app.IShopAppService;
-import com.bee.services.shop.app.IShopAttendAppService;
 import com.bee.services.shop.app.IShopImageAppService;
-import com.qsd.framework.domain.response.ResponsePaging;
+import com.qsd.framework.domain.response.ResponseArray;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 /**
  * <b>商家控制器</b>
@@ -42,12 +38,26 @@ public class ShopController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ResponsePaging<ShopListItem> queryShopList(ShopListRequest req) {
-        ResponsePaging<ShopListItem> res = new ResponsePaging<>();
+    public ShopListResponse queryShopList(ShopListRequest req) {
+        ShopListResponse res = new ShopListResponse();
         res.setResult(shopAppService.queryShopList(req));
         res.setCode(Codes.Success);
         return res;
     }
+
+    /**
+     * 查询推广商家列表
+     *
+     * @return
+     */
+    @RequestMapping(value = "/recommend", method = RequestMethod.GET)
+    public ResponseArray<ShopListItem> queryShopRecommend() {
+        ResponseArray<ShopListItem> res = new ResponseArray<>();
+        res.setResult(shopAppService.queryRecommendShop());
+        res.setCode(Codes.Success);
+        return res;
+    }
+
 
     /**
      * 查询商家
@@ -61,7 +71,7 @@ public class ShopController {
         // 增加商家浏览统计
 
         // 获取商家信息
-        res.setShopItem(shopAppService.getShopItem(uid, id));
+        res.setShopItem(shopAppService.getShopItem(id));
 
         // v1.0.5删除
         // 获取商家滚动相册

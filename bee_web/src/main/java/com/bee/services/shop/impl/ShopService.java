@@ -28,17 +28,16 @@ public class ShopService implements IShopService {
      */
     @Override
     public PagingResult<ShopListItem> queryAppShopList(ShopListRequest req) {
-        return shopDao.queryAppShopList(req);
+        return shopDao.getShopList(req);
     }
 
     /**
      *
-     * @param uid
      * @return
      */
     @Override
-    public List<ShopListItem> queryRecommendShop(long uid) {
-        return shopDao.queryRecommendShop(uid);
+    public List<ShopListItem> queryRecommendShop() {
+        return shopDao.queryRecommendShop();
     }
 
     /**
@@ -48,7 +47,7 @@ public class ShopService implements IShopService {
      */
     @Override
     public ShopItem getShopItemById(long sid) {
-        return shopDao.getShopItemById(0, sid);
+        return shopDao.getShopItemById(sid);
     }
 
 

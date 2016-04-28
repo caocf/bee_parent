@@ -17,6 +17,7 @@ import com.qsd.framework.domain.response.ResponsePaging;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import com.qsd.framework.security.annotation.Auth;
 import com.qsd.framework.spring.PagingResult;
+import com.sun.deploy.net.URLEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 /**
  * Created by suntongwei on 15/11/8.

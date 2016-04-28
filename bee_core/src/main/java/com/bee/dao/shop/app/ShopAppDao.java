@@ -13,6 +13,8 @@ import com.qsd.framework.hibernate.bean.SQLEntity;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by suntongwei on 15/11/22.
  */
@@ -23,37 +25,38 @@ public class ShopAppDao extends ShopDao {
      * <b>获取商家详细信息</b>
      * <p>APP商家详细界面</p>
      *
-     * @param uid 用户ID,用于查询用户好友关注数
      * @param sid 商家ID,指定商家
      * @return
      */
-    public ShopItem getShopItemById(long uid, long sid) {
-        return findFirstConverByParams(SQL.Shop.QueryAppShopItem + " and A.SID = ?", GetShopItemById, uid, sid);
+    public ShopItem getShopItemById(long sid) {
+        return findFirstConverByParams(SQL.Shop.QueryAppShopItem + " and A.SID = ?", GetShopItemByIdConver, sid);
     }
-    public static final QueryDataConver<ShopItem> GetShopItemById = new QueryDataConver<ShopItem>() {
+    public static final QueryDataConver<ShopItem> GetShopItemByIdConver = new QueryDataConver<ShopItem>() {
         @Override
         public ShopItem converData(Object[] obj) {
             ShopItem item = new ShopItem();
-            item.setShopId(NumberUtil.parseLong(obj[0], 0));
-            item.setName(StringUtil.parseString(obj[1], ""));
-            item.setAddr(StringUtil.parseString(obj[2], ""));
-            item.setPrice(NumberUtil.parseDouble(obj[3], 0));
-            item.setArea(StringUtil.parseString(obj[4], ""));
-            item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
-            item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
-            item.setLon(NumberUtil.parseLong(obj[7], 0));
-            item.setLat(NumberUtil.parseLong(obj[8], 0));
-            item.setType(NumberUtil.parseInteger(obj[9], Consts.Shop.Type.Club));
-            item.setServiceTime(StringUtil.parseString(obj[10], "13:0-0:30"));
-            item.setIsFreeParking(NumberUtil.parseInteger(obj[11], Consts.False));
-            item.setIsFood(NumberUtil.parseInteger(obj[12], Consts.False));
-            item.setIsInvoice(NumberUtil.parseInteger(obj[13], Consts.False));
-            item.setIsPosCard(NumberUtil.parseInteger(obj[14], Consts.False));
+            int index = 0;
+            item.setShopId(NumberUtil.parseLong(obj[index++], 0));
+            item.setName(StringUtil.parseString(obj[index++], ""));
+            item.setAddr(StringUtil.parseString(obj[index++], ""));
+            item.setPrice(NumberUtil.parseDouble(obj[index++], 0));
+            item.setArea(StringUtil.parseString(obj[index++], ""));
+            item.setFocusNum(NumberUtil.parseInteger(obj[index++], 0));
+            item.setLon(NumberUtil.parseLong(obj[index++], 0));
+            item.setLat(NumberUtil.parseLong(obj[index++], 0));
+            item.setType(NumberUtil.parseInteger(obj[index++], Consts.Shop.Type.Club));
+            item.setServiceTime(StringUtil.parseString(obj[index++], "13:0-0:30"));
+            item.setIsFreeParking(NumberUtil.parseInteger(obj[index++], Consts.False));
+            item.setIsFood(NumberUtil.parseInteger(obj[index++], Consts.False));
+            item.setIsInvoice(NumberUtil.parseInteger(obj[index++], Consts.False));
+            item.setIsPosCard(NumberUtil.parseInteger(obj[index++], Consts.False));
             // 为了兼容v1.0.4版本
             item.setPhone("");
             item.setLinkName("");
             item.setNowInfo("");
             item.setIsBack(Consts.False);
+            // 删除好友关注数
+            item.setFriendNum(0);
             return item;
         }
     };
@@ -68,7 +71,8 @@ public class ShopAppDao extends ShopDao {
      */
     public PagingResult<ShopListItem> getShopList(ShopListRequest request) {
         SQLEntity entity = new SQLEntity();
-        entity.setParam(request.getUid());
+        // 删除用户关注数
+        // entity.setParam(request.getUid());
         StringBuffer sb = new StringBuffer(SQL.Shop.ShopListApp);
         if (request.getSearch() != null && !"".equals(request.getSearch())) {
             sb.append(" and A.name like ?");
@@ -85,10 +89,10 @@ public class ShopAppDao extends ShopDao {
         sb.append(SQL.Shop.queryAppShopListSort);
         entity.setEntity(sb.toString());
         entity.setPaging(request);
-        entity.setQueryDataConver(ShopListConver);
+        entity.setQueryDataConver(ShopListItemConver);
         return queryWithPagingConver(entity);
     }
-    public static final QueryDataConver<ShopListItem> ShopListConver = new QueryDataConver<ShopListItem>() {
+    public static final QueryDataConver<ShopListItem> ShopListItemConver = new QueryDataConver<ShopListItem>() {
         @Override
         public ShopListItem converData(Object[] obj) {
             ShopListItem item = new ShopListItem();
@@ -98,11 +102,22 @@ public class ShopAppDao extends ShopDao {
             item.setPrice(NumberUtil.parseDouble(obj[3], 0));
             item.setArea(StringUtil.parseString(obj[4], ""));
             item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
-            item.setFriendNum(NumberUtil.parseInteger(obj[6], 0));
-            item.setType(NumberUtil.parseInteger(obj[7], Consts.Shop.Type.Club));
-            item.setIsBeeShop(NumberUtil.parseInteger(obj[8], Consts.False));
+            item.setType(NumberUtil.parseInteger(obj[6], Consts.Shop.Type.Club));
+            item.setIsBeeShop(NumberUtil.parseInteger(obj[7], Consts.False));
+            // 取消好友关注数
+            item.setFriendNum(0);
+            item.setIsBack(Consts.False);
             return item;
         }
     };
+
+    /**
+     * 查询商家推广信息
+     *
+     * @return
+     */
+    public List<ShopListItem> queryRecommendShop() {
+        return findConverByParams(SQL.Shop.queryRecommendShop, ShopListItemConver);
+    }
 
 }

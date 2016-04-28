@@ -19,7 +19,7 @@ public class ShopTopCache {
      * 初始化方法
      */
     private void _init() {
-        shopService.queryRecommendShop(0);
+        shopService.queryRecommendShop();
     }
 
     private static ShopTopCache ourInstance = new ShopTopCache();

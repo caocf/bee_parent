@@ -71,7 +71,13 @@
                 </td>
                 <td>{{$value.orderName}}</td>
                 <td>
-                  <a href="#" onclick="confirmUpdateNum({{$value.oid}}, {{$value.num}})">{{$value.num}}人</a>
+                  {{if $value.status < 50}}
+                  <a href="#" onclick="confirmUpdateNum({{$value.oid}}, {{$value.num}})">
+                  {{/if}}
+                    {{$value.num}}人
+                  {{if $value.status < 50}}
+                  </a>
+                  {{/if}}
                 </td>
                 <td>{{$value.orderPhone}}</td>
                 <td>{{$value.execTimeStr}}</td>

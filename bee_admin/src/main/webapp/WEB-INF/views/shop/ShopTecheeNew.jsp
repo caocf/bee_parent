@@ -86,6 +86,7 @@
                 window.location.href = "${basePath}/shop/${shopId}/group/${groupId}/techee";
               } else {
                 $("#number").val("");
+                $("#number").focus();
               }
             } else {
               $("#errorMsg").html(data.msg);

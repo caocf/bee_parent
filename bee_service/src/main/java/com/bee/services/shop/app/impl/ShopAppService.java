@@ -10,6 +10,8 @@ import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by suntongwei on 15/11/22.
  */
@@ -30,12 +32,22 @@ public class ShopAppService extends ShopService implements IShopAppService {
     }
 
     /**
+     * 查询推广信息
+     *
+     * @return
+     */
+    @Override
+    public List<ShopListItem> queryRecommendShop() {
+        return shopAppDao.queryRecommendShop();
+    }
+
+    /**
      *
      * @param shopId
      * @return
      */
     @Override
-    public ShopItem getShopItem(long uid, long shopId) {
-        return shopAppDao.getShopItemById(uid, shopId);
+    public ShopItem getShopItem(long shopId) {
+        return shopAppDao.getShopItemById(shopId);
     }
 }

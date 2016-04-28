@@ -18,6 +18,9 @@
     <i class="fa fa-commenting-o"></i>商家评论
   </a> 
   </sec:security>
+  <a id="navbar-inner-shop-video" href="${basePath}/shop/0/video">
+		&nbsp;<i class="fa fa-file-video-o"></i>商家视频
+	</a>
   <a id="navbar-inner-shop-image-view" href="${basePath}/shop/0/image/view">
 		<i class="fa fa-picture-o"></i>商家图片
 	</a>

@@ -26,7 +26,7 @@ public interface IShopService {
      *
      * @return
      */
-    public List<ShopListItem> queryRecommendShop(long uid);
+    public List<ShopListItem> queryRecommendShop();
 
     /**
      * 根据ID查询商家信息

@@ -56,48 +56,6 @@ public class ShopDao extends JpaDaoSupport<Shop, Long> {
         return queryWithPaging(entity);
     }
 
-    public static final QueryDataConver<ShopListItem> ShopListItemConver =
-            new QueryDataConver<ShopListItem>() {
-                @Override
-                public ShopListItem converData(Object[] row) {
-                    ShopListItem item = new ShopListItem();
-                    item.setShopId(NumberUtil.parseLong(row[0], 0));
-                    item.setName(StringUtil.parseString(row[1], ""));
-                    item.setAddr(StringUtil.parseString(row[2], ""));
-                    item.setPrice(NumberUtil.parseDouble(row[3], 0));
-                    item.setArea(StringUtil.parseString(row[4], ""));
-                    item.setFocusNum(NumberUtil.parseInteger(row[5], 0));
-                    item.setFriendNum(NumberUtil.parseInteger(row[6], 0));
-                    item.setType(NumberUtil.parseInteger(row[7], Consts.Shop.Type.Club));
-                    item.setIsBack(Consts.False);
-                    item.setIsBeeShop(Consts.False);
-                    return item;
-                }
-            };
-
-    public List<ShopListItem> queryRecommendShop(long uid) {
-        return findConverByParams(SQL.Shop.queryRecommendShop, ShopListItemConver, uid);
-    }
-
-
-    public PagingResult<ShopListItem> queryAppShopList(ShopListRequest request) {
-        SQLEntity entity = new SQLEntity();
-        entity.setParam(request.getUid());
-        StringBuffer sb = new StringBuffer(SQL.Shop.ShopListApp);
-        if (request.getSearch() != null && !"".equals(request.getSearch())) {
-            sb.append(" and A.name like ?");
-            entity.setParams("%" + request.getSearch() + "%");
-        }
-        if (request.getType() != null && request.getType() >= 0) {
-            sb.append(" and A.type = ?");
-            entity.setParams(request.getType());
-        }
-        sb.append(SQL.Shop.queryAppShopListSort);
-        entity.setEntity(sb.toString());
-        entity.setPaging(request);
-        entity.setQueryDataConver(ShopListItemConver);
-        return queryWithPagingConver(entity);
-    }
 
 
     public Shop getShopById(long sid) {

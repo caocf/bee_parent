@@ -52,7 +52,7 @@
         </tr>
         {{if totalData < 1}}
           <tr>
-            <td colspan="5" class="text-center">
+            <td colspan="7" class="text-center">
               <i class="fa fa-exclamation-triangle fa-lg font-color-red"></i> 该商家还没有评论
             </td>
           </tr> 
