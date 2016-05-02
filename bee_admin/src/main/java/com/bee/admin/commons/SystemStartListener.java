@@ -2,6 +2,7 @@ package com.bee.admin.commons;
 
 import com.bee.admin.system.MateTicketExpiredThread;
 import com.bee.admin.system.MateUserLoginThread;
+import com.bee.commons.Consts;
 import com.bee.sms.SMSCodeFactory;
 import com.qsd.framework.security.config.SecurityConfiguration;
 
@@ -15,6 +16,10 @@ public class SystemStartListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
+
+        System.out.println("Admin Consts.isDebug: " + Consts.isDebug);
+        System.out.println("Admin AdminConsts.isDebug: " + AdminConsts.isDebug);
+
         SecurityConfiguration.getInstance().setDebug(AdminConsts.isDebug);
         SMSCodeFactory.getInstance();
 

@@ -14,7 +14,7 @@
   
   <sec:security auth="<%=AuthName.ShopComment %>">
   <div class="line"></div>
- 	<a id="navbar-inner-shop-comment" href="${basePath}/shop/0/comment" class="icon">
+ 	<a id="navbar-inner-shop-comment" href="${basePath}/shop/0/comment">
     <i class="fa fa-commenting-o fa-fw"></i>商家评论
   </a> 
   </sec:security>
