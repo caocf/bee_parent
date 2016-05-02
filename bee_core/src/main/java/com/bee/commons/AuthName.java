@@ -61,6 +61,8 @@ public final class AuthName {
     public static final String TicketList = "TICKET_LIST";
     public static final String TicketNew = "TICKET_NEW";
 
+    public static final String FindDelete = "FIND_DELETE";
+
     public static final String Stat = "STAT";
 
     public static final String Area = "AREA";
@@ -108,6 +110,7 @@ public final class AuthName {
         AuthMap.put(Market, "营销权限");
         AuthMap.put(TicketNew, "创建优惠券");
         AuthMap.put(TicketList, "查看优惠券");
+        AuthMap.put(FindDelete, "发现删除");
         AuthMap.put(User, "查看用户");
         AuthMap.put(Stat, "查看统计");
         AuthMap.put(Area, "地区查看");

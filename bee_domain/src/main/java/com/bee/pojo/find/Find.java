@@ -1,7 +1,9 @@
 package com.bee.pojo.find;
 
+import com.bee.commons.Consts;
 import com.bee.pojo.shop.Shop;
 import com.bee.pojo.user.User;
+import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,6 +15,9 @@ import java.util.List;
 @Entity
 @Table(name = "TB_FIND")
 public class Find implements java.io.Serializable {
+
+    // serialVersionUID
+    private static final long serialVersionUID = -1432017715956772511L;
 
     // 主键
     private Long fid;
@@ -32,6 +37,15 @@ public class Find implements java.io.Serializable {
     public Find() {}
     public Find(Long id) {
         fid = id;
+    }
+
+    @Transient
+    public String getTypeStr() {
+        return Consts.Find.Type.Select().get(type);
+    }
+    @Transient
+    public String getCreateTimeStr() {
+        return DateUtil.formatDateTime(createTime);
     }
 
     @Id

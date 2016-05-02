@@ -4,11 +4,13 @@ import com.bee.client.params.find.FindListRequest;
 import com.bee.commons.Consts;
 import com.bee.commons.SQL;
 import com.bee.domain.modal.app.find.FindListItem;
+import com.bee.domain.params.AdminRequestPaging;
 import com.bee.pojo.find.Find;
 import com.qsd.framework.commons.utils.NumberUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.QueryDataConver;
+import com.qsd.framework.hibernate.bean.HQLEntity;
 import com.qsd.framework.hibernate.bean.SQLEntity;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.stereotype.Repository;
@@ -18,6 +20,25 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class FindDao extends JpaDaoSupport<Find, Long> {
+
+
+    /**
+     * 查询发现列表(A端)
+     *
+     * @param param
+     * @return
+     */
+    public static final String QueryFindList = "From Find A " +
+            "left join fetch A.shop B " +
+            "left join fetch A.user C where 1=1";
+    public PagingResult<Find> queryFindList(AdminRequestPaging param) {
+        HQLEntity entity = new HQLEntity();
+        StringBuffer sb = new StringBuffer(QueryFindList);
+        entity.setPaging(param);
+        sb.append(" order by A.fid desc");
+        entity.setEntity(sb);
+        return queryWithPaging(entity);
+    }
 
 
     /**

@@ -57,6 +57,9 @@ public class ShopAppDao extends ShopDao {
             item.setIsBack(Consts.False);
             // 删除好友关注数
             item.setFriendNum(0);
+            // V1.2增加内容
+            item.setHasVideo(NumberUtil.parseInteger(obj[index++], Consts.False));
+            item.setVideoVer(NumberUtil.parseInteger(obj[index++], 0));
             return item;
         }
     };

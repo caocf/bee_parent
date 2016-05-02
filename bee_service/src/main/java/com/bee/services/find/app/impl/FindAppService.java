@@ -42,21 +42,13 @@ public class FindAppService extends FindService implements IFindAppService {
         if (null == items.getData() || items.getData().size() < 1) {
             return items;
         }
-        /**
-         * 根据不同发现类型查询相应需要查询的图片或内容
-         */
+        // 根据不同发现类型查询相应需要查询的图片或内容
         ShopImageListParam shopImageParam = new ShopImageListParam();
         shopImageParam.setTop(9);
         shopImageParam.setOrderBy(" A.SORT DESC ");
-
-        /**
-         * 发现图片查询
-         */
+        // 发现图片查询
         FindImageParam findImageParam = new FindImageParam();
-
-        /**
-         * 遍历数据
-         */
+        // 遍历数据
         for (FindListItem item : items.getData()) {
             switch (item.getType()) {
                 case Consts.Find.Type.ShopNew:
@@ -72,14 +64,4 @@ public class FindAppService extends FindService implements IFindAppService {
         return items;
     }
 
-    /**
-     * 保存发现
-     *
-     * @param param 发现实体
-     */
-    @Override
-    @Transactional
-    public void saveFind(FindSaveParam param) throws DataRunException {
-        // C端不实现
-    }
 }

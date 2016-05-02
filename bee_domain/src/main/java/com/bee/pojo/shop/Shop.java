@@ -2,17 +2,12 @@ package com.bee.pojo.shop;
 
 import com.bee.commons.Consts;
 import com.bee.pojo.Area;
-import com.bee.pojo.Image;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.qsd.framework.commons.utils.DateUtil;
 import com.qsd.framework.commons.utils.StringUtil;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**

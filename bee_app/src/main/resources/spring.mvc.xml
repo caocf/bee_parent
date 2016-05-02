@@ -46,7 +46,7 @@
 					</property>
 	            </bean>  
 	        </list>  
-	    </property>  
+	    </property>
 	</bean> 
 
 	<!-- Spring MVC 拦截器 <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/club/**"/>
@@ -83,8 +83,10 @@
         <property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 
-    <mvc:resources mapping="/release/**" location="/release/" />
+	<mvc:resources mapping="/video/**" location="/video/" />
+
     <!--
+    <mvc:resources mapping="/release/**" location="/release/" />
 	<mvc:resources mapping="/images/**" location="/images/" />
 	<mvc:resources mapping="/js/**" location="/js/" />
 	<mvc:resources mapping="/fonts/**" location="/fonts/" />

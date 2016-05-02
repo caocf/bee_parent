@@ -2,14 +2,9 @@ package com.bee.pojo.shop;
 
 import com.bee.pojo.order.Order;
 import com.bee.pojo.user.User;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.qsd.framework.commons.utils.DateUtil;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by suntongwei on 15/6/1.

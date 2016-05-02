@@ -133,7 +133,8 @@ public final class SQL {
                 "SELECT " +
                 "A.SID, A.NAME, A.ADDR, A.PRICE, B.NAME AS AREA, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as focusNum," +
-                "A.LON, A.LAT, A.TYPE, A.SERVICETIME, A.ISFREEPARKING, A.ISFOOD, A.ISINVOICE, A.ISPOSCARD " +
+                "A.LON, A.LAT, A.TYPE, A.SERVICETIME, A.ISFREEPARKING, A.ISFOOD, A.ISINVOICE, A.ISPOSCARD, " +
+                "C.HASVIDEO, C.VIDEOVER " +
                 "FROM TB_SHOP A " +
                 "LEFT OUTER JOIN TB_AREA B " +
                 "ON A.AREA = B.AID " +
@@ -501,12 +502,6 @@ public final class SQL {
                 "A.PID, A.TYPE, A.PARTYTIME, A.STARTTIME, A.STOPTIME, A.ISBEE, A.TITLE, A.CONTENT " +
                 "FROM TB_PARTY A";
         public static final String GetPartyListOrderBy = " order by A.SORT DESC";
-
-        public static final class User {
-            // 查询活动用户
-            public static final String QueryPartyUser = "From PartyUser A " +
-                    "LEFT JOIN FETCH A.party B LEFT JOIN FETCH A.user C WHERE 1=1";
-        }
 
         public static final class Condition {
             // 获取报名条件

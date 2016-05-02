@@ -1,5 +1,7 @@
 package com.bee.pojo.shop;
 
+import com.bee.commons.Consts;
+
 import javax.persistence.*;
 
 /**
@@ -18,6 +20,13 @@ public class ShopConfig implements java.io.Serializable {
     private Shop shop;
     // 是否有宣传视频
     private Integer hasVideo;
+    // 视频版本,用于检查更新
+    private Integer videoVer;
+
+    @Transient
+    public String getHasVideoStr() {
+        return hasVideo == Consts.True ? "有" : "无";
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,5 +51,12 @@ public class ShopConfig implements java.io.Serializable {
     }
     public void setHasVideo(Integer hasVideo) {
         this.hasVideo = hasVideo;
+    }
+    @Column(name = "VIDEOVER")
+    public Integer getVideoVer() {
+        return videoVer;
+    }
+    public void setVideoVer(Integer videoVer) {
+        this.videoVer = videoVer;
     }
 }

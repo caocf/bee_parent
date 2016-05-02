@@ -1,5 +1,6 @@
 package com.bee.services.shop.busi.impl;
 
+import com.bee.commons.Codes;
 import com.bee.commons.Consts;
 import com.bee.dao.shop.ShopConfigDao;
 import com.bee.image.ImageParser;
@@ -74,26 +75,47 @@ public class ShopBusiService extends ShopService implements IShopBusiService {
      */
     @Override
     @Transactional
-    public void saveShopVideo(long shopId, MultipartFile file, MultipartHttpServletRequest req) {
+    public void saveShopVideo(long shopId, MultipartFile file, MultipartHttpServletRequest req)
+            throws DataRunException {
         try {
-            String path;
-            if (!Consts.isDebug) {
-                path = Consts.GetRemoteVideoFilePath() + File.separator + shopId + ".mp4";
-            } else {
-                path = req.getSession().getServletContext()
-                        .getRealPath("video" + File.separator + shopId + ".mp4");
-            }
-            // 保存文件
-            FileUtil.copy(file.getInputStream(), new File(path));
-            // 更新该商家配置信息
+            // 旧的视频版本号
+            int oldVideoVer = 0;
+            // 获取商家配置数据
             ShopConfig shopConfig = shopConfigDao.getShopConfigByShopId(shopId);
             if (null == shopConfig) {
                 shopConfig = shopConfigDao.getDefaultShopConfig(shopId);
             }
             shopConfig.setHasVideo(Consts.True);
+            oldVideoVer = shopConfig.getVideoVer();
+            shopConfig.setVideoVer(oldVideoVer + 1);
             shopConfigDao.update(shopConfig);
+
+            String path;
+            // 旧文件路径
+            if (!Consts.isDebug) {
+                path = Consts.GetRemoteVideoFilePath() + File.separator + shopId + "_" + oldVideoVer + ".mp4";
+            } else {
+                path = req.getSession().getServletContext()
+                        .getRealPath("video" + File.separator + shopId + "_" + oldVideoVer + ".mp4");
+            }
+            File oldFile = new File(path);
+            // 判断之前视频文件是否存在
+            if (oldFile.exists()) {
+                oldFile.delete();
+            }
+            // 创建新的路径
+            if (!Consts.isDebug) {
+                path = Consts.GetRemoteVideoFilePath() + File.separator + shopId + "_" + (oldVideoVer + 1) + ".mp4";
+            } else {
+                path = req.getSession().getServletContext()
+                        .getRealPath("video" + File.separator + shopId + "_" + (oldVideoVer + 1) + ".mp4");
+            }
+
+            // 保存文件
+            FileUtil.copy(file.getInputStream(), new File(path));
+
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new DataRunException(Codes.Shop.ShopVideoError, "视频保存失败");
         }
     }
 }

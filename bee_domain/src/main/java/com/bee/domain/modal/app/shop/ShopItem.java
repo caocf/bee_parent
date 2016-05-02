@@ -25,9 +25,9 @@ public class ShopItem implements java.io.Serializable {
     private Double price;
     private Long lon;
     private Long lat;
+    private Integer type;
     @Deprecated
     private String phone;
-    private Integer type;
     @Deprecated
     private String linkName;
     @Deprecated
@@ -35,6 +35,11 @@ public class ShopItem implements java.io.Serializable {
     @Deprecated
     private Integer isBack;
     private String serviceTime;
+
+    // v1.2开始增加
+    // 以下为商家配置信息ShopConfig内容
+    private Integer hasVideo;
+    private Integer videoVer;
 
     /**
      * v1.0.5新增
@@ -169,5 +174,17 @@ public class ShopItem implements java.io.Serializable {
     }
     public void setIsPosCard(Integer isPosCard) {
         this.isPosCard = isPosCard;
+    }
+    public Integer getHasVideo() {
+        return hasVideo;
+    }
+    public void setHasVideo(Integer hasVideo) {
+        this.hasVideo = hasVideo;
+    }
+    public Integer getVideoVer() {
+        return videoVer;
+    }
+    public void setVideoVer(Integer videoVer) {
+        this.videoVer = videoVer;
     }
 }

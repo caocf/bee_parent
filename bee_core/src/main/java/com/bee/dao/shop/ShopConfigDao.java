@@ -40,6 +40,7 @@ public class ShopConfigDao extends JpaDaoSupport<ShopConfig, Long> {
         ShopConfig shopConfig = new ShopConfig();
         shopConfig.setShop(new Shop(shopId));
         shopConfig.setHasVideo(Consts.False);
+        shopConfig.setVideoVer(0);
         save(shopConfig);
         return shopConfig;
     }

@@ -43,5 +43,5 @@ public interface IShopBusiService extends IShopService {
      * @param shopId
      * @param req
      */
-    void saveShopVideo(long shopId, MultipartFile file, MultipartHttpServletRequest req);
+    void saveShopVideo(long shopId, MultipartFile file, MultipartHttpServletRequest req) throws DataRunException;
 }

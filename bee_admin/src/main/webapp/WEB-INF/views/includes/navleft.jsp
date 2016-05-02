@@ -17,6 +17,12 @@
 		<span>商家</span>
 	</a>
     </sec:security>
+    <sec:security auth="<%=AuthName.Market%>">
+	<a id="navbar-left-marketing" href="${basePath}/find">
+		<i class="fa fa-cloud fa-lg"></i>
+		<span>营销</span>
+	</a>
+	</sec:security>
     <sec:security auth="<%=AuthName.User%>">
 	<a id="navbar-left-user" href="${basePath}/user?type=<%=Consts.User.Type.AppUser %>">
 		<i class="fa fa-user fa-lg2"></i>
@@ -29,12 +35,6 @@
 		<span>统计</span>
 	</a>
     </sec:security>
-	<sec:security auth="<%=AuthName.Market%>">
-	<a id="navbar-left-marketing" href="${basePath}/ticket">
-		<i class="fa fa-cloud fa-lg"></i>
-		<span>营销</span>
-	</a>
-	</sec:security>
 	<a id="navbar-left-finance" href="#">
 		<i class="fa fa-credit-card fa-lg"></i>
 		<span>账务</span>

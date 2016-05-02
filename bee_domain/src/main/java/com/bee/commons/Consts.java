@@ -23,12 +23,7 @@ public final class Consts {
     public static String GetRemoteImageUrl() {
         return RemoteBaseUrl;
     }
-
-    /**
-     * 获取视频存放路径
-     *
-     * @return
-     */
+    // 获取视频存放路径
     public static String GetRemoteVideoFilePath() {
         return RemoteVideoPath;
     }
@@ -357,6 +352,13 @@ public final class Consts {
             public static final int ShopNew = 0x1;
             // 商家推广
             public static final int ShopPop = 0x2;
+
+            public static Map<Integer, String> Select() {
+                Map<Integer, String> ret = new LinkedHashMap<>();
+                ret.put(ShopNew, "新店加入");
+                ret.put(ShopPop, "商家发布");
+                return ret;
+            }
         }
 
         public static final class Image {

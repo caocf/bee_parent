@@ -3,6 +3,7 @@ package com.bee.domain.response;
 import com.bee.domain.modal.app.shop.ShopAttend;
 import com.bee.domain.modal.app.shop.ShopImageItem;
 import com.bee.domain.modal.app.shop.ShopItem;
+import com.bee.pojo.shop.ShopConfig;
 import com.qsd.framework.domain.response.Response;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  * v1.0.5
  * 删除shopAttends信息
  */
+@Deprecated
 public class ShopResponse extends Response {
 
     // serialVersionUID

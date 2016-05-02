@@ -21,9 +21,11 @@ public class PartyUserDao extends JpaDaoSupport<PartyUser, Long> {
      * @param param
      * @return
      */
+    public static final String QueryPartyUser = "From PartyUser A " +
+            "LEFT JOIN FETCH A.party B LEFT JOIN FETCH A.user C WHERE 1=1 ";
     public List<PartyUser> queryPartyUser(PartyUserParam param) {
         HQLEntity entity = new HQLEntity();
-        StringBuffer sb = new StringBuffer(SQL.Party.User.QueryPartyUser);
+        StringBuffer sb = new StringBuffer(QueryPartyUser);
         if (param.getPartyId() != null && param.getPartyId() > 0) {
             sb.append(" AND B.pid = ?");
             entity.setParam(param.getPartyId());
@@ -32,7 +34,7 @@ public class PartyUserDao extends JpaDaoSupport<PartyUser, Long> {
             sb.append(" AND C.uid = ?");
             entity.setParam(param.getUserId());
         }
-        entity.setEntity(sb);
+        entity.setEntity(sb.toString());
         return queryResult(entity);
     }
 

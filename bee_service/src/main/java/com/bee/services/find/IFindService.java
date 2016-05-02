@@ -1,7 +1,5 @@
 package com.bee.services.find;
 
-import com.bee.domain.params.find.FindSaveParam;
-import com.bee.pojo.find.Find;
 import com.qsd.framework.hibernate.exception.DataRunException;
 
 /**
@@ -12,9 +10,17 @@ import com.qsd.framework.hibernate.exception.DataRunException;
 public interface IFindService {
 
     /**
-     * 发布发现
+     * 保存发布发现
      *
-     * @param param
+     * @throws DataRunException
      */
-    void saveFind(FindSaveParam param) throws DataRunException;
+    void save() throws DataRunException;
+
+    /**
+     * 删除发现
+     *
+     * @param findId 发现ID
+     * @throws DataRunException
+     */
+    void delete(long findId) throws DataRunException;
 }

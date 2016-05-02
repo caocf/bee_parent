@@ -2,12 +2,14 @@ package com.bee.app.controller.shop;
 
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.commons.Codes;
+import com.bee.domain.modal.app.shop.ShopItem;
 import com.bee.domain.modal.app.shop.ShopListItem;
 import com.bee.domain.response.ShopResponse;
 import com.bee.domain.response.shop.ShopListResponse;
 import com.bee.services.shop.app.IShopAppService;
 import com.bee.services.shop.app.IShopImageAppService;
 import com.qsd.framework.domain.response.ResponseArray;
+import com.qsd.framework.domain.response.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +30,6 @@ public class ShopController {
 
     @Autowired
     private IShopAppService shopAppService;
-    @Autowired
-    private IShopImageAppService shopImageAppService;
 
     /**
      * 查询商家列表
@@ -65,13 +65,12 @@ public class ShopController {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ShopResponse getShopItem(@PathVariable Long id, Long uid) {
-        // ShopResponse
-        ShopResponse res = new ShopResponse();
+    public ResponseObject<ShopItem> getShopItem(@PathVariable Long id) {
+        ResponseObject<ShopItem> res = new ResponseObject<>();
         // 增加商家浏览统计
 
         // 获取商家信息
-        res.setShopItem(shopAppService.getShopItem(id));
+        res.setResult(shopAppService.getShopItem(id));
 
         // v1.0.5删除
         // 获取商家滚动相册

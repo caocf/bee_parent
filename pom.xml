@@ -12,9 +12,7 @@
         <module>bee_core</module>
         <module>bee_easemob</module>
         <module>bee_sms</module>
-        <module>bee_order</module>
         <module>bee_web</module>
-        <module>bee_file</module>
         <module>bee_admin</module>
         <module>bee_busi</module>
         <module>bee_app</module>

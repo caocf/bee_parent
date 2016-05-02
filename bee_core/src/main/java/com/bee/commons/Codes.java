@@ -29,6 +29,8 @@ public final class Codes {
         public static final int ShopImageSizeOut = 0x1f4;
         // 501 已关注
         public static final int ShopFocusError = 0x1f5;
+        // 502 视频保存失败
+        public static final int ShopVideoError = 0x1f6;
     }
 
 

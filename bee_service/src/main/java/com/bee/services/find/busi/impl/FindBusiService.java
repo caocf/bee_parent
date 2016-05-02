@@ -46,7 +46,7 @@ public class FindBusiService extends FindService implements IFindBusiService {
         findDao.save(find);
 
         // 如果有附带图片
-        // 目前仅支持商家相册中选择, 所以所有的ID, 均为ShopImage的ID
+        // 目前仅支持商家相册中选择, 所有的ID均为ShopImage的ID
         if (!StringUtil.isNull(param.getImageIds())) {
             String[] idsStr = param.getImageIds().trim().split(",");
             if (idsStr.length < 1) {

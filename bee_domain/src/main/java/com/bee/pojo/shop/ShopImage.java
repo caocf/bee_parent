@@ -9,6 +9,9 @@ import javax.persistence.*;
 @Table(name = "TB_SHOP_IMAGE")
 public class ShopImage implements java.io.Serializable {
 
+    // serialVersionUID
+    private static final long serialVersionUID = -3942877914995715515L;
+
     // 主键
     private Long siid;
     // URL地址
