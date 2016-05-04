@@ -76,11 +76,8 @@ public class AppController {
         }
 
         // iPhone是否已经过了审核
-        if (req.getPhoneType() == Consts.IOS && req.getVersion() == 4) {
+        if (!Consts.isDebug && req.getPhoneType() == Consts.IOS && req.getVersion() == Consts.iOSVersion) {
             res.setIntoApp(false);
-            if (Consts.isDebug) {
-                res.setIntoApp(true);
-            }
         } else {
             res.setIntoApp(true);
         }

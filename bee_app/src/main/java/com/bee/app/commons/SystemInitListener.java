@@ -1,5 +1,6 @@
 package com.bee.app.commons;
 
+import com.bee.commons.Consts;
 import com.bee.sms.SMSCodeFactory;
 
 import javax.servlet.ServletContextEvent;
@@ -14,6 +15,10 @@ public class SystemInitListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
+
+        System.out.println("App Consts.isDebug: " + Consts.isDebug);
+        System.out.println("App AppConsts.isDebug" + AppConsts.isDebug);
+
         System.out.println("初始化短信验证码工厂...");
         SMSCodeFactory.getInstance();
         System.out.println("初始化系统配置...");

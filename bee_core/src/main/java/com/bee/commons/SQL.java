@@ -108,21 +108,26 @@ public final class SQL {
                 "select " +
                 "A.SID, A.NAME, A.ADDR, A.PRICE, B.NAME AS AREA," +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as FOCUSNUM, " +
-                "A.TYPE, A.ISBEESHOP " +
+                "A.TYPE, A.ISBEESHOP, C.HASVIDEO " +
                 "FROM TB_SHOP A " +
                 "left outer join TB_AREA B " +
                 "on A.area = B.aid " +
-                "where A.recommend = " + Consts.True + " and A.status = " + Consts.Shop.Status.Run + " order by A.sort desc limit 6";
+                "LEFT OUTER JOIN TB_SHOP_CONFIG C " +
+                "ON A.SID = C.SHOP " +
+                "where A.recommend = " + Consts.True +
+                " and A.status = " + Consts.Shop.Status.Run + " order by A.sort desc limit 6";
 
         // 查询商家列表App
         public static final String ShopListApp =
                 "SELECT " +
                 "A.SID, A.NAME, A.ADDR, A.PRICE, B.NAME AS AREA, " +
                 "(select count(*) from TB_SHOP_FOCUS D where D.shop = A.sid) as FOCUSNUM," +
-                " A.TYPE, A.ISBEESHOP " +
+                " A.TYPE, A.ISBEESHOP, C.HASVIDEO " +
                 "FROM TB_SHOP A " +
                 "LEFT OUTER JOIN TB_AREA B " +
-                "ON A.AREA = B.AID  " +
+                "ON A.AREA = B.AID " +
+                "LEFT OUTER JOIN TB_SHOP_CONFIG C " +
+                "ON A.SID = C.SHOP " +
                 "WHERE A.STATUS = " + Consts.Shop.Status.Run;
         public static final String queryAppShopListSort = " order by A.sort desc";
 

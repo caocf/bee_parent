@@ -358,6 +358,19 @@ CREATE TABLE `TB_USER_LOGIN_STAT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户登录统计表';
 
 -- ----------------------------
+--  Table structure for `TB_SHOP_STAT`
+-- ----------------------------
+DROP TABLE IF EXISTS `TB_SHOP_STAT`;
+CREATE TABLE `TB_SHOP_STAT` (
+  `SSID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `USER` bigint(20) NOT NULL DEFAULT 0,
+  `SHOP` bigint(20) NOT NULL DEFAULT 0,
+  `DEVICE` varchar(50) NOT NULL DEFAULT '',
+  `CREATETIME` bigint(20) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`SSID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商家访问统计表';
+
+-- ----------------------------
 --  Table structure for `TB_FIND`
 -- ----------------------------
 DROP TABLE IF EXISTS `TB_FIND`;

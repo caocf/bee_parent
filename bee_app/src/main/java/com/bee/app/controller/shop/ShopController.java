@@ -2,14 +2,16 @@ package com.bee.app.controller.shop;
 
 import com.bee.client.params.shop.ShopListRequest;
 import com.bee.commons.Codes;
-import com.bee.domain.modal.app.shop.ShopItem;
 import com.bee.domain.modal.app.shop.ShopListItem;
 import com.bee.domain.response.ShopResponse;
 import com.bee.domain.response.shop.ShopListResponse;
+import com.bee.pojo.shop.Shop;
+import com.bee.pojo.stat.ShopStat;
+import com.bee.pojo.user.User;
 import com.bee.services.shop.app.IShopAppService;
-import com.bee.services.shop.app.IShopImageAppService;
+import com.bee.services.stat.app.IShopStatAppService;
 import com.qsd.framework.domain.response.ResponseArray;
-import com.qsd.framework.domain.response.ResponseObject;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +32,8 @@ public class ShopController {
 
     @Autowired
     private IShopAppService shopAppService;
+    @Autowired
+    private IShopStatAppService shopStatAppService;
 
     /**
      * 查询商家列表
@@ -62,15 +66,21 @@ public class ShopController {
     /**
      * 查询商家
      *
+     * @see V2ShopController#getShopItem(Long, Long)
      * @return
      */
+    @Deprecated
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseObject<ShopItem> getShopItem(@PathVariable Long id) {
-        ResponseObject<ShopItem> res = new ResponseObject<>();
+    public ShopResponse getShopItem(@PathVariable Long id, Long uid) {
+        ShopResponse res = new ShopResponse();
         // 增加商家浏览统计
+        try {
+            shopStatAppService.addShopStat(new Shop(id),
+                    null == uid || uid < 0 ? new User(0l) : new User(uid));
+        } catch (DataRunException e) {}
 
         // 获取商家信息
-        res.setResult(shopAppService.getShopItem(id));
+        res.setShopItem(shopAppService.getShopItem(id));
 
         // v1.0.5删除
         // 获取商家滚动相册

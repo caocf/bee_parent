@@ -12,6 +12,11 @@ public final class Consts {
     public static final boolean isDebug = true;
     private static final String LocalBaseUrl = "http://localhost:8080";
     private static final String RemoteBaseUrl = "http://139.196.27.231";
+
+    // IOS当前审核版本
+    // 该Build号不能进入小黄蜂主界面
+    public static final int iOSVersion = 5;
+
     // video硬盘存放路径
     private static final String RemoteVideoPath = "/home/static/video";
     // app下载硬盘路径

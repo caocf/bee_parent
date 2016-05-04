@@ -36,6 +36,10 @@ public class ShopListItem implements java.io.Serializable {
      * v1.1.1增加,是否直营店
      */
     private Integer isBeeShop;
+    /**
+     * v1.2.0增加,是否有推广视频
+     */
+    private Integer hasVideo;
 
 
     public Long getShopId() {
@@ -99,5 +103,11 @@ public class ShopListItem implements java.io.Serializable {
     }
     public void setIsBeeShop(Integer isBeeShop) {
         this.isBeeShop = isBeeShop;
+    }
+    public Integer getHasVideo() {
+        return hasVideo;
+    }
+    public void setHasVideo(Integer hasVideo) {
+        this.hasVideo = hasVideo;
     }
 }

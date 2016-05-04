@@ -107,6 +107,7 @@ public class ShopAppDao extends ShopDao {
             item.setFocusNum(NumberUtil.parseInteger(obj[5], 0));
             item.setType(NumberUtil.parseInteger(obj[6], Consts.Shop.Type.Club));
             item.setIsBeeShop(NumberUtil.parseInteger(obj[7], Consts.False));
+            item.setHasVideo(NumberUtil.parseInteger(obj[8], Consts.False));
             // 取消好友关注数
             item.setFriendNum(0);
             item.setIsBack(Consts.False);
