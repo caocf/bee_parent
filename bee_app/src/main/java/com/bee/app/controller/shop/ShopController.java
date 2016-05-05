@@ -11,6 +11,7 @@ import com.bee.pojo.user.User;
 import com.bee.services.shop.app.IShopAppService;
 import com.bee.services.stat.app.IShopStatAppService;
 import com.qsd.framework.domain.response.ResponseArray;
+import com.qsd.framework.domain.response.ResponsePaging;
 import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,8 +43,8 @@ public class ShopController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public ShopListResponse queryShopList(ShopListRequest req) {
-        ShopListResponse res = new ShopListResponse();
+    public ResponsePaging<ShopListItem> queryShopList(ShopListRequest req) {
+        ResponsePaging<ShopListItem> res = new ResponsePaging<>();
         res.setResult(shopAppService.queryShopList(req));
         res.setCode(Codes.Success);
         return res;
