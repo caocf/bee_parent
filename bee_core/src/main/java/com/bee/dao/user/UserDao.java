@@ -137,11 +137,16 @@ public class UserDao extends JpaDaoSupport<User, Long> {
             entity.setParams(req.getType());
         }
         if (!StringUtil.isNull(req.getUserName())) {
-            sb.append(" and A.name like %" + req.getUserName() + "%");
+            sb.append(" and A.name like ?");
+            entity.setParam("%" + req.getUserName() + "%");
         }
         if (!StringUtil.isNull(req.getPhone())) {
             sb.append(" and A.phone = ?");
             entity.setParam(req.getPhone());
+        }
+        if (req.getIntegral() != null) {
+            sb.append(" and A.integral >= ?");
+            entity.setParam(req.getIntegral());
         }
         sb.append(SQL.User.queryUserListByParamsSort);
         entity.setEntity(sb.toString());

@@ -14,6 +14,7 @@ public class AdminUserListRequest extends PagingRequest {
     private Integer type;
     private String userName;
     private String phone;
+    private Integer integral;
     private Integer maxRows;
 
     public Integer getType() {
@@ -33,6 +34,12 @@ public class AdminUserListRequest extends PagingRequest {
     }
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+    public Integer getIntegral() {
+        return integral;
+    }
+    public void setIntegral(Integer integral) {
+        this.integral = integral;
     }
 
     public String getPageType() {

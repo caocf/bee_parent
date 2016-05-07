@@ -19,21 +19,21 @@
 				indexPage: index
 			}, function(data) {
 				$("#userSelectDialogTable tr:gt(0)").remove();
-				for (var i = 0; i < data.data.length; i++) {
+				for (var i = 0; i < data.result.length; i++) {
 					var $tr = $(document.createElement("tr"));
 					var $a = $(document.createElement("a"));
 					$a.html("选择");
 					$a.attr("href", "#");
-					$a.attr("userId", data.data[i].uid);
-					$a.attr("userName", data.data[i].name);
+					$a.attr("userId", data.result[i].uid);
+					$a.attr("userName", data.result[i].name);
 					$a.click(function(event) {
 						$("#userSelectDialog").modal('hide');
 						UserSelectDialog._fn($(this).attr("userId"), $(this).attr("userName"));
 					});
 					$tr.append($(document.createElement("td")).append($a));
-					$tr.append($(document.createElement("td")).html(data.data[i].phone));
-					$tr.append($(document.createElement("td")).html(data.data[i].name));
-					if (data.data[i].type == 99) {
+					$tr.append($(document.createElement("td")).html(data.result[i].phone));
+					$tr.append($(document.createElement("td")).html(data.result[i].name));
+					if (data.result[i].type == 99) {
 						$tr.append($(document.createElement("td")).html("测试用户"));
 					} else {
 						$tr.append($(document.createElement("td")).html("普通用户"));

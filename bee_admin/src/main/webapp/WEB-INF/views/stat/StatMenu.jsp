@@ -7,10 +7,10 @@
 		<i class="fa fa-sellsy"></i>访问统计
 	</a>
 	<a id="navbar-inner-stat-user" href="${basePath}/stat/user">
-		<i class="fa fa-bar-chart"></i>用户统计
+		<i class="fa fa-area-chart"></i>用户统计
 	</a>
 	<a id="navbar-inner-stat-shop" href="${basePath}/stat/shop">
-		<i class="fa fa-area-chart"></i>商家统计
+		<i class="fa fa-bar-chart"></i>商家统计
 	</a>
 	<a id="navbar-inner-stat-order" href="${basePath}/stat/order">
 		<i class="fa fa-line-chart"></i>订单统计

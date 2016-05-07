@@ -2,8 +2,10 @@ package com.bee.admin.controller.user;
 
 import com.bee.client.params.user.AdminUserListRequest;
 import com.bee.commons.AuthName;
+import com.bee.commons.Codes;
 import com.bee.pojo.user.User;
 import com.bee.services.user.admin.IUserAdminService;
+import com.qsd.framework.domain.response.ResponsePaging;
 import com.qsd.framework.security.annotation.Auth;
 import com.qsd.framework.spring.PagingResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,6 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(AdminUserListRequest request) {
         ModelAndView mav = new ModelAndView(USER_LIST);
-        mav.addObject("result", userService.queryUserListByParams(request));
         mav.addObject("params", request);
         return mav;
     }
@@ -46,7 +47,10 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "/json", method = RequestMethod.GET)
-    public PagingResult<User> queryUserList(AdminUserListRequest request) {
-        return userService.queryUserListByParams(request);
+    public ResponsePaging<User> queryUserList(AdminUserListRequest request) {
+        ResponsePaging<User> result = new ResponsePaging<>();
+        result.setResult(userService.queryUserListByParams(request));
+        result.setCode(Codes.Success);
+        return result;
     }
 }
