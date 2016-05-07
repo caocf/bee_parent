@@ -8314,14 +8314,8 @@ button.close {
 .modal-footer:after,
 .table-view:before,
 .table-view:after,
-#UserChart:before,
-#UserChart:after,
-#OrderChart:before,
-#OrderChart:after,
-#VisitChart:before,
-#VisitChart:after,
-#Visit24Chart:before,
-#Visit24Chart:after {
+.chart:before,
+.chart:after {
   content: " ";
   display: table;
 }
@@ -8341,10 +8335,7 @@ button.close {
 .panel-body:after,
 .modal-footer:after,
 .table-view:after,
-#UserChart:after,
-#OrderChart:after,
-#VisitChart:after,
-#Visit24Chart:after {
+.chart:after {
   clear: both;
 }
 .center-block {
@@ -9387,16 +9378,12 @@ form label.icheck input[type='checkbox'] {
     font-size: 14px;
   }
 }
-#UserChart,
-#OrderChart {
+.chart {
   margin-left: 0;
   margin-right: 0;
-  height: 400px;
+  height: 370px;
 }
-#VisitChart,
-#Visit24Chart {
-  margin-left: 0;
-  margin-right: 0;
-  height: 350px;
+.chart.high {
+  height: 600px;
 }
 

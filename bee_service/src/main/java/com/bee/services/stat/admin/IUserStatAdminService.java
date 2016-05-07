@@ -1,6 +1,7 @@
 package com.bee.services.stat.admin;
 
 import com.bee.services.stat.IUserStatService;
+import com.qsd.framework.hibernate.exception.DataRunException;
 
 /**
  * Created by suntongwei on 15/11/15.
@@ -40,5 +41,13 @@ public interface IUserStatAdminService extends IUserStatService {
      * @return startTime 开始时间
      */
     Double[] statUserLoginDetail(long startTime, long endTime);
+
+    /**
+     * 维护用户登录表
+     *
+     * @param time
+     * @throws DataRunException
+     */
+    void mateUserLogin(long time) throws DataRunException;
 
 }

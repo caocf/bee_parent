@@ -174,8 +174,9 @@ public class VisitStatController {
         ItemStyle itemStyle = new ItemStyle();
         itemStyle.setNormal(normal);
         series1.setItemStyle(itemStyle);
-
         chart.setSeries(new Series[] {series1});
+
+        chart.setColor(new String[] {"#c23531"});
 
         return chart;
     }

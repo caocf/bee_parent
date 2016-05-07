@@ -15,7 +15,7 @@ public final class Consts {
 
     // IOS当前审核版本
     // 该Build号不能进入小黄蜂主界面
-    public static final int iOSVersion = 5;
+    public static final int iOSVersion = 6;
 
     // video硬盘存放路径
     private static final String RemoteVideoPath = "/home/static/video";

@@ -25,63 +25,37 @@
         <i class="fa fa-angle-double-right"></i>	
   			<span class="after">查看用户登录和注册统计表</span>
       </div>
-      <div id="VisitChart"></div>
-      <div id="Visit24Chart"></div>
+      <div id="VisitChart" class="chart"></div>
+      <div id="Visit24Chart" class="chart"></div>
   	</div>
   	<script type="text/javascript" src="${resPath}/assets/js/jquery/jquery.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/bootstrap/bootstrap.min.js"></script>
   	<script type="text/javascript" src="${resPath}/assets/js/global.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/main.js"></script>
     <script type="text/javascript" src="${resPath}/assets/js/jquery/json2.js"></script>
-  	<script type="text/javascript" src="${resPath}/assets/js/plugin/echarts/echarts.js"></script>
+  	<script type="text/javascript" src="${resPath}/assets/js/plugin/echarts/echarts.min.js"></script>
   	
     <script type="text/javascript">
   		Navbar.init("navbar-left-stat", "navbar-inner-stat-visit");
-      require.config({
-        paths: {
-          echarts: '${resPath}/assets/js/plugin/echarts'
-        }
-      });
+      var chart = echarts.init(document.getElementById('VisitChart'));
+      chart.showLoading();
       $.get(BasePath + "/stat/visit/chart", function(data) {
-        require(
-                [
-                  'echarts',
-                  'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
-                  'echarts/chart/line'
-                ],
-                function (ec) {
-                  // 基于准备好的dom，初始化echarts图表
-                  var myChart = ec.init(document.getElementById('VisitChart'));
-                  myChart.setOption(JSON.parse(data));
-                    myChart.on(require('echarts/config').EVENT.CLICK, function(param) {
-                        showLoginDetail(param.name);
-                    });
-
-                }
-        );  
+        chart.hideLoading();
+        chart.setOption(JSON.parse(data));
+        chart.on("click", function(param) {
+          showLoginDetail(param.name);
+        });
       });
 
-        var dChart = null;
-
-        require(
-                [
-                    'echarts',
-                    'echarts/chart/line'
-                ],
-                function (ec) {
-                    // 基于准备好的dom，初始化echarts图表
-                    dChart = ec.init(document.getElementById('Visit24Chart'));
-                    dChart.setTheme("macarons");
-                }
-        );
-
-
-        function showLoginDetail(name) {
-            $.get(BasePath + "/stat/visit/detail?name="+name, function(data) {
-                dChart.clear();
-                dChart.setOption(JSON.parse(data));
-            });
-        }
+      var dChart = echarts.init(document.getElementById('Visit24Chart'));
+      function showLoginDetail(name) {
+        dChart.showLoading();
+        $.get(BasePath + "/stat/visit/detail?name="+name, function(data) {
+          dChart.hideLoading();
+          dChart.clear();
+          dChart.setOption(JSON.parse(data));
+        });
+      }
 
   	</script>
   </body>

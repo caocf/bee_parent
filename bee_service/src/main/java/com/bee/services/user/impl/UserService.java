@@ -1,5 +1,6 @@
 package com.bee.services.user.impl;
 
+import com.bee.commons.Consts;
 import com.bee.dao.user.UserDao;
 import com.bee.domain.params.user.UserParam;
 import com.bee.pojo.user.User;

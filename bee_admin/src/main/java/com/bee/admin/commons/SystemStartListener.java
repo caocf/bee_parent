@@ -1,7 +1,7 @@
 package com.bee.admin.commons;
 
+import com.bee.admin.system.MateDbThread;
 import com.bee.admin.system.MateTicketExpiredThread;
-import com.bee.admin.system.MateUserLoginThread;
 import com.bee.commons.Consts;
 import com.bee.sms.SMSCodeFactory;
 import com.qsd.framework.security.config.SecurityConfiguration;
@@ -24,7 +24,7 @@ public class SystemStartListener implements ServletContextListener {
         SMSCodeFactory.getInstance();
 
         // 启动维护线程
-        // new Thread(new MateUserLoginThread()).start();
+        new Thread(new MateDbThread()).start();
         // 启动红包优惠券过期维护线程
         new Thread(new MateTicketExpiredThread()).start();
     }

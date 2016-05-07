@@ -1,9 +1,12 @@
 package com.bee.admin.params.charts;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  *
  * Created by suntongwei on 15/10/22.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Chart implements java.io.Serializable {
 
     // serialVersionUID
@@ -14,7 +17,7 @@ public class Chart implements java.io.Serializable {
      */
     private Title title;
     /**
-     *
+     * Tooltip
      */
     private Tooltip tooltip;
     /**
@@ -34,10 +37,23 @@ public class Chart implements java.io.Serializable {
      */
     private Axis[] yAxis;
     /**
-     *
+     * Series
      */
     private Series[] series;
-
+    /**
+     * Grid
+     */
+    private Grid grid;
+    /**
+     * 默认取色方案
+     * 官方默认值:
+     * "#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae", "#749f83",
+     * "#ca8622", "#bda29a", "#6e7074", "#546570", "#c4ccd3"
+     */
+    private String[] color = new String[] {
+            "#2f4554", "#c23531", "#61a0a8", "#d48265", "#91c7ae", "#749f83",
+            "#ca8622", "#bda29a", "#6e7074", "#546570", "#c4ccd3"
+    };
 
     public Title getTitle() {
         return title;
@@ -80,5 +96,17 @@ public class Chart implements java.io.Serializable {
     }
     public void setSeries(Series[] series) {
         this.series = series;
+    }
+    public Grid getGrid() {
+        return grid;
+    }
+    public void setGrid(Grid grid) {
+        this.grid = grid;
+    }
+    public String[] getColor() {
+        return color;
+    }
+    public void setColor(String[] color) {
+        this.color = color;
     }
 }

@@ -9,7 +9,7 @@
 	<a id="navbar-inner-stat-user" href="${basePath}/stat/user">
 		<i class="fa fa-bar-chart"></i>用户统计
 	</a>
-	<a id="navbar-inner-stat-shop" href="#">
+	<a id="navbar-inner-stat-shop" href="${basePath}/stat/shop">
 		<i class="fa fa-area-chart"></i>商家统计
 	</a>
 	<a id="navbar-inner-stat-order" href="${basePath}/stat/order">

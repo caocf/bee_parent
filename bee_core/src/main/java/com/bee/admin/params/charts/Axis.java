@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  *
  * Created by suntongwei on 15/10/22.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Axis implements java.io.Serializable {
 
     // serialVersionUID
@@ -21,9 +22,17 @@ public class Axis implements java.io.Serializable {
      */
     private Boolean boundaryGap;
     /**
+     * 位置
+     */
+    private String position;
+    /**
      * 数据
      */
     private String[] data;
+    /**
+     * AxisLabel
+     */
+    private AxisLabel axisLabel;
 
     public String getType() {
         return type;
@@ -37,11 +46,22 @@ public class Axis implements java.io.Serializable {
     public void setData(String[] data) {
         this.data = data;
     }
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Boolean getBoundaryGap() {
         return boundaryGap;
     }
     public void setBoundaryGap(Boolean boundaryGap) {
         this.boundaryGap = boundaryGap;
+    }
+    public AxisLabel getAxisLabel() {
+        return axisLabel;
+    }
+    public void setAxisLabel(AxisLabel axisLabel) {
+        this.axisLabel = axisLabel;
+    }
+    public String getPosition() {
+        return position;
+    }
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 /**
  * Created by suntongwei on 15/11/11.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemStyle implements java.io.Serializable {
 
     // serialVersionUID
@@ -12,7 +13,6 @@ public class ItemStyle implements java.io.Serializable {
 
     private Normal normal;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Normal getNormal() {
         return normal;
     }

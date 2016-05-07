@@ -6,6 +6,7 @@ import com.bee.pojo.stat.UserLoginStat;
 import com.qsd.framework.commons.utils.StringUtil;
 import com.qsd.framework.hibernate.JpaDaoSupport;
 import com.qsd.framework.hibernate.bean.HQLEntity;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -56,4 +57,15 @@ public class UserLoginStatDao extends JpaDaoSupport<UserLoginStat, Long> {
         return queryResult(entity);
     }
 
+
+    public static final String MateUserLogin = "DELETE FROM TB_USER_LOGIN_STAT A WHERE A.CREATETIME < ?";
+
+    /**
+     *
+     * @param time
+     * @throws DataRunException
+     */
+    public void mateUserLogin(long time) throws DataRunException {
+        execute(MateUserLogin, time);
+    }
 }

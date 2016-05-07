@@ -69,15 +69,12 @@ public class AppController {
             userStatAppService.addUserLoginStat(userLoginStat);
         }
 
-        // 判断用户登录信息
-        // v1.1.0 增加
-        if (req.getVersion() >= 7) {
-
-        }
-
         // iPhone是否已经过了审核
-        if (!Consts.isDebug && req.getPhoneType() == Consts.IOS && req.getVersion() == Consts.iOSVersion) {
+        if (req.getPhoneType() == Consts.IOS && req.getVersion() == Consts.iOSVersion) {
             res.setIntoApp(false);
+            if (Consts.isDebug) {
+                res.setIntoApp(true);
+            }
         } else {
             res.setIntoApp(true);
         }

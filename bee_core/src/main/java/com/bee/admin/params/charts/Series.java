@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 /**
  * Created by suntongwei on 15/10/22.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Series implements java.io.Serializable {
 
     // serialVersionUID
@@ -33,7 +34,6 @@ public class Series implements java.io.Serializable {
     public void setData(Double[] data) {
         this.data = data;
     }
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     public ItemStyle getItemStyle() {
         return itemStyle;
     }

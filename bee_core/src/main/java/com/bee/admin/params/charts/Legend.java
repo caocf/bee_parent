@@ -1,10 +1,13 @@
 package com.bee.admin.params.charts;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * Chart Legend
  *
  * Created by suntongwei on 15/10/22.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Legend implements java.io.Serializable {
 
     // serialVersionUID

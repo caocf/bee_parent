@@ -10,9 +10,11 @@ import com.bee.pojo.user.User;
 import com.bee.services.stat.admin.IUserStatAdminService;
 import com.bee.services.stat.impl.UserStatService;
 import com.qsd.framework.commons.utils.DateUtil;
+import com.qsd.framework.hibernate.exception.DataRunException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Calendar;
 import java.util.List;
 
@@ -23,12 +25,7 @@ import java.util.List;
 public class UserStatAdminService extends UserStatService implements IUserStatAdminService {
 
     @Autowired
-    private UserLoginStatDao userLoginStatDao;
-    @Autowired
     private UserDao userDao;
-
-
-
 
     /**
      * 统计过去number天用户登录数量
@@ -296,5 +293,16 @@ public class UserStatAdminService extends UserStatService implements IUserStatAd
         }
 
         return result;
+    }
+
+    /**
+     *
+     * @param time
+     * @throws DataRunException
+     */
+    @Override
+    @Transactional
+    public void mateUserLogin(long time) throws DataRunException {
+        userLoginStatDao.mateUserLogin(time);
     }
 }
